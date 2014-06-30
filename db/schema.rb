@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627130917) do
+ActiveRecord::Schema.define(version: 20140630141926) do
 
   create_table "forms", force: true do |t|
     t.text     "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inputs", force: true do |t|
+    t.text     "label"
+    t.text     "input_type"
+    t.boolean  "required"
+    t.integer  "order"
+    t.text     "options"
+    t.integer  "form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
