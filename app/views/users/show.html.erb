@@ -1,0 +1,16 @@
+<div class="row">
+  <h1>My Surveys</h1>
+  <%= link_to "Create new Survey", new_form_path, class: "btn btn-info" %>
+</div>
+
+<div class="col-md-6">
+  <% if @forms %>
+    <ul class="padded-list">
+      <% @forms.each do |form| %>
+        <li><%= link_to form.title, form_path(form) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Get started and build a new survey!</p>
+  <% end %>  
+</div>
