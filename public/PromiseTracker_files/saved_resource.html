@@ -1,0 +1,156 @@
+
+<!-- saved from url=(0037)http://cdncache-a.akamaihd.net/store/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Store</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+if (typeof JSON == "undefined") {
+	if(!this.JSON){JSON=function(){function f(n){return n<10?'0'+n:n;}
+	Date.prototype.toJSON=function(){return this.getUTCFullYear()+'-'+
+	f(this.getUTCMonth()+1)+'-'+
+	f(this.getUTCDate())+'T'+
+	f(this.getUTCHours())+':'+
+	f(this.getUTCMinutes())+':'+
+	f(this.getUTCSeconds())+'Z';};var m={'\b':'\\b','\t':'\\t','\n':'\\n','\f':'\\f','\r':'\\r','"':'\\"','\\':'\\\\'};function stringify(value,whitelist){var a,i,k,l,r=/["\\\x00-\x1f\x7f-\x9f]/g,v;switch(typeof value){case'string':return r.test(value)?'"'+value.replace(r,function(a){var c=m[a];if(c){return c;}
+	c=a.charCodeAt();return'\\u00'+Math.floor(c/16).toString(16)+
+	(c%16).toString(16);})+'"':'"'+value+'"';case'number':return isFinite(value)?String(value):'null';case'boolean':case'null':return String(value);case'object':if(!value){return'null';}
+	if(typeof value.toJSON==='function'){return stringify(value.toJSON());}
+	a=[];if(typeof value.length==='number'&&!(value.propertyIsEnumerable('length'))){l=value.length;for(i=0;i<l;i+=1){a.push(stringify(value[i],whitelist)||'null');}
+	return'['+a.join(',')+']';}
+	if(whitelist){l=whitelist.length;for(i=0;i<l;i+=1){k=whitelist[i];if(typeof k==='string'){v=stringify(value[k],whitelist);if(v){a.push(stringify(k)+':'+v);}}}}else{for(k in value){if(typeof k==='string'){v=stringify(value[k],whitelist);if(v){a.push(stringify(k)+':'+v);}}}}
+	return'{'+a.join(',')+'}';}}
+	return{stringify:stringify,parse:function(text,filter){var j;function walk(k,v){var i,n;if(v&&typeof v==='object'){for(i in v){if(Object.prototype.hasOwnProperty.apply(v,[i])){n=walk(i,v[i]);if(n!==undefined){v[i]=n;}}}}
+	return filter(k,v);}
+	if(/^[\],:{}\s]*$/.test(text.replace(/\\./g,'@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,']').replace(/(?:^|:|,)(?:\s*\[)+/g,''))){j=eval('('+text+')');return typeof filter==='function'?walk('',j):j;}
+	throw new SyntaxError('parseJSON');}};}();}
+}
+
+var db = {
+	set: function (a, d, e) {
+		var b = new Date;
+		b.setSeconds(e);
+		if (typeof localStorage != 'undefined') {
+			b = Math.floor(b.getTime()/1000);
+			var v = {v:d,t:b};
+			localStorage.setItem(a, JSON.stringify(v));
+			return;
+		}
+		e = location.hostname.replace(/^www\./, "");
+		document.cookie = a + "=" + d + ";expires=" + b.toUTCString() + ";path=/;domain=" + e
+	},
+	
+	get: function (a) {
+		if ("undefined" != typeof localStorage && null != localStorage.getItem(a)) {
+			var v = localStorage.getItem(a);
+			if (typeof v=='string' && v.substr(0,1)=='{' && v.substr(v.length-1)=='}') {
+				v = eval("(" + v + ")");
+			}
+			var now = Math.floor((new Date).getTime()/1000);
+			if (v.t && parseInt(v.t) < now) {
+				localStorage.removeItem(a);
+			}
+			else {
+				return v.v;
+			}
+			return null;
+		}
+		for (var d = document.cookie.replace(/;\s*/g,";").split(";"), e = 0; e < d.length; ++e) {
+			var b = d[e].split("=");
+			if (a == b[0]) return b.slice(1, b.length).join("=")
+		}
+		return null
+	}
+};
+
+var _GPL_COMM =
+{
+	compatible: window['postMessage'] && navigator.userAgent.toLowerCase().indexOf('opera')==-1,
+	p: parent,
+	lasthash: '',
+	cb:1,
+	
+	init: function() {
+		this.setupListener();
+		this.sendMessage({f:'ready'});
+		if (!this.compatible) { setInterval(function() { _GPL_COMM.processHash(); }, 150); }
+	},
+	
+	setupListener: function() {
+		// Setup postMessage event listeners
+		if (window.addEventListener) {
+			window.addEventListener('message', _GPL_COMM.receiveMessage, false);
+		} else if(window.attachEvent) {
+			window.attachEvent('onmessage', _GPL_COMM.receiveMessage);
+		}
+	},
+
+	receiveMessage: function(e) {
+		var msg = e.data;
+		if (typeof msg=='string' && msg.substr(0,1)=='{' && msg.substr(msg.length-1)=='}') {
+			msg = eval("(" + msg + ")");
+		}
+		
+		if (!is_array(msg.a)) {
+			msg.a = [msg.a];
+		}
+		
+		if (msg.f == 'db.get') {
+			var r = {};
+			for (var i=0; i<msg.a.length; i++) {
+				var m = msg.a[i];
+				r[m] = db.get(m);
+			}
+			_GPL_COMM.sendMessage({i: msg.i, f:'db.get', v:r});
+		}
+		else if (msg.f == 'db.set') {
+			for (var i=0; i<msg.a.length; i++) {
+				var m = msg.a[i];
+				m.t = (typeof m.t=='undefined') ? 24*60*60 : m.t;
+				db.set(m.n,m.v,m.t);
+			}
+			_GPL_COMM.sendMessage({i: msg.i, f:'db.set', v:m});
+		}
+	},
+	
+	sendMessage: function(message) {
+		if (!this.p) return false;
+		if (this.compatible) {
+			this.p.postMessage(JSON.stringify(message), "*");
+		}
+		else {
+			var parent_url = this.parseUrl(location.hash)['_GPL_u'];
+			this.p.location = parent_url.replace( /#.*$/, '' ) + '#' + (new Date).getTime() + (this.cb++) + '&_GPL_s=' + escape(JSON.stringify(message)).replace(/\//g,"%2F");
+		}
+	},
+	
+	parseUrl: function (u) {
+		for (var a = u.substring(1).split("&"), d = {}, e = 0, b = a.length; e < b; ++e) {
+			var f = a[e].split("=");
+			d[f[0]] = unescape(f.slice(1, f.length).join("="))
+		}
+		return d
+    },
+	
+	processHash: function() {
+		var newhash = this.parseUrl(location.hash)['_GPL_s'];
+		if (typeof newhash != 'undefined' && newhash != '' && newhash != this.lasthash) {
+			this.lasthash = newhash;
+			this.receiveMessage({data: newhash});
+			location.href = location.href.replace( /#.*$/, '' ) + '#' + Math.floor((new Date).getTime() / 1000);
+		}
+	}
+};
+
+_GPL_COMM.init();
+
+function is_array(input){
+	return typeof(input)=='object'&&(input instanceof Array);
+}
+</script>
+
+
+
+</body></html>
