@@ -11,6 +11,9 @@ class FormsController < ApplicationController
     @form = Form.find_or_create_by(id: params[:id])
     @form.update_attribute(:title, params[:title])
 
+    if current_user
+      @form.update_attribute(:user_id, current_user.id)
+    end
     render json: @form
   end
 
