@@ -1,0 +1,60 @@
+$darkest-grey: #4f4f4f;
+
+#toolPalette {
+  background: $darkest-grey;
+  border-radius: 5px;
+
+  ul {
+    list-style-type: none;
+    padding: 10px 0;
+  }
+
+  ul li {
+    background: whitesmoke;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 20px;
+    cursor: pointer;
+  }
+
+}
+
+.controls {
+  float: right;
+}
+
+.pad-top {
+  padding-top: 10px;
+}
+
+#formTitle {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+#formBody {
+  background: whitesmoke;
+  min-height: 350px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+
+  .input {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 10px 0;
+    min-height: 80px;
+    padding: 20px;
+
+    .form-control {
+      display: inline-block;
+      width: 50%;
+    }
+
+    p {
+      display: inline-block;
+    }
+  }
+}
+

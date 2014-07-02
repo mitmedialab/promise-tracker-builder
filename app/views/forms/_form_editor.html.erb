@@ -1,0 +1,60 @@
+<div id="workspace">
+
+  <div class="row" style="display: none;" data-bind="visible: true">
+
+    
+    <!-- Form title -->
+    <div class="col-md-9">
+      <h4 id="formTitle" class="inline" data-bind="text: title"></h4>
+      <div class="controls pad-top">
+        <div class="btn btn-default" data-toggle="modal" data-target="#newFormModal">Edit form name</div>
+      </div>
+      <%= render 'new_form_modal' %>
+    </div>
+
+    <!-- Form body -->
+    <div class="col-md-9">
+      <div id="formBody">
+        
+        <div data-bind="sortable: inputs">
+          <div class="input">
+
+            <!-- Editing template -->
+            <div data-bind="if: inEdit">
+              <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="Add question text here" autofocus>
+              Field required? <input type="checkbox" data-bind="checked: required">
+
+              <div class="controls">
+                <a href="#" class="btn" data-bind="click: save">Save</a>
+                <a href="#" class="btn" data-bind="click: $parent.removeInput">Delete</a>
+              </div>
+            </div>
+
+            <!-- Viewing template -->
+            <div data-bind="ifnot: inEdit">
+              <p data-bind="text: $data.label"></p>
+              <div class="controls">
+                <a href="#" class="btn" data-bind="click: edit">Edit</a>
+                <a href="#" class="btn" data-bind="click: $parent.removeInput">Remove</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Done button -->
+      <div class="controls">
+        <button class="btn btn-primary" data-bind="click: save">Done</button>
+      </div>
+      <%= link_to "All Surveys", forms_path %>
+    </div>
+
+    <!-- Inputs Tool palette -->
+    <div class="col-md-3">
+      <div id="toolPalette">
+        <%= render 'tool_palette' %>
+      </div>
+    </div>
+  </div>
+</div>

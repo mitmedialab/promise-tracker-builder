@@ -1,1 +1,9 @@
-<h1>Create a new form</h1>
+<%= render 'form_editor' %>
+
+<script type="text/javascript">
+  PT.form = new PT.FormModel();
+  ko.applyBindings(PT.form);
+  $("#newFormModal").modal();
+
+  $(document).on("click", "#toolPalette li", PT.form.addInput);
+</script>
