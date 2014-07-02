@@ -2,6 +2,8 @@
   <div class="container">
     <% if current_user %>
       <%= link_to "My surveys", user_path(current_user), class: "btn btn-info" %>
+    <% else %>
+      <%= link_to "Home", root_path, class: "btn btn-info" %>
     <% end %>
     <ul class="user-links">
       <% if current_user %>
