@@ -12,8 +12,19 @@
  *= require_tree .
  */
 
- @import 'bootstrap';
+@import 'bootstrap';
 
- .inline {
+.inline {
   display: inline-block;
- }
+}
+
+#header {
+  background: whitesmoke;
+  width: 100%;
+  padding: 20px;
+  text-align: right;
+}
+
+#message {
+  margin: 10px 0;
+}

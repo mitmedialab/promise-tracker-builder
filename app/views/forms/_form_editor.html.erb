@@ -47,7 +47,10 @@
       <div class="controls">
         <button class="btn btn-primary" data-bind="click: save">Done</button>
       </div>
-      <%= link_to "All Surveys", forms_path %>
+
+      <% if current_user %>
+        <%= link_to "All Surveys", user_forms_path(current_user) %>
+      <% end %>
     </div>
 
     <!-- Inputs Tool palette -->
