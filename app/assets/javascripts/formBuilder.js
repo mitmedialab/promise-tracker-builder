@@ -38,24 +38,29 @@ PT.Input = function(){
   self.save = function(self, event){
     console.log(event);
 
-    $("#message").fadeOut();
-    self.inEdit(false);
+    if(self.label()){
+      $("#message").fadeOut();
+      self.inEdit(false);
 
-    $.ajax({
-      url: "/forms/" + PT.form.id + "/inputs",
-      type: "POST",
-      contentType: "application/json",
-      dataType: "json",
-      data: ko.toJSON(self)
-    })
-    .done(function(response) {
-      console.log(response);
-      $("#newFormModal").modal("hide");
+      $.ajax({
+        url: "/forms/" + PT.form.id + "/inputs",
+        type: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        data: ko.toJSON(self)
+      })
+      .done(function(response) {
+        console.log(response);
+        $("#newFormModal").modal("hide");
 
-      if(self.id === ""){
-        self.id = response.id;
-      }
-    });
+        if(self.id === ""){
+          self.id = response.id;
+        }
+      });
+    } else {
+      var input = $(event.target).closest(".input");
+      PT.flashMessage("Please enter question text", input);
+    }
   };
 
   self.map = function(data){
@@ -121,14 +126,18 @@ PT.FormModel = function(){
 
   /// Add/update form name
   self.saveName = function(){
-    $.post("/forms", {id: self.id, title: self.title}, function(response) {
-      console.log(response);
-      if(self.id === ""){
-        self.id = response.id;
-      }
+    if(self.title()){
+      $.post("/forms", {id: self.id, title: self.title}, function(response) {
+        console.log(response);
+        if(self.id === ""){
+          self.id = response.id;
+        }
 
-      $("#newFormModal").modal("hide");
-    });
+        $("#newFormModal").modal("hide");
+      });
+    } else {
+      PT.flashMessage("Please enter a title", $("#newFormTitle"));
+    }
   };
 
   self.populateInputs = function(data) {
@@ -153,4 +162,10 @@ PT.getForm = function(url){
 
     $(document).on("click", "#toolPalette li", PT.form.addInput);
   });
+};
+
+PT.flashMessage = function(message, element){
+  $("#message").remove();
+  element.after(HandlebarsTemplates["flash_message"]({text: message})).fadeIn();
+  $("#message").delay(2000).fadeOut();
 };
