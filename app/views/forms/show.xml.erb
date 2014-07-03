@@ -23,7 +23,7 @@
       </itext>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
       <% @form.inputs.each do |input| %>
-        <bind nodeset="/data/<%= input.uid %>" type="<%= input.input_type %>"/>
+        <bind nodeset="/data/<%= input.uid %>" type="<%= input.input_type %>" <% if input.required %>required="true()"<% end %>/>
       <% end %>
     </model>
   </h:head>
