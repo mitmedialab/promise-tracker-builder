@@ -1,16 +1,27 @@
 <div class="row">
-  <h1>My Surveys</h1>
-  <%= link_to "Create new Survey", new_form_path, class: "btn btn-info" %>
-</div>
+  <div class="col-md-8">
+    <h1>My Surveys</h1>
+    <% if @forms %>
+      <ul class="padded-list">
+        <% @forms.each do |form| %>
+          <li>
+            <%= link_to form.title, form_path(form) %>
+            <div class="right">
+              <%= link_to "Download xForm", form_path(form, format: :xml) %>
+              <%= link_to form_path(form), class: "pad-side", method: :delete do %>
+                <span class="glyphicon glyphicon-remove-sign"></span>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Get started and build a new survey!</p>
+    <% end %>  
+  </div>
 
-<div class="col-md-6">
-  <% if @forms %>
-    <ul class="padded-list">
-      <% @forms.each do |form| %>
-        <li><%= link_to form.title, form_path(form) %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>Get started and build a new survey!</p>
-  <% end %>  
-</div>
+  <div class="col-md-4 text-center">
+  <br><br><br><br>
+    <%= link_to "Create new Survey", new_form_path, class: "btn btn-info" %>
+  </div>
+<div class="row">
