@@ -10,6 +10,7 @@ class InputsController < ApplicationController
 
     @input = form.inputs.find_or_create_by(id: input[:id])
     @input.update_attributes(input_params(params))
+    @input.update_attribute(:uid, make_uid(@input.label, @input.id))
 
     render json: @input
   end

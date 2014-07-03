@@ -9,7 +9,10 @@ class FormsController < ApplicationController
 
   def create
     @form = Form.find_or_create_by(id: params[:id])
-    @form.update_attribute(:title, params[:title])
+    @form.update_attributes(
+      title: params[:title],
+      uid: makeuid(params[:title], @form.id)
+    )
 
     if current_user
       @form.update_attribute(:user_id, current_user.id)
@@ -25,6 +28,10 @@ class FormsController < ApplicationController
     end
   end
 
+  def show_xml
+    @form = Form.find(params[:id])
+  end
+
   def edit
   end
 
@@ -38,7 +45,8 @@ class FormsController < ApplicationController
     end
 
     @forms = Form.all
-    redirect_to action: "index", method: :get, format: 'html'
+    # Redirect to Index
+    # redirect_to action: "index", method: :get, format: 'html'
   end
 
   def destroy
