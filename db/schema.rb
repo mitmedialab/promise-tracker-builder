@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703145659) do
+ActiveRecord::Schema.define(version: 20140703182330) do
 
   create_table "forms", force: true do |t|
     t.text     "title"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140703145659) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uid"
+    t.string   "media_type"
   end
 
   create_table "users", force: true do |t|

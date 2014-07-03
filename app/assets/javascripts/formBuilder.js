@@ -19,6 +19,11 @@ PT.defaultControls = {
 
   inputLocation: {
     input_type: "geopoint"
+  },
+
+  inputImage: {
+    input_type: "binary",
+    media_type: "image/*"
   }
 };
 
@@ -30,6 +35,7 @@ PT.Input = function(){
   self.form_id = PT.form.id;
   self.label = ko.observable();
   self.input_type = ko.observable();
+  self.media_type = ko.observable();
   self.required = ko.observable(false);
   self.options = ko.observable();
   self.order = "";
@@ -68,6 +74,7 @@ PT.Input = function(){
     self.form_id = data.form_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
+    self.media_type = ko.observable(data.media_type);
     self.required = ko.observable(data.required);
     self.options = ko.observable(data.options);
     self.order = data.order;
@@ -93,6 +100,7 @@ PT.FormModel = function(){
     var input = new PT.Input();
     input.inEdit(true);
     input.input_type(PT.defaultControls[type]["input_type"]);
+    input.media_type(PT.defaultControls[type]["media_type"]);
     self.inputs.push(input);
   };
 
