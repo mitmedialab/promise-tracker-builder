@@ -11,7 +11,7 @@ class FormsController < ApplicationController
     @form = Form.find_or_create_by(id: params[:id])
     @form.update_attributes(
       title: params[:title],
-      uid: makeuid(params[:title], @form.id)
+      uid: make_uid(params[:title], @form.id)
     )
 
     if current_user
@@ -25,11 +25,8 @@ class FormsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @form, include: :inputs }
+      format.xml { response.headers['Content-Disposition'] = "attachment; filename='#{@form.title}.xml'" }
     end
-  end
-
-  def show_xml
-    @form = Form.find(params[:id])
   end
 
   def edit
@@ -50,6 +47,9 @@ class FormsController < ApplicationController
   end
 
   def destroy
+    Form.delete(params[:id])
+
+    render json: { message: "Survey deleted"}
   end
 
   private 

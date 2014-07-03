@@ -1,0 +1,37 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title><%= @form.title %></h:title>
+    <model>
+      <instance>
+        <data id="<%= @form.uid %>">
+          <meta>
+            <instanceID/>
+          </meta>
+          <% @form.inputs.each do |input| %>
+            <<%= input.uid %>/>
+          <% end %>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="eng">
+        <% @form.inputs.each do |input| %>
+          <text id="/data/<%= input.uid %>:label">
+            <value><%= input.label %></value>
+          </text>
+        <% end %>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <% @form.inputs.each do |input| %>
+        <bind nodeset="/data/<%= input.uid %>" type="<%= input.input_type %>"/>
+      <% end %>
+    </model>
+  </h:head>
+  <h:body>
+    <% @form.inputs.each do |input| %>
+      <input ref="/data/<%= input.uid %>">
+        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+      </input>
+    <% end %> 
+  </h:body>
+</h:html>
