@@ -29,9 +29,15 @@
   </h:head>
   <h:body>
     <% @form.inputs.each do |input| %>
+      <% if input.input_type == "binary" %>
+      <upload ref="/data/<%= input.uid %>" mediatype="<%= input.media_type %>">
+        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+      </upload>
+      <% else %>
       <input ref="/data/<%= input.uid %>">
         <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
       </input>
+      <% end %>
     <% end %> 
   </h:body>
 </h:html>
