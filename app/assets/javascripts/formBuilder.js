@@ -10,7 +10,7 @@ PT.defaultControls = {
   },
 
   inputNumber: {
-    input_type: "int"
+    input_type: "decimal"
   },
 
   inputDate: {
@@ -24,6 +24,14 @@ PT.defaultControls = {
   inputImage: {
     input_type: "binary",
     media_type: "image/*"
+  },
+
+  inputSelectMany: {
+    input_type: "select"
+  },
+
+  inputSelectOne: {
+    input_type: "select1"
   }
 };
 
@@ -37,12 +45,12 @@ PT.Input = function(){
   self.input_type = ko.observable();
   self.media_type = ko.observable();
   self.required = ko.observable(false);
-  self.options = ko.observable();
+  self.options = ko.observableArray([]);
   self.order = "";
   self.inEdit = ko.observable();
 
   self.save = function(self, event){
-    console.log(event);
+    // self.saveOptions(event);
 
     if(self.label()){
       $("#message").fadeOut();
@@ -76,13 +84,28 @@ PT.Input = function(){
     self.input_type = ko.observable(data.input_type);
     self.media_type = ko.observable(data.media_type);
     self.required = ko.observable(data.required);
-    self.options = ko.observable(data.options);
+    self.options = ko.observableArray(_.values(data.options));
     self.order = data.order;
     self.inEdit = ko.observable(false);
   }; 
 
   self.edit = function(){
     self.inEdit(true);
+  };
+
+  // self.saveOptions = function(event){
+  //   var options = Array.prototype.slice.call($(event.target).parent().siblings('.options').children('input'));
+  //   options.forEach(function(option){
+  //     self.options().push(option.value);
+  //   });
+  // };
+
+  self.addOption = function(){
+    self.options.push("");
+  };
+
+  self.deleteOption = function(option, event){
+    self.options.remove(option);
   };
 };
 
@@ -113,13 +136,13 @@ PT.FormModel = function(){
       contentType: "application/json",
       dataType: "json"
     })
-    .done(function(response) {
+    .done(function(response){
       console.log(response);
     });  
   };
 
   /// Update order of all inputs
-  self.save = function(){
+  self.saveOrder = function(){
     $.ajax({
       url: "/forms/" + PT.form.id,
       type: "PUT",
@@ -135,7 +158,7 @@ PT.FormModel = function(){
   /// Add/update form name
   self.saveName = function(){
     if(self.title()){
-      $.post("/forms", {id: self.id, title: self.title}, function(response) {
+      $.post("/forms", {id: self.id, title: self.title}, function(response){
         console.log(response);
         if(self.id === ""){
           self.id = response.id;
@@ -148,7 +171,7 @@ PT.FormModel = function(){
     }
   };
 
-  self.populateInputs = function(data) {
+  self.populateInputs = function(data){
     data.forEach(function(input){
       var newInput = new PT.Input();
       newInput.map(input);
