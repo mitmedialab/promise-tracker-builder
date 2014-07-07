@@ -50,7 +50,6 @@ PT.Input = function(){
   self.inEdit = ko.observable();
 
   self.save = function(self, event){
-    // self.saveOptions(event);
 
     if(self.label()){
       $("#message").fadeOut();
@@ -92,13 +91,6 @@ PT.Input = function(){
   self.edit = function(){
     self.inEdit(true);
   };
-
-  // self.saveOptions = function(event){
-  //   var options = Array.prototype.slice.call($(event.target).parent().siblings('.options').children('input'));
-  //   options.forEach(function(option){
-  //     self.options().push(option.value);
-  //   });
-  // };
 
   self.addOption = function(){
     self.options.push("");
