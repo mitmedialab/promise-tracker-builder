@@ -41,9 +41,8 @@ class FormsController < ApplicationController
       item.update_attribute(:order, index)
     end
 
-    @forms = Form.all
-    # Redirect to Index
-    # redirect_to action: "index", method: :get, format: 'html'
+    render nothing: true
+
   end
 
   def destroy
