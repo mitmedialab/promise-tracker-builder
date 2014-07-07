@@ -135,16 +135,16 @@ PT.FormModel = function(){
 
   /// Update order of all inputs
   self.saveOrder = function(){
+    window.location.pathname = Routes.user_path(PT.form.user_id);
+    
     $.ajax({
       url: "/forms/" + PT.form.id,
       type: "PUT",
       contentType: "application/json",
       dataType: "json",
       data: ko.toJSON(self)
-    })
-    .done(function(response){
-      console.log(response);
     });
+
   };
 
   /// Add/update form name
@@ -179,6 +179,7 @@ PT.getForm = function(url){
     PT.form = new PT.FormModel();
 
     PT.form.id = response.id;
+    PT.form.user_id = response.user_id;
     PT.form.title = ko.observable(response.title);
     PT.form.populateInputs(response.inputs);
     ko.applyBindings(PT.form);
