@@ -28,6 +28,19 @@
                 <a href="#" class="btn" data-bind="click: save">Save</a>
                 <a href="#" class="btn" data-bind="click: $parent.removeInput">Delete</a>
               </div>
+
+              <!-- ko if: input_type() === 'select' || input_type() === 'select1'  -->
+              <div class="options">
+                <hr>
+                <p>Options <span class="glyphicon glyphicon-plus-sign" data-bind="click: addOption"></span></p>
+                <div data-bind="foreach: options, valueUpdate:'input'">
+                  <div class="option">
+                    <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
+                    <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption"></span>
+                  </div>
+                </div>
+              </div>
+              <!-- /ko -->
             </div>
 
             <!-- Viewing template -->
@@ -45,11 +58,11 @@
 
       <!-- Done button -->
       <div class="controls">
-        <button class="btn btn-primary" data-bind="click: save">Done</button>
+        <button class="btn btn-primary" data-bind="click: saveOrder">Done</button>
       </div>
     </div>
 
-    <!-- Inputs Tool palette -->
+    <!-- Input Tool palette -->
     <div class="col-md-3">
       <div id="toolPalette">
         <%= render 'tool_palette' %>

@@ -10,7 +10,14 @@ class InputsController < ApplicationController
 
     @input = form.inputs.find_or_create_by(id: input[:id])
     @input.update_attributes(input_params(params))
-    @input.update_attribute(:uid, make_uid(@input.label, @input.id))
+    @input.uid = make_uid(@input.label, @input.id)
+
+    options = {}
+    params[:options].each_with_index do |option, index|
+      options[make_uid(option, index)] = option if option.length > 0
+    end
+    @input.options = options
+    @input.save
 
     render json: @input
   end
