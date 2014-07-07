@@ -17,7 +17,15 @@
         <% @form.inputs.each do |input| %>
           <text id="/data/<%= input.uid %>:label">
             <value><%= input.label %></value>
-          </text>
+          </text>  
+
+          <% if input.options %>
+          <% input.options.values.each_with_index do |label, index| %>
+            <text id="/data/<%= input.uid %>:option<%= index %>">
+              <value><%= label %></value>
+            </text>
+          <% end %> 
+          <% end %>  
         <% end %>
         </translation>
       </itext>
@@ -29,10 +37,42 @@
   </h:head>
   <h:body>
     <% @form.inputs.each do |input| %>
-      <% if input.input_type == "binary" %>
+      <!-- For uploads -->
+      <% case input.input_type
+        when "binary" %>
       <upload ref="/data/<%= input.uid %>" mediatype="<%= input.media_type %>">
         <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
       </upload>
+
+      <!-- For select1 -->
+      <% when "select1"%>
+      <select1 ref="/data/<%= input.uid %>">
+        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+        <% if input.options %>
+        <% input.options.keys.each_with_index do |key, index| %>
+        <item>
+          <label ref="jr:itext('/data/<%= input.uid %>:option<%= index %>')"></label>
+          <value><%= key %></value>
+        </item>  
+        <% end %>
+        <% end %>
+      </select1>
+
+      <!-- For select many -->
+      <% when "select"%>
+      <select ref="/data/<%= input.uid %>">
+        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+        <% if input.options %>
+        <% input.options.keys.each_with_index do |key, index| %>
+        <item>
+          <label ref="jr:itext('/data/<%= input.uid %>:option<%= index %>')"></label>
+          <value><%= key %></value>
+        </item>  
+        <% end %>
+        <% end %>
+      </select>
+
+      <!-- For text/numeric -->  
       <% else %>
       <input ref="/data/<%= input.uid %>">
         <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
