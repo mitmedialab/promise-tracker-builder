@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     user_path(current_user)
   end
 
-  def make_uid(string, id)
+  def make_guid(string, id)
     return "#{string.downcase.scan(/\w+/).join("_")}_#{id}"
   end
 end
