@@ -62,6 +62,12 @@ $darkest-grey: #4f4f4f;
     p {
       display: inline-block;
     }
+
+    .options {
+      input {
+        margin: 5px;
+      }
+    }
   }
 }
 
