@@ -12,6 +12,7 @@
  *= require_tree .
  */
 
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 .inline {
@@ -82,7 +83,6 @@
 // Forms
 
 input {
-  height: 34px;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -91,4 +91,8 @@ input {
   background-image: none;
   border: 1px solid #cccccc;
   border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  margin: 0 10px;
 }

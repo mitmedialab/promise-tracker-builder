@@ -22,7 +22,7 @@
             <!-- Editing template -->
             <div data-bind="if: inEdit">
               <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="Add question text here" autofocus>
-              Field required? <input type="checkbox" data-bind="checked: required">
+              <label>Field required?</label><input type="checkbox" data-bind="checked: required">
 
               <div class="controls">
                 <a href="#" class="btn" data-bind="click: save">Save</a>
