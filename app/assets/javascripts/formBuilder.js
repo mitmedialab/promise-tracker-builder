@@ -135,6 +135,7 @@ PT.FormModel = function(){
 
   /// Update order of all inputs
   self.saveOrder = function(){
+    // Hack
     window.location.pathname = Routes.user_path(PT.form.user_id);
     
     $.ajax({
@@ -154,6 +155,7 @@ PT.FormModel = function(){
         console.log(response);
         if(self.id === ""){
           self.id = response.id;
+          self.user_id = response.user_id;
         }
 
         $("#newFormModal").modal("hide");
