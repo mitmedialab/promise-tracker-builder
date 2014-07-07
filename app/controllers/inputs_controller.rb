@@ -10,12 +10,12 @@ class InputsController < ApplicationController
 
     @input = form.inputs.find_or_create_by(id: input[:id])
     @input.update_attributes(input_params(params))
-    @input.uid = make_uid(@input.label, @input.id)
+    @input.guid = make_guid(@input.label, @input.id)
 
     if params[:options]
       options = {}
       params[:options].each_with_index do |option, index|
-        options[make_uid(option, index)] = option if option.length > 0
+        options[make_guid(option, index)] = option if option.length > 0
       end
       @input.options = options
     end

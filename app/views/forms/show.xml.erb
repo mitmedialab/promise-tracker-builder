@@ -3,25 +3,25 @@
     <h:title><%= @form.title %></h:title>
     <model>
       <instance>
-        <data id="<%= @form.uid %>">
+        <data id="<%= @form.guid %>">
           <meta>
             <instanceID/>
           </meta>
           <% @form.inputs.each do |input| %>
-            <<%= input.uid %>/>
+            <<%= input.guid %>/>
           <% end %>
         </data>
       </instance>
       <itext>
         <translation lang="eng">
         <% @form.inputs.each do |input| %>
-          <text id="/data/<%= input.uid %>:label">
+          <text id="/data/<%= input.guid %>:label">
             <value><%= input.label %></value>
           </text>  
 
           <% if input.options %>
           <% input.options.values.each_with_index do |label, index| %>
-            <text id="/data/<%= input.uid %>:option<%= index %>">
+            <text id="/data/<%= input.guid %>:option<%= index %>">
               <value><%= label %></value>
             </text>
           <% end %> 
@@ -31,7 +31,7 @@
       </itext>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
       <% @form.inputs.each do |input| %>
-        <bind nodeset="/data/<%= input.uid %>" type="<%= input.input_type %>" <% if input.required %>required="true()"<% end %>/>
+        <bind nodeset="/data/<%= input.guid %>" type="<%= input.input_type %>" <% if input.required %>required="true()"<% end %>/>
       <% end %>
     </model>
   </h:head>
@@ -40,18 +40,18 @@
       <!-- For uploads -->
       <% case input.input_type
         when "binary" %>
-      <upload ref="/data/<%= input.uid %>" mediatype="<%= input.media_type %>">
-        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+      <upload ref="/data/<%= input.guid %>" mediatype="<%= input.media_type %>">
+        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
       </upload>
 
       <!-- For select1 -->
       <% when "select1"%>
-      <select1 ref="/data/<%= input.uid %>">
-        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+      <select1 ref="/data/<%= input.guid %>">
+        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
         <% if input.options %>
         <% input.options.keys.each_with_index do |key, index| %>
         <item>
-          <label ref="jr:itext('/data/<%= input.uid %>:option<%= index %>')"></label>
+          <label ref="jr:itext('/data/<%= input.guid %>:option<%= index %>')"></label>
           <value><%= key %></value>
         </item>  
         <% end %>
@@ -60,12 +60,12 @@
 
       <!-- For select many -->
       <% when "select"%>
-      <select ref="/data/<%= input.uid %>">
-        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+      <select ref="/data/<%= input.guid %>">
+        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
         <% if input.options %>
         <% input.options.keys.each_with_index do |key, index| %>
         <item>
-          <label ref="jr:itext('/data/<%= input.uid %>:option<%= index %>')"></label>
+          <label ref="jr:itext('/data/<%= input.guid %>:option<%= index %>')"></label>
           <value><%= key %></value>
         </item>  
         <% end %>
@@ -74,8 +74,8 @@
 
       <!-- For text/numeric -->  
       <% else %>
-      <input ref="/data/<%= input.uid %>">
-        <label ref="jr:itext('/data/<%= input.uid %>:label')"/>
+      <input ref="/data/<%= input.guid %>">
+        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
       </input>
       <% end %>
     <% end %> 
