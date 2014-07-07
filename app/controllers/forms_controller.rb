@@ -11,7 +11,7 @@ class FormsController < ApplicationController
     @form = Form.find_or_create_by(id: params[:id])
     @form.update_attributes(
       title: params[:title],
-      uid: make_uid(params[:title], @form.id)
+      guid: make_guid(params[:title], @form.id)
     )
 
     if current_user
