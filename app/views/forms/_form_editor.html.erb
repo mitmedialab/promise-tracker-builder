@@ -1,10 +1,8 @@
 <div id="workspace">
-
   <div class="row" style="display: none;" data-bind="visible: true">
-
     
     <!-- Form title -->
-    <div class="col-md-9">
+    <div class="col-md-8">
       <h4 id="formTitle" class="inline" data-bind="text: title"></h4>
       <div class="controls pad-top">
         <div class="btn btn-default" data-toggle="modal" data-target="#newFormModal">Edit form name</div>
@@ -13,7 +11,7 @@
     </div>
 
     <!-- Form body -->
-    <div class="col-md-9">
+    <div class="col-md-8">
       <div id="formBody">
         
         <div data-bind="sortable: inputs">
@@ -24,9 +22,9 @@
               <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="Add question text here" autofocus>
               <label>Field required?</label><input type="checkbox" data-bind="checked: required">
 
-              <div class="controls">
+              <div class="modify">
                 <a href="#" class="btn" data-bind="click: save">Save</a>
-                <a href="#" class="btn" data-bind="click: $parent.removeInput">Delete</a>
+                <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
 
               <!-- ko if: input_type() === 'select' || input_type() === 'select1'  -->
@@ -48,7 +46,7 @@
               <p data-bind="text: $data.label"></p>
               <div class="controls">
                 <a href="#" class="btn" data-bind="click: edit">Edit</a>
-                <a href="#" class="btn" data-bind="click: $parent.removeInput">Remove</a>
+                <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
             </div>
 
@@ -63,7 +61,7 @@
     </div>
 
     <!-- Input Tool palette -->
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div id="toolPalette">
         <%= render 'tool_palette' %>
       </div>

@@ -4,24 +4,50 @@ $darkest-grey: #4f4f4f;
   background: $darkest-grey;
   border-radius: 5px;
 
+  a:hover {
+    text-decoration: none;
+  }
+
   ul {
     list-style-type: none;
     padding: 10px 0;
   }
 
-  ul li {
+  > ul li {
     background: whitesmoke;
     border-radius: 2px;
     padding: 10px;
     margin: 20px;
     cursor: pointer;
+    font-size: 18px;
+
+  }
+
+  .toolTip {
+    float: right;
+    color: gray;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  .sublist {
+    display: none;
+    background: white;
+    margin: -22px 20px 0 20px;
+
+    li {
+      background: white;
+      font-size: 14px;
+      margin: 0;
+      padding: 10px 20px;
+    }
   }
 
 }
 
-.controls {
-  float: right;
-}
+
 
 .pad-top {
   padding-top: 10px;
@@ -31,6 +57,10 @@ $darkest-grey: #4f4f4f;
   position: absolute;
   top: 30px;
   left: 15;
+}
+
+.controls {
+  float: right;
 }
 
 #formTitle {
@@ -53,10 +83,17 @@ $darkest-grey: #4f4f4f;
     margin: 10px 0;
     min-height: 80px;
     padding: 20px;
+    position: relative;
 
     .form-control {
       display: inline-block;
       width: 50%;
+    }
+
+    .modify {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
     p {
@@ -69,6 +106,7 @@ $darkest-grey: #4f4f4f;
     }
 
     .options {
+
       input {
         margin: 5px;
       }
