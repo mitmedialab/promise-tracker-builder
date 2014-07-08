@@ -8,8 +8,8 @@
             <%= link_to form.title, form_path(form) %>
             <div class="right">
               <%= link_to "Download xForm", form_path(form, format: :xml) %>
-              <%= link_to form_path(form), class: "pad-side", method: :delete do %>
-                <span class="glyphicon glyphicon-remove-sign"></span>
+              <%= link_to form_path(form), class: "pad-side", method: :delete, confirm: "Are you sure you want to delete this survey?" do %>
+                <span class="glyphicon glyphicon-trash"></span>
               <% end %>
             </div>
           </li>
