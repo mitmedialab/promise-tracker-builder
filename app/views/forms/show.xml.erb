@@ -37,47 +37,7 @@
   </h:head>
   <h:body>
     <% @form.inputs.each do |input| %>
-      <!-- For uploads -->
-      <% case input.input_type
-        when "binary" %>
-      <upload ref="/data/<%= input.guid %>" mediatype="<%= input.media_type %>">
-        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
-      </upload>
-
-      <!-- For select1 -->
-      <% when "select1"%>
-      <select1 ref="/data/<%= input.guid %>">
-        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
-        <% if input.options %>
-        <% input.options.keys.each_with_index do |key, index| %>
-        <item>
-          <label ref="jr:itext('/data/<%= input.guid %>:option<%= index %>')"></label>
-          <value><%= key %></value>
-        </item>  
-        <% end %>
-        <% end %>
-      </select1>
-
-      <!-- For select many -->
-      <% when "select"%>
-      <select ref="/data/<%= input.guid %>">
-        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
-        <% if input.options %>
-        <% input.options.keys.each_with_index do |key, index| %>
-        <item>
-          <label ref="jr:itext('/data/<%= input.guid %>:option<%= index %>')"></label>
-          <value><%= key %></value>
-        </item>  
-        <% end %>
-        <% end %>
-      </select>
-
-      <!-- For text/numeric -->  
-      <% else %>
-      <input ref="/data/<%= input.guid %>">
-        <label ref="jr:itext('/data/<%= input.guid %>:label')"/>
-      </input>
-      <% end %>
+      <%= render_xml(input) %>
     <% end %> 
   </h:body>
 </h:html>
