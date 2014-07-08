@@ -119,17 +119,24 @@ PT.FormModel = function(){
   };
 
   self.removeInput = function(){
-    self.inputs.remove(this);
-    if(this.id !== ""){
-      $.ajax({
-        url: "/forms/" + PT.form.id + "/inputs/" + this.id,
-        type: "DELETE",
-        contentType: "application/json",
-        dataType: "json"
-      })
-      .done(function(response){
-        console.log(response);
-      });  
+
+    if(this.id === ""){
+      self.inputs.remove(this);
+    } else {
+      var confirmed = window.confirm("Are you sure you want to delete this item?");
+      
+      if(confirmed){
+        self.inputs.remove(this);
+        $.ajax({
+          url: "/forms/" + PT.form.id + "/inputs/" + this.id,
+          type: "DELETE",
+          contentType: "application/json",
+          dataType: "json"
+        })
+        .done(function(response){
+          console.log(response);
+        });  
+      }
     }
   };
 

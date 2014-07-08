@@ -47,8 +47,8 @@ class FormsController < ApplicationController
 
   def destroy
     Form.delete(params[:id])
-
-    render json: { message: "Survey deleted"}
+    @forms = current_user.forms
+    redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
   private 
