@@ -4,6 +4,6 @@
   PT.form = new PT.FormModel();
   ko.applyBindings(PT.form);
   $("#newFormModal").modal();
-
-  $(document).on("click", "#toolPalette li", PT.form.addInput);
+  $("#toolPalette .toolButton").on("click", PT.form.addInput);
 </script>
+

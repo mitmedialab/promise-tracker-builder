@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $(".toolTip").tooltip({placement: "right", title: "Use this type of question when asking..."});
+  
+  $("#toolPalette .addQuestion").on("click", function(event){ 
+    $(".sublist").slideToggle();});
 });
 
 var PT = PT || {};
@@ -111,6 +115,7 @@ PT.FormModel = function(){
   self.inputs = ko.observableArray([]);
 
   self.addInput = function(event){
+    event.stopPropagation();
     var type = $(event.target).attr("rel");
     var input = new PT.Input();
     input.inEdit(true);
@@ -121,16 +126,17 @@ PT.FormModel = function(){
 
   self.removeInput = function(){
     self.inputs.remove(this);
-
-    $.ajax({
-      url: "/forms/" + PT.form.id + "/inputs/" + this.id,
-      type: "DELETE",
-      contentType: "application/json",
-      dataType: "json"
-    })
-    .done(function(response){
-      console.log(response);
-    });  
+    if(this.id !== ""){
+      $.ajax({
+        url: "/forms/" + PT.form.id + "/inputs/" + this.id,
+        type: "DELETE",
+        contentType: "application/json",
+        dataType: "json"
+      })
+      .done(function(response){
+        console.log(response);
+      });  
+    }
   };
 
   /// Update order of all inputs
@@ -186,7 +192,7 @@ PT.getForm = function(url){
     PT.form.populateInputs(response.inputs);
     ko.applyBindings(PT.form);
 
-    $(document).on("click", "#toolPalette li", PT.form.addInput);
+    $("#toolPalette .toolButton").on("click", PT.form.addInput);
   });
 };
 
