@@ -1,37 +1,59 @@
 <ul>
-  <li>
-    <a class="toolButton inputText" rel="inputText">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Text
+  <li class="addQuestion">
+    <a class="expand">
+      <span class="glyphicon glyphicon-plus-sign"></span> Question
     </a>
   </li>
-  <li>
-    <a class="toolButton inputNumeric" rel="inputNumber">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Number
-    </a>
-  </li>
-  <li>
-    <a class="toolButton inputDate" rel="inputDate">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Date
-    </a>
-  </li>
+
+    <!-- Question types sub-menu -->
+    <ul class="sublist"> 
+      <li>
+        <a class="toolButton inputNumeric" rel="inputText">
+          <span class="glyphicon glyphicon-plus-sign"></span> Text
+        </a>
+        <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
+      </li>
+      <li>
+        <a class="toolButton inputNumeric" rel="inputNumber">
+          <span class="glyphicon glyphicon-plus-sign"></span> Number
+        </a>
+        <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
+      </li>
+      <li>
+        <a class="toolButton inputDate" rel="inputDate">
+          <span class="glyphicon glyphicon-plus-sign"></span> Date
+        </a>
+        <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
+      </li>
+      <li>
+        <a class="toolButton inputSelectOne" rel="inputSelectOne">
+          <span class="glyphicon glyphicon-plus-sign"></span> Multiple choice
+        </a>
+        <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
+      </li>
+      <li>
+        <a class="toolButton inputSelectMany" rel="inputSelectMany">
+          <span class="glyphicon glyphicon-plus-sign"></span> Check boxes
+        </a>
+        <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
+      </li>
+    </ul>
+
   <li>
     <a class="toolButton inputLocation" rel="inputLocation">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Location
+      <span class="glyphicon glyphicon-globe"></span> Location
     </a>
   </li>
   <li>
     <a class="toolButton inputImage" rel="inputImage">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Image
-    </a>
-  </li>
-  <li>
-    <a class="toolButton inputSelectOne" rel="inputSelectOne">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Select One
-    </a>
-  </li>
-  <li>
-    <a class="toolButton inputSelectMany" rel="inputSelectMany">
-      <span class="glyphicon glyphicon-plus-sign"></span> Add Select Many
+      <span class="glyphicon glyphicon-picture"></span> Image
     </a>
   </li>
 </ul>
+
+<script type="text/javascript">
+  $(".toolTip").tooltip({placement: "right", title: "Use this type of question when asking..."});
+  
+  $("#toolPalette .addQuestion").on("click", function(){ 
+    $(".sublist").slideToggle();});
+</script>
