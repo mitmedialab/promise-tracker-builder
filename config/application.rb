@@ -13,6 +13,13 @@ Bundler.require(*Rails.groups)
 
 module PromiseTracker
   class Application < Rails::Application
+ 
+    # tell the I18n library where to find translations
+    I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
+     
+    # set default locale to :en
+    I18n.default_locale = :en
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

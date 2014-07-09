@@ -1,39 +1,35 @@
 <ul>
   <li class="addQuestion">
     <a class="expand">
-      <span class="glyphicon glyphicon-plus-sign"></span> Question
-    </a>
+      <span class="glyphicon glyphicon-plus-sign"></span> <%= t("surveys._tool_palette.question") %></a>
   </li>
 
     <!-- Question types sub-menu -->
     <ul class="sublist"> 
       <li>
         <a class="toolButton inputNumeric" rel="inputText">
-          <span class="glyphicon glyphicon-plus-sign"></span> Text
-        </a>
+          <span class="glyphicon glyphicon-plus-sign"></span> <%= t("surveys._tool_palette.text") %></a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
         <a class="toolButton inputNumeric" rel="inputNumber">
-          <span class="glyphicon glyphicon-plus-sign"></span> Number
-        </a>
+          <span class="glyphicon glyphicon-plus-sign"></span> <%= t("surveys._tool_palette.number") %></a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
         <a class="toolButton inputDate" rel="inputDate">
-          <span class="glyphicon glyphicon-plus-sign"></span> Date
-        </a>
+          <span class="glyphicon glyphicon-plus-sign"></span> <%= t("surveys._tool_palette.date") %></a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
         <a class="toolButton inputSelectOne" rel="inputSelectOne">
-          <span class="glyphicon glyphicon-plus-sign"></span> Multiple choice
+          <span class="glyphicon glyphicon-plus-sign"></span> <%= t("surveys._tool_palette.select_one") %>
         </a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
         <a class="toolButton inputSelectMany" rel="inputSelectMany">
-          <span class="glyphicon glyphicon-plus-sign"></span> Check boxes
+          <span class="glyphicon glyphicon-plus-sign"></span> <%= t("surveys._tool_palette.select_many") %>
         </a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
@@ -41,12 +37,12 @@
 
   <li>
     <a class="toolButton inputLocation" rel="inputLocation">
-      <span class="glyphicon glyphicon-globe"></span> Location
+      <span class="glyphicon glyphicon-globe"></span> <%= t("surveys._tool_palette.location") %>
     </a>
   </li>
   <li>
     <a class="toolButton inputImage" rel="inputImage">
-      <span class="glyphicon glyphicon-picture"></span> Image
+      <span class="glyphicon glyphicon-picture"></span> <%= t("surveys._tool_palette.image") %>
     </a>
   </li>
 </ul>

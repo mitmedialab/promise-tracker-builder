@@ -20,4 +20,58 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  app_name: "Promise Tracker"
+
+
+  layouts:
+    _header:
+      home: "Home"
+
+
+  home:
+    index:
+      welcome: "Get started"
+      try: "Try out the form builder"
+      create_account: "Create a free account"
+
+
+  devise:
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    sign_up: "Sign up"
+    email: "Email"
+    password: "Password"
+    cofirm_password: "Password confirmation"
+    remember_me: "Remember me"
+    forgot_password: "Forgot your password?"
+
+  users:
+    show:
+      new_survey: "Create new survey"
+      my_surveys: "My surveys"
+      download_xml: "Download xForm"
+      confirm_delete: "Are you sure you want to delete this survey?"
+      no_surveys: "Get started and build your first survey!"
+
+
+  surveys:
+    new:
+      survey_title: "Enter survey title"
+      edit_survey_title: "Edit survey title"
+      save: "Save"
+      cancel: "Cancel"
+      edit: "Edit"
+      close: "Close" 
+
+    _tool_palette:   
+      question: "Add question"
+      location: "Get location"
+      image: "Take picture"
+      text: "Text"
+      number: "Number"
+      date: "Date"
+      select_one: "Multiple choice"
+      select_many: "Check boxes"
+      required: "Field required"
+      options: "Options"
+

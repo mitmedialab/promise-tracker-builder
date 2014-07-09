@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-8">
-    <h1>My Surveys</h1>
-    <% if @forms %>
+    <h1><%= t(".my_surveys") %></h1>
+    <% if @forms.length > 0 %>
       <ul class="padded-list">
         <% @forms.each do |form| %>
           <li>
             <%= link_to form.title, form_path(form) %>
             <div class="right">
-              <%= link_to "Download xForm", form_path(form, format: :xml) %>
-              <%= link_to form_path(form), class: "pad-side", method: :delete, confirm: "Are you sure you want to delete this survey?" do %>
+              <%= link_to t(".download_xml"), form_path(form, format: :xml) %>
+              <%= link_to form_path(form), class: "pad-side", method: :delete, confirm: t(".confirm_delete") do %>
                 <span class="glyphicon glyphicon-trash"></span>
               <% end %>
             </div>
@@ -16,12 +16,12 @@
         <% end %>
       </ul>
     <% else %>
-      <p>Get started and build a new survey!</p>
+      <p><%= link_to t(".no_surveys"), new_form_path %></p>
     <% end %>  
   </div>
 
   <div class="col-md-4 text-center">
   <br><br><br><br>
-    <%= link_to "Create new Survey", new_form_path, class: "btn btn-info" %>
+    <%= link_to t(".new_survey"), new_form_path, class: "btn btn-info" %>
   </div>
 <div class="row">

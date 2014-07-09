@@ -3,14 +3,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Enter form title</h4>
+        <h4 class="modal-title"><%= t("surveys.new.survey_title") %></h4>
       </div>
       <div class="modal-body">
         <input id="newFormTitle" class="form-control" data-bind="value: title"/>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-bind="click: saveName">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("surveys.new.close") %></button>
+        <button type="button" class="btn btn-primary" data-bind="click: saveName"><%= t("surveys.new.save") %></button>
       </div>
     </div>
   </div>

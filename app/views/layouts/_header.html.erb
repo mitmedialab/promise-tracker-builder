@@ -1,16 +1,16 @@
 <div id="header">
   <div class="container">
     <% if current_user %>
-      <%= link_to "My surveys", user_path(current_user), class: "btn btn-info" %>
+      <%= link_to t("users.show.my_surveys"), user_path(current_user), class: "btn btn-info" %>
     <% else %>
-      <%= link_to "Home", root_path, class: "btn btn-info" %>
+      <%= link_to t(".home"), root_path, class: "btn btn-info" %>
     <% end %>
     <ul class="user-links">
       <% if current_user %>
         <li><%= current_user.email %></li>
-        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %></li>
+        <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %></li>
       <% end %>
     </ul>
   </div> 
