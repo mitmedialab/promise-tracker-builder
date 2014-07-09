@@ -5,10 +5,10 @@ class InputsController < ApplicationController
   end
 
   def create
-    form = Form.find(params[:input][:form_id])
+    survey = Survey.find(params[:input][:survey_id])
     input = params[:input]
 
-    @input = form.inputs.find_or_create_by(id: input[:id])
+    @input = survey.inputs.find_or_create_by(id: input[:id])
     @input.update_attributes(input_params(params))
     @input.guid = make_guid(@input.label, @input.id)
 
@@ -33,7 +33,7 @@ class InputsController < ApplicationController
   private
 
   def input_params(params)
-    params.require(:input).permit(:label, :required, :input_type, :media_type, :order, :options, :form_id)
+    params.require(:input).permit(:label, :required, :input_type, :media_type, :order, :options, :survey_id)
   end
 
 end
