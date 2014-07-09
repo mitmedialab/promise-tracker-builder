@@ -20,6 +20,11 @@ class SurveysController < ApplicationController
     render json: @survey
   end
 
+  def preview
+    @survey = Survey.find(params[:id])
+    render layout: 'preview'
+  end
+
   def show
     @survey = Survey.find(params[:id])
     respond_to do |format|
