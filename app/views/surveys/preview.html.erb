@@ -1,0 +1,38 @@
+<div id="header">
+  <div class="container">
+    <h3 class="inline no-pad">Phone preview for: <%= @survey.title%></h3>
+    <ul class="user-links">
+        <li><span class="btn btn-info" id="close">Close preview</span></li>
+    </ul>
+  </div> 
+</div>
+
+<div class="container">
+  <div id="preview-window">
+    <!-- ko foreach: inputs -->
+    <!-- ko if: selected -->
+    <div class="input-preview" data-bind="css: input_type">
+      <p data-bind="text: label"></p>
+      <ul data-bind="foreach: options, css: input_type">
+        <li data-bind="text: $data"></li>
+      </ul>
+    </div> 
+    <!-- /ko -->
+    <!-- /ko -->
+  </div>
+  <p>Question number: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p>
+
+  <div class="btn btn-info arrow" data-direction="left">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </div>
+
+  <div class="btn btn-info arrow" data-direction="right">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </div>
+</div>
+
+<script type="text/javascript">
+  PT.getSurvey("<%= survey_path(@survey) %>");
+  $(".arrow").on("click", PT.nextInput);
+  $("#close").on("click", PT.closePreview);
+</script>

@@ -6,6 +6,9 @@
       <h4 id="surveyTitle" class="inline" data-bind="text: title"></h4>
       <div class="controls pad-top">
         <div class="btn btn-default" data-toggle="modal" data-target="#newSurveyModal"><%= t("surveys.new.edit_survey_title") %></div>
+        <div class="btn btn-info openPreview">
+          <i class="icon-mobile-phone"></i> Preview on phone
+        </div>
       </div>
       <%= render 'new_survey_modal' %>
     </div>
@@ -15,10 +18,10 @@
       <div id="surveyBody">
         
         <div data-bind="sortable: inputs">
-          <div class="input">
 
-            <!-- Editing template -->
-            <div data-bind="if: inEdit">
+          <div class="input">
+            <!-- ko if: inEdit -->
+
               <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="Add question text here" autofocus>
               <label><%= t("surveys.new.inputs.required") %></label><input type="checkbox" data-bind="checked: required">
 
@@ -39,16 +42,15 @@
                 </div>
               </div>
               <!-- /ko -->
-            </div>
+            <!-- /ko -->
 
-            <!-- Viewing template -->
-            <div data-bind="ifnot: inEdit">
+            <!-- ko ifnot: inEdit -->
               <p data-bind="text: $data.label"></p>
               <div class="controls">
                 <a href="#" class="btn" data-bind="click: edit"><%= t("surveys.new.edit") %></a>
                 <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
-            </div>
+            <!-- /ko -->
 
           </div>
         </div>
@@ -59,6 +61,10 @@
         <% if current_user %>
           <button class="btn btn-primary" data-bind="click: saveOrder">Done</button>
         <% end %>
+
+        <div class="btn btn-info openPreview">
+          <i class="icon-mobile-phone"></i> Preview on phone
+        </div>
       </div>
     </div>
 

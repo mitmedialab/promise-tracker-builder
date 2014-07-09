@@ -1,5 +1,9 @@
 $darkest-grey: #4f4f4f;
 
+#workspace {
+  margin-bottom: 40px;
+}
+
 #toolPalette {
   background: $darkest-grey;
   border-radius: 5px;
@@ -48,11 +52,6 @@ $darkest-grey: #4f4f4f;
 }
 
 
-
-.pad-top {
-  padding-top: 10px;
-}
-
 .top-left {
   position: absolute;
   top: 30px;
@@ -81,10 +80,10 @@ $darkest-grey: #4f4f4f;
     border: 1px solid #eee;
     border-radius: 5px;
     margin: 10px 0;
-    min-height: 80px;
-    padding: 20px;
+    min-height: 30px;
+    padding: 20px; 
     position: relative;
-
+      
     .form-control {
       display: inline-block;
       width: 50%;
@@ -92,8 +91,8 @@ $darkest-grey: #4f4f4f;
 
     .modify {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 10px;
+      right: 10px;
     }
 
     p {
