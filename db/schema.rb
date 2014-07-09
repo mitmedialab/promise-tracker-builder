@@ -11,9 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707204359) do
+ActiveRecord::Schema.define(version: 20140709162148) do
 
-  create_table "forms", force: true do |t|
+  create_table "inputs", force: true do |t|
+    t.text     "label"
+    t.text     "input_type"
+    t.boolean  "required"
+    t.integer  "order"
+    t.text     "options"
+    t.integer  "survey_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "guid"
+    t.string   "media_type"
+  end
+
+  create_table "surveys", force: true do |t|
     t.text     "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -22,21 +35,8 @@ ActiveRecord::Schema.define(version: 20140707204359) do
     t.string   "status"
   end
 
-  add_index "forms", ["status"], name: "index_forms_on_status", using: :btree
-  add_index "forms", ["user_id"], name: "index_forms_on_user_id", using: :btree
-
-  create_table "inputs", force: true do |t|
-    t.text     "label"
-    t.text     "input_type"
-    t.boolean  "required"
-    t.integer  "order"
-    t.text     "options"
-    t.integer  "form_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "guid"
-    t.string   "media_type"
-  end
+  add_index "surveys", ["status"], name: "index_surveys_on_status", using: :btree
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -3,7 +3,7 @@ PromiseTracker::Application.routes.draw do
   root to: 'home#index'
 
   resources :users
-  resources :forms do
+  resources :surveys do
     resources :inputs
   end
 end

@@ -1,4 +1,4 @@
 class Input < ActiveRecord::Base
-  belongs_to :form
+  belongs_to :survey
   serialize :options, JSON
 end

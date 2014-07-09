@@ -31,7 +31,7 @@ en:
   home:
     index:
       welcome: "Get started"
-      try: "Try out the form builder"
+      try: "Try out the survey builder"
       create_account: "Create a free account"
 
 

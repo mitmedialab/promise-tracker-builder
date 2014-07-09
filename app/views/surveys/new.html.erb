@@ -1,0 +1,9 @@
+<%= render 'survey_builder' %>
+
+<script type="text/javascript">
+  PT.survey = new PT.SurveyModel();
+  ko.applyBindings(PT.survey);
+  $("#newSurveyModal").modal();
+  $("#toolPalette .toolButton").on("click", PT.survey.addInput);
+</script>
+

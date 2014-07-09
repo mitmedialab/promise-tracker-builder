@@ -1,4 +1,3 @@
-
 var PT = PT || {};
 
 /// Input type defaults
@@ -38,7 +37,7 @@ PT.Input = function(){
   var self = this;
 
   self.id = "";
-  self.form_id = PT.form.id;
+  self.survey_id = PT.survey.id;
   self.label = ko.observable();
   self.input_type = ko.observable();
   self.media_type = ko.observable();
@@ -54,7 +53,7 @@ PT.Input = function(){
       self.inEdit(false);
 
       $.ajax({
-        url: "/forms/" + PT.form.id + "/inputs",
+        url: "/surveys/" + PT.survey.id + "/inputs",
         type: "POST",
         contentType: "application/json",
         dataType: "json",
@@ -62,7 +61,7 @@ PT.Input = function(){
       })
       .done(function(response) {
         console.log(response);
-        $("#newFormModal").modal("hide");
+        $("#newSurveyModal").modal("hide");
 
         if(self.id === ""){
           self.id = response.id;
@@ -76,7 +75,7 @@ PT.Input = function(){
 
   self.map = function(data){
     self.id = data.id;
-    self.form_id = data.form_id;
+    self.survey_id = data.survey_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
     self.media_type = ko.observable(data.media_type);
@@ -100,8 +99,8 @@ PT.Input = function(){
 };
 
 
-/// Form Constructor
-PT.FormModel = function(){
+/// Survey Constructor
+PT.SurveyModel = function(){
   var self = this;
 
   self.id = "";
@@ -128,7 +127,7 @@ PT.FormModel = function(){
       if(confirmed){
         self.inputs.remove(this);
         $.ajax({
-          url: "/forms/" + PT.form.id + "/inputs/" + this.id,
+          url: "/surveys/" + PT.survey.id + "/inputs/" + this.id,
           type: "DELETE",
           contentType: "application/json",
           dataType: "json"
@@ -143,10 +142,10 @@ PT.FormModel = function(){
   /// Update order of all inputs
   self.saveOrder = function(){
     // Hack
-    window.location.pathname = Routes.user_path(PT.form.user_id);
+    window.location.pathname = Routes.user_path(PT.survey.user_id);
     
     $.ajax({
-      url: "/forms/" + PT.form.id,
+      url: "/surveys/" + PT.survey.id,
       type: "PUT",
       contentType: "application/json",
       dataType: "json",
@@ -155,20 +154,20 @@ PT.FormModel = function(){
 
   };
 
-  /// Add/update form name
+  /// Add/update survey name
   self.saveName = function(){
     if(self.title()){
-      $.post("/forms", {id: self.id, title: self.title}, function(response){
+      $.post("/surveys/", {id: self.id, title: self.title}, function(response){
         console.log(response);
         if(self.id === ""){
           self.id = response.id;
           self.user_id = response.user_id;
         }
 
-        $("#newFormModal").modal("hide");
+        $("#newSurveyModal").modal("hide");
       });
     } else {
-      PT.flashMessage("Please enter a title", $("#newFormTitle"));
+      PT.flashMessage("Please enter a title", $("#newSurveyTitle"));
     }
   };
 
@@ -183,17 +182,17 @@ PT.FormModel = function(){
   };
 };
 
-PT.getForm = function(url){
+PT.getSurvey = function(url){
   $.getJSON(url, null, function(response, textStatus) {
-    PT.form = new PT.FormModel();
+    PT.survey = new PT.SurveyModel();
 
-    PT.form.id = response.id;
-    PT.form.user_id = response.user_id;
-    PT.form.title = ko.observable(response.title);
-    PT.form.populateInputs(response.inputs);
-    ko.applyBindings(PT.form);
+    PT.survey.id = response.id;
+    PT.survey.user_id = response.user_id;
+    PT.survey.title = ko.observable(response.title);
+    PT.survey.populateInputs(response.inputs);
+    ko.applyBindings(PT.survey);
 
-    $("#toolPalette .toolButton").on("click", PT.form.addInput);
+    $("#toolPalette .toolButton").on("click", PT.survey.addInput);
   });
 };
 

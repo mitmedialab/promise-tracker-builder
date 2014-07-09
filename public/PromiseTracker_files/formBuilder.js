@@ -81,7 +81,7 @@ PT.Input = function(){
 
 
 /// Form Constructor
-PT.FormModel = function(){
+PT.SurveyModel = function(){
   var self = this;
 
   self.id = "";
@@ -149,7 +149,7 @@ PT.FormModel = function(){
 
 PT.getForm = function(url){
   $.getJSON(url, null, function(response, textStatus) {
-    PT.form = new PT.FormModel();
+    PT.form = new PT.SurveyModel();
 
     PT.form.id = response.id;
     PT.form.title = ko.observable(response.title);

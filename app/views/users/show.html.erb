@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-8">
     <h1><%= t(".my_surveys") %></h1>
-    <% if @forms.length > 0 %>
+    <% if @surveys.length > 0 %>
       <ul class="padded-list">
-        <% @forms.each do |form| %>
+        <% @surveys.each do |survey| %>
           <li>
-            <%= link_to form.title, form_path(form) %>
+            <%= link_to survey.title, survey_path(survey) %>
             <div class="right">
-              <%= link_to t(".download_xml"), form_path(form, format: :xml) %>
-              <%= link_to form_path(form), class: "pad-side", method: :delete, confirm: t(".confirm_delete") do %>
+              <%= link_to t(".download_xml"), survey_path(survey, format: :xml) %>
+              <%= link_to survey_path(survey), class: "pad-side", method: :delete, confirm: t(".confirm_delete") do %>
                 <span class="glyphicon glyphicon-trash"></span>
               <% end %>
             </div>
@@ -16,12 +16,12 @@
         <% end %>
       </ul>
     <% else %>
-      <p><%= link_to t(".no_surveys"), new_form_path %></p>
+      <p><%= link_to t(".no_surveys"), new_survey_path %></p>
     <% end %>  
   </div>
 
   <div class="col-md-4 text-center">
   <br><br><br><br>
-    <%= link_to t(".new_survey"), new_form_path, class: "btn btn-info" %>
+    <%= link_to t(".new_survey"), new_survey_path, class: "btn btn-info" %>
   </div>
 <div class="row">
