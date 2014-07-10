@@ -3,10 +3,10 @@
     
     <!-- Survey title -->
     <div class="col-md-8">
-      <h4 id="surveyTitle" class="inline" data-bind="text: title"></h4>
+      <h4 id="survey-title" class="inline" data-bind="text: title"></h4>
       <div class="controls pad-top">
-        <div class="btn btn-default" data-toggle="modal" data-target="#newSurveyModal"><%= t(".edit_survey_title") %></div>
-        <div class="btn btn-info openPreview">
+        <div class="btn btn-default" data-toggle="modal" data-target="#new-survey-modal"><%= t(".edit_survey_title") %></div>
+        <div class="btn btn-info open-preview">
           <i class="icon-mobile-phone"></i> <%= t(".preview") %>
         </div>
       </div>
@@ -15,14 +15,14 @@
 
     <!-- Survey body -->
     <div class="col-md-8">
-      <div id="surveyBody">
+      <div id="survey-body">
         
         <div data-bind="sortable: inputs">
 
           <div class="input">
             <!-- ko if: inEdit -->
 
-              <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="Add question text here" autofocus>
+              <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus>
               <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
 
               <div class="modify">
@@ -62,7 +62,7 @@
           <button class="btn btn-primary" data-bind="click: saveOrder">Done</button>
         <% end %>
 
-        <div class="btn btn-info openPreview">
+        <div class="btn btn-info open-preview">
           <i class="icon-mobile-phone"></i> <%= t(".preview") %>
         </div>
       </div>
@@ -70,7 +70,7 @@
 
     <!-- Input Tool palette -->
     <div class="col-md-4">
-      <div id="toolPalette">
+      <div id="tool-palette">
         <%= render 'tool_palette' %>
       </div>
     </div>

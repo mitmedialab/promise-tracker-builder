@@ -45,7 +45,6 @@ PT.Input = function(){
   self.options = ko.observableArray([]);
   self.order = "";
   self.inEdit = ko.observable();
-  self.selected = ko.observable();
 
   self.save = function(self, event){
 
@@ -62,7 +61,7 @@ PT.Input = function(){
       })
       .done(function(response) {
         console.log(response);
-        $("#newSurveyModal").modal("hide");
+        $("#new-survey-modal").modal("hide");
 
         if(self.id === ""){
           self.id = response.id;
@@ -84,7 +83,6 @@ PT.Input = function(){
     self.options = ko.observableArray(_.values(data.options));
     self.order = data.order;
     self.inEdit = ko.observable(false);
-    self.selected = ko.observable(false);
   }; 
 
   self.edit = function(){
@@ -124,7 +122,7 @@ PT.SurveyModel = function(){
     if(this.id === ""){
       self.inputs.remove(this);
     } else {
-      var confirmed = window.confirm("Are you sure you want to delete this item?");
+      var confirmed = window.confirm("Are you sure you want to delete this question?");
       
       if(confirmed){
         self.inputs.remove(this);
@@ -166,10 +164,10 @@ PT.SurveyModel = function(){
           self.user_id = response.user_id;
         }
 
-        $("#newSurveyModal").modal("hide");
+        $("#new-survey-modal").modal("hide");
       });
     } else {
-      PT.flashMessage("Please enter a title", $("#newSurveyTitle"));
+      PT.flashMessage("Please enter a title", $("#new-survey-title"));
     }
   };
 
@@ -181,7 +179,6 @@ PT.SurveyModel = function(){
     });
 
     self.inputs.sort(function(a,b){return a.order - b.order;});
-    self.inputs()[0].selected = ko.observable(true);
     PT.selectedInput = ko.observable(self.inputs()[0]);
   };
 };
@@ -196,7 +193,7 @@ PT.getSurvey = function(url){
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
 
-    $("#toolPalette .toolButton").on("click", PT.survey.addInput);
+    $("#tool-palette .tool-button").on("click", PT.survey.addInput);
   });
 };
 
