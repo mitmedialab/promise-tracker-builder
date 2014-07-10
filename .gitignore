@@ -14,4 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+<<<<<<< HEAD
 /app/assets/images/graphics/
+=======
+/app/assets/images/graphics
+>>>>>>> 549fc49... Modify translation yaml structure.
