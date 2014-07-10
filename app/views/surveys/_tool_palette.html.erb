@@ -1,5 +1,5 @@
 <ul>
-  <li class="addQuestion">
+  <li class="add-question">
     <a class="expand">
       <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".question") %></a>
   </li>
@@ -7,28 +7,28 @@
     <!-- Question types sub-menu -->
     <ul class="sublist"> 
       <li>
-        <a class="toolButton inputNumeric" rel="inputText">
+        <a class="tool-button" rel="inputText">
           <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".text") %></a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
-        <a class="toolButton inputNumeric" rel="inputNumber">
+        <a class="tool-button" rel="inputNumber">
           <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".number") %></a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
-        <a class="toolButton inputDate" rel="inputDate">
+        <a class="tool-button" rel="inputDate">
           <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".date") %></a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
-        <a class="toolButton inputSelectOne" rel="inputSelectOne">
+        <a class="tool-button" rel="inputSelectOne">
           <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".select_one") %>
         </a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
       </li>
       <li>
-        <a class="toolButton inputSelectMany" rel="inputSelectMany">
+        <a class="tool-button" rel="inputSelectMany">
           <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".select_many") %>
         </a>
         <span class="toolTip glyphicon glyphicon-info-sign" rel="tooltip"></span>
@@ -36,20 +36,20 @@
     </ul>
 
   <li>
-    <a class="toolButton inputLocation" rel="inputLocation">
+    <a class="tool-button" rel="inputLocation">
       <span class="glyphicon glyphicon-globe"></span> <%= t(".location") %>
     </a>
   </li>
   <li>
-    <a class="toolButton inputImage" rel="inputImage">
+    <a class="tool-button" rel="inputImage">
       <span class="glyphicon glyphicon-picture"></span> <%= t(".image") %>
     </a>
   </li>
 </ul>
 
 <script type="text/javascript">
-  $(".toolTip").tooltip({placement: "right", title: "Use this type of question when asking..."});
+  $(".tooltip").tooltip({placement: "right", title: "Use this type of question when asking..."});
   
-  $("#toolPalette .addQuestion").on("click", function(){ 
+  $("#tool-palette .add-question").on("click", function(){ 
     $(".sublist").slideToggle();});
 </script>

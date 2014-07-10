@@ -1,26 +1,31 @@
 <div id="header">
   <div class="container">
-    <h3 class="inline no-pad">Phone preview for: <%= @survey.title%></h3>
+    <h3 class="inline no-pad"><%= t(".preview_title") %> <%= @survey.title %></h3>
     <ul class="user-links">
-        <li><span class="btn btn-info" id="close">Close preview</span></li>
+        <li><span class="btn btn-info close-window"><%= t(".close_preview") %></span></li>
     </ul>
   </div> 
 </div>
 
 <div class="container">
   <div id="preview-window">
-    <!-- ko foreach: inputs -->
-    <!-- ko if: selected -->
-    <div class="input-preview" data-bind="css: input_type">
-      <p data-bind="text: label"></p>
-      <ul data-bind="foreach: options, css: input_type">
+    <!-- ko if: PT.selectedInput -->
+    <div class="input-preview" data-bind="css: PT.selectedInput().input_type">
+      <p data-bind="text: PT.selectedInput().label"></p>
+      <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type">
         <li data-bind="text: $data"></li>
       </ul>
     </div> 
     <!-- /ko -->
+    <!-- ko ifnot: PT.selectedInput -->
+    <div class="input-preview select">
+      <h3><%= t(".no_questions") %></h3>
+      <div class="btn btn-info close-window"><%= t(".add_questions") %></div>
+    </div> 
     <!-- /ko -->
+
   </div>
-  <p>Question number: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p>
+  <p><%= t(".question number") %>: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p>
 
   <div class="btn btn-info arrow" data-direction="left">
     <span class="glyphicon glyphicon-chevron-left"></span>
@@ -34,5 +39,5 @@
 <script type="text/javascript">
   PT.getSurvey("<%= survey_path(@survey) %>");
   $(".arrow").on("click", PT.nextInput);
-  $("#close").on("click", PT.closePreview);
+  $(".close-window").on("click", PT.closeWindow);
 </script>

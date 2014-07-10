@@ -60,3 +60,11 @@ en:
       preview: "Preview on phone" 
       required: "Field required?"
       options: "Options"
+      question_placeholder: "Add question text here"
+
+    preview: 
+      preview_title: "Phone preview for:"
+      no_questions: "No questions to preview"
+      add_questions: "Add questions"
+      question_number: "Question number"  
+      close_preview: "Close preview"
