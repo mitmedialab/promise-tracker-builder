@@ -5,9 +5,9 @@
     <div class="col-md-8">
       <h4 id="surveyTitle" class="inline" data-bind="text: title"></h4>
       <div class="controls pad-top">
-        <div class="btn btn-default" data-toggle="modal" data-target="#newSurveyModal"><%= t("surveys.new.edit_survey_title") %></div>
+        <div class="btn btn-default" data-toggle="modal" data-target="#newSurveyModal"><%= t(".edit_survey_title") %></div>
         <div class="btn btn-info openPreview">
-          <i class="icon-mobile-phone"></i> Preview on phone
+          <i class="icon-mobile-phone"></i> <%= t(".preview") %>
         </div>
       </div>
       <%= render 'new_survey_modal' %>
@@ -23,17 +23,17 @@
             <!-- ko if: inEdit -->
 
               <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="Add question text here" autofocus>
-              <label><%= t("surveys.new.inputs.required") %></label><input type="checkbox" data-bind="checked: required">
+              <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
 
               <div class="modify">
-                <a href="#" class="btn" data-bind="click: save"><%= t("surveys.new.save") %></a>
+                <a href="#" class="btn" data-bind="click: save"><%= t("defaults.save") %></a>
                 <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
 
               <!-- ko if: input_type() === 'select' || input_type() === 'select1'  -->
               <div class="options">
                 <hr>
-                <p><%= t("surveys.new.inputs.options") %> <span class="glyphicon glyphicon-plus-sign" data-bind="click: addOption"></span></p>
+                <p><%= t(".options") %> <span class="glyphicon glyphicon-plus-sign" data-bind="click: addOption"></span></p>
                 <div data-bind="foreach: options, valueUpdate:'input'">
                   <div class="option">
                     <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
@@ -63,7 +63,7 @@
         <% end %>
 
         <div class="btn btn-info openPreview">
-          <i class="icon-mobile-phone"></i> Preview on phone
+          <i class="icon-mobile-phone"></i> <%= t(".preview") %>
         </div>
       </div>
     </div>
