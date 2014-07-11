@@ -106,6 +106,7 @@ PT.SurveyModel = function(){
   self.id = "";
   self.title = ko.observable();
   self.inputs = ko.observableArray([]);
+  self.status= ko.observable("editing");
 
   self.addInput = function(event){
     event.stopPropagation();
@@ -190,6 +191,7 @@ PT.getSurvey = function(url){
     PT.survey.id = response.id;
     PT.survey.user_id = response.user_id;
     PT.survey.title = ko.observable(response.title);
+    PT.survey.status = ko.observable(response.status);
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709162148) do
+ActiveRecord::Schema.define(version: 20140710201208) do
 
   create_table "inputs", force: true do |t|
     t.text     "label"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140709162148) do
     t.integer  "user_id"
     t.string   "guid"
     t.string   "status"
+    t.boolean  "template"
   end
 
   add_index "surveys", ["status"], name: "index_surveys_on_status", using: :btree

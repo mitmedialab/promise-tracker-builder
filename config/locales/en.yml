@@ -40,8 +40,6 @@ en:
 
 
   surveys:
-    new:
-      edit_survey_title: "Edit survey title"
 
     new_survey_modal:
       survey_title: "Enter survey title"
@@ -57,6 +55,7 @@ en:
       select_many: "Check boxes"
 
     survey_builder:
+      edit_survey_title: "Edit survey title"
       preview: "Preview on phone" 
       required: "Field required?"
       options: "Options"
