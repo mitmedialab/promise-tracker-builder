@@ -5,7 +5,9 @@
     <div class="col-md-8">
       <h4 id="survey-title" class="inline" data-bind="text: title"></h4>
       <div class="controls pad-top">
+        <!-- ko if: PT.survey.status() === "editing" -->
         <div class="btn btn-default" data-toggle="modal" data-target="#new-survey-modal"><%= t(".edit_survey_title") %></div>
+        <!-- /ko -->
         <div class="btn btn-info open-preview">
           <i class="icon-mobile-phone"></i> <%= t(".preview") %>
         </div>
@@ -46,10 +48,12 @@
 
             <!-- ko ifnot: inEdit -->
               <p data-bind="text: $data.label"></p>
-              <div class="controls">
+              <!-- ko if: PT.survey.status() === "editing" -->
+              <div class="modify">
                 <a href="#" class="btn" data-bind="click: edit"><%= t("surveys.new.edit") %></a>
                 <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
+              <!-- /ko -->
             <!-- /ko -->
 
           </div>
@@ -68,11 +72,14 @@
       </div>
     </div>
 
-    <!-- Input Tool palette -->
+    <!-- Input palette -->
     <div class="col-md-4">
+      <!-- ko if: PT.survey.status() === "editing" -->
       <div id="tool-palette">
         <%= render 'tool_palette' %>
       </div>
+      <div class="btn btn-warning" id="launch-survey">Go live with this survey</div>
+      <!-- /ko -->
     </div>
   </div>
 </div>

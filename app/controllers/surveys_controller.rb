@@ -11,7 +11,8 @@ class SurveysController < ApplicationController
     @survey = Survey.find_or_create_by(id: params[:id])
     @survey.update_attributes(
       title: params[:title],
-      guid: make_guid(params[:title], @survey.id)
+      guid: make_guid(params[:title], @survey.id),
+      status: "editing"
     )
 
     if current_user
