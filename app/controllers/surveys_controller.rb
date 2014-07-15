@@ -28,14 +28,34 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render json: @survey, include: :inputs }
-      format.xml { response.headers['Content-Disposition'] = "attachment; filename='#{@survey.title}.xml'" }
-    end
+
+    if @survey.status == "editing"
+      respond_to do |format|
+        format.html
+        format.json { render json: @survey, include: :inputs }
+        format.xml { response.headers['Content-Disposition'] = "attachment; filename='#{@survey.title}.xml'" }
+      end
+    else
+      render :launch
+    end  
   end
 
-  def edit
+  def launch
+    @survey = Survey.find(params[:id])
+  end
+
+  def activate
+    @survey = Survey.find(params[:id])
+    @survey.update_attribute(:status, "active")
+
+    redirect_to action: 'show'
+  end
+
+  def close
+    @survey = Survey.find(params[:id])
+    @survey.update_attribute(:status, "closed")
+
+    redirect_to action: 'show'
   end
 
   def update

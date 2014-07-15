@@ -1,119 +1,21 @@
-$darkest-grey: #4f4f4f;
+.status {
+  width: 75px;
+  margin: 0 10px;
 
-#workspace {
-  margin-bottom: 40px;
-}
-
-#launch-survey {
-  width: 100%;
-  padding: 10px;
-}
-
-#tool-palette {
-  background: $darkest-grey;
-  border-radius: 5px;
-
-  a:hover {
-    text-decoration: none;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 10px 0;
-  }
-
-  > ul li {
+  &.editing {
     background: whitesmoke;
-    border-radius: 2px;
-    padding: 10px;
-    margin: 20px;
-    cursor: pointer;
-    font-size: 18px;
-
+    color: grey;
+    border: 1px solid grey;
   }
 
-  .toolTip {
-    float: right;
-    color: gray;
-
-    &:hover {
-      color: black;
-    }
+  &.active {
+    background: #1abc9c;
+    color: white;
+    box-shadow: none;
   }
 
-  .sublist {
-    display: none;
-    background: white;
-    margin: -22px 20px 0 20px;
-
-    li {
-      background: white;
-      font-size: 14px;
-      margin: 0;
-      padding: 10px 20px;
-    }
-  }
-
-}
-
-
-.top-left {
-  position: absolute;
-  top: 30px;
-  left: 15;
-}
-
-.controls {
-  float: right;
-}
-
-#survey-title {
-  margin: 10px 0;
-  padding: 10px 0;
-  height: 40px;
-}
-
-#survey-body {
-  background: whitesmoke;
-  min-height: 350px;
-  margin-bottom: 10px;
-  padding: 10px;
-  width: 100%;
-
-  .input {
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    margin: 10px 0;
-    min-height: 30px;
-    padding: 20px; 
-    position: relative;
-      
-    .form-control {
-      display: inline-block;
-      width: 50%;
-    }
-
-    .modify {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-
-    p {
-      display: inline-block;
-    }
-
-    label {
-      margin-left: 10px;
-      font-weight: normal;
-    }
-
-    .options {
-      input {
-        margin: 5px;
-      }
-    }
+  &.closed {
+    background: #CF5300;
+    color: white;
   }
 }
-

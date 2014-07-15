@@ -34,12 +34,13 @@ en:
     show:
       new_survey: "Create new survey"
       my_surveys: "My surveys"
-      download_xml: "Download xForm"
-      confirm_delete: "Are you sure you want to delete this survey?"
       no_surveys: "Get started and build your first survey!"
 
-
   surveys:
+
+    list_item:
+      download_xml: "Download xForm" 
+      confirm_delete: "Are you sure you want to delete this survey?" 
 
     new_survey_modal:
       survey_title: "Enter survey title"

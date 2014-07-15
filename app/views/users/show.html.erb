@@ -1,18 +1,21 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-8"> 
     <h1><%= t(".my_surveys") %></h1>
+  </div>
+  <div class="col-md-4 text-center">
+    <br><br><br><br>
+    <%= link_to t(".new_survey"), new_survey_path, class: "btn btn-info" %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12"> 
+    <h4>Active surveys</h4>
     <% if @surveys.length > 0 %>
       <ul class="padded-list">
         <% @surveys.each do |survey| %>
-          <li>
-            <%= link_to survey.title, survey_path(survey) %>
-            <div class="right">
-              <%= link_to t(".download_xml"), survey_path(survey, format: :xml) %>
-              <%= link_to survey_path(survey), class: "pad-side", method: :delete, confirm: t(".confirm_delete") do %>
-                <span class="glyphicon glyphicon-trash"></span>
-              <% end %>
-            </div>
-          </li>
+          <% if survey.status == "active" %>
+          <%= render partial: 'surveys/list_item', locals: {survey: survey} %>
+          <% end %>
         <% end %>
       </ul>
     <% else %>
@@ -20,8 +23,33 @@
     <% end %>  
   </div>
 
-  <div class="col-md-4 text-center">
-  <br><br><br><br>
-    <%= link_to t(".new_survey"), new_survey_path, class: "btn btn-info" %>
+  <div class="col-md-12"> 
+    <h4>Draft surveys</h4>
+    <% if @surveys.length > 0 %>
+      <ul class="padded-list">
+        <% @surveys.each do |survey| %>
+          <% if survey.status == "editing" %>
+          <%= render partial: 'surveys/list_item', locals: {survey: survey} %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= link_to t(".no_surveys"), new_survey_path %></p>
+    <% end %>  
   </div>
-<div class="row">
+
+    <div class="col-md-12"> 
+    <h4>Closed surveys</h4>
+    <% if @surveys.length > 0 %>
+      <ul class="padded-list">
+        <% @surveys.each do |survey| %>
+          <% if survey.status == "closed" %>
+          <%= render partial: 'surveys/list_item', locals: {survey: survey} %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p><%= link_to t(".no_surveys"), new_survey_path %></p>
+    <% end %>  
+  </div>
+</div>

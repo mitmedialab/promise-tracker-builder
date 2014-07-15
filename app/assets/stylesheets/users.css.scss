@@ -6,6 +6,8 @@
 
   li {
     padding: 10px;
+    height: auto;
+    overflow: hidden;
   }
 
   li:nth-child(odd) {
