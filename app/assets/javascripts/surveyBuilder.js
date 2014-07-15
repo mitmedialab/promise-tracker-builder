@@ -204,3 +204,7 @@ PT.flashMessage = function(message, element){
   element.after(HandlebarsTemplates["flash_message"]({text: message})).fadeIn();
   $("#message").delay(2000).fadeOut();
 };
+
+PT.launchSurvey = function(){
+  window.location.pathname = Routes.launch_survey_path(PT.survey.id);
+};

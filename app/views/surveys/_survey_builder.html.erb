@@ -78,7 +78,9 @@
       <div id="tool-palette">
         <%= render 'tool_palette' %>
       </div>
+      <% if current_user %>
       <div class="btn btn-warning" id="launch-survey">Go live with this survey</div>
+      <% end %>
       <!-- /ko -->
     </div>
   </div>

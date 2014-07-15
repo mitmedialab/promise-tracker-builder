@@ -1,0 +1,10 @@
+<li>
+  <%= link_to survey.title, survey_path(survey) %>
+  <div class="right">
+    <%= link_to survey.status.capitalize, survey_path(survey), class: "btn status #{survey.status}" %>
+    <%= link_to t(".download_xml"), survey_path(survey, format: :xml) %>
+   <%= link_to survey_path(survey), class: "pad-side", method: :delete, confirm: t(".confirm_delete") do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </div>
+</li>
