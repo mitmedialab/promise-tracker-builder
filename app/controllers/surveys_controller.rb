@@ -1,4 +1,6 @@
 class SurveysController < ApplicationController
+  before_action :authenticate_user!, only: [:activate, :close, :destroy]
+
   def index
     @surveys = Survey.all
   end

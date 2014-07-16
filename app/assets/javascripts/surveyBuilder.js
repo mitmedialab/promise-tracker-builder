@@ -157,7 +157,7 @@ PT.SurveyModel = function(){
 
   /// Add/update survey name
   self.saveName = function(){
-    if(self.title()){
+    if($("#new-survey-title").val()){
       $.post("/surveys/", {id: self.id, title: self.title}, function(response){
         console.log(response);
         if(self.id === ""){
