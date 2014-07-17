@@ -8,36 +8,10 @@
 </div>
 
 <div class="container">
-  <div id="preview-window" style="display: none;" data-bind="visible: true">
-    <!-- ko if: PT.selectedInput -->
-    <div class="input-preview" data-bind="css: PT.selectedInput().input_type">
-      <p data-bind="text: PT.selectedInput().label"></p>
-      <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type, visible: PT.selectedInput().input_type() === 'select' || PT.selectedInput().input_type() === 'select1'">
-        <li data-bind="text: $data"></li>
-      </ul>
-    </div> 
-    <!-- /ko -->
-    <!-- ko ifnot: PT.selectedInput -->
-    <div class="input-preview select">
-      <h3><%= t(".no_questions") %></h3>
-      <div class="btn btn-info close-window"><%= t(".add_questions") %></div>
-    </div> 
-    <!-- /ko -->
-  </div>
-  <div class="question-controls" style="display: none;" data-bind="visible: true">
-    <p><%= t(".question number") %>: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p>
-
-    <div class="btn btn-info arrow" data-direction="left">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </div>
-    <div class="btn btn-info arrow" data-direction="right">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </div>
-  </div>
+  <%= render 'android_preview' %>
 </div>
 
 <script type="text/javascript">
   PT.getSurvey("<%= survey_path(@survey) %>");
-  $(".arrow").on("click", PT.nextInput);
   $(".close-window").on("click", PT.closeWindow);
 </script>

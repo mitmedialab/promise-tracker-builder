@@ -134,6 +134,8 @@ PT.SurveyModel = function(){
 
     input.inEdit(true);
     self.inputs.push(input);
+
+    PT.selectedInput(input);
   };
 
   self.removeInput = function(){

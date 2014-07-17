@@ -1,0 +1,29 @@
+<!-- ko if: PT.selectedInput -->
+<div class="input-preview" data-bind="css: PT.selectedInput().input_type">
+  <p data-bind="text: PT.selectedInput().label"></p>
+  <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type">
+    <li data-bind="text: $data"></li>
+  </ul>
+</div> 
+<!-- /ko -->
+<!-- ko ifnot: PT.selectedInput -->
+<div class="input-preview select">
+  <h3><%= t(".no_questions") %></h3>
+</div> 
+<!-- /ko -->
+
+<!-- <p><%= t(".question number") %>: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p> -->
+
+<div class="center">
+  <div class="btn btn-info arrow" data-direction="left">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </div>
+
+  <div class="btn btn-info arrow" data-direction="right">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".arrow").on("click", PT.nextInput);
+</script>
