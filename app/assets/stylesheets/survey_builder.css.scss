@@ -1,4 +1,6 @@
 $darkest-grey: #4f4f4f;
+$link: #428bca;
+$link-hover: #005580;
 
 #workspace {
   margin-bottom: 40px;
@@ -51,6 +53,14 @@ $darkest-grey: #4f4f4f;
       font-size: 14px;
       margin: 0;
       padding: 10px 20px;
+    }
+  }
+
+  .tool-button, .add-question {
+    color: $link;
+
+    &:hover {
+      color: $link-hover;
     }
   }
 
