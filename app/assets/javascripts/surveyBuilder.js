@@ -69,7 +69,7 @@ PT.Input = function(){
       });
     } else {
       var input = $(event.target).closest(".input");
-      PT.flashMessage("Please enter question text", input);
+      PT.flashMessage(PT.flash["no_question_text"], input);
     }
   };
 
@@ -159,7 +159,7 @@ PT.SurveyModel = function(){
   self.saveName = function(){
     if($("#new-survey-title").val()){
       $.post("/surveys/", {id: self.id, title: self.title}, function(response){
-        console.log(response);
+
         if(self.id === ""){
           self.id = response.id;
           self.user_id = response.user_id;
@@ -168,7 +168,7 @@ PT.SurveyModel = function(){
         $("#new-survey-modal").modal("hide");
       });
     } else {
-      PT.flashMessage("Please enter a title", $("#new-survey-title"));
+      PT.flashMessage(PT.flash["no_title"], $("#new-survey-title"));
     }
   };
 
@@ -206,5 +206,9 @@ PT.flashMessage = function(message, element){
 };
 
 PT.launchSurvey = function(){
-  window.location.pathname = Routes.launch_survey_path(PT.survey.id);
+  if(PT.form.inputs() > 0){
+    window.location.pathname = Routes.launch_survey_path(PT.survey.id);
+  } else {
+    PT.flashMessage(PT.flash["no_questions"], $("#new-survey-title"));
+  }
 };
