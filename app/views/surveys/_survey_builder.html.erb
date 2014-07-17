@@ -63,7 +63,7 @@
       <!-- Done button -->
       <div class="controls">
         <% if current_user %>
-          <button class="btn btn-primary" data-bind="click: saveOrder">Done</button>
+          <button class="btn btn-primary" data-bind="click: saveOrder"><%= t('defaults.save') %></button>
         <% end %>
 
         <div class="btn btn-info open-preview">

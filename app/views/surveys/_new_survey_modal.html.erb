@@ -4,12 +4,14 @@
       <div class="modal-header">
         <h4 class="modal-title"><%= t(".survey_title") %></h4>
       </div>
-      <div class="modal-body">
-        <input id="new-survey-title" class="form-control" data-bind="value: title" autofocus>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bind="click: saveName"><%= t("defaults.save") %></button>
-      </div>
+      <form data-bind="submit: saveName">
+        <div class="modal-body">
+          <input id="new-survey-title" class="form-control" data-bind="value: title" autofocus>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"><%= t("defaults.save") %></button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
