@@ -2,6 +2,7 @@
 
 <script type="text/javascript">
   PT.survey = new PT.SurveyModel();
+  PT.survey.init();
   ko.applyBindings(PT.survey);
   $("#new-survey-modal").modal();
   $("#tool-palette .tool-button").on("click", PT.survey.addInput);

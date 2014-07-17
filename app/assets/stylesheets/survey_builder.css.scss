@@ -7,14 +7,10 @@ $link-hover: #005580;
   margin-bottom: 40px;
 }
 
-#launch-survey {
-  width: 100%;
-  padding: 10px;
-}
-
 #tool-palette {
   background: $darkest-grey;
   border-radius: 5px;
+  margin: 0 15px 0 15px;
 
   a:hover {
     text-decoration: none;
@@ -22,16 +18,18 @@ $link-hover: #005580;
 
   ul {
     list-style-type: none;
-    padding: 10px 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
 
   > ul li {
     background: whitesmoke;
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 10px;
-    margin: 20px;
+    margin: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
 
   }
 
@@ -47,7 +45,6 @@ $link-hover: #005580;
   .sublist {
     display: none;
     background: white;
-    margin: -22px 20px 0 20px;
 
     li {
       background: white;

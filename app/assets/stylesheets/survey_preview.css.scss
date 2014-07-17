@@ -1,19 +1,20 @@
-#preview-window {
-  padding-top: 30px;
-}
-
 .input-preview {
-  width: 220px;
-  height: 400px;
-  float: left;
-  padding: 110px 50px 40px 50px;
-  margin-right: 30px;
+  width: 150px;
+  height: 280px;
+  padding: 110px 30px 40px 30px;
+  margin: 0 auto;
   font-size: 12px;
 
   p {
     max-height: 70px;
     overflow: hidden;
   }
+
+  -webkit-transition: background-image 0.2s ease-in-out;
+  -moz-transition: background-image 0.2s ease-in-out;
+  -ms-transition: background-image 0.2s ease-in-out;
+  -o-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
 
   &.string {
     background: image-url("text_input.png") no-repeat center;

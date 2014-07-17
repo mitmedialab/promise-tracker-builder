@@ -2,16 +2,15 @@
   <div class="row" style="display: none;" data-bind="visible: true">
     
     <!-- Survey title -->
-    <div class="col-md-8">
+    <div class="col-md-9">
       <h4 id="survey-title" class="inline" data-bind="text: title"></h4>
       <div class="controls pad-top">
         <div class="btn btn-default" data-toggle="modal" data-target="#new-survey-modal"><%= t(".edit_survey_title") %></div>
       </div>
       <%= render 'new_survey_modal' %>
     </div>
-
-    <!-- Survey body -->
-    <div class="col-md-8">
+    <div class="col-md-9">
+      <!-- Survey body -->
       <div id="survey-body">
         <div data-bind="sortable: inputs">
           <div class="input">
@@ -83,22 +82,21 @@
       <div class="controls">
         <% if current_user %>
           <button class="btn btn-primary" data-bind="click: saveOrder"><%= t('defaults.save') %></button>
-        <% end %>
-
-        <div class="btn btn-info open-preview">
-          <i class="icon-mobile-phone"></i> <%= t(".preview") %>
-        </div>
+          <div class="btn btn-warning" id="launch-survey"><%= t('.launch_survey') %></div>
+      <% end %>
       </div>
     </div>
 
-    <!-- Input palette -->
-    <div class="col-md-4">
+    <!-- Sidebar -->
+    <div class="col-md-3">
+      <!-- ko if: PT.survey.status() === "editing" -->
       <div id="tool-palette" class="clear">
         <%= render 'tool_palette' %>
       </div>
-      <% if current_user %>
-      <div class="btn btn-warning" id="launch-survey">Go live with this survey</div>
-      <% end %>
+      <!-- /ko -->
+      <div id="preview">
+        <%= render 'android_preview' %>
+      <div>
     </div>
   </div>
 </div>
