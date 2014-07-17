@@ -7,19 +7,22 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
+    @flash = t('flash', scope: 'surveys.survey_builder').to_json
   end
 
   def create
     @survey = Survey.find_or_create_by(id: params[:id])
+    @flash = t('flash', scope: 'surveys.survey_builder')
+    
     @survey.update_attributes(
       title: params[:title],
       guid: make_guid(params[:title], @survey.id),
-      status: "editing"
+      status: 'editing'
     )
-
     if current_user
       @survey.update_attribute(:user_id, current_user.id)
     end
+
     render json: @survey
   end
 
@@ -30,8 +33,9 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
+    @flash = t('flash', scope: 'surveys.survey_builder').to_json
 
-    if @survey.status == "editing"
+    if @survey.status == 'editing'
       respond_to do |format|
         format.html
         format.json { render json: @survey, include: :inputs }
@@ -48,14 +52,14 @@ class SurveysController < ApplicationController
 
   def activate
     @survey = Survey.find(params[:id])
-    @survey.update_attribute(:status, "active")
+    @survey.update_attribute(:status, 'active')
 
     redirect_to action: 'show'
   end
 
   def close
     @survey = Survey.find(params[:id])
-    @survey.update_attribute(:status, "closed")
+    @survey.update_attribute(:status, 'closed')
 
     redirect_to action: 'show'
   end

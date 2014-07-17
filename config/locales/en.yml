@@ -45,6 +45,24 @@ en:
     new_survey_modal:
       survey_title: "Enter survey title"
 
+    preview: 
+      preview_title: "Phone preview for:"
+      no_questions: "No questions to preview"
+      add_questions: "Add questions"
+      question_number: "Question number"  
+      close_preview: "Close preview"
+
+    survey_builder:
+      edit_survey_title: "Edit survey title"
+      preview: "Preview on phone" 
+      required: "Question required?"
+      options: "Options"
+      question_placeholder: "Add question text here"
+      flash:
+        no_title: "Please enter a title"
+        no_question_text: "Please enter question text"
+        no_questions: "You must add questions before launching your survey"
+
     tool_palette:   
       question: "Add question"
       location: "Get location"
@@ -52,19 +70,5 @@ en:
       text: "Text"
       number: "Number"
       date: "Date"
-      select_one: "Multiple choice"
-      select_many: "Check boxes"
-
-    survey_builder:
-      edit_survey_title: "Edit survey title"
-      preview: "Preview on phone" 
-      required: "Field required?"
-      options: "Options"
-      question_placeholder: "Add question text here"
-
-    preview: 
-      preview_title: "Phone preview for:"
-      no_questions: "No questions to preview"
-      add_questions: "Add questions"
-      question_number: "Question number"  
-      close_preview: "Close preview"
+      select_one: "Select one"
+      select_many: "Select many"
