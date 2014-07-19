@@ -8,4 +8,8 @@ module InputsHelper
     end
   end
 
+  def render_html(input)
+    render partial: "inputs/#{input.input_type}", locals: {input: input}
+  end
+
 end

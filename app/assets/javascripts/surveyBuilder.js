@@ -9,33 +9,40 @@ var PT = PT || {};
 /// Input type defaults
 PT.defaultControls = {
   inputText: {
+    label: "Text",
     input_type: "string"
   },
 
   inputNumber: {
+    label: "Number",
     input_type: "decimal"
   },
 
   inputDate: {
+    label: "Date",
     input_type: "date"
   },
 
   inputLocation: {
+    label: "Location",
     input_type: "geopoint"
   },
 
   inputImage: {
+    label: "Image",
     input_type: "binary",
     media_type: "image/*"
   },
 
   inputSelectMany: {
-    input_type: "select"
+    label: "Select one",
+    input_type: "select1"
   },
 
   inputSelectOne: {
-    input_type: "select1"
-  }
+    label: "Select many",
+    input_type: "select"
+  },
 };
 
 /// Input constructor
@@ -48,7 +55,7 @@ PT.Input = function(){
   self.input_type = ko.observable();
   self.media_type = ko.observable();
   self.required = ko.observable(false);
-  self.options = ko.observableArray([]);
+  self.options = ko.observableArray(["Option 1"]);
   self.order = "";
   self.inEdit = ko.observable();
 
@@ -95,7 +102,7 @@ PT.Input = function(){
     self.inEdit(true);
   };
 
-  self.addOption = function(){
+  self.addOption = function(input, event){
     self.options.push("");
   };
 
@@ -116,11 +123,15 @@ PT.SurveyModel = function(){
 
   self.addInput = function(event){
     event.stopPropagation();
-    var type = $(event.target).attr("rel");
     var input = new PT.Input();
+    var type = PT.defaultControls[$(event.target).attr("rel")];
+    
+    if(type){
+      input.input_type(type["input_type"]);
+      input.media_type(type["media_type"]);
+    }
+
     input.inEdit(true);
-    input.input_type(PT.defaultControls[type]["input_type"]);
-    input.media_type(PT.defaultControls[type]["media_type"]);
     self.inputs.push(input);
   };
 
