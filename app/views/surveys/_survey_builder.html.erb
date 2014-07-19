@@ -8,9 +8,6 @@
         <!-- ko if: PT.survey.status() === "editing" -->
         <div class="btn btn-default" data-toggle="modal" data-target="#new-survey-modal"><%= t(".edit_survey_title") %></div>
         <!-- /ko -->
-        <div class="btn btn-info open-preview">
-          <i class="icon-mobile-phone"></i> <%= t(".preview") %>
-        </div>
       </div>
       <%= render 'new_survey_modal' %>
     </div>
@@ -31,16 +28,24 @@
                 <a href="#" class="btn" data-bind="click: save"><%= t("defaults.save") %></a>
                 <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
+              <br><br>
+
+              <p class="clear"><%= t(".answer_type") %>:</p>
+              <select class="form-control" data-bind="options: _.values(PT.defaultControls), optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type">
+              </select>
 
               <!-- ko if: input_type() === 'select' || input_type() === 'select1'  -->
               <div class="options">
                 <hr>
                 <p><%= t(".options") %> <span class="glyphicon glyphicon-plus-sign" data-bind="click: addOption"></span></p>
-                <div data-bind="foreach: options, valueUpdate:'input'">
-                  <div class="option">
+                <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
+                  <li class="option">
                     <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
-                    <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption"></span>
-                  </div>
+                    <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
+                  </li>
+                </ul>
+                <div class="phantom-option dummy-input" data-bind="click: addOption">
+                  Click to add new option
                 </div>
               </div>
               <!-- /ko -->
@@ -54,8 +59,23 @@
                 <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
               </div>
               <!-- /ko -->
+
+              <!-- ko if: input_type() == 'select' || input_type() == 'select1' -->
+              <div class="options">
+                <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
+                  <li class="option">
+                    <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>
+                  </li>
+                </ul>
+              </div>
+            <!-- /ko -->
             <!-- /ko -->
 
+            <!-- ko if: input_type() == 'string' || input_type() == 'decimal' -->
+              <div>
+                <input class="answer-box form-control" placeholder="<%= t('.their_answer') %>" disabled>
+              </div>
+            <!-- /ko -->
           </div>
         </div>
       </div>

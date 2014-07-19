@@ -63,7 +63,6 @@ $link-hover: #005580;
       color: $link-hover;
     }
   }
-
 }
 
 
@@ -103,16 +102,13 @@ $link-hover: #005580;
     .form-control {
       display: inline-block;
       width: 50%;
+      margin-bottom: 5px;
     }
 
     .modify {
       position: absolute;
       top: 20px;
       right: 20px;
-    }
-
-    p {
-      display: inline-block;
     }
 
     label {
@@ -124,6 +120,16 @@ $link-hover: #005580;
       input {
         margin: 5px;
       }
+
+      .phantom-option {
+        margin: 5px 0 0 45px;
+        color: grey;
+        display: inline-block;
+      }
+    }
+
+    .answer-box {
+      border: 1px dotted grey;
     }
   }
 }
