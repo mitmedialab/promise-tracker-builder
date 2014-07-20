@@ -8,7 +8,7 @@
 </div>
 
 <div class="container">
-  <div id="preview-window">
+  <div id="preview-window" style="display: none;" data-bind="visible: true">
     <!-- ko if: PT.selectedInput -->
     <div class="input-preview" data-bind="css: PT.selectedInput().input_type">
       <p data-bind="text: PT.selectedInput().label"></p>
@@ -23,16 +23,16 @@
       <div class="btn btn-info close-window"><%= t(".add_questions") %></div>
     </div> 
     <!-- /ko -->
-
   </div>
-  <p><%= t(".question number") %>: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p>
+  <div class="question-controls" style="display: none;" data-bind="visible: true">
+    <p><%= t(".question number") %>: <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span></p>
 
-  <div class="btn btn-info arrow" data-direction="left">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </div>
-
-  <div class="btn btn-info arrow" data-direction="right">
-    <span class="glyphicon glyphicon-chevron-right"></span>
+    <div class="btn btn-info arrow" data-direction="left">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </div>
+    <div class="btn btn-info arrow" data-direction="right">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </div>
   </div>
 </div>
 
