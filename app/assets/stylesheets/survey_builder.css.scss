@@ -118,12 +118,38 @@ $link-hover: #005580;
     }
 
     .options {
+      .option {
+
+        &.edit {
+          background: whitesmoke;
+          cursor: move;
+          margin: 5px 0;
+          padding: 5px;
+          width: 70%;
+
+          &:after {
+            font-family: 'FontAwesome';
+            content: '\f047';
+            font-size: 1em;
+            vertical-align: middle;
+            padding: 10px 25px;
+            position: absolute;
+            right: 30%;
+            color: $medium-grey;
+          }
+        }
+
+        .delete-option {
+          cursor: pointer;
+        }  
+      }
+
       input {
         margin: 5px;
       }
 
       .phantom-option {
-        margin: 5px 0 0 45px;
+        margin: 5px 0 0 50px;
         color: grey;
         display: inline-block;
       }
