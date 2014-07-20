@@ -1,4 +1,5 @@
 $darkest-grey: #4f4f4f;
+$medium-grey: #BABABA;
 $link: #428bca;
 $link-hover: #005580;
 
@@ -130,6 +131,13 @@ $link-hover: #005580;
 
     .answer-box {
       border: 1px dotted grey;
+    }
+
+    .android-button {
+      background: $medium-grey;
+      padding: 8px 20px;
+      margin: 5px 0;
+      width: 200px;
     }
   }
 }
