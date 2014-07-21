@@ -12,7 +12,7 @@ class InputsController < ApplicationController
     @input.update_attributes(input_params(params))
     @input.guid = make_guid(@input.label, @input.id)
 
-    if params[:options]
+    if params[:input_type] == 'select' || params[:input_type] == 'select1'
       options = {}
       params[:options].each_with_index do |option, index|
         options[make_guid(option, index)] = option if option.length > 0
@@ -33,7 +33,7 @@ class InputsController < ApplicationController
   private
 
   def input_params(params)
-    params.require(:input).permit(:label, :required, :input_type, :media_type, :order, :options, :survey_id)
+    params.require(:input).permit(:label, :required, :input_type, :media_type, :annotate, :order, :options, :survey_id)
   end
 
 end

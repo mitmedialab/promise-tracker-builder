@@ -42,6 +42,10 @@
                 Click to add new option
               </div>
             </div>
+
+            <div data-bind="visible: input_type() == 'binary'">
+              <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
+            </div>
             <!-- /ko -->
 
             <!-- ko ifnot: inEdit -->

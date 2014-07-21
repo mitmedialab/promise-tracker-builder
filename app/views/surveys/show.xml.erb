@@ -8,36 +8,35 @@
             <instanceID/>
           </meta>
           <% @survey.inputs.each do |input| %>
-            <<%= input.guid %>/>
+          <<%= input.guid %>/>
           <% end %>
         </data>
       </instance>
       <itext>
         <translation lang="eng">
-        <% @survey.inputs.each do |input| %>
+          <% @survey.inputs.each do |input| %>
           <text id="/data/<%= input.guid %>:label">
             <value><%= input.label %></value>
           </text>  
-
           <% if input.options %>
           <% input.options.values.each_with_index do |label, index| %>
-            <text id="/data/<%= input.guid %>:option<%= index %>">
-              <value><%= label %></value>
-            </text>
+          <text id="/data/<%= input.guid %>:option<%= index %>">
+            <value><%= label %></value>
+          </text>
           <% end %> 
           <% end %>  
-        <% end %>
+          <% end %>
         </translation>
       </itext>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
       <% @survey.inputs.each do |input| %>
-        <bind nodeset="/data/<%= input.guid %>" type="<%= input.input_type %>" <% if input.required %>required="true()"<% end %>/>
+      <bind nodeset="/data/<%= input.guid %>" type="<%= input.input_type %>"/>
       <% end %>
     </model>
   </h:head>
   <h:body>
     <% @survey.inputs.each do |input| %>
-      <%= render_xml(input) %>
+    <%= render_xml(input) %>
     <% end %> 
   </h:body>
 </h:html>

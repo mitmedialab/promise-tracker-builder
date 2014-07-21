@@ -43,7 +43,7 @@ en:
       confirm_delete: "Are you sure you want to delete this survey?" 
 
     new_survey_modal:
-      survey_title: "Enter survey title"
+      survey_title: "Enter survey title"  
 
     preview: 
       preview_title: "Phone preview for:"
@@ -56,6 +56,7 @@ en:
       edit_survey_title: "Edit survey title"
       preview: "Preview on phone" 
       required: "Question required?"
+      annotation: "Allow annotation?"
       options: "Options"
       question_placeholder: "Type your question here"
       answer_type: "Type of answer"
@@ -78,3 +79,6 @@ en:
       question: "Add question"
       location: "Get location"
       image: "Take picture"
+
+    xml_show:
+      annotate_hint: "Capture and annotate image"
