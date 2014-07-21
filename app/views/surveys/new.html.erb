@@ -2,11 +2,10 @@
 
 <script type="text/javascript">
   PT.survey = new PT.SurveyModel();
-  PT.survey.init();
+  PT.selectedInput = ko.observable();
   ko.applyBindings(PT.survey);
   $("#new-survey-modal").modal();
   $("#tool-palette .tool-button").on("click", PT.survey.addInput);
-  $(".open-preview").on("click", PT.openPreview);
   $("#launch-survey").on("click", PT.launchSurvey);
 </script>
 

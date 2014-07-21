@@ -1,96 +1,94 @@
 <div id="workspace">
-  <div class="row" style="display: none;" data-bind="visible: true">
+  <div style="display: none;" data-bind="visible: true">
     
     <!-- Survey title -->
-    <div class="col-md-9">
-      <h4 id="survey-title" class="inline" data-bind="text: title"></h4>
-      <div class="controls pad-top">
-        <div class="btn btn-default" data-toggle="modal" data-target="#new-survey-modal"><%= t(".edit_survey_title") %></div>
-      </div>
-      <%= render 'new_survey_modal' %>
+    <h4 id="survey-title" class="inline" data-bind="text: title"></h4>
+    <div class="controls pad-top">
+      <div class="btn btn-default" data-toggle="modal" data-target="#new-survey-modal"><%= t(".edit_survey_title") %></div>
     </div>
-    <div class="col-md-9">
-      <!-- Survey body -->
-      <div id="survey-body">
-        <div data-bind="sortable: inputs">
-          <div class="input">
-            <!-- ko if: inEdit -->
-            <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus>
-            <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
+    <%= render 'new_survey_modal' %>
+    <!-- Survey body -->
+    <div id="survey-body">
+      <div data-bind="sortable: inputs">
+        <div class="input">
+          <!-- ko if: inEdit -->
+          <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus>
+          <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
 
-            <div class="modify">
-              <a href="#" class="btn" data-bind="click: save"><%= t("defaults.save") %></a>
-              <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
+          <div class="modify">
+            <a href="#" class="btn" data-bind="click: save"><%= t("defaults.save") %></a>
+            <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+          <br><br>
+
+          <p class="clear"><%= t(".answer_type") %>:</p>
+          <select class="form-control" data-bind="options: _.values(PT.defaultControls), optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type">
+          </select>
+
+          <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
+            <hr>
+            <p><%= t(".options") %></p>
+            <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
+              <li class="option edit">
+                <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
+                <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
+              </li>
+            </ul>
+            <div class="phantom-option dummy-input" data-bind="click: addOption">
+              Click to add new option
             </div>
-            <br><br>
+          </div>
 
-            <p class="clear"><%= t(".answer_type") %>:</p>
-            <select class="form-control" data-bind="options: _.values(PT.defaultControls), optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type">
-            </select>
+          <div data-bind="visible: input_type() == 'binary'">
+            <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
+          </div>
+          <!-- /ko -->
 
-            <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
-              <hr>
-              <p><%= t(".options") %></p>
-              <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
-                <li class="option edit">
-                  <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
-                  <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
-                </li>
-              </ul>
-              <div class="phantom-option dummy-input" data-bind="click: addOption">
-                Click to add new option
-              </div>
+          <!-- ko ifnot: inEdit -->
+          <p data-bind="text: $data.label"></p>
+          <div class="modify">
+            <a href="#" class="btn" data-bind="click: edit"><%= t("surveys.new.edit") %></a>
+            <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+
+          <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">
+            <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
+              <li class="option">
+                <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>
+              </li>
+            </ul>
+          </div>
+          <!-- /ko -->
+
+          <div class="answer">
+            <input class="answer-box form-control" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal'">
+
+            <div class="android-button" data-bind="visible: input_type() === 'geopoint'">Record Location</div>
+
+            <div data-bind="visible: input_type() === 'binary'">
+              <div class="android-button">Take picture</div>
+              <div class="android-button">Choose image</div>
             </div>
 
-            <div data-bind="visible: input_type() == 'binary'">
-              <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
-            </div>
-            <!-- /ko -->
-
-            <!-- ko ifnot: inEdit -->
-            <p data-bind="text: $data.label"></p>
-            <div class="modify">
-              <a href="#" class="btn" data-bind="click: edit"><%= t("surveys.new.edit") %></a>
-              <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
-            </div>
-
-            <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">
-              <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
-                <li class="option">
-                  <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>
-                </li>
-              </ul>
-            </div>
-            <!-- /ko -->
-
-            <div class="answer">
-              <input class="answer-box form-control" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal'">
-
-              <div class="android-button" data-bind="visible: input_type() === 'geopoint'">Record Location</div>
-
-              <div data-bind="visible: input_type() === 'binary'">
-                <div class="android-button">Take picture</div>
-                <div class="android-button">Choose image</div>
-              </div>
-
-            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Done button -->
-      <div class="controls">
-        <% if current_user %>
-          <button class="btn btn-primary" data-bind="click: saveOrder"><%= t('defaults.save') %></button>
-          <div class="btn btn-warning" id="launch-survey"><%= t('.launch_survey') %></div>
-      <% end %>
-      </div>
+    <!-- Done button -->
+    <div class="controls">
+      <% if current_user %>
+        <button class="btn btn-primary" data-bind="click: saveOrder"><%= t('defaults.save') %></button>
+        <div class="btn btn-warning" id="launch-survey"><%= t('.launch_survey') %></div>
+    <% end %>
     </div>
 
     <!-- Sidebar -->
-    <div class="col-md-3">
+    <div id="sidebar">
       <!-- ko if: PT.survey.status() === "editing" -->
       <div id="tool-palette" class="clear">
+        <h3 class="title" >Survey Editor</h3>
+        <hr>
         <%= render 'tool_palette' %>
       </div>
       <!-- /ko -->
