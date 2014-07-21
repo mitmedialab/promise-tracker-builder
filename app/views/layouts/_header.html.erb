@@ -1,17 +1,15 @@
 <div id="header">
-  <div class="container">
+  <% if current_user %>
+    <%= link_to t("users.show.my_surveys"), user_path(current_user), class: "btn btn-info" %>
+  <% else %>
+    <%= link_to t(".home"), root_path, class: "btn btn-info" %>
+  <% end %>
+  <ul class="user-links">
     <% if current_user %>
-      <%= link_to t("users.show.my_surveys"), user_path(current_user), class: "btn btn-info" %>
+      <li><%= current_user.email %></li>
+      <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <%= link_to t(".home"), root_path, class: "btn btn-info" %>
+      <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %></li>
     <% end %>
-    <ul class="user-links">
-      <% if current_user %>
-        <li><%= current_user.email %></li>
-        <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %></li>
-      <% end %>
-    </ul>
-  </div> 
+  </ul>
 </div>
