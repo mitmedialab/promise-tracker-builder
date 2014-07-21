@@ -1,68 +1,91 @@
-$darkest-grey: #4f4f4f;
+$darkest-grey: #333333;
 $medium-grey: #BABABA;
 $link: #428bca;
 $link-hover: #005580;
 
 #workspace {
-  margin-bottom: 40px;
+  margin: 0 300px 40px 0;
+  padding: 20px 60px;
 }
 
-#tool-palette {
+#sidebar {
   background: $darkest-grey;
-  border-radius: 5px;
-  margin: 0 15px 0 15px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  padding: 10px 20px;
 
-  a:hover {
-    text-decoration: none;
-  }
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  > ul li {
-    background: whitesmoke;
+  #tool-palette {
+    background: $darkest-grey;
     border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 16px;
+    margin: 0 auto;
+    width: 200px;
 
-  }
-
-  .toolTip {
-    float: right;
-    color: gray;
-
-    &:hover {
-      color: black;
+    a:hover {
+      text-decoration: none;
     }
-  }
 
-  .sublist {
-    display: none;
-    background: white;
-
-    li {
-      background: white;
-      font-size: 14px;
+    ul {
+      list-style-type: none;
       margin: 0;
-      padding: 10px 20px;
+      padding: 0;
+      overflow: hidden;
     }
-  }
 
-  .tool-button, .add-question {
-    color: $link;
+    > ul li {
+      background: whitesmoke;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
 
-    &:hover {
-      color: $link-hover;
+    }
+
+    hr {
+      margin: 5px 0;
+    }
+
+    .title {
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 100;
+      letter-spacing: 2px;
+    }
+
+    .toolTip {
+      float: right;
+      color: gray;
+
+      &:hover {
+        color: black;
+      }
+    }
+
+    .sublist {
+      display: none;
+      background: white;
+
+      li {
+        background: white;
+        font-size: 14px;
+        margin: 0;
+        padding: 10px 20px;
+      }
+    }
+
+    .tool-button, .add-question {
+      color: $link;
+
+      &:hover {
+        color: $link-hover;
+      }
     }
   }
 }
-
 
 .top-left {
   position: absolute;
@@ -72,7 +95,7 @@ $link-hover: #005580;
 
 .controls {
   float: right;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 #survey-title {
@@ -84,7 +107,7 @@ $link-hover: #005580;
 #survey-body {
   background: whitesmoke;
   min-height: 350px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 10px;
   width: 100%;
 
