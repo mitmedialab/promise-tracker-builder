@@ -54,6 +54,7 @@ PT.Input = function(){
   self.label = ko.observable();
   self.input_type = ko.observable();
   self.media_type = ko.observable();
+  self.annotate = ko.observable(false);
   self.required = ko.observable(false);
   self.options = ko.observableArray(["Option 1"]);
   self.order = "";
