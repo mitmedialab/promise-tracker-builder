@@ -1,19 +1,21 @@
-<h1><%= link_to @survey.title, survey_path(@survey) %></h1>
+<div class="page-container">
+  <h1><%= link_to @survey.title, survey_path(@survey) %></h1>
 
-<% if @survey.status == "editing" %>
-  <h2>Launch this survey</h2>
-  Once your survey is launched you will not be able to edit or change questions. Are you sure you want to launch now?<br><br>
-  <%= link_to "Return to edit", survey_path(@survey), class: "btn btn-default" %>
-  <%= link_to preview_survey_path(@survey), class: "btn btn-info open-preview", target: "_blank" do %>
-    <i class="icon-mobile-phone"></i> <%= t(".preview") %>
+  <% if @survey.status == "editing" %>
+    <h2>Launch this survey</h2>
+    Once your survey is launched you will not be able to edit or change questions. Are you sure you want to launch now?<br><br>
+    <%= link_to "Return to edit", survey_path(@survey), class: "btn btn-default" %>
+    <%= link_to preview_survey_path(@survey), class: "btn btn-info open-preview", target: "_blank" do %>
+      <i class="icon-mobile-phone"></i> <%= t(".preview") %>
+    <% end %>
+    <%= link_to "Launch survey", activate_survey_path(@survey), class: "btn btn-warning", confirm: "Once launched, this survey cannot be modified." %>
+
+  <% elsif @survey.status == "active"  %>
+    This survey is currently Active.<br>
+    Overview:<br><br>
+    <%= link_to "Close survey", close_survey_path(@survey), class: "btn btn-warning", confirm: "Once closed, this survey cannot be reopened." %>
+
+  <% else %>
+    This survey has been closed.
   <% end %>
-  <%= link_to "Launch survey", activate_survey_path(@survey), class: "btn btn-warning", confirm: "Once launched, this survey cannot be modified." %>
-
-<% elsif @survey.status == "active"  %>
-  This survey is currently Active.<br>
-  Overview:<br><br>
-  <%= link_to "Close survey", close_survey_path(@survey), class: "btn btn-warning", confirm: "Once closed, this survey cannot be reopened." %>
-
-<% else %>
-  This survey has been closed.
-<% end %>
+</div>

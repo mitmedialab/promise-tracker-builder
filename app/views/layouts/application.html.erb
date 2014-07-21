@@ -12,16 +12,14 @@
     <script type="text/javascript" src="/knockout-mapping.js"></script>
   </head>
   <body>
-
-  <%= render 'layouts/header' %>
-
-  <div class="container"> 
-<!--     <div class="alerts">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p> 
-    </div> -->
-    <%= yield %>
-  </div>
+    <%= render 'layouts/header' %>
+    <div class="page-container"> 
+      <div class="alerts">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p> 
+      </div>
+      <%= yield %>
+    </div>
 
   </body>
 </html>
