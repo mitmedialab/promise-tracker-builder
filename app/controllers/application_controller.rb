@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def make_guid(string, id)
-    return "#{string.downcase.scan(/\w+/).join("_")}_#{id}"
+    "#{string.downcase.scan(/\w+/).join("_")}_#{id}"
   end
 
   def get_translations(entry, scope)

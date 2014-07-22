@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, only: [:activate, :close, :destroy]
+  layout 'survey_builder', only: [:new, :show]
 
   def index
     @surveys = Survey.all
@@ -16,11 +17,11 @@ class SurveysController < ApplicationController
     
     @survey.update_attributes(
       title: params[:title],
-      guid: make_guid(params[:title], @survey.id),
-      status: 'editing'
+      status: 'editing',
+      guid: make_guid(params[:title], @survey.id)
     )
     if current_user
-      @survey.update_attribute(:user_id, current_user.id)
+      @survey.user_id = current_user.id
     end
 
     render json: @survey
