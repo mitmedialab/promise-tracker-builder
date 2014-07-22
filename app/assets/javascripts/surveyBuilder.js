@@ -137,7 +137,6 @@ PT.SurveyModel = function(){
   };
 
   self.removeInput = function(){
-
     if(this.id === ""){
       self.inputs.remove(this);
     } else {
@@ -156,6 +155,17 @@ PT.SurveyModel = function(){
         });  
       }
     }
+  };
+
+  self.addStarterQuestion = function(){
+    var input = new PT.Input();
+    input.label(PT.flash.first_question);
+    input.inEdit(true);
+    input.input_type("string");
+    input.survey_id = PT.survey.id;
+
+    self.inputs.push(input);
+    PT.selectedInput(self.inputs()[0]);
   };
 
   /// Update order of all inputs
@@ -181,6 +191,7 @@ PT.SurveyModel = function(){
         if(self.id === ""){
           self.id = response.id;
           self.user_id = response.user_id;
+          self.addStarterQuestion();
         }
 
         $("#new-survey-modal").modal("hide");

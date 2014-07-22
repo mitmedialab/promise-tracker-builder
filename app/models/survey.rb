@@ -3,4 +3,5 @@ class Survey < ActiveRecord::Base
   belongs_to :user
 
   STATUS =  ["editing", "active", "closed"]
+
 end
