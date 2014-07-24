@@ -2,6 +2,7 @@ $darkest-grey: #333333;
 $medium-grey: #BABABA;
 $link: #428bca;
 $link-hover: #005580;
+$turquoise: #5bc0de;
 
 #workspace {
   margin: 0 300px 40px 0;
@@ -119,6 +120,10 @@ $link-hover: #005580;
     min-height: 30px;
     padding: 20px; 
     position: relative;
+
+    &.selected {
+      border-left: 5px solid $turquoise;
+    }
       
     .form-control {
       display: inline-block;
@@ -194,7 +199,8 @@ $link-hover: #005580;
       background: $medium-grey;
       padding: 8px 20px;
       margin: 5px 0;
-      width: 200px;
+      width: 50%;
+      color: grey;
     }
   }
 }

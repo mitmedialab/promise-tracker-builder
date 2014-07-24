@@ -10,7 +10,7 @@
     <!-- Survey body -->
     <div id="survey-body">
       <div data-bind="sortable: inputs">
-        <div class="input">
+        <div class="input" data-bind="css: { selected: id === PT.selectedInput().id }">
           <!-- ko if: inEdit -->
           <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus>
           <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
@@ -25,6 +25,10 @@
           <select class="form-control" data-bind="options: _.values(PT.defaultControls), optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type">
           </select>
 
+          <div data-bind="visible: input_type() == 'binary'" class:"inline">
+            <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
+          </div>
+
           <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
             <hr>
             <p><%= t(".options") %></p>
@@ -37,10 +41,6 @@
             <div class="phantom-option dummy-input" data-bind="click: addOption">
               Click to add new option
             </div>
-          </div>
-
-          <div data-bind="visible: input_type() == 'binary'">
-            <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
           </div>
           <!-- /ko -->
 
