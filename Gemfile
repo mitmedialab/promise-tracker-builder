@@ -18,6 +18,8 @@ gem 'handlebars_assets'
 gem 'devise'
 gem 'js-routes'
 
+gem 'therubyracer'
+
 group :doc do
   gem 'sdoc', require: false
 end
