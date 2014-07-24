@@ -175,8 +175,19 @@ $link-hover: #005580;
       }
     }
 
+    .answer {
+      position: relative;
+    }
+
     .answer-box {
       border: 1px dotted grey;
+    }
+
+    .date-preview {
+      color: $medium-grey;
+      position: absolute;
+      right: 50%;
+      padding: 8px 12px;
     }
 
     .android-button {
