@@ -61,7 +61,8 @@
           <!-- /ko -->
 
           <div class="answer">
-            <input class="answer-box form-control" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal'">
+            <input class="answer-box form-control" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'date'">
+            <span class="date-preview glyphicon glyphicon-calendar" data-bind="visible: input_type() === 'date'"></span>
 
             <div class="android-button" data-bind="visible: input_type() === 'geopoint'">Record Location</div>
 
