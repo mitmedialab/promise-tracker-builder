@@ -15,7 +15,7 @@ class InputsController < ApplicationController
     if @input.input_type == 'select' || @input.input_type == 'select1'
       options = {}
       params[:options].each_with_index do |option, index|
-        options[make_guid(option, index)] = option if option.length > 0
+        options[make_guid(option, index)] = option
       end
       @input.options = options
     end

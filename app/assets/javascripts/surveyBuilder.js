@@ -49,7 +49,7 @@ PT.defaultControls = {
 PT.Input = function(){
   var self = this;
 
-  self.id = "";
+  self.id = ko.observable("");
   self.survey_id = PT.survey.id;
   self.label = ko.observable();
   self.input_type = ko.observable();
@@ -65,6 +65,7 @@ PT.Input = function(){
     if(self.label()){
       $("#message").fadeOut();
       self.inEdit(false);
+      self.options(self.options().filter(function(option) { return option.length > 0;}));
 
       $.ajax({
         url: "/surveys/" + PT.survey.id + "/inputs",
@@ -77,8 +78,8 @@ PT.Input = function(){
         console.log(response);
         $("#new-survey-modal").modal("hide");
 
-        if(self.id === ""){
-          self.id = response.id;
+        if(self.id() === ""){
+          self.id(response.id);
         }
       });
     } else {
@@ -88,7 +89,7 @@ PT.Input = function(){
   };
 
   self.map = function(data){
-    self.id = data.id;
+    self.id = ko.observable(data.id);
     self.survey_id = data.survey_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
@@ -101,6 +102,7 @@ PT.Input = function(){
 
   self.edit = function(){
     self.inEdit(true);
+    PT.selectedInput(self);
   };
 
   self.addOption = function(input, event){
@@ -124,6 +126,8 @@ PT.SurveyModel = function(){
 
   self.addInput = function(event){
     event.stopPropagation();
+    // self.saveInputs();
+
     var input = new PT.Input();
     var type = PT.defaultControls[$(event.target).attr("rel")];
     
@@ -136,6 +140,11 @@ PT.SurveyModel = function(){
     self.inputs.push(input);
 
     PT.selectedInput(input);
+  };
+
+  self.saveInputs = function(){
+    var unsaved = self.inputs().filter(function(input) { return input.inEdit() == true ;});
+    unsaved.forEach(function(input){input.save(input); });
   };
 
   self.removeInput = function(){
