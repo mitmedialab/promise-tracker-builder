@@ -22,6 +22,7 @@ class SurveysController < ApplicationController
     )
     if current_user
       @survey.user_id = current_user.id
+      @survey.save
     end
 
     render json: @survey
