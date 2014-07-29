@@ -2,6 +2,12 @@ $(document).ready(function() {
   $(".modal").on('shown.bs.modal', function() {
     $(this).find("[autofocus]:first").focus();
   });
+
+  $(document).on("focus", "input", function(){
+    $(this).on("mouseup.a keyup.a", function(e){      
+      $(this).off("mouseup.a keyup.a").select();
+    });
+  });
 });
 
 var PT = PT || {};
