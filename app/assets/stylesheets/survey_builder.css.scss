@@ -112,6 +112,25 @@ $turquoise: #5bc0de;
   padding: 10px;
   width: 100%;
 
+  table {
+    width: 80%;
+
+    th {
+      color: grey;
+      width: 150px;
+      font-weight: normal;
+      vertical-align: top;
+
+      &.tall {
+        height: 65px;
+      }
+    }
+
+    td {
+      vertical-align: top;
+    }
+  }
+
   .input {
     background: white;
     border: 1px solid #eee;
@@ -126,19 +145,21 @@ $turquoise: #5bc0de;
     }
       
     .form-control {
-      display: inline-block;
-      width: 50%;
       margin-bottom: 5px;
+
+      &.short {
+        width: 200px;
+      }
     }
 
     .modify {
       position: absolute;
       top: 20px;
       right: 20px;
+      z-index: 5;
     }
 
     label {
-      margin-left: 10px;
       font-weight: normal;
     }
 
@@ -151,6 +172,7 @@ $turquoise: #5bc0de;
           margin: 5px 0;
           padding: 5px;
           width: 70%;
+          min-width: 300px;
 
           &:after {
             font-family: 'FontAwesome';
@@ -173,8 +195,12 @@ $turquoise: #5bc0de;
         margin: 5px;
       }
 
+      .dummy-input {
+        margin: 5px;
+      }
+
       .phantom-option {
-        margin: 5px 0 0 50px;
+        margin: 10px 0 10px 5px;
         color: grey;
         display: inline-block;
       }
@@ -191,15 +217,15 @@ $turquoise: #5bc0de;
     .date-preview {
       color: $medium-grey;
       position: absolute;
-      right: 50%;
-      padding: 8px 12px;
+      left: 165px;
+      padding: 8px;
     }
 
     .android-button {
       background: $medium-grey;
       padding: 8px 20px;
       margin: 5px 0;
-      width: 50%;
+      width: 200px;
       color: grey;
     }
   }
