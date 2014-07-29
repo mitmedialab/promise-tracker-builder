@@ -10,38 +10,66 @@
     <!-- Survey body -->
     <div id="survey-body">
       <div data-bind="sortable: inputs">
-        <div class="input" data-bind="css: { selected: id === PT.selectedInput().id }">
+        <div class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false }, valueUpdate: 'input'">
           <!-- ko if: inEdit -->
-          <input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus>
-          <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
+          <table>
+            <tr>
+              <th class="tall"><%= t(".question_label") %></th>
+              <td><input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus></td>
+            </tr>
+            <tr>
+              <th><%= t(".answer_type") %></th>
+              <td>
+                <select class="form-control short inline" data-bind="options: _.values(PT.defaultControls), optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type"></select>
+                <div data-bind="visible: input_type() == 'binary'" class="inline margin-left">
+                  <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th><%= t(".answer_label") %></th>
+              <td>
+                <div class="answer">
+                  <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'date'">
+                  <span class="date-preview glyphicon glyphicon-calendar" data-bind="visible: input_type() === 'date'"></span>
+                  <div class="android-button" data-bind="visible: input_type() === 'geopoint'"><%= t(".record_location") %></div>
+
+                  <div data-bind="visible: input_type() === 'binary'">
+                    <div class="android-button"><%= t(".take_picture") %></div>
+                    <div class="android-button"><%= t(".choose_image") %></div>
+                  </div>
+
+                  <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
+                    <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
+                      <li class="option edit">
+                        <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
+                        <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
+                        </li>
+                    </ul>
+                    <div class="phantom-option" data-bind="click: addOption, css: input_type">
+                      <li>
+                        <span class="dummy-input"><%= t(".add_new_option") %></span>
+                      </li>  
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <br><br>
+                <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
+                <br><br>
+                <a href="#" class="btn btn-info" data-bind="click: save"><%= t("defaults.save") %></a>
+              </td>
+            </tr>
+          </table>
 
           <div class="modify">
-            <a href="#" class="btn" data-bind="click: save"><%= t("defaults.save") %></a>
             <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
           </div>
           <br><br>
-
-          <p class="clear"><%= t(".answer_type") %>:</p>
-          <select class="form-control" data-bind="options: _.values(PT.defaultControls), optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type">
-          </select>
-
-          <div data-bind="visible: input_type() == 'binary'" class:"inline">
-            <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate">
-          </div>
-
-          <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
-            <hr>
-            <p><%= t(".options") %></p>
-            <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
-              <li class="option edit">
-                <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
-                <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
-              </li>
-            </ul>
-            <div class="phantom-option dummy-input" data-bind="click: addOption">
-              Click to add new option
-            </div>
-          </div>
           <!-- /ko -->
 
           <!-- ko ifnot: inEdit -->
@@ -58,10 +86,8 @@
               </li>
             </ul>
           </div>
-          <!-- /ko -->
-
           <div class="answer">
-            <input class="answer-box form-control" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'date'">
+            <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'date'">
             <span class="date-preview glyphicon glyphicon-calendar" data-bind="visible: input_type() === 'date'"></span>
 
             <div class="android-button" data-bind="visible: input_type() === 'geopoint'">Record Location</div>
@@ -72,6 +98,9 @@
             </div>
 
           </div>
+          <!-- /ko -->
+
+
         </div>
       </div>
     </div>
