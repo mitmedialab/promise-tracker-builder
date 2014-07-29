@@ -6,48 +6,39 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12"> 
+  <div class="col-md-12">
+    <% if @active_surveys.present? %>
     <h4>Active surveys</h4>
-    <% if @surveys.length > 0 %>
       <ul class="padded-list">
-        <% @surveys.each do |survey| %>
-          <% if survey.status == "active" %>
+        <% @active_surveys.each do |survey| %>
           <%= render partial: 'surveys/list_item', locals: {survey: survey} %>
-          <% end %>
         <% end %>
       </ul>
-    <% else %>
-      <p><%= link_to t(".no_surveys"), new_survey_path %></p>
     <% end %>  
   </div>
 
   <div class="col-md-12"> 
     <h4>Draft surveys</h4>
-    <% if @surveys.length > 0 %>
+    <% if @draft_surveys.present? %>   
       <ul class="padded-list">
-        <% @surveys.each do |survey| %>
-          <% if survey.status == "editing" %>
+        <% @draft_surveys.each do |survey| %>
           <%= render partial: 'surveys/list_item', locals: {survey: survey} %>
-          <% end %>
         <% end %>
       </ul>
     <% else %>
-      <p><%= link_to t(".no_surveys"), new_survey_path %></p>
+      <%= link_to t(".new_survey"), new_survey_path, class: "btn btn-info" %>
+      <br><br><br>
     <% end %>  
   </div>
 
     <div class="col-md-12"> 
-    <h4>Closed surveys</h4>
-    <% if @surveys.length > 0 %>
+    <% if @closed_surveys.present? %>
+    <h4>Closed surveys</h4> 
       <ul class="padded-list">
-        <% @surveys.each do |survey| %>
-          <% if survey.status == "closed" %>
+        <% @closed_surveys.each do |survey| %>
           <%= render partial: 'surveys/list_item', locals: {survey: survey} %>
-          <% end %>
         <% end %>
       </ul>
-    <% else %>
-      <p><%= link_to t(".no_surveys"), new_survey_path %></p>
     <% end %>  
   </div>
 </div>
