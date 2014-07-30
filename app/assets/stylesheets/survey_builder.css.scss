@@ -9,14 +9,35 @@ $turquoise: #5bc0de;
   padding: 20px 60px;
 }
 
+.tool-button {
+  background: whitesmoke;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 #sidebar {
   background: $darkest-grey;
+  color: white;
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   width: 300px;
   padding: 10px 20px;
+
+  hr {
+    margin: 5px 0;
+  }
+
+  .title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 2px;
+  }
 
   #tool-palette {
     background: $darkest-grey;
@@ -33,28 +54,6 @@ $turquoise: #5bc0de;
       margin: 0;
       padding: 0;
       overflow: hidden;
-    }
-
-    > ul li {
-      background: whitesmoke;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 10px;
-      cursor: pointer;
-      font-size: 16px;
-
-    }
-
-    hr {
-      margin: 5px 0;
-    }
-
-    .title {
-      color: white;
-      text-align: center;
-      text-transform: uppercase;
-      font-weight: 100;
-      letter-spacing: 2px;
     }
 
     .toolTip {
@@ -109,7 +108,7 @@ $turquoise: #5bc0de;
   background: whitesmoke;
   min-height: 350px;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 20px 20px;
   width: 100%;
 
   table {

@@ -1,12 +1,29 @@
 $(document).ready(function() {
-  $(".modal").on('shown.bs.modal', function() {
-    $(this).find("[autofocus]:first").focus();
-  });
 
   $(document).on("focus", "input", function(){
     $(this).on("mouseup.a keyup.a", function(e){      
       $(this).off("mouseup.a keyup.a").select();
     });
+  });
+
+  $(".tool-button").draggable({ 
+    helper: function(event){
+      return $(event.target).clone().css({
+        "list-style-type": "none",
+        background: "white",
+        width: $(event.target).width(),
+        border: "1px solid grey"
+      });},  
+    appendTo: 'body',
+    revert: 'invalid',
+    connectToSortable: '#input-list'
+  });
+
+  $("#input-list").sortable({
+    stop: function(event, ui){
+      ui.item.addClass("dragInsert");
+      ui.item.trigger("click");
+    }
   });
 });
 
@@ -57,14 +74,14 @@ PT.Input = function(){
 
   self.id = ko.observable("");
   self.survey_id = PT.survey.id;
-  self.label = ko.observable();
+  self.label = ko.observable("");
   self.input_type = ko.observable();
   self.media_type = ko.observable();
   self.annotate = ko.observable(false);
   self.required = ko.observable(false);
   self.options = ko.observableArray(["Option 1"]);
   self.order = "";
-  self.inEdit = ko.observable();
+  self.inEdit = ko.observable(true);
 
   self.save = function(self, event){
 
@@ -132,19 +149,25 @@ PT.SurveyModel = function(){
 
   self.addInput = function(event){
     event.stopPropagation();
-    // self.saveInputs();
+    // self.saveInputs()
 
     var input = new PT.Input();
     var type = PT.defaultControls[$(event.target).attr("rel")];
+    var index;
     
     if(type){
       input.input_type(type["input_type"]);
       input.media_type(type["media_type"]);
     }
 
-    input.inEdit(true);
-    self.inputs.push(input);
+    if($(event.target).hasClass("dragInsert")){
+      index = $(event.target).index();
+      $(event.target).remove();
+    } else {
+      index = self.inputs().length;
+    }
 
+    self.inputs.splice(index, 0, input);
     PT.selectedInput(input);
   };
 
@@ -154,23 +177,25 @@ PT.SurveyModel = function(){
   };
 
   self.removeInput = function(){
-    if(this.id === ""){
-      self.inputs.remove(this);
-    } else {
+    if(this.label() !== ""){
       var confirmed = window.confirm("Are you sure you want to delete this question?");
-      
+    
       if(confirmed){
         self.inputs.remove(this);
-        $.ajax({
-          url: "/surveys/" + PT.survey.id + "/inputs/" + this.id,
-          type: "DELETE",
-          contentType: "application/json",
-          dataType: "json"
-        })
-        .done(function(response){
-          console.log(response);
-        });  
+        if(this.id() !== ""){
+          $.ajax({
+            url: "/surveys/" + PT.survey.id + "/inputs/" + this.id(),
+            type: "DELETE",
+            contentType: "application/json",
+            dataType: "json"
+          })
+          .done(function(response){
+            console.log(response);
+          });
+        }  
       }
+    } else {
+      self.inputs.remove(this);
     }
   };
 
@@ -241,7 +266,7 @@ PT.getSurvey = function(url){
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
 
-    $("#tool-palette .tool-button").on("click", PT.survey.addInput);
+    $(document).on("click", ".tool-button", PT.survey.addInput);
   });
 };
 
@@ -252,7 +277,7 @@ PT.flashMessage = function(message, element){
 };
 
 PT.launchSurvey = function(){
-  if(PT.form.inputs() > 0){
+  if(PT.survey.inputs().length > 0){
     window.location.pathname = Routes.launch_survey_path(PT.survey.id);
   } else {
     PT.flashMessage(PT.flash["no_questions"], $("#new-survey-title"));

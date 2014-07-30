@@ -5,7 +5,7 @@
   PT.selectedInput = ko.observable();
   ko.applyBindings(PT.survey);
   $("#new-survey-modal").modal();
-  $("#tool-palette .tool-button").on("click", PT.survey.addInput);
+  $(document).on("click", ".tool-button", PT.survey.addInput);
   $("#launch-survey").on("click", PT.launchSurvey);
 </script>
 
