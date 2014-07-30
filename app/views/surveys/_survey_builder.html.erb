@@ -9,7 +9,7 @@
     <%= render 'new_survey_modal' %>
     <!-- Survey body -->
     <div id="survey-body">
-      <div data-bind="sortable: inputs">
+      <div data-bind="sortable: inputs" id="input-list">
         <div class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false }, valueUpdate: 'input'">
           <!-- ko if: inEdit -->
           <table>
@@ -58,7 +58,7 @@
             <tr>
               <th></th>
               <td>
-                <br><br>
+                <br>
                 <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
                 <br><br>
                 <a href="#" class="btn btn-info" data-bind="click: save"><%= t("defaults.save") %></a>
@@ -67,9 +67,9 @@
           </table>
 
           <div class="modify">
+            <a href="#" class="btn" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk"></span> </a>
             <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
           </div>
-          <br><br>
           <!-- /ko -->
 
           <!-- ko ifnot: inEdit -->
@@ -117,10 +117,22 @@
       <div id="tool-palette" class="clear">
         <h3 class="title" >Survey Editor</h3>
         <hr>
-        <%= render 'tool_palette' %>
+        <ul>
+          <li class="tool-button" rel="inputText">
+            <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".question") %>
+          </li>
+          <li class="tool-button" rel="inputLocation">
+            <span class="glyphicon glyphicon-globe"></span> <%= t(".location") %>
+          </li>
+          <li class="tool-button" rel="inputImage">
+            <span class="glyphicon glyphicon-picture"></span> <%= t(".image") %>
+          </li>
+        </ul>
       </div>
       <!-- /ko -->
       <div id="preview">
+        <h3 class="title">Survey Preview</h3>
+        <hr>
         <%= render 'android_preview' %>
       <div>
     </div>
