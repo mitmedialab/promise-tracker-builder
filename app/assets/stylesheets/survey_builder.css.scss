@@ -39,6 +39,15 @@ $turquoise: #5bc0de;
     letter-spacing: 2px;
   }
 
+  #preview {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .preview-container {
+    margin-bottom: 10px;
+  }
+
   #tool-palette {
     background: $darkest-grey;
     border-radius: 5px;

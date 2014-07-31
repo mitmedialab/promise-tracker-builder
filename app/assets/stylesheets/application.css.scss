@@ -68,6 +68,20 @@
   text-align: center;
 }
 
+.btn-slim {
+  padding: 4px 12px;
+}
+
+.btn-grey {
+  color: #333333;
+  background-color: #c8c8c8;
+  border-color: #333333;
+}
+
+.spaced {
+  letter-spacing: 1px;
+}
+
 // Header
 
 #header {
@@ -87,17 +101,6 @@
     display: inline-block;
     padding: 0 10px;
   }
-}
-
-// Flash messages
-
-#message {
-  margin: 10px 0;
-}
-
-.alerts {
-  text-align: center;
-  padding: 10px;
 }
 
 // Flash messages

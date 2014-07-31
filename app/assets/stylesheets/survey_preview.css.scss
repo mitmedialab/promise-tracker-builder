@@ -5,6 +5,8 @@
   margin: 0 auto;
   margin-bottom: 10px;
   font-size: 12px;
+  color: black !important;
+  text-align: left;
 
   p {
     max-height: 70px;
@@ -75,4 +77,21 @@
       padding: 5px 10px;
     }
   }
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and ( min-resolution: 192dpi),
+only screen and ( min-resolution: 2dppx) {
+  .input-preview {
+    width: 160px;
+    height: 320px;
+    padding: 110px 30px 40px 30px;
+  }
+
+  #preview {
+    margin-top: 30px;
+  }
+
+
 }
