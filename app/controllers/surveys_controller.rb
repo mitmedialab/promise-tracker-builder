@@ -8,7 +8,7 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
-    @flash = t('flash', scope: 'surveys.survey_builder').to_json
+    @flash = t('survey_builder', scope: 'surveys').to_json
   end
 
   def create
@@ -35,7 +35,7 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    @flash = t('flash', scope: 'surveys.survey_builder').to_json
+    @flash = t('survey_builder', scope: 'surveys').to_json
 
     if @survey.status == 'editing'
       respond_to do |format|

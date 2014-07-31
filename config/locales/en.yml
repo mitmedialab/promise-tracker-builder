@@ -49,7 +49,7 @@ en:
       preview_title: "Phone preview for:"
       no_questions: "No questions to preview"
       add_questions: "Add questions"
-      question_number: "Question number"  
+      question_number: "Question"  
       close_preview: "Close preview"
 
     survey_builder:
@@ -77,6 +77,10 @@ en:
         location: "Location"
         image: "Image"
       launch_survey: "Launch this survey"
+      editor_title: "Survey editor"
+      preview_title: "Preview"
+      show_preview: "Show preview"
+      hide_preview: "Hide preview"
 
       flash:
         no_title: "Please enter a title"

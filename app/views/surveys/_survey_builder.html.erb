@@ -90,11 +90,11 @@
             <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'date'">
             <span class="date-preview glyphicon glyphicon-calendar" data-bind="visible: input_type() === 'date'"></span>
 
-            <div class="android-button" data-bind="visible: input_type() === 'geopoint'">Record Location</div>
+            <div class="android-button" data-bind="visible: input_type() === 'geopoint'"><%= t(".record_location") %></div>
 
             <div data-bind="visible: input_type() === 'binary'">
-              <div class="android-button">Take picture</div>
-              <div class="android-button">Choose image</div>
+              <div class="android-button"><%= t(".take_picture") %></div>
+              <div class="android-button"><%= t(".choose_image") %></div>
             </div>
 
           </div>
@@ -115,7 +115,7 @@
     <div id="sidebar">
       <!-- ko if: PT.survey.status() === "editing" -->
       <div id="tool-palette" class="clear">
-        <h3 class="title" >Survey Editor</h3>
+        <h3 class="title" ><%= t(".editor_title") %></h3>
         <hr>
         <ul>
           <li class="tool-button" rel="inputText">
@@ -131,14 +131,15 @@
       </div>
       <!-- /ko -->
       <div id="preview">
-        <h3 class="title">Survey Preview</h3>
-        <hr>
+        <h4 class="title"><%= t(".preview_title") %></h4>
         <%= render 'android_preview' %>
+        <div id="preview-toggle" class="btn btn-grey btn-slim"><%= t(".hide_preview") %></div>
       <div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
+  $("#preview-toggle").on("click", PT.togglePreview);
   PT.flash = <%= raw @flash %>;
 </script>
