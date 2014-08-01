@@ -41,6 +41,17 @@ en:
       question_number: "Question"  
       close_preview: "Close preview"
 
+    launch:
+      launch_title: "Survey launch page"
+      return_to_edit: "Return to edit"
+      preview: "Preview"
+      launch_survey: "Launch this survey"
+      launch_info: "Once your survey is launched you will not be able to edit or change questions. Are you sure you want to launch now?"
+      launch_confirmation: "Once launched, this survey cannot be modified."
+      active: "This survey is active."
+      closed: "This survey is closed."
+      close_confirmation: "Once closed this survey cannot be reopened."
+
     survey_builder:
       edit_survey_title: "Edit survey title"
       preview: "Preview on phone" 
