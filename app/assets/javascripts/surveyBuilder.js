@@ -44,7 +44,7 @@ PT.defaultControls = {
 
   inputNumber: {
     label: "Number",
-    input_type: "decimal"
+    input_type: "int"
   },
 
   inputDate: {
@@ -82,6 +82,7 @@ PT.Input = function(){
   self.survey_id = PT.survey.id;
   self.label = ko.observable("");
   self.input_type = ko.observable();
+  self.decimal = false;
   self.media_type = ko.observable();
   self.annotate = ko.observable(false);
   self.required = ko.observable(false);
@@ -122,6 +123,7 @@ PT.Input = function(){
     self.survey_id = data.survey_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
+    self.decimal = data.input_type === 'decimal';
     self.media_type = ko.observable(data.media_type);
     self.required = ko.observable(data.required);
     self.options = ko.observableArray(_.values(data.options));
