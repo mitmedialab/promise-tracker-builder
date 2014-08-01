@@ -27,6 +27,17 @@ pt-BR:
 
   surveys:
 
+    launch:
+      launch_title: "Página de lançamento"
+      return_to_edit: "Editar formulário"
+      preview: "Pre-vizualização"
+      launch_survey: "Lançar este formulário"
+      launch_info: "Se você lança este formulário, não vai poder editar-lo mais. Você tem certeza que quer lançar?"
+      launch_confirmation: "Quando cliquer para lançar, este formulário fica finalizado."
+      active: "Este formulário está ativo."
+      closed: "Este formulário está fechado."
+      close_confirmation: "Se você fecha este formulário, não pode ativar-lo novamente."
+
     list_item:
       download_xml: "Baixar xForm" 
       confirm_delete: "Are you sure you want to delete this survey?" 
