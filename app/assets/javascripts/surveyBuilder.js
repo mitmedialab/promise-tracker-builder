@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
-  $('.modal').on('shown.bs.modal', function() {
-    $(this).find('[autofocus]').focus();
-  });
+  // $('.modal').on('shown.bs.modal', function() {
+  //   $(this).find('[autofocus]').focus();
+  // });
 
   $(document).on("focus", "input", function(){
     $(this).on("mouseup.a keyup.a", function(e){      
@@ -10,12 +10,14 @@ $(document).ready(function() {
     });
   });
 
+  // Make input buttons draggable
+
   $(".tool-button").draggable({ 
     helper: function(event){
-      return $(event.target).clone().css({
+      return $(event.target).clone().addClass("drag-insert").css({
         "list-style-type": "none",
         background: "white",
-        width: $(event.target).width(),
+        width: $(event.target).width() + 20,
         border: "1px solid grey"
       });},  
     appendTo: 'body',
@@ -25,7 +27,7 @@ $(document).ready(function() {
 
   $("#input-list").sortable({
     stop: function(event, ui){
-      ui.item.addClass("dragInsert");
+      ui.item.addClass("drag-insert");
       ui.item.trigger("click");
     }
   });
@@ -164,7 +166,7 @@ PT.SurveyModel = function(){
       input.media_type(type["media_type"]);
     }
 
-    if($(event.target).hasClass("dragInsert")){
+    if($(event.target).hasClass("drag-insert")){
       index = $(event.target).index();
       $(event.target).remove();
     } else {
@@ -201,6 +203,7 @@ PT.SurveyModel = function(){
     } else {
       self.inputs.remove(this);
     }
+    self.inputs.length === 0 ? PT.selectedInput("") : false;
   };
 
   self.addStarterQuestion = function(){

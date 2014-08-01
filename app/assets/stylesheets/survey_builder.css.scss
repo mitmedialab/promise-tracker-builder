@@ -9,7 +9,7 @@ $turquoise: #5bc0de;
   padding: 20px 60px;
 }
 
-.tool-button {
+#tool-palette .tool-button, .tool-button.drag-insert {
   background: whitesmoke;
   border-radius: 5px;
   padding: 10px;
@@ -40,7 +40,7 @@ $turquoise: #5bc0de;
   }
 
   #preview {
-    margin-top: 50px;
+    margin-top: 40px;
     text-align: center;
   }
 
