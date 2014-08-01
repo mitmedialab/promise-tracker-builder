@@ -1,7 +1,7 @@
 <div class="page-container">
   <h1><%= link_to @survey.title, survey_path(@survey) %></h1>
 
-  <% if @survey.status == "editing" %>
+  <% if @survey.status == "draft" %>
     <h2><%= t(".launch_title") %></h2>
     <%= t(".launch_info") %>
     <br><br>

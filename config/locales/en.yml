@@ -26,10 +26,17 @@ en:
       no_surveys: "Get started and build your first survey!"
 
   surveys:
+    status:
+      active: "Active"
+      closed: "Closed"
+      draft: "Draft"
+      copy: "copy"
 
     list_item:
       download_xml: "Download xForm" 
       confirm_delete: "Are you sure you want to delete this survey?" 
+      clone: "Clone"
+      confirm_clone: "Are you sure you want to duplicate this survey?"
 
     new_survey_modal:
       survey_title: "Enter survey title"  

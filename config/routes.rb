@@ -6,6 +6,7 @@ PromiseTracker::Application.routes.draw do
   get '/surveys/:id/launch', to: 'surveys#launch', as: 'launch_survey'
   get '/surveys/:id/activate', to: 'surveys#activate', as: 'activate_survey'
   get '/surveys/:id/close', to: 'surveys#close', as: 'close_survey'
+  get '/surveys/:id/clone', to: 'surveys#clone', as: 'clone_survey'
 
   resources :users
   resources :surveys do

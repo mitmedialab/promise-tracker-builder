@@ -26,6 +26,11 @@ pt-BR:
       no_surveys: "Crie o seu primeiro formulário!"
 
   surveys:
+    status:
+      active: "Ativo"
+      closed: "Fechado"
+      draft: "Rascunho"
+      copy: "cópia"
 
     launch:
       launch_title: "Página de lançamento"
@@ -40,7 +45,9 @@ pt-BR:
 
     list_item:
       download_xml: "Baixar xForm" 
-      confirm_delete: "Are you sure you want to delete this survey?" 
+      confirm_delete: "Você em certeza que quer eliminar este formulário?" 
+      clone: "Duplicar"
+      confirm_clone: "Você em certeza que quer duplicar este formulário?"
 
     new_survey_modal:
       survey_title: "Digite o título do formulário"  
