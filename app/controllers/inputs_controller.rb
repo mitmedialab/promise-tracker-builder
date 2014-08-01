@@ -18,7 +18,10 @@ class InputsController < ApplicationController
         options[make_guid(option, index)] = option
       end
       @input.options = options
+    elsif params[:decimal]
+      @input.input_type = 'decimal'
     end
+      
 
     @input.save
 

@@ -46,6 +46,7 @@ en:
       preview: "Preview on phone" 
       required: "Question required?"
       annotation: "Allow annotation?"
+      decimal: "Allow decimal?"
       options: "Options"
       add_new_option: "Click to add an option"
       question_label: "Question text"
