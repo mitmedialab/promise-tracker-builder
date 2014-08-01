@@ -1,8 +1,8 @@
 .status {
-  width: 75px;
+  width: 100px;
   margin: 0 10px;
 
-  &.editing {
+  &.draft {
     background: whitesmoke;
     color: grey;
     border: 1px solid grey;
@@ -18,4 +18,8 @@
     background: #CF5300;
     color: white;
   }
+}
+
+.padded-list .right {
+  padding-top: 5px;
 }

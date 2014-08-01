@@ -153,7 +153,7 @@ PT.SurveyModel = function(){
   self.id = "";
   self.title = ko.observable();
   self.inputs = ko.observableArray([]);
-  self.status= ko.observable("editing");
+  self.status= ko.observable("draft");
 
   self.addInput = function(event){
     event.stopPropagation();

@@ -5,6 +5,6 @@ class Survey < ActiveRecord::Base
   validates :title, presence: true
   validates :status, presence: true
 
-  STATUS =  ["editing", "active", "closed"]
+  STATUS =  ['draft', 'active', 'closed']
 
 end

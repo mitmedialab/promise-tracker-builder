@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :authenticate_user!, only: [:activate, :close, :destroy]
+  before_action :authenticate_user!, only: [:activate, :close, :destroy, :clone]
   layout 'survey_builder', only: [:new, :show]
 
   def index
@@ -17,7 +17,7 @@ class SurveysController < ApplicationController
     
     @survey.update_attributes(
       title: params[:title],
-      status: 'editing',
+      status: 'draft',
       guid: make_guid(params[:title], @survey.id)
     )
     if current_user
@@ -26,6 +26,24 @@ class SurveysController < ApplicationController
     end
 
     render json: @survey
+  end
+
+  def clone
+    @survey = Survey.find(params[:id])
+
+    @clone = @survey.dup
+    @clone.update_attributes(
+      title: @survey.title + " #{t('surveys.status.copy')}",
+      status: 'draft',
+      guid: make_guid(@clone.title, @clone.id)
+    )
+
+    @survey.inputs.each do |input|
+      @clone.inputs << input.dup
+    end
+
+    current_user.surveys << @clone
+    redirect_to survey_path(@clone)
   end
 
   def preview
@@ -37,7 +55,7 @@ class SurveysController < ApplicationController
     @survey = Survey.find(params[:id])
     @flash = t('survey_builder', scope: 'surveys').to_json
 
-    if @survey.status == 'editing'
+    if @survey.status == 'draft'
       respond_to do |format|
         format.html
         format.json { render json: @survey, include: :inputs }
