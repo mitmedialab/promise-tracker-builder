@@ -19,17 +19,6 @@ en:
       try: "Try out the survey builder"
       create_account: "Create a free account"
 
-
-  devise:
-    sign_in: "Sign in"
-    sign_out: "Sign out"
-    sign_up: "Sign up"
-    email: "Email"
-    password: "Password"
-    cofirm_password: "Password confirmation"
-    remember_me: "Remember me"
-    forgot_password: "Forgot your password?"
-
   users:
     show:
       new_survey: "Create new survey"
@@ -45,9 +34,9 @@ en:
     new_survey_modal:
       survey_title: "Enter survey title"  
 
-    preview: 
+    android_preview: 
       preview_title: "Phone preview for:"
-      no_questions: "No questions to preview"
+      no_questions: "No questions"
       add_questions: "Add questions"
       question_number: "Question"  
       close_preview: "Close preview"
@@ -68,6 +57,9 @@ en:
       record_location: "Record location"
       take_picture: "Take picture"
       choose_image: "Choose image"
+      add_question: "Add question"
+      add_location: "Get location"
+      add_image: "Take picture"
       input_types:
         text: "Text"
         number: "Number"
@@ -81,17 +73,25 @@ en:
       preview_title: "Preview"
       show_preview: "Show preview"
       hide_preview: "Hide preview"
+      first_question: "Your first question"
 
       flash:
         no_title: "Please enter a title"
         no_question_text: "Please enter question text"
         no_questions: "You must add questions before launching your survey"
-        first_question: "Your first question"
-
-    tool_palette:   
-      question: "Add question"
-      location: "Get location"
-      image: "Take picture"
 
     xml_show:
       annotate_hint: "Capture and annotate image"
+
+
+  devise:
+    sign_in: "Sign in"
+    sign_out: "Sign out"
+    sign_up: "Sign up"
+    email: "Email"
+    password: "Password"
+    cofirm_password: "Password confirmation"
+    remember_me: "Remember me"
+    forgot_password: "Forgot your password?"
+    cancel_account: "Cancel account" 
+    are_you_sure: "Are you sure?"

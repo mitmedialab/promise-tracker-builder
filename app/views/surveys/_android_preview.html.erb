@@ -8,12 +8,14 @@
   </div> 
   <!-- /ko -->
   <!-- ko ifnot: PT.selectedInput -->
-  <div class="input-preview select">
-    <h3><%= t(".no_questions") %></h3>
+  <div class="input-preview select center">
+    <h4><%= t(".no_questions") %></h4>
+    <br>
+    <div class="btn btn-info wrap" data-bind="click: addStarterQuestion"><%= t("surveys.survey_builder.add_question") %></div>
   </div> 
   <!-- /ko -->
 
-  <p><%= t("surveys.preview.question_number") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> of <span data-bind="text: PT.survey.inputs().length"></span></p>
+  <p><%= t(".question_number") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> of <span data-bind="text: PT.survey.inputs().length"></span></p>
 
   <div class="center">
     <div class="btn btn-info arrow" data-direction="left">
