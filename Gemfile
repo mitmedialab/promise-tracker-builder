@@ -17,6 +17,7 @@ gem 'active_model_serializers'
 gem 'handlebars_assets'
 gem 'devise'
 gem 'js-routes'
+gem 'opendatakit'
 
 gem 'therubyracer'
 
