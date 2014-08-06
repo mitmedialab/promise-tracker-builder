@@ -1,4 +1,4 @@
-pt:
+pt-BR:
   devise:
     confirmations:
       confirmed: "Sua conta foi confirmada com sucesso."
@@ -32,15 +32,17 @@ pt:
       updated_not_active: "Sua senha foi alterado com sucesso."
     registrations:
       destroyed: "Até mais! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
-      signed_up: "Bem-vindo! Você se registrou com sucesso."
-      signed_up_but_inactive: "Você se registrou com sucesso. No entanto, não podemos logá-lo, pois você ainda não ativou sua conta."
-      signed_up_but_locked: "Você se registrou com sucesso. No entanto, não podemos logá-lo, pois sua conta está travada."
-      signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para seu endereço de email. Por favor abra o link para ativar sua conta."
-      update_needs_confirmation: "Sua conta foi atualizada, mas precisamos verificar seu endereço de email. Por favor cheque seu email e clique no link de confirmação para confirmar seu novo endereço de email."
+      user:
+        signed_up: "Bem-vindo! Você se registrou com sucesso."
+        signed_up_but_inactive: "Você se registrou com sucesso. No entanto, não podemos logá-lo, pois você ainda não ativou sua conta."
+        signed_up_but_locked: "Você se registrou com sucesso. No entanto, não podemos logá-lo, pois sua conta está travada."
+        signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para seu endereço de email. Por favor abra o link para ativar sua conta."
+        update_needs_confirmation: "Sua conta foi atualizada, mas precisamos verificar seu endereço de email. Por favor cheque seu email e clique no link de confirmação para confirmar seu novo endereço de email."
       updated: "Você atualizou sua conta com sucesso."
     sessions:
-      signed_in: "Logado com sucesso."
-      signed_out: "Saiu com sucesso."
+      user:
+        signed_in: "Logado com sucesso."
+        signed_out: "Saiu com sucesso."
     unlocks:
       send_instructions: "Você receberá um email com instruções sobre como destravar sua conta em alguns minutos."
       send_paranoid_instructions: "Se sua conta existir, você receberá um email com instruções sobre como destravá-la em alguns minutos."

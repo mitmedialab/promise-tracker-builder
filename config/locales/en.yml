@@ -21,15 +21,26 @@ en:
 
   users:
     show:
-      new_survey: "Create new survey"
-      my_surveys: "My surveys"
-      no_surveys: "Get started and build your first survey!"
+      new_campaign: "Start new campaign"
+      my_campaigns: "My campaigns"
+      no_campaigns: "Get started and build your first campaign!"
 
   campaigns:
+    index:
+        new_survey: "Create new survey"
+        my_surveys: "My surveys"
+        no_surveys: "Get started and build your first survey!"
+
     new:
       campaign_title: "Create a new campaign"
       title_placeholder: "Name of campaign"
-      create_campaign: "Create"    
+      create_campaign: "Create" 
+
+    edit:
+      campaign_goal: "What do you hope to achieve with this campaign?"
+      data_collectors: "Who will collect the data for this campaign?"
+      submissions_target: "How many submissions do you hope to get?"
+      audience: "Who do you plan to share your data with in order to change this issue?"
 
   surveys:
     status:

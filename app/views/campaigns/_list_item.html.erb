@@ -1,0 +1,13 @@
+<li>
+  <%= link_to t("campaigns.status.#{campaign.status}").capitalize, campaign_path(campaign), class: "btn status #{campaign.status}" %>
+  <%= link_to campaign.title, campaign_path(campaign) %>
+  <div class="right">
+    <%= link_to t(".download_xml"), campaign_path(campaign, format: :xml) %>
+    <%= link_to clone_campaign_path(campaign), class: "pad-side", data: { confirm: t(".confirm_clone") } do %>
+      <i class="icon-copy"></i> <%= t(".clone") %>
+    <% end %>
+    <%= link_to campaign_path(campaign), class: "pad-side", method: :delete, data: { confirm: t(".confirm_delete") } do %>
+      <span class="glyphicon glyphicon-trash"></span>
+    <% end %>
+  </div>
+</li>

@@ -1,3 +1,59 @@
 // Place all the styles related to the campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.dark {
+  background: #333;
+
+  .container {
+    color: white;
+    padding: 20px 40px;
+  }
+}
+
+.btn h1 {
+  margin: 10px 20px;
+  font-weight: normal;
+}
+
+.goals-form {
+  border-radius: 10px;
+  color: black;
+  background: white;
+  padding: 40px;
+  margin: 20px 0;
+
+  label {
+    font-weight: normal;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .row.form-page {
+    display: none;
+    min-height: 300px;
+    position: relative;
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .button-group {
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
+
+      .btn {
+        margin: 0 100px;
+      }
+    }
+  }
+
+  #form-page-1 {
+    display: block;
+
+    .left-arrow {
+      opacity: 0;
+    }
+  }
+}
