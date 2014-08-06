@@ -25,6 +25,12 @@ en:
       my_surveys: "My surveys"
       no_surveys: "Get started and build your first survey!"
 
+  campaigns:
+    new:
+      campaign_title: "Create a new campaign"
+      title_placeholder: "Name of campaign"
+      create_campaign: "Create"    
+
   surveys:
     status:
       active: "Active"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806195818) do
+ActiveRecord::Schema.define(version: 20140807014947) do
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -46,15 +46,8 @@ ActiveRecord::Schema.define(version: 20140806195818) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "guid"
-    t.string   "status"
+    t.string   "status",      default: "draft"
     t.boolean  "template"
-    t.text     "why_collect_data"
-    t.text     "who_collects_data"
-    t.integer  "target_number_of_responses"
-    t.text     "desired_change"
-    t.text     "target_audience"
-    t.boolean  "related_to_promise"
-    t.text     "promise"
     t.integer  "campaign_id"
   end
 

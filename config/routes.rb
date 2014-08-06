@@ -1,4 +1,9 @@
 PromiseTracker::Application.routes.draw do
+  get "campaigns/new"
+  get "campaigns/create"
+  get "campaigns/edit"
+  get "campaigns/update"
+  get "campaigns/destroy"
   devise_for :users
   root to: 'home#index'
 
@@ -9,9 +14,8 @@ PromiseTracker::Application.routes.draw do
   get '/surveys/:id/clone', to: 'surveys#clone', as: 'clone_survey'
 
   resources :users
-  resources :campaigns do
-    resources :surveys do
-      resources :inputs
-    end
+  resources :campaigns
+  resources :surveys do
+    resources :inputs
   end
 end

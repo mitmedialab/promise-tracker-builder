@@ -7,11 +7,9 @@ pt-BR:
     edit: "Editar"
     close: "Fechar"
 
-
   layouts:
     header:
       home: "Página inicial"
-
 
   home:
     index:
@@ -24,6 +22,12 @@ pt-BR:
       new_survey: "Criar um novo formulário"
       my_surveys: "Meus formulários"
       no_surveys: "Crie o seu primeiro formulário!"
+
+  campaigns:
+    new:
+      campaign_title: "Criar uma nova campanha"
+      title_placeholder: "Nome da camphane"
+      create_campaign: "Criar"  
 
   surveys:
     status:
