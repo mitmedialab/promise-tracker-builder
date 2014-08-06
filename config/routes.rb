@@ -9,7 +9,9 @@ PromiseTracker::Application.routes.draw do
   get '/surveys/:id/clone', to: 'surveys#clone', as: 'clone_survey'
 
   resources :users
-  resources :surveys do
-    resources :inputs
+  resources :campaigns do
+    resources :surveys do
+      resources :inputs
+    end
   end
 end

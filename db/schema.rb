@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140720201537) do
+ActiveRecord::Schema.define(version: 20140806195818) do
+
+  create_table "campaigns", force: true do |t|
+    t.string   "title"
+    t.text     "goal"
+    t.integer  "submissions_target"
+    t.text     "audience"
+    t.text     "data_collectors"
+    t.string   "status",             default: "draft"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "inputs", force: true do |t|
     t.text     "label"
@@ -35,8 +48,17 @@ ActiveRecord::Schema.define(version: 20140720201537) do
     t.string   "guid"
     t.string   "status"
     t.boolean  "template"
+    t.text     "why_collect_data"
+    t.text     "who_collects_data"
+    t.integer  "target_number_of_responses"
+    t.text     "desired_change"
+    t.text     "target_audience"
+    t.boolean  "related_to_promise"
+    t.text     "promise"
+    t.integer  "campaign_id"
   end
 
+  add_index "surveys", ["campaign_id"], name: "index_surveys_on_campaign_id", using: :btree
   add_index "surveys", ["status"], name: "index_surveys_on_status", using: :btree
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
