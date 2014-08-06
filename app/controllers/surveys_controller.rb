@@ -1,3 +1,5 @@
+require 'rexml/document'
+
 class SurveysController < ApplicationController
   before_action :authenticate_user!, only: [:activate, :close, :destroy, :clone]
   layout 'survey_builder', only: [:new, :show]
@@ -17,13 +19,15 @@ class SurveysController < ApplicationController
     
     @survey.update_attributes(
       title: params[:title],
-      status: 'draft',
-      guid: make_guid(params[:title], @survey.id)
+      status: 'draft'
     )
+
+    @survey.guid =  make_guid(params[:title], @survey.id)
+
     if current_user
       @survey.user_id = current_user.id
-      @survey.save
     end
+    @survey.save
 
     render json: @survey
   end
@@ -59,11 +63,15 @@ class SurveysController < ApplicationController
       respond_to do |format|
         format.html
         format.json { render json: @survey, include: :inputs }
-        format.xml { response.headers['Content-Disposition'] = "attachment; filename='#{@survey.title}.xml'" }
       end
     else
       render :launch
     end  
+  end
+
+  def get_xml
+    @survey = Survey.find(params[:id])
+    render_to_string(layout: "surveys/xml")
   end
 
   def launch
@@ -72,9 +80,19 @@ class SurveysController < ApplicationController
 
   def activate
     @survey = Survey.find(params[:id])
-    @survey.update_attribute(:status, 'active')
+    xml_string = ApplicationController.new.render_to_string(template: "surveys/xform", locals: { survey: @survey })
+    aggregate = OdkInstance.new("http://18.85.22.29:8080/ODKAggregate/")
+    status = aggregate.uploadXmlform(xml_string)
 
-    redirect_to action: 'show'
+    if status == 201
+      @survey.update_attribute(:status, 'active')
+      flash.now[:notice] = t('.upload_success')
+      render action: 'launch'
+    else
+      flash.now[:notice] = t('.upload_error')
+      render :launch
+    end
+
   end
 
   def close

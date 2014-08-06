@@ -19,4 +19,7 @@ class ApplicationController < ActionController::Base
   def get_translations(entry, scope)
     t(entry, scope: scope) 
   end
+
+  def generate_xml(survey)
+  end
 end

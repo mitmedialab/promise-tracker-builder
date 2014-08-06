@@ -32,6 +32,10 @@ pt-BR:
       draft: "Rascunho"
       copy: "cópia"
 
+    activate: 
+      upload_error: "Disculpe. Seu formulário não poderia ser lançado."
+      upload_success: "Seu formulário foi lançado com sucesso!" 
+
     launch:
       launch_title: "Página de lançamento"
       return_to_edit: "Editar formulário"

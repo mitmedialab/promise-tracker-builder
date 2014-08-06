@@ -30,7 +30,11 @@ en:
       active: "Active"
       closed: "Closed"
       draft: "Draft"
-      copy: "copy"
+      copy: "Copy"
+
+    activate:
+      upload_error: "Your survey could not be launched."
+      upload_success: "Your survey was successfully launched!"
 
     list_item:
       download_xml: "Download xForm" 
