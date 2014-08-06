@@ -1,10 +1,6 @@
 $(document).ready(function() {
 
-  // $('.modal').on('shown.bs.modal', function() {
-  //   $(this).find('[autofocus]').focus();
-  // });
-
-  $(document).on("focus", "input", function(){
+  $(document).on("focus", ".input input", function(){
     $(this).on("mouseup.a keyup.a", function(e){      
       $(this).off("mouseup.a keyup.a").select();
     });

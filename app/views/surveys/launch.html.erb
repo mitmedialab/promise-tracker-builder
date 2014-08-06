@@ -9,7 +9,7 @@
     <%= link_to preview_survey_path(@survey), class: "btn btn-info open-preview", target: "_blank" do %>
       <i class="icon-mobile-phone"></i> <%= t(".preview") %>
     <% end %>
-    <%= link_to t(".launch_survey"), activate_survey_path(@survey), class: "btn btn-warning", confirm: t(".launch_confirmation") %>
+    <%= link_to t(".launch_survey"), activate_survey_path(@survey), class: "btn btn-warning", data: { confirm: t(".launch_confirmation") } %>
 
   <% elsif @survey.status == "active"  %>
     <%= t(".active") %><br>
