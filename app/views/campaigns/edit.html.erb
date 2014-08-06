@@ -1,2 +1,78 @@
-<h1>Campaigns#edit</h1>
-<p>Find me in app/views/campaigns/edit.html.erb</p>
+<div class="btn btn-info"><h1><%= @campaign.title %></h1></div>
+<h2 class="title"><%= t(".define_goals") %></h2>
+
+<div class="goals-form">
+  <%= form_for @campaign do |f| %>
+  <div class="row form-page" id="form-page-1">
+    <div class="col-sm-8">
+      <div class="form-group"> 
+        <%= f.label :goal, t(".campaign_goal") %>
+        <%= f.text_area :goal, rows: 5, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+    </div>
+    <%= render partial: 'form_buttons' %>
+  </div>
+
+  <div class="row form-page" id="form-page-2">
+    <div class="col-sm-8">
+      <div class="form-group"> 
+        <%= f.label :data_collectors, t(".data_collectors") %>
+        <%= f.text_area :data_collectors, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="form-group"> 
+        <%= f.label :submissions_target, t(".submissions_target") %>
+        <%= f.number_field :submissions_target, class: "block" %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+    </div>
+    <%= render partial: 'form_buttons' %>
+  </div>
+
+  <div class="row form-page" id="form-page-3">
+    <div class="col-sm-8">
+      <div class="form-group"> 
+        <%= f.label :audience, t(".audience") %>
+        <%= f.text_area :audience, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+    </div>
+
+    <div class="button-group center clear">
+      <div class="btn btn-info left-arrow">
+        BACK <span class="glyphicon glyphicon-chevron-left"></span>
+      </div>
+
+      <%= f.submit "FINISH", class: "btn btn-info" %>
+    </div>
+  </div> 
+
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $(".right-arrow").on("click", function(){
+    var page = $(this).parents(".form-page")
+    if (PT.validateInputs(page) == 0) {
+      page.next().fadeIn();
+      page.css({'display':'none'});
+    }
+  });
+
+  $(".left-arrow").on("click", function(){
+    $(this).parents(".form-page").prev().fadeIn();
+    $(this).parents(".form-page").css({'display':'none'});
+  });
+</script>

@@ -9,7 +9,12 @@ class SurveysController < ApplicationController
   end
 
   def new
-    @survey = Survey.new
+    if current_user
+      @campaign = Campaign.find(params[:campaign_id])
+      @survey = Survey.new(campaign_id: @campaign.id)
+    else
+      @survey = Survey.new
+    end
     @flash = t('survey_builder', scope: 'surveys').to_json
   end
 

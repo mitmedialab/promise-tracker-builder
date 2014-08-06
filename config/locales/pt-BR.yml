@@ -19,15 +19,23 @@ pt-BR:
 
   users:
     show:
-      new_survey: "Criar um novo formulário"
-      my_surveys: "Meus formulários"
-      no_surveys: "Crie o seu primeiro formulário!"
+      new_campaign: "Criar uma nova campanha"
+      my_campaigns: "Minhas campanhas"
+      no_campaigns: "Criar sua primeira campanha!"
 
   campaigns:
     new:
       campaign_title: "Criar uma nova campanha"
       title_placeholder: "Nome da camphane"
-      create_campaign: "Criar"  
+      create_campaign: "Criar" 
+
+    edit:
+      define_goals: "Definir seus objetivos"
+      campaign_goal: "O que você quer realizar com esta campanha?"
+      data_collectors: "Quem vai coletar os dados para a campanha?"
+      submissions_target: "Quantos respostas você quer obter?" 
+      audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
+      start_survey: "Começar o formulário"
 
   surveys:
     status:
@@ -115,7 +123,7 @@ pt-BR:
     sign_up: "Criar uma conta"
     email: "E-mail"
     password: "Senha"
-    cofirm_password: "Confirmação de senha"
+    confirm_password: "Confirmação de senha"
     remember_me: "Remember me"
     forgot_password: "Esqueceu sua senha?" 
     cancel_account: "Cancelar conta" 
