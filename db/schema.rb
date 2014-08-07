@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807014947) do
+ActiveRecord::Schema.define(version: 20140807190734) do
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(version: 20140807014947) do
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
 
   create_table "inputs", force: true do |t|
     t.text     "label"
@@ -46,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140807014947) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "guid"
-    t.string   "status",      default: "draft"
+    t.string   "status"
     t.boolean  "template"
     t.integer  "campaign_id"
   end
