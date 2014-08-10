@@ -4,8 +4,4 @@ class Survey < ActiveRecord::Base
   has_many :inputs
 
   validates :title, presence: true
-  validates :status, presence: true
-
-  STATUS =  ['draft', 'active', 'closed']
-
 end
