@@ -7,9 +7,9 @@
       e.preventDefault();
   });
   PT.survey = new PT.SurveyModel();
+  PT.survey.campaign_id = <%= raw @campaign.id %>;
   PT.selectedInput = ko.observable();
   ko.applyBindings(PT.survey);
-  $("#new-survey-modal").modal();
   $(document).on("click", ".tool-button", PT.survey.addInput);
   $("#launch-survey").on("click", PT.launchSurvey);
 </script>

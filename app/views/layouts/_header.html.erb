@@ -1,6 +1,6 @@
 <div id="header">
   <% if current_user %>
-    <%= link_to t("users.show.my_surveys"), user_path(current_user), class: "btn btn-info" %>
+    <%= link_to t("users.show.my_campaigns"), user_path(current_user), class: "btn btn-info" %>
   <% else %>
     <%= link_to t(".home"), root_path, class: "btn btn-info" %>
   <% end %>

@@ -27,15 +27,33 @@ pt-BR:
     new:
       campaign_title: "Criar uma nova campanha"
       title_placeholder: "Nome da camphane"
-      create_campaign: "Criar" 
+      create_campaign: "Criar"
+
+    campaign_title_modal:
+      campaign_title: "Nome da campanha"
+      title_placeholder: "Nome da camphane"
+      save: "Salvar" 
+
+    list_item:
+      confirm_delete: "Você tem certeza que quer eliminar esta campanha?"  
 
     edit:
+      edit_title: "Editar nome"
       define_goals: "Definir seus objetivos"
-      campaign_goal: "O que você quer realizar com esta campanha?"
+      goal: "O que você quer realizar com esta campanha?"
       data_collectors: "Quem vai coletar os dados para a campanha?"
       submissions_target: "Quantos respostas você quer obter?" 
       audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
       start_survey: "Começar o formulário"
+      field_required: "*Por favor digite sua reposta para continuar"
+
+    show:
+      edit_campaign: "Editar campanha"  
+      edit_survey: "Editar formulário"
+
+    form_buttons:  
+      next: "Próximo"
+      back: "De volta"
 
   surveys:
     status:
@@ -69,11 +87,10 @@ pt-BR:
       survey_title: "Digite o título do formulário"  
 
     android_preview: 
-      preview_title: "Phone preview for:"
       no_questions: "Formulário vazio"
-      add_questions: "Add questions"
-      question_number: "Question"  
-      close_preview: "Close preview"
+      add_questions: "Adicionar pergunta"
+      question: "Pergunta"  
+      of: "de"
 
     survey_builder:
       edit_survey_title: "Edit survey title"
@@ -102,7 +119,6 @@ pt-BR:
         select_many: "Selecionar várias"
         location: "Localização"
         image: "Imagem"
-      launch_survey: "Lançar este formulário"
       editor_title: "Constructor"
       preview_title: "Pre-vizualização"
       show_preview: "Mostrar pre-vizualização"

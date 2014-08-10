@@ -126,6 +126,13 @@
   height: 50px;
 }
 
+.has-error {
+  .message {
+    color: #a94442;
+    margin-top: 10px;
+  }
+}
+
 
 // Surveys
 

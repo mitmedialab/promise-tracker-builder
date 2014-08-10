@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $(document).on("focus", ".input input", function(){
+  $(document).on("focus", ".replace-text, .options input", function(){
     $(this).on("mouseup.a keyup.a", function(e){      
       $(this).off("mouseup.a keyup.a").select();
     });
@@ -148,12 +148,12 @@ PT.SurveyModel = function(){
 
   self.id = "";
   self.title = ko.observable();
+  self.campaign_id = "";
   self.inputs = ko.observableArray([]);
-  self.status= ko.observable("draft");
 
   self.addInput = function(event){
     event.stopPropagation();
-    // self.saveInputs()
+    self.saveInputs();
 
     var input = new PT.Input();
     var type = PT.defaultControls[$(event.currentTarget).attr("rel")];
@@ -217,8 +217,9 @@ PT.SurveyModel = function(){
 
   /// Update order of all inputs
   self.saveOrder = function(){
+    self.saveInputs();
     // Hack
-    window.location.pathname = Routes.user_path(PT.survey.user_id);
+    window.location.pathname = Routes.campaign_path(PT.survey.campaign_id);
     
     $.ajax({
       url: "/surveys/" + PT.survey.id,
@@ -265,6 +266,7 @@ PT.getSurvey = function(url){
     PT.survey = new PT.SurveyModel();
 
     PT.survey.id = response.id;
+    PT.survey.campaign_id = response.campaign_id;
     PT.survey.user_id = response.user_id;
     PT.survey.title = ko.observable(response.title);
     PT.survey.status = ko.observable(response.status);

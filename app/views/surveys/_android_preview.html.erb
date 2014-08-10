@@ -15,7 +15,7 @@
   </div> 
   <!-- /ko -->
 
-  <p><%= t(".question_number") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> of <span data-bind="text: PT.survey.inputs().length"></span></p>
+  <p><%= t(".question") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> <%= t(".of") %> <span data-bind="text: PT.survey.inputs().length"></span></p>
 
   <div class="center">
     <div class="btn btn-info arrow" data-direction="left">

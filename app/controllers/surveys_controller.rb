@@ -11,7 +11,8 @@ class SurveysController < ApplicationController
   def new
     if current_user
       @campaign = Campaign.find(params[:campaign_id])
-      @survey = Survey.new(campaign_id: @campaign.id)
+      @survey = Survey.create(campaign_id: @campaign.id, title: @campaign.title)
+      redirect_to survey_path(@survey)
     else
       @survey = Survey.new
     end
@@ -24,7 +25,7 @@ class SurveysController < ApplicationController
     
     @survey.update_attributes(
       title: params[:title],
-      status: 'draft'
+      campaign_id: params[:campaign_id]
     )
 
     @survey.guid =  make_guid(params[:title], @survey.id)
@@ -37,24 +38,6 @@ class SurveysController < ApplicationController
     render json: @survey
   end
 
-  def clone
-    @survey = Survey.find(params[:id])
-
-    @clone = @survey.dup
-    @clone.update_attributes(
-      title: @survey.title + " #{t('surveys.status.copy')}",
-      status: 'draft',
-      guid: make_guid(@clone.title, @clone.id)
-    )
-
-    @survey.inputs.each do |input|
-      @clone.inputs << input.dup
-    end
-
-    current_user.surveys << @clone
-    redirect_to survey_path(@clone)
-  end
-
   def preview
     @survey = Survey.find(params[:id])
     render layout: 'preview'
@@ -64,14 +47,10 @@ class SurveysController < ApplicationController
     @survey = Survey.find(params[:id])
     @flash = t('survey_builder', scope: 'surveys').to_json
 
-    if @survey.status == 'draft'
-      respond_to do |format|
-        format.html
-        format.json { render json: @survey, include: :inputs }
-      end
-    else
-      render :launch
-    end  
+    respond_to do |format|
+      format.html
+      format.json { render json: @survey, include: :inputs }
+    end 
   end
 
   def get_xml

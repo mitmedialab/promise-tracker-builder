@@ -10,7 +10,7 @@
     <% if @campaigns.present? %>
     <ul class="padded-list">
       <% @campaigns.each do |campaign| %>
-        <%= render partial: 'campaign/list_item', locals: {campaign: campaign} %>
+        <%= render partial: 'campaigns/list_item', locals: {campaign: campaign} %>
       <% end %>
     </ul>
     <% end %>  
