@@ -4,15 +4,14 @@
       <div class="modal-header">
         <h4 class="modal-title"><%= t(".campaign_title") %></h4>
       </div>
+      <%= form_for @campaign do |f| %>
       <div class="modal-body">
-        <%= form_for @campaign do |f| %>
           <%= f.text_field :title, class: "form-control", placeholder: t(".title_placeholder") %>
       </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary"><%= t(".create_campaign") %></button>
-        </div>
-        <% end %>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"><%= t(".create_campaign") %></button>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
