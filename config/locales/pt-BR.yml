@@ -48,8 +48,11 @@ pt-BR:
       field_required: "*Por favor digite sua reposta para continuar"
 
     show:
-      edit_campaign: "Editar campanha"  
+      campaign_goals: "Objetivos"
+      campaign_survey: "Formulário"
+      edit_goals: "Editar objetivos"  
       edit_survey: "Editar formulário"
+      launch_survey: "Lançar este formulário"
 
     form_buttons:  
       next: "Próximo"
@@ -92,9 +95,8 @@ pt-BR:
       question: "Pergunta"  
       of: "de"
 
-    survey_builder:
+    survey_body:
       edit_survey_title: "Edit survey title"
-      preview: "Vizualizar no celular" 
       required: "Pergunta obrigatoria?"
       annotation: "Permitir anotação?"
       decimal: "Permitir decimal?"
@@ -103,14 +105,12 @@ pt-BR:
       question_label: "Texto da pergunta"
       question_placeholder: "Digite a pergunta aqui"
       answer_type: "Tipo de reposta"
+      first_question: "A sua primeira pergunta..."
       their_answer: "Reposta"
       answer_label: "Vizualização da reposta"
       record_location: "Gravar localização"
       take_picture: "Tirar foto"
       choose_image: "Escolher imagem"
-      add_question: "Adicionar pergunta"
-      add_location: "Pegar localização"
-      add_image: "Tirar foto"
       input_types:
         text: "Texto"
         number: "Número"
@@ -119,11 +119,15 @@ pt-BR:
         select_many: "Selecionar várias"
         location: "Localização"
         image: "Imagem"
-      editor_title: "Constructor"
+
+    survey_builder:
+      editor_title: "Constructor"  
+      add_question: "Adicionar pergunta"
+      add_location: "Pegar localização"
+      add_image: "Tirar foto"
       preview_title: "Pre-vizualização"
       show_preview: "Mostrar pre-vizualização"
       hide_preview: "Esconder pre-vizualização"
-      first_question: "A sua primeira pergunta..."
 
       flash:
         no_title: "Por favor digite um título"

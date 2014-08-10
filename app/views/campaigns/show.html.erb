@@ -1,11 +1,14 @@
 <div class="btn btn-title">
   <%= @campaign.title %>
 </div>
-<br>
-<%= link_to t(".edit_campaign"), edit_campaign_path(@campaign) %>
 <br><br>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-7" id="campaign-goals">
+    <div class="section-header">
+      <h3 class="title inline"><%= t(".campaign_goals") %></h3>
+      <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-info right" %>
+    </div>
+
     <label><%= t("campaigns.edit.goal") %></label>
     <p><%= @campaign.goal %></p>
 
@@ -17,13 +20,21 @@
 
     <label><%= t("campaigns.edit.audience") %></label>
     <p><%= @campaign.audience %></p>
-
   </div>
-  <div class="col-md-6">
-    <% if @campaign.survey %>
-      <%= link_to t(".edit_survey"), survey_path(@campaign.survey), class: "btn btn-info" %>
+
+  <div class="col-md-5" id="campaign-survey">
+    <div class="section-header">
+      <h3 class="title inline"><%= t(".campaign_survey") %></h3>
+      <% if @survey %>
+      <%= link_to t(".edit_survey"), survey_path(@survey), class: "btn btn-info right" %>
+      <% end %>
+    </div>
+    <% if @survey %>
+    <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
+    <br>
+    <%= link_to t(".launch_survey"), launch_survey_path(@survey), class: "btn btn-warning form-control" %>
     <% else %>
-      <%= link_to t("campaigns.index.new_survey"), new_survey_path(campaign_id: @campaign.id), class: "btn btn-info" %>
+    <%= link_to t("campaigns.index.new_survey"), new_survey_path(campaign_id: @campaign.id), class: "btn btn-info" %>
     <% end %>
   </div>
 </div>

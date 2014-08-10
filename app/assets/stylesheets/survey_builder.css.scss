@@ -150,10 +150,6 @@ $turquoise: #5bc0de;
     min-height: 30px;
     padding: 20px; 
     position: relative;
-
-    &.selected {
-      border-left: 5px solid $turquoise;
-    }
       
     .form-control {
       margin-bottom: 5px;
@@ -240,5 +236,9 @@ $turquoise: #5bc0de;
       color: grey;
     }
   }
+}
+
+#workspace .input.selected {
+  border-left: 5px solid $turquoise;
 }
 
