@@ -2,7 +2,53 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.status {
+  width: 100px;
+  margin: 0 10px;
+
+  &.draft {
+    background: whitesmoke;
+    color: grey;
+    border: 1px solid grey;
+  }
+
+  &.active {
+    background: #1abc9c;
+    color: white;
+    box-shadow: none;
+  }
+
+  &.closed {
+    background: #CF5300;
+    color: white;
+  }
+}
+
+.padded-list .right {
+  padding-top: 5px;
+}
+
 // Campaign view
+
+.section-header {
+  border-bottom: 1px solid grey;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+
+  .btn {
+    margin-top: 15px;
+  }
+}
+
+#campaign-goals {
+  padding-right: 60px;
+}
+
+#campaign-survey {
+  #survey-body .modify {
+    display: none;
+  }
+}
 
 .question-group {
   background: whitesmoke;

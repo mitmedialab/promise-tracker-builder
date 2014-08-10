@@ -12,6 +12,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
   end
 
   def edit
@@ -51,6 +52,8 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
+    Campaign.delete(params[:id])
+    redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
 
