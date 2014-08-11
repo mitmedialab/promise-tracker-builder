@@ -22,7 +22,6 @@ class InputsController < ApplicationController
       @input.input_type = 'decimal'
     end
       
-
     @input.save
 
     render json: @input
@@ -37,7 +36,7 @@ class InputsController < ApplicationController
   private
 
   def input_params(params)
-    params.require(:input).permit(:label, :required, :input_type, :media_type, :annotate, :order, :options, :survey_id)
+    params.require(:input).permit(:survey_id, :label, :input_type, :media_type, :options, :decimal, :required, :is_valid, :annotate, :order)
   end
 
 end
