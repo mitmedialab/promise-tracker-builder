@@ -87,14 +87,21 @@ PT.Input = function(){
   self.inEdit = ko.observable(true);
   self.is_valid = ko.observable(true);
 
-  self.save = function(self, event){
-    self.options(self.options().filter(function(option) { return option.length > 0;}));
-    if(!self.label()){
+  self.validate = function(){
+    if(!self.label()) {
       self.is_valid(false);
+    } else if(self.input_type() == "select" || self.input_type() == "select1"){
+      if (self.options().length == 0){
+        self.is_valid(false);
+      } else {
+        self.is_valid(true);
+      }
     } else {
       self.is_valid(true);
     }
+  };
 
+  self.save = function(self, event){
     $.ajax({
       url: "/surveys/" + PT.survey.id + "/inputs",
       type: "POST",
@@ -105,11 +112,14 @@ PT.Input = function(){
     .done(function(response) {
       console.log(response);
       self.inEdit(false);
+      self.options(_.values(response.options));
 
       if(self.id() === ""){
         self.id(response.id);
       }
     });
+
+    self.validate();
   };
 
   self.map = function(data){
@@ -180,26 +190,20 @@ PT.SurveyModel = function(){
   };
 
   self.removeInput = function(){
-    if(this.label() !== ""){
-      var confirmed = window.confirm("Are you sure you want to delete this question?");
-    
-      if(confirmed){
-        self.inputs.remove(this);
-        if(this.id() !== ""){
-          $.ajax({
-            url: "/surveys/" + PT.survey.id + "/inputs/" + this.id(),
-            type: "DELETE",
-            contentType: "application/json",
-            dataType: "json"
-          })
-          .done(function(response){
-            console.log(response);
-          });
-        }  
-      }
-    } else {
+    var confirmed = window.confirm("Are you sure you want to delete this question?");
+    if(confirmed){
       self.inputs.remove(this);
-    }
+      $.ajax({
+        url: "/surveys/" + PT.survey.id + "/inputs/" + this.id(),
+        type: "DELETE",
+        contentType: "application/json",
+        dataType: "json"
+      })
+      .done(function(response){
+        console.log(response);
+      }); 
+    } 
+
     self.inputs.length === 0 ? PT.selectedInput("") : false;
   };
 

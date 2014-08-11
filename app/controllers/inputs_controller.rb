@@ -1,9 +1,5 @@
 class InputsController < ApplicationController
 
-  def new
-    binding.pry
-  end
-
   def create
     survey = Survey.find(params[:input][:survey_id])
     input = params[:input]
@@ -13,11 +9,13 @@ class InputsController < ApplicationController
     @input.guid = make_guid(@input.label, @input.id)
 
     if @input.input_type == 'select' || @input.input_type == 'select1'
-      options = {}
-      params[:options].each_with_index do |option, index|
-        options[make_guid(option, index)] = option
+      if params[:options]
+        options = {}
+        params[:options].each_with_index do |option, index|
+          options[make_guid(option, index)] = option if option.present?
+        end
+        @input.options = options
       end
-      @input.options = options
     elsif params[:decimal]
       @input.input_type = 'decimal'
     end

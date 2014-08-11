@@ -27,7 +27,7 @@ pt-BR:
     activate: 
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
-       
+
     new:
       campaign_title: "Criar um novo acão"
       title_placeholder: "Nome da acão"
@@ -108,7 +108,7 @@ pt-BR:
       answer_type: "Tipo de reposta"
       first_question: "A sua primeira pergunta..."
       their_answer: "Reposta"
-      answer_label: "Vizualização da reposta"
+      answer_label: "Pre-vizualização da reposta"
       record_location: "Gravar localização"
       take_picture: "Tirar foto"
       choose_image: "Escolher imagem"
