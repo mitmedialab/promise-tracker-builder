@@ -85,33 +85,31 @@ PT.Input = function(){
   self.options = ko.observableArray(["Option 1"]);
   self.order = "";
   self.inEdit = ko.observable(true);
+  self.is_valid = ko.observable(true);
 
   self.save = function(self, event){
-
-    if(self.label()){
-      $("#message").fadeOut();
-      self.inEdit(false);
-      self.options(self.options().filter(function(option) { return option.length > 0;}));
-
-      $.ajax({
-        url: "/surveys/" + PT.survey.id + "/inputs",
-        type: "POST",
-        contentType: "application/json",
-        dataType: "json",
-        data: ko.toJSON(self)
-      })
-      .done(function(response) {
-        console.log(response);
-        $("#new-survey-modal").modal("hide");
-
-        if(self.id() === ""){
-          self.id(response.id);
-        }
-      });
+    self.options(self.options().filter(function(option) { return option.length > 0;}));
+    if(!self.label()){
+      self.is_valid(false);
     } else {
-      var input = $(event.target).closest(".input");
-      PT.flashMessage(PT.flash["no_question_text"], input);
+      self.is_valid(true);
     }
+
+    $.ajax({
+      url: "/surveys/" + PT.survey.id + "/inputs",
+      type: "POST",
+      contentType: "application/json",
+      dataType: "json",
+      data: ko.toJSON(self)
+    })
+    .done(function(response) {
+      console.log(response);
+      self.inEdit(false);
+
+      if(self.id() === ""){
+        self.id(response.id);
+      }
+    });
   };
 
   self.map = function(data){
@@ -125,6 +123,7 @@ PT.Input = function(){
     self.options = ko.observableArray(_.values(data.options));
     self.order = data.order;
     self.inEdit = ko.observable(false);
+    self.is_valid = ko.observable(data.is_valid);
   }; 
 
   self.edit = function(){

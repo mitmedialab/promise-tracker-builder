@@ -119,6 +119,7 @@ pt-BR:
         select_many: "Selecionar várias"
         location: "Localização"
         image: "Imagem"
+      blank_input_error: "O texto da pergunta não pode estar em branco"  
 
     survey_builder:
       editor_title: "Constructor"  

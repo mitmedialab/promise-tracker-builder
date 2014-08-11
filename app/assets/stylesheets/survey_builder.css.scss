@@ -3,10 +3,15 @@ $medium-grey: #BABABA;
 $link: #428bca;
 $link-hover: #005580;
 $turquoise: #5bc0de;
+$error: #B94A48;
 
 #workspace {
   margin: 0 300px 40px 0;
   padding: 20px 60px;
+}
+
+ol#input-list {
+  padding-left: 25px;
 }
 
 #tool-palette .tool-button, .tool-button.drag-insert {
@@ -120,7 +125,7 @@ $turquoise: #5bc0de;
   background: whitesmoke;
   min-height: 350px;
   margin-top: 10px;
-  padding: 20px 20px;
+  padding: 20px;
   width: 100%;
 
   table {
@@ -150,6 +155,22 @@ $turquoise: #5bc0de;
     min-height: 30px;
     padding: 20px; 
     position: relative;
+
+    &.valid {
+      border-left: 5px solid $error !important;
+
+      &:before {
+        font-family: 'FontAwesome';
+        content: '\f071';
+        font-size: 1em;
+        vertical-align: middle;
+        padding: 10px 25px;
+        position: absolute;
+        top: 50px;
+        left: -52px;
+        color: $error;
+      }
+    }
       
     .form-control {
       margin-bottom: 5px;
@@ -240,5 +261,24 @@ $turquoise: #5bc0de;
 
 #workspace .input.selected {
   border-left: 5px solid $turquoise;
+}
+
+
+// Media Queries
+@media (max-width: 1024px) {
+  #workspace {
+    .input {
+      table {
+        clear: both;
+        width: 100%;
+        margin-top: 25px;
+      }
+
+      .modify {
+        right: 10px;
+      }
+    }
+  }
+
 }
 

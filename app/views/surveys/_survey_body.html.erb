@@ -1,6 +1,6 @@
 <div id="survey-body">
-  <div data-bind="foreach: inputs" id="input-list">
-    <div class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false }, valueUpdate: 'input'">
+  <ol data-bind="foreach: inputs" id="input-list">
+    <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false, valid: !is_valid() }, valueUpdate: 'input'">
       <!-- ko if: inEdit -->
       <table>
         <tr>
@@ -80,7 +80,7 @@
         </ul>
       </div>
       <div class="answer">
-        <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'date'">
+        <div class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'int' || input_type() === 'date'"></div>
         <span class="date-preview glyphicon glyphicon-calendar" data-bind="visible: input_type() === 'date'"></span>
 
         <div class="android-button" data-bind="visible: input_type() === 'geopoint'"><%= t(".record_location") %></div>
@@ -92,8 +92,8 @@
 
       </div>
       <!-- /ko -->
-    </div>
-  </div>
+    </li>
+  </ol>
 </div>
 
 <script type="text/javascript">
