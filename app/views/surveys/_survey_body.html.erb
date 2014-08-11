@@ -1,5 +1,5 @@
 <div id="survey-body">
-  <ol data-bind="foreach: inputs" id="input-list">
+  <ol data-bind="sortable: inputs" id="input-list">
     <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false, valid: !is_valid() }, valueUpdate: 'input'">
       <!-- ko if: inEdit -->
       <table>

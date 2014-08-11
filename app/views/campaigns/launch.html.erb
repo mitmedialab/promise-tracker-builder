@@ -1,7 +1,7 @@
 <div class="page-container">
-  <h1><%= link_to @survey.title, survey_path(@survey) %></h1>
+  <h1><%= link_to @campaign.title, campaign_path(@campaign) %></h1>
 
-  <% if @survey.status == "draft" %>
+  <% if @campaign.status == "draft" %>
     <h2><%= t(".launch_title") %></h2>
     <%= t(".launch_info") %>
     <br><br>
@@ -9,12 +9,12 @@
     <%= link_to preview_survey_path(@survey), class: "btn btn-info open-preview", target: "_blank" do %>
       <i class="icon-mobile-phone"></i> <%= t(".preview") %>
     <% end %>
-    <%= link_to t(".launch_survey"), activate_survey_path(@survey), class: "btn btn-warning", data: { confirm: t(".launch_confirmation") } %>
+    <%= link_to t(".launch_campaign"), activate_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t(".launch_confirmation") } %>
 
-  <% elsif @survey.status == "active"  %>
+  <% elsif @campaign.status == "active"  %>
     <%= t(".active") %><br>
     Overview:<br><br>
-    <%= link_to t(".close"), close_survey_path(@survey), class: "btn btn-warning", confirm: t(".close_confirmation") %>
+    <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning", confirm: t(".close_confirmation") %>
 
   <% else %>
     <%= t(".closed") %>

@@ -19,23 +19,23 @@ class SurveysController < ApplicationController
     @flash = t('survey_builder', scope: 'surveys').to_json
   end
 
-  def create
-    @survey = Survey.find_or_create_by(id: params[:id])
-    @flash = t('flash', scope: 'surveys.survey_builder')
-    
+  def update
+    @survey = Survey.find(params[:id])
+    inputs = params[:inputs]
+
     @survey.update_attributes(
       title: params[:title],
-      campaign_id: params[:campaign_id]
+      campaign_id: params[:campaign_id],
+      guid: make_guid(params[:title], @survey.id)
     )
 
-    @survey.guid =  make_guid(params[:title], @survey.id)
-
-    if current_user
-      @survey.user_id = current_user.id
+    inputs.each_with_index do |input, index|
+      item = Input.find_or_create_by(id: input[:id])
+      item.update_attribute(:order, index)
     end
-    @survey.save
 
-    render json: @survey
+    render nothing: true
+
   end
 
   def preview
@@ -56,47 +56,6 @@ class SurveysController < ApplicationController
   def get_xml
     @survey = Survey.find(params[:id])
     render_to_string(layout: "surveys/xml")
-  end
-
-  def launch
-    @survey = Survey.find(params[:id])
-  end
-
-  def activate
-    @survey = Survey.find(params[:id])
-    xml_string = ApplicationController.new.render_to_string(template: "surveys/xform", locals: { survey: @survey })
-    aggregate = OdkInstance.new("http://18.85.22.29:8080/ODKAggregate/")
-    status = aggregate.uploadXmlform(xml_string)
-
-    if status == 201
-      @survey.update_attribute(:status, 'active')
-      flash.now[:notice] = t('.upload_success')
-      render action: 'launch'
-    else
-      flash.now[:notice] = t('.upload_error')
-      render :launch
-    end
-
-  end
-
-  def close
-    @survey = Survey.find(params[:id])
-    @survey.update_attribute(:status, 'closed')
-
-    redirect_to action: 'show'
-  end
-
-  def update
-    @survey = Survey.find(params[:id])
-    inputs = params[:inputs]
-
-    inputs.each_with_index do |input, index|
-      item = Input.find_or_create_by(id: input[:id])
-      item.update_attribute(:order, index)
-    end
-
-    render nothing: true
-
   end
 
   def destroy
