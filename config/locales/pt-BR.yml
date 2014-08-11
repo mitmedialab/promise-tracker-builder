@@ -53,6 +53,7 @@ pt-BR:
       edit_goals: "Editar objetivos"  
       edit_survey: "Editar formulário"
       launch_survey: "Lançar este formulário"
+      create_survey: "Criar o formulário para esta campanha"
 
     form_buttons:  
       next: "Próximo"
