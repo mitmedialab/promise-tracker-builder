@@ -6,7 +6,7 @@
   <div class="col-md-7" id="campaign-goals">
     <div class="section-header">
       <h3 class="title inline"><%= t(".campaign_goals") %></h3>
-      <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-info right" %>
+      <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-default right" %>
     </div>
 
     <label><%= t("campaigns.edit.goal") %></label>
@@ -33,7 +33,7 @@
       <% if @survey %>
       <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
       <br>
-      <%= link_to t(".launch_survey"), launch_survey_path(@survey), class: "btn btn-warning form-control" %>
+      <%= link_to t(".launch_survey"), launch_campaign_path(@campaign), class: "btn btn-warning form-control" %>
       <% else %>
       <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-form-button" do %>
         <span class="glyphicon glyphicon-plus-sign"></span>

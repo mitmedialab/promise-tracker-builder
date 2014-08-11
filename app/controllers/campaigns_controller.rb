@@ -51,6 +51,37 @@ class CampaignsController < ApplicationController
     redirect_to campaign_path(@campaign_clone)
   end
 
+  def launch
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
+  end
+
+  def activate
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
+    xml_string = ApplicationController.new.render_to_string(template: "surveys/xform", locals: { survey: @survey })
+    aggregate = OdkInstance.new("http://18.85.22.29:8080/ODKAggregate/")
+    status = aggregate.uploadXmlform(xml_string)
+    binding.pry
+
+    if status == 201
+      @campaign.update_attribute(:status, 'active')
+      flash.now[:notice] = t('.upload_success')
+      redirect_to launch_campaign_path(@campaign)
+    else
+      flash.now[:notice] = t('.upload_error')
+      render :launch
+    end
+
+  end
+
+  def close
+    @campaign = Campaign.find(params[:id])
+    @campaign.update_attribute(:status, 'closed')
+
+    redirect_to action: 'launch'
+  end
+
   def destroy
     Campaign.delete(params[:id])
     redirect_to controller: 'users', action: 'show', id: current_user.id

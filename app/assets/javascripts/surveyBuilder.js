@@ -7,7 +7,6 @@ $(document).ready(function() {
   });
 
   // Make input buttons draggable
-
   $(".tool-button").draggable({ 
     helper: function(event){
       return $(event.target).clone().addClass("drag-insert").css({
@@ -27,6 +26,7 @@ $(document).ready(function() {
       ui.item.trigger("click");
     }
   });
+
 });
 
 var PT = PT || {};

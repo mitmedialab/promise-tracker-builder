@@ -24,27 +24,42 @@ pt-BR:
       no_campaigns: "Criar sua primeira campanha!"
 
   campaigns:
+    activate: 
+      upload_error: "Disculpe. Seu formulário não poderia ser publicado."
+      upload_success: "Seu formulário foi publicado com sucesso!"
+       
     new:
-      campaign_title: "Criar uma nova campanha"
-      title_placeholder: "Nome da camphane"
+      campaign_title: "Criar um novo acão"
+      title_placeholder: "Nome da acão"
       create_campaign: "Criar"
 
     campaign_title_modal:
-      campaign_title: "Nome da campanha"
-      title_placeholder: "Nome da camphane"
+      campaign_title: "Nome da acão"
+      title_placeholder: "Nome da acão"
       save: "Salvar" 
 
+    launch:
+      launch_title: "Página de lançamento"
+      return_to_edit: "Editar formulário"
+      preview: "Pre-vizualização"
+      launch_campaign: "Publicar esta formulário"
+      launch_info: "Se você publica este formulário, não vai poder editar-lo mais. Você tem certeza que quer publicar?"
+      launch_confirmation: "Quando cliquer para publicar, este formulário fica finalizado."
+      active: "Este formulário está público."
+      closed: "Este formulário está fechado."
+      close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
+
     list_item:
-      confirm_delete: "Você tem certeza que quer eliminar esta campanha?"  
+      confirm_delete: "Você tem certeza que quer eliminar esta acão?"  
 
     edit:
       edit_title: "Editar nome"
       define_goals: "Definir seus objetivos"
-      goal: "O que você quer realizar com esta campanha?"
-      data_collectors: "Quem vai coletar os dados para a campanha?"
+      goal: "O que você quer realizar com esta acão?"
+      data_collectors: "Quem vai coletar os dados?"
       submissions_target: "Quantos respostas você quer obter?" 
       audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
-      start_survey: "Começar o formulário"
+      start_survey: "Criar o formulário para esta acão"
       field_required: "*Por favor digite sua reposta para continuar"
 
     show:
@@ -52,8 +67,8 @@ pt-BR:
       campaign_survey: "Formulário"
       edit_goals: "Editar objetivos"  
       edit_survey: "Editar formulário"
-      launch_survey: "Lançar este formulário"
-      create_survey: "Criar o formulário para esta campanha"
+      launch_survey: "Publicar este formulário"
+      create_survey: "Criar o formulário para esta acão"
 
     form_buttons:  
       next: "Próximo"
@@ -61,25 +76,10 @@ pt-BR:
 
   surveys:
     status:
-      active: "Ativo"
+      active: "Público"
       closed: "Fechado"
       draft: "Rascunho"
       copy: "cópia"
-
-    activate: 
-      upload_error: "Disculpe. Seu formulário não poderia ser lançado."
-      upload_success: "Seu formulário foi lançado com sucesso!" 
-
-    launch:
-      launch_title: "Página de lançamento"
-      return_to_edit: "Editar formulário"
-      preview: "Pre-vizualização"
-      launch_survey: "Lançar este formulário"
-      launch_info: "Se você lança este formulário, não vai poder editar-lo mais. Você tem certeza que quer lançar?"
-      launch_confirmation: "Quando cliquer para lançar, este formulário fica finalizado."
-      active: "Este formulário está ativo."
-      closed: "Este formulário está fechado."
-      close_confirmation: "Se você fecha este formulário, não pode ativar-lo novamente."
 
     list_item:
       download_xml: "Baixar xForm" 
@@ -97,7 +97,7 @@ pt-BR:
       of: "de"
 
     survey_body:
-      edit_survey_title: "Edit survey title"
+      edit_survey_title: "Editar título"
       required: "Pergunta obrigatoria?"
       annotation: "Permitir anotação?"
       decimal: "Permitir decimal?"

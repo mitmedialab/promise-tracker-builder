@@ -1,4 +1,4 @@
-<div class="btn btn-title inline">
+<div class="btn btn-title inline campaign-title">
   <%= @campaign.title %>
 </div>
 <div class="edit-title-button" data-toggle="modal" data-target="#campaign-title-modal"><%= t(".edit_title") %></div>
@@ -74,7 +74,7 @@
   $(".left-arrow").on("click", PT.previousFormPage);
 
   $("#update-title-button").on("click", function(){
-    PT.updateDisplay($("#campaign-title-input"), $("#campaign-title"));
+    PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
 
 </script>
