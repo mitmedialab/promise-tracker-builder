@@ -16,6 +16,8 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+$light-grey: #c7c7c7;
+
 .inline {
   display: inline-block;
 }
@@ -140,11 +142,14 @@ input, .dummy-input {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555;
   background-color: white;
   background-image: none;
   border: 1px solid #cccccc;
   border-radius: 4px;
+}
+
+.phantom-option .dummy-input {
+  color: $light-grey;
 }
 
 input[type="checkbox"] {
