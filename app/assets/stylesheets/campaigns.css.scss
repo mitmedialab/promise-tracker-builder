@@ -56,6 +56,20 @@
   border-radius: 4px;
 }
 
+.new-form-button {
+  width: 50%;
+  white-space: normal;
+  height: auto;
+  padding: 20px;
+  font-size: 16px;
+
+  .glyphicon {
+    font-size: 200%; 
+    display: block;
+    margin-bottom: 15px;
+  }
+}
+
 // Campaign Editor
 body.dark {
   background: #333;
