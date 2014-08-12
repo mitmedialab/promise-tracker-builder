@@ -12,7 +12,7 @@
 
 <div class="row" id="user-campaigns">
   <div class="col-md-12">
-    <h1><%= t(".my_campaigns") %></h1>
+    <h1 class="title"><%= t(".my_campaigns") %></h1>
   </div>
 
   <div class="col-md-8">
@@ -22,7 +22,12 @@
         <%= render partial: 'campaigns/list_item', locals: {campaign: campaign} %>
       <% end %>
     </ul>
-    <% end %> 
+    <% else %> 
+    <div class="welcome">
+      <%= t(".welcome_text") %><br>
+      <%= link_to t(".get_started"), new_campaign_path %>
+    </div>
+    <% end %>
   </div>
 
   <div class="col-md-4 center new-campaign">

@@ -1,4 +1,32 @@
 // User show
+.sign-up-container {
+  width: 50%;
+  margin: 0 auto;
+
+  form {
+    margin: 30px 0;
+
+    input {
+      margin: 15px 0;
+    }
+  }
+
+  .title {
+    font-weight: 200;
+    font-size: 28px;
+  }
+}
+
+.welcome {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+#user-campaigns {
+  .title {
+    font-weight: 200;
+  }
+}
 
 .padded-list {
   list-style-type: none;

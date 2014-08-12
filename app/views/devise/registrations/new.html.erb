@@ -1,20 +1,19 @@
-<div class="devise right-panel"> 
-  <h2>Sign up</h2>
+<div class="sign-up-container"> 
+  <h2 class="title"><%= t("devise.sign_up") %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label t("devise.email") %><br />
-    <%= f.email_field :email, autofocus: true %></div>
+    <%= f.email_field :username, placeholder: User.human_attribute_name(:username), autofocus: true, class: "form-control" %>
 
-    <div><%= f.label t("devise.password") %><br />
-      <%= f.password_field :password, autocomplete: "off" %></div>
+    <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: "off", class: "form-control" %>
 
-    <div><%= f.label t("devise.confirm_password") %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <%= f.password_field :password_confirmation, placeholder: t("devise.confirm_password"), autocomplete: "off", class: "form-control" %>
 
-    <div><%= f.submit t("devise.sign_up") %></div>
+    <%= f.submit t("devise.create_account"), class: "form-control btn-info" %>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="text-right right">
+    <%= render "devise/shared/links" %>
+  </div>
 </div>
