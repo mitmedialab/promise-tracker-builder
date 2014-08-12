@@ -43,6 +43,8 @@ pt-BR:
       new_campaign: "Criar uma nova acão"
       my_campaigns: "Minhas acões"
       no_campaigns: "Criar sua primeira acão!"
+      welcome_text: "Bemvindo no Promise Tracker!"
+      get_started: "Começa com sua primeira acão."
 
   campaigns:
     status:
@@ -66,7 +68,7 @@ pt-BR:
       save: "Salvar" 
 
     launch:
-      launch_title: "Página de lançamento"
+      launch_title: "Página de publicação"
       return_to_edit: "Editar formulário"
       preview: "Pre-vizualização"
       launch_campaign: "Publicar esta formulário"
@@ -75,6 +77,8 @@ pt-BR:
       active: "Este formulário está público."
       closed: "Este formulário está fechado."
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
+      number_of_responses: "Número de repostas"
+      set_end: "Fechar"
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta acão?"  
@@ -109,7 +113,7 @@ pt-BR:
       campaign_survey: "Formulário"
       edit_goals: "Editar acão"  
       edit_survey: "Editar formulário"
-      launch_survey: "Publicar este formulário"
+      launch_survey: "Publicar"
       create_survey: "Criar o formulário para esta acão"
 
     form_buttons:  

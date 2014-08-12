@@ -142,14 +142,16 @@ body.dark {
 .campaign-title {
   color: #2490b0;
   letter-spacing: 1px;
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 200;
   text-transform: uppercase;
+  display: block;
 }
 
 h2.title {
   font-size: 22px;
   margin-top: 5px;
+  display: block;
 }
 
 .tip-box {
