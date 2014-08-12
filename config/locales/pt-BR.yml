@@ -22,6 +22,11 @@ pt-BR:
     cancel: "Cancelar"
     edit: "Editar"
     close: "Fechar"
+    validations:
+      required: "Este campo &eacute; requerido."
+      number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido."
+      question_blank: "O texto da pergunta não pode estar em branco."
+      no_options: "Você precisa digitar pelo menos uma opção"
 
   layouts:
     header:
@@ -90,11 +95,9 @@ pt-BR:
       tooltip: "Dica"
 
       start_survey: "Criar o formulário para esta acão"
-      field_required: "*Por favor digite sua reposta para continuar"
-      theme: "Tema da acão"
       themes:
         select: "Selecionar"
-        education: "Educacão"
+        education: "Educação"
         environment: "Meio ambiente"
         health: "Saude"
         infrastructure: "Infra-estructura"

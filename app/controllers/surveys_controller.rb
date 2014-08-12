@@ -35,7 +35,6 @@ class SurveysController < ApplicationController
     end
 
     render nothing: true
-
   end
 
   def preview
@@ -46,6 +45,7 @@ class SurveysController < ApplicationController
   def show
     @survey = Survey.find(params[:id])
     @flash = t('survey_builder', scope: 'surveys').to_json
+    @validations = t('validations', scope: 'defaults').to_json
 
     respond_to do |format|
       format.html
