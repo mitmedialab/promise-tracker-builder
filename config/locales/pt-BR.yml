@@ -98,14 +98,13 @@ pt-BR:
         environment: "Meio ambiente"
         health: "Saude"
         infrastructure: "Infra-estructura"
-        security: "Seguridade"
         energy: "Electricidade"
         other: "Outro"
 
     show:
       campaign_goals: "Objetivos"
       campaign_survey: "Formulário"
-      edit_goals: "Editar objetivos"  
+      edit_goals: "Editar"  
       edit_survey: "Editar formulário"
       launch_survey: "Publicar este formulário"
       create_survey: "Criar o formulário para esta acão"
