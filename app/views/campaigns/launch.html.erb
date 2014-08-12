@@ -1,5 +1,6 @@
 <div class="page-container">
-  <h1><%= link_to @campaign.title, campaign_path(@campaign) %></h1>
+  <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+  <h2 class="title inline"><%= t(".launch_title") %></h2>
 
   <% if @campaign.status == "draft" %>
     <h2><%= t(".launch_title") %></h2>
@@ -12,6 +13,28 @@
     <%= link_to t(".launch_campaign"), activate_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t(".launch_confirmation") } %>
 
   <% elsif @campaign.status == "active"  %>
+    <div class="row">
+      <div class="col-md-9">
+        <br>
+        <%= t(".number_of_responses") %>
+        <%= image_tag("graph-activity.jpg", class: "activity-graph") %>
+      </div>
+      <div class="col-md-3">
+        <div class="campaign-info-box">
+          <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
+          <%= @campaign.start_date.strftime("%-d %b %Y") %>
+          <br><br>
+
+          <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
+          <% if @campaign.end_date %>
+            <% @campaign.end_date.strftime("%-d %b %Y") %>
+          <% else %>
+            <% link_to t("set_end"), "#" %>
+          <% end %>  
+          
+        </div>
+      </div>
+    </div>
     <%= t(".active") %><br>
     Overview:<br><br>
     <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning", confirm: t(".close_confirmation") %>

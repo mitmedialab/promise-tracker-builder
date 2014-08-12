@@ -1,0 +1,18 @@
+.activity-graph {
+  width: 100%;
+  height: auto;
+}
+
+.campaign-info-box {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%; 
+  min-height: 200px;
+  margin-top: 100px;
+  text-align: right;
+
+  label {
+    display: block;
+  }
+}

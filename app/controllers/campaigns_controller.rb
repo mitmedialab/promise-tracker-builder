@@ -67,6 +67,7 @@ class CampaignsController < ApplicationController
     if status == 201
       @campaign.update_attribute(:status, 'active')
       flash.now[:notice] = t('.upload_success')
+      @campaign.update_attribute(:start_date, Time.now)
       redirect_to launch_campaign_path(@campaign)
     else
       flash.now[:notice] = t('.upload_error')
