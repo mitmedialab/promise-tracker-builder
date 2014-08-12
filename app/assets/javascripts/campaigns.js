@@ -35,3 +35,7 @@ PT.validateCampaign = function(){
 
   return validator.form();
 };
+
+PT.openTip = function(event){
+  $(event.currentTarget).find(".body").slideToggle();
+};

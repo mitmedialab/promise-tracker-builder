@@ -1,5 +1,21 @@
 en:
   app_name: "Promise Tracker"
+  activerecord:
+    models:
+      survey: "Survey"
+      campaign: "Campaign"
+      input: "Input"
+    attributes:
+      campaign:
+        title: "Name"
+        goal: "Goal"
+        submissions_target: "Number of desired responses"
+        data_collectors: "Data collectors"
+        audience: "Target audience"
+        status: "Status"
+        start_date: "Start date"
+        end_date: "End date"
+        theme: "Theme"  
 
   defaults:
     save: "Save"
@@ -37,10 +53,17 @@ en:
       create_campaign: "Create" 
 
     edit:
-      campaign_goal: "What do you hope to achieve with this campaign?"
-      data_collectors: "Who will collect the data for this campaign?"
-      submissions_target: "How many submissions do you hope to get?"
-      audience: "Who do you plan to share your data with in order to change this issue?"
+      explanations:
+        goal: "What do you hope to achieve with this campaign? What change do you want to see?"
+        data_collectors: "Who will collect the data for this campaign?"
+        submissions_target: "How many submissions do you hope to get?"
+        audience: "Who do you plan to share your data with in order to change this issue?"
+      tips:
+        goal: "When establishing your goal for this campaign..."
+        data_collectors: "Who would be motivated to help you work on this issue? Do they have access to internet or mobile phones?"
+        submissions_target: "When determining how many data points you hope to gather..."
+        audience: "Think about who you'll need to convince in order to create change on this issue..."
+      tooltip: "Tip"
 
   surveys:
     status:
