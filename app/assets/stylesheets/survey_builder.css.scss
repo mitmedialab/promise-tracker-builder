@@ -8,10 +8,14 @@ $error: #B94A48;
 #workspace {
   margin: 0 300px 40px 0;
   padding: 20px 60px;
-}
 
-ol#input-list {
-  padding: 0 0 100px 25px;
+  .input.selected {
+    border-left: 5px solid $turquoise;
+  }
+
+  ol#input-list {
+    padding: 0 0 100px 25px;
+  }
 }
 
 #tool-palette .tool-button, .tool-button.drag-insert {
@@ -125,10 +129,13 @@ ol#input-list {
   height: 40px;
 }
 
+#workspace #survey-body {
+
+}
+
 #survey-body {
   background: whitesmoke;
   min-height: 350px;
-  margin-top: 10px;
   padding: 20px;
   text-align: left;
   width: 100%;
@@ -262,10 +269,6 @@ ol#input-list {
       color: grey;
     }
   }
-}
-
-#workspace .input.selected {
-  border-left: 5px solid $turquoise;
 }
 
 .answer {
