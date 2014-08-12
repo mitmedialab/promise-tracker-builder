@@ -1,5 +1,16 @@
 .get-started {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   text-align: center;
+
+  .btn {
+    padding: 15px 20px;
+    font-size: 16px;
+  }
+
+  img {
+    width: 300px;
+    height: auto;
+    margin-top: 40px;
+  }
 }

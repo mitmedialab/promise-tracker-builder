@@ -5,6 +5,7 @@ pt-BR:
       survey: "Formulário"
       campaign: "Acão"
       input: "Pergunta"
+      user: "Usuário"
     attributes:
       campaign:
         title: "Nome"
@@ -16,6 +17,11 @@ pt-BR:
         start_date: "Data de publicação"
         end_date: "Data final"
         theme: "Tema"  
+      user:
+        username: "Nome de usuário"
+        bio: "Descrição"
+        password: "Senha"
+        email: "E-mail"  
 
   defaults:
     save: "Salvar"
@@ -35,7 +41,6 @@ pt-BR:
   home:
     index:
       welcome: "Começar com Promise Tracker"
-      try: "Experimentar o constructor de formulários"
       create_account: "Criar uma conta gratuita"
 
   users:
@@ -43,7 +48,7 @@ pt-BR:
       new_campaign: "Criar uma nova acão"
       my_campaigns: "Minhas acões"
       no_campaigns: "Criar sua primeira acão!"
-      welcome_text: "Bemvindo no Promise Tracker!"
+      welcome_text: "Bemvindo no site Promise Tracker!"
       get_started: "Começa com sua primeira acão."
 
   campaigns:
@@ -180,13 +185,15 @@ pt-BR:
       annotate_hint: "Tirar e anotar foto"
 
   devise:
-    sign_in: "Logar"
+    sign_in: "Fazer login"
     sign_out: "Sair"
     sign_up: "Criar uma conta"
+    create_account: "Criar conta"
+    existing_account: "Você já tem uma conta?"
     email: "E-mail"
     password: "Senha"
     confirm_password: "Confirmação de senha"
     remember_me: "Remember me"
     forgot_password: "Esqueceu sua senha?" 
     cancel_account: "Cancelar conta" 
-    are_you_sure: "Você tem certeza?"   
+    are_you_sure: "Você tem certeza?"
