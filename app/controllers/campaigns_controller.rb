@@ -63,7 +63,6 @@ class CampaignsController < ApplicationController
     xml_string = ApplicationController.new.render_to_string(template: "surveys/xform", locals: { survey: @survey })
     aggregate = OdkInstance.new("http://18.85.22.29:8080/ODKAggregate/")
     status = aggregate.uploadXmlform(xml_string)
-    binding.pry
 
     if status == 201
       @campaign.update_attribute(:status, 'active')

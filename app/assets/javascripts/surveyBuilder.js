@@ -172,18 +172,20 @@ PT.SurveyModel = function(){
     var confirmed = window.confirm("Are you sure you want to delete this question?");
     if(confirmed){
       self.inputs.remove(this);
-      $.ajax({
-        url: "/surveys/" + PT.survey.id + "/inputs/" + this.id(),
-        type: "DELETE",
-        contentType: "application/json",
-        dataType: "json"
-      })
-      .done(function(response){
-        console.log(response);
-      }); 
+      if(this.id()){
+        $.ajax({
+          url: "/surveys/" + PT.survey.id + "/inputs/" + this.id(),
+          type: "DELETE",
+          contentType: "application/json",
+          dataType: "json"
+        })
+        .done(function(response){
+          console.log(response);
+        }); 
+      }
     } 
 
-    self.inputs.length === 0 ? PT.selectedInput("") : false;
+    self.inputs().length < 1 ? PT.selectedInput("") : false;
   };
 
   self.addStarterQuestion = function(){
