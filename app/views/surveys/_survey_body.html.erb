@@ -1,6 +1,6 @@
 <div id="survey-body">
   <ol data-bind="sortable: inputs" id="input-list">
-    <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false, valid: !is_valid() }, valueUpdate: 'input'">
+    <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false}, attr: {id: 'input' + id()}, valueUpdate: 'input'">
       <!-- ko if: inEdit -->
       <table>
         <tr>
@@ -23,7 +23,7 @@
           <th><%= t(".answer_label") %></th>
           <td>
             <div class="answer" data-bind="css: input_type">
-              <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() !== 'select' || input_type() !== 'select1'">
+              <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() !== 'select' && input_type() !== 'select1'">
 
               <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
                 <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
@@ -73,9 +73,10 @@
         </ul>
       </div>
       <div class="answer" data-bind="css: input_type" >
-        <div class="answer-box form-control short" disabled data-bind="visible: input_type() !== 'select' || input_type() !== 'select1'"><%= t('.their_answer') %></div>
+        <div class="answer-box form-control short" disabled data-bind="visible: input_type() !== 'select' && input_type() !== 'select1'"><%= t('.their_answer') %></div>
       </div>
       <!-- /ko -->
+      <div class="error messages"></div>
     </li>
   </ol>
 </div>

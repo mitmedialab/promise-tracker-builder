@@ -63,19 +63,22 @@ PT.Input = function(){
   self.options = ko.observableArray(["Option 1"]);
   self.order = "";
   self.inEdit = ko.observable(true);
-  self.is_valid = ko.observable(true);
 
   self.validate = function(){
+    var inputEl = $("#input" + self.id());
+    var messages = inputEl.find(".messages");
+    messages.empty();
+
     if(!self.label()) {
-      self.is_valid(false);
+      messages.append(PT.validations.question_blank);
+      inputEl.addClass('invalid');
     } else if(self.input_type() == "select" || self.input_type() == "select1"){
       if (self.options().length == 0){
-        self.is_valid(false);
-      } else {
-        self.is_valid(true);
+        messages.append(PT.validations.no_options);
+        inputEl.addClass('invalid');
       }
     } else {
-      self.is_valid(true);
+      inputEl.removeClass('invalid');
     }
   };
 
@@ -95,9 +98,8 @@ PT.Input = function(){
       if(self.id() === ""){
         self.id(response.id);
       }
+      self.validate();
     });
-
-    self.validate();
   };
 
   self.map = function(data){
@@ -111,7 +113,6 @@ PT.Input = function(){
     self.options = ko.observableArray(_.values(data.options));
     self.order = data.order;
     self.inEdit = ko.observable(false);
-    self.is_valid = ko.observable(data.is_valid);
   }; 
 
   self.edit = function(){
@@ -212,24 +213,6 @@ PT.SurveyModel = function(){
 
   };
 
-  /// Add/update survey name
-  self.saveName = function(){
-    if($("#new-survey-title").val()){
-      $.post("/surveys/", {id: self.id, title: self.title}, function(response){
-
-        if(self.id === ""){
-          self.id = response.id;
-          self.user_id = response.user_id;
-          self.addStarterQuestion();
-        }
-
-        $("#new-survey-modal").modal("hide");
-      });
-    } else {
-      PT.flashMessage(PT.flash["no_title"], $("#new-survey-title"));
-    }
-  };
-
   self.populateInputs = function(data){
     data.forEach(function(input){
       var newInput = new PT.Input();
@@ -253,6 +236,10 @@ PT.getSurvey = function(url){
     PT.survey.status = ko.observable(response.status);
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
+
+    PT.survey.inputs().forEach(function(input){
+      input.validate();
+    });
 
     $(document).on("click", ".tool-button", PT.survey.addInput);
   });

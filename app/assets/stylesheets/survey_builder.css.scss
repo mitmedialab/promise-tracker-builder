@@ -104,6 +104,10 @@ ol#input-list {
   }
 }
 
+.error {
+  color: $error;
+}
+
 .top-left {
   position: absolute;
   top: 30px;
@@ -157,7 +161,7 @@ ol#input-list {
     padding: 20px; 
     position: relative;
 
-    &.valid {
+    &.invalid {
       border-left: 5px solid $error;
 
       &:before {

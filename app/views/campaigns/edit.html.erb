@@ -109,11 +109,11 @@
   PT.flash = <%= raw @flash %>;
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
+  $(document).on("click", ".tip-box", PT.openTip);
 
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
 
-  $(document).on("click", ".tip-box", PT.openTip);
-
+  jQuery.extend(jQuery.validator.messages, <%= raw @validations %>);
 </script>
