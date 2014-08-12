@@ -1,5 +1,21 @@
 pt-BR:
   app_name: "Promise Tracker"
+  activerecord:
+    models:
+      survey: "Formulário"
+      campaign: "Acão"
+      input: "Pergunta"
+    attributes:
+      campaign:
+        title: "Nome"
+        goal: "Objetivo"
+        submissions_target: "Número de respostas desejadas"
+        data_collectors: "Coletores de dados"
+        audience: "Público-alvo"
+        status: "Estado"
+        start_date: "Data de publicação"
+        end_date: "Data final"
+        theme: "Tema"  
 
   defaults:
     save: "Salvar"
@@ -61,10 +77,18 @@ pt-BR:
     edit:
       edit_title: "Editar nome"
       define_goals: "Definir seus objetivos"
-      goal: "O que você quer realizar com esta acão?"
-      data_collectors: "Quem vai coletar os dados?"
-      submissions_target: "Quantos respostas você quer obter?" 
-      audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
+      tips:
+        goal: "When establishing your goal for this campaign..."
+        data_collectors: "Who would be motivated to help you work on this issue? Do they have access to internet or mobile phones?"
+        submissions_target: "When determining how many data points you hope to gather..."
+        audience: "Think about who you'll need to convince in order to create change on this issue..."
+      explanations:
+        goal: "O que você quer realizar com esta acão? O que mudança você quer fazer?"
+        data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
+        submissions_target: "Quantos respostas você quer obter?" 
+        audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
+      tooltip: "Dica"
+
       start_survey: "Criar o formulário para esta acão"
       field_required: "*Por favor digite sua reposta para continuar"
       theme: "Tema da acão"

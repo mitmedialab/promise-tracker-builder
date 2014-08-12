@@ -12,15 +12,23 @@
   <div class="row form-page" id="form-page-1">
     <div class="col-sm-8">
       <div class="form-group"> 
-        <%= f.label :goal, t(".goal") %>
-        <%= f.text_area :goal, rows: 5, class: "form-control" %>
+        <%= f.label :goal %>
+        <p class="explain"><%= t(".explanations.goal") %></p>
+        <%= f.text_area :goal, rows: 8, class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+      <div class="tip-box">
+        <div class="header">
+          <i class="icon-info"></i> <%= t(".tooltip") %>
+        </div>
+        <div class="body">
+          <p><%= t(".tips.goal") %></p>
+        </div>
+      </div>  
     </div>
     <div class="col-md-12">
-      <%= f.label :goal, t(".theme"), class: "block" %>
+      <%= f.label :theme, class: "block" %>
       <%= f.select :theme, campaign_themes, class: "form-control clear" %> 
     </div>
     <%= render partial: 'form_buttons' %>
@@ -29,22 +37,38 @@
   <div class="row form-page" id="form-page-2">
     <div class="col-sm-8">
       <div class="form-group"> 
-        <%= f.label :data_collectors, t(".data_collectors") %>
-        <%= f.text_area :data_collectors, class: "form-control" %>
+        <%= f.label :data_collectors %>
+        <p class="explain"><%= t(".explanations.data_collectors") %></p>
+        <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+      <div class="tip-box">
+        <div class="header">
+          <i class="icon-info"></i> <%= t(".tooltip") %>
+        </div>
+        <div class="body">
+          <p><%= t(".tips.data_collectors") %></p>
+        </div>
+      </div>  
     </div>
 
     <div class="col-sm-8">
       <div class="form-group"> 
-        <%= f.label :submissions_target, t(".submissions_target") %>
-        <%= f.number_field :submissions_target, class: "block" %>
+        <%= f.label :submissions_target %>
+        <p class="explain"><%= t(".explanations.submissions_target") %></p>
+        <%= f.number_field :submissions_target, rows: 8, class: "block" %>
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+      <div class="tip-box">
+        <div class="header">
+          <i class="icon-info"></i> <%= t(".tooltip") %>
+        </div>
+        <div class="body">
+          <p><%= t(".tips.submissions_target") %></p>
+        </div>
+      </div>
     </div>
     <%= render partial: 'form_buttons' %>
   </div>
@@ -52,15 +76,24 @@
   <div class="row form-page" id="form-page-3">
     <div class="col-sm-8">
       <div class="form-group"> 
-        <%= f.label :audience, t(".audience") %>
+        <%= f.label :audience %>
+        <p class="explain"><%= t(".explanations.audience") %></p>
         <%= f.text_area :audience, class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-4">
-      <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
+      <div class="tip-box">
+        <div class="header">
+          <i class="icon-info"></i> <%= t(".tooltip") %>
+        </div>
+        <div class="body">
+          <p><%= t(".tips.audience") %></p>
+        </div>
+      </div>  
     </div>
 
     <div class="button-group center clear">
+      <hr>
       <div class="btn btn-info left-arrow">
         BACK <span class="glyphicon glyphicon-chevron-left"></span>
       </div>
@@ -80,5 +113,7 @@
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
+
+  $(document).on("click", ".tip-box", PT.openTip);
 
 </script>
