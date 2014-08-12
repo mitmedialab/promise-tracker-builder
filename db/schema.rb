@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812035732) do
+ActiveRecord::Schema.define(version: 20140812195901) do
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20140812035732) do
     t.string   "guid"
     t.string   "media_type"
     t.boolean  "annotate"
-    t.boolean  "is_valid"
   end
 
   create_table "surveys", force: true do |t|

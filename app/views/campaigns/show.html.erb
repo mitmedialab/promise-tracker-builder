@@ -1,12 +1,12 @@
-<div class="btn btn-title">
+<div class="campaign-title">
   <%= @campaign.title %>
 </div>
 <br><br>
 <div class="row">
-  <div class="col-md-7" id="campaign-goals">
+  <div class="col-md-5" id="campaign-goals">
     <div class="section-header">
-      <h3 class="title inline"><%= t(".campaign_goals") %></h3>
-      <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-default right" %>
+      <h2 class="title inline"><%= t(".campaign_goals") %></h2>
+      <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-info right" %>
     </div>
 
     <label><%= t("campaigns.edit.goal") %></label>
@@ -22,9 +22,9 @@
     <p><%= @campaign.audience %></p>
   </div>
 
-  <div class="col-md-5" id="campaign-survey">
+  <div class="col-md-7" id="campaign-survey">
     <div class="section-header">
-      <h3 class="title inline"><%= t(".campaign_survey") %></h3>
+      <h2 class="title inline"><%= t(".campaign_survey") %></h2>
       <% if @survey %>
       <%= link_to t(".edit_survey"), survey_path(@survey), class: "btn btn-info right" %>
       <% end %>

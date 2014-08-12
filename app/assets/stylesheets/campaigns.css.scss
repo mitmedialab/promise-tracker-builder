@@ -84,10 +84,6 @@ $turquoise: #1b6d85;
   border-bottom: 1px solid grey;
   padding-bottom: 5px;
   margin-bottom: 30px;
-
-  .btn {
-    margin-top: 15px;
-  }
 }
 
 #campaign-goals {
@@ -108,6 +104,7 @@ $turquoise: #1b6d85;
 
 .new-form-button {
   width: 50%;
+  max-width: 200px;
   white-space: normal;
   height: auto;
   padding: 20px;
@@ -142,24 +139,17 @@ body.dark {
   }
 }
 
-.btn-title {
-  background-color: #2490b0;
-  border-color: #1b6d85;
-  color: white;
+.campaign-title {
+  color: #2490b0;
   letter-spacing: 1px;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 200;
   text-transform: uppercase;
-  padding: 10px 20px;
-
-  &:hover {
-    color: white;
-    cursor: default;
-  }
 }
 
 h2.title {
-  font-size: 26px;
+  font-size: 22px;
+  margin-top: 5px;
 }
 
 .tip-box {
