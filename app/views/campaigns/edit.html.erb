@@ -19,6 +19,10 @@
     <div class="col-sm-4">
       <div class="tip-box"><i class="icon-info"></i> Tooltip</div>
     </div>
+    <div class="col-md-12">
+      <%= f.label :goal, t(".theme"), class: "block" %>
+      <%= f.select :theme, campaign_themes, class: "form-control clear" %> 
+    </div>
     <%= render partial: 'form_buttons' %>
   </div>
 

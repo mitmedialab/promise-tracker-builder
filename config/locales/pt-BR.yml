@@ -19,17 +19,23 @@ pt-BR:
 
   users:
     show:
-      new_campaign: "Criar uma nova campanha"
-      my_campaigns: "Minhas campanhas"
-      no_campaigns: "Criar sua primeira campanha!"
+      new_campaign: "Criar uma nova acão"
+      my_campaigns: "Minhas acões"
+      no_campaigns: "Criar sua primeira acão!"
 
   campaigns:
+    status:
+      active: "Público"
+      closed: "Fechado"
+      draft: "Rascunho"
+      copy: "cópia"
+
     activate: 
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
 
     new:
-      campaign_title: "Criar um novo acão"
+      campaign_title: "Criar uma nova acão"
       title_placeholder: "Nome da acão"
       create_campaign: "Criar"
 
@@ -61,6 +67,16 @@ pt-BR:
       audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
       start_survey: "Criar o formulário para esta acão"
       field_required: "*Por favor digite sua reposta para continuar"
+      theme: "Tema da acão"
+      themes:
+        select: "Selecionar"
+        education: "Educacão"
+        environment: "Meio ambiente"
+        health: "Saude"
+        infrastructure: "Infra-estructura"
+        security: "Seguridade"
+        energy: "Electricidade"
+        other: "Outro"
 
     show:
       campaign_goals: "Objetivos"
@@ -75,12 +91,6 @@ pt-BR:
       back: "De volta"
 
   surveys:
-    status:
-      active: "Público"
-      closed: "Fechado"
-      draft: "Rascunho"
-      copy: "cópia"
-
     list_item:
       download_xml: "Baixar xForm" 
       confirm_delete: "Você em certeza que quer eliminar este formulário?" 
