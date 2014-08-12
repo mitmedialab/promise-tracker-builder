@@ -11,7 +11,7 @@ $error: #B94A48;
 }
 
 ol#input-list {
-  padding-left: 25px;
+  padding: 0 0 100px 25px;
 }
 
 #tool-palette .tool-button, .tool-button.drag-insert {
@@ -301,6 +301,34 @@ ol#input-list {
       position: absolute;
       top: 0;
       left: 140px;
+      color: $medium-grey;
+    }
+  }
+
+  &.geopoint {
+    &:after {
+      font-family: 'FontAwesome';
+      content: '\f0ac';
+      font-size: 1m;
+      vertical-align: middle;
+      padding: 8px 25px;
+      position: absolute;
+      top: 0;
+      left: 150px;
+      color: $medium-grey;
+    }
+  }
+
+  &.binary {
+    &:after {
+      font-family: 'FontAwesome';
+      content: '\f03e';
+      font-size: 1em;
+      vertical-align: middle;
+      padding: 8px 20px;
+      position: absolute;
+      top: 0;
+      left: 150px;
       color: $medium-grey;
     }
   }

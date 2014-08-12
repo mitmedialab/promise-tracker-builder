@@ -5,28 +5,6 @@ $(document).ready(function() {
       $(this).off("mouseup.a keyup.a").select();
     });
   });
-
-  // Make input buttons draggable
-  $(".tool-button").draggable({ 
-    helper: function(event){
-      return $(event.target).clone().addClass("drag-insert").css({
-        "list-style-type": "none",
-        background: "white",
-        width: $(event.target).width() + 20,
-        border: "1px solid grey"
-      });},  
-    appendTo: 'body',
-    revert: 'invalid',
-    connectToSortable: '#input-list'
-  });
-
-  $("#input-list").sortable({
-    stop: function(event, ui){
-      ui.item.addClass("drag-insert");
-      ui.item.trigger("click");
-    }
-  });
-
 });
 
 var PT = PT || {};

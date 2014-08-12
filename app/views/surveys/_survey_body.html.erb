@@ -23,13 +23,7 @@
           <th><%= t(".answer_label") %></th>
           <td>
             <div class="answer" data-bind="css: input_type">
-              <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'int' || input_type() === 'date' || input_type() === 'date'">
-              <div class="android-button" data-bind="visible: input_type() === 'geopoint'"><%= t(".record_location") %></div>
-
-              <div data-bind="visible: input_type() === 'binary'">
-                <div class="android-button"><%= t(".take_picture") %></div>
-                <div class="android-button"><%= t(".choose_image") %></div>
-              </div>
+              <input class="answer-box form-control short" placeholder="<%= t('.their_answer') %>" disabled data-bind="visible: input_type() !== 'select' || input_type() !== 'select1'">
 
               <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
                 <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
@@ -79,15 +73,7 @@
         </ul>
       </div>
       <div class="answer" data-bind="css: input_type" >
-        <div class="answer-box form-control short" disabled data-bind="visible: input_type() === 'string' || input_type() === 'decimal' || input_type() === 'int' || input_type() === 'date'"><%= t('.their_answer') %></div>
-
-        <div class="android-button" data-bind="visible: input_type() === 'geopoint'"><%= t(".record_location") %></div>
-
-        <div data-bind="visible: input_type() === 'binary'">
-          <div class="android-button"><%= t(".take_picture") %></div>
-          <div class="android-button"><%= t(".choose_image") %></div>
-        </div>
-
+        <div class="answer-box form-control short" disabled data-bind="visible: input_type() !== 'select' || input_type() !== 'select1'"><%= t('.their_answer') %></div>
       </div>
       <!-- /ko -->
     </li>
