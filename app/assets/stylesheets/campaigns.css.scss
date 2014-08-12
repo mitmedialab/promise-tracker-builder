@@ -47,6 +47,7 @@ $turquoise: #1b6d85;
       width: 40px;
       height: 40px;
       background-image: image-url('icon-other.png');
+      background-repeat: no-repeat;
       background-size: 100%;
       margin-right: 10px;
 
@@ -54,8 +55,20 @@ $turquoise: #1b6d85;
         background-image: image-url('icon-education.png');
       }
 
+      &.electricity {
+        background-image: image-url('icon-electricity.png');
+      }
+
+      &.environment {
+        background-image: image-url('icon-environment.png');
+      }
+
       &.health {
         background-image: image-url('icon-health.png');
+      }
+
+      &.infrastructure {
+        background-image: image-url('icon-infrastructure.png');
       }
 
       &.other {
@@ -129,24 +142,24 @@ body.dark {
   }
 }
 
-.btn h1 {
-  margin: 10px 20px;
-  font-weight: normal;
-}
-
 .btn-title {
   background-color: #2490b0;
   border-color: #1b6d85;
   color: white;
   letter-spacing: 1px;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 200;
   text-transform: uppercase;
+  padding: 10px 20px;
 
   &:hover {
     color: white;
     cursor: default;
   }
+}
+
+h2.title {
+  font-size: 26px;
 }
 
 .tip-box {
