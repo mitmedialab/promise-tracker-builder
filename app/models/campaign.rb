@@ -3,4 +3,9 @@ class Campaign < ActiveRecord::Base
   has_one :survey
 
   STATUS =  ['draft', 'active', 'closed']
+
+  def translated_themes
+    I18n.t(:themes, :scope => 'campaigns.edit')
+  end
+
 end

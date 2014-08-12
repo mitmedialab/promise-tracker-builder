@@ -1,7 +1,7 @@
 .input-preview {
   width: 180px;
   height: 350px;
-  padding: 110px 30px 40px 30px;
+  padding: 80px 30px 40px 30px;
   margin: 0 auto;
   margin-bottom: 10px;
   font-size: 12px;
@@ -9,7 +9,7 @@
   text-align: left;
 
   p {
-    max-height: 70px;
+    max-height: 80px;
     overflow: hidden;
   }
 
@@ -86,7 +86,7 @@ only screen and ( min-resolution: 2dppx) {
   .input-preview {
     width: 160px;
     height: 320px;
-    padding: 110px 30px 40px 30px;
+    padding: 80px 30px 40px 30px;
   }
 
   #sidebar #preview {

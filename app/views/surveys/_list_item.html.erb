@@ -1,4 +1,5 @@
 <li>
+  <div class="campaign-theme-icon survey.theme"></div>
   <%= link_to t("surveys.status.#{survey.status}").capitalize, survey_path(survey), class: "btn status #{survey.status}" %>
   <%= link_to survey.title, survey_path(survey) %>
   <div class="right">
