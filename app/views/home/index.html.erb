@@ -1,6 +1,8 @@
 <div class="row get-started">
-  <h1><%= t("home.index.welcome") %></h1>
+  <h1 class="title"><%= t("app_name") %></h1>
+  <h2 class="title"><%= t(".tag_line") %></h2>
   <br>
-  <%= link_to t("home.index.try"), new_survey_path, class: "btn btn-info pad" %>
   <%= link_to t("home.index.create_account"), new_user_registration_path, class: "btn btn-info" %>
+  <br>
+  <%= image_tag("PT-icons.png") %>
 </div>

@@ -41,16 +41,11 @@ pt-BR:
   home:
     index:
       welcome: "Começar com Promise Tracker"
-      try: "Experimentar o constructor de formulários"
+      tag_line: "Coleta de dados para a acão cívica"
       create_account: "Criar uma conta gratuita"
 
   users:
-    show:
-      new_campaign: "Criar uma nova acão"
-      my_campaigns: "Minhas acões"
-      no_campaigns: "Criar sua primeira acão!"
-      welcome_text: "Bemvindo no site Promise Tracker!"
-      get_started: "Começa com sua primeira acão."
+
 
   campaigns:
     status:
@@ -63,6 +58,13 @@ pt-BR:
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
 
+    index:
+      new_campaign: "Criar uma nova acão"
+      my_campaigns: "Minhas acões"
+      no_campaigns: "Criar sua primeira acão!"
+      welcome_text: "Bemvindo no site Promise Tracker!"
+      get_started: "Começa com sua primeira acão."
+
     new:
       campaign_title: "Criar uma nova acão"
       title_placeholder: "Nome da acão"
@@ -74,6 +76,7 @@ pt-BR:
       save: "Salvar" 
 
     launch:
+      publicize_form: "Mobilizar a gente para coletar dados"
       launch_title: "Página de publicação"
       return_to_edit: "Editar formulário"
       preview: "Pre-vizualização"
@@ -85,6 +88,7 @@ pt-BR:
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de repostas"
       set_end: "Fechar"
+      responses: "Repostas"
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta acão?"  
@@ -186,7 +190,7 @@ pt-BR:
       annotate_hint: "Tirar e anotar foto"
 
   devise:
-    sign_in: "Logar"
+    sign_in: "Fazer login"
     sign_out: "Sair"
     sign_up: "Criar uma conta"
     create_account: "Criar conta"
@@ -197,4 +201,4 @@ pt-BR:
     remember_me: "Remember me"
     forgot_password: "Esqueceu sua senha?" 
     cancel_account: "Cancelar conta" 
-    are_you_sure: "Você tem certeza?"   
+    are_you_sure: "Você tem certeza?"
