@@ -1,10 +1,10 @@
-<div class="sign-up-container"> 
+<div class="devise-container"> 
   <h2 class="title"><%= t("devise.sign_up") %></h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <%= f.email_field :username, placeholder: User.human_attribute_name(:username), autofocus: true, class: "form-control" %>
+    <%= f.text_field :username, placeholder: User.human_attribute_name(:username), autofocus: true, class: "form-control" %>
 
     <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: "off", class: "form-control" %>
 

@@ -19,7 +19,7 @@
 $light-grey: #c7c7c7;
 
 .inline {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 .block {
@@ -116,10 +116,21 @@ $light-grey: #c7c7c7;
 #header {
   background: whitesmoke;
   padding: 20px 60px;
+  height: 80px;
+
+  .home {
+    font-size: 22px;
+    padding: 8px 15px;
+    margin-top: -5px;
+  }
 
   .user-links {
     float: right;
-    // padding-top: 10px;
+    margin-top: 10px;
+
+    .btn {
+      margin-top: -10px;
+    }
   }
 
   ul {
