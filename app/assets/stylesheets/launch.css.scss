@@ -6,10 +6,18 @@ $dark-turquoise: #1b6d85;
   height: 230px;
 }
 
+.status-bar {
+  width: 100%;
+  background: whitesmoke;
+  padding: 10px;
+  text-align: right;
+}
+
 .campaign-info-box {
   width: 100%; 
   height: 230px;
   margin-top:  30px;
+  padding-right: 20px;
   text-align: right;
 
   label {

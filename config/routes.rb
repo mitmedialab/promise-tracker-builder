@@ -9,6 +9,7 @@ PromiseTracker::Application.routes.draw do
 
   get '/surveys/:id/preview', to: 'surveys#preview', as: 'preview_survey'
 
+  get '/campaigns/:id/goals', to: 'campaigns#goals_wizard', as: 'campaign_goals_wizard'
   get '/campaigns/:id/launch', to: 'campaigns#launch', as: 'launch_campaign'
   get '/campaigns/:id/activate', to: 'campaigns#activate', as: 'activate_campaign'
   get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
