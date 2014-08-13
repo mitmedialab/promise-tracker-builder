@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    user_path(current_user)
+    campaigns_path
   end
 
   def make_guid(string, id)

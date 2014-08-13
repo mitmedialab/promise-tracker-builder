@@ -1,6 +1,10 @@
 class CampaignsController < ApplicationController
   layout 'form', only: [:edit]
 
+  def index
+    @campaigns = current_user.campaigns.sort_by(&:status)
+  end
+
   def new
     @campaign = Campaign.new
   end

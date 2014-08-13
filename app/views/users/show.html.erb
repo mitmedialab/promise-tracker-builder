@@ -3,37 +3,8 @@
     <%= image_tag("user-icon.png") %>
   </div>
   <div class="user-details bottom">
-    <h4><%= current_user.email %></h4>
+    <h4><%= current_user.username %></h4>
     <p><%= current_user.bio %></p>
   </div>
 </div>
 <hr>
-
-
-<div class="row" id="user-campaigns">
-  <div class="col-md-12">
-    <h1 class="title"><%= t(".my_campaigns") %></h1>
-  </div>
-
-  <div class="col-md-8">
-    <% if @campaigns.present? %>
-    <ul class="campaigns-list">
-      <% @campaigns.each do |campaign| %>
-        <%= render partial: 'campaigns/list_item', locals: {campaign: campaign} %>
-      <% end %>
-    </ul>
-    <% else %> 
-    <div class="welcome">
-      <%= t(".welcome_text") %><br>
-      <%= link_to t(".get_started"), new_campaign_path %>
-    </div>
-    <% end %>
-  </div>
-
-  <div class="col-md-4 center new-campaign">
-    <%= link_to new_campaign_path, class: "btn btn-info new-form-button" do %>
-      <span class="glyphicon glyphicon-plus-sign"></span>
-      <%= t(".new_campaign") %>
-    <% end %>
-  </div>
-</div> 
