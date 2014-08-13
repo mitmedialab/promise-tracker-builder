@@ -118,9 +118,13 @@ $light-grey: #c7c7c7;
   padding: 30px 60px;
   height: 100px;
 
+  .home {
+    font-size: 24px;
+    padding: 10px 20px;
+  }
+
   .user-links {
     float: right;
-    // padding-top: 10px;
   }
 
   ul {

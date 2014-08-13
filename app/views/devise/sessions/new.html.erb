@@ -1,19 +1,16 @@
-<div class="devise right-panel"> 
-  <h2><%= t("devise.sign_in") %></h2>
+<div class="devise-container"> 
+  <h2 class="title"><%= t("devise.sign_in") %></h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div><%= f.label t("devise.email") %><br />
-    <%= f.email_field :email, autofocus: true %></div>
+    <%= f.text_field :username, placeholder: User.human_attribute_name(:username), autofocus: true, class: "form-control" %>
 
-    <div><%= f.label t("devise.password") %><br />
-      <%= f.password_field :password, autocomplete: "off" %></div>
+    <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: "off", class: "form-control" %>
 
-    <% if devise_mapping.rememberable? -%>
-      <div><%= f.check_box :remember_me %> <%= f.label t("devise.remember_me") %></div>
-    <% end -%>
 
-    <div><%= f.submit t("devise.sign_in") %></div>
+    <%= f.submit t("devise.sign_in"), class: "btn btn-info form-control" %>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <div class="text-right right">
+    <%= render "devise/shared/links" %>
+  </div>
 </div> 

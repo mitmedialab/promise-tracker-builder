@@ -1,10 +1,12 @@
 <div id="header">
   <% if current_user %>
-    <%= link_to t("users.show.my_campaigns"), user_path(current_user), class: "btn btn-info" %>
+    <%= link_to campaigns_path, class: "btn btn-info home" do %>
+      <span class="glyphicon glyphicon-home"></span>
+    <% end %>
   <% end %>
   <ul class="user-links">
     <% if current_user %>
-      <li><%= current_user.email %></li>
+      <li><%= current_user.username %></li>
       <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %></li>

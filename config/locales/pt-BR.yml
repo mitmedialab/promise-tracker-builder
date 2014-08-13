@@ -44,12 +44,6 @@ pt-BR:
       create_account: "Criar uma conta gratuita"
 
   users:
-    show:
-      new_campaign: "Criar uma nova acão"
-      my_campaigns: "Minhas acões"
-      no_campaigns: "Criar sua primeira acão!"
-      welcome_text: "Bemvindo no site Promise Tracker!"
-      get_started: "Começa com sua primeira acão."
 
   campaigns:
     status:
@@ -61,6 +55,13 @@ pt-BR:
     activate: 
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
+
+    index:
+      new_campaign: "Criar uma nova acão"
+      my_campaigns: "Minhas acões"
+      no_campaigns: "Criar sua primeira acão!"
+      welcome_text: "Bemvindo no site Promise Tracker!"
+      get_started: "Começa com sua primeira acão."
 
     new:
       campaign_title: "Criar uma nova acão"
