@@ -1,4 +1,4 @@
-$turquoise: #1b6d85;
+$dark-turquoise: #1b6d85;
 
 .status {
   width: 100px;
@@ -118,6 +118,7 @@ $turquoise: #1b6d85;
 }
 
 // Campaign Editor
+
 body.dark {
   background: #333;
 
@@ -129,7 +130,7 @@ body.dark {
 
 .edit-title-button {
   color: grey;
-  vertical-align: bottom;
+  // vertical-align: bottom;
   display: inline;
   margin: 0 10px;
 
@@ -140,7 +141,7 @@ body.dark {
 }
 
 .campaign-title {
-  color: #2490b0;
+  color: $dark-turquoise;
   letter-spacing: 1px;
   font-size: 34px;
   font-weight: 200;
@@ -156,7 +157,7 @@ h2.title {
 
 .tip-box {
   border-radius: 5px;
-  background: $turquoise;
+  background: $dark-turquoise;
   color: white;
   min-height: 40px;
   margin-top: 15px;
@@ -173,7 +174,7 @@ h2.title {
 
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 12px solid $turquoise;
+    border-right: 12px solid $dark-turquoise;
   }
 
   .body {

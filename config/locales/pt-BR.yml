@@ -74,6 +74,7 @@ pt-BR:
       save: "Salvar" 
 
     launch:
+      publicize_form: "Mobilizar a gente para coletar dados"
       launch_title: "Página de publicação"
       return_to_edit: "Editar formulário"
       preview: "Pre-vizualização"
@@ -85,6 +86,7 @@ pt-BR:
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de repostas"
       set_end: "Fechar"
+      responses: "Repostas"
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta acão?"  
