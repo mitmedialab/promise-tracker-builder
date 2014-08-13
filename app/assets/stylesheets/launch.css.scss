@@ -1,18 +1,45 @@
+$darkest-grey: #333333;
+$dark-turquoise: #1b6d85;
+
 .activity-graph {
   width: 100%;
-  height: auto;
+  height: 230px;
 }
 
 .campaign-info-box {
-  border: 1px solid grey;
-  border-radius: 5px;
-  padding: 20px;
   width: 100%; 
-  min-height: 200px;
-  margin-top: 100px;
+  height: 230px;
+  margin-top:  30px;
   text-align: right;
 
   label {
     display: block;
   }
+
+  h1 {
+    margin-bottom: 0;
+    font-size: 40px;
+  }
+}
+
+.campaign-outreach {
+  background: $darkest-grey;
+  height: 130px;
+  padding: 10px;
+  margin: 20px 0;
+  text-align: center;
+  color: white;
+
+  .resource {
+    border-radius: 4px;
+    width: 70px;
+    height: 70px;
+    margin: 10px;
+    display: inline-block;
+  }
+}
+
+.social-share {
+  width: 50px;
+  height: 50px;
 }
