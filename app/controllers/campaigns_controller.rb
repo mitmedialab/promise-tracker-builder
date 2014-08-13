@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout 'form', only: [:edit]
+  layout 'form', only: [:goals_wizard, :edit]
 
   def index
     @campaigns = current_user.campaigns.sort_by(&:status)
@@ -11,7 +11,7 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = current_user.campaigns.create(campaign_params)
-    redirect_to edit_campaign_path(@campaign)
+    redirect_to campaign_goals_wizard_path(@campaign)
   end
 
   def show
@@ -20,6 +20,12 @@ class CampaignsController < ApplicationController
   end
 
   def edit
+    @campaign = Campaign.find(params[:id])
+    @flash = t('edit', scope: 'campaigns').to_json
+    @validations = t('validations', scope: 'defaults').to_json
+  end
+
+  def goals_wizard
     @campaign = Campaign.find(params[:id])
     @flash = t('edit', scope: 'campaigns').to_json
     @validations = t('validations', scope: 'defaults').to_json
