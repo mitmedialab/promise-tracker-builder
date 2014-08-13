@@ -16,12 +16,34 @@ pt-BR:
         status: "Estado"
         start_date: "Data de publicação"
         end_date: "Data final"
-        theme: "Tema"  
+        theme: "Tema"
+
       user:
         username: "Nome de usuário"
         bio: "Descrição"
         password: "Senha"
-        email: "E-mail"  
+        email: "E-mail"
+
+      input:
+        input_type: "Tipo de reposta"
+
+    options:
+      themes:
+        select: "Selecionar"
+        education: "Educação"
+        environment: "Meio ambiente"
+        health: "Saude"
+        infrastructure: "Infra-estructura"
+        energy: "Electricidade"
+        other: "Outra"
+      input_types:
+        string: "Texto"
+        int: "Número"
+        date: "Data"
+        select1: "Selecionar uma"
+        select: "Selecionar várias"
+        geopoint: "Localização"
+        binary: "Imagem"
 
   defaults:
     save: "Salvar"
@@ -83,11 +105,10 @@ pt-BR:
       launch_campaign: "Publicar esta formulário"
       launch_info: "Se você publica este formulário, não vai poder editar-lo mais. Você tem certeza que quer publicar?"
       launch_confirmation: "Quando cliquer para publicar, este formulário fica finalizado."
-      active: "Este formulário está público."
-      closed: "Este formulário está fechado."
+      status_text: "Este formulário está "
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de repostas"
-      set_end: "Fechar"
+      close: "Fechar"
       responses: "Repostas"
 
     list_item:
@@ -109,26 +130,19 @@ pt-BR:
       tooltip: "Dica"
 
       start_survey: "Criar o formulário para esta acão"
-      themes:
-        select: "Selecionar"
-        education: "Educação"
-        environment: "Meio ambiente"
-        health: "Saude"
-        infrastructure: "Infra-estructura"
-        energy: "Electricidade"
-        other: "Outro"
+
+    form_buttons:
+      back: "De volta"
+      next: "Próximo"
 
     show:
       campaign_goals: "Objetivos"
       campaign_survey: "Formulário"
       edit_goals: "Editar acão"  
       edit_survey: "Editar formulário"
+      monitor_progress: "Monitorar as repostas"
       launch_survey: "Publicar"
       create_survey: "Criar o formulário para esta acão"
-
-    form_buttons:  
-      next: "Próximo"
-      back: "De volta"
 
   surveys:
     list_item:
@@ -162,14 +176,6 @@ pt-BR:
       record_location: "Gravar localização"
       take_picture: "Tirar foto"
       choose_image: "Escolher imagem"
-      input_types:
-        text: "Texto"
-        number: "Número"
-        date: "Data"
-        select_one: "Selecionar uma"
-        select_many: "Selecionar várias"
-        location: "Localização"
-        image: "Imagem"
       blank_input_error: "O texto da pergunta não pode estar em branco"  
 
     survey_builder:

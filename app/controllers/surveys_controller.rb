@@ -46,6 +46,7 @@ class SurveysController < ApplicationController
     @survey = Survey.find(params[:id])
     @flash = t('survey_builder', scope: 'surveys').to_json
     @validations = t('validations', scope: 'defaults').to_json
+    @input_types = input_types.to_json
 
     respond_to do |format|
       format.html

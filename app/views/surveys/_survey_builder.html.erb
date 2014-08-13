@@ -44,6 +44,7 @@
   $("#preview-toggle").on("click", PT.togglePreview);
   PT.flash = <%= raw @flash %>;
   PT.validations = <%= raw @validations %>;
+  PT.input_types = <%= raw @input_types %>;
 
   // Make input buttons draggable
   $(".tool-button").draggable({ 
