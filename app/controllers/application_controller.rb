@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
     t(entry, scope: scope) 
   end
 
-  def generate_xml(survey)
+  def input_types
+    I18n.t("activerecord.options.input_types").map { |key, value| { label: value, input_type: key } }
   end
+
 end
