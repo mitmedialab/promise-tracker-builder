@@ -17,6 +17,10 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
+
+    if @campaign.status != "draft"
+      redirect_to monitor_campaign_path(@campaign)
+    end
   end
 
   def edit
@@ -65,6 +69,12 @@ class CampaignsController < ApplicationController
   def launch
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
+    @validations = t('validations', scope: 'defaults').to_json
+    @input_types = input_types.to_json
+
+    if @campaign.status != "draft"
+      redirect_to monitor_campaign_path(@campaign)
+    end
   end
 
   def activate
@@ -83,7 +93,11 @@ class CampaignsController < ApplicationController
       flash.now[:notice] = t('.upload_error')
       render :launch
     end
+  end
 
+  def monitor
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
   end
 
   def close

@@ -99,6 +99,7 @@ PT.Input = function(){
         self.id(response.id);
       }
       self.validate();
+      PT.checkErrors();
     });
   };
 
@@ -242,6 +243,7 @@ PT.getSurvey = function(url){
     PT.survey.inputs().forEach(function(input){
       input.validate();
     });
+    PT.checkErrors();
 
     $(document).on("click", ".tool-button", PT.survey.addInput);
   });
@@ -253,10 +255,12 @@ PT.flashMessage = function(message, element){
   $("#message").delay(2000).fadeOut();
 };
 
-PT.launchSurvey = function(){
-  if(PT.survey.inputs().length > 0){
-    window.location.pathname = Routes.launch_survey_path(PT.survey.id);
+PT.checkErrors = function(){
+  if($("#survey-body").find(".invalid").length > 0){
+    $("#error-check").addClass("alert-danger");
+    $("#error-check p").html(PT.validations.has_errors);
   } else {
-    PT.flashMessage(PT.flash["no_questions"], $("#new-survey-title"));
+    $("#error-check").removeClass("alert-danger");
+    $("#error-check p").html(PT.validations.no_errors);
   }
 };

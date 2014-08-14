@@ -1,61 +1,75 @@
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
 
-  <% if @campaign.status == "draft" %>
-    <h2 class="title inline"><%= t(".launch_title") %></h2>
-    <br>
-    <%= t(".launch_info") %>
-    <br><br>
-    <%= link_to t(".return_to_edit"), survey_path(@survey), class: "btn btn-default" %>
-    <%= link_to preview_survey_path(@survey), class: "btn btn-info open-preview", target: "_blank" do %>
-      <i class="icon-mobile-phone"></i> <%= t(".preview") %>
-    <% end %>
-    <%= link_to t(".launch_campaign"), activate_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t(".launch_confirmation") } %>
+  <h2 class="title inline"><%= t(".launch_title") %></h2>
+  <br><br>
 
-  <% else %>
-    <div class="status-bar">
-      <%= t(".status_text") %>
-      <span class="btn status <%= @campaign.status %>" ><%= t("campaigns.status.#{@campaign.status}") %></span>
-    </div>
-    <div class="row campaign-overview">
-      <div class="col-sm-9">
-        <br>
-        <%= t(".number_of_responses") %>
-        <%= image_tag("graph-activity.jpg", class: "activity-graph") %>
-      </div>
-      <div class="col-sm-3">
-        <div class="campaign-info-box">
-          <h1>62</h1>
-          <%= t(".responses") %>
-          <br><br><br>
-
-          <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
-          <%= @campaign.start_date.strftime("%-d %b %Y") %>
-          <br><br>
-
-          <% if @campaign.end_date %>
-            <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
-            <% @campaign.end_date.strftime("%-d %b %Y") %>
-          <% else %>
-            <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning" %>
-          <% end %>     
-        </div>
+  <div id="campaign-launch-form">
+  <%= form_tag("/search", method: "get") do %>
+    <div class="form-page" id="form-page-1">
+      <h3 class="title"><%= t(".info") %></h3>
+      <hr>
+      <p>
+        <%= t(".launch_explanation_1") %><br>
+        <strong><%= t(".launch_explanation_2") %></strong>
+      </p>
+      <br><br>
+      <p><%= t(".launch_explanation_3") %></p>
+      <div class="button-group center clear">
+      <%= render partial: 'form_buttons' %>
       </div>
     </div>
 
-    <div class="row campaign-outreach">
-      <div class="resource-container">
-        <h4 class="title"><%= t(".publicize_form") %></h4>
-        <div class="resource">
-          <%= image_tag("social-fb.png", class: "social-share") %>
-        </div>
-        <div class="resource">
-          <%= image_tag("social-tw.png", class: "social-share") %>
-        </div>
-        <div class="resource">
-          <%= image_tag("social-email.png", class: "social-share") %>
-        </div>
+    <div class="form-page" id="form-page-2">
+      <h3 class="title"><%= t(".review_goals") %></h3>
+      <hr>
+      <p><%= t(".review_goals_info") %></p>
+      <br>
+      <%= render partial: "goals", locals: {campaign: @campaign} %>
+      <div class="center">
+        <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-default" %>
       </div>
+      <%= render partial: 'form_buttons' %>
     </div>
-   <% end %> 
+
+    <div class="form-page" id="form-page-3">
+      <h3 class="title"><%= t(".review_survey") %></h3>
+      <hr>
+      <div id="error-check" class="alert alert-success" role="alert"><p></p></div>
+      <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
+      <br><br>
+      <div class="center">
+        <%= link_to t(".return_to_edit"), survey_path(@survey), class: "btn btn-default" %>
+        <%= link_to preview_survey_path(@survey), class: "btn btn-default open-preview", target: "_blank" do %>
+          <i class="icon-mobile-phone"></i> <%= t(".preview") %>
+        <% end %>
+      </div>
+      <%= render partial: 'form_buttons' %>
+    </div>
+
+    <div class="form-page" id="form-page-4">
+      <h3 class="title"><%= t(".launch") %></h3>
+      <hr>
+      <p><%= t(".launch_info") %></p>
+
+      <div class="button-group center clear">
+        <hr>
+        <div class="btn btn-info left-arrow">
+          <%= t("campaigns.form_buttons.back") %> <span class="glyphicon glyphicon-chevron-left"></span>
+        </div>
+
+      <%= link_to t(".launch_campaign"), activate_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t(".launch_confirmation") } %>
+    </div>
+    </div>
+  </div>
+    
+<% end %>
 </div>
+
+<script type="text/javascript">  
+  PT.validations = <%= raw @validations %>;
+  PT.input_types = <%= raw @input_types %>;
+
+  $(".right-arrow").on("click", PT.nextLaunchPage);
+  $(".left-arrow").on("click", PT.previousFormPage);
+</script>

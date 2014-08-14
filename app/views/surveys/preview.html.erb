@@ -13,5 +13,7 @@
 
 <script type="text/javascript">
   PT.getSurvey("<%= survey_path(@survey) %>");
-  $(".close-window").on("click", PT.closeWindow);
+  $(".close-window").on("click", function(){
+    window.close();
+  });
 </script>

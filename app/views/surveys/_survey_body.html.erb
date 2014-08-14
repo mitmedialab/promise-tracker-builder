@@ -48,7 +48,7 @@
               <br>
               <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
               <br><br>
-              <a href="#" class="btn btn-info" data-bind="click: save"><%= t("defaults.save") %></a>
+              <a href="#" class="btn btn-info save" data-bind="click: save"><%= t("defaults.save") %></a>
             </td>
           </tr>
         </table>
@@ -62,7 +62,7 @@
         <!-- ko ifnot: inEdit -->
         <p data-bind="text: $data.label"></p>
         <div class="modify">
-          <a href="#" class="btn" data-bind="click: edit"><%= t("surveys.new.edit") %></a>
+          <a href="#" class="btn" data-bind="click: edit"><%= t("defaults.edit") %></a>
           <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
 

@@ -1,7 +1,6 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
 var PT = PT || {};
+
+// Edit campaign 
 
 PT.nextFormPage = function(){
   var page = $(this).parents(".form-page");
@@ -38,4 +37,11 @@ PT.validateCampaign = function(){
 
 PT.openTip = function(event){
   $(event.currentTarget).find(".body").slideToggle();
+};
+
+// Launch
+PT.nextLaunchPage = function(){
+  var page = $(this).parents(".form-page");
+    page.next().fadeIn();
+    page.css({'display':'none'});
 };

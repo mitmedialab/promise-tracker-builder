@@ -55,6 +55,8 @@ pt-BR:
       number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido."
       question_blank: "O texto da pergunta não pode estar em branco."
       no_options: "Você precisa digitar pelo menos uma opção"
+      has_errors: "Seu formulário tem algum erro. Por favor corrija as questões com erros antes de continuar"
+      no_errors: "Seu formulário não tem erros."
 
   layouts:
     header:
@@ -98,13 +100,23 @@ pt-BR:
       save: "Salvar" 
 
     launch:
-      publicize_form: "Mobilizar a gente para coletar dados"
       launch_title: "Página de publicação"
+      info: "Info"
+      launch_explanation_1: "Para poder coletar dados, você tornará seu formulário público."
+      launch_explanation_2: "Uma vez publicado, o formulário não pode ser modificado."
+      launch_explanation_3: "Vai rever seus objetivos e seu formulário para confirmar que tudo está correto."
+      review_goals: "Rever seus objetivos"
+      review_goals_info: "Você definiu estes objetivos para sua acão. Acha que seus objetivos ainda são boas?"
+      review_survey: "Rever seu formulário"
+      launch: "Publicar"
       return_to_edit: "Editar formulário"
-      preview: "Pre-vizualização"
-      launch_campaign: "Publicar esta formulário"
-      launch_info: "Se você publica este formulário, não vai poder editar-lo mais. Você tem certeza que quer publicar?"
-      launch_confirmation: "Quando cliquer para publicar, este formulário fica finalizado."
+      preview: "Pre-vizualização no celular"
+      launch_campaign: "Publicar este formulário"
+      launch_info: "Quando você publica este formulário, não poderá editar-lo mais."
+      launch_confirmation: "Tem certeza que quer publicar?"
+
+    monitor:
+      publicize_form: "Mobilizar a gente para coletar dados"
       status_text: "Este formulário está "
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de repostas"
