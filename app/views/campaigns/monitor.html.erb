@@ -1,0 +1,47 @@
+<div class="page-container">
+  <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+  <div class="status-bar">
+    <%= t(".status_text") %>
+    <span class="btn status <%= @campaign.status %>" ><%= t("campaigns.status.#{@campaign.status}") %></span>
+  </div>
+  <div class="row campaign-overview">
+    <div class="col-sm-9">
+      <br>
+      <%= t(".number_of_responses") %>
+      <%= image_tag("graph-activity.jpg", class: "activity-graph") %>
+    </div>
+    <div class="col-sm-3">
+      <div class="campaign-info-box">
+        <h1>62</h1>
+        <%= t(".responses") %>
+        <br><br><br>
+
+        <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
+        <%= @campaign.start_date.strftime("%-d %b %Y") %>
+        <br><br>
+
+        <% if @campaign.end_date %>
+          <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
+          <% @campaign.end_date.strftime("%-d %b %Y") %>
+        <% else %>
+          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning" %>
+        <% end %>     
+      </div>
+    </div>
+  </div>
+
+  <div class="row campaign-outreach">
+    <div class="resource-container">
+      <h4 class="title"><%= t(".publicize_form") %></h4>
+      <div class="resource">
+        <%= image_tag("social-fb.png", class: "social-share") %>
+      </div>
+      <div class="resource">
+        <%= image_tag("social-tw.png", class: "social-share") %>
+      </div>
+      <div class="resource">
+        <%= image_tag("social-email.png", class: "social-share") %>
+      </div>
+    </div>
+  </div>
+</div>

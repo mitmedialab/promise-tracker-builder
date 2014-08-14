@@ -8,18 +8,7 @@
       <h2 class="title inline"><%= t(".campaign_goals") %></h2>
       <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-info right" %>
     </div>
-
-    <label><%= t("campaigns.edit.goal") %></label>
-    <p><%= @campaign.goal %></p>
-
-    <label><%= t("campaigns.edit.data_collectors") %></label>
-    <p><%= @campaign.data_collectors %></p>
-
-    <label><%= t("campaigns.edit.submissions_target") %></label>
-    <p><%= @campaign.submissions_target %></p>
-
-    <label><%= t("campaigns.edit.audience") %></label>
-    <p><%= @campaign.audience %></p>
+    <%= render partial: "goals", locals: {campaign: @campaign} %>
   </div>
 
   <div class="col-md-7" id="campaign-survey">
@@ -38,7 +27,6 @@
     </div>
     <div class="section-body center">
       <% if @survey %>
-<!--       <%= link_to t(".launch_survey"), launch_campaign_path(@campaign), class: "btn btn-warning left" %> -->
       <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
       <% else %>
       <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-form-button" do %>
