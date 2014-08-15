@@ -18,9 +18,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
 
-    # if @campaign.status != "draft"
-    #   redirect_to monitor_campaign_path(@campaign)
-    # end
+    render layout: 'layouts/partial-width'
   end
 
   def edit

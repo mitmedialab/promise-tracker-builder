@@ -42,6 +42,7 @@ $active: #1abc9c;
     }
 
     &.current {
+      color: black;
       margin-right: 0;
       background: $active;
     }
