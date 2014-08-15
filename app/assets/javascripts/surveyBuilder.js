@@ -117,6 +117,7 @@ PT.Input = function(){
   }; 
 
   self.edit = function(){
+    PT.survey.saveInputs();
     self.inEdit(true);
     PT.selectedInput(self);
   };
@@ -165,7 +166,7 @@ PT.SurveyModel = function(){
   };
 
   self.saveInputs = function(){
-    var unsaved = self.inputs().filter(function(input) { return input.inEdit() == true ;});
+    var unsaved = self.inputs().filter(function(input) { return input.inEdit() === true ;});
     unsaved.forEach(function(input){input.save(input); });
   };
 
