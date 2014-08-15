@@ -114,6 +114,7 @@ pt-BR:
       launch_campaign: "Publicar este formulário"
       launch_info: "Quando você publica este formulário, não poderá editar-lo mais."
       launch_confirmation: "Tem certeza que quer publicar?"
+      edit_goals: "Editar objetivos"
 
     monitor:
       status_text: "Este formulário está "
@@ -132,7 +133,8 @@ pt-BR:
       data_reports: "Reportes de dados"
 
     list_item:
-      confirm_delete: "Você tem certeza que quer eliminar esta acão?"  
+      confirm_delete: "Você tem certeza que quer eliminar esta acão?" 
+      confirm_clone: "Você em certeza que quer duplicar esta acão?" 
 
     edit:
       edit_title: "Editar nome"
