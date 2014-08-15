@@ -8,13 +8,15 @@
     <div class="col-sm-9">
       <br>
       <%= t(".number_of_responses") %>
-      <%= image_tag("graph-activity.jpg", class: "activity-graph") %>
+      <%= image_tag("activity-graph.jpg", class: "activity-graph") %>
     </div>
     <div class="col-sm-3">
       <div class="campaign-info-box">
-        <h1>62</h1>
-        <%= t(".responses") %>
-        <br><br><br>
+        <h1><%= @responses.ceil %></h1>
+        <p><%= t(".responses") %></p>
+        <div class="graph-bar current" style="width: <%= @responses / @campaign.submissions_target * 100 %>%;">current</div>
+        <div class="graph-bar target">target</div>
+        <br>
 
         <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
         <%= @campaign.start_date.strftime("%-d %b %Y") %>
@@ -29,19 +31,36 @@
       </div>
     </div>
   </div>
+</div>
+<br>
 
-  <div class="row campaign-outreach">
-    <div class="resource-container">
-      <h4 class="title"><%= t(".publicize_form") %></h4>
-      <div class="resource">
-        <%= image_tag("social-fb.png", class: "social-share") %>
-      </div>
-      <div class="resource">
-        <%= image_tag("social-tw.png", class: "social-share") %>
-      </div>
-      <div class="resource">
-        <%= image_tag("social-email.png", class: "social-share") %>
-      </div>
+<div class="row section-dark campaign-outreach">
+  <div class="page-container">
+    <h3 class="title"><%= t(".publicize_form") %></h3>
+    <%= image_tag("social-fb.png", class: "social-share") %>
+    <%= image_tag("social-tw.png", class: "social-share") %>
+    <%= image_tag("social-email.png", class: "social-share") %>
+  </div>
+</div>
+<i class="fa fa-users"></i>
+
+<div class="row section-light campaign-resources">
+  <div class="page-container">
+    <h1 class="title"><%= t(".campaign_resources") %></h1>
+    <div class="resource">
+      <i class="icon-group"></i>
+      <%= t(".guide_1") %>
     </div>
+    <div class="resource">
+      <i class="icon-mobile-phone"></i>
+      <%= t(".guide_2") %>
+    </div>
+
+    <%= link_to share_campaign_path(@campaign) do %>
+    <div class="resource">
+      <i class="icon-bar-chart"></i>
+      <%= t(".guide_3") %>
+    </div>
+    <% end %>
   </div>
 </div>
