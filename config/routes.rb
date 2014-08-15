@@ -13,6 +13,7 @@ PromiseTracker::Application.routes.draw do
   get '/campaigns/:id/launch', to: 'campaigns#launch', as: 'launch_campaign'
   get '/campaigns/:id/activate', to: 'campaigns#activate', as: 'activate_campaign'
   get '/campaigns/:id/monitor', to: 'campaigns#monitor', as: 'monitor_campaign'
+  get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'
   get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
   get '/campaigns/:id/clone', to: 'campaigns#clone', as: 'clone_campaign'
 

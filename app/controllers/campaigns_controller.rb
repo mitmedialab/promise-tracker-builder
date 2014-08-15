@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
-  layout 'form', only: [:goals_wizard, :edit]
+  layout 'dark', only: [:goals_wizard, :edit]
+  layout 'full-width', only: [:launch, :monitor, :share]
 
   def index
     @campaigns = current_user.campaigns.sort_by(&:status)
@@ -96,6 +97,14 @@ class CampaignsController < ApplicationController
   end
 
   def monitor
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
+
+    #Mockup hack
+    @responses = 3.5 + rand(@campaign.submissions_target)
+  end
+
+  def share
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
   end

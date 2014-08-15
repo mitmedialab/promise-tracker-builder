@@ -1,0 +1,81 @@
+$darkest-grey: #333333;
+$turquoise: #5bc0de;
+$dark-turquoise: #1b6d85;
+$active: #1abc9c;
+
+.map {
+  background: image-url("map-santa-lucia.png") center center;
+  background-size: cover;
+}
+
+.pic {
+  background: image-url("campaign-image.jpg") center center;
+  background-size: cover;
+}
+
+.graph {
+  background: image-url("data-graph-2.jpg") center bottom;
+  background-size: cover;
+}
+
+.data-report {
+  background: white;
+  color: black;
+  text-align: left;
+
+  .header {
+    height: 30px;
+    background: $turquoise;
+    margin-bottom: 20px;
+  }
+
+  .footer {
+    height: 10px;
+    background: $turquoise;
+    margin-top: 20px;
+  }
+
+  .title {
+    font-weight: 600;
+  }
+
+  .description {
+    width: 75%;
+    float: left;
+  }
+
+  .logo {
+    width: 25%;
+    float: right;
+    text-align: right;
+
+    img {
+      width: 50px;
+      height: auto;
+    }
+
+  }
+
+  .report-image {
+    display: block;
+
+    .map {
+      width: 48%;
+      height: 100px;
+      float: left;
+    }
+
+    .pic {
+      width: 48%;
+      height: 100px;
+      float: right;
+    }
+  }
+
+  .report-graph {
+    clear: both;
+    background: image-url("activity-graph.jpg") center center;
+    height: 70px;
+    background-size: cover;
+  }
+}
