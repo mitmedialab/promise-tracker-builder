@@ -1,5 +1,4 @@
 class CampaignsController < ApplicationController
-  layout 'dark', only: [:goals_wizard, :edit]
   layout 'full-width', only: [:launch, :monitor, :share]
 
   def index
@@ -19,9 +18,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
 
-    if @campaign.status != "draft"
-      redirect_to monitor_campaign_path(@campaign)
-    end
+    # if @campaign.status != "draft"
+    #   redirect_to monitor_campaign_path(@campaign)
+    # end
   end
 
   def edit
@@ -34,11 +33,17 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @flash = t('edit', scope: 'campaigns').to_json
     @validations = t('validations', scope: 'defaults').to_json
+
+    render layout: 'dark'
   end
 
   def update
     @campaign = Campaign.find(params[:id])
     @campaign.update_attributes(campaign_params)
+    if @campaign.survey
+      @campaign.survey.update_attribute(:guid, make_guid(@campaign.title, @campaign.id))
+    end
+    
     redirect_to campaign_path(@campaign)
   end
 
@@ -46,8 +51,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
 
     @campaign_clone = @campaign.dup
+    title = @campaign.title + " #{t('campaigns.status.copy')}"
     @campaign_clone.update_attributes(
-      title: @campaign.title + " #{t('campaigns.status.copy')}",
+      title: title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}",
       status: 'draft'
     )
 
@@ -118,7 +124,7 @@ class CampaignsController < ApplicationController
 
   def destroy
     Campaign.delete(params[:id])
-    redirect_to controller: 'users', action: 'show', id: current_user.id
+    redirect_to campaigns_path
   end
 
 

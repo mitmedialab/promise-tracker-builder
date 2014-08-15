@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812213540) do
+ActiveRecord::Schema.define(version: 20140815043203) do
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -45,17 +45,14 @@ ActiveRecord::Schema.define(version: 20140812213540) do
   end
 
   create_table "surveys", force: true do |t|
-    t.text     "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "guid"
     t.boolean  "template"
     t.integer  "campaign_id"
   end
 
   add_index "surveys", ["campaign_id"], name: "index_surveys_on_campaign_id", using: :btree
-  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

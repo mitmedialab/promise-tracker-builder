@@ -11,7 +11,10 @@ class SurveysController < ApplicationController
   def new
     if current_user
       @campaign = Campaign.find(params[:campaign_id])
-      @survey = Survey.create(campaign_id: @campaign.id, title: @campaign.title)
+      @survey = Survey.create(
+        campaign_id: @campaign.id,
+        guid: make_guid(@campaign.title, @campaign.id)
+      )
       redirect_to survey_path(@survey)
     else
       @survey = Survey.new
@@ -22,12 +25,6 @@ class SurveysController < ApplicationController
   def update
     @survey = Survey.find(params[:id])
     inputs = params[:inputs]
-
-    @survey.update_attributes(
-      title: params[:title],
-      campaign_id: params[:campaign_id],
-      guid: make_guid(params[:title], @survey.id)
-    )
 
     inputs.each_with_index do |input, index|
       item = Input.find_or_create_by(id: input[:id])

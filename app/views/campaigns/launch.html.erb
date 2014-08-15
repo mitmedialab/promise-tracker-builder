@@ -25,7 +25,9 @@
       <hr>
       <p><%= t(".review_goals_info") %></p>
       <br>
-      <%= render partial: "goals", locals: {campaign: @campaign} %>
+      <div class="goals-container">
+        <%= render partial: "goals", locals: {campaign: @campaign} %>
+      </div>
       <div class="center">
         <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-default" %>
       </div>

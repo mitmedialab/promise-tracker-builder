@@ -1,5 +1,6 @@
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+  <%= render partial: 'nav' %>
 </div>
 <br>
 
@@ -7,10 +8,13 @@
   <div class="page-container">
     <h2 class="title"><%= t(".visualize_data") %></h2>
     <div class="resource map">
+      <h4 class="title legend"><%= t(".map") %></h4>
     </div>
     <div class="resource pic">
+      <h4 class="title legend"><%= t(".photos") %></h4>
     </div>
     <div class="resource graph">
+      <h4 class="title legend"><%= t(".graphs") %></h4>
     </div>
   </div>
 </div>
@@ -40,11 +44,13 @@
 
           <div class="report-graph"></div>
 
-          <label>Goal:</label>
+          <label><%= Campaign.human_attribute_name(:goal) %></label>
           <p><%= @campaign.goal %></p>
 
-          <label>Contact:</label>
+          <label><%= t(".contact") %></label>
           <p>Susana Morada, 334-345-8897, susana@gmail.com</p>
+
+          <strong><%= t(".learn_more") %>: promisetracker.com/campaign</strong>
         </div> 
         <div class="footer"></div> 
       </div>

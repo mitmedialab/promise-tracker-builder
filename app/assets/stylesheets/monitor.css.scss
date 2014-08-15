@@ -90,6 +90,8 @@ $active: #1abc9c;
   text-transform: uppercase;
   font-weight: 200;
   font-size: 16px;
+  position: relative;
+  margin-bottom: 35px;
 
   &:hover {
     background-color: #eee;
@@ -99,5 +101,14 @@ $active: #1abc9c;
     font-size: 400%;
     display: block;
     margin-bottom: 15px;
+  }
+
+  .legend {
+    color: #BABABA;
+    font-weight: 200;
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    right: 0;
   }
 }

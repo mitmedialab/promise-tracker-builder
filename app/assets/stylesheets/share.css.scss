@@ -42,6 +42,11 @@ $active: #1abc9c;
   .description {
     width: 75%;
     float: left;
+    min-height: 75px;
+  }
+
+  label {
+    margin-bottom: 0;
   }
 
   .logo {
@@ -62,6 +67,7 @@ $active: #1abc9c;
     .map {
       width: 48%;
       height: 100px;
+      margin-bottom: 10px;
       float: left;
     }
 
@@ -74,8 +80,9 @@ $active: #1abc9c;
 
   .report-graph {
     clear: both;
-    background: image-url("activity-graph.jpg") center center;
-    height: 70px;
+    background: image-url("data-graph-3.png") center top;
+    height: 50px;
     background-size: cover;
+    margin-bottom: 15px; 
   }
 }
