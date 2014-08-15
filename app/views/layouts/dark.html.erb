@@ -11,15 +11,11 @@
     <script type="text/javascript" src="/knockout-sortable.js"></script>
     <script type="text/javascript" src="/knockout-mapping.js"></script>
   </head>
-  <body>
-    <%= render "layouts/header" %>
-    <div class="page-container"> 
-      <div class="alerts">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p> 
-      </div>
+  
+  <body class="dark">
+    <%= render 'layouts/header' %>
+    <div class="container">
       <%= yield %>
     </div>
-
   </body>
 </html>

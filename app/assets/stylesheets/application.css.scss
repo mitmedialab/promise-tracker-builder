@@ -18,6 +18,12 @@
 
 $light-grey: #c7c7c7;
 
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .inline {
   display: inline-block !important;
 }
@@ -49,7 +55,9 @@ $light-grey: #c7c7c7;
 }
 
 .page-container {
-  margin: 0 60px;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .pad {
@@ -117,6 +125,7 @@ $light-grey: #c7c7c7;
   background: whitesmoke;
   padding: 20px 60px;
   height: 80px;
+  margin-bottom: 40px;
 
   .home {
     font-size: 22px;
