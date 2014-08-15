@@ -4,6 +4,9 @@
     <%= link_to campaign.title, campaign_path(campaign), class: "campaign-name" %>
     <div class="right">
       <%= link_to t("campaigns.status.#{campaign.status}"), campaign_path(campaign), class: "btn status " + campaign.status %>
+      <%= link_to clone_campaign_path(campaign), class: "pad-side" do %>
+        <i class="icon-copy"></i>
+      <% end %>
       <%= link_to campaign_path(campaign), class: "pad-side", method: :delete, data: { confirm: t(".confirm_delete") } do %>
         <span class="glyphicon glyphicon-trash"></span>
       <% end %>

@@ -129,8 +129,13 @@ pt-BR:
       guide_3: "Vizualizar seus resultados"
 
     share:
-      visualize_data: "Vizualizar seus dados"  
-      data_reports: "Reportes de dados"
+      visualize_data: "Vizualizar seus dados" 
+      map: "Mapa" 
+      photos: "Fotos"
+      graphs: "Gráficos"
+      data_reports: "Relatórios de dados"
+      contact: "Pessoa de contacto"
+      learn_more: "Aprender mais sobre esta acão no site"
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta acão?" 

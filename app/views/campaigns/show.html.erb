@@ -1,7 +1,10 @@
 <div class="campaign-title">
   <%= @campaign.title %>
 </div>
-<br><br>
+<% if @campaign.status != "draft" %>
+<%= render partial: 'nav' %>
+<% end %>
+<br>
 <div class="row pad-bottom">
   <div class="col-md-5" id="campaign-goals">
     <div class="section-header">
