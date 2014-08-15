@@ -1,0 +1,53 @@
+<div class="page-container">
+  <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+</div>
+<br>
+
+<div class="row section-dark campaign-resources">
+  <div class="page-container">
+    <h2 class="title"><%= t(".visualize_data") %></h2>
+    <div class="resource map">
+    </div>
+    <div class="resource pic">
+    </div>
+    <div class="resource graph">
+    </div>
+  </div>
+</div>
+
+<div class="row section-light">
+  <div class="page-container">
+  <h2 class="title"><%= t(".data_reports") %></h2>
+  <br>
+
+    <div class="col-sm-6">
+      <div class="data-report">
+        <div class="header"></div>
+
+        <div class="container">
+          <h2 class="title"><%= @campaign.title %></h2>
+          <div class="description">
+            <p><%= @campaign.goal %></p>
+          </div>
+          <div class="logo">
+            <%= image_tag("PT-icons.png") %>
+          </div>
+
+          <div class="report-image">
+            <div class="map"></div>
+            <div class="pic"></div>
+          </div>
+
+          <div class="report-graph"></div>
+
+          <label>Goal:</label>
+          <p><%= @campaign.goal %></p>
+
+          <label>Contact:</label>
+          <p>Susana Morada, 334-345-8897, susana@gmail.com</p>
+        </div> 
+        <div class="footer"></div> 
+      </div>
+    </div>
+  </div>
+</div>

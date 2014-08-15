@@ -116,12 +116,20 @@ pt-BR:
       launch_confirmation: "Tem certeza que quer publicar?"
 
     monitor:
-      publicize_form: "Mobilizar a gente para coletar dados"
       status_text: "Este formulário está "
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de repostas"
       close: "Fechar"
       responses: "Repostas"
+      publicize_form: "Mobilizar a gente para coletar dados"
+      campaign_resources: "Guias"
+      guide_1: "Organizar um evento de lançamento"
+      guide_2: "Manter sua comunidade envolvida"
+      guide_3: "Vizualizar seus resultados"
+
+    share:
+      visualize_data: "Vizualizar seus dados"  
+      data_reports: "Reportes de dados"
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta acão?"  
