@@ -2,6 +2,7 @@ class CampaignsController < ApplicationController
   layout 'full-width', only: [:launch, :monitor, :share]
 
   def index
+    @campaign = Campaign.new
     @campaigns = current_user.campaigns.sort_by(&:status)
   end
 

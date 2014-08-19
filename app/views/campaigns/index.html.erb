@@ -25,15 +25,23 @@
     <% else %> 
     <div class="welcome">
       <%= t(".greeting") %>, <%= current_user.username.capitalize %>! <%= t(".welcome_text") %><br>
-      <%= link_to t(".get_started"), new_campaign_path %>
+      <%= link_to t(".get_started"), "#", class: "new-campaign" %>
     </div>
     <% end %>
   </div>
 
   <div class="col-md-4 center new-campaign">
-    <%= link_to new_campaign_path, class: "btn btn-info new-form-button" do %>
+    <div class="btn btn-info new-form-button">
       <span class="glyphicon glyphicon-plus-sign"></span>
       <%= t(".new_campaign") %>
-    <% end %>
+    </div>
   </div>
-</div> 
+</div>
+
+<%= render partial: 'new' %>
+
+<script type="text/javascript">
+  $(".new-campaign").on("click", function(){
+    $("#new-campaign-modal").modal();
+  });
+</script>
