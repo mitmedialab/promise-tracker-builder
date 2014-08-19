@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-  $(document).on("focus", ".replace-text, .options input", function(){
-    $(this).on("mouseup.a keyup.a", function(e){      
-      $(this).off("mouseup.a keyup.a").select();
-    });
-  });
+  // $(document).on("focus", ".replace-text, .options input", function(){
+  //   $(this).on("mouseup.a keyup.a", function(e){      
+  //     $(this).off("mouseup.a keyup.a").select();
+  //   });
+  // });
 });
 
 var PT = PT || {};
@@ -126,6 +126,7 @@ PT.Input = function(){
 
   self.addOption = function(input, event){
     self.options.push("");
+    $(event.target).parents().find(".options").find(".option").last().find("input").focus();
   };
 
   self.deleteOption = function(option, event){

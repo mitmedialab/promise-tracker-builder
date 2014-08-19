@@ -6,7 +6,7 @@
       </div>
       <%= form_for @campaign do |f| %>
       <div class="modal-body">
-          <%= f.text_field :title, class: "form-control", placeholder: t(".title_placeholder") %>
+          <%= f.text_field :title, class: "form-control", placeholder: t(".title_placeholder"), autofocus: true %>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary"><%= t(".create_campaign") %></button>
