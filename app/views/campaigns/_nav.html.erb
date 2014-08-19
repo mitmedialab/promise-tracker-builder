@@ -1,11 +1,11 @@
 <div class="campaign-nav">
   <%= link_to campaign_path(@campaign) do %>
-    <span class="btn btn-default">View goals & survey</span>
+    <span class="btn btn-default"><%= t(".view_survey") %></span>
   <% end %>
   <%= link_to monitor_campaign_path(@campaign) do %>
-    <span class="btn btn-default">Monitor collection</span>
+    <span class="btn btn-default"><%= t(".monitor_responses") %></span>
   <% end %>
   <%= link_to share_campaign_path(@campaign) do %>
-    <span class="btn btn-default">Share data</span>
+    <span class="btn btn-default"><%= t(".share_data") %></span>
   <% end %>
 </div>

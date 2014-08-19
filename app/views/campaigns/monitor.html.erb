@@ -1,10 +1,6 @@
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
   <%= render partial: 'nav' %>
-  <!-- <div class="status-bar">
-    <%= t(".status_text") %>
-    <span class="btn status <%= @campaign.status %>" ><%= t("campaigns.status.#{@campaign.status}") %></span>
-  </div> -->
   <div class="row campaign-overview">
     <div class="col-sm-9">
       <br>
@@ -43,7 +39,6 @@
     <%= image_tag("social-email.png", class: "social-share") %>
   </div>
 </div>
-<i class="fa fa-users"></i>
 
 <div class="row section-light campaign-resources">
   <div class="page-container">
