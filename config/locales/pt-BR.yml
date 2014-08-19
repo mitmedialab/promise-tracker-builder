@@ -91,6 +91,7 @@ pt-BR:
       new_campaign: "Criar uma nova ação"
       my_campaigns: "Minhas ações"
       no_campaigns: "Criar sua primeira ação!"
+      greeting: "Oi"
       welcome_text: "Bem-vindo ao site Monitorando a Comunidade!"
       get_started: "Que tal criar sua primeira açāo?"
 
@@ -197,18 +198,22 @@ pt-BR:
       required: "Pergunta obrigatoria?"
       annotation: "Permitir anotação?"
       decimal: "Permitir decimal?"
-      options: "Opcões"
+      options: "Opções"
       add_new_option: "Clique para adicionar uma opção"
       question_label: "Texto da pergunta"
       question_placeholder: "Digite a pergunta aqui"
       answer_type: "Tipo de resposta"
       first_question: "A sua primeira pergunta..."
       their_answer: "Resposta"
-      answer_label: "Pré-vizualização da resposta"
       record_location: "Gravar localização"
       take_picture: "Tirar foto"
       choose_image: "Escolher imagem"
-      blank_input_error: "O texto da pergunta não pode estar em branco"  
+      blank_input_error: "O texto da pergunta não pode estar em branco"
+      preview:
+        date: "13 Jan, 2014"  
+        number: "123"
+        decimal: "123.5"
+        string: "Abc"
 
     survey_builder:
       editor_title: "Barra de Ferramentas"  

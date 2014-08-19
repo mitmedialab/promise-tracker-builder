@@ -24,7 +24,7 @@
     </ul>
     <% else %> 
     <div class="welcome">
-      <%= t(".welcome_text") %><br>
+      <%= t(".greeting") %>, <%= current_user.username.capitalize %>! <%= t(".welcome_text") %><br>
       <%= link_to t(".get_started"), new_campaign_path %>
     </div>
     <% end %>
