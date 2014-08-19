@@ -91,7 +91,7 @@ pt-BR:
       new_campaign: "Criar uma nova ação"
       my_campaigns: "Minhas ações"
       no_campaigns: "Criar sua primeira ação!"
-      greeting: "Oi"
+      greeting_text: "Oi"
       welcome_text: "Bem-vindo ao site Monitorando a Comunidade!"
       get_started: "Que tal criar sua primeira açāo?"
 
