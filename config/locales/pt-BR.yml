@@ -1,5 +1,5 @@
 pt-BR:
-  app_name: "Promise Tracker"
+  app_name: "Monitorando a Comunidade"
   activerecord:
     models:
       survey: "Formulário"
@@ -25,16 +25,16 @@ pt-BR:
         email: "E-mail"
 
       input:
-        input_type: "Tipo de reposta"
+        input_type: "Tipo de resposta"
 
     options:
       themes:
         select: "Selecionar"
         education: "Educação"
         environment: "Meio ambiente"
-        health: "Saude"
-        infrastructure: "Infra-estructura"
-        energy: "Electricidade"
+        health: "Saúde"
+        infrastructure: "Infra-estrutura"
+        energy: "Eletricidade"
         other: "Outra"
       input_types:
         string: "Texto"
@@ -43,7 +43,7 @@ pt-BR:
         select1: "Selecionar uma"
         select: "Selecionar várias"
         geopoint: "Localização"
-        binary: "Imagem"
+        binary: "Foto"
 
   defaults:
     save: "Salvar"
@@ -54,7 +54,7 @@ pt-BR:
       required: "Este campo &eacute; requerido."
       number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido."
       question_blank: "O texto da pergunta não pode estar em branco."
-      no_options: "Você precisa digitar pelo menos uma opção"
+      no_options: "Você precisa adicionar pelo menos uma opção"
       has_errors: "Seu formulário tem algum erro. Por favor corrija as questões com erros antes de continuar"
       no_errors: "Seu formulário não tem erros."
 
@@ -65,7 +65,7 @@ pt-BR:
   home:
     index:
       welcome: "Começar com Promise Tracker"
-      tag_line: "Coleta de dados para a acão cívica"
+      tag_line: "Coleta de dados para a ação cívica"
       create_account: "Criar uma conta gratuita"
 
   users:
@@ -78,25 +78,30 @@ pt-BR:
       draft: "Rascunho"
       copy: "cópia"
 
+    nav:
+      view_survey: "Ver formulário"
+      monitor_responses: "Monitorar respostas"
+      share_data: "Compartilhar dados"
+
     activate: 
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
 
     index:
-      new_campaign: "Criar uma nova acão"
-      my_campaigns: "Minhas acões"
-      no_campaigns: "Criar sua primeira acão!"
-      welcome_text: "Bem-vindo no site Promise Tracker!"
-      get_started: "Começa com sua primeira acão."
+      new_campaign: "Criar uma nova ação"
+      my_campaigns: "Minhas ações"
+      no_campaigns: "Criar sua primeira ação!"
+      welcome_text: "Bem-vindo ao site Monitorando a Comunidade!"
+      get_started: "Que tal criar sua primeira açāo?"
 
     new:
-      campaign_title: "Criar uma nova acão"
-      title_placeholder: "Nome da acão"
+      campaign_title: "Qual é o tema que interessa você?"
+      title_placeholder: "Tema de interesse"
       create_campaign: "Criar"
 
     campaign_title_modal:
-      campaign_title: "Nome da acão"
-      title_placeholder: "Nome da acão"
+      campaign_title: "Nome da ação"
+      title_placeholder: "Nome da ação"
       save: "Salvar" 
 
     launch:
@@ -104,25 +109,25 @@ pt-BR:
       info: "Info"
       launch_explanation_1: "Para poder coletar dados, você tornará seu formulário público."
       launch_explanation_2: "Uma vez publicado, o formulário não pode ser modificado."
-      launch_explanation_3: "Vai rever seus objetivos e seu formulário para confirmar que tudo está correto."
+      launch_explanation_3: "Você vai rever seus objetivos e seu formulário para verificar se tudo está correto."
       review_goals: "Rever seus objetivos"
-      review_goals_info: "Você definiu estes objetivos para sua acão. Acha que seus objetivos ainda são boas?"
+      review_goals_info: "Você definiu este objetivo para sua ação. Ainda concorda com ele?"
       review_survey: "Rever seu formulário"
       launch: "Publicar"
       return_to_edit: "Editar formulário"
-      preview: "Pre-vizualização no celular"
+      preview: "Pré-vizualização no celular"
       launch_campaign: "Publicar este formulário"
-      launch_info: "Quando você publica este formulário, não poderá editar-lo mais."
-      launch_confirmation: "Tem certeza que quer publicar?"
+      launch_info: "Quando você publica este formulário, não poderá editá-lo mais."
+      launch_confirmation: "Tem certeza que deseja publicar este formulário?"
       edit_goals: "Editar objetivos"
 
     monitor:
       status_text: "Este formulário está "
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
-      number_of_responses: "Número de repostas"
+      number_of_responses: "Número de respostas"
       close: "Fechar"
-      responses: "Repostas"
-      publicize_form: "Mobilizar a gente para coletar dados"
+      responses: "Respostas"
+      publicize_form: "Mobilizar os amigos para coletar dados"
       campaign_resources: "Guias"
       guide_1: "Organizar um evento de lançamento"
       guide_2: "Manter sua comunidade envolvida"
@@ -135,11 +140,11 @@ pt-BR:
       graphs: "Gráficos"
       data_reports: "Relatórios de dados"
       contact: "Pessoa de contacto"
-      learn_more: "Aprender mais sobre esta acão no site"
+      learn_more: "Aprender mais sobre esta ação no site"
 
     list_item:
-      confirm_delete: "Você tem certeza que quer eliminar esta acão?" 
-      confirm_clone: "Você em certeza que quer duplicar esta acão?" 
+      confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
+      confirm_clone: "Você em certeza que quer duplicar esta ação?" 
 
     edit:
       edit_title: "Editar nome"
@@ -150,26 +155,26 @@ pt-BR:
         submissions_target: "When determining how many data points you hope to gather..."
         audience: "Think about who you'll need to convince in order to create change on this issue..."
       explanations:
-        goal: "O que você quer realizar com esta acão? O que mudança você quer fazer?"
+        goal: "O que você quer realizar com esta ação? O que você quer mudar na sua comunidade?"
         data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
-        submissions_target: "Quantos respostas você quer obter?" 
-        audience: "Com quem você vai compartilhar os dados coletados para realizar a mudança?"
+        submissions_target: "Quantas respostas você quer obter?" 
+        audience: "Para transformar sua comunidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
 
-      start_survey: "Criar o formulário para esta acão"
+      start_survey: "Criar o formulário para esta ação"
 
     form_buttons:
-      back: "De volta"
+      back: "Voltar"
       next: "Próximo"
 
     show:
       campaign_goals: "Objetivos"
       campaign_survey: "Formulário"
-      edit_goals: "Editar acão"  
+      edit_goals: "Editar ação"  
       edit_survey: "Editar formulário"
-      monitor_progress: "Monitorar as repostas"
+      monitor_progress: "Monitorar as respostas"
       launch_survey: "Publicar"
-      create_survey: "Criar o formulário para esta acão"
+      create_survey: "Criar o formulário para esta ação"
 
   surveys:
     list_item:
@@ -196,23 +201,23 @@ pt-BR:
       add_new_option: "Clique para adicionar uma opção"
       question_label: "Texto da pergunta"
       question_placeholder: "Digite a pergunta aqui"
-      answer_type: "Tipo de reposta"
+      answer_type: "Tipo de resposta"
       first_question: "A sua primeira pergunta..."
-      their_answer: "Reposta"
-      answer_label: "Pre-vizualização da reposta"
+      their_answer: "Resposta"
+      answer_label: "Pré-vizualização da resposta"
       record_location: "Gravar localização"
       take_picture: "Tirar foto"
       choose_image: "Escolher imagem"
       blank_input_error: "O texto da pergunta não pode estar em branco"  
 
     survey_builder:
-      editor_title: "Constructor"  
+      editor_title: "Barra de Ferramentas"  
       add_question: "Adicionar pergunta"
-      add_location: "Pegar localização"
-      add_image: "Tirar foto"
-      preview_title: "Pre-vizualização"
-      show_preview: "Mostrar pre-vizualização"
-      hide_preview: "Esconder pre-vizualização"
+      add_location: "Obter localização"
+      add_image: "Obter foto"
+      preview_title: "Pré-vizualização"
+      show_preview: "Mostrar pré-vizualização"
+      hide_preview: "Esconder pré-vizualização"
 
       flash:
         no_title: "Por favor digite um título"

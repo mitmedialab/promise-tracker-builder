@@ -76,10 +76,12 @@ PT.Input = function(){
       if (self.options().length == 0){
         messages.append(PT.validations.no_options);
         inputEl.addClass('invalid');
+      } else {
+      inputEl.removeClass('invalid');
       }
     } else {
       inputEl.removeClass('invalid');
-    }
+    } 
   };
 
   self.save = function(self, event){

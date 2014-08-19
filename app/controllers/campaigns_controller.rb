@@ -105,7 +105,7 @@ class CampaignsController < ApplicationController
     @survey = @campaign.survey
 
     #Mockup hack
-    @responses = 3.5 + rand(@campaign.submissions_target)
+    @responses = 0.5 + rand(@campaign.submissions_target)
   end
 
   def share
