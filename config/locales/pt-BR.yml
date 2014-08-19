@@ -161,6 +161,11 @@ pt-BR:
         submissions_target: "Quantas respostas você quer obter?" 
         audience: "Para transformar sua comunidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
+      tips:
+        data_collectors: "Talvez sejam necessárias muitas pessoas para coletar dados suficientes para sua campanha. Pense sobre as pessoas que você conhece que já estão comprometidas com a solução deste problema e quais poderiam se animar a ajudar você nesta campanha."
+        goal: "Mudanças sociais normalmente requerem muitos passos pequenos. Há alguma mudança pequena e concreta que pode ser alcançada no futuro próximo?"
+        submissions_target: "Algumas vezes, um conjunto pequeno de dados não é tão convincente. Pense em quantas respostas você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
+        audience: "Existem muitos públicos que você pode querer atingir com os dados que vai coletar. Quem terá maior interesse neles? Você poderia alcançar um público que ainda não tem familiaridade com o tema? Quem será o público mais difícil de convencer a participar da mudança que você está promovendo?"
 
       start_survey: "Criar o formulário para esta ação"
 
