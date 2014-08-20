@@ -27,10 +27,6 @@
         </div>
       </div>  
     </div>
-    <div class="col-md-4 clear">
-      <%= f.label :theme, class: "block" %>
-      <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
-    </div>
     <%= render partial: 'form_buttons' %>
   </div>
 
@@ -57,7 +53,7 @@
       <div class="form-group"> 
         <%= f.label :submissions_target %>
         <p class="explain"><%= t("campaigns.edit.explanations.submissions_target") %></p>
-        <%= f.number_field :submissions_target, rows: 8, class: "block" %>
+        <%= f.number_field :submissions_target, rows: 8, min: 0, placeholder: t("campaigns.edit.type_number"), class: "block" %>
       </div>
     </div>
     <div class="col-sm-4">
