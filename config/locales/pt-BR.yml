@@ -36,7 +36,9 @@ pt-BR:
     options:
       themes:
         select: "Selecionar"
+        economics: "Desenvolvimento social"
         education: "Educação"
+        housing: "Habitação"
         environment: "Meio ambiente"
         health: "Saúde"
         infrastructure: "Infra-estrutura"

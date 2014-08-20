@@ -41,6 +41,15 @@
   </div>
 
   <div class="row">
+    <div class="col-md-4 clear">
+      <div class="form-group"> 
+        <%= f.label :theme, class: "block" %>
+        <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
+      </div>  
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-sm-8">
       <div class="form-group"> 
         <%= f.label :data_collectors %>
