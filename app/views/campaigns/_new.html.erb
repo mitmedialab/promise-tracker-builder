@@ -2,11 +2,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title"><%= t(".campaign_title") %></h4>
+        <h4 class="modal-title"><%= t(".modal_title") %></h4>
       </div>
       <%= form_for @campaign do |f| %>
       <div class="modal-body">
-          <%= f.text_field :title, class: "form-control", placeholder: t(".title_placeholder"), autofocus: true %>
+        <div class="form-group">
+          <%= f.label :theme, t(".campaign_theme") %>
+          <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
+        </div>
+        <div class="form-group">
+          <%= f.label :tile, t(".campaign_title") %>
+          <%= f.text_field :title, class: "form-control", autofocus: true, required: true %>
+        </div>  
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary"><%= t(".create_campaign") %></button>

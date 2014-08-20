@@ -13,11 +13,19 @@
 
 <div id="campaign-goals-form" class="single-page">
   <div class="row">
+    <div class="col-sm-4 block">
+      <div class="form-group">
+        <%= f.label :theme, class: "block" %>
+        <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-8">
       <div class="form-group"> 
         <%= f.label :goal %>
         <p class="explain"><%= t(".explanations.goal") %></p>
-        <%= f.text_area :goal, rows: 8, class: "form-control" %>
+        <%= f.text_area :goal, rows: 8, required: true, class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-4">
@@ -29,12 +37,6 @@
           <p><%= t(".tips.goal") %></p>
         </div>
       </div>  
-    </div>
-    <div class="col-md-4 clear">
-      <div class="form-group">
-        <%= f.label :theme, class: "block" %>
-        <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
-      </div>
     </div>
   </div>
 
@@ -61,7 +63,7 @@
       <div class="form-group"> 
         <%= f.label :submissions_target %>
         <p class="explain"><%= t(".explanations.submissions_target") %></p>
-        <%= f.number_field :submissions_target, rows: 8, class: "block" %>
+        <%= f.number_field :submissions_target, min: 0, class: "block" %>
       </div>
     </div>
     <div class="col-sm-4">

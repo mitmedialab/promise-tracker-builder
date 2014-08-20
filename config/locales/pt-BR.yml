@@ -96,8 +96,9 @@ pt-BR:
       get_started: "Que tal criar sua primeira açāo?"
 
     new:
-      campaign_title: "Qual é o tema que interessa você?"
-      title_placeholder: "Tema de interesse"
+      modal_title: "Nova ação"
+      campaign_theme: "Qual é o tema que interessa você?"
+      campaign_title: "Nome da ação"
       create_campaign: "Criar"
 
     campaign_title_modal:
@@ -150,6 +151,7 @@ pt-BR:
     edit:
       edit_title: "Editar nome"
       define_goals: "Definir seus objetivos"
+      type_number: "Digite um Número"
       tips:
         goal: "When establishing your goal for this campaign..."
         data_collectors: "Who would be motivated to help you work on this issue? Do they have access to internet or mobile phones?"
