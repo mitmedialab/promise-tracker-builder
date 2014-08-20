@@ -1,6 +1,12 @@
 pt-BR:
   app_name: "Monitorando a Comunidade"
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "deve ter pelo menos 8 caracteres"
     models:
       survey: "Formulário"
       campaign: "Acão"
