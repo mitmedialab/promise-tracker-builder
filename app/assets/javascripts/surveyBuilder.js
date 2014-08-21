@@ -45,7 +45,7 @@ PT.defaultControls = {
   inputSelectOne: {
     label: "Select many",
     input_type: "select"
-  },
+  }
 };
 
 /// Input constructor
@@ -131,6 +131,20 @@ PT.Input = function(){
 
   self.deleteOption = function(option, event){
     self.options.remove(option);
+  };
+
+  self.copy = function(input, event) {
+    $.ajax({
+      url: Routes.clone_input_path(self.id()),
+      type: 'GET',
+      dataType: 'json',
+      data: {param1: 'value1'},
+    })
+    .done(function(response) {
+      var newInput = new PT.Input();
+      newInput.map(response);
+      PT.survey.inputs.push(newInput);
+    });
   };
 };
 

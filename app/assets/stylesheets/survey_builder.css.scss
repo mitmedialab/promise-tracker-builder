@@ -235,7 +235,7 @@ $error: #B94A48;
             vertical-align: middle;
             padding: 10px 25px;
             position: absolute;
-            right: 30%;
+            right: 10%;
             color: $medium-grey;
           }
         }
@@ -284,77 +284,6 @@ $error: #B94A48;
     }
   }
 }
-
-// .answer {
-//   &.date {
-//     &:after {
-//       font-family: 'FontAwesome';
-//       content: '\f073';
-//       font-size: 1em;
-//       vertical-align: middle;
-//       padding: 10px 25px;
-//       position: absolute;
-//       top: -2px;
-//       left: 150px;
-//       color: $medium-grey;
-//     }
-//   }
-
-//   &.int, &.decimal {
-//     &:after {
-//       content: '123';
-//       font-size: .8em;
-//       vertical-align: middle;
-//       padding: 10px 25px;
-//       position: absolute;
-//       top: 0;
-//       left: 140px;
-//       color: $medium-grey;
-//     }
-//   }
-
-//   &.string {
-//     &:after {
-//       content: 'abc';
-//       font-size: .8em;
-//       vertical-align: middle;
-//       padding: 10px 25px;
-//       position: absolute;
-//       top: 0;
-//       left: 140px;
-//       color: $medium-grey;
-//     }
-//   }
-
-//   &.geopoint {
-//     &:after {
-//       font-family: 'FontAwesome';
-//       content: '\f0ac';
-//       font-size: 1m;
-//       vertical-align: middle;
-//       padding: 8px 25px;
-//       position: absolute;
-//       top: 0;
-//       left: 150px;
-//       color: $medium-grey;
-//     }
-//   }
-
-//   &.binary {
-//     &:after {
-//       font-family: 'FontAwesome';
-//       content: '\f03e';
-//       font-size: 1em;
-//       vertical-align: middle;
-//       padding: 8px 20px;
-//       position: absolute;
-//       top: 0;
-//       left: 150px;
-//       color: $medium-grey;
-//     }
-//   }
-// }
-
 
 // Media Queries
 @media (max-width: 1024px) {

@@ -70,7 +70,8 @@
         <p data-bind="text: $data.label"></p>
         <div class="modify">
           <a href="#" class="btn" data-bind="click: edit"><%= t("defaults.edit") %></a>
-          <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
+          <a href="#" class="btn" title="<%= t("defaults.copy") %>" data-bind="click: copy"><i class="icon-copy"></i> </a>
+          <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
 
         <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">

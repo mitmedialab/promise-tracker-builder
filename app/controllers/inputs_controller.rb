@@ -25,6 +25,14 @@ class InputsController < ApplicationController
     render json: @input
   end
 
+  def clone
+    @input = Input.find(params[:id])
+    @input_clone = @input.dup
+    @input_clone.save
+
+    render json: @input_clone
+  end
+
   def destroy
     Input.find(params[:id]).destroy
     render json: {message: "Input deleted"}

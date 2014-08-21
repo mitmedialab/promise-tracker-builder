@@ -66,7 +66,6 @@
   list-style: none;
 
   li {
-    margin-left: 15px;
     position: relative;
   }
 
@@ -76,10 +75,9 @@
       content: '\f10c';
       font-size: .9em;
       font-weight: bold;
-      position: absolute;
-      left: -15px;
-      top: 0;
-      padding: 2px 10px 0 0;
+      position: relative;
+      vertical-align: middle;
+      padding: 0 10px;
     }
   }
 
@@ -89,11 +87,25 @@
       content: '\f096';
       font-size: .9em;
       font-weight: bold;
-      position: absolute;
-      left: -15px;
-      top: 0;
-      padding: 0 10px 0 0;
+      position: relative;
+      vertical-align: middle;
+      padding: 0 10px;
     }
+  }
+}
+
+.phantom-option {
+  margin-left: 15px;
+}
+
+.input-preview ul li {
+  margin-left: 15px;
+
+  &:before {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    padding: 0 !important;
   }
 }
 
