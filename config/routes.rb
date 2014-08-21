@@ -17,6 +17,8 @@ PromiseTracker::Application.routes.draw do
   get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
   get '/campaigns/:id/clone', to: 'campaigns#clone', as: 'clone_campaign'
 
+  get '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
+
   resources :users
   resources :campaigns
   resources :surveys do

@@ -58,6 +58,8 @@ pt-BR:
     cancel: "Cancelar"
     edit: "Editar"
     close: "Fechar"
+    copy: "Duplicar"
+    delete: "Eliminar"
     validations:
       required: "Este campo &eacute; requerido."
       number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido."
