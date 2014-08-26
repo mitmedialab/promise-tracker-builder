@@ -7,11 +7,13 @@ pt-BR:
           attributes:
             password:
               too_short: "deve ter pelo menos 8 caracteres"
+
     models:
       survey: "Formulário"
       campaign: "Acão"
       input: "Pergunta"
       user: "Usuário"
+
     attributes:
       campaign:
         title: "Nome"
@@ -44,6 +46,7 @@ pt-BR:
         infrastructure: "Infra-estrutura"
         energy: "Eletricidade"
         other: "Outra"
+
       input_types:
         string: "Texto"
         int: "Número"
@@ -78,9 +81,6 @@ pt-BR:
       tag_line: "Coleta de dados para a ação cívica"
       create_account: "Criar uma conta gratuita"
 
-  users:
-
-
   campaigns:
     status:
       active: "Público"
@@ -109,12 +109,8 @@ pt-BR:
       modal_title: "Nova ação"
       campaign_theme: "Qual é o tema que interessa você?"
       campaign_title: "Nome da ação"
-      create_campaign: "Criar"
-
-    campaign_title_modal:
-      campaign_title: "Nome da ação"
       title_placeholder: "Nome da ação"
-      save: "Salvar" 
+      create_campaign: "Criar"
 
     launch:
       launch_title: "Página de publicação"
@@ -162,11 +158,6 @@ pt-BR:
       edit_title: "Editar nome"
       define_goals: "Definir seus objetivos"
       type_number: "Digite um Número"
-      tips:
-        goal: "When establishing your goal for this campaign..."
-        data_collectors: "Who would be motivated to help you work on this issue? Do they have access to internet or mobile phones?"
-        submissions_target: "When determining how many data points you hope to gather..."
-        audience: "Think about who you'll need to convince in order to create change on this issue..."
       explanations:
         goal: "O que você quer realizar com esta ação? O que você quer mudar na sua comunidade?"
         data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
@@ -178,8 +169,6 @@ pt-BR:
         goal: "Mudanças sociais normalmente requerem muitos passos pequenos. Há alguma mudança pequena e concreta que pode ser alcançada no futuro próximo?"
         submissions_target: "Algumas vezes, um conjunto pequeno de dados não é tão convincente. Pense em quantas respostas você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos públicos que você pode querer atingir com os dados que vai coletar. Quem terá maior interesse neles? Você poderia alcançar um público que ainda não tem familiaridade com o tema? Quem será o público mais difícil de convencer a participar da mudança que você está promovendo?"
-
-      start_survey: "Criar o formulário para esta ação"
 
     form_buttons:
       back: "Voltar"
@@ -195,23 +184,15 @@ pt-BR:
       create_survey: "Criar o formulário para esta ação"
 
   surveys:
-    list_item:
-      download_xml: "Baixar xForm" 
-      confirm_delete: "Você em certeza que quer eliminar este formulário?" 
-      clone: "Duplicar"
-      confirm_clone: "Você em certeza que quer duplicar este formulário?"
-
-    new_survey_modal:
-      survey_title: "Digite o título do formulário"  
-
     android_preview: 
+      preview_title: "Pré-vizualização no celular:"
       no_questions: "Formulário vazio"
       add_questions: "Adicionar pergunta"
       question: "Pergunta"  
       of: "de"
+      close_preview: "Fechar pré-vizualização"
 
     survey_body:
-      edit_survey_title: "Editar título"
       required: "Pergunta obrigatoria?"
       annotation: "Permitir anotação?"
       decimal: "Permitir decimal?"
@@ -221,11 +202,6 @@ pt-BR:
       question_placeholder: "Digite a pergunta aqui"
       answer_type: "Tipo de resposta"
       first_question: "A sua primeira pergunta..."
-      their_answer: "Resposta"
-      record_location: "Gravar localização"
-      take_picture: "Tirar foto"
-      choose_image: "Escolher imagem"
-      blank_input_error: "O texto da pergunta não pode estar em branco"
       preview:
         date: "13 Jan, 2014"  
         number: "123"
@@ -237,14 +213,10 @@ pt-BR:
       add_question: "Adicionar pergunta"
       add_location: "Obter localização"
       add_image: "Obter foto"
+      option_1: "Opção 1"
       preview_title: "Pré-vizualização"
       show_preview: "Mostrar pré-vizualização"
       hide_preview: "Esconder pré-vizualização"
-
-      flash:
-        no_title: "Por favor digite um título"
-        no_question_text: "Por favor digite o texto da pergunta"
-        no_questions: "Você deve adicionar perguntas antes de lançar o seu formulário"
 
     xml_show:
       annotate_hint: "Tirar e anotar foto"

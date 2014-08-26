@@ -1,13 +1,13 @@
 <div id="header">
   <div class="container">
-    <h3 class="inline no-pad title"><%= t(".preview_title") %> <%= @survey.campaign.title %></h3>
+    <h3 class="inline no-pad title"><%= t("surveys.android_preview.preview_title") %> <%= @survey.campaign.title %></h3>
     <ul class="user-links">
-        <li><span class="btn btn-info close-window"><%= t(".close_preview") %></span></li>
+        <li><span class="btn btn-info close-window"><%= t("surveys.android_preview.close_preview") %></span></li>
     </ul>
   </div> 
 </div>
 
-<div class="container">
+<div class="container" id="full-size-preview">
   <%= render 'android_preview' %>
 </div>
 

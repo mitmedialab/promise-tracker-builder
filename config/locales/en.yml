@@ -1,10 +1,19 @@
 en:
   app_name: "Promise Tracker"
   activerecord:
+    errors:
+        models:
+          user:
+            attributes:
+              password:
+                too_short:
+
     models:
       survey: "Survey"
       campaign: "Campaign"
       input: "Input"
+      user: "User"
+
     attributes:
       campaign:
         title: "Name"
@@ -15,97 +24,175 @@ en:
         status: "Status"
         start_date: "Start date"
         end_date: "End date"
-        theme: "Theme"  
+        theme: "Theme"
+
+      user:
+        username: "Username"
+        bio: "Bio/description"
+        password: "Password"
+        email: "Email"
+
+      input:
+        input_type: Type of response
+
+    options:
+      themes:
+        select: "Select"
+        economics: "Economic Development"
+        education: "Education"
+        housing: "Housing"
+        environment: "Environment"
+        health: "Health"
+        infrastructure: "Infrastructure"
+        energy: "Eletricity"
+        other: "Other"
+
+      input_types:
+        string: "Text"
+        int: "Number"
+        date: "Date"
+        select1: "Select one"
+        select: "Select many"
+        geopoint: "Location"
+        binary: "Photo" 
 
   defaults:
     save: "Save"
     cancel: "Cancel"
     edit: "Edit"
     close: "Close"
-
+    copy: "Copy"
+    delete: "Delete"
+    validations:
+      required: "This field is required."
+      number: "Please enter a valid number."
+      question_blank: "The question text can't be blank."
+      no_options: "You must add at least one answer option"
+      has_errors: "Please correct all errors on your form before continuing"
+      no_errors: "Your form looks ready to go!!"
 
   layouts:
     header:
       home: "Home"
 
-
   home:
     index:
       welcome: "Get started"
-      try: "Try out the survey builder"
+      tag_line: "Data collection for civic action"
       create_account: "Create a free account"
 
-  users:
-    show:
-      new_campaign: "Start new campaign"
-      my_campaigns: "My campaigns"
-      no_campaigns: "Get started and build your first campaign!"
-
   campaigns:
+    status:
+      active: "Active"
+      closed: "Closed"
+      draft: "Draft"
+      copy: "copy"
+
+    nav:
+      view_survey: "View survey"
+      monitor_responses: "Monitor responses"
+      share_data: "Share data"
+
+    activate: 
+      upload_error: "Sorry. Your survey not be published at this time. Please try again."
+      upload_success: "Your survey has been successfully published!"
+
     index:
-        new_survey: "Create new survey"
-        my_surveys: "My surveys"
-        no_surveys: "Get started and build your first survey!"
+      new_campaign: "Start a new campaign"
+      my_campaigns: "My Campaigns"
+      no_campaigns: "Start a new data collection campaign!"
+      greeting: "Hello"
+      welcome_text: "Welcome to Promise Tracker!"
+      get_started: "Get started by creating your first data collection campaign!"
 
     new:
-      campaign_title: "Create a new campaign"
-      title_placeholder: "Name of campaign"
-      create_campaign: "Create" 
+      modal_title: "New Campaign"
+      campaign_theme: "What issue are you interested in monitoring?"
+      campaign_title: "Name of campaign"
+      title_placeholder: "Name"
+      create_campaign: "Create"
+
+    launch:
+      launch_title: "Launch page"
+      info: "Info on launching your campaign"
+      launch_explanation_1: "In order to start collecting data, you'll need to publish your survey form."
+      launch_explanation_2: "Once published, the survey questions can no longer be edited or modified."
+      launch_explanation_3: "In the next step, you will review your goals and survey form to make sure your information is correct."
+      review_goals: "Review your objectives"
+      review_goals_info: "You defined the following goals for this campaign. Do they still look appropriate?"
+      review_survey: "Review your survey"
+      launch: "Publish"
+      return_to_edit: "Edit survey"
+      preview: "Preview on phone"
+      launch_campaign: "Publish this survey"
+      launch_info: "Once you publish your survey questions will be finalized."
+      launch_confirmation: "Are you sure you want to publish?"
+      edit_goals: "Edit objectives"
+
+    monitor:
+      status_text: "This survey is "
+      close_confirmation: "Once closed, this survey cannot be opened again."
+      number_of_responses: "Number of responses"
+      close: "Close"
+      responses: "Responses"
+      publicize_form: "Mobilize your community to fill out the survey"
+      campaign_resources: "How-to guides"
+      guide_1: "Organize a launch event"
+      guide_2: "Keep your community engaged"
+      guide_3: "Visualize your responses"
+
+    share:
+      visualize_data: "Visualize your data" 
+      map: "Map" 
+      photos: "Photos"
+      graphs: "Graphs & Charts"
+      data_reports: "Data reports"
+      contact: "Contact person"
+      learn_more: "Learn more about this campaign at "
+
+    list_item:
+      confirm_delete: "Are you sure you want to delete this campaign?" 
+      confirm_clone: "Are you sure you want to duplicate this campaign?" 
 
     edit:
+      edit_title: "Edit name"
+      define_goals: "Define your goals"
+      type_number: "Type a number"
       explanations:
         goal: "What do you hope to achieve with this campaign? What change do you want to see?"
         data_collectors: "Who will collect the data for this campaign?"
         submissions_target: "How many submissions do you hope to get?"
         audience: "Who do you plan to share your data with in order to change this issue?"
-      tips:
-        goal: "When establishing your goal for this campaign..."
-        data_collectors: "Who would be motivated to help you work on this issue? Do they have access to internet or mobile phones?"
-        submissions_target: "When determining how many data points you hope to gather..."
-        audience: "Think about who you'll need to convince in order to create change on this issue..."
       tooltip: "Tip"
+      tips:
+        goal: "Social change often requires many small steps. Are there any small and concrete changes that you think could be achievable in the near future?"
+        data_collectors: " It may take many people to collect enough data for your campaign. Think about people you know who are already committed to addressing this issue, and what might motivate them to help you with this campaign."
+        submissions_target: "Sometimes, just a few data points is not convincing. Think about how many responses you might need to accurately represent your issue, and how many will be reasonable to collect within the time frame you specify."
+        audience: "There are many audiences you may want to address with the data you collect. Who will be most interested in this data? Could you reach a new audience who is not already familiar with this issue? Who will be the most difficult to convince to make the change that you want to see?"
+
+    form_buttons:
+      back: "Back"
+      next: "Next"
+
+    show:
+      campaign_goals: "Objectives"
+      campaign_survey: "Survey"
+      edit_goals: "Edit campaign"  
+      edit_survey: "Edit survey"
+      monitor_progress: "Monitor responses"
+      launch_survey: "Publish"
+      create_survey: "Create a survey for this campaign"
 
   surveys:
-    status:
-      active: "Active"
-      closed: "Closed"
-      draft: "Draft"
-      copy: "Copy"
-
-    activate:
-      upload_error: "Your survey could not be launched."
-      upload_success: "Your survey was successfully launched!"
-
-    list_item:
-      download_xml: "Download xForm" 
-      confirm_delete: "Are you sure you want to delete this survey?" 
-      clone: "Clone"
-      confirm_clone: "Are you sure you want to duplicate this survey?"
-
-    new_survey_modal:
-      survey_title: "Enter survey title"  
-
     android_preview: 
       preview_title: "Phone preview for:"
       no_questions: "No questions"
-      add_questions: "Add questions"
-      question_number: "Question"  
+      add_questions: "Add question"
+      question: "Question" 
+      of: "of" 
       close_preview: "Close preview"
 
-    launch:
-      launch_title: "Survey launch page"
-      return_to_edit: "Return to edit"
-      preview: "Preview"
-      launch_survey: "Launch this survey"
-      launch_info: "Once your survey is launched you will not be able to edit or change questions. Are you sure you want to launch now?"
-      launch_confirmation: "Once launched, this survey cannot be modified."
-      active: "This survey is active."
-      closed: "This survey is closed."
-      close_confirmation: "Once closed this survey cannot be reopened."
-
-    survey_builder:
-      edit_survey_title: "Edit survey title"
-      preview: "Preview on phone" 
+    survey_body:
       required: "Question required?"
       annotation: "Allow annotation?"
       decimal: "Allow decimal?"
@@ -114,43 +201,32 @@ en:
       question_label: "Question text"
       question_placeholder: "Type your question here"
       answer_type: "Type of answer"
-      choose_type: "Choose a type"
-      their_answer: "Answer"
-      answer_label: "Answer preview"
-      record_location: "Record location"
-      take_picture: "Take picture"
-      choose_image: "Choose image"
+      first_question: "Your first question"
+      preview:
+        date: "13 Jan, 2014"  
+        number: "123"
+        decimal: "123.5"
+        string: "Abc"
+
+    survey_builder:
+      editor_title: "Toolbar"  
       add_question: "Add question"
-      add_location: "Get location"
-      add_image: "Take picture"
-      input_types:
-        text: "Text"
-        number: "Number"
-        date: "Date"
-        select_one: "Select one"
-        select_many: "Select many"
-        location: "Location"
-        image: "Image"
-      launch_survey: "Launch this survey"
-      editor_title: "Survey editor"
+      add_location: "Record location"
+      add_image: "Take photo"
+      option_1: "Option 1"
       preview_title: "Preview"
       show_preview: "Show preview"
       hide_preview: "Hide preview"
-      first_question: "Your first question"
-
-      flash:
-        no_title: "Please enter a title"
-        no_question_text: "Please enter question text"
-        no_questions: "You must add questions before launching your survey"
 
     xml_show:
       annotate_hint: "Capture and annotate image"
 
-
   devise:
     sign_in: "Sign in"
     sign_out: "Sign out"
-    sign_up: "Sign up"
+    sign_up: "Create an account"
+    create_account: "Create account"
+    existing_account: "Already have an account?"
     email: "Email"
     password: "Password"
     cofirm_password: "Password confirmation"
