@@ -19,9 +19,11 @@ PromiseTracker::Application.routes.draw do
 
   get '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
 
-  resources :users
-  resources :campaigns
-  resources :surveys do
-    resources :inputs
+  scope "(:locale)", locale: /en|pt-BR/ do
+    resources :users
+    resources :campaigns
+    resources :surveys do
+      resources :inputs
+    end
   end
 end
