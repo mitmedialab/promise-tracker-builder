@@ -100,7 +100,6 @@ pt-BR:
     index:
       new_campaign: "Criar uma nova ação"
       my_campaigns: "Minhas ações"
-      no_campaigns: "Criar sua primeira ação!"
       greeting: "Oi"
       welcome_text: "Bem-vindo ao site Monitorando a Comunidade!"
       get_started: "Que tal criar sua primeira açāo?"
@@ -123,7 +122,7 @@ pt-BR:
       review_survey: "Rever seu formulário"
       launch: "Publicar"
       return_to_edit: "Editar formulário"
-      preview: "Pré-vizualização no celular"
+      preview: "Pré-visualização no celular"
       launch_campaign: "Publicar este formulário"
       launch_info: "Quando você publica este formulário, não poderá editá-lo mais."
       launch_confirmation: "Tem certeza que deseja publicar este formulário?"
@@ -185,12 +184,12 @@ pt-BR:
 
   surveys:
     android_preview: 
-      preview_title: "Pré-vizualização no celular:"
+      preview_title: "Pré-visualização no celular:"
       no_questions: "Formulário vazio"
       add_questions: "Adicionar pergunta"
       question: "Pergunta"  
       of: "de"
-      close_preview: "Fechar pré-vizualização"
+      close_preview: "Fechar pré-visualização"
 
     survey_body:
       required: "Pergunta obrigatoria?"
@@ -214,9 +213,9 @@ pt-BR:
       add_location: "Obter localização"
       add_image: "Obter foto"
       option_1: "Opção 1"
-      preview_title: "Pré-vizualização"
-      show_preview: "Mostrar pré-vizualização"
-      hide_preview: "Esconder pré-vizualização"
+      preview_title: "Pré-visualização"
+      show_preview: "Mostrar pré-visualização"
+      hide_preview: "Esconder pré-visualização"
 
     xml_show:
       annotate_hint: "Tirar e anotar foto"

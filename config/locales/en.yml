@@ -100,10 +100,9 @@ en:
     index:
       new_campaign: "Start a new campaign"
       my_campaigns: "My Campaigns"
-      no_campaigns: "Start a new data collection campaign!"
       greeting: "Hello"
       welcome_text: "Welcome to Promise Tracker!"
-      get_started: "Get started by creating your first data collection campaign!"
+      get_started: "Get started by creating your first data collection campaign."
 
     new:
       modal_title: "New Campaign"
