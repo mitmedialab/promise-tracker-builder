@@ -101,6 +101,10 @@ a {
   text-align: center;
 }
 
+.auto-width {
+  width: auto !important;
+}
+
 .btn-slim {
   padding: 4px 12px;
 }
@@ -121,6 +125,12 @@ a {
 
 .modal-title {
   color: black;
+}
+
+.modal-header {
+  background: whitesmoke;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 10px;
 }
 
 // Header
