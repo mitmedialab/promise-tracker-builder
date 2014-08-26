@@ -8,15 +8,15 @@ class InputsController < ApplicationController
     @input.update_attributes(input_params(params))
     @input.guid = make_guid(@input.label, @input.id)
 
-    if @input.input_type == 'select' || @input.input_type == 'select1'
-      if params[:options]
-        options = {}
-        params[:options].each_with_index do |option, index|
-          options[make_guid(option, index)] = option if option.present?
-        end
-        @input.options = options
+    if params[:options]
+      options = {}
+      params[:options].each_with_index do |option, index|
+        options[make_guid(option, index)] = option if option.present?
       end
-    elsif params[:decimal]
+      @input.options = options
+    end
+    
+    if params[:decimal]
       @input.input_type = 'decimal'
     end
       

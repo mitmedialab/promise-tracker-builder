@@ -2,13 +2,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Title</h4>
+        <h4 class="modal-title"><%= t("campaigns.new.campaign_title") %></h4>
       </div>
       <div class="modal-body">
-        <%= f.text_field :title, id: "campaign-title-input", class: "form-control", placeholder: t(".title_placeholder") %>
+        <%= f.text_field :title, id: "campaign-title-input", class: "form-control", placeholder: t("campaigns.new.title_placeholder") %>
       </div>
         <div class="modal-footer">
-          <div class="btn btn-primary" id="update-title-button" data-dismiss="modal"><%= t(".save") %></button>
+          <div class="btn btn-primary" id="update-title-button" data-dismiss="modal"><%= t("defaults.save") %></button>
         </div>
       </div>
     </div>

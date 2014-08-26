@@ -60,7 +60,7 @@ PT.Input = function(){
   self.media_type = ko.observable();
   self.annotate = ko.observable(false);
   self.required = ko.observable(false);
-  self.options = ko.observableArray(["Option 1"]);
+  self.options = ko.observableArray([PT.flash.option_1]);
   self.order = "";
   self.inEdit = ko.observable(true);
 
