@@ -5,6 +5,13 @@
     <% end %>
   <% end %>
   <ul class="user-links">
+    <% if I18n.locale == :en %>
+      <li><%= link_to "Português", :locale=>'pt-BR' %></li>
+    <% else %>
+      <li><%= link_to "English", :locale=>'en' %></li>
+    <%end%>
+    |
+
     <% if current_user %>
       <li><%= current_user.username %></li>
       <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
