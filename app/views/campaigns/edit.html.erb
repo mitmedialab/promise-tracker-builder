@@ -41,15 +41,6 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4 clear">
-      <div class="form-group"> 
-        <%= f.label :theme, class: "block" %>
-        <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
-      </div>  
-    </div>
-  </div>
-
-  <div class="row">
     <div class="col-sm-8">
       <div class="form-group"> 
         <%= f.label :data_collectors %>
@@ -117,6 +108,8 @@
 
 <script type="text/javascript">
   PT.flash = <%= raw @flash %>;
+  jQuery.extend(jQuery.validator.messages, <%= raw @validations %>);
+  
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
   $(document).on("click", ".tip-box", PT.openTip);
@@ -124,6 +117,4 @@
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
-
-  jQuery.extend(jQuery.validator.messages, <%= raw @validations %>);
 </script>
