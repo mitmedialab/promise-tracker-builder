@@ -51,6 +51,7 @@ pt-BR:
         string: "Texto"
         int: "Número"
         date: "Data"
+        yes_no: "Sim/Não"
         select1: "Selecionar uma"
         select: "Selecionar várias"
         geopoint: "Localização"
@@ -213,6 +214,9 @@ pt-BR:
       add_location: "Obter localização"
       add_image: "Obter foto"
       option_1: "Opção 1"
+      yes_no:
+        option_yes: "Sim"
+        option_no: "Não"
       preview_title: "Pré-visualização"
       show_preview: "Mostrar pré-visualização"
       hide_preview: "Esconder pré-visualização"

@@ -11,7 +11,7 @@
           <tr>
             <th><%= t(".answer_type") %></th>
             <td>
-              <select class="form-control short inline" data-bind="options: PT.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type"></select>
+              <select class="form-control short inline" data-bind="options: PT.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type, event: {change: applyType}"></select>
               <div class="inline margin-left">
                 <span data-bind="visible: input_type() == 'binary'">
                   <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate"></span>
