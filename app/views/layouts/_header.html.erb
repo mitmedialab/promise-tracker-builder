@@ -3,6 +3,10 @@
     <%= link_to campaigns_path, class: "btn btn-info home" do %>
       <span class="glyphicon glyphicon-home"></span>
     <% end %>
+  <% else %>
+    <%= link_to root_path, class: "btn btn-info home" do %>
+      <span class="glyphicon glyphicon-home"></span>
+    <% end %>
   <% end %>
   <ul class="user-links">
     <% if I18n.locale == :en %>
