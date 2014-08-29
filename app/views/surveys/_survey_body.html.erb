@@ -25,7 +25,7 @@
             <td>
               <div class="answer" data-bind="css: input_type">
                 <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
-                  <ul class="answer" data-bind="sortable: options, valueUpdate:'input', css: input_type">
+                  <ul class="answer" data-bind="sortable: {data: options, connectClass: false}, valueUpdate:'input', css: input_type">
                     <li class="option edit">
                       <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
                       <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
