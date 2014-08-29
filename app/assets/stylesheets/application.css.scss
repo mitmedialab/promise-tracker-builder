@@ -209,3 +209,21 @@ input[type="checkbox"] {
 input[disabled], .form-control[disabled] {
   cursor: default;
 }
+
+@media (max-width: 760px) {
+  .page-container {
+    width: 95%;
+  }
+
+  #header {
+    padding: 20px;
+
+    .home {
+      font-size: 16px;
+    }
+
+    .user-links {
+      padding: 0;
+    }
+  }
+}
