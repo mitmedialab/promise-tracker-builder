@@ -3,10 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable, authentication_keys: [:username]
-
        
   has_many :campaigns
   has_many :surveys
+
+  validates :username, uniqueness: true, presence: true
 
   def email_required?
     false
