@@ -146,6 +146,13 @@ PT.Input = function(){
       PT.survey.inputs.push(newInput);
     });
   };
+
+  self.applyType = function(){
+    if(self.input_type() == "yes_no"){
+      self.options([PT.flash.yes_no.option_yes, PT.flash.yes_no.option_no]);
+      self.input_type("select1");
+    }
+  };
 };
 
 

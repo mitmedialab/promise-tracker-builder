@@ -51,6 +51,7 @@ en:
         string: "Text"
         int: "Number"
         date: "Date"
+        yes_no: "Yes/No"
         select1: "Select one"
         select: "Select many"
         geopoint: "Location"
@@ -213,6 +214,9 @@ en:
       add_location: "Record location"
       add_image: "Take photo"
       option_1: "Option 1"
+      yes_no:
+        option_yes: "Yes"
+        option_no: "No"
       preview_title: "Preview"
       show_preview: "Show preview"
       hide_preview: "Hide preview"
