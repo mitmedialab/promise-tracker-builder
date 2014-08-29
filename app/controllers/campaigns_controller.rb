@@ -18,6 +18,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
+    @flash = t('survey_builder', scope: 'surveys').to_json
 
     render layout: 'layouts/partial-width'
   end
@@ -75,6 +76,7 @@ class CampaignsController < ApplicationController
   def launch
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
+    @flash = t('survey_builder', scope: 'surveys').to_json
     @validations = t('validations', scope: 'defaults').to_json
     @input_types = input_types.to_json
 
