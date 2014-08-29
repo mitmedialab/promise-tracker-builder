@@ -2,7 +2,7 @@ require 'rexml/document'
 
 class SurveysController < ApplicationController
   before_action :authenticate_user!, only: [:activate, :close, :destroy, :clone]
-  layout 'survey_builder', only: [:new, :show]
+  layout 'full-width', only: [:test_builder, :show]
 
   def index
     @surveys = Survey.all
@@ -17,9 +17,15 @@ class SurveysController < ApplicationController
       )
       redirect_to survey_path(@survey)
     else
-      @survey = Survey.new
+      redirect_to test_builder_path
     end
+  end
+
+  def test_builder
+    @survey = Survey.new
     @flash = t('survey_builder', scope: 'surveys').to_json
+    @validations = t('validations', scope: 'defaults').to_json
+    @input_types = input_types.to_json
   end
 
   def update

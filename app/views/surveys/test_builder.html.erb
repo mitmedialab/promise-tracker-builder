@@ -1,16 +1,9 @@
 <%= render 'survey_builder' %>
 
 <script type="text/javascript">
-
-  $('#new-survey-modal').on('modal', function(e){
-      debugger
-      e.preventDefault();
-  });
   PT.survey = new PT.SurveyModel();
-  PT.survey.campaign_id = <%= raw @campaign.id %>;
   PT.selectedInput = ko.observable();
   ko.applyBindings(PT.survey);
   $(document).on("click", ".tool-button", PT.survey.addInput);
   $("#launch-survey").on("click", PT.launchSurvey);
 </script>
-

@@ -1,6 +1,8 @@
 <div id="workspace">
   <div class="campaign-title inline">
+    <% if @survey.campaign %>
     <%= @survey.campaign.title %>
+    <% end %>
   </div>
   <h2 class="title"><%= Survey.model_name.human %></h2>
 
