@@ -7,8 +7,12 @@ en:
             attributes:
               password:
                 too_short:
+                blank:
               password_confirmation:
                 confirmation:
+              username:
+                blank:
+                taken:
 
     models:
       survey: "Survey"
