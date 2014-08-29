@@ -30,39 +30,43 @@
     <%= render partial: 'form_buttons' %>
   </div>
 
-  <div class="row form-page" id="form-page-2">
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :data_collectors %>
-        <p class="explain"><%= t("campaigns.edit.explanations.data_collectors") %></p>
-        <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
+  <div class="form-page" id="form-page-2">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group"> 
+          <%= f.label :data_collectors %>
+          <p class="explain"><%= t("campaigns.edit.explanations.data_collectors") %></p>
+          <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tip-box">
-        <div class="header">
-          <i class="icon-info"></i> <%= t("campaigns.edit.tooltip") %>
-        </div>
-        <div class="body">
-          <p><%= t("campaigns.edit.tips.data_collectors") %></p>
-        </div>
-      </div>  
+      <div class="col-sm-4">
+        <div class="tip-box">
+          <div class="header">
+            <i class="icon-info"></i> <%= t("campaigns.edit.tooltip") %>
+          </div>
+          <div class="body">
+            <p><%= t("campaigns.edit.tips.data_collectors") %></p>
+          </div>
+        </div>  
+      </div>
     </div>
 
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :submissions_target %>
-        <p class="explain"><%= t("campaigns.edit.explanations.submissions_target") %></p>
-        <%= f.number_field :submissions_target, rows: 8, min: 0, placeholder: t("campaigns.edit.type_number"), class: "block" %>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tip-box">
-        <div class="header">
-          <i class="icon-info"></i> <%= t("campaigns.edit.tooltip") %>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group"> 
+          <%= f.label :submissions_target %>
+          <p class="explain"><%= t("campaigns.edit.explanations.submissions_target") %></p>
+          <%= f.number_field :submissions_target, rows: 8, min: 0, placeholder: t("campaigns.edit.type_number"), class: "block" %>
         </div>
-        <div class="body">
-          <p><%= t("campaigns.edit.tips.submissions_target") %></p>
+      </div>
+      <div class="col-sm-4">
+        <div class="tip-box">
+          <div class="header">
+            <i class="icon-info"></i> <%= t("campaigns.edit.tooltip") %>
+          </div>
+          <div class="body">
+            <p><%= t("campaigns.edit.tips.submissions_target") %></p>
+          </div>
         </div>
       </div>
     </div>
@@ -105,10 +109,16 @@
   PT.flash = <%= raw @flash %>;
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
-  $(document).on("click", ".tip-box", PT.openTip);
+  $(document).on("click", ".tip-box", PT.toggleTip);
 
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
+  });
+
+  $("textarea, input").on("click", function(){
+    var $currentTip = $(this).parents(".row").find(".tip-box .body");
+    $(".tip-box .body").not($currentTip).slideUp();
+    $currentTip.slideDown();
   });
 
   jQuery.extend(jQuery.validator.messages, <%= raw @validations %>);

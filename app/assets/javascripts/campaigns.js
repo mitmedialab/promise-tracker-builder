@@ -35,7 +35,7 @@ PT.validateCampaign = function(){
   return validator.form();
 };
 
-PT.openTip = function(event){
+PT.toggleTip = function(event){
   $(event.currentTarget).find(".body").slideToggle();
 };
 
