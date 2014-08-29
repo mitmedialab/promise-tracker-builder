@@ -7,6 +7,8 @@ pt-BR:
           attributes:
             password:
               too_short: "deve ter pelo menos 8 caracteres"
+            password_confirmation: 
+              confirmation: "não coincide com a senha"
 
     models:
       survey: "Formulário"
@@ -30,6 +32,7 @@ pt-BR:
         username: "Nome de usuário"
         bio: "Descrição"
         password: "Senha"
+        password_confirmation: "Confirmação de senha"
         email: "E-mail"
 
       input:
