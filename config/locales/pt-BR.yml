@@ -7,8 +7,12 @@ pt-BR:
           attributes:
             password:
               too_short: "deve ter pelo menos 8 caracteres"
+              blank: "não pode estar em branco"
             password_confirmation: 
               confirmation: "não coincide com a senha"
+            username:
+              taken: "já existe. Por favor, escolha outro nome de usuário"
+              blank: "não pode estar em branco"
 
     models:
       survey: "Formulário"
