@@ -7,6 +7,8 @@ en:
             attributes:
               password:
                 too_short:
+              password_confirmation:
+                confirmation:
 
     models:
       survey: "Survey"
@@ -30,6 +32,7 @@ en:
         username: "Username"
         bio: "Bio/description"
         password: "Password"
+        password_confirmation: "Password confirmation"
         email: "Email"
 
       input:
