@@ -68,12 +68,4 @@ class SurveysController < ApplicationController
     redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
-  private 
-
-  def survey_params(params)
-    params.require(:survey).permit(:title)
-  end
-
-
-
 end
