@@ -5,7 +5,7 @@ class InputsController < ApplicationController
     input = params[:input]
 
     @input = survey.inputs.find_or_create_by(id: input[:id])
-    @input.update_attributes(input_params(params))
+    @input.update_attributes(input_params)
     @input.guid = make_guid(@input.label, @input.id)
 
     if params[:options]
@@ -41,7 +41,7 @@ class InputsController < ApplicationController
 
   private
 
-  def input_params(params)
+  def input_params
     params.require(:input).permit(:survey_id, :label, :input_type, :media_type, :options, :decimal, :required, :annotate, :order)
   end
 
