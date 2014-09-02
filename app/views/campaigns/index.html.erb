@@ -1,10 +1,11 @@
 <div class="row" id="user-info">
   <div class="user-icon">
-    <%= image_tag("user-icon.png") %>
+    <%= link_to user_path(current_user) do %>
+      <%= image_tag("user-icon.png") %>
+    <% end %>
   </div>
   <div class="user-details bottom">
-    <h4><%= current_user.username %></h4>
-    <p><%= current_user.bio %></p>
+    <h4><%= link_to current_user.username, user_path(current_user) %></h4>
   </div>
 </div>
 <hr>

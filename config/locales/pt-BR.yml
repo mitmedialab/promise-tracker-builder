@@ -34,9 +34,10 @@ pt-BR:
 
       user:
         username: "Nome de usuário"
-        bio: "Descrição"
+        bio: "Biografia / Descrição"
         password: "Senha"
         password_confirmation: "Confirmação de senha"
+        current_password: "Senha atual"
         email: "E-mail"
 
       input:
@@ -71,6 +72,7 @@ pt-BR:
     close: "Fechar"
     copy: "Duplicar"
     delete: "Eliminar"
+    back: "Voltar"
     validations:
       required: "Este campo &eacute; requerido."
       number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido."
@@ -78,6 +80,7 @@ pt-BR:
       no_options: "Você precisa adicionar pelo menos uma opção"
       has_errors: "Seu formulário tem algum erro. Por favor corrija as questões com erros antes de continuar"
       no_errors: "Seu formulário não tem erros."
+      confirm_save: "Suas modificações foram salvadas"
 
   layouts:
     header:
@@ -231,16 +234,23 @@ pt-BR:
     xml_show:
       annotate_hint: "Tirar e anotar foto"
 
+  users:
+    show:
+      add_email: "Adicionar e-mail"
+      edit_profile: "Editar perfil"
+
   devise:
     sign_in: "Fazer login"
     sign_out: "Sair"
     sign_up: "Criar uma conta"
     create_account: "Criar conta"
     existing_account: "Você já tem uma conta?"
-    email: "E-mail"
-    password: "Senha"
-    confirm_password: "Confirmação de senha"
     remember_me: "Remember me"
     forgot_password: "Esqueceu sua senha?" 
     cancel_account: "Cancelar conta" 
     are_you_sure: "Você tem certeza?"
+
+    registrations:
+      edit:
+        cancel_account: "Cancelar conta"
+        cancel_account_text: "Você desejar eliminar a sua conta? Uma vez eliminado, seus dados não poden se recuperar."

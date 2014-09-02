@@ -4,7 +4,24 @@
   </div>
   <div class="user-details bottom">
     <h4><%= current_user.username %></h4>
-    <p><%= current_user.bio %></p>
   </div>
 </div>
 <hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <label><%= User.human_attribute_name(:bio) %></label> 
+    <p><%= current_user.bio %></p> 
+
+    <label><%= User.human_attribute_name(:email) %></label>     
+    <% if current_user.email.present? %>
+      <p><%= current_user.email %></p>
+    <% else %>
+      <p><%= link_to t(".add_email"), edit_user_path(current_user) %></p>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <br>
+    <%= link_to t(".edit_profile"), edit_user_path(current_user), class: "btn btn-info" %>
+  </div>
+</div>
