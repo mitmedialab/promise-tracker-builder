@@ -1,0 +1,28 @@
+<div class="row" id="user-info">
+  <div class="user-icon">
+    <%= image_tag("user-icon.png") %>
+  </div>
+  <div class="user-details bottom">
+    <h4><%= current_user.username %></h4>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2><%= t("users.show.edit_profile") %></h2>
+
+    <%= form_for(current_user) do |f| %>
+      <div class="form-group"><%= f.label User.human_attribute_name(:username) %><br />
+      <%= f.text_field :username, autofocus: true %></div>
+
+      <div class="form-group"><%= f.label User.human_attribute_name(:bio) %><br />
+      <%= f.text_area :bio, rows: 5, class: "form-control" %></div>
+
+      <div class="form-group"><%= f.label User.human_attribute_name(:email) %><br />
+      <%= f.email_field :email %></div>
+
+      <div><%= f.submit t("defaults.save"), class: "btn btn-info" %></div>
+    <% end %>
+  </div>
+</div>

@@ -11,8 +11,8 @@ en:
               password_confirmation:
                 confirmation:
               username:
-                blank:
                 taken:
+                blank:
 
     models:
       survey: "Survey"
@@ -34,9 +34,10 @@ en:
 
       user:
         username: "Username"
-        bio: "Bio/description"
+        bio: "Bio / Description"
         password: "Password"
         password_confirmation: "Password confirmation"
+        current_password: "Current password"
         email: "Email"
 
       input:
@@ -71,13 +72,15 @@ en:
     close: "Close"
     copy: "Copy"
     delete: "Delete"
+    back: "Back"
     validations:
       required: "This field is required."
       number: "Please enter a valid number."
       question_blank: "The question text can't be blank."
       no_options: "You must add at least one answer option"
       has_errors: "Please correct all errors on your form before continuing"
-      no_errors: "Your form looks ready to go!!"
+      no_errors: "Your form looks ready to go!"
+      confirm_save: "Your changes have been saved."
 
   layouts:
     header:
@@ -231,16 +234,23 @@ en:
     xml_show:
       annotate_hint: "Capture and annotate image"
 
+  users:
+    show:
+      add_email: "Add email"
+      edit_profile: "Edit profile"
+
   devise:
     sign_in: "Sign in"
     sign_out: "Sign out"
     sign_up: "Create an account"
     create_account: "Create account"
     existing_account: "Already have an account?"
-    email: "Email"
-    password: "Password"
-    cofirm_password: "Password confirmation"
     remember_me: "Remember me"
     forgot_password: "Forgot your password?"
     cancel_account: "Cancel account" 
     are_you_sure: "Are you sure?"
+
+    registrations:
+      edit:
+        cancel_account: "Cancel my account"
+        cancel_account_text: "Want to delete your account? Once deleted, no account data can be retrieved."
