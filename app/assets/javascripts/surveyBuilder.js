@@ -257,11 +257,8 @@ PT.getSurvey = function(url){
   $.getJSON(url, null, function(response, textStatus) {
     PT.survey = new PT.SurveyModel();
 
-    PT.survey.id = response.id;
-    PT.survey.campaign_id = response.campaign_id;
-    PT.survey.user_id = response.user_id;
-    PT.survey.title = ko.observable(response.title);
-    PT.survey.status = ko.observable(response.status);
+    PT.survey.id = response.survey.id;
+    PT.survey.campaign_id = response.survey.campaign_id;
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
 
