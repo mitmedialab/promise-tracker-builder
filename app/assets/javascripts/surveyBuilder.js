@@ -95,7 +95,7 @@ PT.Input = function(){
     .done(function(response) {
       console.log(response);
       self.inEdit(false);
-      self.options(_.values(response.options));
+      self.options(_.map(response.options, function(option){return option["label"]}));
 
       if(self.id() === ""){
         self.id(response.id);
@@ -113,7 +113,7 @@ PT.Input = function(){
     self.decimal = data.input_type === 'decimal';
     self.media_type = ko.observable(data.media_type);
     self.required = ko.observable(data.required);
-    self.options = ko.observableArray(_.values(data.options));
+    self.options = ko.observableArray(_.map(data.options, function(option){return option["label"]}));
     self.order = data.order;
     self.inEdit = ko.observable(false);
   }; 

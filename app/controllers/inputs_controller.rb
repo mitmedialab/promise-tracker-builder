@@ -9,9 +9,14 @@ class InputsController < ApplicationController
     @input.guid = make_guid(@input.label, @input.id)
 
     if params[:options]
-      options = {}
+      options = []
       params[:options].each_with_index do |option, index|
-        options[make_guid(option, index)] = option if option.present?
+        if option.present?
+          options.push({
+            value: make_guid(option, index),
+            label: option
+          })
+        end
       end
       @input.options = options
     end
