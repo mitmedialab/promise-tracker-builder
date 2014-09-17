@@ -2,6 +2,7 @@ require 'rexml/document'
 
 class SurveysController < ApplicationController
   before_action :authenticate_user!, only: [:activate, :close, :destroy, :clone]
+
   layout 'full-width', only: [:test_builder, :show]
 
   def index
