@@ -54,7 +54,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: { survey: @survey, inputs: @survey.inputs, campaign: @survey.campaign } }
+      format.json { render json: @survey, root: false }
     end 
   end
 
