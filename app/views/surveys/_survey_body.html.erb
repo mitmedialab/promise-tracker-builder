@@ -38,7 +38,7 @@
                   </div>
                 </div>
               </div>
-              <div class="example">
+              <div class="example padded">
                 <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
                 <p data-bind="visible: input_type() == 'string'">Abc</p>
                 <p data-bind="visible: input_type() == 'int' && !decimal">123</p>
@@ -81,11 +81,12 @@
             </li>
           </ul>
         </div>
-        <div class="example" data-bind="visible: input_type() !== 'select' && input_type() !== 'select1'">
+        <div class="example">
           <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
-          <p data-bind="visible: input_type() == 'string'"><%= t(".preview.string") %></p>
-          <p data-bind="visible: input_type() == 'int' && !decimal"><%= t(".preview.number") %></p>
-          <p data-bind="visible: input_type() == 'int' && decimal"><%= t(".preview.decimal") %></p>
+          <p data-bind="visible: input_type() == 'string'">Abc</p>
+          <p data-bind="visible: input_type() == 'int' && !decimal">123</p>
+          <p data-bind="visible: input_type() == 'int' && decimal">123.5</p>
+          <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
           <p data-bind="visible: input_type() == 'binary'">
             <span class="glyphicon glyphicon-picture"></span>
           </p>
