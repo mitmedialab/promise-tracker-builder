@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815161422) do
+ActiveRecord::Schema.define(version: 20140917145210) do
+
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.string   "user"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -26,9 +33,18 @@ ActiveRecord::Schema.define(version: 20140815161422) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "theme"
+    t.integer  "meta"
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
+
+  create_table "campaigns_tags", id: false, force: true do |t|
+    t.integer "campaign_id", null: false
+    t.integer "tag_id",      null: false
+  end
+
+  add_index "campaigns_tags", ["campaign_id"], name: "index_campaigns_tags_on_campaign_id", using: :btree
+  add_index "campaigns_tags", ["tag_id"], name: "index_campaigns_tags_on_tag_id", using: :btree
 
   create_table "inputs", force: true do |t|
     t.text     "label"
@@ -53,6 +69,12 @@ ActiveRecord::Schema.define(version: 20140815161422) do
   end
 
   add_index "surveys", ["campaign_id"], name: "index_surveys_on_campaign_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.text     "label"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
