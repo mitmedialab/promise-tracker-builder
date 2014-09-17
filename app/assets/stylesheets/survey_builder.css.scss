@@ -202,7 +202,6 @@ $error: #B94A48;
     .example {
       color: $medium-grey;
       min-height: 30px;
-      padding: 5px 0 0 5px;
 
       p {
         margin: 0;
@@ -215,6 +214,10 @@ $error: #B94A48;
 
     label {
       font-weight: normal;
+    }
+
+    .example.padded {
+      padding: 5px 0 0 5px;
     }
 
     .options {
