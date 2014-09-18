@@ -15,8 +15,6 @@
               <div class="inline margin-left">
                 <span data-bind="visible: input_type() == 'binary'">
                   <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate"></span>
-                <span data-bind="visible: input_type() == 'int' || input_type() == 'decimal'">
-                <label><%= t(".decimal") %></label><input type="checkbox" data-bind="checked: decimal"></span>
               </div>
             </td>
           </tr>
@@ -41,8 +39,7 @@
               <div class="example padded">
                 <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
                 <p data-bind="visible: input_type() == 'string'">Abc</p>
-                <p data-bind="visible: input_type() == 'int' && !decimal">123</p>
-                <p data-bind="visible: input_type() == 'int' && decimal">123.5</p>
+                <p data-bind="visible: input_type() == 'number'">123</p>
                 <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
                 <p data-bind="visible: input_type() == 'binary'">
                   <span class="glyphicon glyphicon-picture"></span>
@@ -84,8 +81,7 @@
         <div class="example">
           <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
           <p data-bind="visible: input_type() == 'string'">Abc</p>
-          <p data-bind="visible: input_type() == 'int' && !decimal">123</p>
-          <p data-bind="visible: input_type() == 'int' && decimal">123.5</p>
+          <p data-bind="visible: input_type() == 'number'">123</p>
           <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
           <p data-bind="visible: input_type() == 'binary'">
             <span class="glyphicon glyphicon-picture"></span>
