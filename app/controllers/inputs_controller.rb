@@ -20,10 +20,6 @@ class InputsController < ApplicationController
       end
       @input.options = options
     end
-    
-    if params[:decimal]
-      @input.input_type = 'decimal'
-    end
       
     @input.save
 
@@ -47,7 +43,7 @@ class InputsController < ApplicationController
   private
 
   def input_params
-    params.require(:input).permit(:survey_id, :label, :input_type, :media_type, :options, :decimal, :required, :annotate, :order)
+    params.require(:input).permit(:survey_id, :label, :input_type, :media_type, :options, :required, :order)
   end
 
 end

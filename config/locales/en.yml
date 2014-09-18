@@ -57,7 +57,7 @@ en:
 
       input_types:
         string: "Text"
-        int: "Number"
+        number: "Number"
         date: "Date"
         yes_no: "Yes/No"
         select1: "Select one"
@@ -205,7 +205,6 @@ en:
     survey_body:
       required: "Question required?"
       annotation: "Allow annotation?"
-      decimal: "Allow decimal?"
       options: "Options"
       add_new_option: "Click to add an option"
       question_label: "Question text"
@@ -215,7 +214,6 @@ en:
       preview:
         date: "13 Jan, 2014"  
         number: "123"
-        decimal: "123.5"
         string: "Abc"
 
     survey_builder:
