@@ -86,14 +86,19 @@ class CampaignsController < ApplicationController
     end
   end
 
+  #Post survey definition to API
   def activate
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
-    xml_string = ApplicationController.new.render_to_string(template: "surveys/xform", locals: { survey: @survey })
-    aggregate = OdkInstance.new("http://18.85.22.29:8080/ODKAggregate/")
-    status = aggregate.uploadXmlform(xml_string)
 
-    if status == 201
+    uri = URI('http://localhost:9292/surveys')
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
+    request.body = @survey.to_json(include: :inputs)
+    response = http.request(request)
+
+    if response.code == '200'
       @campaign.update_attribute(:status, 'active')
       flash.now[:notice] = t('.upload_success')
       @campaign.update_attribute(:start_date, Time.now)
