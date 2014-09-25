@@ -1,26 +1,15 @@
 class InputsController < ApplicationController
 
   def create
-    survey = Survey.find(params[:input][:survey_id])
-    input = params[:input]
-
-    @input = survey.inputs.find_or_create_by(id: input[:id])
+    @input = Input.find_or_create_by(id: params[:id])
     @input.update_attributes(input_params)
     @input.guid = make_guid(@input.label, @input.id)
-
-    if params[:options]
-      options = []
-      params[:options].each_with_index do |option, index|
-        if option.present?
-          options.push({
-            value: make_guid(option, index),
-            label: option
-          })
-        end
-      end
-      @input.options = options
+    if @input.input_type == 'select' || @input.input_type == 'select1'
+      @input.update_attribute(:options, params[:options]) 
+    else
+      @input.update_attribute(:options, [])
     end
-      
+
     @input.save
 
     render json: @input
