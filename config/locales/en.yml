@@ -25,7 +25,7 @@ en:
         title: "Name"
         goal: "Goal"
         submissions_target: "Number of desired responses"
-        data_collectors: "Data collectors"
+        data_collectors: "Campaign team"
         audience: "Target audience"
         status: "Status"
         start_date: "Start date"
@@ -170,13 +170,13 @@ en:
       type_number: "Type a number"
       explanations:
         goal: "What do you hope to achieve with this campaign? What change do you want to see?"
-        data_collectors: "Who will collect the data for this campaign?"
+        data_collectors: "Who will you recuit to help you organize the campaign?"
         submissions_target: "How many submissions do you hope to get?"
         audience: "Who do you plan to share your data with in order to change this issue?"
       tooltip: "Tip"
       tips:
         goal: "Social change often requires many small steps. Are there any small and concrete changes that you think could be achievable in the near future?"
-        data_collectors: " It may take many people to collect enough data for your campaign. Think about people you know who are already committed to addressing this issue, and what might motivate them to help you with this campaign."
+        data_collectors: "Having an organizing team on board from the very beginning can help you improve your strategy, brainstorm survey design and mobilize data collectors. Who do you know in your community that might be interested in this issue that could help out?"
         submissions_target: "Sometimes, just a few data points is not convincing. Think about how many responses you might need to accurately represent your issue, and how many will be reasonable to collect within the time frame you specify."
         audience: "There are many audiences you may want to address with the data you collect. Who will be most interested in this data? Could you reach a new audience who is not already familiar with this issue? Who will be the most difficult to convince to make the change that you want to see?"
 
