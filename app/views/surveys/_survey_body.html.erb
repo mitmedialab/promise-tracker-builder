@@ -91,7 +91,7 @@
 </div>
 
 <% if @survey.id %>
-<script type="text/javascript">
-  PT.getSurvey("<%= survey_path(@survey) %>");
-</script>
+  <script type="text/javascript">
+    PT.getSurvey("<%= survey_path(@survey) %>");
+  </script>
 <% end %>

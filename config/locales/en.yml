@@ -217,6 +217,9 @@ en:
         string: "Abc"
 
     survey_builder:
+      untitled: "Untitled"
+      survey_title: "Survey title"
+      title_placeholder: "Type survey title here"
       editor_title: "Toolbar"  
       add_question: "Add question"
       add_location: "Record location"
