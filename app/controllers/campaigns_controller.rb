@@ -95,7 +95,10 @@ class CampaignsController < ApplicationController
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
-    request.body = @survey.to_json(include: :inputs)
+    request.body = @survey.to_json(
+      only: [:id, :campaign_id], 
+      include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
+    )
     response = http.request(request)
 
     if response.code == '200'
