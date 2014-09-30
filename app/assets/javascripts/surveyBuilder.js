@@ -223,7 +223,7 @@ PT.SurveyModel = function(){
     window.location.pathname = Routes.campaign_path(PT.survey.campaign_id);
     
     $.ajax({
-      url: "/surveys/" + PT.survey.id,
+      url: "/surveys/" + PT.survey.id + "/save-order",
       type: "PUT",
       contentType: "application/json",
       dataType: "json",

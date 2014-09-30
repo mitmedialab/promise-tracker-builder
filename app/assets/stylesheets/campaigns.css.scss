@@ -142,12 +142,11 @@ body.dark {
 
 .edit-title-button {
   color: grey;
-  // vertical-align: bottom;
   display: inline;
   margin: 0 10px;
 
   &:hover {
-    color: whitesmoke;
+    color: #ababab;
     cursor: pointer;
   }
 }
