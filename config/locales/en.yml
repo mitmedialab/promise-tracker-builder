@@ -63,7 +63,7 @@ en:
         select1: "Select one"
         select: "Select many"
         geopoint: "Location"
-        binary: "Photo" 
+        image: "Photo" 
 
   defaults:
     save: "Save"

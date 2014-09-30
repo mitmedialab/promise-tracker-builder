@@ -33,8 +33,7 @@ PT.defaultControls = {
 
   inputImage: {
     label: "Image",
-    input_type: "binary",
-    media_type: "image/*"
+    input_type: "image",
   },
 
   inputSelectMany: {

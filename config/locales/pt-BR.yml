@@ -63,7 +63,7 @@ pt-BR:
         select1: "Selecionar uma"
         select: "Selecionar várias"
         geopoint: "Localização"
-        binary: "Foto"
+        image: "Foto"
 
   defaults:
     save: "Salvar"

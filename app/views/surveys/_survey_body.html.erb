@@ -13,7 +13,7 @@
             <td>
               <select class="form-control short inline" data-bind="options: PT.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type, event: {change: applyType}"></select>
               <div class="inline margin-left">
-                <span data-bind="visible: input_type() == 'binary'">
+                <span data-bind="visible: input_type() == 'image'">
                   <label><%= t(".annotation") %></label><input type="checkbox" data-bind="checked: annotate"></span>
               </div>
             </td>
@@ -41,7 +41,7 @@
                 <p data-bind="visible: input_type() == 'string'">Abc</p>
                 <p data-bind="visible: input_type() == 'number'">123</p>
                 <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
-                <p data-bind="visible: input_type() == 'binary'">
+                <p data-bind="visible: input_type() == 'image'">
                   <span class="glyphicon glyphicon-picture"></span>
                 </p>
               </div>
@@ -83,7 +83,7 @@
           <p data-bind="visible: input_type() == 'string'">Abc</p>
           <p data-bind="visible: input_type() == 'number'">123</p>
           <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
-          <p data-bind="visible: input_type() == 'binary'">
+          <p data-bind="visible: input_type() == 'image'">
             <span class="glyphicon glyphicon-picture"></span>
           </p>
         </div>
