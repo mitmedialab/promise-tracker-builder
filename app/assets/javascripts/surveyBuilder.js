@@ -130,8 +130,7 @@ PT.Input = function(){
     $.ajax({
       url: Routes.clone_input_path(self.id()),
       type: 'GET',
-      dataType: 'json',
-      data: {param1: 'value1'},
+      dataType: 'json'
     })
     .done(function(response) {
       var newInput = new PT.Input();
@@ -250,6 +249,7 @@ PT.getSurvey = function(url){
     PT.survey = new PT.SurveyModel();
 
     PT.survey.id = response.id;
+    PT.survey.title(response.title);
     PT.survey.campaign_id = response.campaign_id;
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
@@ -262,6 +262,22 @@ PT.getSurvey = function(url){
     $(document).on("click", ".tool-button", PT.survey.addInput);
   });
 };
+
+PT.updateTitle = function(){
+  PT.survey.title($("#survey-title-input").val());
+
+  $.ajax({
+    url: "/surveys/" + PT.survey.id,
+    type: "PUT",
+    contentType: "application/json",
+    dataType: "json",
+    data: ko.toJSON(PT.survey)
+  })
+  .done(function(response) {
+    $("#survey-title-modal").modal('hide');
+    $(".campaign-title").html(PT.survey.title());
+  })
+}
 
 PT.flashMessage = function(message, element){
   $("#message").remove();

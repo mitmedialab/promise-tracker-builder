@@ -217,6 +217,9 @@ pt-BR:
         string: "Abc"
 
     survey_builder:
+      untitled: "Sem títiulo"
+      survey_title: "Título do formulário"
+      title_text: "Digite o títiulo aqui"
       editor_title: "Barra de Ferramentas"  
       add_question: "Adicionar pergunta"
       add_location: "Obter localização"

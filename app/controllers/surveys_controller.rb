@@ -14,7 +14,8 @@ class SurveysController < ApplicationController
       @campaign = Campaign.find(params[:campaign_id])
       @survey = Survey.create(
         campaign_id: @campaign.id,
-        guid: make_guid(@campaign.title, @campaign.id)
+        guid: make_guid(@campaign.title, @campaign.id),
+        title: @campaign.title
       )
       redirect_to survey_path(@survey)
     else
@@ -23,7 +24,7 @@ class SurveysController < ApplicationController
   end
 
   def test_builder
-    @survey = Survey.new
+    @survey = Survey.new(title: t('surveys.survey_builder.untitled'))
     @flash = t('survey_builder', scope: 'surveys').to_json
     @validations = t('validations', scope: 'defaults').to_json
     @input_types = input_types.to_json
@@ -31,14 +32,9 @@ class SurveysController < ApplicationController
 
   def update
     @survey = Survey.find(params[:id])
-    inputs = params[:inputs]
+    @survey.update_attribute(:title, params[:title])
 
-    inputs.each_with_index do |input, index|
-      item = Input.find_or_create_by(id: input[:id])
-      item.update_attribute(:order, index)
-    end
-
-    render nothing: true
+    render json: @survey
   end
 
   def preview
