@@ -55,8 +55,6 @@ PT.Input = function(){
   self.survey_id = PT.survey.id;
   self.label = ko.observable("");
   self.input_type = ko.observable();
-  self.media_type = ko.observable();
-  self.annotate = ko.observable(false);
   self.required = ko.observable(false);
   self.options = ko.observableArray([PT.flash.option_1]);
   self.order = "";
@@ -107,7 +105,6 @@ PT.Input = function(){
     self.survey_id = data.survey_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
-    self.media_type = ko.observable(data.media_type);
     self.required = ko.observable(data.required);
     self.options = ko.observableArray(data.options);
     self.order = data.order;
@@ -171,7 +168,6 @@ PT.SurveyModel = function(){
     
     if(type){
       input.input_type(type["input_type"]);
-      input.media_type(type["media_type"]);
     }
 
     if($(event.target).hasClass("drag-insert")){
