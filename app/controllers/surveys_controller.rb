@@ -37,6 +37,18 @@ class SurveysController < ApplicationController
     render json: @survey
   end
 
+  def save_order
+    @survey = Survey.find(params[:id])
+    inputs = params[:inputs]
+
+    inputs.each_with_index do |input, index|
+      item = Input.find_or_create_by(id: input[:id])
+      item.update_attribute(:order, index)
+    end
+
+    render nothing: true
+  end
+
   def preview
     @survey = Survey.find(params[:id])
     render layout: 'preview'

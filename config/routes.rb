@@ -1,14 +1,10 @@
 PromiseTracker::Application.routes.draw do
-  get "campaigns/new"
-  get "campaigns/create"
-  get "campaigns/edit"
-  get "campaigns/update"
-  get "campaigns/destroy"
   devise_for :users
   root to: 'home#index'
 
   get '/surveys/:id/preview', to: 'surveys#preview', as: 'preview_survey'
   get '/surveys/test', to: 'surveys#test_builder', as: 'test_builder'
+  put '/surveys/:id/save-order', to: 'surveys#save_order', as: 'save_order'
 
   get '/campaigns/:id/goals', to: 'campaigns#goals_wizard', as: 'campaign_goals_wizard'
   get '/campaigns/:id/launch', to: 'campaigns#launch', as: 'launch_campaign'
