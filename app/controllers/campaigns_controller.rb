@@ -105,7 +105,7 @@ class CampaignsController < ApplicationController
       @campaign.update_attribute(:status, 'active')
       flash.now[:notice] = t('.upload_success')
       @campaign.update_attribute(:start_date, Time.now)
-      redirect_to launch_campaign_path(@campaign)
+      redirect_to monitor_campaign_path(@campaign)
     else
       flash.now[:notice] = t('.upload_error')
       render :launch
@@ -127,9 +127,14 @@ class CampaignsController < ApplicationController
 
   def close
     @campaign = Campaign.find(params[:id])
+    uri = URI('http://localhost:9292/surveys/' + @campaign.survey.id.to_s + '/close')
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
+    response = http.request(request)
     @campaign.update_attribute(:status, 'closed')
 
-    redirect_to action: 'launch'
+    redirect_to share_campaign_path(@campaign)
   end
 
   def destroy
