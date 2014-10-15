@@ -33,8 +33,7 @@ PT.defaultControls = {
 
   inputImage: {
     label: "Image",
-    input_type: "binary",
-    media_type: "image/*"
+    input_type: "image",
   },
 
   inputSelectMany: {
@@ -56,8 +55,6 @@ PT.Input = function(){
   self.survey_id = PT.survey.id;
   self.label = ko.observable("");
   self.input_type = ko.observable();
-  self.media_type = ko.observable();
-  self.annotate = ko.observable(false);
   self.required = ko.observable(false);
   self.options = ko.observableArray([PT.flash.option_1]);
   self.order = "";
@@ -108,7 +105,6 @@ PT.Input = function(){
     self.survey_id = data.survey_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
-    self.media_type = ko.observable(data.media_type);
     self.required = ko.observable(data.required);
     self.options = ko.observableArray(data.options);
     self.order = data.order;
@@ -134,8 +130,7 @@ PT.Input = function(){
     $.ajax({
       url: Routes.clone_input_path(self.id()),
       type: 'GET',
-      dataType: 'json',
-      data: {param1: 'value1'},
+      dataType: 'json'
     })
     .done(function(response) {
       var newInput = new PT.Input();
@@ -172,7 +167,6 @@ PT.SurveyModel = function(){
     
     if(type){
       input.input_type(type["input_type"]);
-      input.media_type(type["media_type"]);
     }
 
     if($(event.target).hasClass("drag-insert")){
@@ -229,7 +223,7 @@ PT.SurveyModel = function(){
     window.location.pathname = Routes.campaign_path(PT.survey.campaign_id);
     
     $.ajax({
-      url: "/surveys/" + PT.survey.id,
+      url: "/surveys/" + PT.survey.id + "/save-order",
       type: "PUT",
       contentType: "application/json",
       dataType: "json",
@@ -255,6 +249,7 @@ PT.getSurvey = function(url){
     PT.survey = new PT.SurveyModel();
 
     PT.survey.id = response.id;
+    PT.survey.title(response.title);
     PT.survey.campaign_id = response.campaign_id;
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
@@ -267,6 +262,22 @@ PT.getSurvey = function(url){
     $(document).on("click", ".tool-button", PT.survey.addInput);
   });
 };
+
+PT.updateTitle = function(){
+  PT.survey.title($("#survey-title-input").val());
+
+  $.ajax({
+    url: "/surveys/" + PT.survey.id,
+    type: "PUT",
+    contentType: "application/json",
+    dataType: "json",
+    data: ko.toJSON(PT.survey)
+  })
+  .done(function(response) {
+    $("#survey-title-modal").modal('hide');
+    $(".campaign-title").html(PT.survey.title());
+  })
+}
 
 PT.flashMessage = function(message, element){
   $("#message").remove();

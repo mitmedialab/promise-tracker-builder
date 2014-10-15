@@ -1,42 +1,48 @@
-<div class="row" id="user-info">
-  <div class="user-icon">
-    <%= link_to user_path(current_user) do %>
-      <%= image_tag("user-icon.png") %>
-    <% end %>
-  </div>
-  <div class="user-details bottom">
-    <h4><%= link_to current_user.username, user_path(current_user) %></h4>
+<div class="section">
+  <div class="row section-container" id="user-info">
+    <div class="user-icon">
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag("user-icon.png") %>
+      <% end %>
+    </div>
+    <div class="user-details bottom">
+      <h4><%= link_to current_user.username, user_path(current_user) %></h4>
+    </div>
   </div>
 </div>
-<hr>
 
+<div class="section grey">
+  <div class="row section-container" id="user-campaigns">
+    <div class="col-md-12">
+      <h1 class="light"><%= t(".my_campaigns") %></h1>
+    </div>
 
-<div class="row" id="user-campaigns">
-  <div class="col-md-12">
-    <h1 class="title"><%= t(".my_campaigns") %></h1>
-  </div>
-
-  <div class="col-md-8">
-    <% if @campaigns.present? %>
-    <ul class="campaigns-list">
-      <% @campaigns.each do |campaign| %>
-        <%= render partial: 'campaigns/list_item', locals: {campaign: campaign} %>
+    <div class="col-md-8">
+      <% if @campaigns.present? %>
+      <ul class="campaigns-list">
+        <% @campaigns.each do |campaign| %>
+          <%= render partial: 'campaigns/list_item', locals: {campaign: campaign} %>
+        <% end %>
+      </ul>
+      <% else %> 
+      <div class="welcome">
+        <%= t(".greeting") %>, <%= current_user.username.capitalize %>. <%= t(".welcome_text") %><br>
+        <%= link_to t(".get_started"), "#", class: "new-campaign" %>
+      </div>
       <% end %>
-    </ul>
-    <% else %> 
-    <div class="welcome">
-      <%= t(".greeting") %>, <%= current_user.username.capitalize %>. <%= t(".welcome_text") %><br>
-      <%= link_to t(".get_started"), "#", class: "new-campaign" %>
     </div>
-    <% end %>
-  </div>
 
-  <div class="col-md-4 center new-campaign">
-    <div class="btn btn-info new-form-button">
-      <span class="glyphicon glyphicon-plus-sign"></span>
-      <%= t(".new_campaign") %>
+    <div class="col-md-4 center new-campaign">
+      <div class="btn btn-info new-form-button">
+        <span class="glyphicon glyphicon-plus-sign"></span>
+        <%= t(".new_campaign") %>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="section">
+  <div class="section-container" id="campaigns-footer"></div>
 </div>
 
 <%= render partial: 'new' %>
