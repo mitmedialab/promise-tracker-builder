@@ -1,27 +1,43 @@
 <div id="workspace">
-  <div class="campaign-title inline">
-    <% if @survey.campaign %>
-    <%= @survey.campaign.title %>
-    <% end %>
+  <div class="campaign-title inline" data-bind="text: title"></div>
+  <% if current_user %>
+    <span class="edit-title-button" data-toggle="modal" data-target="#survey-title-modal"><%= t(".edit_title") %></span>
+  <% end %>
+
+  <!-- Edit survey title modal -->
+  <div class="modal fade" id="survey-title-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title"><%= t(".survey_title") %></h4>
+        </div>
+          <div class="modal-body">
+            <input class="form-control" id="survey-title-input" data-bind="value: title" placeholder="<% t('.title_placeholder') %>">
+          </div>
+          <div class="modal-footer">
+            <div class="btn btn-info" id="update-title-button"><%= t("defaults.save") %></button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <h2 class="title"><%= Survey.model_name.human %></h2>
 
   <!-- Survey body -->
   <%= render partial: "survey_body" %>
  
-
   <!-- Done button -->
   <div class="controls">
     <% if current_user %>
-    <button class="btn btn-primary" data-bind="click: saveOrder"><%= t('defaults.save') %></button>
+    <button class="btn btn-info" data-bind="click: saveOrder"><%= t('defaults.save') %></button>
     <% end %>
   </div>
 
   <!-- Sidebar -->
   <div id="sidebar">
-    <div id="tool-palette" class="clear">
+    <div id="sidebar-header">
       <h3 class="title" ><%= t(".editor_title") %></h3>
-      <hr>
+    </div>
+    <div id="tool-palette" class="clear">
       <ul>
         <li class="tool-button" rel="inputText">
           <span class="glyphicon glyphicon-plus-sign"></span> <%= t(".add_question") %>
@@ -37,7 +53,7 @@
     <div id="preview">
       <h4 class="title"><%= t(".preview_title") %></h4>
       <%= render 'android_preview' %>
-      <div id="preview-toggle" class="btn btn-grey btn-slim"><%= t(".hide_preview") %></div>
+ <!--      <div id="preview-toggle" class="btn btn-grey btn-slim"><%= t(".hide_preview") %></div> -->
     <div>
   </div>
 </div>
@@ -48,6 +64,7 @@
   PT.input_types = <%= raw @input_types %>;
   
   $("#preview-toggle").on("click", PT.togglePreview);
+  $(document).on("click", "#update-title-button", PT.updateTitle);
 
   // Make input buttons draggable
   $(".tool-button").draggable({ 

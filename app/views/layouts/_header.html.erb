@@ -1,13 +1,16 @@
 <div id="header">
-  <% if current_user %>
-    <%= link_to campaigns_path, class: "btn btn-info home" do %>
-      <span class="glyphicon glyphicon-home"></span>
+  <div id="site-title">
+    <% if current_user %>
+      <%= link_to campaigns_path, class: "home-button" do %>
+        <%= image_tag("PT-logo.png") %>
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: "home-button" do %>
+        <%= image_tag("PT-logo.png") %>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= link_to root_path, class: "btn btn-info home" do %>
-      <span class="glyphicon glyphicon-home"></span>
-    <% end %>
-  <% end %>
+    <h2 class="light inline site-title">Promise Tracker</h2>
+  </div>
   <ul class="user-links">
     <% if I18n.locale == :en %>
       <li><%= link_to "Português", :locale=>'pt-BR' %></li>
@@ -20,7 +23,7 @@
       <li><%= current_user.username %></li>
       <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-primary" %></li>
+      <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-info" %></li>
     <% end %>
   </ul>
 </div>

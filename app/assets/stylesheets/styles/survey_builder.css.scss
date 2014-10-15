@@ -1,16 +1,9 @@
-$darkest-grey: #333333;
-$medium-grey: #BABABA;
-$link: #428bca;
-$link-hover: #005580;
-$turquoise: #5bc0de;
-$error: #B94A48;
-
 #workspace {
   margin: 0 300px 40px 0;
   padding: 20px 60px;
 
   .input.selected {
-    border-left: 5px solid $turquoise;
+    border-left: 5px solid $pink;
   }
 
   ol#input-list {
@@ -19,36 +12,41 @@ $error: #B94A48;
 }
 
 #tool-palette .tool-button, .tool-button.drag-insert {
-  background: whitesmoke;
+  background: $turquoise;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 15px;
   margin: 10px;
   cursor: pointer;
   font-size: 15px;
+
+  .glyphicon {
+    margin-right: 5px;
+  }
 }
 
 .title {
-  text-transform: uppercase;
   font-weight: 100;
-  letter-spacing: 2px;
 }
 
 #sidebar {
-  background: $darkest-grey;
-  color: white;
+  background: $light-grey;
+  color: $darkest-grey;
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   width: 300px;
-  padding: 10px 20px;
 
-  hr {
-    margin: 5px 0;
+  #sidebar-header {
+    background: $yellow;
+    padding: 20px;
+    text-align: center;
+    color: white;
   }
 
+
   #preview {
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center;
   }
 
@@ -57,10 +55,10 @@ $error: #B94A48;
   }
 
   #tool-palette {
-    background: $darkest-grey;
-    border-radius: 5px;
     margin: 0 auto;
+    margin-top: 20px;
     width: 200px;
+    font-weight: 100;
 
     a:hover {
       text-decoration: none;
@@ -99,10 +97,10 @@ $error: #B94A48;
     }
 
     .tool-button, .add-question {
-      color: $link;
+      color: white;
 
       &:hover {
-        color: $link-hover;
+        color: whitesmoke;
       }
     }
   }
@@ -129,12 +127,8 @@ $error: #B94A48;
   height: 40px;
 }
 
-#workspace #survey-body {
-
-}
-
 #survey-body {
-  background: whitesmoke;
+  background: $light-grey;
   min-height: 350px;
   padding: 20px;
   text-align: left;
@@ -200,7 +194,7 @@ $error: #B94A48;
     }
 
     .example {
-      color: $medium-grey;
+      color: $med-grey;
       min-height: 30px;
 
       p {
@@ -239,7 +233,7 @@ $error: #B94A48;
             padding: 10px 25px;
             position: absolute;
             right: 10%;
-            color: $medium-grey;
+            color: $med-grey;
           }
         }
 
@@ -272,14 +266,14 @@ $error: #B94A48;
     }
 
     .date-preview {
-      color: $medium-grey;
+      color: $med-grey;
       position: absolute;
       left: 165px;
       padding: 8px;
     }
 
     .android-button {
-      background: $medium-grey;
+      background: $med-grey;
       padding: 8px 20px;
       margin: 5px 0;
       width: 200px;
@@ -305,4 +299,3 @@ $error: #B94A48;
   }
 
 }
-

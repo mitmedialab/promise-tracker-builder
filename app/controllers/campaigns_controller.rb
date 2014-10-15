@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout 'full-width', only: [:launch, :monitor, :share]
+  layout 'full-width', only: [:launch, :monitor, :share, :index]
 
   def index
     @campaign = Campaign.new
@@ -86,18 +86,26 @@ class CampaignsController < ApplicationController
     end
   end
 
+  #Post survey definition to API
   def activate
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
-    xml_string = ApplicationController.new.render_to_string(template: "surveys/xform", locals: { survey: @survey })
-    aggregate = OdkInstance.new("http://18.85.22.29:8080/ODKAggregate/")
-    status = aggregate.uploadXmlform(xml_string)
 
-    if status == 201
+    uri = URI('http://localhost:9292/surveys')
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
+    request.body = @survey.to_json(
+      only: [:id, :title, :campaign_id], 
+      include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
+    )
+    response = http.request(request)
+
+    if response.code == '200'
       @campaign.update_attribute(:status, 'active')
       flash.now[:notice] = t('.upload_success')
       @campaign.update_attribute(:start_date, Time.now)
-      redirect_to launch_campaign_path(@campaign)
+      redirect_to monitor_campaign_path(@campaign)
     else
       flash.now[:notice] = t('.upload_error')
       render :launch
@@ -119,9 +127,15 @@ class CampaignsController < ApplicationController
 
   def close
     @campaign = Campaign.find(params[:id])
+    uri = URI('http://localhost:9292/surveys/' + @campaign.survey.id.to_s + '/close')
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
+    response = http.request(request)
+    binding.pry
     @campaign.update_attribute(:status, 'closed')
 
-    redirect_to action: 'launch'
+    redirect_to share_campaign_path(@campaign)
   end
 
   def destroy

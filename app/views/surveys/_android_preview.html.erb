@@ -11,18 +11,18 @@
   <div class="input-preview select center">
     <h4><%= t(".no_questions") %></h4>
     <br>
-    <div class="btn btn-info wrap" data-bind="click: addStarterQuestion"><%= t("surveys.survey_builder.add_question") %></div>
+    <p><%= t(".add_questions") %></p>
   </div> 
   <!-- /ko -->
 
-  <p class="center"><%= t(".question") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> <%= t(".of") %> <span data-bind="text: PT.survey.inputs().length"></span></p>
+  <p class="center question-number"><%= t(".question") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> <%= t(".of") %> <span data-bind="text: PT.survey.inputs().length"></span></p>
 
   <div class="center">
-    <div class="btn btn-info arrow" data-direction="left">
+    <div class="btn btn-warning arrow" data-direction="left">
       <span class="glyphicon glyphicon-chevron-left"></span>
     </div>
 
-    <div class="btn btn-info arrow" data-direction="right">
+    <div class="btn btn-warning arrow" data-direction="right">
       <span class="glyphicon glyphicon-chevron-right"></span>
     </div>
   </div>
