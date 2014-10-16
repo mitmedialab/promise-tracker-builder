@@ -62,8 +62,8 @@ pt-BR:
         yes_no: "Sim/Não"
         select1: "Selecionar uma"
         select: "Selecionar várias"
-        geopoint: "Localização"
-        image: "Foto"
+        location: "Localização"
+        image: "Imagem"
 
   defaults:
     save: "Salvar"
@@ -90,6 +90,7 @@ pt-BR:
     index:
       welcome: "Começar com Promise Tracker"
       tag_line: "Coleta de dados para a ação cívica"
+      process_line: "O Nosso Processo"
       create_account: "Criar uma conta gratuita"
 
   campaigns:
@@ -197,7 +198,7 @@ pt-BR:
     android_preview: 
       preview_title: "Pré-visualização no celular:"
       no_questions: "Formulário vazio"
-      add_questions: "Adicionar pergunta"
+      add_questions: "Escolha um dos tipos acima para começar."
       question: "Pergunta"  
       of: "de"
       close_preview: "Fechar pré-visualização"

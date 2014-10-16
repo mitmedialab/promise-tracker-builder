@@ -36,7 +36,7 @@
                 <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
                 <p data-bind="visible: input_type() == 'string'">Abc</p>
                 <p data-bind="visible: input_type() == 'number'">123</p>
-                <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
+                <p data-bind="visible: input_type() == 'location'">Lat: 42.3609509, Lon: -71.0870836</p>
                 <p data-bind="visible: input_type() == 'image'">
                   <span class="glyphicon glyphicon-picture"></span>
                 </p>
@@ -67,18 +67,20 @@
           <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
 
-        <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">
-          <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
-            <li class="option">
-              <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>
-            </li>
-          </ul>
-        </div>
         <div class="example">
+          <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">
+            <p data-bind="visible: input_type() === 'select'">Select all that apply:</p>
+            <p data-bind="visible: input_type() === 'select1'">Select one:</p>
+            <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
+              <li class="option">
+                <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>
+              </li>
+            </ul>
+          </div>
           <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
           <p data-bind="visible: input_type() == 'string'">Abc</p>
           <p data-bind="visible: input_type() == 'number'">123</p>
-          <p data-bind="visible: input_type() == 'geopoint'">Lat: 42.3609509, Long: -71.0870836</p>
+          <p data-bind="visible: input_type() == 'location'">Lat: 42.3609509, Lon: -71.0870836</p>
           <p data-bind="visible: input_type() == 'image'">
             <span class="glyphicon glyphicon-picture"></span>
           </p>

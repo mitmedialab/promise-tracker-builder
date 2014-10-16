@@ -22,7 +22,7 @@
         <% if @campaign.end_date %>
           <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
           <% @campaign.end_date.strftime("%-d %b %Y") %>
-        <% else %>
+        <% elsif @campaign.status == "active" %>
           <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning" %>
         <% end %>     
       </div>

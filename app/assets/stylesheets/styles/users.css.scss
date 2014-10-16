@@ -48,8 +48,6 @@
 }
 
 #user-info {
-  padding: 15px;
-
   .user-icon, .user-details  {
     display: inline-block;
     height: 100px;
@@ -67,8 +65,8 @@
   }
 
   img {
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
   }
 }

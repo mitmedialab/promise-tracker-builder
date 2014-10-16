@@ -1,23 +1,40 @@
-$dark-turquoise: #1b6d85;
+#user-info {
+  padding: 40px 0;
+}
+
+#user-campaigns {
+  width: 100%;
+  padding: 20px 0;
+
+  h1 {
+    color: $dark-grey;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+}
+
+#campaigns-footer {
+  min-height: 120px;
+  height: 100%;
+}
 
 .status {
   width: 100px;
   margin: 0 10px;
+  border: 1px solid $med-grey;
 
   &.draft {
     background: whitesmoke;
     color: grey;
-    border: 1px solid grey;
   }
 
   &.active {
-    background: #1abc9c;
-    color: white;
+    background: white;
     box-shadow: none;
   }
 
   &.closed {
-    background: #CF5300;
+    background: $med-grey;
     color: white;
   }
 }
@@ -28,55 +45,39 @@ $dark-turquoise: #1b6d85;
 
 .campaigns-list {
   list-style-type: none;
-  padding: 20px 0 0 0;
+  padding: 0;
 
   li {
-    padding: 20px;
-    border: 1px solid #eeeeee;
+    padding: 10px 20px;
+    // border: 1px solid #eeeeee;
     border-radius: 4px;
-    margin-bottom: 20px;
-    background: whitesmoke;
+    margin-bottom: 10px;
+    background: white;
 
-    .campaign-name {
+    a.campaign-name {
       vertical-align: middle;
       font-size: 20px;
+      color: $darkest-grey;
     }
 
-    .theme-icon {
+    .status-icon {
       vertical-align: top;
       width: 40px;
       height: 40px;
-      background-image: image-url('icon-other.png');
       background-repeat: no-repeat;
-      background-size: 100%;
+      background-size: 80%;
       margin-right: 10px;
 
-      &.education {
-        background-image: image-url('icon-education.png');
+      &.draft {
+        background-image: image-url('PT-status-draft.png');
       }
 
-      &.electricity {
-        background-image: image-url('icon-electricity.png');
+      &.active {
+        background-image: image-url('PT-status-active.png');
       }
 
-      &.environment {
-        background-image: image-url('icon-environment.png');
-      }
-
-      &.health {
-        background-image: image-url('icon-health.png');
-      }
-
-      &.housing {
-        background-image: image-url('icon-housing.png');
-      }
-
-      &.infrastructure {
-        background-image: image-url('icon-infrastructure.png');
-      }
-
-      &.other {
-        background-image: image-url('icon-other.png');
+      &.closed {
+        background-image: image-url('PT-status-closed.png');
       }
     }
   }
@@ -87,7 +88,8 @@ $dark-turquoise: #1b6d85;
 .campaign-nav {
 
   .btn {
-    text-transform: uppercase;
+    border: 1px solid #eeeeee;
+    // text-transform: uppercase;
     margin-right: 10px;
   }
 }
@@ -125,7 +127,7 @@ $dark-turquoise: #1b6d85;
   .glyphicon {
     font-size: 200%; 
     display: block;
-    margin-bottom: 15px;
+    margin: 8px 0;
   }
 }
 
@@ -156,11 +158,12 @@ body.dark {
   letter-spacing: 1px;
   font-size: 40px;
   font-weight: 200;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   display: block;
+  padding-top: 20px;
 }
 
-h2.title {
+h2.title, h3.title {
   margin-top: 5px;
   display: block;
 }
