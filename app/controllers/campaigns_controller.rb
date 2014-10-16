@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout 'full-width', only: [:launch, :monitor, :share]
+  layout 'full-width', only: [:launch, :monitor, :share, :index]
 
   def index
     @campaign = Campaign.new

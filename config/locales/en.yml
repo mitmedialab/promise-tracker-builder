@@ -62,8 +62,8 @@ en:
         yes_no: "Yes/No"
         select1: "Select one"
         select: "Select many"
-        geopoint: "Location"
-        image: "Photo" 
+        location: "Location"
+        image: "Image" 
 
   defaults:
     save: "Save"
@@ -90,6 +90,7 @@ en:
     index:
       welcome: "Get started"
       tag_line: "Data collection for civic action"
+      process_line: "The Promise Tracker Process"
       create_account: "Create a free account"
 
   campaigns:
@@ -197,7 +198,7 @@ en:
     android_preview: 
       preview_title: "Phone preview for:"
       no_questions: "No questions"
-      add_questions: "Add question"
+      add_questions: "Choose a question type above to get started."
       question: "Question" 
       of: "of" 
       close_preview: "Close preview"

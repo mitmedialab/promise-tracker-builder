@@ -1,0 +1,57 @@
+.intro-block {
+  img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+}
+
+.sign-up-block, .intro-block {
+  padding: 40px 0;
+}
+
+.process-block {
+  padding: 25px 0 80px 0;
+}
+
+.sign-up {
+  font-size: 18px;
+  margin-top: 30px;
+
+  .btn {
+    padding: 10px 20px;
+  }
+}
+
+.overview-block {
+  padding: 0 60px;
+}
+
+.process-block {
+  p {
+    text-align: left;
+    margin: 0 20px;
+  }
+}
+
+.process-icon {
+  width: 60px;
+  height: auto;
+}
+
+.process-title {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+
+// @media (max-width: 760px) {
+
+//   .get-started {
+//     img {
+//       width: 100%;
+//       margin-bottom: 20px;
+//     }
+//   }
+// }
