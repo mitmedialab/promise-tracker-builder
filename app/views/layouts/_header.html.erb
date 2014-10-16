@@ -12,18 +12,22 @@
     <h2 class="light inline site-title">Promise Tracker</h2>
   </div>
   <ul class="user-links">
+    <% if current_user %>
+      <li>
+        <%= link_to campaigns_path do %>
+          <%= image_tag("user-icon.png", class: "user-icon") %> <%= current_user.username %>
+         <% end %> 
+      </li>
+      <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-info" %></li>
+    <% end %>    
+    |
     <% if I18n.locale == :en %>
       <li><%= link_to "Português", :locale=>'pt-BR' %></li>
     <% else %>
       <li><%= link_to "English", :locale=>'en' %></li>
     <%end%>
-    |
 
-    <% if current_user %>
-      <li><%= current_user.username %></li>
-      <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-info" %></li>
-    <% end %>
   </ul>
 </div>
