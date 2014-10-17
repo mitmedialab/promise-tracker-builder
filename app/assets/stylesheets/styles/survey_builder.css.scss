@@ -1,13 +1,14 @@
 #workspace {
   margin: 0 300px 40px 0;
   padding: 20px 60px;
+  position: relative;
 
   .input.selected {
     border-left: 5px solid $pink;
   }
 
   ol#input-list {
-    padding: 0 0 100px 25px;
+    padding: 0  0 92px 25px;
   }
 }
 
@@ -153,12 +154,27 @@
     }
   }
 
-  .input {
-    background: white;
-    border: 1px solid #eee;
+  .input, .input-drop-area {
     border-radius: 5px;
     margin: 10px 0;
     min-height: 100px;
+  }
+
+  .input-drop-area {
+    position: absolute;
+    bottom: 40px;
+    border: 2px dotted $med-grey;
+    margin: 4px 2px 2px 25px;
+    width: 80%;
+
+    &.highlightedArea {
+      background: $med-grey;
+    }
+  }
+
+  .input {
+    background: white;
+    border: 1px solid #eee;
     padding: 20px; 
     position: relative;
 

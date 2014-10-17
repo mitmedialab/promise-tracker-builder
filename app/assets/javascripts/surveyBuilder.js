@@ -260,6 +260,7 @@ PT.getSurvey = function(url){
     PT.checkErrors();
 
     $(document).on("click", ".tool-button", PT.survey.addInput);
+    $(document).on("click", ".input-drop-area", PT.survey.addInput);
   });
 };
 
