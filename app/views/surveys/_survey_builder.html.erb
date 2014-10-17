@@ -71,6 +71,9 @@
     <div id="preview">
       <h4 class="title"><%= t(".preview_title") %></h4>
       <%= render 'android_preview' %>
+      <div data-bind="visible: PT.survey.inputs().length == 0">
+        <%= image_tag("preview-arrow-2.png", class: "preview-arrow") %>
+      </div>
     <div>
   </div>
 </div>
