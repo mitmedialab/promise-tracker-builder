@@ -114,10 +114,6 @@
   }
 }
 
-.error {
-  color: $error;
-}
-
 .top-left {
   position: absolute;
   top: 30px;
@@ -137,8 +133,9 @@
 
 #survey-body {
   background: $light-grey;
-  min-height: 100px;
+  min-height: 120px;
   padding: 20px;
+  position: relative;
   text-align: left;
   width: 100%;
 
@@ -169,10 +166,12 @@
 
   .input-drop-area {
     position: absolute;
-    bottom: 40px;
+    bottom: 20px;
+    right: 20px;
+    left: 45px;
     border: 2px dotted $med-grey;
-    margin: 4px 2px 2px 25px;
-    width: 80%;
+    margin-bottom: 0;
+    display: none;
 
     &.highlightedArea {
       background: $med-grey;
@@ -307,6 +306,10 @@
       color: grey;
     }
   }
+}
+
+#workspace .input-drop-area {
+  display: block;
 }
 
 // Media Queries

@@ -14,14 +14,26 @@
   }
 }
 
-.error-check {
-  width: 100%;
-  border-radius: 4px;
-  padding: 20px;
 
-  &.invalid {
-    background: red;
+#error-check.alert-success {
+  padding-left: 55px;
+  position: relative;
+
+  &:before {
+    font-family: 'FontAwesome';
+    font-size: 1.5em;
+    position: absolute;
+    top: 13px;
+    left: 25px;
   }
+
+  &.alert-success:before {
+    content: '\f058';
+  }
+
+  &.alert-danger:before {
+    content: '\f071';
+  } 
 }
 
 .goals-container {
