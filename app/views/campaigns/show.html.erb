@@ -1,11 +1,11 @@
-<div class="campaign-title">
+<div class="campaign-title inline">
   <%= @campaign.title %>
 </div>
 <% if @campaign.status != "draft" %>
   <%= render partial: 'nav' %>
 <% end %>
 <br>
-<div class="row pad-bottom">
+<div class="row pad-bottom clear">
   <div class="col-md-5" id="campaign-goals">
     <div class="section-header">
       <h2 class="title inline"><%= t(".campaign_goals") %></h2>
@@ -23,7 +23,7 @@
           <%= link_to t(".edit_survey"), survey_path(@survey), class: "btn btn-info" %>
           <%= link_to t(".launch_survey"), launch_campaign_path(@campaign), class: "btn btn-warning" %>
         <% else %>
-          <%= link_to t(".monitor_progress"), launch_campaign_path(@campaign), class: "btn btn-warning" %>
+          <!-- <%= link_to t(".monitor_progress"), launch_campaign_path(@campaign), class: "btn btn-warning" %> -->
         <% end %>
       </div>
       <% end %>
