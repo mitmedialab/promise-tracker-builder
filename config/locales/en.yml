@@ -56,7 +56,7 @@ en:
         other: "Other"
 
       input_types:
-        string: "Text"
+        text: "Text"
         number: "Number"
         date: "Date"
         yes_no: "Yes/No"

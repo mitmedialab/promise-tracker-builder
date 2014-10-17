@@ -56,7 +56,7 @@ pt-BR:
         other: "Outra"
 
       input_types:
-        string: "Texto"
+        text: "Texto"
         number: "Número"
         date: "Data"
         yes_no: "Sim/Não"
