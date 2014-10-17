@@ -91,7 +91,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
 
-    uri = URI('http://localhost:9292/surveys')
+    uri = URI('http://dev.aggregate.promisetracker.org/surveys')
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
@@ -127,7 +127,7 @@ class CampaignsController < ApplicationController
 
   def close
     @campaign = Campaign.find(params[:id])
-    uri = URI('http://localhost:9292/surveys/' + @campaign.survey.id.to_s + '/close')
+    uri = URI('http://dev.aggregate.promisetracker.org/surveys' + @campaign.survey.id.to_s + '/close')
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
