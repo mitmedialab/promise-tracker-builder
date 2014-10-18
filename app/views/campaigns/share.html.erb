@@ -1,9 +1,8 @@
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
-  <%= render partial: 'nav' %>
 </div>
-<br>
-<iframe src="https://mapsengine.google.com/maps/d/embed?mid=znsZx3hP_onw.kCaq-G3kGCsk&ll=-19.953151,-43.943477&hl=en&z=17" scrolling="no" width="100%" height="480"></iframe>
+<%= render partial: 'nav' %>
+<iframe src="https://mapsengine.google.com/maps/d/embed?mid=znsZx3hP_onw.kCaq-G3kGCsk&ll=-19.953151,-43.943477&hl=en&z=17" scrolling="no" width="100%" height="520"></iframe>
 
 <div class="row section-dark campaign-resources">
   <div class="page-container">
@@ -35,7 +34,7 @@
             <p><%= @campaign.goal %></p>
           </div>
           <div class="logo">
-            <%= image_tag("PT-icons.png") %>
+            <%= image_tag("PT-logo.png") %>
           </div>
 
           <div class="report-image">
@@ -58,3 +57,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $("#share-tab").addClass("active-tab");
+</script>

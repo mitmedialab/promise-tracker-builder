@@ -40,6 +40,7 @@
 
   #sidebar-header {
     background: $yellow;
+    height: 80px;
     padding: 20px;
     text-align: center;
     color: white;
@@ -191,7 +192,6 @@
         font-family: 'FontAwesome';
         content: '\f071';
         font-size: 1em;
-        vertical-align: middle;
         padding: 10px 25px;
         position: absolute;
         top: 50px;
@@ -285,25 +285,6 @@
 
     .answer {
       position: relative;
-    }
-
-    .answer-box {
-      border: 1px dotted grey;
-    }
-
-    .date-preview {
-      color: $med-grey;
-      position: absolute;
-      left: 165px;
-      padding: 8px;
-    }
-
-    .android-button {
-      background: $med-grey;
-      padding: 8px 20px;
-      margin: 5px 0;
-      width: 200px;
-      color: grey;
     }
   }
 }

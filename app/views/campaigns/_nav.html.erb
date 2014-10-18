@@ -1,20 +1,20 @@
-<div class="campaign-nav">
-  <%= link_to campaign_path(@campaign) do %>
-    <div class="btn btn-default">
-      <%= image_tag("process-icon-1.png", class: "process-icon") %>
-      <%= t(".view_survey") %>
-    </div>
-  <% end %>
-  <%= link_to monitor_campaign_path(@campaign) do %>
-    <div class="btn btn-default">
-    <%= image_tag("process-icon-2.png", class: "process-icon") %>
-    <%= t(".monitor_responses") %>
-  </div>
-  <% end %>
-  <%= link_to share_campaign_path(@campaign) do %>
-    <div class="btn btn-default">
+<ul class="campaign-nav">
+  <li class="btn btn-default" id="share-tab">
+    <%= link_to share_campaign_path(@campaign) do %>
       <%= image_tag("process-icon-3.png", class: "process-icon") %>
       <%= t(".share_data") %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </li>  
+  <li class="btn btn-default" id="monitor-tab">
+    <%= link_to monitor_campaign_path(@campaign) do %>
+      <%= image_tag("process-icon-2.png", class: "process-icon") %>
+      <%= t(".monitor_responses") %>
+    <% end %>
+  </li>
+  <li class="btn btn-default" id="view-tab">
+    <%= link_to campaign_path(@campaign) do %>
+      <%= image_tag("process-icon-1.png", class: "process-icon") %>
+      <%= t(".view_survey") %>
+    <% end %>
+  </li>
+</ul>

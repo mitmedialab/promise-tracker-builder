@@ -41,10 +41,6 @@
   }
 }
 
-.new-campaign {
-  margin-top: 20px;
-}
-
 .campaigns-list {
   list-style-type: none;
   padding: 0;
@@ -103,17 +99,44 @@
 
 // Campaign view
 
-.campaign-nav {
-  float: right;
-  margin: 30px -10px 0 0;
+ul.campaign-nav {
+  display: block;
+  border-bottom: 1px solid $light-grey;
+  margin-right: 10%;
+  padding: 0;
+  margin: -20px 0 40px 0;
+  padding-right: 10%;
+  height: 45px;
 
-  .btn {
-    border: 1px solid #eeeeee;
-    margin-right: 10px;
+  li {
+    float: right;
+    height: 44px;
+    background: whitesmoke;
+    border: 1px solid $light-grey;
+    border-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    margin-right: 5px;
+    padding: 0;
+    position: relative;
+
+    &:hover {
+      border: 1px solid $light-grey;
+    }
+
+    a {
+      padding: 8px 16px 8px 14px;
+      display: inline-block;
+      vertical-align: middle;
+    }
 
     img.process-icon {
       height: 30px;
       width: auto;
+    }
+
+    &.active-tab {
+      background: white;
+      top: 1px;
     }
   }
 }
@@ -180,11 +203,11 @@ body.dark {
 .campaign-title {
   color: $dark-turquoise;
   letter-spacing: 1px;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 200;
   display: block;
   padding-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 h2.title, h3.title {

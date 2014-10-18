@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout 'full-width', only: [:launch, :monitor, :share, :index]
+  layout 'full-width', only: [:launch, :monitor, :show, :share, :index]
 
   def index
     @campaign = Campaign.new
@@ -20,8 +20,6 @@ class CampaignsController < ApplicationController
     @survey = @campaign.survey
     @flash = t('survey_builder', scope: 'surveys').to_json
     @validations = t('validations', scope: 'defaults').to_json
-
-    render layout: 'layouts/partial-width'
   end
 
   def edit

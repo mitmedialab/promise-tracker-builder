@@ -188,7 +188,7 @@ pt-BR:
     show:
       campaign_goals: "Objetivos"
       campaign_survey: "Formulário"
-      edit_goals: "Editar ação"  
+      edit_goals: "Editar objetivos"  
       edit_survey: "Editar formulário"
       monitor_progress: "Monitorar as respostas"
       launch_survey: "Publicar"

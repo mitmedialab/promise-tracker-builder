@@ -1,6 +1,8 @@
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title inline" %>
-  <%= render partial: 'nav' %>
+</div>
+<%= render partial: 'nav' %>
+<div class="page-container">
   <div class="row campaign-overview">
     <div class="col-sm-9">
       <br>
@@ -60,3 +62,7 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $("#monitor-tab").addClass("active-tab");
+</script>
