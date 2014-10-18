@@ -188,7 +188,7 @@ en:
     show:
       campaign_goals: "Objectives"
       campaign_survey: "Survey"
-      edit_goals: "Edit campaign"  
+      edit_goals: "Edit objectives"  
       edit_survey: "Edit survey"
       monitor_progress: "Monitor responses"
       launch_survey: "Publish"

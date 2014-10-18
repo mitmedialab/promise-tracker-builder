@@ -126,8 +126,9 @@ a {
   padding: 8px 14px;
   border-radius: 8px;
 
-  &.active {
+  &.active, &:active {
     box-shadow: none;
+    shadow: none;
     color: $turquoise;
   }
 
