@@ -1,7 +1,11 @@
 <div class="section grey">
   <div class="row section-container intro-block">
-    <div class="col-md-3">
-      <%= image_tag("PT-logo.png") %>
+    <div class="col-md-3" id="logo-wrapper">
+      <%= image_tag("PT-logo.png", id: "logo") %>
+      <img class="logo-overlay" src="<%= asset_path('PT-logo.png') %>">
+      <img class="logo-overlay" src="<%= asset_path('PT-logo-build.png') %>">
+      <img class="logo-overlay" src="<%= asset_path('PT-logo-collect.png') %>">
+      <img class="logo-overlay" src="<%= asset_path('PT-logo-share.png') %>">
     </div>
     <div class="col-md-9 overview-block">
       <h3 class="title"><%= t(".tag_line") %></h3>
@@ -22,21 +26,21 @@
 
 <div class="section">
   <div class="row section-container center process-block">
-    <div class="col-md-4">
+    <div class="col-md-4 process-section">
       <%= image_tag("process-icon-1.png", class: "process-icon") %>
       <span class="process-title yellow">Define objective & build survey</span>
       <p>
         Plan your data collection goals and build a survey to be used by data collectors in the field...
       </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 process-section">
       <%= image_tag("process-icon-2.png", class: "process-icon") %>
       <span class="process-title pink">Collect data</span>
       <p>
         Share your survey with community members to collect responses...
       </p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 process-section">
       <%= image_tag("process-icon-3.png", class: "process-icon") %>
       <span class="process-title turquoise">Share data</span>
       <p>
@@ -45,3 +49,19 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  $(function(){
+    $(".logo-overlay:gt(0)").hide();
+    setInterval(function(){
+      $(".logo-overlay:first")
+      .fadeOut(1200)
+      .next()
+      .fadeIn(1200)
+      .end()
+      .appendTo('#logo-wrapper');
+    }, 3000);
+  })
+
+</script>
