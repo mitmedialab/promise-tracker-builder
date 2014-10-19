@@ -1,8 +1,16 @@
 .intro-block {
-  img {
+  #logo-wrapper {
+    position: relative;
+  }
+
+  .logo-overlay, #logo {
     width: 100%;
     max-width: 400px;
     height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 15px;
   }
 }
 
@@ -21,10 +29,6 @@
   .btn {
     padding: 10px 20px;
   }
-}
-
-.overview-block {
-  padding: 0 60px;
 }
 
 .process-block {
@@ -46,12 +50,28 @@
 }
 
 
-// @media (max-width: 760px) {
+@media (max-width: 992px) {
+  .intro-block #logo-wrapper {
+    height: 150px;
+    width: 150px;
+    margin-bottom: 15px;
+  }
 
-//   .get-started {
-//     img {
-//       width: 100%;
-//       margin-bottom: 20px;
-//     }
-//   }
-// }
+  .overview-block {
+    padding: 0;
+  }
+
+  .process-block {
+    .process-section {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .sign-up {
+    text-align: center;
+  }
+}
