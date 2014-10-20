@@ -12,14 +12,15 @@
     left: 0;
     padding: 0 15px;
   }
+
+  .overview-block {
+    padding: 0 60px;
+    font-size: 15px;
+  }
 }
 
 .sign-up-block, .intro-block {
   padding: 40px 0;
-}
-
-.process-block {
-  padding: 25px 0 80px 0;
 }
 
 .sign-up {
@@ -32,9 +33,11 @@
 }
 
 .process-block {
+  padding: 25px 0 80px 0;
+
   p {
-    text-align: left;
-    margin: 0 20px;
+    text-align: justify;
+    margin: 0 18px;
   }
 }
 
@@ -57,7 +60,7 @@
     margin-bottom: 15px;
   }
 
-  .overview-block {
+  .intro-block .overview-block {
     padding: 0;
   }
 
