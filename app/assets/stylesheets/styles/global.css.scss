@@ -371,4 +371,8 @@ input[disabled], .form-control[disabled] {
       padding: 0;
     }
   }
+  .page-container, .section-container {
+    width: auto;
+    margin: 0 20px;
+  }
 }
