@@ -9,7 +9,16 @@
       Images!
     </div>
     <div class="tab-pane" id="graph-viz">
-      Graphs!
+      <div class="row">
+        <div class="col-sm-8">
+          <%= image_tag("graphs-line-filled.png") %>
+          <%= image_tag("graphs-bar.png") %>
+        </div>
+        <div class="col-sm-4">
+          <%= image_tag("graphs-pie.png", class: "small") %>
+          <%= image_tag("graphs-column.png", class: "small") %>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
@@ -18,14 +27,14 @@
         <h4 class="title legend"><%= t(".map") %></h4>
       </div>
     </a>  
-    <a href="#image-viz" role="tab" data-toggle="tab">
-      <div class="viz image">
-        <h4 class="title legend"><%= t(".photos") %></h4>
-      </div>
-    </a>
     <a href="#graph-viz" role="tab" data-toggle="tab">
       <div class="viz graph">
         <h4 class="title legend"><%= t(".graphs") %></h4>
+      </div>
+    </a>
+    <a href="#image-viz" role="tab" data-toggle="tab">
+      <div class="viz image">
+        <h4 class="title legend"><%= t(".photos") %></h4>
       </div>
     </a>
   </div>
