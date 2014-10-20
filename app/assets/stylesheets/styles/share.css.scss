@@ -6,19 +6,33 @@
   margin-top: -10px;
   height: 590px;
 
+  .tab-pane, #viz-tabs {
+    height: 590px;
+  }
+
   .featured-viz {
     padding: 0;
-    height: 590px;
 
     #map-viz {
       width: 100%;
-      height: 590px;
+    }
+
+    #graph-viz {
+      padding: 20px 100px;
+      border-top: 10px solid $light-grey;
+      border-bottom: 10px solid $light-grey;
+
+      img {
+        width: 100%;
+        height: auto;
+        vertical-align: center;
+        display: inline-block;
+      }
     }
   }
 
   #viz-tabs {
     padding: 5px 0 40px 0;
-    height: 590px;
 
     .viz {
       width: 140px;
@@ -139,6 +153,12 @@
 @media (max-width: 992px) {
   .viz-panel {
     height: auto;
+
+    #graph-viz {
+      img.small {
+        width: 40% !important;
+      }
+    }
 
     #viz-tabs {
       padding: 0;
