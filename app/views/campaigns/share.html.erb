@@ -78,6 +78,16 @@
     </div>
   </div>
 </div>
+
+<div class="row section-dark campaign-outreach">
+  <div class="page-container">
+    <h3 class="title"><%= t(".share_data") %></h3>
+    <%= image_tag("social-fb.png", class: "social-share") %>
+    <%= image_tag("social-tw.png", class: "social-share") %>
+    <%= image_tag("social-email.png", class: "social-share") %>
+  </div>
+</div>
+
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
@@ -91,7 +101,7 @@
   var url, mapOptions;
   url = "http://cfcm.cartodb.com/api/v2/viz/21e86fd4-5887-11e4-b28c-0e018d66dc29/viz.json";
   mapOptions = {
-    zoom: 16,
+    zoom: 15,
     center_lat: -19.9540425000,
     center_lon: -43.9385429000,
     scrollwheel: false,
@@ -100,11 +110,11 @@
     searchControl: false
   }; 
 
-  window.onload = function() {
+  $(document).ready(function() {
     cartodb.createVis('map-viz', url, mapOptions)
     .done(function(){
       $(".cartodb-searchbox").hide();
     })
-  };
+  });
 </script>
 
