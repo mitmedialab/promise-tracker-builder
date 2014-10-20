@@ -340,4 +340,12 @@ h2.title, h3.title {
   .new-campaign-button {
     margin-top: 10px;
   }
+
+  ul.campaign-nav {
+    padding-right: 0;
+
+    .tab-text {
+      display: none;
+    }
+  }
 }
