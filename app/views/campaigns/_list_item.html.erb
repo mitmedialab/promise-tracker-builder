@@ -1,18 +1,21 @@
-<li>
-  <%= link_to campaign_path(campaign) do %>
-    <div class="status-icon <%= campaign.status %> inline"></div>
-    <%= link_to campaign.title, campaign_path(campaign), class: "campaign-name" %>
-    <div class="right">
-      <%= link_to campaign_path(campaign) do %>
-        <span class="glyphicon glyphicon-flag <%= campaign.status %>"></span>
-        <%= t("campaigns.status.#{campaign.status}") %>
-      <% end %>
-      <%= link_to clone_campaign_path(campaign), class: "pad-side", title: t("defaults.copy") do %>
-        <i class="icon-copy"></i>
-      <% end %>
-      <%= link_to campaign_path(campaign), class: "pad-side", title: t("defaults.delete"), method: :delete, data: { confirm: t(".confirm_delete") } do %>
-        <span class="glyphicon glyphicon-trash"></span>
-      <% end %>
+<li class="row">
+  <div class="col-sm-8"
+    <%= link_to campaign_path(campaign) do %>
+      <span class="status-icon <%= campaign.status %> inline"></span>
+      <span class="campaign-name"><%= campaign.title %></span>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4 modify">
+    <%= link_to campaign_path(campaign) do %>
+      <span class="glyphicon glyphicon-flag <%= campaign.status %>"></span>
+      <%= t("campaigns.status.#{campaign.status}") %>
+    <% end %>
+    <%= link_to clone_campaign_path(campaign), class: "pad-side", title: t("defaults.copy") do %>
+      <i class="icon-copy"></i>
+    <% end %>
+    <%= link_to campaign_path(campaign), class: "pad-side", title: t("defaults.delete"), method: :delete, data: { confirm: t(".confirm_delete") } do %>
+      <span class="glyphicon glyphicon-trash"></span>
     <% end %>
   </div>
 </li>

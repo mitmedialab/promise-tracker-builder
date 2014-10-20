@@ -2,11 +2,32 @@
 
 #user-info {
   padding: 40px 0;
+
+  .user-icon, .user-details  {
+    display: inline-block;
+    height: 100px;
+    display: table-cell;
+    vertical-align: bottom;
+    padding-right: 20px;
+
+    a {
+      color: black;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+  }
 }
 
 #user-campaigns {
-  width: 100%;
-  padding: 20px 0;
+  padding: 20px 0 50px 0;
 
   h1 {
     color: $dark-grey;
@@ -45,10 +66,10 @@
   list-style-type: none;
   padding: 0;
 
-  li {
+  li.row {
     padding: 15px 20px;
     border-radius: 4px;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
     background: white;
 
     a.campaign-name {
@@ -91,7 +112,8 @@
       }
     }
 
-    .right {
+    .modify {
+      text-align: right;
       margin-top: 5px;
     }
   }
@@ -163,7 +185,7 @@ ul.campaign-nav {
   border-radius: 4px;
 }
 
-.new-form-button {
+.new-campaign-button {
   width: 50%;
   max-width: 200px;
   white-space: normal;
@@ -306,5 +328,16 @@ h2.title, h3.title {
     .left-arrow {
       opacity: 0;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  #user-info .user-icon img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .new-campaign-button {
+    margin-top: 10px;
   }
 }
