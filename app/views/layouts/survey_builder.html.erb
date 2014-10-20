@@ -7,20 +7,21 @@
   
   <body>
     <div id="header">
-      <div id="site-title">
-        <% if current_user %>
-          <%= link_to campaigns_path, class: "home-button" do %>
-            <%= image_tag("PT-logo.png") %>
+      <div class="navbar-header header-container">
+        <div id="site-title">
+          <% if current_user %>
+            <%= link_to campaigns_path, class: "home-button" do %>
+              <%= image_tag("PT-logo.png") %>
+            <% end %>
+          <% else %>
+            <%= link_to root_path, class: "home-button" do %>
+              <%= image_tag("PT-logo.png") %>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to root_path, class: "home-button" do %>
-            <%= image_tag("PT-logo.png") %>
-          <% end %>
-        <% end %>
-        <h2 class="light inline site-title">Promise Tracker</h2>
+          <h2 class="light inline site-title">Promise Tracker</h2>
+        </div>
       </div>
     </div>
-  </div>
     <%= yield %>
   </body>
 </html>

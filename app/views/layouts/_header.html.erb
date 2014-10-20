@@ -1,33 +1,45 @@
 <div id="header">
-  <div id="site-title">
-    <% if current_user %>
-      <%= link_to campaigns_path, class: "home-button" do %>
-        <%= image_tag("PT-logo.png") %>
+  <div class="navbar-header header-container">
+    <div id="branding">
+      <% if current_user %>
+        <%= link_to campaigns_path, class: "home-button" do %>
+          <%= image_tag("PT-logo.png") %>
+        <% end %>
+      <% else %>
+        <%= link_to root_path, class: "home-button" do %>
+          <%= image_tag("PT-logo.png") %>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to root_path, class: "home-button" do %>
-        <%= image_tag("PT-logo.png") %>
-      <% end %>
-    <% end %>
-    <h2 class="light inline site-title">Promise Tracker</h2>
+      <h2 class="light inline site-title">Promise Tracker</h2>
+    </div>
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links" id="nav-button">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>  
   </div>
-  <ul class="user-links">
-    <% if current_user %>
-      <li>
-        <%= link_to campaigns_path do %>
-          <%= image_tag("user-icon.png", class: "user-icon") %> <%= current_user.username %>
-         <% end %> 
-      </li>
-      <li><%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-info" %></li>
-    <% end %>    
-    |
-    <% if I18n.locale == :en %>
-      <li><%= link_to "Português", :locale=>'pt-BR' %></li>
-    <% else %>
-      <li><%= link_to "English", :locale=>'en' %></li>
-    <%end%>
+  <div class="collapse navbar-collapse header-container" id="nav-links">
+    <nav>
+      <ul class="nav navbar-nav user-links">
+        <% if current_user %>
+          <li>
+            <%= link_to campaigns_path do %>
+              <%= image_tag("user-icon.png", class: "user-icon") %> <%= current_user.username %>
+             <% end %> 
+          </li>
+          <li>
+            <%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn" %></li>
+        <% end %>    
+        <% if I18n.locale == :en %>
+          <li><%= link_to "Português", :locale=>'pt-BR' %></li>
+        <% else %>
+          <li><%= link_to "English", :locale=>'en' %></li>
+        <%end%>
 
-  </ul>
+      </ul>
+    </nav>  
+  </div>
 </div>
