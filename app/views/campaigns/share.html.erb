@@ -4,9 +4,7 @@
 <%= render partial: 'nav' %>
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
-    <div class="tab-pane fade in active" id="map-viz">
-      <iframe src="//mapsengine.google.com/maps/d/embed?mid=znsZx3hP_onw.kCaq-G3kGCsk&ll=-19.953151,-43.943477&hl=en&z=17" scrolling="no" width="100%" height="620"></iframe>   
-    </div>
+    <div class="tab-pane fade in active" id="map-viz"></div>
     <div class="tab-pane" id="image-viz">
       Images!
     </div>
@@ -15,7 +13,7 @@
     </div>
   </div>
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
-    <a href="#map-viz" role="tab" data-toggle="tab">
+    <a href="#map-viz" role="tab" data-toggle="tab" class="active">
       <div class="viz map">
         <h4 class="title legend"><%= t(".map") %></h4>
       </div>
@@ -71,12 +69,33 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
-  $('#viz-tabs a').click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
+  $("#viz-tabs a").click(function (e) {
+    e.preventDefault();
+    $(this).tab("show");
+    $("#viz-tabs a").removeClass("active");
+    $(this).addClass("active");
   })
+
+  var url, mapOptions;
+  url = "http://cfcm.cartodb.com/api/v2/viz/21e86fd4-5887-11e4-b28c-0e018d66dc29/viz.json";
+  mapOptions = {
+    zoom: 16,
+    center_lat: -19.9540425000,
+    center_lon: -43.9385429000,
+    scrollwheel: false,
+    zoomControl: false,
+    shareable: false,
+    searchControl: false
+  }; 
+
+  window.onload = function() {
+    cartodb.createVis('map-viz', url, mapOptions)
+    .done(function(){
+      $(".cartodb-searchbox").hide();
+    })
+  };
 </script>
+

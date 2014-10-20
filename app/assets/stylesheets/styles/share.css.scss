@@ -3,24 +3,43 @@
 }
 
 .viz-panel {
-  height: 620px;
+  margin-top: -10px;
+  height: 590px;
 
   .featured-viz {
     padding: 0;
+    height: 590px;
+
+    #map-viz {
+      width: 100%;
+      height: 590px;
+    }
   }
 
   #viz-tabs {
-    padding-top: 20px;
+    padding: 5px 0 40px 0;
+    height: 590px;
 
     .viz {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       margin: 0 auto;
-      margin-bottom: 40px;  
+      margin-top: 40px; 
+      position: relative; 
 
       .legend {
-        padding-top: 155px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: white;
+        margin: 0;
+        padding: 10px 0;
+        color: $dark-grey;
       }
+    }
+
+    a.active .legend {
+      color: $turquoise;
     }
   }
 
@@ -30,7 +49,7 @@
 }
 
 .map {
-  background: image-url("map-santa-lucia.png") center center;
+  background: image-url("map.png") center center;
   background-size: cover;
 }
 
@@ -42,6 +61,10 @@
 .graph {
   background: image-url("data-graph-2.jpg") center bottom;
   background-size: cover;
+}
+
+.report-panel {
+  padding-top: 30px;
 }
 
 .data-report {
@@ -110,5 +133,22 @@
     height: 50px;
     background-size: cover;
     margin-bottom: 15px; 
+  }
+}
+
+@media (max-width: 992px) {
+  .viz-panel {
+    height: auto;
+
+    #viz-tabs {
+      padding: 0;
+      display: block;
+      height: auto;
+
+      .viz {
+        display: inline-block;
+        margin: 40px 20px !important;
+      }
+    }
   }
 }
