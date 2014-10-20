@@ -2,24 +2,38 @@
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
 </div>
 <%= render partial: 'nav' %>
-<iframe src="https://mapsengine.google.com/maps/d/embed?mid=znsZx3hP_onw.kCaq-G3kGCsk&ll=-19.953151,-43.943477&hl=en&z=17" scrolling="no" width="100%" height="620"></iframe>
-
-<div class="row section-dark campaign-resources">
-  <div class="page-container">
-    <h2 class="title"><%= t(".visualize_data") %></h2>
-    <div class="resource map">
-      <h4 class="title legend"><%= t(".map") %></h4>
+<div class="row viz-panel">
+  <div class="col-md-9 featured-viz tab-content">
+    <div class="tab-pane fade in active" id="map-viz">
+      <iframe src="//mapsengine.google.com/maps/d/embed?mid=znsZx3hP_onw.kCaq-G3kGCsk&ll=-19.953151,-43.943477&hl=en&z=17" scrolling="no" width="100%" height="620"></iframe>   
     </div>
-    <div class="resource pic">
-      <h4 class="title legend"><%= t(".photos") %></h4>
+    <div class="tab-pane" id="image-viz">
+      Images!
     </div>
-    <div class="resource graph">
-      <h4 class="title legend"><%= t(".graphs") %></h4>
+    <div class="tab-pane" id="graph-viz">
+      Graphs!
     </div>
+  </div>
+  <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
+    <a href="#map-viz" role="tab" data-toggle="tab">
+      <div class="viz map">
+        <h4 class="title legend"><%= t(".map") %></h4>
+      </div>
+    </a>  
+    <a href="#image-viz" role="tab" data-toggle="tab">
+      <div class="viz image">
+        <h4 class="title legend"><%= t(".photos") %></h4>
+      </div>
+    </a>
+    <a href="#graph-viz" role="tab" data-toggle="tab">
+      <div class="viz graph">
+        <h4 class="title legend"><%= t(".graphs") %></h4>
+      </div>
+    </a>
   </div>
 </div>
 
-<div class="row section-light">
+<div class="row section-light report-panel">
   <div class="page-container">
   <h2 class="title"><%= t(".data_reports") %></h2>
   <br>
@@ -60,4 +74,9 @@
 
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
+
+  $('#viz-tabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
 </script>

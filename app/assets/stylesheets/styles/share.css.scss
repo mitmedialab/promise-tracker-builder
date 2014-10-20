@@ -1,9 +1,40 @@
+.viz-panel, .report-panel {
+  margin: 0;
+}
+
+.viz-panel {
+  height: 620px;
+
+  .featured-viz {
+    padding: 0;
+  }
+
+  #viz-tabs {
+    padding-top: 20px;
+
+    .viz {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      margin-bottom: 40px;  
+
+      .legend {
+        padding-top: 155px;
+      }
+    }
+  }
+
+  iframe {
+    border: none;
+  }
+}
+
 .map {
   background: image-url("map-santa-lucia.png") center center;
   background-size: cover;
 }
 
-.pic {
+.image {
   background: image-url("campaign-image.jpg") center center;
   background-size: cover;
 }
