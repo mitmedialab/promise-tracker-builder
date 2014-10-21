@@ -68,7 +68,7 @@
         </li>
       </ul>
     </div>
-    <div id="preview">
+    <div id="preview" style="display: none;" data-bind="visible: true">
       <h4 class="title"><%= t(".preview_title") %></h4>
       <%= render 'android_preview' %>
       <div data-bind="visible: PT.survey.inputs().length == 0">

@@ -136,7 +136,7 @@
 #survey-body {
   background: $light-grey;
   min-height: 120px;
-  padding: 20px;
+  padding: 20px 20px 20px 40px;
   position: relative;
   text-align: left;
   width: 100%;
@@ -170,7 +170,7 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    left: 45px;
+    left: 65px;
     border: 2px dotted $med-grey;
     margin-bottom: 0;
     display: none;
