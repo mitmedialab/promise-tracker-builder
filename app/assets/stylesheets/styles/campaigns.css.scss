@@ -92,9 +92,9 @@
     }
 
     .status-icon {
-      vertical-align: top;
-      width: 30px;
-      height: 30px;
+      vertical-align: middle;
+      width: 40px;
+      height: 40px;
       background-repeat: no-repeat;
       background-size: 80%;
       margin-right: 10px;
@@ -139,10 +139,11 @@ ul.campaign-nav {
     border-radius: 8px 8px 0 0;
     margin-right: 5px;
     padding: 0;
+    top: 1px;
     position: relative;
 
     &:hover {
-      border: 1px solid $light-grey;
+      border-color: $light-grey;
     }
 
     a {
