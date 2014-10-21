@@ -1,11 +1,12 @@
 <div class="page-container">
-  <div class="campaign-title inline pad-bottom">
+  <div class="campaign-title inline">
     <%= @campaign.title %>
   </div>
-  <% if @campaign.status != "draft" %>
-    <%= render partial: 'nav' %>
-  <% end %>
-
+</div>
+<% if @campaign.status != "draft" %>
+  <%= render partial: 'nav' %>
+<% end %>
+<div class="page-container">
   <div class="row pad-bottom clear">
     <div class="col-md-5" id="campaign-goals">
       <div class="section-header">
