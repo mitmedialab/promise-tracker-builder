@@ -5,9 +5,6 @@
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
     <div class="tab-pane fade in active" id="map-viz"></div>
-    <div class="tab-pane" id="image-viz">
-      Images!
-    </div>
     <div class="tab-pane" id="graph-viz">
       <div class="row">
         <div class="col-sm-8">
@@ -20,7 +17,10 @@
         </div>
       </div>
     </div>
+    <div class="tab-pane" id="image-viz">
+    </div>
   </div>
+
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
     <a href="#map-viz" role="tab" data-toggle="tab" class="active">
       <div class="viz map">
@@ -60,18 +60,18 @@
 
           <div class="report-image">
             <div class="map"></div>
-            <div class="pic"></div>
+            <div class="image"></div>
           </div>
 
           <div class="report-graph"></div>
 
           <label><%= Campaign.human_attribute_name(:goal) %></label>
-          <p><%= @campaign.goal %></p>
+          <p><%= @campaign.audience %></p>
 
           <label><%= t(".contact") %></label>
           <p>Susana Morada, 334-345-8897, susana@gmail.com</p>
 
-          <strong><%= t(".learn_more") %>: promisetracker.com/campaign</strong>
+          <strong><%= t(".learn_more") %></strong>: promisetracker.com/campaigns/<%= @campaign.title.downcase %>
         </div> 
         <div class="footer"></div> 
       </div>
@@ -87,7 +87,7 @@
     <%= image_tag("social-email.png", class: "social-share") %>
   </div>
 </div>
-<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
