@@ -5,7 +5,7 @@ class InputsController < ApplicationController
     @input.update_attributes(input_params)
     @input.guid = make_guid(@input.label, @input.id)
     if @input.input_type == 'select' || @input.input_type == 'select1'
-      @input.update_attribute(:options, params[:options]) 
+      @input.update_attribute(:options, params[:options].reject(&:empty?)) 
     else
       @input.update_attribute(:options, [])
     end

@@ -91,6 +91,7 @@ PT.Input = function(){
     .done(function(response) {
       console.log(response);
       self.inEdit(false);
+      self.options(response.options);
 
       if(self.id() === ""){
         self.id(response.id);

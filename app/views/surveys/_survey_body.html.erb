@@ -23,6 +23,7 @@
                     <li class="option edit">
                       <input data-bind="value: $parent.options()[$index()], valueUpdate:'input'" autofocus>
                       <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
+                      <span class="glyphicon glyphicon-move move"></span>
                       </li>
                   </ul>
                   <div class="phantom-option" data-bind="click: addOption, css: input_type">
