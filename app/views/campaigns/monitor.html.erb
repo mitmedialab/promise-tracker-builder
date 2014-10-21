@@ -4,6 +4,9 @@
 <%= render partial: 'nav' %>
 <div class="page-container">
   <div class="row campaign-overview">
+    <div class="survey-code">
+      <h4>Download this survey using code: <%= @campaign.survey.id %></h4>
+    </div>
     <div class="col-sm-9">
       <br>
       <%= t(".number_of_responses") %>
