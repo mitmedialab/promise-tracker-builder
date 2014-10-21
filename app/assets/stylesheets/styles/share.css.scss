@@ -35,6 +35,12 @@
         display: inline-block;
       }
     }
+
+    #image-viz {
+      width: 100%;
+      background-image: image-url("image-placeholder.jpg");
+      background-size: 70%;
+    }
   }
 
   #viz-tabs {
@@ -74,7 +80,7 @@
 }
 
 .image {
-  background: image-url("campaign-image.jpg") center center;
+  background: image-url("campaign-image2.jpg") center center;
   background-size: cover;
 }
 
@@ -140,7 +146,7 @@
       float: left;
     }
 
-    .pic {
+    .image {
       width: 48%;
       height: 100px;
       float: right;
