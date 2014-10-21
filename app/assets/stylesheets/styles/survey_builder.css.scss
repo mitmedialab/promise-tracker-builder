@@ -146,7 +146,7 @@
 
     th {
       color: grey;
-      width: 150px;
+      width: 130px;
       font-weight: normal;
       vertical-align: top;
 
@@ -249,17 +249,11 @@
           cursor: move;
           margin: 5px 0;
           padding: 5px;
-          width: 70%;
-          min-width: 300px;
+          width: 100%;
+          min-width: 315px;
 
-          &:after {
-            font-family: 'FontAwesome';
-            content: '\f047';
-            font-size: 1em;
-            vertical-align: middle;
-            padding: 10px 25px;
-            position: absolute;
-            right: 10%;
+          .move {
+            padding: 10px 0 0 15px;
             color: $med-grey;
           }
         }

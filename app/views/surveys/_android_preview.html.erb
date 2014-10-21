@@ -1,6 +1,6 @@
 <div class="preview-container">
   <!-- ko if: PT.selectedInput -->
-  <div class="input-preview" data-bind="css: PT.selectedInput().input_type">
+  <div class="input-preview" data-bind="css: PT.selectedInput().input_type, valueUpdate:'keyup'">
     <p data-bind="text: PT.selectedInput().label"></p>
     <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type, visible: PT.selectedInput().input_type() === 'select' || PT.selectedInput().input_type() === 'select1'">
       <li data-bind="text: $data"></li>
