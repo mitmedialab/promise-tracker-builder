@@ -87,7 +87,7 @@
     <%= image_tag("social-email.png", class: "social-share") %>
   </div>
 </div>
-
+<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
@@ -110,11 +110,11 @@
     searchControl: false
   }; 
 
-  $(document).ready(function() {
+  $.getScript("http://libs.cartocdn.com/cartodb.js/v3/cartodb.js", function(){
     cartodb.createVis('map-viz', url, mapOptions)
     .done(function(){
       $(".cartodb-searchbox").hide();
-    })
+    });
   });
 </script>
 
