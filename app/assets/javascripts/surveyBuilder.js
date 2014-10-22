@@ -28,7 +28,7 @@ PT.defaultControls = {
 
   inputLocation: {
     label: "Location",
-    input_type: "geopoint"
+    input_type: "location"
   },
 
   inputImage: {
