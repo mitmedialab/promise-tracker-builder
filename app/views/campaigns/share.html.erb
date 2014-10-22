@@ -18,6 +18,15 @@
       </div>
     </div>
     <div class="tab-pane" id="image-viz">
+      <%= image_tag("campaign-image-3.jpg", class: "item") %>
+      <%= image_tag("campaign-image-8.jpg", class: "item") %>
+      <%= image_tag("campaign-image.jpg", class: "item") %>
+      <%= image_tag("campaign-image-4.jpg", class: "item") %>
+      <%= image_tag("campaign-image-7.jpg", class: "item") %>
+      <%= image_tag("campaign-image2.jpg", class: "item") %>
+      <%= image_tag("campaign-image-5.jpg", class: "item") %>
+      <%= image_tag("campaign-image-6.jpg", class: "item") %>
+      <%= image_tag("campaign-image-8.jpg", class: "item") %>
     </div>
   </div>
 
@@ -88,6 +97,7 @@
   </div>
 </div>
 
+<script type="text/javascript" src="/masonry.js"></script>
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
@@ -96,25 +106,9 @@
     $(this).tab("show");
     $("#viz-tabs a").removeClass("active");
     $(this).addClass("active");
-  })
-
-  var url, mapOptions;
-  url = "http://cfcm.cartodb.com/api/v2/viz/21e86fd4-5887-11e4-b28c-0e018d66dc29/viz.json";
-  mapOptions = {
-    zoom: 15,
-    center_lat: -19.9540425000,
-    center_lon: -43.9385429000,
-    scrollwheel: false,
-    zoomControl: false,
-    shareable: false,
-    searchControl: false
-  }; 
-
-  $.getScript("http://libs.cartocdn.com/cartodb.js/v3/cartodb.js", function(){
-    cartodb.createVis('map-viz', url, mapOptions)
-    .done(function(){
-      $(".cartodb-searchbox").hide();
-    });
   });
+
+  PT.renderMap();
+  PT.renderImages("#image-viz");
 </script>
 

@@ -7,7 +7,7 @@
     <div class="survey-code">
       <h4>Download this survey using code: <%= @campaign.survey.id %></h4>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9" id="activity-graph">
       <br>
       <%= t(".number_of_responses") %>
       <%= image_tag("activity-graph.jpg", class: "activity-graph") %>
@@ -66,6 +66,10 @@
   </div>
 </div>
 
+<script src="/d3.min.js"></script>
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
+  PT.retrieveResponses(<%= @campaign.survey.id %>);
+
+  // PT.renderGraph(PT.minuteData, '#activity-graph');
 </script>
