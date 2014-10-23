@@ -16,16 +16,6 @@ PT.defaultControls = {
     input_type: "string"
   },
 
-  inputNumber: {
-    label: "Number",
-    input_type: "number"
-  },
-
-  inputDate: {
-    label: "Date",
-    input_type: "date"
-  },
-
   inputLocation: {
     label: "Location",
     input_type: "location"
@@ -34,16 +24,6 @@ PT.defaultControls = {
   inputImage: {
     label: "Image",
     input_type: "image",
-  },
-
-  inputSelectMany: {
-    label: "Select one",
-    input_type: "select1"
-  },
-
-  inputSelectOne: {
-    label: "Select many",
-    input_type: "select"
   }
 };
 
@@ -137,6 +117,7 @@ PT.Input = function(){
       var newInput = new PT.Input();
       newInput.map(response);
       PT.survey.inputs.push(newInput);
+      newInput.validate();
     });
   };
 
@@ -147,7 +128,6 @@ PT.Input = function(){
     }
   };
 };
-
 
 /// Survey Constructor
 PT.SurveyModel = function(){
@@ -179,6 +159,9 @@ PT.SurveyModel = function(){
 
     self.inputs.splice(index, 0, input);
     PT.selectedInput(input);
+    if($(".selected").length > 0) {
+      $(".selected").find("input")[0].focus();
+    }
   };
 
   self.saveInputs = function(){
@@ -203,24 +186,12 @@ PT.SurveyModel = function(){
       }
     } 
 
-    self.inputs().length < 1 ? PT.selectedInput("") : false;
-  };
-
-  self.addStarterQuestion = function(){
-    var input = new PT.Input();
-    input.label(PT.flash.first_question);
-    input.inEdit(true);
-    input.input_type("string");
-    input.survey_id = PT.survey.id;
-
-    self.inputs.push(input);
-    PT.selectedInput(self.inputs()[0]);
+    self.inputs().length < 1 ? PT.selectedInput("") : PT.selectedInput(_.last(PT.survey.inputs()));
   };
 
   /// Update order of all inputs
   self.saveOrder = function(){
     self.saveInputs();
-    // Hack
     window.location.pathname = Routes.campaign_path(PT.survey.campaign_id);
     
     $.ajax({

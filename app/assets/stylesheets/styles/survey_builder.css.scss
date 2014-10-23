@@ -16,7 +16,7 @@
   background: $turquoise;
   border-radius: 5px;
   padding: 10px 15px;
-  margin: 10px;
+  margin: 10px 0;
   cursor: pointer;
   font-size: 15px;
 
@@ -47,6 +47,27 @@
     color: white;
   }
 
+  #tool-palette {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 200px;
+    font-weight: 100;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tool-button, .add-question {
+      color: white;
+
+      &:hover {
+        color: $light-grey;
+      }
+    }
+  }
+
   #preview {
     margin-top: 20px;
     text-align: center;
@@ -63,63 +84,6 @@
     right: 245px;
     top: 270px;
   }
-
-  #tool-palette {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 200px;
-    font-weight: 100;
-
-    a:hover {
-      text-decoration: none;
-    }
-
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .title {
-      text-align: center;
-    }
-
-    .toolTip {
-      float: right;
-      color: gray;
-
-      &:hover {
-        color: black;
-      }
-    }
-
-    .sublist {
-      display: none;
-      background: white;
-
-      li {
-        background: white;
-        font-size: 14px;
-        margin: 0;
-        padding: 10px 20px;
-      }
-    }
-
-    .tool-button, .add-question {
-      color: white;
-
-      &:hover {
-        color: whitesmoke;
-      }
-    }
-  }
-}
-
-.top-left {
-  position: absolute;
-  top: 30px;
-  left: 15;
 }
 
 .controls {
@@ -146,9 +110,9 @@
 
     th {
       color: grey;
-      width: 130px;
       font-weight: normal;
       vertical-align: top;
+      width: 130px;
 
       &.tall {
         height: 55px;
@@ -269,6 +233,8 @@
 
       .dummy-input {
         margin: 5px;
+        min-width: 204px;
+        display: inline-block;
       }
 
       .phantom-option {
