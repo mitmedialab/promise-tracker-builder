@@ -24,17 +24,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :production do 
-  gem 'rails_12factor'
-end
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
   gem 'pry-rails'
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
