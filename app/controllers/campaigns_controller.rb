@@ -32,8 +32,6 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @flash = t('edit', scope: 'campaigns').to_json
     @validations = t('validations', scope: 'defaults').to_json
-
-    render layout: 'dark'
   end
 
   def update

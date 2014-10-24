@@ -24,8 +24,6 @@
           <% if @campaign.status == "draft" %>
             <%= link_to t(".edit_survey"), survey_path(@survey), class: "btn btn-info" %>
             <%= link_to t(".launch_survey"), launch_campaign_path(@campaign), class: "btn btn-warning" %>
-          <% else %>
-            <!-- <%= link_to t(".monitor_progress"), launch_campaign_path(@campaign), class: "btn btn-warning" %> -->
           <% end %>
         </div>
         <% end %>
@@ -34,7 +32,7 @@
         <% if @survey %>
         <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
         <% else %>
-        <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-form-button" do %>
+        <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-survey-button" do %>
           <span class="glyphicon glyphicon-plus-sign"></span>
           <%= t(".create_survey") %>
         <% end %>

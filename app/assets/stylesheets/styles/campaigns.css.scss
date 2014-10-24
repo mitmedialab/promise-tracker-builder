@@ -186,7 +186,7 @@ ul.campaign-nav {
   border-radius: 4px;
 }
 
-.new-campaign-button {
+.new-campaign-button, .new-survey-button {
   width: 50%;
   max-width: 200px;
   white-space: normal;
@@ -201,16 +201,7 @@ ul.campaign-nav {
   }
 }
 
-// Campaign Editor
-
-body.dark {
-  background: #333;
-
-  .container {
-    color: white;
-    padding: 0 40px 40px 40px;
-  }
-}
+// Campaign wizard & editor
 
 .edit-title-button {
   color: grey;
@@ -287,7 +278,7 @@ h2.title, h3.title {
 #campaign-goals-form, #campaign-launch-form {
   border-radius: 10px;
   color: black;
-  background: white;
+  background: $light-grey;
   padding: 40px;
   margin: 20px 0;
 
