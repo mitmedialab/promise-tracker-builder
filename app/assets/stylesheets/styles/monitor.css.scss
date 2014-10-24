@@ -1,8 +1,38 @@
-.activity-graph {
-  width: 100%;
-  height: 230px;
-  margin-left: -5px;
+#activity-graph {
+  height: 400px;
 }
+
+////Graph ///
+
+.axis {
+  line {
+    stroke: #eee;
+    stroke-width: 1px;
+  }
+
+  text {
+    fill: $med-grey;
+  }
+}
+
+.x.axis path {
+  display: none;
+}
+
+.activity-line {
+  fill: none;
+  stroke: $turquoise;
+  stroke-width: 1.5px;
+}
+
+.axis path {
+  display: none;
+}
+
+.point {
+  fill: $turquoise;
+}
+
 
 .status-bar {
   width: 100%;

@@ -10,11 +10,10 @@
     <div class="col-sm-9" id="activity-graph">
       <br>
       <%= t(".number_of_responses") %>
-      <%= image_tag("activity-graph.jpg", class: "activity-graph") %>
     </div>
     <div class="col-sm-3">
       <div class="campaign-info-box">
-        <h1><%= @responses.ceil %></h1>
+        <h1 class="response-count"></h1>
         <p><%= t(".responses") %></p>
         <div class="graph-bar current" style="width: <%= @responses / @campaign.submissions_target * 100 %>%;">current</div>
         <div class="graph-bar target">target</div>
@@ -70,6 +69,4 @@
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
   PT.retrieveResponses(<%= @campaign.survey.id %>);
-
-  // PT.renderGraph(PT.minuteData, '#activity-graph');
 </script>
