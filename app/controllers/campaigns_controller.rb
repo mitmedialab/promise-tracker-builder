@@ -87,17 +87,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
 
-    uri = URI('http://dev.aggregate.promisetracker.org/surveys')
-    http = Net::HTTP.new(uri.host, uri.port)
-
-    request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
-    request.body = @survey.to_json(
-      only: [:id, :title, :campaign_id], 
-      include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
-    )
-    response = http.request(request)
-
-    if response.code == '200'
+    if @survey.activate['status'] == 'success'
       @campaign.update_attribute(:status, 'active')
       flash.now[:notice] = t('.upload_success')
       @campaign.update_attribute(:start_date, Time.now)
@@ -123,14 +113,12 @@ class CampaignsController < ApplicationController
 
   def close
     @campaign = Campaign.find(params[:id])
-    uri = URI('http://dev.aggregate.promisetracker.org/surveys' + @campaign.survey.id.to_s + '/close')
-    http = Net::HTTP.new(uri.host, uri.port)
+    @survey = @campaign.survey
 
-    request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
-    response = http.request(request)
-    @campaign.update_attribute(:status, 'closed')
-
-    redirect_to share_campaign_path(@campaign)
+    if @survey.close['status'] == 'success'
+      @campaign.update_attribute(:status, 'closed')
+      redirect_to share_campaign_path(@campaign)
+    end
   end
 
   def destroy
