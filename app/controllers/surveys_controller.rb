@@ -65,11 +65,6 @@ class SurveysController < ApplicationController
     end 
   end
 
-  def get_xml
-    @survey = Survey.find(params[:id])
-    render_to_string(layout: "surveys/xml")
-  end
-
   def destroy
     Survey.delete(params[:id])
     @surveys = current_user.surveys
