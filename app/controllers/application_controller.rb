@@ -16,10 +16,6 @@ class ApplicationController < ActionController::Base
     campaigns_path
   end
 
-  def make_guid(string, id)
-    "#{string.downcase.scan(/\w+/).join("_")}_#{id}"
-  end
-
   def get_translations(entry, scope)
     t(entry, scope: scope) 
   end

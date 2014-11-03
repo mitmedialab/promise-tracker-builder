@@ -237,9 +237,6 @@ en:
       show_preview: "Show preview"
       hide_preview: "Hide preview"
 
-    xml_show:
-      annotate_hint: "Capture and annotate image"
-
   users:
     show:
       add_email: "Add email"

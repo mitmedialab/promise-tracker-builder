@@ -239,9 +239,6 @@ pt-BR:
       show_preview: "Mostrar pré-visualização"
       hide_preview: "Esconder pré-visualização"
 
-    xml_show:
-      annotate_hint: "Tirar e anotar foto"
-
   users:
     show:
       add_email: "Adicionar e-mail"
