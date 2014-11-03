@@ -14,7 +14,6 @@ class Survey < ActiveRecord::Base
       only: [:id, :title, :campaign_id],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
     )
-    binding.pry
     response = http.request(request)
     JSON.parse(response.body)
   end

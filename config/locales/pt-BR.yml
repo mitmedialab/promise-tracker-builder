@@ -24,13 +24,19 @@ pt-BR:
       campaign:
         title: "Nome"
         goal: "Objetivo"
-        submissions_target: "Número de respostas desejadas"
-        data_collectors: "Coletores de dados"
-        audience: "Público-alvo"
+        submissions_target: "Número de participações"
+        data_collectors: "Colaboradores"
+        audience: "Destinário"
         status: "Estado"
         start_date: "Data de publicação"
         end_date: "Data final"
         theme: "Tema"
+
+      input:
+        input_type: "Tipo de resposta"
+
+      survey:
+        title: "Título"
 
       user:
         username: "Nome de usuário"
@@ -39,9 +45,6 @@ pt-BR:
         password_confirmation: "Confirmação de senha"
         current_password: "Senha atual"
         email: "E-mail"
-
-      input:
-        input_type: "Tipo de resposta"
 
     options:
       themes:
@@ -90,7 +93,9 @@ pt-BR:
     index:
       welcome: "Começar com Promise Tracker"
       tag_line: "Coleta de dados para a ação cívica"
+      project_description: 
       process_line: "O Nosso Processo"
+      process_description: 
       create_account: "Criar uma conta gratuita"
 
   campaigns:
@@ -173,21 +178,21 @@ pt-BR:
       explanations:
         goal: "O que você quer realizar com esta ação? O que você quer mudar na sua comunidade?"
         data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
-        submissions_target: "Quantas respostas você quer obter?" 
-        audience: "Para transformar sua comunidade, com quem você vai compartilhar os dados coletados?"
+        submissions_target: "Quantas participações você espera?"
+        audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
       tips:
-        data_collectors: "Talvez sejam necessárias muitas pessoas para coletar dados suficientes para sua campanha. Pense sobre as pessoas que você conhece que já estão comprometidas com a solução deste problema e quais poderiam se animar a ajudar você nesta campanha."
-        goal: "Mudanças sociais normalmente requerem muitos passos pequenos. Há alguma mudança pequena e concreta que pode ser alcançada no futuro próximo?"
-        submissions_target: "Algumas vezes, um conjunto pequeno de dados não é tão convincente. Pense em quantas respostas você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
-        audience: "Existem muitos públicos que você pode querer atingir com os dados que vai coletar. Quem terá maior interesse neles? Você poderia alcançar um público que ainda não tem familiaridade com o tema? Quem será o público mais difícil de convencer a participar da mudança que você está promovendo?"
+        data_collectors: "Talvez sejam necessárias muitas pessoas para coletar os dados. Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você nesta campanha?"
+        goal: "Mudanças sociais normalmente começam com pequenos passos. O que é possível alcançar no futuro próximo no tema escolhido?"
+        submissions_target: "Pense em quantas respostas você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
+        audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
     form_buttons:
       back: "Voltar"
       next: "Próximo"
 
     show:
-      campaign_goals: "Objetivos"
+      campaign_goals: "Descrição"
       campaign_survey: "Formulário"
       edit_goals: "Editar objetivos"  
       edit_survey: "Editar formulário"
