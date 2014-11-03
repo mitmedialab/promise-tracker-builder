@@ -38,36 +38,26 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @campaign.update_attributes(campaign_params)
     if @campaign.survey
-      @campaign.survey.update_attribute(:guid, make_guid(@campaign.title, @campaign.id))
+      @campaign.survey.update_attribute(:title, @campaign.title)
     end
     
     redirect_to campaign_path(@campaign)
   end
 
   def clone
-    @campaign = Campaign.find(params[:id])
-
-    @campaign_clone = @campaign.dup
-    title = @campaign.title + " #{t('campaigns.status.copy')}"
-    @campaign_clone.update_attributes(
-      title: title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}",
-      status: 'draft'
+    campaign = Campaign.find(params[:id])
+    campaign_clone = campaign.clone
+    title = campaign.title + " #{t('campaigns.status.copy')}"
+    campaign_clone.update_attribute(
+      :title,
+      title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}"
     )
 
-    @survey_clone = @campaign.survey.dup
-    @survey_clone.save
+    campaign_clone.survey = campaign.survey.clone
+    campaign_clone.survey.update_attribute(:title, campaign_clone.title)
 
-    @survey_clone.update_attributes(
-      campaign_id: @campaign_clone.id,
-      guid: make_guid(@campaign_clone.title, @survey_clone.id)
-    )
-
-    @campaign.survey.inputs.each do |input|
-      @survey_clone.inputs << input.dup
-    end
-
-    current_user.campaigns << @campaign_clone
-    redirect_to campaign_path(@campaign_clone)
+    current_user.campaigns << campaign_clone
+    redirect_to campaign_path(campaign_clone)
   end
 
   def launch
