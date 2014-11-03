@@ -27,4 +27,12 @@ class Survey < ActiveRecord::Base
     JSON.parse(response.body)
   end
 
+  def clone
+    clone = self.dup
+    self.inputs.each do |input|
+      clone.inputs << input.dup
+    end
+    clone
+  end
+
 end

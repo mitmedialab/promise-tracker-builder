@@ -14,7 +14,6 @@ class SurveysController < ApplicationController
       @campaign = Campaign.find(params[:campaign_id])
       @survey = Survey.create(
         campaign_id: @campaign.id,
-        guid: make_guid(@campaign.title, @campaign.id),
         title: @campaign.title
       )
       redirect_to survey_path(@survey)

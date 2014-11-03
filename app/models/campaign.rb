@@ -9,4 +9,10 @@ class Campaign < ActiveRecord::Base
     I18n.t(:themes, :scope => 'campaigns.edit')
   end
 
+  def clone
+    clone = self.dup
+    clone.update_attribute(:status, 'draft')
+    clone
+  end
+
 end
