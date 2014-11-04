@@ -1,7 +1,7 @@
 class Survey < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
-  has_many :inputs
+  has_many :inputs, order: :order
 
   AGGREGATOR_URL = 'http://dev.aggregate.promisetracker.org/surveys'
 
