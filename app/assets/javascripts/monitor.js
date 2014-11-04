@@ -5,9 +5,16 @@ PT.aggregatUrl = "http://dev.aggregate.promisetracker.org/";
 PT.retrieveResponses = function(surveyId){
   var url = PT.aggregatUrl + "/surveys/" + surveyId + "/responses";  
   $.get(url, function(data){
-    PT.responses = data;
-    $(".response-count").html(data.length);
+    PT.responses = data.payload;
+    dispatcher.dispatch('responsedataloaded', PT.responses)
+  });
+};
 
+PT.prepViz = function(data){
+  dispatcher.subscribe('responsedataloaded', function(data){
+    var responseCount = data.length;
+    $(".response-count").html(responseCount);
+    $(".graph-bar.current").css("width", responseCount / PT.campaign.submissions_target * 100);
     PT.responsesPerDay = d3.nest()
       .key(function(d) {
         var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
@@ -20,12 +27,12 @@ PT.retrieveResponses = function(surveyId){
 };
 
 PT.renderGraph = function(data, containerId){
-
   // Setup Variables //
   var $container, height, width, margins, svg, graph, x, y, 
       xAxis, yAxis, xExtene, line, startLine, plotPoints;
 
   $container = $(containerId);
+  $container.empty();
   height = 250;
   width = $container.width();
   margins = {
@@ -110,5 +117,4 @@ PT.renderGraph = function(data, containerId){
     .call(yAxis);
 
   plotPoints(data);
-
 };

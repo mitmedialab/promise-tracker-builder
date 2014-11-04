@@ -72,7 +72,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-  #Post survey definition to API
+  #Post survey definition to Aggregator
   def activate
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
@@ -91,9 +91,6 @@ class CampaignsController < ApplicationController
   def monitor
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
-
-    #Mockup hack
-    @responses = 0.5 + rand(@campaign.submissions_target)
   end
 
   def share
