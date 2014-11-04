@@ -1,6 +1,6 @@
 var PT = PT || {};
 
-PT.renderMap = function(containerId){
+PT.renderCartoDBMap = function(containerId){
   var url, mapOptions;
   url = "http://cfcm.cartodb.com/api/v2/viz/21e86fd4-5887-11e4-b28c-0e018d66dc29/viz.json";
   mapOptions = {

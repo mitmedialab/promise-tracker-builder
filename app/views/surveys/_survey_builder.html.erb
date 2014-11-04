@@ -1,44 +1,5 @@
 <div id="workspace">
-  <div class="campaign-title inline" data-bind="text: title"></div>
-  <% if current_user %>
-    <span class="edit-title-button" data-toggle="modal" data-target="#survey-title-modal"><%= t(".edit_title") %></span>
-  <% end %>
-
-  <!-- Edit survey title modal -->
-  <div class="modal fade" id="survey-title-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title"><%= t(".survey_title") %></h4>
-        </div>
-          <div class="modal-body">
-            <input class="form-control" id="survey-title-input" data-bind="value: title" placeholder="<% t('.title_placeholder') %>">
-          </div>
-          <div class="modal-footer">
-            <div class="btn btn-info" id="update-title-button"><%= t("defaults.save") %></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit survey title modal -->
-  <div class="modal fade" id="survey-title-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title"><%= t(".survey_title") %></h4>
-        </div>
-          <div class="modal-body">
-            <input class="form-control" id="survey-title-input" data-bind="value: title" placeholder="<% t('.title_placeholder') %>">
-          </div>
-          <div class="modal-footer">
-            <div class="btn btn-primary" id="update-title-button"><%= t("defaults.save") %></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="campaign-title inline"><%= @survey.title %></div>
 
   <!-- Survey body -->
   <%= render partial: "survey_body" %>

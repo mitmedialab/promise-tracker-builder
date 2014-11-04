@@ -14,7 +14,6 @@ class SurveysController < ApplicationController
       @campaign = Campaign.find(params[:campaign_id])
       @survey = Survey.create(
         campaign_id: @campaign.id,
-        guid: make_guid(@campaign.title, @campaign.id),
         title: @campaign.title
       )
       redirect_to survey_path(@survey)
@@ -64,11 +63,6 @@ class SurveysController < ApplicationController
       format.html
       format.json { render json: @survey, root: false }
     end 
-  end
-
-  def get_xml
-    @survey = Survey.find(params[:id])
-    render_to_string(layout: "surveys/xml")
   end
 
   def destroy
