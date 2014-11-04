@@ -1,7 +1,7 @@
 class Survey < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
-  has_many :inputs
+  has_many :inputs, order: :order
 
   AGGREGATOR_URL = 'http://dev.aggregate.promisetracker.org/surveys'
 
@@ -14,7 +14,6 @@ class Survey < ActiveRecord::Base
       only: [:id, :title, :campaign_id],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
     )
-    binding.pry
     response = http.request(request)
     JSON.parse(response.body)
   end
@@ -26,6 +25,14 @@ class Survey < ActiveRecord::Base
     request = Net::HTTP::Put.new(uri.path, {'Content-Type' =>'application/json'})
     response = http.request(request)
     JSON.parse(response.body)
+  end
+
+  def clone
+    clone = self.dup
+    self.inputs.each do |input|
+      clone.inputs << input.dup
+    end
+    clone
   end
 
 end
