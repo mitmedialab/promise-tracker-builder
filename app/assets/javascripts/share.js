@@ -42,6 +42,6 @@ PT.populateImages = function(responses, containerId){
 
 PT.renderShareViz = function(){
   dispatcher.subscribe('responsedataloaded', function(data){
-    PT.populateImages(data, "#image-viz");
+    PT.populateImages(PT.responses, "#image-viz");
   })
 };
