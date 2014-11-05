@@ -35,4 +35,13 @@ class Survey < ActiveRecord::Base
     clone
   end
 
+  def get_responses
+    uri = URI(AGGREGATOR_URL + '/' + self.id.to_s + '/responses')
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
+    response = http.request(request)
+    JSON.parse(response.body)['payload']
+  end
+
 end
