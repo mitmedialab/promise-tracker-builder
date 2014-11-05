@@ -46,27 +46,132 @@ PT.renderShareViz = function(){
   })
 };
 
-PT.renderGoogleMap = function(response){
+PT.renderGoogleMap = function(serverResponse){
   var markers = [];
+  var surveyDefinition = {};
+  var map = null,
+      infoWindow = null;
+
   var attachMarkerClickEvent = function(marker, response){
     var image = null;
+    var displayableAnswers = {};
+    // 1. browse through answers, put all images to $image and displayable answers to $displayableAnswers.
     for(var i=0,len=response.answers.length;i<len;i++){
       var answer = response.answers[i];
-      switch(answer.type){
+      switch(answer.input_type){
         case 'location':
           break;
         case 'image':
-          if(answer.value)
+          if(typeof answer.value!=='undefined' && answer.value){
+            image = answer.value;
+          }
           break;
         default:
-
+          if(typeof answer.value!=='undefined' && answer.value){
+            displayableAnswers[surveyDefinition[answer.id]] = answer.value;
+          }
       }
     }
-    var infoWindow = new google.maps.InfoWindow({
-      content: 
-    })
+    // 2. construct infoWindow string
+    var infoWindowImageHtml='';
+    if(image !== null){
+      infoWindowImageHtml = 
+      '<div class="map-info-window-image">'+
+        '<img src="'+image+'" alt="answer image"/>'+
+      '</div>';
+    } 
+    var infoWindowTableHtml = '';
+    if(Object.keys(displayableAnswers).length > 0){
+      infoWindowTableHtml = '<div class="map-info-window-table"><table>';
+      for(var i in displayableAnswers){
+        infoWindowTableHtml += '<tr><td class="table-lable">'+i+'</td><td class="table-content">'+displayableAnswers[i]+'</td></tr>';
+      }
+      infoWindowTableHtml += '</table></div>';
+    }
+    var infoWindowContentHtml = 
+      '<div class="map-info-window-content">'+
+        infoWindowImageHtml+
+        infoWindowTableHtml+
+      '</div>';
 
-  }
+    google.maps.event.addListener(marker, 'click', function(){
+      infoWindow.setContent(infoWindowContentHtml);
+      infoWindow.open(map, marker);
+    });
+  };  // func attachMarkerClickEvent
 
+  window.mapInit = function(){
+    // start initialization
+    // create map
+    var mapOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(-34.397, 150.644),
+      scrollwheel: false
+    };
+    map = new google.maps.Map(document.getElementById('map-viz'), mapOptions);
+    infoWindow = new google.maps.InfoWindow({
+        content: '' 
+    });
+
+    // store survey definition
+    var surveyInputs = serverResponse.survey.inputs;
+    for(var i=0,len=surveyInputs.length;i<len;i++){
+      var input = surveyInputs[i];
+      surveyDefinition[input.id] = input.label;
+    }
+
+    // create map markers
+    var surveyResponses = serverResponse.responses;
+    for(var i=0,len=surveyResponses.length;i<len;i++){
+      var response = surveyResponses[i];
+
+      // 1 find geo location
+      var lat = null,
+          lng = null;
+      for(var j=0,len2=response.answers.length;j<len;j++){
+        var answer = response.answers[j];
+        if(typeof answer.input_type!=='undefined' && answer.input_type=='location' && typeof answer.value!=='undefined' && typeof answer.value.lon!=='undefined'){
+          lat = answer.value.lat;
+          lng = answer.value.lon;
+          break;
+        }
+      }
+      if(lat==null || lng==null){
+        continue; // find if next response is a geolocation
+      }
+
+      // 2. create that marker;
+      var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(lat, lng)
+      });
+      markers.push(marker);
+
+      // 3. attach onclick event
+      attachMarkerClickEvent(marker, response);
+    } // for surveyResponses - created map markers
+
+    // scale map viewport to include all the markers.
+    var points = $.map(markers, function(a){
+        return a.getPosition();
+    });
+    var bounds = new google.maps.LatLngBounds();
+    for(var i=0;i<points.length;i++){
+        bounds.extend(points[i]);
+    }
+    
+    map.fitBounds(bounds);
+
+  };  // func mapInit
+
+  // load map script
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+      'callback=mapInit';
+  document.body.appendChild(script);
 };
-dispatcher.subscribe('responsedataloaded', PT.renderGoogleMap);
+$(function(){
+  dispatcher.subscribe('responsedataloaded', PT.renderGoogleMap);
+});
+
