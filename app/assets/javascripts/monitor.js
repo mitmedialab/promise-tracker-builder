@@ -3,26 +3,10 @@ PT = PT || {};
 PT.aggregatUrl = "http://dev.aggregate.promisetracker.org/";
 
 PT.retrieveResponses = function(surveyId){
-  var url = PT.aggregatUrl + "/surveys/" + surveyId + "/responses";  
+  var url = PT.aggregatUrl + "/surveys/" + surveyId + "/survey-with-responses";  
   $.get(url, function(data){
-    PT.responses = data.payload;
-    dispatcher.dispatch('responsedataloaded', PT.responses)
-  });
-};
-
-PT.prepViz = function(data){
-  dispatcher.subscribe('responsedataloaded', function(data){
-    var responseCount = data.length;
-    $(".response-count").html(responseCount);
-    $(".graph-bar.current").css("width", responseCount / PT.campaign.submissions_target * 100);
-    PT.responsesPerDay = d3.nest()
-      .key(function(d) {
-        var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
-        return new Date(day);
-      })
-      .entries(data);
-
-    PT.renderGraph(PT.responsesPerDay, '#activity-graph');
+    PT.responses = data.payload.responses;
+    dispatcher.dispatch('responsedataloaded', data.payload)
   });
 };
 
@@ -117,4 +101,21 @@ PT.renderGraph = function(data, containerId){
     .call(yAxis);
 
   plotPoints(data);
+};
+
+PT.renderMonitorViz = function(data){
+  dispatcher.subscribe('responsedataloaded', function(data){
+    var responseCount = data.length;
+    $(".response-count").html(responseCount);
+    $(".graph-bar.current").css("width", responseCount / PT.campaign.submissions_target * 100);
+    PT.responsesPerDay = d3.nest()
+      .key(function(d) {
+        var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
+        return new Date(day);
+      })
+      .entries(data);
+
+    PT.renderGraph(PT.responsesPerDay, "#activity-graph");
+    PT.populateImages(PT.responses, "#image-viz");
+  });
 };

@@ -21,21 +21,28 @@ PT.renderCartoDBMap = function(containerId){
   });
 };
 
-PT.populateImages = function(imageUrlArray, containerId){
-  var $container = $(containerId), image;
+PT.populateImages = function(responses, containerId){
+  var $container = $(containerId), images, image;
+  var images = [];
+  responses.forEach(function(response){
+    response.answers.forEach(function(answer){
 
-  imageUrlArray.forEach(function(url){
+      if(answer.input_type == "image"){
+        images.push(answer.value);
+      }
+    })
+  });
+
+  $container.empty();
+  images.forEach(function(url){
     image = '<img class="item"src="' + url + '">';
     $container.append(image);
   })
 };
 
-PT.renderImages = function(containerId){
-  var $container = $(containerId);
-  $container.imagesLoaded(function(){
-    $container.masonry({
-      itemSelector: ".item"
-    })
+PT.renderShareViz = function(){
+  dispatcher.subscribe('responsedataloaded', function(data){
+    PT.populateImages(PT.responses, "#image-viz");
   })
 };
 
