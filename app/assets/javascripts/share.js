@@ -38,3 +38,28 @@ PT.renderImages = function(containerId){
     })
   })
 };
+
+PT.renderGoogleMap = function(response){
+  var markers = [];
+  var attachMarkerClickEvent = function(marker, response){
+    var image = null;
+    for(var i=0,len=response.answers.length;i<len;i++){
+      var answer = response.answers[i];
+      switch(answer.type){
+        case 'location':
+          break;
+        case 'image':
+          if(answer.value)
+          break;
+        default:
+
+      }
+    }
+    var infoWindow = new google.maps.InfoWindow({
+      content: 
+    })
+
+  }
+
+};
+dispatcher.subscribe('responsedataloaded', PT.renderGoogleMap);
