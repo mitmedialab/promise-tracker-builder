@@ -22,6 +22,25 @@
         width: 100%;
         height: auto;
       }
+
+      .map-info-window-image{
+        float: left; 
+        img {
+          max-width: 400px;
+          max-height: 300px;
+        }
+      }
+
+      .map-info-window-table{
+        max-height: 300px;
+        overflow: auto;
+
+        .table-lable{
+          padding: 5px 10px;
+          max-width: 350px;
+          font-weight: bold;
+        }
+      }
     }
 
     #graph-viz {
