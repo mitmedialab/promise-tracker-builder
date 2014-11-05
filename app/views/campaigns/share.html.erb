@@ -19,17 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="tab-pane" id="image-viz">
-      <%= image_tag("campaign-image-3.jpg", class: "item") %>
-      <%= image_tag("campaign-image-8.jpg", class: "item") %>
-      <%= image_tag("campaign-image.jpg", class: "item") %>
-      <%= image_tag("campaign-image-4.jpg", class: "item") %>
-      <%= image_tag("campaign-image-7.jpg", class: "item") %>
-      <%= image_tag("campaign-image2.jpg", class: "item") %>
-      <%= image_tag("campaign-image-5.jpg", class: "item") %>
-      <%= image_tag("campaign-image-6.jpg", class: "item") %>
-      <%= image_tag("campaign-image-8.jpg", class: "item") %>
-    </div>
+    <div class="tab-pane" id="image-viz"></div>
   </div>
 
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
@@ -111,5 +101,6 @@
   });
 
   PT.retrieveResponses(<%= @campaign.survey.id %>);
+  PT.renderShareViz(PT.responses);
 </script>
 
