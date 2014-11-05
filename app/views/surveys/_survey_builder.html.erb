@@ -40,12 +40,7 @@
 </div>
 
 <script type="text/javascript">  
-  PT.flash = <%= raw @flash %>;
-  PT.validations = <%= raw @validations %>;
   PT.input_types = <%= raw @input_types %>;
-  
-  $("#preview-toggle").on("click", PT.togglePreview);
-  $(document).on("click", "#update-title-button", PT.updateTitle);
 
   // Make input buttons draggable
   $(".tool-button").draggable({ 

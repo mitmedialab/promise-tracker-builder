@@ -13,6 +13,9 @@ pt-BR:
             username:
               taken: "já existe. Por favor, escolha outro nome de usuário"
               blank: "não pode estar em branco"
+        campaign:
+          title:
+            too_short: "deve ter pelo menos 5 caracteres"
 
     models:
       survey: "Formulário"
@@ -69,6 +72,8 @@ pt-BR:
         image: "Imagem"
 
   defaults:
+    yes_option: "Sim"
+    no_option: "Não"
     save: "Salvar"
     cancel: "Cancelar"
     download: "Baixar"
@@ -245,12 +250,10 @@ pt-BR:
       add_location: "Obter localização"
       add_image: "Obter foto"
       option_1: "Opção 1"
-      yes_no:
-        option_yes: "Sim"
-        option_no: "Não"
       preview_title: "Pré-visualização"
       show_preview: "Mostrar pré-visualização"
       hide_preview: "Esconder pré-visualização"
+      confirm_input_delete: "Tem certeza que deseja eliminar este campo?"
 
   users:
     show:

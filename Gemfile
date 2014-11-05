@@ -16,6 +16,7 @@ gem 'active_model_serializers'
 gem 'handlebars_assets'
 gem 'devise'
 gem 'js-routes'
+gem 'i18n-js'
 gem 'rack-cors'
 
 gem 'therubyracer'

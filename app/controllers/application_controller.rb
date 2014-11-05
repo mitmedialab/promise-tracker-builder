@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale
-  # around_filter :catch_not_found
  
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -25,10 +24,8 @@ class ApplicationController < ActionController::Base
     I18n.t("activerecord.options.input_types").map { |key, value| { label: value, input_type: key } }
   end
 
-  def catch_not_found
-    yield
-  rescue ActiveRecord::RecordNotFound
-    redirect_to resource_not_found, :flash => { :error => "Record not found." }
+  def export_i18n_messages
+    SimplesIdeias::I18n.export! if Rails.env.development?
   end
 
 end

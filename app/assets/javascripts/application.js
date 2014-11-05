@@ -19,4 +19,6 @@
 //= require bootstrap
 //= require js-routes
 //= require_tree ./templates
+//= require i18n
+//= require i18n/translations
 //= require_tree .

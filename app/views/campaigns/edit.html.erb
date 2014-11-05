@@ -108,11 +108,11 @@
 
 <script type="text/javascript">
   PT.flash = <%= raw @flash %>;
-  jQuery.extend(jQuery.validator.messages, <%= raw @validations %>);
+  jQuery.extend(jQuery.validator.messages, I18n.translations[I18n.currentLocale()].defaults.validations);
   
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
-  $(document).on("click", ".tip-box", PT.openTip);
+  $(document).on("click", ".tip-box", PT.toggleTip);
 
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));

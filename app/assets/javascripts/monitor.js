@@ -32,7 +32,7 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
       }
     },
     tooltip: {
-      valueSuffix: " respostas",
+      valueSuffix: " " + I18n.t("campaigns.monitor.responses"),
       headerFormat: ""
     },
     legend: {
@@ -50,14 +50,14 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
     },
     series: [
       {
-        name: "Target",
+        name: I18n.t("campaigns.monitor.target"),
         data: [targetResponseCount],
         pointPadding: 0,
         groupPadding: 0,
         color: "#5fb2a6",
       },
       {
-        name: "Current",
+        name: I18n.t("campaigns.monitor.current"),
         data: [currentResponseCount],
         pointPadding: 0,
         groupPadding: 0,

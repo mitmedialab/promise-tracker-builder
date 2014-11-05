@@ -36,7 +36,7 @@ PT.Input = function(){
   self.label = ko.observable("");
   self.input_type = ko.observable();
   self.required = ko.observable(false);
-  self.options = ko.observableArray([PT.flash.option_1]);
+  self.options = ko.observableArray([I18n.t("surveys.survey_builder.option_1")]);
   self.order = "";
   self.inEdit = ko.observable(true);
 
@@ -46,7 +46,7 @@ PT.Input = function(){
     messages.empty();
 
     if(!self.label()) {
-      messages.append(PT.validations.question_blank);
+      messages.append(I18n.t("defaults.validations.question_blank"));
       inputEl.addClass('invalid');
     } else if(self.input_type() == "select" || self.input_type() == "select1"){
       if (self.options().length == 0){
@@ -62,7 +62,7 @@ PT.Input = function(){
 
   self.save = function(self, event){
     $.ajax({
-      url: "/surveys/" + PT.survey.id + "/inputs",
+      url: Routes.survey_inputs_path(PT.survey.id),
       type: "POST",
       contentType: "application/json",
       dataType: "json",
@@ -123,7 +123,7 @@ PT.Input = function(){
 
   self.applyType = function(){
     if(self.input_type() == "yes_no"){
-      self.options([PT.flash.yes_no.option_yes, PT.flash.yes_no.option_no]);
+      self.options([I18n.t("defaults.yes_option"), I18n.t("defaults.no_option")]);
       self.input_type("select1");
     }
   };
@@ -170,12 +170,12 @@ PT.SurveyModel = function(){
   };
 
   self.removeInput = function(){
-    var confirmed = window.confirm("Are you sure you want to delete this question?");
+    var confirmed = window.confirm(I18n.t("surveys.survey_builder.confirm_input_delete"));
     if(confirmed){
       self.inputs.remove(this);
       if(this.id()){
         $.ajax({
-          url: "/surveys/" + PT.survey.id + "/inputs/" + this.id(),
+          url: Routes.survey_input_path(PT.survey.id, this.id()),
           type: "DELETE",
           contentType: "application/json",
           dataType: "json"
@@ -192,10 +192,10 @@ PT.SurveyModel = function(){
   /// Update order of all inputs
   self.saveOrder = function(){
     self.saveInputs();
-    window.location.pathname = Routes.campaign_path(PT.survey.campaign_id);
+    window.location.pathname = I18n.currentLocale() + Routes.campaign_path(PT.survey.campaign_id);
     
     $.ajax({
-      url: "/surveys/" + PT.survey.id + "/save-order",
+      url: Routes.save_order_path(PT.survey.id),
       type: "PUT",
       contentType: "application/json",
       dataType: "json",
@@ -216,8 +216,8 @@ PT.SurveyModel = function(){
   };
 };
 
-PT.getSurvey = function(url){
-  $.getJSON(url, null, function(response, textStatus) {
+PT.getSurvey = function(id){
+  $.getJSON(Routes.survey_path(id), null, function(response, textStatus) {
     PT.survey = new PT.SurveyModel();
 
     PT.survey.id = response.id;
@@ -240,7 +240,7 @@ PT.updateTitle = function(){
   PT.survey.title($("#survey-title-input").val());
 
   $.ajax({
-    url: "/surveys/" + PT.survey.id,
+    url: Routes.survey_path(PT.survey.id),
     type: "PUT",
     contentType: "application/json",
     dataType: "json",
@@ -261,9 +261,9 @@ PT.flashMessage = function(message, element){
 PT.checkErrors = function(){
   if($("#survey-body").find(".invalid").length > 0){
     $("#error-check").addClass("alert-danger");
-    $("#error-check p").html(PT.validations.has_errors);
+    $("#error-check p").html(I18n.t("defaults.validations.has_error"));
   } else {
     $("#error-check").removeClass("alert-danger");
-    $("#error-check p").html(PT.validations.no_errors);
+    $("#error-check p").html(I18n.t("defaults.validations.no_errors"));
   }
 };

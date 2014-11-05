@@ -13,9 +13,9 @@ PT.nextInput = function(event){
 
 PT.togglePreview = function(event){
   $(".preview-container").slideToggle();
-  if($(this).html() === PT.flash.hide_preview){
-    $(this).html(PT.flash.show_preview);
+  if($(this).html() === I18n.t("surveys.survey_builder.hide_preview")){
+    $(this).html(I18n.t("surveys.survey_builder.show_preview"));
   } else {
-    $(this).html(PT.flash.hide_preview);
+    $(this).html(I18n.t("surveys.survey_builder.hide_preview"));
   }
 };

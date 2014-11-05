@@ -61,10 +61,13 @@
     <% end %>
   </div>
 </div>
-<script type="text/javascript" src="/highcharts.js"></script>
+
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
   PT.campaign = <%= raw @campaign.to_json %>;
   PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
-  PT.renderMonitorViz();
+
+  $.getScript("/highcharts.js", function(){
+    PT.renderMonitorViz();
+  });
 </script>

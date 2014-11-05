@@ -13,7 +13,11 @@ class CampaignsController < ApplicationController
 
   def create
     @campaign = current_user.campaigns.create(campaign_params)
-    redirect_to campaign_goals_wizard_path(@campaign)
+    if @campaign.save
+      redirect_to campaign_goals_wizard_path(@campaign)
+    else
+      render json: @campaign.errors.full_messages
+    end
   end
 
   def show

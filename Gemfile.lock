@@ -97,6 +97,8 @@ GEM
       tilt
     hike (1.2.3)
     i18n (0.6.11)
+    i18n-js (2.1.2)
+      i18n
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -247,6 +249,7 @@ DEPENDENCIES
   faker
   guard-rspec
   handlebars_assets
+  i18n-js
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails

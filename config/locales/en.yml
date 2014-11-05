@@ -13,6 +13,9 @@ en:
               username:
                 taken:
                 blank:
+          campaign:
+            title:
+              too_short:
 
     models:
       survey: "Survey"
@@ -69,6 +72,8 @@ en:
         image: "Image" 
 
   defaults:
+    yes_option: "Yes"
+    no_option: "No"
     save: "Save"
     cancel: "Cancel"
     download: "Download"
@@ -100,7 +105,9 @@ en:
     index:
       welcome: "Get started"
       tag_line: "Data collection for civic action"
+      project_description: 
       process_line: "Strategic, community-driven advocacy"
+      process_description: 
       create_account: "Create a free account"
 
     download:
@@ -159,7 +166,7 @@ en:
       close_confirmation: "Once closed, this survey cannot be opened again."
       number_of_responses: "Number of responses"
       close: "Close camaign"
-      responses: "Responses total"
+      responses: "Responses"
       current: "Current"
       target: "Target"
       publicize_form: "Mobilize your community to fill out the survey"
@@ -243,12 +250,10 @@ en:
       add_location: "Record location"
       add_image: "Take photo"
       option_1: "Option 1"
-      yes_no:
-        option_yes: "Yes"
-        option_no: "No"
       preview_title: "Preview"
       show_preview: "Show preview"
       hide_preview: "Hide preview"
+      confirm_input_delete: "Are you sure you want to delete this input?"
 
   users:
     show:
