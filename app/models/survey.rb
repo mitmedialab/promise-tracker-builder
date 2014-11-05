@@ -12,7 +12,7 @@ class Survey < ActiveRecord::Base
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = self.to_json(
       only: [:id, :title, :campaign_id],
-      include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
+      include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
     response = http.request(request)
     JSON.parse(response.body)
@@ -33,6 +33,15 @@ class Survey < ActiveRecord::Base
       clone.inputs << input.dup
     end
     clone
+  end
+
+  def get_responses
+    uri = URI(AGGREGATOR_URL + '/' + self.id.to_s + '/responses')
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
+    response = http.request(request)
+    JSON.parse(response.body)['payload']
   end
 
 end

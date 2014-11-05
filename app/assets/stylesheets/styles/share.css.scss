@@ -41,15 +41,12 @@
       width: 100%;
       padding-left: 5px;
       background: $light-grey;
+      overflow: scroll;
 
       .item {
-        height: 290px;
+        height: 260px;
         width: auto;
-        margin-bottom: 5px;
-
-        &:hover {
-
-        }
+        margin: 0 5px 5px 0;
       }
     }
   }
