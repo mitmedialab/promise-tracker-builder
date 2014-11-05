@@ -3,10 +3,10 @@ PT = PT || {};
 PT.aggregatUrl = "http://dev.aggregate.promisetracker.org/";
 
 PT.retrieveResponses = function(surveyId){
-  var url = PT.aggregatUrl + "/surveys/" + surveyId + "/responses";  
+  var url = PT.aggregatUrl + "/surveys/" + surveyId + "/survey-with-responses";  
   $.get(url, function(data){
-    PT.responses = data.payload;
-    dispatcher.dispatch('responsedataloaded', PT.responses)
+    PT.responses = data.payload.responses;
+    dispatcher.dispatch('responsedataloaded', data.payload)
   });
 };
 
