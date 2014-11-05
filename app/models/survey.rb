@@ -12,7 +12,7 @@ class Survey < ActiveRecord::Base
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = self.to_json(
       only: [:id, :title, :campaign_id],
-      include: { inputs: { only: [:id, :label, :input_type, :order, :options] }}
+      include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
     response = http.request(request)
     JSON.parse(response.body)
