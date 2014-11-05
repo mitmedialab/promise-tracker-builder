@@ -3,6 +3,8 @@ class Campaign < ActiveRecord::Base
   has_one :survey
   has_and_belongs_to_many :tags
 
+  validates :title, length: { minimum: 3 }
+
   STATUS =  ['draft', 'active', 'closed']
 
   def translated_themes
