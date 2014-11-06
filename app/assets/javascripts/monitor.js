@@ -103,7 +103,7 @@ PT.renderGraph = function(data, containerId){
   plotPoints(data);
 };
 
-PT.renderMonitorViz = function(data){
+PT.renderMonitorViz = function(){
   dispatcher.subscribe('responsedataloaded', function(data){
     var responseCount = data.length;
     $(".response-count").html(responseCount);
@@ -113,9 +113,8 @@ PT.renderMonitorViz = function(data){
         var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
         return new Date(day);
       })
-      .entries(data);
+      .entries(data.responses);
 
     PT.renderGraph(PT.responsesPerDay, "#activity-graph");
-    PT.populateImages(PT.responses, "#image-viz");
   });
 };

@@ -27,7 +27,7 @@ PT.populateImages = function(responses, containerId){
   responses.forEach(function(response){
     response.answers.forEach(function(answer){
 
-      if(answer.input_type == "image"){
+      if(answer.input_type == "image" && answer.value){
         images.push(answer.value);
       }
     })
@@ -37,12 +37,6 @@ PT.populateImages = function(responses, containerId){
   images.forEach(function(url){
     image = '<img class="item"src="' + url + '">';
     $container.append(image);
-  })
-};
-
-PT.renderShareViz = function(){
-  dispatcher.subscribe('responsedataloaded', function(data){
-    PT.populateImages(PT.responses, "#image-viz");
   })
 };
 
@@ -120,12 +114,12 @@ PT.renderGoogleMap = function(serverResponse){
       surveyDefinition[input.id] = input.label;
     }
 
-    // create map markers
+    // Create map markers
     var surveyResponses = serverResponse.responses;
     for(var i=0,len=surveyResponses.length;i<len;i++){
       var response = surveyResponses[i];
 
-      // 1 find geo location
+      // 1. Find geo location
       var lat = null,
           lng = null;
       for(var j=0,len2=response.answers.length;j<len;j++){
@@ -137,21 +131,21 @@ PT.renderGoogleMap = function(serverResponse){
         }
       }
       if(lat==null || lng==null){
-        continue; // find if next response is a geolocation
+        continue; // Find if next response is a geolocation
       }
 
-      // 2. create that marker;
+      // 2. Create that marker;
       var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(lat, lng)
       });
       markers.push(marker);
 
-      // 3. attach onclick event
+      // 3. Attach onclick event
       attachMarkerClickEvent(marker, response);
     } // for surveyResponses - created map markers
 
-    // scale map viewport to include all the markers.
+    // Scale map viewport to include all the markers.
     var points = $.map(markers, function(a){
         return a.getPosition();
     });
@@ -164,14 +158,17 @@ PT.renderGoogleMap = function(serverResponse){
 
   };  // func mapInit
 
-  // load map script
+  // Load map script
   var script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
       'callback=mapInit';
   document.body.appendChild(script);
 };
-$(function(){
-  dispatcher.subscribe('responsedataloaded', PT.renderGoogleMap);
-});
 
+PT.renderShareViz = function(){
+  dispatcher.subscribe('responsedataloaded', function(data){
+    PT.populateImages(PT.responses, "#image-viz");
+    PT.renderGoogleMap(data);
+  })
+};
