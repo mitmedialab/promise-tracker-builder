@@ -68,6 +68,6 @@
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @campaign.survey.id %>);
+  PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
   PT.renderMonitorViz();
 </script>

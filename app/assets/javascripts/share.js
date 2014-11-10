@@ -114,15 +114,15 @@ PT.renderGoogleMap = function(serverResponse){
       surveyDefinition[input.id] = input.label;
     }
 
-    // Create map markers
+    // create map markers
     var surveyResponses = serverResponse.responses;
     for(var i=0,len=surveyResponses.length;i<len;i++){
       var response = surveyResponses[i];
 
-      // 1. Find geo location
+      // 1 find geo location
       var lat = null,
           lng = null;
-      for(var j=0,len2=response.answers.length;j<len;j++){
+      for(var j=0,len2=response.answers.length;j<len2;j++){
         var answer = response.answers[j];
         if(typeof answer.input_type!=='undefined' && answer.input_type=='location' && typeof answer.value!=='undefined' && typeof answer.value.lon!=='undefined'){
           lat = answer.value.lat;
@@ -131,21 +131,21 @@ PT.renderGoogleMap = function(serverResponse){
         }
       }
       if(lat==null || lng==null){
-        continue; // Find if next response is a geolocation
+        continue; // find if next response is a geolocation
       }
 
-      // 2. Create that marker;
+      // 2. create that marker;
       var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(lat, lng)
       });
       markers.push(marker);
 
-      // 3. Attach onclick event
+      // 3. attach onclick event
       attachMarkerClickEvent(marker, response);
     } // for surveyResponses - created map markers
 
-    // Scale map viewport to include all the markers.
+    // scale map viewport to include all the markers.
     var points = $.map(markers, function(a){
         return a.getPosition();
     });
@@ -158,17 +158,22 @@ PT.renderGoogleMap = function(serverResponse){
 
   };  // func mapInit
 
-  // Load map script
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-      'callback=mapInit';
-  document.body.appendChild(script);
+  // load map script
+
+  if(typeof google === 'undefined'){
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
+        'callback=mapInit';
+    document.body.appendChild(script);
+  } else {
+    window.mapInit();
+  }
 };
 
-PT.renderShareViz = function(){
-  dispatcher.subscribe('responsedataloaded', function(data){
+$(function(){
+  dispatcher.subscribe('sharedataloaded', function(data){
     PT.populateImages(PT.responses, "#image-viz");
     PT.renderGoogleMap(data);
   })
-};
+});

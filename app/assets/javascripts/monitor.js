@@ -2,11 +2,11 @@ PT = PT || {};
 
 PT.aggregatUrl = "http://dev.aggregate.promisetracker.org/";
 
-PT.retrieveResponses = function(surveyId){
+PT.retrieveResponses = function(surveyId, message){
   var url = PT.aggregatUrl + "/surveys/" + surveyId + "/survey-with-responses";  
   $.get(url, function(data){
     PT.responses = data.payload.responses;
-    dispatcher.dispatch('responsedataloaded', data.payload)
+    dispatcher.dispatch(message, data.payload)
   });
 };
 
@@ -104,7 +104,7 @@ PT.renderGraph = function(data, containerId){
 };
 
 PT.renderMonitorViz = function(){
-  dispatcher.subscribe('responsedataloaded', function(data){
+  dispatcher.subscribe('monitordataloaded', function(data){
     var responseCount = data.length;
     $(".response-count").html(responseCount);
     $(".graph-bar.current").css("width", responseCount / PT.campaign.submissions_target * 100);

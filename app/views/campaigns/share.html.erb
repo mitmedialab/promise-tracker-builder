@@ -98,7 +98,6 @@
     $(this).addClass("active");
   });
 
-  PT.retrieveResponses(<%= @campaign.survey.id %>);
-  PT.renderShareViz(PT.responses);
+  PT.retrieveResponses(<%= @campaign.survey.id %>, 'sharedataloaded');
 </script>
 
