@@ -5,23 +5,47 @@ module Api
 
       def index
         if params[:tags]
-          @campaigns = params[:tags].map do |tag|
-            Tag.find_by(label: tag).campaigns
+          campaigns = params[:tags].map do |tag|
+            tag = Tag.find_by(label: tag)
+            tag.campaigns if tag
           end.reduce do |a, b|
             a || b
           end
         else
-          @campaigns = Campaign.all
+          campaigns = Campaign.all
         end
 
-        render json: @campaigns
+        response = {
+          status: 'success',
+          payload: campaigns || []
+        }
+
+        render json: response
       end
 
       def show
-        @survey = Survey.find(params[:id])
-        render json: { survey: @survey, inputs: @survey.inputs, campaign: @survey.campaign }
-      end
+        campaign = Campaign.find_by_id(params[:id])
+        if campaign
+          response = {
+            status: 'success',
+            payload: {
+              campaign: campaign,
+              survey: campaign.survey,
+              responses: campaign.survey.get_responses
+            }
+          }
 
+          render json: response
+        else
+          response = {
+            status: 'error',
+            error_code: 18,
+            error_message: 'Campaign not found'
+          }
+
+          render json: response
+        end
+      end
 
       private
 
