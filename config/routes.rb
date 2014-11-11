@@ -12,9 +12,9 @@ PromiseTracker::Application.routes.draw do
   get '/campaigns/:id/monitor', to: 'campaigns#monitor', as: 'monitor_campaign'
   get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'
   get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
-  get '/campaigns/:id/clone', to: 'campaigns#clone', as: 'clone_campaign'
+  post '/campaigns/:id/clone', to: 'campaigns#clone', as: 'clone_campaign'
 
-  get '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
+  post '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
 
   scope "(:locale)", locale: /en|pt-BR/ do
     resources :users

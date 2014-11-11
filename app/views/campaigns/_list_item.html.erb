@@ -11,7 +11,7 @@
       <span class="glyphicon glyphicon-flag <%= campaign.status %>"></span>
       <%= t("campaigns.status.#{campaign.status}") %>
     <% end %>
-    <%= link_to clone_campaign_path(campaign), class: "pad-side", title: t("defaults.copy") do %>
+    <%= link_to clone_campaign_path(campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
       <i class="icon-copy"></i>
     <% end %>
     <%= link_to campaign_path(campaign), class: "pad-side", title: t("defaults.delete"), method: :delete, data: { confirm: t(".confirm_delete") } do %>

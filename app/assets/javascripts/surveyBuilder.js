@@ -110,7 +110,7 @@ PT.Input = function(){
   self.copy = function(input, event) {
     $.ajax({
       url: Routes.clone_input_path(self.id()),
-      type: 'GET',
+      type: 'POST',
       dataType: 'json'
     })
     .done(function(response) {
