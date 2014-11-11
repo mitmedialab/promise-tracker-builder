@@ -16,6 +16,8 @@ PromiseTracker::Application.routes.draw do
 
   post '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
 
+  get '/download', to: 'home#download', as: 'download'
+
   scope "(:locale)", locale: /en|pt-BR/ do
     resources :users
     resources :campaigns

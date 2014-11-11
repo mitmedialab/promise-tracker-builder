@@ -71,6 +71,7 @@ en:
   defaults:
     save: "Save"
     cancel: "Cancel"
+    download: "Download"
     edit: "Edit"
     close: "Close"
     copy: "Copy"
@@ -95,6 +96,10 @@ en:
       tag_line: "Data collection for civic action"
       process_line: "Strategic, community-driven advocacy"
       create_account: "Create a free account"
+
+    download:
+      download_link: "Download the mobile app"
+      app_description: "With the Promise Tracker mobile app you can fill out surveys and collect data in your community!"
 
   campaigns:
     status:

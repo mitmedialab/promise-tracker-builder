@@ -71,6 +71,7 @@ pt-BR:
   defaults:
     save: "Salvar"
     cancel: "Cancelar"
+    download: "Baixar"
     edit: "Editar"
     close: "Fechar"
     copy: "Duplicar"
@@ -97,6 +98,10 @@ pt-BR:
       process_line: "O Nosso Processo"
       process_description: 
       create_account: "Criar uma conta gratuita"
+
+    download:
+      download_link: "Baixar o aplicativo móvel"
+      app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Promise Tracker e coletar dados!"
 
   campaigns:
     status:
