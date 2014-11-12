@@ -65,9 +65,8 @@
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
 
   $.getScript("/highcharts.js", function(){
-    PT.renderMonitorViz();
+    PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
   });
 </script>

@@ -179,3 +179,7 @@ PT.renderMonitorViz = function(){
     }
   });
 };
+
+$(function(){
+  PT.renderMonitorViz();
+})
