@@ -15,19 +15,16 @@
       <div class="campaign-info-box">
         <h1 class="response-count"></h1>
         <p><%= t(".responses") %></p>
-        <div class="graph-bar current">current</div>
-        <div class="graph-bar target">target</div>
-        <br>
+        <div id="status-bars"></div>
 
         <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
         <%= @campaign.start_date.strftime("%-d %b %Y") %>
-        <br><br>
 
         <% if @campaign.end_date %>
           <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
           <% @campaign.end_date.strftime("%-d %b %Y") %>
         <% elsif @campaign.status == "active" %>
-          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning" %>
+          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning margin-top" %>
         <% end %>     
       </div>
     </div>
@@ -64,7 +61,7 @@
     <% end %>
   </div>
 </div>
-
+<script type="text/javascript" src="/highcharts.js"></script>
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
   PT.campaign = <%= raw @campaign.to_json %>;

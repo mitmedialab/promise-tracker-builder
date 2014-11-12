@@ -10,7 +10,65 @@ PT.retrieveResponses = function(surveyId, message){
   });
 };
 
-PT.renderGraph = function(data, containerId){
+PT.renderStatusBars = function(containerId, currentResponseCount, targetResponseCount){
+  $(containerId).highcharts({
+    chart: {
+      type: "bar",
+      margin: 0
+    },
+    title: {
+      text: ""
+    },
+    xAxis: {
+      lineColor: 'transparent',
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      gridLineColor: 'transparent',
+      labels: {
+        enabled: false
+      }
+    },
+    tooltip: {
+      valueSuffix: " respostas",
+      headerFormat: ""
+    },
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    credits: {
+      enabled: false
+    },
+    series: [
+      {
+        name: "Target",
+        data: [targetResponseCount],
+        pointPadding: 0,
+        groupPadding: 0,
+        color: "#5fb2a6",
+      },
+      {
+        name: "Current",
+        data: [currentResponseCount],
+        pointPadding: 0,
+        groupPadding: 0,
+        color: "#66c6ba"
+      }
+    ]
+  });
+};
+
+
+PT.renderActivityGraph = function(data, containerId){
   // Setup Variables //
   var $container, height, width, margins, svg, graph, x, y, 
       xAxis, yAxis, xExtene, line, startLine, plotPoints;
@@ -105,16 +163,19 @@ PT.renderGraph = function(data, containerId){
 
 PT.renderMonitorViz = function(){
   dispatcher.subscribe('monitordataloaded', function(data){
-    var responseCount = data.length;
-    $(".response-count").html(responseCount);
-    $(".graph-bar.current").css("width", responseCount / PT.campaign.submissions_target * 100);
-    PT.responsesPerDay = d3.nest()
-      .key(function(d) {
-        var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
-        return new Date(day);
-      })
-      .entries(data.responses);
+    if(data.responses){
+      var responseCount = data.responses.length;
+      
+      $(".response-count").html(responseCount);
+      PT.renderStatusBars("#status-bars", responseCount, PT.campaign.submissions_target);
+      PT.responsesPerDay = d3.nest()
+        .key(function(d) {
+          var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
+          return new Date(day);
+        })
+        .entries(data.responses);
 
-    PT.renderGraph(PT.responsesPerDay, "#activity-graph");
+      PT.renderActivityGraph(PT.responsesPerDay, "#activity-graph");
+    }
   });
 };
