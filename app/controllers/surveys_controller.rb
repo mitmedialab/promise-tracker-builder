@@ -1,7 +1,7 @@
 require 'rexml/document'
 
 class SurveysController < ApplicationController
-  before_action :authenticate_user!, only: [:activate, :close, :destroy, :clone]
+  before_action :authenticate_user!, except: [:test_builder, :new]
 
   layout 'survey_builder', only: [:test_builder, :show]
 

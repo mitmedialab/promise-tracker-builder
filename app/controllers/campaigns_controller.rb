@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
   layout 'full-width', only: [:launch, :monitor, :show, :share, :index]
+  before_filter :authenticate_user!, except: [:share]
 
   def index
     @campaign = Campaign.new
