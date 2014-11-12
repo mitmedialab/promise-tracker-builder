@@ -16,7 +16,6 @@
 
     #map-viz {
       width: 100%;
-      // background-image: image-url("map-placeholder.jpg");
 
       .leaflet-container img {
         width: 100%;
@@ -35,8 +34,12 @@
         max-height: 300px;
         overflow: auto;
 
+        td {
+          padding: 0px 10px;
+        }
+
         .table-lable{
-          padding: 5px 10px;
+          padding-top: 10px;
           max-width: 350px;
           font-weight: bold;
         }
@@ -190,8 +193,23 @@
 }
 
 @media (max-width: 992px) {
+
   .viz-panel {
     height: auto;
+
+    .featured-viz #map-viz {
+      .map-info-window-image{
+        float: left; 
+        img {
+          max-width: 100px;
+          max-height: 150px;
+        }
+      }
+
+      .map-info-table .table-lable {
+        max-width: 150px;
+      }
+    }
 
     #graph-viz {
       img.small {

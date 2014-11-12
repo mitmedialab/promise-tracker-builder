@@ -78,7 +78,7 @@ PT.renderGoogleMap = function(serverResponse){
     if(Object.keys(displayableAnswers).length > 0){
       infoWindowTableHtml = '<div class="map-info-window-table"><table>';
       for(var i in displayableAnswers){
-        infoWindowTableHtml += '<tr><td class="table-lable">'+i+'</td><td class="table-content">'+displayableAnswers[i]+'</td></tr>';
+        infoWindowTableHtml += '<tr><td class="table-lable">'+i+'</td></tr><tr><td class="table-content">'+displayableAnswers[i]+'</td></tr>';
       }
       infoWindowTableHtml += '</table></div>';
     }
