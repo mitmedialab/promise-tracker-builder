@@ -20,6 +20,9 @@ module PromiseTracker
     # set default locale to :en
     I18n.default_locale = :en
 
+    #handle status codes in routes
+    config.exceptions_app = self.routes
+
     config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
       allow do
         origins '*'

@@ -86,6 +86,12 @@ en:
       no_errors: "Your form looks ready to go!"
       confirm_save: "Your changes have been saved."
 
+  errors:
+    sorry: "Sorry!"
+    resource_not_found: "We couldn't find that page"
+    forbidden: "Access not unauthorized"
+    internal_error: "Something went wrong..."
+
   layouts:
     header:
       home: "Home"

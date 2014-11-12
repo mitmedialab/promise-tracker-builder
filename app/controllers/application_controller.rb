@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :set_locale
-  around_filter :catch_not_found
+  # around_filter :catch_not_found
  
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def catch_not_found
     yield
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_url, :flash => { :error => "Record not found." }
+    redirect_to resource_not_found, :flash => { :error => "Record not found." }
   end
 
 end

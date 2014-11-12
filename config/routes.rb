@@ -1,6 +1,7 @@
 PromiseTracker::Application.routes.draw do
   devise_for :users
   root to: 'home#index'
+  match ':status', via: [:get, :post], to: 'errors#show', constraints: {status: /\d{3}/ }
 
   get '/surveys/:id/preview', to: 'surveys#preview', as: 'preview_survey'
   get '/surveys/test', to: 'surveys#test_builder', as: 'test_builder'

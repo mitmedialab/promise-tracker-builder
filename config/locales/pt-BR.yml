@@ -86,6 +86,12 @@ pt-BR:
       no_errors: "Seu formulário não tem erros."
       confirm_save: "Suas modificações foram salvadas"
 
+  errors:
+    sorry: "Desculpe!"
+    resource_not_found: "Não conseguimos encontrar essa página"
+    forbidden: "Accesso não autorizado"
+    internal_error: "Algo aconteceu"
+
   layouts:
     header:
       home: "Página inicial"
