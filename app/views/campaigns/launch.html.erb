@@ -29,7 +29,7 @@
         <%= render partial: "goals", locals: {campaign: @campaign} %>
       </div>
       <div class="center">
-        <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-default" %>
+        <%= link_to t(".edit_campaign"), edit_campaign_path(@campaign), class: "btn btn-default" %>
       </div>
       <%= render partial: 'form_buttons' %>
     </div>

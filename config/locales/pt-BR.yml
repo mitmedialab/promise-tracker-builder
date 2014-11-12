@@ -154,7 +154,7 @@ pt-BR:
       launch_campaign: "Publicar este formulário"
       launch_info: "Quando você publica este formulário, não poderá editá-lo mais."
       launch_confirmation: "Tem certeza que deseja publicar este formulário?"
-      edit_goals: "Editar objetivos"
+      edit_campaign: "Editar ação"
 
     monitor:
       status_text: "Este formulário está "
@@ -205,7 +205,7 @@ pt-BR:
     show:
       campaign_goals: "Descrição"
       campaign_survey: "Formulário"
-      edit_goals: "Editar objetivos"  
+      edit_campaign: "Editar ação"  
       edit_survey: "Editar formulário"
       monitor_progress: "Monitorar as respostas"
       launch_survey: "Publicar"

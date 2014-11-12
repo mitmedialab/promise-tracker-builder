@@ -11,7 +11,7 @@
     <div class="col-md-5" id="campaign-goals">
       <div class="section-header">
         <h2 class="title inline"><%= t(".campaign_goals") %></h2>
-        <%= link_to t(".edit_goals"), edit_campaign_path(@campaign), class: "btn btn-info right" %>
+        <%= link_to t(".edit_campaign"), edit_campaign_path(@campaign), class: "btn btn-info right" %>
       </div>
       <%= render partial: "goals", locals: {campaign: @campaign} %>
     </div>
