@@ -100,7 +100,7 @@
 #survey-body {
   background: $light-grey;
   min-height: 120px;
-  padding: 20px 20px 20px 40px;
+  padding: 20px;
   position: relative;
   text-align: left;
   width: 100%;
@@ -134,7 +134,7 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    left: 65px;
+    left: 45px;
     border: 2px dotted $med-grey;
     margin-bottom: 0;
     display: none;
@@ -149,6 +149,10 @@
     border: 1px solid #eee;
     padding: 20px; 
     position: relative;
+
+    p.label-text {
+      margin-right: 150px;
+    }
 
     &.invalid {
       border-left: 5px solid $error;

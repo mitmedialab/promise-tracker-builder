@@ -61,7 +61,7 @@
         <!-- /ko -->
 
         <!-- ko ifnot: inEdit -->
-        <p data-bind="text: $data.label"></p>
+        <p data-bind="text: $data.label" class="label-text"></p>
         <div class="modify">
           <a href="#" class="btn" data-bind="click: edit"><%= t("defaults.edit") %></a>
           <a href="#" class="btn" title="<%= t("defaults.copy") %>" data-bind="click: copy"><i class="icon-copy"></i> </a>
