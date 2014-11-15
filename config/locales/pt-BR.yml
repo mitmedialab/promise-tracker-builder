@@ -1,5 +1,5 @@
 pt-BR:
-  app_name: "Monitorando a Comunidade"
+  app_name: "Monitorando a Cidade"
   activerecord:
     errors:
       models:
@@ -105,9 +105,15 @@ pt-BR:
     index:
       welcome: "Começar com Promise Tracker"
       tag_line: "Coleta de dados para a ação cívica"
-      project_description: 
+      project_description: "Monitorando a Comunidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar ações locais do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando as Metas ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
       process_line: "O Nosso Processo"
       process_description: 
+      phase_1_title: "Definir objectivos & criar formulário"
+      phase_1_description: ""
+      phase_2_title: "Coletar dados no campo"
+      phase_2_description: ""
+      phase_3_title: "Compartilhar & visualizer dados"
+      phase_3_description: ""
       create_account: "Criar uma conta gratuita"
 
     download:
@@ -134,7 +140,7 @@ pt-BR:
       new_campaign: "Criar uma nova ação"
       my_campaigns: "Minhas ações"
       greeting: "Oi"
-      welcome_text: "Bem-vindo ao site Monitorando a Comunidade!"
+      welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
       get_started: "Que tal criar sua primeira açāo?"
 
     new:

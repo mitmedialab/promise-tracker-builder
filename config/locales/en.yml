@@ -105,9 +105,15 @@ en:
     index:
       welcome: "Get started"
       tag_line: "Data collection for civic action"
-      project_description: 
+      project_description: "Promise Tracker is a citizen monitoring platform designed to help communities track local issues & initiatives and advocate for greater accountability. The Promise Tracker tools allow users to identify key issues that affect their daily lives, organize local data collection campaigns, and create compelling visualizations to drive positive social change."
       process_line: "Strategic, community-driven advocacy"
       process_description: 
+      phase_1_title: "Define objective & build survey"
+      phase_1_description: Develop the strategy for your data collection campaign by identifying key objectives and the target audiences for collected data. Build a custom survey for use in data collection.
+      phase_2_title: "Collect data"
+      phase_2_description: "Gather photos, locations, and responses from the field with the mobile app. Track incoming responses online and access guides to help organize & mobilize data collectors."
+      phase_3_title: "Share data"
+      phase_3_description: "View collected data in a variety of formats including maps, image galleries, graphs, and data reports to share with key stakeholders both online and offline."
       create_account: "Create a free account"
 
     download:
