@@ -169,6 +169,7 @@ pt-BR:
 
     monitor:
       status_text: "Este formulário está "
+      survey_code: "Pode baixar e preencher este formulário usando o código"
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de respostas"
       close: "Fechar esta ação"

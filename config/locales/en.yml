@@ -169,6 +169,7 @@ en:
 
     monitor:
       status_text: "This survey is "
+      survey_code: "Download and fill out this survey with code"
       close_confirmation: "Once closed, this survey cannot be opened again."
       number_of_responses: "Number of responses"
       close: "Close camaign"
