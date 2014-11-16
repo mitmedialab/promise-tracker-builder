@@ -58,8 +58,10 @@ class CampaignsController < ApplicationController
       title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}"
     )
 
-    campaign_clone.survey = campaign.survey.clone
-    campaign_clone.survey.update_attribute(:title, campaign_clone.title)
+    if campaign.survey
+      campaign_clone.survey = campaign.survey.clone
+      campaign_clone.survey.update_attribute(:title, campaign_clone.title)
+    end
 
     current_user.campaigns << campaign_clone
     redirect_to campaign_path(campaign_clone)

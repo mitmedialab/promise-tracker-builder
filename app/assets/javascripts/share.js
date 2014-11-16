@@ -131,7 +131,12 @@ PT.renderGoogleMap = function(serverResponse){
         }
       }
       if(lat==null || lng==null){
-        continue; // find if next response is a geolocation
+        if(response.location.lat !== 'undefined' && response.location.long !== 'undefined'){
+          lat = response.location.lat;
+          lon = response.location.lon;
+        } else {
+          continue; // find if next response is a geolocation
+        }
       }
 
       // 2. create that marker;
