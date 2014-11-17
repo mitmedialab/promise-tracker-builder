@@ -131,9 +131,9 @@ PT.renderGoogleMap = function(serverResponse){
         }
       }
       if(lat==null || lng==null){
-        if(response.location.lat !== 'undefined' && response.location.long !== 'undefined'){
-          lat = response.location.lat;
-          lon = response.location.lon;
+        if(response.locationstamp.lat !== 'undefined' && response.locationstamp.long !== 'undefined'){
+          lat = response.locationstamp.lat;
+          lon = response.locationstamp.lon;
         } else {
           continue; // find if next response is a geolocation
         }
