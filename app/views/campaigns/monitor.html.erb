@@ -19,8 +19,7 @@
         <div id="status-bars"></div>
 
         <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
-        <%= @campaign.start_date.strftime("%-d %b %Y") %>
-
+        <p><%= @campaign.start_date.strftime("%-d %b %Y") %></p>
         <% if @campaign.end_date %>
           <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
           <% @campaign.end_date.strftime("%-d %b %Y") %>
