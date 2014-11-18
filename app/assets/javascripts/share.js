@@ -121,16 +121,16 @@ PT.renderGoogleMap = function(serverResponse){
 
       // 1 find geo location
       var lat = null,
-          lng = null;
+          lon = null;
       for(var j=0,len2=response.answers.length;j<len2;j++){
         var answer = response.answers[j];
         if(typeof answer.input_type!=='undefined' && answer.input_type=='location' && typeof answer.value!=='undefined' && typeof answer.value.lon!=='undefined'){
           lat = answer.value.lat;
-          lng = answer.value.lon;
+          lon = answer.value.lon;
           break;
         }
       }
-      if(lat==null || lng==null){
+      if(lat==null || lon==null){
         if(response.locationstamp.lat !== 'undefined' && response.locationstamp.long !== 'undefined'){
           lat = response.locationstamp.lat;
           lon = response.locationstamp.lon;
@@ -140,14 +140,16 @@ PT.renderGoogleMap = function(serverResponse){
       }
 
       // 2. create that marker;
-      var marker = new google.maps.Marker({
-        map: map,
-        position: new google.maps.LatLng(lat, lng)
-      });
-      markers.push(marker);
+      if(lat && lon){
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(lat, lon)
+        });
+        markers.push(marker);
 
-      // 3. attach onclick event
-      attachMarkerClickEvent(marker, response);
+        // 3. attach onclick event
+        attachMarkerClickEvent(marker, response);
+      }
     } // for surveyResponses - created map markers
 
     // scale map viewport to include all the markers.
