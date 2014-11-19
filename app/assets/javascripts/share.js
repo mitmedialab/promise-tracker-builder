@@ -131,7 +131,7 @@ PT.renderGoogleMap = function(serverResponse){
         }
       }
       if(lat==null || lon==null){
-        if(response.locationstamp.lat !== 'undefined' && response.locationstamp.long !== 'undefined'){
+        if(response.locationstamp && response.locationstamp.lat !== 'undefined' && response.locationstamp.long !== 'undefined'){
           lat = response.locationstamp.lat;
           lon = response.locationstamp.lon;
         } else {
