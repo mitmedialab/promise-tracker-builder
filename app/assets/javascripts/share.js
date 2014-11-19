@@ -70,7 +70,7 @@ PT.renderGoogleMap = function(serverResponse){
     var infoWindowImageHtml='';
     if(image !== null){
       infoWindowImageHtml = 
-      '<div class="map-info-window-image">'+
+      '<div class="map-info-window-image" id="' + response.id + '">'+
         '<img src="'+image+'" alt="answer image"/>'+
       '</div>';
     } 
