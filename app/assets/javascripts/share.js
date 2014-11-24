@@ -70,7 +70,7 @@ PT.renderGoogleMap = function(serverResponse){
     var infoWindowImageHtml='';
     if(image !== null){
       infoWindowImageHtml = 
-      '<div class="map-info-window-image" id="' + response.id + '">'+
+      '<div class="map-info-window-image">'+
         '<img src="'+image+'" alt="answer image"/>'+
       '</div>';
     } 
@@ -83,7 +83,7 @@ PT.renderGoogleMap = function(serverResponse){
       infoWindowTableHtml += '</table></div>';
     }
     var infoWindowContentHtml = 
-      '<div class="map-info-window-content">'+
+      '<div class="map-info-window-content" id="' + response.id + '">'+
         infoWindowImageHtml+
         infoWindowTableHtml+
       '</div>';
