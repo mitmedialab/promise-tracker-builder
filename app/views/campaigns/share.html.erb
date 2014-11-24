@@ -5,6 +5,7 @@
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
     <div class="tab-pane fade in active" id="map-viz"></div>
+    <div class="tab-pane" id="image-viz"></div>
     <div class="tab-pane" id="graph-viz">
       <div class="row">
         <div class="col-sm-8">
@@ -17,7 +18,6 @@
         </div>
       </div>
     </div>
-    <div class="tab-pane" id="image-viz"></div>
   </div>
 
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
@@ -25,15 +25,15 @@
       <div class="viz map">
         <h4 class="title legend"><%= t(".map") %></h4>
       </div>
-    </a>  
-    <a href="#graph-viz" role="tab" data-toggle="tab">
-      <div class="viz graph">
-        <h4 class="title legend"><%= t(".graphs") %></h4>
-      </div>
     </a>
     <a href="#image-viz" role="tab" data-toggle="tab">
       <div class="viz image">
         <h4 class="title legend"><%= t(".photos") %></h4>
+      </div>
+    </a>
+    <a href="#graph-viz" role="tab" data-toggle="tab">
+      <div class="viz graph">
+        <h4 class="title legend"><%= t(".graphs") %></h4>
       </div>
     </a>
   </div>
