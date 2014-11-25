@@ -90,7 +90,9 @@
   });
 
   $("#graph-tab").click(function(){
-    PT.renderGraphs(PT.aggregate, "#graph-container");
+    window.setTimeout(function(){
+      PT.renderGraphs(PT.aggregate, "#graph-container");
+    }, 1000) 
   });
 
   $.getScript("/highcharts.js", function(){
