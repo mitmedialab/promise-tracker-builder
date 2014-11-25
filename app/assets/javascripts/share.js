@@ -178,9 +178,68 @@ PT.renderGoogleMap = function(serverResponse){
   }
 };
 
+PT.aggregateData = function(data){
+  var survey = data.survey;
+  var responses = data.responses;
+  var answerAggregates = [];
+
+  survey.inputs.forEach(function(input){
+    var answers = [];
+    var tally;
+    var inputSummary = {
+      id: input.id,
+      label: input.label,
+      type: input.input_type,
+      answers: {}
+    };
+
+    responses.forEach(function(response){
+      answers.push(response.answers.filter(function(answer){
+        return answer.id == input.id;
+      })[0]);
+    });
+
+    switch(input.input_type){
+      case 'select1':
+        input.options.forEach(function(option){
+          tally = answers.reduce(function(prev, current){
+            return current.value == option ? prev + 1 : prev;
+          }, 0);
+
+          inputSummary.answers[option] = tally;
+        })
+        break;
+
+      case 'select':
+        input.options.forEach(function(option){
+          tally = answers.reduce(function(acc, current){
+            return current.value && current.value.indexOf(option) !== -1 ? acc + 1 : acc;
+          }, 0);
+
+          inputSummary.answers[option] = tally;
+        })
+        break;
+
+      case 'number':
+      case 'text':
+        inputSummary.answers = answers.reduce(function(acc, current){
+          if(current.value){
+            acc.push(current.value);
+          }
+          return acc;
+        },[]);
+        break;
+    }
+    answerAggregates.push(inputSummary);
+  })
+
+  return answerAggregates;
+};
+
 $(function(){
   dispatcher.subscribe('sharedataloaded', function(data){
     PT.populateImages(PT.responses, "#image-viz");
     PT.renderGoogleMap(data);
+    PT.aggregate = PT.aggregateData(data);
   })
 });
