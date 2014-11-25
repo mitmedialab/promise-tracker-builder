@@ -47,15 +47,24 @@
     }
 
     #graph-viz {
-      padding: 20px 100px;
       border-top: 10px solid $light-grey;
       border-bottom: 10px solid $light-grey;
+      overflow-y: scroll;
 
       img {
         width: 100%;
         height: auto;
         vertical-align: center;
         display: inline-block;
+      }
+
+      #graph-container {
+        padding: 40px;
+      }
+
+      .graph-square {
+        border-bottom: 1px solid $light-grey;
+        padding: 20px 0;
       }
     }
 

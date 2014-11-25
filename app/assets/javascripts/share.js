@@ -1,5 +1,15 @@
 var PT = PT || {};
 
+PT.colors = [
+  "#f5be59", 
+  "#66c6ba", 
+  "#ea7669", 
+  "#545757", 
+  "#42847b", 
+  "#efa9a3",
+  "#e6e7e8"
+];
+
 PT.renderCartoDBMap = function(containerId){
   var url, mapOptions;
   url = "http://cfcm.cartodb.com/api/v2/viz/21e86fd4-5887-11e4-b28c-0e018d66dc29/viz.json";
@@ -22,8 +32,10 @@ PT.renderCartoDBMap = function(containerId){
 };
 
 PT.populateImages = function(responses, containerId){
-  var $container = $(containerId), images, image;
+  var $container = $(containerId);
   var images = [];
+  var image;
+
   responses.forEach(function(response){
     response.answers.forEach(function(answer){
 
@@ -190,7 +202,7 @@ PT.aggregateData = function(data){
       id: input.id,
       label: input.label,
       type: input.input_type,
-      answers: {}
+      answers: []
     };
 
     responses.forEach(function(response){
@@ -206,7 +218,7 @@ PT.aggregateData = function(data){
             return current.value == option ? prev + 1 : prev;
           }, 0);
 
-          inputSummary.answers[option] = tally;
+          inputSummary.answers.push({label: option, tally: tally});
         })
         break;
 
@@ -216,14 +228,14 @@ PT.aggregateData = function(data){
             return current.value && current.value.indexOf(option) !== -1 ? acc + 1 : acc;
           }, 0);
 
-          inputSummary.answers[option] = tally;
+          inputSummary.answers.push({label: option, tally: tally});
         })
         break;
 
       case 'number':
       case 'text':
         inputSummary.answers = answers.reduce(function(acc, current){
-          if(current.value){
+          if(current && current.value){
             acc.push(current.value);
           }
           return acc;
@@ -234,6 +246,126 @@ PT.aggregateData = function(data){
   })
 
   return answerAggregates;
+};
+
+PT.renderGraphs = function(aggregates, containerId){
+  var $container = $(containerId);
+  var $graphSquare;
+
+  aggregates.forEach(function(input){
+    if(input.type == "select" || input.type == "select1"){
+      $graphSquare = $(document.createElement("div"));
+
+      $graphSquare.addClass("col-md-12 graph-square");
+      $graphSquare.attr("id", "graph-" + input.id)
+      $container.append($graphSquare);
+
+      switch(input.type){
+        case "select1":
+          PT.renderPieChart("#graph-" + input.id, input)
+          break;
+
+        case "select":
+          PT.renderColumnChart("#graph-" + input.id, input)
+          break;
+      }
+    }
+  })
+
+};
+
+PT.renderPieChart = function(containerId, inputSummary){
+  var data = inputSummary.answers.map(function(answer){
+    return [answer.label, answer.tally];
+  });
+
+  $(containerId).highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotShadow: false,
+    },
+    colors: PT.colors,
+    title: {
+      text: inputSummary.label
+    },
+    tooltip: {
+      pointFormat: '<b>{point.percentage:.1f}%</b>'
+    },
+    credits: {
+      enabled: false
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          style: {
+              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+          }
+        }
+      }
+    },
+    series: [{
+      type: 'pie',
+      name: '',
+      data: data
+    }]
+  });
+};
+
+PT.renderColumnChart = function(containerId, inputSummary){
+  var series = inputSummary.answers.map(function(answer){
+    return {
+      name: answer.label, 
+      data: [answer.tally]
+    };
+  });
+
+  $(containerId).highcharts({
+    chart: {
+      type: 'column',
+      plotBackgroundColor: null,
+      plotShadow: false,
+    },
+    colors: PT.colors,
+    title: {
+      text: inputSummary.label
+    },
+    tooltip: {
+      headerFormat: '{point.series.name}',
+      pointFormat: '<br><b>{point.y}</b>'
+    },
+    credits: {
+      enabled: false
+    },
+    xAxis: {
+      lineColor: 'transparent',
+      tickWidth: 0,
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      allowDecimals: false,
+      title: {
+        text: ''
+      }
+    },
+    plotOptions: {
+      column: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        pointPadding: .25,
+        borderWidth: 0,
+        dataLabels: {
+          enabled: false,
+        }
+      }
+    },
+    series: series
+  });
 };
 
 $(function(){

@@ -7,31 +7,22 @@
     <div class="tab-pane fade in active" id="map-viz"></div>
     <div class="tab-pane" id="image-viz"></div>
     <div class="tab-pane" id="graph-viz">
-      <div class="row">
-        <div class="col-sm-8">
-          <%= image_tag("graphs-line-filled.png") %>
-          <%= image_tag("graphs-bar.png") %>
-        </div>
-        <div class="col-sm-4">
-          <%= image_tag("graphs-pie.png", class: "small") %>
-          <%= image_tag("graphs-column.png", class: "small") %>
-        </div>
-      </div>
+      <div class="row" id="graph-container"></div>
     </div>
   </div>
 
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
-    <a href="#map-viz" role="tab" data-toggle="tab" class="active">
+    <a href="#map-viz" role="tab" data-toggle="tab" class="active" id="map-tab">
       <div class="viz map">
         <h4 class="title legend"><%= t(".map") %></h4>
       </div>
     </a>
-    <a href="#image-viz" role="tab" data-toggle="tab">
+    <a href="#image-viz" role="tab" data-toggle="tab" id="image-tab">
       <div class="viz image">
         <h4 class="title legend"><%= t(".photos") %></h4>
       </div>
     </a>
-    <a href="#graph-viz" role="tab" data-toggle="tab">
+    <a href="#graph-viz" role="tab" data-toggle="tab" id="graph-tab">
       <div class="viz graph">
         <h4 class="title legend"><%= t(".graphs") %></h4>
       </div>
@@ -91,13 +82,19 @@
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
-  $("#viz-tabs a").click(function (e) {
+  $("#viz-tabs a").click(function(e) {
     e.preventDefault();
     $(this).tab("show");
     $("#viz-tabs a").removeClass("active");
     $(this).addClass("active");
   });
 
-  PT.retrieveResponses(<%= @campaign.survey.id %>, 'sharedataloaded');
+  $("#graph-tab").click(function(){
+    PT.renderGraphs(PT.aggregate, "#graph-container");
+  });
+
+  $.getScript("/highcharts.js", function(){
+    PT.retrieveResponses(<%= @campaign.survey.id %>, 'sharedataloaded');
+  });
 </script>
 
