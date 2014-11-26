@@ -129,7 +129,7 @@ pt-BR:
 
     nav:
       view_survey: "Ver formulário"
-      monitor_responses: "Monitorar respostas"
+      monitor_responses: "Monitorar registros"
       share_data: "Compartilhar dados"
 
     activate: 
@@ -171,9 +171,9 @@ pt-BR:
       status_text: "Este formulário está "
       survey_code: "Pode baixar e preencher este formulário usando o código"
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
-      number_of_responses: "Número de respostas"
+      number_of_responses: "Número de registros"
       close: "Fechar esta ação"
-      responses: "Respostas"
+      responses: "registros"
       current: "Atual"
       target: "Desejado"
       publicize_form: "Mobilizar os amigos para coletar dados"
@@ -209,7 +209,7 @@ pt-BR:
       tips:
         data_collectors: "Talvez sejam necessárias muitas pessoas para coletar os dados. Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você nesta campanha?"
         goal: "Mudanças sociais normalmente começam com pequenos passos. O que é possível alcançar no futuro próximo no tema escolhido?"
-        submissions_target: "Pense em quantas respostas você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
+        submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
     form_buttons:
@@ -221,7 +221,7 @@ pt-BR:
       campaign_survey: "Formulário"
       edit_campaign: "Editar ação"  
       edit_survey: "Editar formulário"
-      monitor_progress: "Monitorar as respostas"
+      monitor_progress: "Monitorar os registros"
       launch_survey: "Publicar"
       create_survey: "Criar o formulário para esta ação"
 

@@ -251,6 +251,7 @@ PT.aggregateData = function(data){
 PT.renderGraphs = function(aggregates, containerId){
   var $container = $(containerId);
   var $graphSquare;
+  $container.empty();
 
   aggregates.forEach(function(input){
     if(input.type == "select" || input.type == "select1"){
@@ -289,7 +290,7 @@ PT.renderPieChart = function(containerId, inputSummary){
       text: inputSummary.label
     },
     tooltip: {
-      pointFormat: '<b>{point.percentage:.1f}%</b>'
+      pointFormat: '<b>{point.percentage:.1f}%</b><br>{point.count}'
     },
     credits: {
       enabled: false
@@ -300,7 +301,7 @@ PT.renderPieChart = function(containerId, inputSummary){
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %<br><span style="color: grey; font-size: .9em;">({point.y}' + I18n.t("campaigns.monitor.responses") + ')</span>',
           style: {
               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
           }
