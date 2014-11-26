@@ -51,8 +51,18 @@
       border-bottom: 10px solid $light-grey;
       overflow-y: scroll;
 
+      #graph-placeholder {
+        text-align: center;
+        width: 75%;
+        margin: 0 auto;
+
+        #graph-images {
+          margin-top: 50px;
+        }
+      }
+
       img {
-        width: 100%;
+        width: 30%;
         height: auto;
         vertical-align: center;
         display: inline-block;

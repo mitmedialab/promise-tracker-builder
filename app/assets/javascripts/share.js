@@ -249,29 +249,34 @@ PT.aggregateData = function(data){
 };
 
 PT.renderGraphs = function(aggregates, containerId){
-  var $container = $(containerId);
-  var $graphSquare;
-  $container.empty();
 
-  aggregates.forEach(function(input){
-    if(input.type == "select" || input.type == "select1"){
-      $graphSquare = $(document.createElement("div"));
+  if(aggregates.length > 0){
+    var $container = $(containerId);
+    var $graphSquare;
 
-      $graphSquare.addClass("col-md-12 graph-square");
-      $graphSquare.attr("id", "graph-" + input.id)
-      $container.append($graphSquare);
+    $("#graph-placeholder").hide();
+    $container.empty();
+    
+    aggregates.forEach(function(input){
+      if(input.type == "select" || input.type == "select1"){
+        $graphSquare = $(document.createElement("div"));
 
-      switch(input.type){
-        case "select1":
-          PT.renderPieChart("#graph-" + input.id, input)
-          break;
+        $graphSquare.addClass("col-md-12 graph-square");
+        $graphSquare.attr("id", "graph-" + input.id)
+        $container.append($graphSquare);
 
-        case "select":
-          PT.renderColumnChart("#graph-" + input.id, input)
-          break;
+        switch(input.type){
+          case "select1":
+            PT.renderPieChart("#graph-" + input.id, input)
+            break;
+
+          case "select":
+            PT.renderColumnChart("#graph-" + input.id, input)
+            break;
+        }
       }
-    }
-  })
+    })
+  }
 
 };
 

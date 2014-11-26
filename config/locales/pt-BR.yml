@@ -187,6 +187,7 @@ pt-BR:
       map: "Mapa" 
       photos: "Fotos"
       graphs: "Gráficos"
+      graph_placeholder: "Quando tiver registros, vai poder visualizer o agregado dos dados aqui."
       share_data: "Compartilhar seus dados"
       data_reports: "Relatórios de dados"
       contact: "Pessoa de contacto"
