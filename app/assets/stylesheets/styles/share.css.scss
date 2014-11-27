@@ -177,7 +177,7 @@
   .description {
     width: 75%;
     float: left;
-    min-height: 75px;
+    margin-top: 15px;
   }
 
   label {
@@ -198,6 +198,8 @@
 
   .report-image {
     display: block;
+    overflow: hidden;
+    margin: 20px 0;
 
     .map {
       width: 48%;
@@ -213,12 +215,13 @@
     }
   }
 
-  .report-graph {
-    clear: both;
-    background: image-url("data-graph-3.png") center top;
-    height: 50px;
-    background-size: cover;
-    margin-bottom: 15px; 
+  #report-graphs-container {
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .small {
+    font-size: .8em;
   }
 }
 

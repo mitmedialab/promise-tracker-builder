@@ -190,8 +190,8 @@ pt-BR:
       graphs: "Gráficos"
       graph_placeholder: "Quando tiver registros, vai poder visualizer o agregado dos dados aqui."
       share_data: "Compartilhar seus dados"
-      data_reports: "Relatórios de dados"
-      contact: "Pessoa de contacto"
+      data_reports: "Relatório de dados"
+      campaign_organizers: "Realizadores da ação"
       learn_more: "Aprender mais sobre esta ação no site"
 
     list_item:

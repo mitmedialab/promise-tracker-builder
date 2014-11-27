@@ -7,7 +7,7 @@
     <div class="tab-pane" id="map-viz"></div>
     <div class="tab-pane" id="image-viz"></div>
     <div class="tab-pane fade in active" id="graph-viz">
-      <div class="row" id="graph-container"></div>
+      <div id="graph-container" class="row"></div>
       <div class="ajax-loading">
         <%= image_tag("ajax-loader.gif") %>
         <h4><%= t("defaults.loading") %></h4>
@@ -41,38 +41,36 @@
   </div>
 </div>
 
-<div class="row section-light report-panel">
+<div class="row section-light report-panel center">
   <div class="page-container">
   <h2 class="title"><%= t(".data_reports") %></h2>
   <br>
 
-    <div class="col-sm-6">
+    <div class="col-sm-8 col-sm-push-2">
       <div class="data-report">
         <div class="header"></div>
 
         <div class="container">
-          <h2 class="title"><%= @campaign.title %></h2>
-          <div class="description">
-            <p><%= @campaign.goal %></p>
-          </div>
           <div class="logo">
             <%= image_tag("PT-logo.png") %>
           </div>
+          <h2 class="title"><%= @campaign.title %></h2>
+          <div class="description">
+            <label><%= Campaign.human_attribute_name(:goal) %></label>
+            <p><%= @campaign.goal %></p>
+          </div>
+          <label><%= t(".campaign_organizers") %></label>
+          <p><%= @campaign.data_collectors %></p>
 
           <div class="report-image">
             <div class="map"></div>
             <div class="image"></div>
           </div>
+          <div id="report-graphs-container">
+            <div id="report-graphs" class="row"></div>
+          </div>
 
-          <div class="report-graph"></div>
-
-          <label><%= Campaign.human_attribute_name(:goal) %></label>
-          <p><%= @campaign.audience %></p>
-
-          <label><%= t(".contact") %></label>
-          <p>Susana Morada, 334-345-8897, susana@gmail.com</p>
-
-          <strong><%= t(".learn_more") %></strong>: promisetracker.com/campaigns/<%= @campaign.title.downcase %>
+          <strong><%= t(".learn_more") %></strong>: <a class="small" href="dev.monitor.promisetracker.org/campaigns/<%= @campaign.id %>">dev.monitor.promisetracker.org/campaigns/<%= @campaign.id %></a>
         </div> 
         <div class="footer"></div> 
       </div>

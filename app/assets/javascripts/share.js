@@ -250,7 +250,8 @@ PT.aggregateData = function(data){
         break;
     }
   })
-
+  
+  PT.renderGraphs(answerAggregates, "#graph-container");
   return answerAggregates;
 };
 
@@ -387,6 +388,5 @@ $(function(){
     PT.populateImages(PT.responses, "#image-viz");
     PT.renderGoogleMap(data);
     PT.aggregate = PT.aggregateData(data);
-    PT.renderGraphs(PT.aggregate, "#graph-container");
   })
 });
