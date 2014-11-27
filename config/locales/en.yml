@@ -82,6 +82,7 @@ en:
     copy: "Copy"
     delete: "Delete"
     back: "Back"
+    loading: "Loading"
     validations:
       required: "This field is required."
       number: "Please enter a valid number."
@@ -187,6 +188,7 @@ en:
       map: "Map" 
       photos: "Photos"
       graphs: "Graphs"
+      graph_placeholder: "Once survey results have been collected, you'll be able to view the data aggregates here."
       share_data: "Share your data online"
       data_reports: "Data reports"
       contact: "Contact person"

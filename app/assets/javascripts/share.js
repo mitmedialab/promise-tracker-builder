@@ -220,6 +220,7 @@ PT.aggregateData = function(data){
 
           inputSummary.answers.push({label: option, tally: tally});
         })
+        answerAggregates.push(inputSummary);
         break;
 
       case 'select':
@@ -230,6 +231,7 @@ PT.aggregateData = function(data){
 
           inputSummary.answers.push({label: option, tally: tally});
         })
+        answerAggregates.push(inputSummary);
         break;
 
       case 'number':
@@ -242,7 +244,6 @@ PT.aggregateData = function(data){
         },[]);
         break;
     }
-    answerAggregates.push(inputSummary);
   })
 
   return answerAggregates;
@@ -256,7 +257,7 @@ PT.renderGraphs = function(aggregates, containerId){
 
     $("#graph-placeholder").hide();
     $container.empty();
-    
+
     aggregates.forEach(function(input){
       if(input.type == "select" || input.type == "select1"){
         $graphSquare = $(document.createElement("div"));
@@ -276,6 +277,8 @@ PT.renderGraphs = function(aggregates, containerId){
         }
       }
     })
+  } else {
+    $("#graph-placeholder").show();
   }
 
 };
@@ -379,5 +382,6 @@ $(function(){
     PT.populateImages(PT.responses, "#image-viz");
     PT.renderGoogleMap(data);
     PT.aggregate = PT.aggregateData(data);
+    PT.renderGraphs(PT.aggregate, "#graph-container");
   })
 });

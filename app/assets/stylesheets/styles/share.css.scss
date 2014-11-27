@@ -1,3 +1,13 @@
+.ajax-loading {
+  text-align: center;
+
+  img {
+    width: 40px !important;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
 .viz-panel, .report-panel {
   margin: 0;
 }
@@ -52,6 +62,7 @@
       overflow-y: scroll;
 
       #graph-placeholder {
+        display: none;
         text-align: center;
         width: 75%;
         margin: 0 auto;

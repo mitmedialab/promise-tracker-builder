@@ -8,6 +8,10 @@
     <div class="tab-pane" id="image-viz"></div>
     <div class="tab-pane fade in active" id="graph-viz">
       <div class="row" id="graph-container"></div>
+      <div class="ajax-loading">
+        <%= image_tag("ajax-loader.gif") %>
+        <h4><%= t("defaults.loading") %></h4>
+      </div>
       <div id="graph-placeholder">
         <h3><%= t(".graph_placeholder") %></h3>
         <div id="graph-images">
@@ -85,7 +89,6 @@
   </div>
 </div>
 
-<script type="text/javascript" src="/masonry.js"></script>
 <script type="text/javascript">
   $("#share-tab").addClass("active-tab");
 
@@ -96,14 +99,24 @@
     $(this).addClass("active");
   });
 
-  $("#graph-tab").click(function(){
-    window.setTimeout(function(){
+  $("#graph-tab").on("shown.bs.tab", function(){
       PT.renderGraphs(PT.aggregate, "#graph-container");
-    }, 1000) 
+  });
+
+  $("#map-tab").on("shown.bs.tab", function(){
+    var map = document.getElementById("map-viz");
+    google.maps.event.trigger(map, "resize");
   });
 
   $.getScript("/highcharts.js", function(){
-    PT.retrieveResponses(<%= @campaign.survey.id %>, 'sharedataloaded');
+    PT.retrieveResponses(<%= @campaign.survey.id %>, "sharedataloaded");
+  });
+
+  $(document).ajaxSend(function(event, request, settings) {
+    $(".ajax-loading").show();
+  });
+
+  $(document).ajaxComplete(function(event, request, settings) {
+    $(".ajax-loading").hide();
   });
 </script>
-
