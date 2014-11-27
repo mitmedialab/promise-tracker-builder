@@ -103,11 +103,6 @@
       PT.renderGraphs(PT.aggregate, "#graph-container");
   });
 
-  $("#map-tab").on("shown.bs.tab", function(){
-    var map = document.getElementById("map-viz");
-    google.maps.event.trigger(map, "resize");
-  });
-
   $.getScript("/highcharts.js", function(){
     PT.retrieveResponses(<%= @campaign.survey.id %>, "sharedataloaded");
   });

@@ -175,6 +175,11 @@ PT.renderGoogleMap = function(serverResponse){
     
     map.fitBounds(bounds);
 
+    $("#map-tab").on("shown.bs.tab", function(){
+      google.maps.event.trigger(map, "resize");
+      map.fitBounds(bounds);
+    });
+
   };  // func mapInit
 
   // load map script
