@@ -1,7 +1,7 @@
 module Api
   module V1
     class CampaignsController < ApplicationController
-      # before_filter :restrict_access
+      before_filter :restrict_access
 
       def index
         if params[:tags]
