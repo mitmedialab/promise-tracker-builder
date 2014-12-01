@@ -41,7 +41,7 @@ class Survey < ActiveRecord::Base
 
     request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
     response = http.request(request)
-    JSON.parse(response.body)['payload']
+    JSON.parse(response.body)['payload'] || []
   end
 
 end

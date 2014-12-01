@@ -10,9 +10,9 @@ module Api
             tag.campaigns if tag
           end.reduce do |a, b|
             a || b
-          end
+          end.select { |c| c.status != 'draft' }
         else
-          campaigns = Campaign.all
+          campaigns = Campaign.all.where.not(status: 'draft')
         end
 
         response = {
@@ -26,14 +26,22 @@ module Api
       def show
         campaign = Campaign.find_by_id(params[:id])
         if campaign
-          response = {
-            status: 'success',
-            payload: {
-              campaign: campaign,
-              survey: campaign.survey,
-              responses: campaign.survey.get_responses
+          if campaign.status == 'draft'
+            response = {
+              status: 'error',
+              error_code: 21,
+              error_message: 'Campaign has not been published'
             }
-          }
+          else
+            response = {
+              status: 'success',
+              payload: {
+                campaign: campaign,
+                survey: campaign.survey,
+                responses: campaign.survey.get_responses
+              }
+            }
+        end
 
           render json: response
         else
