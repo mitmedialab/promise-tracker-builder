@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
   before_action :set_locale
+  after_filter :set_csrf_cookie
  
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -27,5 +27,17 @@ class ApplicationController < ActionController::Base
   def export_i18n_messages
     SimplesIdeias::I18n.export! if Rails.env.development?
   end
+
+  private
+
+  def set_csrf_cookie
+    if protect_against_forgery?
+      cookies['XSRF-TOKEN'] = form_authenticity_token
+    end
+  end
+
+  # def verified_request?
+  #   super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
+  # end
 
 end

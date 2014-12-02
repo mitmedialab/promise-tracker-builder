@@ -7,16 +7,17 @@ class CampaignsController < ApplicationController
     @campaigns = current_user.campaigns.sort_by(&:status)
   end
 
-  def new
-    @campaign = Campaign.new
+  def setup
+    @campaign = Campaign.find(params[:id])
   end
 
   def create
-    @campaign = current_user.campaigns.create(campaign_params)
+    @campaign = current_user.campaigns.find_or_create_by(id: params[:campaign][:id])
+    @campaign.update_attributes(campaign_params)
     if @campaign.save
-      redirect_to campaign_goals_wizard_path(@campaign)
+      render js: "window.location = '#{campaign_goals_wizard_path(@campaign)}'"
     else
-      render json: @campaign.errors.full_messages
+      render json: { errors: @campaign.errors.full_messages }, status: 422
     end
   end
 

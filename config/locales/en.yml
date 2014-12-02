@@ -14,8 +14,9 @@ en:
                 taken:
                 blank:
           campaign:
-            title:
-              too_short:
+            attributes:
+              title:
+                too_short:
 
     models:
       survey: "Survey"

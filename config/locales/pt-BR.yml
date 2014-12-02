@@ -14,8 +14,9 @@ pt-BR:
               taken: "já existe. Por favor, escolha outro nome de usuário"
               blank: "não pode estar em branco"
         campaign:
-          title:
-            too_short: "deve ter pelo menos 5 caracteres"
+          attributes:
+            title:
+              too_short: "deve ter pelo menos 5 caracteres"
 
     models:
       survey: "Formulário"

@@ -13,6 +13,7 @@ class Campaign < ActiveRecord::Base
 
   def clone
     clone = self.dup
+    clone.tags = self.tags
     clone.update_attribute(:status, 'draft')
     clone
   end

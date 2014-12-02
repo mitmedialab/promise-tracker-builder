@@ -4,17 +4,21 @@
       <div class="modal-header">
         <h4 class="modal-title"><%= t(".modal_title") %></h4>
       </div>
-      <%= form_for @campaign do |f| %>
+      <%= form_for @campaign, url: campaigns_path, method: :post, remote: true do |f| %>
       <div class="modal-body">
         <div class="form-group">
           <%= f.label :theme, t(".campaign_theme") %>
           <%= f.select :theme, campaign_themes, {}, { class: "form-control auto-width" } %> 
+          <%= f.hidden_field :id %>
         </div>
         <br>
         <div class="form-group">
           <%= f.label :tile, t(".campaign_title") %>
           <%= f.text_field :title, class: "form-control", autofocus: true, required: true %>
-        </div>  
+        </div> 
+        <div id="errors">
+          <ul></ul>
+        </div> 
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-info"><%= t(".create_campaign") %></button>
@@ -23,3 +27,18 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $("form").on("ajax:error", function(e, data, status, xhr){
+    console.log('error');
+    errors = data.responseJSON.errors;
+    errors.forEach(function(error){
+      $('#errors ul').append('<li>' + errors + '</li>');
+    });
+    $("#errors").addClass("alert alert-danger");
+  });
+
+  $("form").on("ajax:success", function(e, data, status, xhr){
+    console.log('success');
+  });
+</script>

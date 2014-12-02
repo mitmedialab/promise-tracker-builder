@@ -14,6 +14,7 @@ PromiseTracker::Application.routes.draw do
   get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'
   get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
   post '/campaigns/:id/clone', to: 'campaigns#clone', as: 'clone_campaign'
+  get '/campaigns/:id/setup', to: 'campaigns#setup', as: 'setup_campaign'
 
   post '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
 
@@ -29,7 +30,7 @@ PromiseTracker::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :campaigns, only: [:index, :show]
+      resources :campaigns, only: [:index, :show, :create]
     end
   end
 end
