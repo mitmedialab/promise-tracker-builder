@@ -5,9 +5,13 @@ module Api
     class UsersController < ApplicationController
       def create_new_session
         api_key = token_and_options(request)[0]
-        user = User.find_or_create_api_user(params[:user_id], api_key)
+        user = User.find_or_create_api_user(
+          params[:user_id], 
+          params[:username], 
+          api_key)
+
         sign_in(user)
-        end
+        redirect_to campaigns_path
       end
     end
   end

@@ -13,18 +13,20 @@ class User < ActiveRecord::Base
     false
   end
 
-  def self.find_or_create_api_user(user_id, api_key)
-    api_client = ApiKey.find_by(access_token: api_key).client_name.downcase
-    username = "#{api_client}_#{user_id}"
-    user = User.find_by(username: username)
+  def self.find_or_create_api_user(user_id, username, api_key)
+    api_client = ApiKey.find_by(access_token: api_key).client_name
+    user = User.where(
+      api_client_name: api_client,
+      api_client_user_id: user_id).first
 
     if user
       user
     else
       User.create(
-        username: username, 
+        username: "#{username} (#{api_client})", 
         password: Digest::SHA1.hexdigest(username),
-        api_client_name: api_client
+        api_client_name: api_client,
+        api_client_user_id: user_id
       )
     end
   end

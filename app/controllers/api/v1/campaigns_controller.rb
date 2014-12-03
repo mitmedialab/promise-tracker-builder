@@ -54,13 +54,17 @@ module Api
             error_message: 'Campaign not found'
           }
 
-          render json: response
+          render json: response, status: 404
         end
       end
 
       def create
         api_key = token_and_options(request)[0]
-        user = User.find_or_create_api_user(params[:user_id], api_key)
+        user = User.find_or_create_api_user(
+          params[:user_id], 
+          params[:username], 
+          api_key)
+
         sign_in(user)
 
         if current_user
