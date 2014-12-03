@@ -7,7 +7,7 @@ module Api
         api_key = token_and_options(request)[0]
         user = User.find_or_create_api_user(params[:user_id], api_key)
         sign_in(user)
-        redirect_to campaigns_path
+        end
       end
     end
   end
