@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103185319) do
+ActiveRecord::Schema.define(version: 20141202220454) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
-    t.string   "user"
+    t.string   "client_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "client_login_url"
   end
 
   create_table "campaigns", force: true do |t|
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 20141103185319) do
     t.datetime "updated_at"
     t.text     "bio"
     t.string   "username"
+    t.string   "api_client_name",        default: ""
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
