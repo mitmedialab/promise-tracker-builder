@@ -28,6 +28,7 @@ module Api
 
       def show
         campaign = Campaign.find_by_id(params[:id])
+
         if campaign
           if campaign.status == 'draft'
             response = {
@@ -35,6 +36,8 @@ module Api
               error_code: 21,
               error_message: 'Campaign has not been published'
             }
+
+            render json: response.to_json
           else
             response = {
               status: 'success',
@@ -44,9 +47,9 @@ module Api
                 responses: campaign.survey.get_responses
               }
             }
-          end
 
-          render json: response.to_json
+            render json: response.to_json
+          end
         else
           response = {
             status: 'error',
@@ -59,16 +62,15 @@ module Api
       end
 
       def create
-        binding.pry
         api_key = token_and_options(request)[0]
-        user = User.find_or_create_api_user(
-          params[:user_id], 
-          params[:username], 
-          api_key)
 
-        sign_in(user)
+        if params[:user_id] && params[:username]
+          user = User.find_or_create_api_user(
+            params[:user_id],
+            params[:username],
+            api_key)
+          sign_in(user)
 
-        if current_user
           if params[:campaign_id]
             campaign = Campaign.find(params[:campaign_id]).clone
           else
@@ -79,6 +81,14 @@ module Api
 
           current_user.campaigns << campaign
           redirect_to setup_campaign_path(campaign)
+        else
+          response = {
+            status: 'error',
+            error_code: 22,
+            error_message: 'User id and username required'
+          }
+
+          render json: response.to_json, status: 401
         end
       end
 
