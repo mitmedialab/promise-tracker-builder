@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
     if user
       user
-    else
+    elsif user_id && username
       User.create(
         username: "#{username} (#{api_client})", 
         password: Digest::SHA1.hexdigest(username),
