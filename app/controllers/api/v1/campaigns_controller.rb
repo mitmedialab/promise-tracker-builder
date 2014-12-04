@@ -23,7 +23,7 @@ module Api
           payload: campaigns || []
         }
 
-        render json: response
+        render json: response.to_json
       end
 
       def show
@@ -46,7 +46,7 @@ module Api
             }
           end
 
-          render json: response
+          render json: response.to_json
         else
           response = {
             status: 'error',
@@ -54,11 +54,12 @@ module Api
             error_message: 'Campaign not found'
           }
 
-          render json: response, status: 404
+          render json: response.to_json, status: 404
         end
       end
 
       def create
+        binding.pry
         api_key = token_and_options(request)[0]
         user = User.find_or_create_api_user(
           params[:user_id], 

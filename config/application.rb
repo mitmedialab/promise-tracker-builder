@@ -29,6 +29,10 @@ module PromiseTracker
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
+
+    config.generators do |g|
+      g.factory_girl false
+    end
     
   end
 end
