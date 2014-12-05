@@ -36,8 +36,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def verified_request?
-  #   super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
-  # end
+  def restrict_access
+    authenticate_or_request_with_http_token do |token, options|
+      ApiKey.exists?(access_token: token)
+    end
+  end
 
 end

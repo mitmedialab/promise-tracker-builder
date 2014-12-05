@@ -25,7 +25,7 @@ describe Api::V1::CampaignsController do
 
     context 'when not using an API key' do
 
-      it 'restricts acess to resources' do
+      it 'restricts access to resources' do
         get 'api/v1/campaigns', {}, {}
         expect(response.status).to be(401)
       end
@@ -76,7 +76,7 @@ describe Api::V1::CampaignsController do
     end
 
     context 'when not using an API key' do
-      it 'restricts acess to resources' do
+      it 'restricts access to resources' do
         post 'api/v1/campaigns', {}, {}
         expect(response.status).to be(401)
       end
