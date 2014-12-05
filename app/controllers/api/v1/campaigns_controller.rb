@@ -22,7 +22,6 @@ module Api
           status: 'success',
           payload: campaigns || []
         }
-
         render json: response.to_json
       end
 
@@ -36,7 +35,6 @@ module Api
               error_code: 21,
               error_message: 'Campaign has not been published'
             }
-
             render json: response.to_json
           else
             response = {
@@ -47,7 +45,6 @@ module Api
                 responses: campaign.survey.get_responses
               }
             }
-
             render json: response.to_json
           end
         else
@@ -56,7 +53,6 @@ module Api
             error_code: 18,
             error_message: 'Campaign not found'
           }
-
           render json: response.to_json, status: 404
         end
       end
@@ -87,19 +83,9 @@ module Api
             error_code: 22,
             error_message: 'User id and username required'
           }
-
           render json: response.to_json, status: 401
         end
       end
-
-      private
-
-      def restrict_access
-        authenticate_or_request_with_http_token do |token, options|
-          ApiKey.exists?(access_token: token)
-        end
-      end
-      
     end
   end
 end
