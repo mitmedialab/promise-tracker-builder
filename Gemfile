@@ -31,7 +31,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
   gem 'pry-rails'
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
 end
