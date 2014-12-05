@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_include_tag '/highcharts.js' %>
+<% end %>
+
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title inline" %>
 </div>
@@ -65,8 +69,5 @@
 <script type="text/javascript">
   $("#monitor-tab").addClass("active-tab");
   PT.campaign = <%= raw @campaign.to_json %>;
-
-  $.getScript("/highcharts.js", function(){
-    PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
-  });
+  PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
 </script>
