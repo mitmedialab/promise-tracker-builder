@@ -4,4 +4,6 @@ class Input < ActiveRecord::Base
 
   validates :input_type, presence: true
   validates :survey_id, presence: true
+
+  default_scope { order(:order) }
 end

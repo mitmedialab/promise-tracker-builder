@@ -8,52 +8,34 @@ module Api
 
       def index
         if params[:tags]
-          campaigns = params[:tags].map do |tag|
+          @campaigns = params[:tags].map do |tag|
             tag = Tag.find_by(label: tag)
             tag.campaigns if tag
           end.reduce do |a, b|
             a || b
           end.select { |c| c.status != 'draft' }
         else
-          campaigns = Campaign.all.where.not(status: 'draft')
+          @campaigns = Campaign.includes(:tags, survey: :inputs).where.not(status: 'draft')
         end
 
-        response = {
-          status: 'success',
-          payload: campaigns || []
-        }
-        render json: response.to_json
+        render 'index'
       end
 
       def show
-        campaign = Campaign.find_by_id(params[:id])
+        @campaign = Campaign.includes(:tags, survey: :inputs).find_by_id(params[:id])
 
-        if campaign
-          if campaign.status == 'draft'
-            response = {
-              status: 'error',
-              error_code: 21,
-              error_message: 'Campaign has not been published'
-            }
-            render json: response.to_json
+        if @campaign
+          if @campaign.status == 'draft'
+            @error_code = 21
+            @error_message = 'Campaign has not been published'
+            render 'error'
           else
-            response = {
-              status: 'success',
-              payload: {
-                campaign: campaign,
-                survey: campaign.survey,
-                responses: campaign.survey.get_responses
-              }
-            }
-            render json: response.to_json
+            render 'show'
           end
         else
-          response = {
-            status: 'error',
-            error_code: 18,
-            error_message: 'Campaign not found'
-          }
-          render json: response.to_json, status: 404
+          @error_code = 18
+          @error_message = 'Campaign not found'
+          render 'error'
         end
       end
 

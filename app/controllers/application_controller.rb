@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     SimplesIdeias::I18n.export! if Rails.env.development?
   end
 
+  def default_serializer_options
+    { root: false }
+  end
+
   private
 
   def set_csrf_cookie
