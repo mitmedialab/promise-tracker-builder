@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203194418) do
+ActiveRecord::Schema.define(version: 20141208080413) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20141203194418) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "theme"
-    t.integer  "meta"
     t.text     "description"
   end
 
@@ -70,9 +69,7 @@ ActiveRecord::Schema.define(version: 20141203194418) do
   add_index "surveys", ["campaign_id"], name: "index_surveys_on_campaign_id", using: :btree
 
   create_table "tags", force: true do |t|
-    t.text     "label"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "label"
   end
 
   create_table "users", force: true do |t|
