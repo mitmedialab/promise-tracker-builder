@@ -1,12 +1,13 @@
 <div class="col-md-6 devise-container"> 
   <h2 class="title"><%= t("devise.sign_in") %></h2>
-  <%= render partial: "layouts/flash_messages" %>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+    <%= render partial: 'layouts/flash_messages' %>
+
     <%= f.text_field :username, placeholder: User.human_attribute_name(:username), autofocus: true, class: "form-control" %>
 
     <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: "off", class: "form-control" %>
-
 
     <%= f.submit t("devise.sign_in"), class: "btn btn-info form-control" %>
   <% end %>

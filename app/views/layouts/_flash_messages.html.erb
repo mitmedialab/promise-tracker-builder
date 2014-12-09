@@ -1,7 +1,5 @@
 <div class="flash-messages">
-  <% if flash[:notice] %>
-    <p class="alert alert-success"><%= flash[:notice] %></p>
-  <% elsif flash[:error] %> 
-    <p class="alert alert-danger"><%= flash[:error] %></p> 
-  <% end %>
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <%- end -%>
 </div>
