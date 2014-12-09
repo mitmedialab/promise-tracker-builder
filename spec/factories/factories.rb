@@ -1,5 +1,7 @@
 FactoryGirl.define do
+
   factory :user do
+    password 'password'
   end
 
   factory :campaign do
@@ -14,4 +16,5 @@ FactoryGirl.define do
   factory :api_key do
     client_name 'test api'
   end
+
 end

@@ -37,7 +37,7 @@ describe Api::V1::UsersController do
 
         post_with_token '/api/v1/users/sign_in', params, api_key.access_token
         expect(User.where(api_client_name: api_key.client_name, api_client_user_id: params[:user_id]).length).to eq(1)
-        response.should redirect_to campaigns_path    
+        expect(response).to redirect_to campaigns_path
       end
     end
 
