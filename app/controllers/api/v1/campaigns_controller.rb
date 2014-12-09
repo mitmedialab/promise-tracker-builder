@@ -28,14 +28,14 @@ module Api
           if @campaign.status == 'draft'
             @error_code = 21
             @error_message = 'Campaign has not been published'
-            render 'error'
+            render 'api/v1/error'
           else
             render 'show'
           end
         else
           @error_code = 18
           @error_message = 'Campaign not found'
-          render 'error'
+          render 'api/v1/error'
         end
       end
 
@@ -50,22 +50,26 @@ module Api
           sign_in(user)
 
           if params[:campaign_id]
-            campaign = Campaign.find(params[:campaign_id]).clone
+            existing_campaign = Campaign.find_by(id: params[:campaign_id])
+
+            if existing_campaign
+              campaign = existing_campaign.clone
+            else
+              @error_code = 18
+              @error_message = 'Campaign not found'
+              render 'api/v1/error', status: 404 and return
+            end
           else
             campaign = Campaign.create
             campaign.tags = params[:tags] if params[:tags]
             campaign.save(validate: false)
           end
-
           current_user.campaigns << campaign
           redirect_to setup_campaign_path(campaign)
         else
-          response = {
-            status: 'error',
-            error_code: 22,
-            error_message: 'User id and username required'
-          }
-          render json: response.to_json, status: 401
+          @error_code = 22
+          @error_message = 'User id and username required'
+          render 'api/v1/error', status: 401
         end
       end
     end

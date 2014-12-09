@@ -18,12 +18,10 @@ module Api
           sign_in(user)
           redirect_to campaigns_path
         else
-          response = {
-            status: 'error',
-            error_code: 22,
-            error_message: 'User id and username required'
-          }
-          render json: response.to_json, status: 401
+          @error_code = 22
+          @error_message = 'User id and username required'
+
+          render 'api/v1/error', status: 401
         end
       end
     end
