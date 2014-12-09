@@ -15,10 +15,10 @@ module Api
             a || b
           end.select { |c| c.status != 'draft' }
         else
-          @campaigns = Campaign.includes(:tags, survey: :inputs).where.not(status: 'draft')
+          @campaigns = Campaign.includes(:tags).where.not(status: 'draft')
         end
 
-        render 'index'
+        render 'index', formats: [:json]
       end
 
       def show
@@ -28,14 +28,14 @@ module Api
           if @campaign.status == 'draft'
             @error_code = 21
             @error_message = 'Campaign has not been published'
-            render 'api/v1/error'
+            render 'api/v1/error', format: :json, status: 401
           else
-            render 'show'
+            render 'show', formats: [:json]
           end
         else
           @error_code = 18
           @error_message = 'Campaign not found'
-          render 'api/v1/error'
+          render 'api/v1/error', formats: [:json], status: 404
         end
       end
 
@@ -57,7 +57,7 @@ module Api
             else
               @error_code = 18
               @error_message = 'Campaign not found'
-              render 'api/v1/error', status: 404 and return
+              render 'api/v1/error', format: :json, status: 404 and return
             end
           else
             campaign = Campaign.create
@@ -69,7 +69,7 @@ module Api
         else
           @error_code = 22
           @error_message = 'User id and username required'
-          render 'api/v1/error', status: 401
+          render 'api/v1/error', formats: [:json], status: 401
         end
       end
     end
