@@ -1,3 +1,76 @@
+// Campaign progress
+
+#campaign-progress-container {
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+
+  ul#campaign-progress-bar {
+    list-style-type: none;
+    padding: 0;
+    font-size: .8em;
+
+    li {
+      display: inline-block;
+      position: relative;
+      padding: 0 20px 10px 20px;
+      vertical-align: bottom;
+
+      >div {
+        width: 100px;
+      }
+
+
+      &:before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        display: block;
+        background: $med-grey;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        margin-left: -7px;
+      }
+
+      &.complete:before {
+        background: $pink;
+      }
+
+      &:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: #dddddd;
+        position: absolute;
+        left: -50%;
+        bottom: -7px;
+        z-index: -1;
+      }
+
+      &:first-child:after {
+        content: none;
+      }
+    }
+  }
+
+  .progress-arrow {
+    position: absolute;
+    top: 25px;
+    border: none;
+
+    &.next {
+      right: 60px;
+    }
+
+    &.back {
+      left: 60px;
+      color: $pink;
+    }
+  }
+}
+
 // Campaign show
 
 #user-info {

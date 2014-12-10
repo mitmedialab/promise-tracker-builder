@@ -1,0 +1,21 @@
+<div class="section-light" id="campaign-progress-container">
+  <ul id="campaign-progress-bar">
+    <li class="progress-node <% if @campaign.goal.present? %>complete<% end %>">
+      <div>Define Goals</div>
+    </li>
+    <li class="progress-node <% if @campaign.survey %>complete<% end %>">
+      <div>Create Survey</div>
+    </li>
+    <li class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+      <div>Launch campaign</div>
+    </li>
+    <li class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+      <div>Collect data</div>
+    </li>
+    <li class="progress-node <% if @campaign.status == 'closed' %>complete<% end %>">
+      <div>Share results</div>
+    </li>
+  </ul>
+  <div class="btn btn-default progress-arrow back"><span class="glyphicon glyphicon-chevron-left"></span></div>
+  <div class="btn btn-warning progress-arrow next"><span class="glyphicon glyphicon-chevron-right"></span></div>
+</div>
