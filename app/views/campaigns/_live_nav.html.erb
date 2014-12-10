@@ -1,0 +1,20 @@
+<ul class="campaign-nav">
+  <li class="btn btn-default" id="view-tab">
+    <%= link_to campaign_path(@campaign) do %>
+      <%= image_tag("process-icon-1.png", class: "process-icon") %>
+      <span class="tab-text"><%= t(".view_survey") %></span>
+    <% end %>
+  </li>
+  <li class="btn btn-default" id="monitor-tab">
+    <%= link_to monitor_campaign_path(@campaign) do %>
+      <%= image_tag("process-icon-2.png", class: "process-icon") %>
+      <span class="tab-text"><%= t(".monitor_responses") %></span>
+    <% end %>
+  </li>
+  <li class="btn btn-default" id="share-tab">
+    <%= link_to share_campaign_path(@campaign) do %>
+      <%= image_tag("process-icon-3.png", class: "process-icon") %>
+      <span class="tab-text"><%= t(".share_data") %></span>
+    <% end %>
+  </li>
+</ul>

@@ -1,10 +1,5 @@
-<div class="page-container">
-  <div class="campaign-title inline">
-    <%= @campaign.title %>
-  </div>
-</div>
-<% if @campaign.status != "draft" %>
-  <%= render partial: 'nav' %>
+<% if @campaign.status == "public" %>
+  <%= render partial: 'live_nav' %>
 <% end %>
 <div class="page-container">
   <div class="row pad-bottom clear">

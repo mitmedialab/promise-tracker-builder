@@ -19,3 +19,7 @@
   <div class="btn btn-default progress-arrow back"><span class="glyphicon glyphicon-chevron-left"></span></div>
   <div class="btn btn-warning progress-arrow next"><span class="glyphicon glyphicon-chevron-right"></span></div>
 </div>
+
+<div class="page-container">
+  <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+</div>

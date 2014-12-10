@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
-  layout 'full-width', only: [:launch, :monitor, :show, :share, :index]
-  before_filter :authenticate_user!, except: [:share]
+  layout 'campaign', except: [:public_page]
+  before_filter :authenticate_user!, except: [:share, :public_page]
 
   def index
     @campaign = Campaign.new
@@ -78,6 +78,9 @@ class CampaignsController < ApplicationController
     if @campaign.status != "draft"
       redirect_to monitor_campaign_path(@campaign)
     end
+  end
+
+  def test
   end
 
   #Post survey definition to Aggregator

@@ -2,10 +2,7 @@
   <%= javascript_include_tag '/highcharts.js' %>
 <% end %>
 
-<div class="page-container">
-  <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title inline" %>
-</div>
-<%= render partial: 'nav' %>
+<%= render partial: 'live_nav' %>
 <div class="page-container">
   <div class="row campaign-overview">
     <div class="survey-code">
