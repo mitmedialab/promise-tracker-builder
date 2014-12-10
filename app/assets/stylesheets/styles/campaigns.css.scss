@@ -10,6 +10,10 @@
     padding: 0;
     font-size: .8em;
 
+    a {
+      color: $dark-grey;
+    }
+
     li {
       display: inline-block;
       position: relative;
@@ -17,7 +21,7 @@
       vertical-align: bottom;
 
       >div {
-        width: 100px;
+        width: 70px;
       }
 
 
@@ -28,6 +32,7 @@
         display: block;
         background: $med-grey;
         border-radius: 50%;
+        border: 5px solid $med-grey;
         position: absolute;
         bottom: -12px;
         left: 50%;
@@ -36,6 +41,12 @@
 
       &.complete:before {
         background: $pink;
+        border-color: $pink;
+      }
+
+      &.active:before {
+        background: white;
+        border-color: $pink;
       }
 
       &:after {
@@ -48,16 +59,16 @@
         bottom: -7px;
         z-index: -1;
       }
+    }
 
-      &:first-child:after {
-        content: none;
-      }
+    >a:first-child > li:after{
+      content: none;
     }
   }
 
   .progress-arrow {
     position: absolute;
-    top: 25px;
+    top: 35px;
     border: none;
 
     &.next {
@@ -338,7 +349,7 @@ h2.title, h3.title {
 }
 
 .top-save {
-  margin: 45px 40px 0 0;
+  margin-top: 45px;
 }
 
 #campaign-goals-form.single-page {
@@ -391,6 +402,37 @@ h2.title, h3.title {
 
     .left-arrow {
       opacity: 0;
+    }
+  }
+}
+
+// Public page
+#campaign-public-page {
+  &.preview {
+    margin: 0 40px;
+  }
+
+  input.campaign-title {
+    padding: 0;
+    border: none;
+    width: 100%;
+  }
+
+  textarea {
+    border: none;
+    margin: 0;
+    padding: 0 !important;
+    color: $dark-grey;
+    box-shadow: none;
+  }
+
+  #participate {
+    .how-to-steps {
+      margin: 0 auto;
+
+      i {
+        font-size: 200%;
+      }
     }
   }
 }

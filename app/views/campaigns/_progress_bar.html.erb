@@ -1,0 +1,40 @@
+<div class="section-light" id="campaign-progress-container">
+  <ul id="campaign-progress-bar">
+    <%= link_to edit_campaign_path(@campaign) do %>
+    <li data-path="edit" class="progress-node <% if @campaign.goal.present? %>complete<% end %>">
+      <div>Define Goals</div>
+    </li>
+    <% end %>
+
+    <%= link_to campaign_path(@campaign) do %>
+    <li data-path="show" class="progress-node <% if @campaign.survey %>complete<% end %>">
+      <div>Create Survey</div>
+    </li>
+    <% end %>
+
+    <%= link_to edit_public_campaign_path(@campaign) do %>
+    <li data-path="public_page" class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+      <div>Design public page</div>
+    </li>
+    <% end %>
+
+    <%= link_to test_campaign_path(@campaign) do %>
+    <li data-path="test" class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+      <div>Test campaign</div>
+    </li>
+    <% end %>
+
+    <li data-path="collect" class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+      <div>Collect data</div>
+    </li>
+    <li data-path="share" class="progress-node <% if @campaign.status == 'closed' %>complete<% end %>">
+      <div>Share results</div>
+    </li>
+  </ul>
+  <div class="btn btn-default progress-arrow back"><span class="glyphicon glyphicon-chevron-left"></span></div>
+  <div class="btn btn-warning progress-arrow next"><span class="glyphicon glyphicon-chevron-right"></span></div>
+</div>
+
+<script>
+  $("li[data-path = <%= action_name %>]").addClass("active");
+</script>

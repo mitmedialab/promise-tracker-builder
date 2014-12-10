@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout 'campaign', except: [:public_page]
+  layout 'campaign', except: [:public_page, :edit]
   before_filter :authenticate_user!, except: [:share, :public_page]
 
   def index
@@ -21,23 +21,11 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def show
-    @campaign = Campaign.find(params[:id])
-    @survey = @campaign.survey
-    @flash = t('survey_builder', scope: 'surveys').to_json
-    @validations = t('validations', scope: 'defaults').to_json
-  end
-
   def edit
     @campaign = Campaign.find(params[:id])
     @flash = t('edit', scope: 'campaigns').to_json
     @validations = t('validations', scope: 'defaults').to_json
-  end
-
-  def goals_wizard
-    @campaign = Campaign.find(params[:id])
-    @flash = t('edit', scope: 'campaigns').to_json
-    @validations = t('validations', scope: 'defaults').to_json
+    render layout: 'full-width'
   end
 
   def update
@@ -50,34 +38,41 @@ class CampaignsController < ApplicationController
     redirect_to campaign_path(@campaign)
   end
 
-  def clone
-    campaign = Campaign.find(params[:id])
-    campaign_clone = campaign.clone
-    title = campaign.title + " #{t('campaigns.status.copy')}"
-    campaign_clone.update_attribute(
-      :title,
-      title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}"
-    )
-
-    if campaign.survey
-      campaign_clone.survey = campaign.survey.clone
-      campaign_clone.survey.update_attribute(:title, campaign_clone.title)
-    end
-
-    current_user.campaigns << campaign_clone
-    redirect_to campaign_path(campaign_clone)
-  end
-
-  def launch
+  def show
     @campaign = Campaign.find(params[:id])
     @survey = @campaign.survey
     @flash = t('survey_builder', scope: 'surveys').to_json
     @validations = t('validations', scope: 'defaults').to_json
-    @input_types = input_types.to_json
+  end
 
-    if @campaign.status != "draft"
-      redirect_to monitor_campaign_path(@campaign)
+  def goals_wizard
+    @campaign = Campaign.find(params[:id])
+    @flash = t('edit', scope: 'campaigns').to_json
+    @validations = t('validations', scope: 'defaults').to_json
+  end
+
+  def launch
+    @campaign = Campaign.find(params[:id])
+    if @campaign.validate_public_page
+      redirect_to test_path(@campaign)
+    else
+      redirect_to edit_public_campaign_path(@campaign)
     end
+  end
+
+  def public_page
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
+  end
+
+  def edit_public_page
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
+  end
+
+  def update_public_page
+    @campaign = Campaign.find(params[:id])
+    @survey = @campaign.survey
   end
 
   def test
@@ -117,6 +112,24 @@ class CampaignsController < ApplicationController
       @campaign.update_attribute(:status, 'closed')
       redirect_to share_campaign_path(@campaign)
     end
+  end
+
+  def clone
+    campaign = Campaign.find(params[:id])
+    campaign_clone = campaign.clone
+    title = campaign.title + " #{t('campaigns.status.copy')}"
+    campaign_clone.update_attribute(
+      :title,
+      title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}"
+    )
+
+    if campaign.survey
+      campaign_clone.survey = campaign.survey.clone
+      campaign_clone.survey.update_attribute(:title, campaign_clone.title)
+    end
+
+    current_user.campaigns << campaign_clone
+    redirect_to campaign_path(campaign_clone)
   end
 
   def destroy

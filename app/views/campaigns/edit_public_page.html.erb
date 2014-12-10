@@ -1,0 +1,81 @@
+<%= render partial: 'launch_nav' %>
+<div class="page-container">
+  <h2 class="title inline">Public campaign page</h2>
+  <p>
+    Below is a public page that will describe your campaign. The public link can be used to share with friends and others as you collect and share your data.
+  </p>
+
+  <hr>
+
+  <div id="campaign-public-page" class="preview">
+    <%= form_for @campaign do |f| %>
+      <%= f.text_field :title, class: "campaign-title" %>
+
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="form-group"> 
+            <%= f.label :description %>
+            <%= f.text_area :description, rows: 4, required: true, placeholder: "Type a description of your campaign here", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="form-group"> 
+            <%= f.label 'Campaign organizers' %>
+            <%= f.text_area :organizers, rows: 2, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-10">
+          <label>Campaign survey</label>
+          <div id="campaign-survey">
+            <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="participate">
+        <h3>How to participate</h3>
+        <p>
+          Help collect data for this campaign by getting the mobile app and submitting data from your neighborhood!
+        </p>
+        <div id="how-to-participate">
+          <div class="row how-to-steps">
+            <div class="col-sm-4 resource">
+              <i class="icon-mobile-phone"></i>
+              <h4>Get the free app</h4>
+              <a href="#">App store</a> <a href="#">Download APK</a>
+            </div>
+            <div class="col-sm-4 resource"> 
+              <i class="icon-download-alt"></i>
+              <h4>Download the survey</h4>
+              <p class="small">Using the code below:</p>
+              <h2><%= @survey.id %></h2>
+            </div>
+            <div class="col-sm-4 resource">
+              <i class="icon-magic"></i>
+              <h4>Contribute your data</h4>
+              <p>Send in reports from your area!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="button-group center clear">
+      <hr>
+      <%= f.submit t("defaults.save"), class: "btn btn-info" %>
+    </div>
+  </div> 
+  <% end %>
+</div>
+
+<script type="text/javascript"> 
+  $("#input-list").sortable({ disabled: true });
+</script>

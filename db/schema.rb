@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208080413) do
+ActiveRecord::Schema.define(version: 20141210193922) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20141208080413) do
     t.integer  "user_id"
     t.string   "theme"
     t.text     "description"
+    t.text     "organizers"
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree

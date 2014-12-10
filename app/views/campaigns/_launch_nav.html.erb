@@ -1,12 +1,12 @@
 <ul class="campaign-nav"> 
+  <li class="btn btn-default" id="public-page-tab">
+    <%= link_to edit_public_campaign_path(@campaign) do %>
+      <span class="tab-text"><%= t("Public Page") %></span>
+    <% end %>
+  </li>
   <li class="btn btn-default" id="test-launch-tab">
     <%= link_to test_campaign_path(@campaign) do %>
       <span class="tab-text"><%= t("Test launch") %></span>
     <% end %>
   </li>
-  <li class="btn btn-default" id="public-page-tab">
-    <%= link_to launch_campaign_path(@campaign) do %>
-      <span class="tab-text"><%= t("Public Page") %></span>
-    <% end %>
-  </li> 
 </ul>

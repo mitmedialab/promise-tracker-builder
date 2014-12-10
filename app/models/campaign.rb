@@ -18,4 +18,7 @@ class Campaign < ActiveRecord::Base
     clone
   end
 
+  def validate_public_page
+  end
+
 end

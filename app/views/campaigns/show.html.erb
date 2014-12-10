@@ -18,7 +18,6 @@
         <div class="right">
           <% if @campaign.status == "draft" %>
             <%= link_to t(".edit_survey"), survey_path(@survey), class: "btn btn-info" %>
-            <%= link_to t(".launch_survey"), launch_campaign_path(@campaign), class: "btn btn-warning" %>
           <% end %>
         </div>
         <% end %>
@@ -41,4 +40,5 @@
   PT.flash = <%= raw @flash %>;
   PT.validations = <%= raw @validations %>;
   $("#view-tab").addClass("active-tab");
+  $("#input-list").sortable({ disabled: true });
 </script>
