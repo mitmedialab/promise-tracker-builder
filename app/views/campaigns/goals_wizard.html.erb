@@ -12,9 +12,16 @@
   <div class="row form-page" id="form-page-1">
     <div class="col-sm-8">
       <div class="form-group"> 
+        <%= f.label :description %>
+        <p class="explain"><%= t("campaigns.edit.explanations.description") %></p>
+        <%= f.text_area :description, rows: 4, required: true, class: "form-control", autofocus: true %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="form-group"> 
         <%= f.label :goal %>
         <p class="explain"><%= t("campaigns.edit.explanations.goal") %></p>
-        <%= f.text_area :goal, rows: 8, class: "form-control", autofocus: true %>
+        <%= f.text_area :goal, rows: 4, class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-4">

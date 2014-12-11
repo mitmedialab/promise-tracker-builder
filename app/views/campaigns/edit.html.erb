@@ -23,9 +23,16 @@
   <div class="row">
     <div class="col-sm-8">
       <div class="form-group"> 
+        <%= f.label :description %>
+        <p class="explain"><%= t(".explanations.description") %></p>
+        <%= f.text_area :description, rows: 4, required: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="form-group"> 
         <%= f.label :goal %>
         <p class="explain"><%= t(".explanations.goal") %></p>
-        <%= f.text_area :goal, rows: 8, required: true, class: "form-control" %>
+        <%= f.text_area :goal, rows: 4, required: true, class: "form-control" %>
       </div>
     </div>
     <div class="col-sm-4">

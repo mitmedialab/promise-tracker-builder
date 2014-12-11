@@ -204,7 +204,8 @@ en:
       define_goals: "Define your goals"
       type_number: "Type a number"
       explanations:
-        goal: "What do you hope to achieve with this campaign? What change do you want to see?"
+        description: "Brief description of what you plan to monitor"
+        goal: "What change do you hope to see as a result of the campaign?"
         data_collectors: "Who will you collect data with the survey you develop?"
         submissions_target: "How many submissions do you hope to get?"
         audience: "Who do you plan to share your data with in order to change this issue?"
@@ -220,7 +221,7 @@ en:
       next: "Next"
 
     show:
-      campaign_goals: "Description"
+      campaign_goals: "Overview"
       campaign_survey: "Survey"
       edit_campaign: "Edit campaign"  
       edit_survey: "Edit survey"
