@@ -204,7 +204,8 @@ pt-BR:
       define_goals: "Definir seus objetivos"
       type_number: "Digite um Número"
       explanations:
-        goal: "O que você quer realizar com esta ação? O que você quer mudar na sua comunidade?"
+        description: "Descrição breve da ação"
+        goal: "O que você quer mudar na sua comunidade com esta ação?"
         data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
         submissions_target: "Quantas participações você espera?"
         audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"

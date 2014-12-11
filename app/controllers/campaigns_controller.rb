@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout 'campaign', except: [:public_page, :edit]
+  layout 'campaign', except: [:index, :public_page]
   before_filter :authenticate_user!, except: [:share, :public_page]
 
   def index
@@ -49,6 +49,8 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @flash = t('edit', scope: 'campaigns').to_json
     @validations = t('validations', scope: 'defaults').to_json
+
+    render layout: 'full-width'
   end
 
   def launch

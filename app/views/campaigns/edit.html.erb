@@ -25,6 +25,15 @@
       <div class="row">
         <div class="col-sm-8">
           <div class="form-group"> 
+            <%= f.label :description %>
+            <p class="explain"><%= t("campaigns.edit.explanations.description") %></p>
+            <%= f.text_area :description, rows: 4, class: "form-control", autofocus: true %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> 
             <%= f.label :goal %>
             <p class="explain"><%= t(".explanations.goal") %></p>
             <%= f.text_area :goal, rows: 8, required: true, class: "form-control" %>

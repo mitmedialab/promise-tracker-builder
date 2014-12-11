@@ -1,33 +1,33 @@
 <div class="section-light" id="campaign-progress-container">
   <ul id="campaign-progress-bar">
     <%= link_to edit_campaign_path(@campaign) do %>
-    <li data-path="edit" class="progress-node <% if @campaign.goal.present? %>complete<% end %>">
+    <li data-path="edit" data-clickable="<%= @campaign.validate_goals %>" class"progress-node">
       <div>Define Goals</div>
     </li>
     <% end %>
 
     <%= link_to campaign_path(@campaign) do %>
-    <li data-path="show" class="progress-node <% if @campaign.survey %>complete<% end %>">
+    <li data-path="show" data-clickable="<%= @campaign.survey.present? %>" class="progress-node">
       <div>Create Survey</div>
     </li>
     <% end %>
 
     <%= link_to edit_public_campaign_path(@campaign) do %>
-    <li data-path="public_page" class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+    <li data-path="edit_public_page" class="progress-node">
       <div>Design public page</div>
     </li>
     <% end %>
 
     <%= link_to test_campaign_path(@campaign) do %>
-    <li data-path="test" class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
-      <div>Test campaign</div>
+    <li data-path="test" data-clickable="<%= @campaign.status == 'test' %>" class="progress-node">
+      <div>Test Survey</div>
     </li>
     <% end %>
 
-    <li data-path="collect" class="progress-node <% if @campaign.status == 'active' %>complete<% end %>">
+    <li data-path="collect" data-clickable="<% @campaign.status == 'active' %>" class="progress-node">
       <div>Collect data</div>
     </li>
-    <li data-path="share" class="progress-node <% if @campaign.status == 'closed' %>complete<% end %>">
+    <li data-path="share" data-clickable="<% @campaign.status == 'active' %>" class="progress-node">
       <div>Share results</div>
     </li>
   </ul>
@@ -37,4 +37,6 @@
 
 <script>
   $("li[data-path = <%= action_name %>]").addClass("active");
+  $("li[data-clickable = true]").addClass("complete");
+  $("li[data-clickable = false]").css("pointer-events", "none");
 </script>
