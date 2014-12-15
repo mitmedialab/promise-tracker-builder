@@ -25,6 +25,7 @@ PT.updateDisplay = function($input, $display){
 PT.validateCampaign = function(){
   var validator = $(".edit_campaign").validate({
     rules: {
+      "campaign[description]": {required: true},
       "campaign[goal]": {required: true},
       "campaign[data_collectors]": {required: true},
       "campaign[submissions_target]": {required: true, number: true},
@@ -34,6 +35,12 @@ PT.validateCampaign = function(){
 
   return validator.form();
 };
+
+PT.scrollToError = function(){
+  $('html body').animate({
+    scrollTop: $(".error").first().offset().top - 80
+  }, 500);
+}
 
 PT.toggleTip = function(event){
   $(event.currentTarget).find(".body").slideToggle();

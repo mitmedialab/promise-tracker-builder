@@ -118,14 +118,21 @@
 </div>
 
 <script type="text/javascript">
-  PT.flash = <%= raw @flash %>;
-  jQuery.extend(jQuery.validator.messages, I18n.translations[I18n.currentLocale()].defaults.validations);
+  jQuery.extend(jQuery.validator.messages, I18n.translate("defaults.validations"));
   
+  $(document).on("click", ".tip-box", PT.toggleTip);
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
-  $(document).on("click", ".tip-box", PT.toggleTip);
+  $()
 
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
+  $(".edit_campaign").on("submit", function(){
+    if(!PT.validateCampaign()){
+      PT.scrollToError();
+      return false;
+    }
+  });
+
 </script>
