@@ -1,6 +1,6 @@
 PT = PT || {};
 
-PT.aggregatUrl = "http://dev.aggregate.promisetracker.org/";
+PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
 
 PT.retrieveResponses = function(surveyId, message){
   var url = PT.aggregatUrl + "/surveys/" + surveyId + "/survey-with-responses";  

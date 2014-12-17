@@ -3,10 +3,8 @@ class Survey < ActiveRecord::Base
   belongs_to :campaign
   has_many :inputs
 
-  AGGREGATOR_URL = 'http://dev.aggregate.promisetracker.org/surveys'
-
   def activate(status)
-    uri = URI(AGGREGATOR_URL + "/#{status}")
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{status}")
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = self.to_json(
@@ -24,7 +22,7 @@ class Survey < ActiveRecord::Base
   end
 
   def close
-    uri = URI(AGGREGATOR_URL + '/' + self.id.to_s + '/close')
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{self.id}/close")
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Put.new(uri.path, {'Content-Type' =>'application/json'})
@@ -41,7 +39,7 @@ class Survey < ActiveRecord::Base
   end
 
   def get_responses
-    uri = URI(AGGREGATOR_URL + '/' + self.id.to_s + '/responses')
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{self.id}/responses")
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})

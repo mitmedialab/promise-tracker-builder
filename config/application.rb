@@ -11,6 +11,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+#load env variables
+ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
+
 module PromiseTracker
   class Application < Rails::Application
  
