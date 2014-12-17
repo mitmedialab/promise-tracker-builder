@@ -17,14 +17,15 @@ PromiseTracker::Application.routes.draw do
     get '/campaigns/:id/setup', to: 'campaigns#setup', as: 'setup_campaign'
     get '/campaigns/:id/goals', to: 'campaigns#goals_wizard', as: 'campaign_goals_wizard'
     get '/campaigns/:id/launch', to: 'campaigns#launch', as: 'launch_campaign'
-    get '/campaigns/:id/public', to: 'campaigns#public_page', as: 'public_campaign'
-    get '/campaigns/:id/edit-public', to: 'campaigns#edit_public_page', as: 'edit_public_campaign'
-    get '/campaigns/:id/update-public', to: 'campaigns#update_public_page', as: 'update_public_campaign'
+    get '/campaigns/:id/survey', to: 'campaigns#survey', as: 'campaign_survey'
+    get '/campaigns/:id/profile', to: 'campaigns#profile', as: 'campaign_profile'
+    get '/campaigns/:id/edit-profile', to: 'campaigns#edit_profile', as: 'edit_campaign_profile'
     get '/campaigns/:id/test', to: 'campaigns#test', as: 'test_campaign'
-    get '/campaigns/:id/activate', to: 'campaigns#activate', as: 'activate_campaign'
     get '/campaigns/:id/monitor', to: 'campaigns#monitor', as: 'monitor_campaign'
     get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'
     get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
+    get '/campaigns/:id/next', to: 'campaigns#next', as: 'campaign_next'
+    post '/campaigns/:id/activate', to: 'campaigns#activate', as: 'activate_campaign'
     post '/campaigns/:id/clone', to: 'campaigns#clone', as: 'clone_campaign'
 
     post '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
@@ -35,8 +36,7 @@ PromiseTracker::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :campaigns, only: [:index, :show, :create]
+      post '/users/sign_in', to: 'users#create_new_session', as: 'api_sign_in'
     end
   end
-
-  post '/api/v1/users/sign_in', to: 'api/v1/users#create_new_session', as: 'api_sign_in'
 end

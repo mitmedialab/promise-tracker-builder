@@ -83,6 +83,7 @@ pt-BR:
     copy: "Duplicar"
     delete: "Eliminar"
     back: "Voltar"
+    next: "Próximo"
     loading: "Carregando dados"
     validations:
       required: "Este campo &eacute; requerido."
@@ -92,6 +93,11 @@ pt-BR:
       has_errors: "Seu formulário tem algum erro. Por favor corrija as questões com erros antes de continuar"
       no_errors: "Seu formulário não tem erros."
       confirm_save: "Suas modificações foram salvadas"
+      please_define_goals: "Por favor complete as perguntas e salve para avanzar"
+      please_create_survey: "Por favor crie seu formulário para poder avanzar"
+      please_complete_profile: "Por favor preencha os campos do perfil e salve para avanzar"
+      launch_campaign: "Você precisa lançar esta ação para avanzar"
+      close_campaign: "Você precisa fechar esta ação para avanzar"
 
   errors:
     sorry: "Desculpe!"
@@ -127,77 +133,12 @@ pt-BR:
       active: "Público"
       closed: "Fechado"
       draft: "Rascunho"
+      test: "Teste"
       copy: "cópia"
-
-    nav:
-      view_survey: "Ver formulário"
-      monitor_responses: "Monitorar registros"
-      share_data: "Compartilhar dados"
 
     activate: 
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
-
-    index:
-      new_campaign: "Criar uma nova ação"
-      my_campaigns: "Minhas ações"
-      greeting: "Oi"
-      welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
-      get_started: "Que tal criar sua primeira açāo?"
-
-    new:
-      modal_title: "Nova ação"
-      campaign_theme: "Qual é o tema que interessa você?"
-      campaign_title: "Nome da ação"
-      title_placeholder: "Nome da ação"
-      create_campaign: "Criar"
-
-    launch:
-      launch_title: "Página de publicação"
-      info: "Info"
-      launch_explanation_1: "Para poder coletar dados, você tornará seu formulário público."
-      launch_explanation_2: "Uma vez publicado, o formulário não pode ser modificado."
-      launch_explanation_3: "Você vai rever seus objetivos e seu formulário para verificar se tudo está correto."
-      review_goals: "Rever seus objetivos"
-      review_goals_info: "Você definiu este objetivo para sua ação. Ainda concorda com ele?"
-      review_survey: "Rever seu formulário"
-      launch: "Publicar"
-      return_to_edit: "Editar formulário"
-      preview: "Pré-visualização no celular"
-      launch_campaign: "Publicar este formulário"
-      launch_info: "Quando você publica este formulário, não poderá editá-lo mais."
-      launch_confirmation: "Tem certeza que deseja publicar este formulário?"
-      edit_campaign: "Editar ação"
-
-    monitor:
-      status_text: "Este formulário está "
-      survey_code: "Pode baixar e preencher este formulário usando o código"
-      close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
-      number_of_responses: "Número de registros"
-      close: "Fechar esta ação"
-      responses: "registros"
-      current: "Atual"
-      target: "Desejado"
-      publicize_form: "Mobilizar os amigos para coletar dados"
-      campaign_resources: "Guias"
-      guide_1: "Organizar um evento de lançamento"
-      guide_2: "Manter sua comunidade envolvida"
-      guide_3: "Vizualizar seus resultados"
-
-    share:
-      visualize_data: "Vizualizar seus dados" 
-      map: "Mapa" 
-      photos: "Fotos"
-      graphs: "Gráficos"
-      graph_placeholder: "Quando tiver registros, vai poder visualizer o agregado dos dados aqui."
-      share_data: "Compartilhar seus dados"
-      data_reports: "Relatório de dados"
-      campaign_organizers: "Realizadores da ação"
-      learn_more: "Aprender mais sobre esta ação no site"
-
-    list_item:
-      confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
-      confirm_clone: "Você em certeza que quer duplicar esta ação?" 
 
     edit:
       edit_title: "Editar nome"
@@ -216,18 +157,79 @@ pt-BR:
         submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
-    form_buttons:
-      back: "Voltar"
-      next: "Próximo"
+    how_to_participate:
+      participate_title: "Ajude com a coleta de dados para esta ação!"
+      pariticipate_text: "Baixe o aplicativo móvel e mande informações da sua area."
+
+    index:
+      new_campaign: "Criar uma nova ação"
+      my_campaigns: "Minhas ações"
+      greeting: "Oi"
+      welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
+      get_started: "Que tal criar sua primeira açāo?"
+
+    list_item:
+      confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
+      confirm_clone: "Você em certeza que quer duplicar esta ação?" 
+
+    monitor:
+      status_text: "Este formulário está "
+      survey_code: "Pode baixar e preencher este formulário usando o código"
+      close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
+      number_of_responses: "Número de registros"
+      close: "Fechar esta ação"
+      responses: "registros"
+      current: "Atual"
+      target: "Desejado"
+      publicize_form: "Mobilizar os amigos para coletar dados"
+      campaign_resources: "Guias"
+      guide_1: "Organizar um evento de lançamento"
+      guide_2: "Manter sua comunidade envolvida"
+      guide_3: "Vizualizar seus resultados"
+
+    nav:
+      view_survey: "Ver formulário"
+      monitor_responses: "Monitorar registros"
+      share_data: "Compartilhar dados"
+
+    new:
+      modal_title: "Nova ação"
+      campaign_theme: "Qual é o tema que interessa você?"
+      campaign_title: "Nome da ação"
+      title_placeholder: "Nome da ação"
+      create_campaign: "Criar"
+
+    share:
+      visualize_data: "Vizualizar seus dados" 
+      map: "Mapa" 
+      photos: "Fotos"
+      graphs: "Gráficos"
+      graph_placeholder: "Quando tiver registros, vai poder visualizer o agregado dos dados aqui."
+      share_data: "Compartilhar seus dados"
+      data_reports: "Relatório de dados"
+      campaign_organizers: "Realizadores da ação"
+      learn_more: "Aprender mais sobre esta ação no site"
 
     show:
-      campaign_goals: "Descrição"
-      campaign_survey: "Formulário"
-      edit_campaign: "Editar ação"  
-      edit_survey: "Editar formulário"
-      monitor_progress: "Monitorar os registros"
-      launch_survey: "Publicar"
-      create_survey: "Criar o formulário para esta ação"
+      edit_campaign: "Editar ação"
+
+    test:
+      test_title: "Testando sua ação"
+      test_explanation: "Antes de lançar sua ação, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
+      how_to_test: "Como testar"
+      step_1: "Passo 1"
+      step_1_text: "Baixar o aplicativo móvel"
+      download_link: "Clique aqui para ver como baixar"
+      step_2: "Passo 2"
+      step_2_text: "Baixar seu formulário"
+      step_2_subtext: "Usando o código seguinte"
+      step_3: "Passo 3"
+      step_3_text: "Preencher o formulário"
+      step_3_subtext: "Confirmar que tudo esteja bem escrito e em ordem"
+      return_to_edit: "Editar formulário"
+      launch_campaign: "Lançar ação"
+      confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode ser modificado mais!"
+      test_complete: "Teste completado - Esta ação está"
 
   surveys:
     android_preview: 

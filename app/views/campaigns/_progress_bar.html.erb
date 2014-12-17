@@ -1,42 +1,73 @@
 <div class="section-light" id="campaign-progress-container">
   <ul id="campaign-progress-bar">
     <%= link_to edit_campaign_path(@campaign) do %>
-    <li data-path="edit" data-clickable="<%= @campaign.validate_goals %>" class"progress-node">
+    <li data-path="edit" data-path-alt="goals_wizard" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
       <div>Define Goals</div>
     </li>
     <% end %>
 
-    <%= link_to campaign_path(@campaign) do %>
-    <li data-path="show" data-clickable="<%= @campaign.survey.present? %>" class="progress-node">
+    <%= link_to campaign_survey_path(@campaign) do %>
+    <li data-path="survey" data-clickable="<%= @campaign.validate_goals %>" data-complete="<%= @campaign.survey.present? %>" class="progress-node">
       <div>Create Survey</div>
     </li>
     <% end %>
 
-    <%= link_to edit_public_campaign_path(@campaign) do %>
-    <li data-path="edit_public_page" class="progress-node">
+    <%= link_to edit_campaign_profile_path(@campaign) do %>
+    <li data-path="edit_profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.organizers.present? %>">
       <div>Design public page</div>
     </li>
     <% end %>
 
     <%= link_to test_campaign_path(@campaign) do %>
-    <li data-path="test" data-clickable="<%= @campaign.status == 'test' %>" class="progress-node">
+    <li data-path="test" data-clickable="<%= @campaign.organizers.present? %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
       <div>Test Survey</div>
     </li>
     <% end %>
 
-    <li data-path="collect" data-clickable="<% @campaign.status == 'active' %>" class="progress-node">
+    <%= link_to monitor_campaign_path(@campaign) do %>
+    <li data-path="monitor" data-clickable="<%= @campaign.status == 'active' %>" data-complete="<%= @campaign.status == 'active' %>" class="progress-node">
       <div>Collect data</div>
     </li>
-    <li data-path="share" data-clickable="<% @campaign.status == 'active' %>" class="progress-node">
+    <% end %>
+
+    <%= link_to share_campaign_path(@campaign) do %>
+    <li data-path="share" data-clickable="<%= @campaign.status == 'active' %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
       <div>Share results</div>
     </li>
+    <% end %>
   </ul>
-  <div class="btn btn-default progress-arrow back"><span class="glyphicon glyphicon-chevron-left"></span></div>
-  <div class="btn btn-warning progress-arrow next"><span class="glyphicon glyphicon-chevron-right"></span></div>
+
+  <% if @can_advance == true %>
+    <%= link_to campaign_next_path(@campaign, refer_action: action_name) do %>
+      <div class="btn btn-warning progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
+    <% end %>
+  <% else %>
+    <%= link_to campaign_next_path(@campaign, refer_action: action_name), remote: true, "data-type" => :json do %>
+      <div class="btn btn-grey progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
+    <% end %>
+  <% end %>
+</div>
+<div id="errors" class="progress-errors">
+  <span class="glyphicon glyphicon-remove right close"></span>
+  <ul></ul>
 </div>
 
 <script>
-  $("li[data-path = <%= action_name %>]").addClass("active");
-  $("li[data-clickable = true]").addClass("complete");
+  $("li[data-path = <%= action_name %>], li[data-path-alt = <%= action_name %>]").addClass("active");
+  $("li[data-complete = true]").addClass("complete");
   $("li[data-clickable = false]").css("pointer-events", "none");
+
+  $(document).on("ajax:error", function(e, data, status, xhr){
+    errors = data.responseJSON.errors;
+    errors.forEach(function(error){
+      $("#errors ul").empty();
+      $("#errors ul").append("<li>" + errors + "</li>");
+    });
+    $("#errors").addClass("alert alert-danger");
+    $("#errors").show();
+  });
+
+  $("#errors .close").on("click", function(){
+    $(this).parent().hide();
+  })
 </script>

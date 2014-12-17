@@ -12,9 +12,9 @@
     </div>
     <div class="section-body center">
       <% if @survey %>
-      <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
+        <%= render partial: "surveys/survey_body" %>
       <% else %>
-      <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-survey-button" do %>
+        <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-survey-button" do %>
         <span class="glyphicon glyphicon-plus-sign"></span>
         <%= t(".create_survey") %>
       <% end %>

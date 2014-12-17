@@ -5,17 +5,22 @@ class Survey < ActiveRecord::Base
 
   AGGREGATOR_URL = 'http://dev.aggregate.promisetracker.org/surveys'
 
-  def activate
-    uri = URI(AGGREGATOR_URL)
+  def activate(status)
+    uri = URI(AGGREGATOR_URL + "/#{status}")
     http = Net::HTTP.new(uri.host, uri.port)
-
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = self.to_json(
       only: [:id, :title, :campaign_id],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
     response = http.request(request)
-    JSON.parse(response.body)
+    payload = JSON.parse(response.body)
+
+    if payload['status'] == 'success'
+      self.campaign.update_attribute(:status, status)
+    end
+
+    payload
   end
 
   def close

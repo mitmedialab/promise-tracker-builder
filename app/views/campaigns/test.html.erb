@@ -1,0 +1,47 @@
+<div class="page-container">
+<% if @campaign.status == "draft" ||  @campaign.status == "test" %>
+  <div id="participate">
+    <h3><%= t(".test_title") %></h3>
+    <p>
+      <%= t(".test_explanation") %>
+    </p>
+
+    <h4><%= t(".how_to_test") %>:</h4>
+    <div id="how-to-participate">
+      <div class="row how-to-steps">
+        <div class="col-sm-4">
+          <div class="resource">
+            <h5><%= t(".step_1") %>:</h5>
+            <h4><%= t(".step_1_text") %></h4>
+            <i class="icon-mobile-phone"></i>
+            <%= link_to t(".download_link"), download_path %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+         <div class="resource">
+            <h5><%= t(".step_2") %>:</h5> 
+            <h4><%= t(".step_2_text") %></h4>
+            <i class="icon-download-alt"></i>
+            <p class="small"><%= t(".step_2_subtext") %>:</p>
+            <h2 class="code"><%= @survey.id %></h2>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="resource">
+            <h5><%= t(".step_3") %>:</h5> 
+            <h4><%= t(".step_3_text") %></h4>
+            <i class="icon-check"></i>
+            <p class="small"><%= t(".step_3_subtext") %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="center pad">
+    <%= link_to t(".edit_survey"), edit_survey_path(@survey), class: "btn btn-info" %>
+    <%= link_to t(".go_live"), activate_campaign_path(id: @campaign.id, status: "active"), method: :post, class: "btn btn-warning", data: { confirm: t(".confirm_launch") } %>
+  </div>
+<% end %>
+<% if @campaign.status == "active" || @campaign.status == "close" %>
+  <h3 class="title inline">Testing complete - Survey is now <%= t("campaigns.status.#{@campaign.status}") %></h3>
+<% end %>

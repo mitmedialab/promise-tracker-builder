@@ -93,7 +93,7 @@
   </div>
 </div>
 
-<% if @survey.id %>
+<% if @survey && @survey.id %>
   <script type="text/javascript">
     PT.getSurvey("<%= @survey.id %>");
   </script>

@@ -1,9 +1,6 @@
-require 'rexml/document'
-
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: [:test_builder, :new]
-
-  layout 'survey_builder', only: [:test_builder, :show]
+  layout 'survey_builder', only: [:test_builder, :edit]
 
   def index
     @surveys = Survey.all
@@ -16,7 +13,7 @@ class SurveysController < ApplicationController
         campaign_id: @campaign.id,
         title: @campaign.title
       )
-      redirect_to survey_path(@survey)
+      redirect_to edit_survey_path(@survey)
     else
       redirect_to test_builder_path
     end
@@ -24,8 +21,6 @@ class SurveysController < ApplicationController
 
   def test_builder
     @survey = Survey.new(title: t('surveys.survey_builder.untitled'))
-    @flash = t('survey_builder', scope: 'surveys').to_json
-    @validations = t('validations', scope: 'defaults').to_json
     @input_types = input_types.to_json
   end
 
@@ -45,7 +40,12 @@ class SurveysController < ApplicationController
       item.update_attribute(:order, index)
     end
 
-    render nothing: true
+    if @survey.campaign.status == 'draft'
+      render json: {redirect_path: 'campaign_survey_path'}.to_json
+    else @survey.campaign.status == 'test'
+      @survey.activate('test')
+      render json: {redirect_path: 'test_campaign_path'}.to_json
+    end
   end
 
   def preview
@@ -55,14 +55,12 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    @flash = t('survey_builder', scope: 'surveys').to_json
-    @validations = t('validations', scope: 'defaults').to_json
-    @input_types = input_types.to_json
+    render json: @survey
+  end
 
-    respond_to do |format|
-      format.html
-      format.json { render json: @survey, root: false }
-    end 
+  def edit
+    @survey = Survey.find(params[:id])
+    @input_types = input_types.to_json
   end
 
   def destroy

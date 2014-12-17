@@ -116,7 +116,6 @@
 </div>
 
 <script type="text/javascript">
-  PT.flash = <%= raw @flash %>;
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
   $(document).on("click", ".tip-box", PT.toggleTip);
@@ -131,5 +130,5 @@
     $currentTip.slideDown();
   });
 
-  jQuery.extend(jQuery.validator.messages, <%= raw @validations %>);
+  jQuery.extend(jQuery.validator.messages, I18n.t("defaults.validations"));
 </script>

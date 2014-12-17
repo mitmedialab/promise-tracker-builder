@@ -8,13 +8,12 @@
       <div class="modal-body">
         <div class="form-group">
           <%= f.label :theme, t(".campaign_theme") %>
-          <%= f.select :theme, campaign_themes, {}, { class: "form-control auto-width" } %> 
-          <%= f.hidden_field :id %>
+          <%= f.select :theme, campaign_themes, {}, { class: "form-control auto-width" } %>
         </div>
         <br>
         <div class="form-group">
           <%= f.label :tile, t(".campaign_title") %>
-          <%= f.text_field :title, class: "form-control", autofocus: true, required: true %>
+          <%= f.text_field :title, class: "form-control", required: true %>
         </div> 
         <div id="errors">
           <ul></ul>
@@ -30,15 +29,11 @@
 
 <script type="text/javascript">
   $("form").on("ajax:error", function(e, data, status, xhr){
-    console.log('error');
     errors = data.responseJSON.errors;
     errors.forEach(function(error){
+      $('#errors ul').empty();
       $('#errors ul').append('<li>' + errors + '</li>');
     });
     $("#errors").addClass("alert alert-danger");
-  });
-
-  $("form").on("ajax:success", function(e, data, status, xhr){
-    console.log('success');
   });
 </script>
