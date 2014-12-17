@@ -15,7 +15,8 @@ PromiseTracker::Application.routes.draw do
     put '/surveys/:id/save-order', to: 'surveys#save_order', as: 'save_order'
 
     get '/campaigns/:id/setup', to: 'campaigns#setup', as: 'setup_campaign'
-    get '/campaigns/:id/goals', to: 'campaigns#goals_wizard', as: 'campaign_goals_wizard'
+    get '/campaigns/:id/goals-wizard', to: 'campaigns#goals_wizard', as: 'campaign_goals_wizard'
+    get '/campaigns/:id/goals', to: 'campaigns#goals', as: 'campaign_goals'
     get '/campaigns/:id/launch', to: 'campaigns#launch', as: 'launch_campaign'
     get '/campaigns/:id/survey', to: 'campaigns#survey', as: 'campaign_survey'
     get '/campaigns/:id/profile', to: 'campaigns#profile', as: 'campaign_profile'

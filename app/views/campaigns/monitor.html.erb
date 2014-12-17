@@ -2,7 +2,6 @@
   <%= javascript_include_tag '/highcharts.js' %>
 <% end %>
 
-<%= render partial: 'live_nav' %>
 <div class="page-container">
   <div class="row campaign-overview">
     <div class="survey-code">
@@ -64,7 +63,6 @@
 </div>
 
 <script type="text/javascript">
-  $("#monitor-tab").addClass("active-tab");
   PT.campaign = <%= raw @campaign.to_json %>;
   PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
 </script>

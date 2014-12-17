@@ -198,6 +198,14 @@ en:
       title_placeholder: "Name"
       create_campaign: "Create"
 
+    progress_bar:
+      define_goals: "Define goals"
+      create_survey: "Create survey"
+      design_profile: "Design profile"
+      test_campaign: "Test survey"
+      collect_data: "Collect data"
+      share_data: "Share data"
+
     share:
       visualize_data: "Visualize your data" 
       map: "Map" 
@@ -211,6 +219,13 @@ en:
 
     show:
       edit_campaign: "Edit campaign"
+
+    tabs:
+      goals: "Goals"
+      survey: "Survey"
+      profile: "Profile"
+      data: "Data"
+      viz: "Visualizations"
 
     test:
       test_title: "Testing your campaign"

@@ -85,9 +85,10 @@
 #errors.progress-errors {
   position: absolute;
   right: 60px;
-  top: 180px;
-  padding: 20px;
+  top: 178px;
+  padding: 15px 20px;
   display: none;
+  z-index: 10;
 
   &.alert-danger:before {
     position: absolute;
@@ -238,7 +239,7 @@ ul.campaign-nav {
   display: block;
   border-bottom: 1px solid $light-grey;
   padding: 0;
-  margin: -20px 0 40px 0;
+  margin: 0 0 40px 0;
   padding-right: 60px;
   height: 40px;
   text-align: right;
@@ -269,9 +270,10 @@ ul.campaign-nav {
       width: auto;
     }
 
-    &.active-tab {
+    &.active {
       background: white;
       top: 1px;
+      border-color: $med-grey;
     }
   }
 }
@@ -332,7 +334,7 @@ ul.campaign-nav {
   font-weight: 200;
   display: block;
   padding-top: 20px;
-  margin: 10px 0 20px 0px;
+  margin: 0;
 }
 
 h2.title, h3.title {

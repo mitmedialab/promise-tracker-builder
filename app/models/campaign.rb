@@ -26,7 +26,7 @@ class Campaign < ActiveRecord::Base
     self.submissions_target.present?
   end
 
-  def validate_public_page
+  def validate_profile
     self.organizers.present? || self.anonymous == true
   end
 

@@ -199,6 +199,14 @@ pt-BR:
       title_placeholder: "Nome da ação"
       create_campaign: "Criar"
 
+    progress_bar:
+      define_goals: "Definir objetivos"
+      create_survey: "Criar formulário"
+      design_profile: "Preparar perfil"
+      test_survey: "Testar formulário"
+      collect_data: "Coletar dados"
+      share_data: "Compartilhar dados"
+
     share:
       visualize_data: "Vizualizar seus dados" 
       map: "Mapa" 
@@ -212,6 +220,13 @@ pt-BR:
 
     show:
       edit_campaign: "Editar ação"
+
+    tabs:
+      goals: "Objetivos"
+      survey: "Formulário"
+      profile: "Perfil"
+      data: "Dados"
+      viz: "Visualizações"
 
     test:
       test_title: "Testando sua ação"

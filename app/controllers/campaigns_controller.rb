@@ -26,6 +26,9 @@ class CampaignsController < ApplicationController
     redirect_to action: get_latest_state, id: @campaign.id
   end
 
+  def goals
+  end
+
   def next
     permission = campaign_can_advance?(params[:refer_action])
 
@@ -49,10 +52,12 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
     
-    if @campaign.organizers
+    if !@campaign.survey
+      redirect_to campaign_survey_path(@campaign)
+    elsif @campaign.status == 'draft'
       redirect_to test_campaign_path(@campaign)
     else
-      redirect_to campaign_survey_path(@campaign)
+      redirect_to action: get_latest_state, id: @campaign.id
     end
   end
 
