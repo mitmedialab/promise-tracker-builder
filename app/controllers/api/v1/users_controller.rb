@@ -7,7 +7,6 @@ module Api
       protect_from_forgery with: :null_session
 
       def create_new_session
-        binding.pry
         api_key = token_and_options(request)[0]
 
         if params[:user_id] && params[:username]
@@ -17,7 +16,6 @@ module Api
             api_key)
 
           sign_in(user, store: true)
-          binding.pry
           redirect_to campaigns_path
         else
           @error_code = 22
