@@ -2,13 +2,14 @@ class Survey < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
   has_many :inputs
+  before_create :generate_code
 
   def activate(status)
     uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{status}")
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = self.to_json(
-      only: [:id, :title, :campaign_id],
+      only: [:id, :code, :title, :campaign_id],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
     response = http.request(request)
@@ -45,6 +46,12 @@ class Survey < ActiveRecord::Base
     request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
     response = http.request(request)
     JSON.parse(response.body)['payload'] || []
+  end
+
+  def generate_code
+    begin
+      self.code = rand(899999) + 100000
+    end while self.class.exists?(code: code)
   end
 
 end
