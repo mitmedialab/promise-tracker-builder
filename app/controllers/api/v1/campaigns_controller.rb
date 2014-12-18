@@ -4,7 +4,7 @@ module Api
   module V1
     class CampaignsController < ApplicationController
       before_filter :restrict_access
-      skip_filter :protect_from_forgery, only: [:create]
+      protect_from_forgery with: :null_session, except: [:create]
 
       def index
         if params[:tags]

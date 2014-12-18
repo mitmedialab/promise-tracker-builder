@@ -4,7 +4,7 @@ module Api
   module V1
     class UsersController < ApplicationController
       before_filter :restrict_access
-      skip_filter :protect_from_forgery
+      protect_from_forgery with: :null_session, except: [:create_new_session]
 
       def create_new_session
         api_key = token_and_options(request)[0]
