@@ -52,9 +52,9 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
     
-    if !@campaign.survey
+    if !@campaign.survey || @campaign.status == 'draft'
       redirect_to campaign_survey_path(@campaign)
-    elsif @campaign.status == 'draft'
+    elsif @campaign.status == 'draft' && @campaign.validate_profile
       redirect_to test_campaign_path(@campaign)
     else
       redirect_to action: get_latest_state, id: @campaign.id

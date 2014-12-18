@@ -1,15 +1,31 @@
 // Test
 
-#how-to-participate {
-
-  .resource {
-    width: 100%;
+#test-campaign {
+  .row.step {
+    border-radius: 4px;
+    border: 1px solid $med-grey;
+    margin: 0 0 10px 0;
     padding: 20px;
-    height: 250px;
-    overflow: hidden;
   }
 
   .code {
     margin: 0;
+  }
+
+  .btn {
+    margin-bottom: 5px;
+  }
+
+  #how-to-test {
+    .icon {
+      font-size: 120%;
+      width: 25px;
+      display: inline-block;
+    }
+
+    h4 {
+      display: inline-block;
+      margin: 0;
+    }
   }
 }

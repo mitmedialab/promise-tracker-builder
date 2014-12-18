@@ -1,12 +1,12 @@
 <% content_for :head do %>
   <%= javascript_include_tag '/highcharts.js' %>
 <% end %>
-
+<%= render partial: 'campaigns/tabs' %>
 <div class="page-container">
   <div class="row campaign-overview">
     <div class="survey-code">
       <p><%= t(".status_text") %> <%= t("campaigns.status.#{@campaign.status}") %></p>
-      <h4><%= t(".survey_code") %>: <%= @campaign.survey.id %></h4>
+      <h4><%= t(".survey_code") %>: <%= format_survey_code(@survey.code) %></h4>
     </div>
     <div class="col-sm-9" id="activity-graph">
       <br>
