@@ -52,7 +52,7 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
     
-    if !@campaign.survey || @campaign.status == 'draft'
+    if !@campaign.survey || !@campaign.validate_profile
       redirect_to campaign_survey_path(@campaign)
     elsif @campaign.status == 'draft' && @campaign.validate_profile
       redirect_to test_campaign_path(@campaign)
@@ -104,6 +104,8 @@ class CampaignsController < ApplicationController
     if @survey.close['status'] == 'success'
       @campaign.update_attribute(:status, 'closed')
       redirect_to share_campaign_path(@campaign)
+    else
+      render 'monitor'
     end
   end
 
@@ -177,7 +179,7 @@ class CampaignsController < ApplicationController
         t("defaults.validations.please_create_survey")
       end
     when "edit_profile"
-      if @campaign.organizers && @campaign.description
+      if @campaign.validate_profile
         true
       else
         t("defaults.validations.please_complete_profile")
@@ -194,6 +196,10 @@ class CampaignsController < ApplicationController
       else
         t("defaults.validations.close_campaign")
       end
+    when "share"
+      if @campaign.status == 'closed'
+        false
+      end
     end
   end
 
@@ -204,7 +210,9 @@ class CampaignsController < ApplicationController
   end
 
   def campaign_params
-    params.require(:campaign).permit(:title, :description, :goal, :theme, :data_collectors, :submissions_target, :audience, :organizers)
+    params.require(:campaign).permit(
+      :title, :description, :goal, :theme, :data_collectors,
+      :submissions_target, :audience, :organizers, :anonymous)
   end
 
 end

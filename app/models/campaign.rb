@@ -14,7 +14,8 @@ class Campaign < ActiveRecord::Base
   def clone
     clone = self.dup
     clone.tags = self.tags
-    clone.update_attribute(:status, 'draft')
+    clone.update_attributes(status: 'draft', organizers: nil, anonymous: nil)
+    clone.save
     clone
   end
 
@@ -28,6 +29,10 @@ class Campaign < ActiveRecord::Base
 
   def validate_profile
     self.organizers.present? || self.anonymous == true
+  end
+
+  def not_draft
+    self.status == 'active' || self.status == 'closed'
   end
 
 end

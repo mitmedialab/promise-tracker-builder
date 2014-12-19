@@ -19,19 +19,19 @@
     <% end %>
 
     <%= link_to test_campaign_path(@campaign) do %>
-    <li data-path="test" data-clickable="<%= @campaign.organizers.present? %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
+    <li data-path="test" data-clickable="<%= @campaign.validate_profile %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
       <div><%= t(".test_survey") %></div>
     </li>
     <% end %>
 
     <%= link_to monitor_campaign_path(@campaign) do %>
-    <li data-path="monitor" data-clickable="<%= @campaign.status == 'active' %>" data-complete="<%= @campaign.status == 'active' %>" class="progress-node">
+    <li data-path="monitor" data-clickable="<%= @campaign.not_draft %> " data-complete="<%= @campaign.not_draft %>" class="progress-node">
       <div><%= t(".collect_data") %></div>
     </li>
     <% end %>
 
     <%= link_to share_campaign_path(@campaign) do %>
-    <li data-path="share" data-clickable="<%= @campaign.status == 'active' %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
+    <li data-path="share" data-clickable="<%= @campaign.not_draft %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
       <div><%= t(".share_data") %></div>
     </li>
     <% end %>
