@@ -1,7 +1,9 @@
 <% content_for :head do %>
   <%= javascript_include_tag '/highcharts.js' %>
 <% end %>
+
 <%= render partial: 'campaigns/tabs' %>
+
 <div class="page-container">
   <div class="row campaign-overview">
     <div class="survey-code">
@@ -64,5 +66,5 @@
 
 <script type="text/javascript">
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @campaign.survey.id %>, 'monitordataloaded');
+  PT.retrieveResponses(<%= @campaign.survey.code %>, 'monitordataloaded');
 </script>

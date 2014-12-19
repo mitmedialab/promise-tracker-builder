@@ -89,7 +89,7 @@
 </div>
 
 <script type="text/javascript">
-  PT.retrieveResponses(<%= @campaign.survey.id %>, "sharedataloaded");
+  PT.retrieveResponses(<%= @campaign.survey.code %>, "sharedataloaded");
   
   $("#viz-tabs a").click(function(e) {
     e.preventDefault();

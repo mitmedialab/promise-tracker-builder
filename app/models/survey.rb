@@ -23,7 +23,7 @@ class Survey < ActiveRecord::Base
   end
 
   def close
-    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{self.id}/close")
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{self.code}/close")
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Put.new(uri.path, {'Content-Type' =>'application/json'})
