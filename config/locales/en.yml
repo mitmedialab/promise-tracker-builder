@@ -27,6 +27,7 @@ en:
     attributes:
       campaign:
         title: "Name"
+        description: "Description"
         goal: "Goal"
         submissions_target: "Number of desired responses"
         data_collectors: "Campaign team"
@@ -35,6 +36,7 @@ en:
         start_date: "Start date"
         end_date: "End date"
         theme: "Theme"
+        organizers: "Campaign organizers"
 
       input:
         input_type: Type of response
@@ -156,6 +158,9 @@ en:
         data_collectors: "Who do you know in your community that might be interested in this issue that could help collect data?"
         submissions_target: "Sometimes, just a few data points is not convincing. Think about how many responses you might need to accurately represent your issue, and how many will be reasonable to collect within the time frame you specify."
         audience: "There are many audiences you may want to address with the data you collect. Who will be most interested in this data? Could you reach a new audience who is not already familiar with this issue? Who will be the most difficult to convince to make the change that you want to see?"
+
+    edit_profile:
+      remain_anonymous: "I prefer to keep the organizers anonymous"
 
     how_to_participate:
       how_to_participate: "Help collect data for this campaign by getting the mobile app and submitting data from your neighborhood!"

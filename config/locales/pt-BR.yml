@@ -27,6 +27,7 @@ pt-BR:
     attributes:
       campaign:
         title: "Nome"
+        description: "Descrição"
         goal: "Objetivo"
         submissions_target: "Número de participações"
         data_collectors: "Colaboradores"
@@ -35,6 +36,7 @@ pt-BR:
         start_date: "Data de publicação"
         end_date: "Data final"
         theme: "Tema"
+        organizers: "Organizadores da ação"
 
       input:
         input_type: "Tipo de resposta"
@@ -156,6 +158,9 @@ pt-BR:
         goal: "Mudanças sociais normalmente começam com pequenos passos. O que é possível alcançar no futuro próximo no tema escolhido?"
         submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
+
+    edit_profile:
+      remain_anonymous: "Prefiro manter os organizadores anónimos"
 
     how_to_participate:
       participate_title: "Ajude com a coleta de dados para esta ação!"

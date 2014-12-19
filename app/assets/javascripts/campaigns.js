@@ -4,7 +4,7 @@ var PT = PT || {};
 
 PT.nextFormPage = function(){
   var page = $(this).parents(".form-page");
-  var valid = PT.validateCampaign();
+  var valid = PT.validateGoals();
   if(valid) {
     page.next().fadeIn();
     page.css({'display':'none'});
@@ -22,7 +22,7 @@ PT.updateDisplay = function($input, $display){
   $display.html($input.val());
 };
 
-PT.validateCampaign = function(){
+PT.validateGoals = function(){
   var validator = $(".edit_campaign").validate({
     rules: {
       "campaign[description]": {required: true},
@@ -30,6 +30,22 @@ PT.validateCampaign = function(){
       "campaign[data_collectors]": {required: true},
       "campaign[submissions_target]": {required: true, number: true},
       "campaign[audience]": {required: true}
+    }
+  });
+
+  return validator.form();
+};
+
+PT.validateProfile = function(){
+  var validator = $(".edit_campaign").validate({
+    rules: {
+      "campaign[title]": {required: true},
+      "campaign[description]": {required: true},
+      "campaign[organizers]": {
+        required: function(){
+          return !$("#campaign_anonymous").is(":checked");
+        }
+      }
     }
   });
 

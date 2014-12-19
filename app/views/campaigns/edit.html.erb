@@ -129,7 +129,7 @@
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
   $(".edit_campaign").on("submit", function(){
-    if(!PT.validateCampaign()){
+    if(!PT.validateGoals()){
       PT.scrollToError();
       return false;
     }
