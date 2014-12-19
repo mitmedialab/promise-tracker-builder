@@ -1,5 +1,10 @@
-<%= render partial: 'campaigns/progress_bar' %>
+<% if current_user %>
+  <%= render partial: "campaigns/progress_bar" %>
+<% end %>
 
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+  <% if @campaign.status == "active" && current_user %>
+    <span class="subtle">(Code: <%= format_survey_code(@survey.code) %>)</span>
+  <% end %>
 </div>

@@ -1,7 +1,8 @@
 class CampaignsController < ApplicationController
   layout 'campaign', except: [:edit, :goals_wizard, :index, :public_page]
   before_filter :authenticate_user!, except: [:public_page, :share]
-  before_filter :assign_campaign_variables, except: [:index, :setup, :create, :destroy]
+  before_filter :restrict_user_access, except: [:index, :share]
+  before_filter :assign_campaign_variables, except: [:index, :setup, :create, :destroy, :share]
 
   def index
     @campaign = Campaign.new
@@ -98,6 +99,9 @@ class CampaignsController < ApplicationController
   end
 
   def share
+    @campaign = Campaign.includes(survey: :inputs).find(params[:id])
+    @survey = @campaign.survey
+    @can_advance = campaign_can_advance?(params[:action])
   end
 
   def close
@@ -136,6 +140,11 @@ class CampaignsController < ApplicationController
 
 
   private
+
+  def restrict_user_access
+    @campaign = Campaign.find(params[:id])
+    redirect_to root_path, status: 403 unless current_user.owns?(@campaign)
+  end
 
   def get_latest_state
     if @campaign.status == 'closed'

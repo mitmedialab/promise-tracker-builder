@@ -2,7 +2,9 @@
   <%= javascript_include_tag '/highcharts.js' %>
 <% end %>
 
-<%= render partial: 'campaigns/tabs' %>
+<% if current_user %>
+  <%= render partial: 'campaigns/tabs' %>
+<% end %>
 
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">

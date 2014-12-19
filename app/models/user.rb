@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true, presence: true
 
+  def owns?(resource)
+    resource.user == self
+  end
+
   def email_required?
     false
   end

@@ -29,6 +29,10 @@ a {
   color: $turquoise;
 }
 
+.subtle {
+  color: $med-grey;
+}
+
 .block {
   display: block;
 }
@@ -49,6 +53,10 @@ a {
 
 .bottom {
   vertical-align: bottom;
+}
+
+.caps {
+  text-transform: uppercase;
 }
 
 .container {
