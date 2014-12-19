@@ -1,0 +1,8 @@
+development:
+  AGGREGATOR_URL: "http://localhost:9292/"
+
+test:
+  AGGREGATOR_URL: "http://localhost:9292/"
+
+production:
+  AGGREGATOR_URL: "http://survey-aggregator.com"
