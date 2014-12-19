@@ -1,39 +1,39 @@
 <div class="section-light" id="campaign-progress-container">
   <ul id="campaign-progress-bar">
     <%= link_to edit_campaign_path(@campaign) do %>
-    <li data-path="edit" data-path-alt="goals_wizard" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
-      <div><%= t(".define_goals") %></div>
-    </li>
+      <li data-path="edit" data-path-alt="goals_wizard" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
+        <div><%= t(".define_goals") %></div>
+      </li>
     <% end %>
 
     <%= link_to campaign_survey_path(@campaign) do %>
-    <li data-path="survey" data-clickable="<%= @campaign.validate_goals %>" data-complete="<%= @campaign.survey.present? %>" class="progress-node">
-      <div><%= t(".create_survey") %></div>
-    </li>
+      <li data-path="survey" data-clickable="<%= @campaign.validate_goals %>" data-complete="<%= @campaign.survey.present? %>" class="progress-node">
+        <div><%= t(".create_survey") %></div>
+      </li>
     <% end %>
 
     <%= link_to edit_campaign_profile_path(@campaign) do %>
-    <li data-path="edit_profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.validate_profile %>">
-      <div><%= t(".design_profile") %></div>
-    </li>
+      <li data-path="edit_profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.validate_profile %>">
+        <div><%= t(".design_profile") %></div>
+      </li>
     <% end %>
 
     <%= link_to test_campaign_path(@campaign) do %>
-    <li data-path="test" data-clickable="<%= @campaign.validate_profile %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
-      <div><%= t(".test_survey") %></div>
-    </li>
+      <li data-path="test" data-clickable="<%= @campaign.validate_profile %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
+        <div><%= t(".test_survey") %></div>
+      </li>
     <% end %>
 
     <%= link_to monitor_campaign_path(@campaign) do %>
-    <li data-path="monitor" data-clickable="<%= @campaign.not_draft %> " data-complete="<%= @campaign.not_draft %>" class="progress-node">
-      <div><%= t(".collect_data") %></div>
-    </li>
+      <li data-path="monitor" data-clickable="<%= @campaign.not_draft %> " data-complete="<%= @campaign.not_draft %>" class="progress-node">
+        <div><%= t(".collect_data") %></div>
+      </li>
     <% end %>
 
     <%= link_to share_campaign_path(@campaign) do %>
-    <li data-path="share" data-clickable="<%= @campaign.not_draft %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
-      <div><%= t(".share_data") %></div>
-    </li>
+      <li data-path="share" data-clickable="<%= @campaign.not_draft %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
+        <div><%= t(".share_data") %></div>
+      </li>
     <% end %>
   </ul>
 
@@ -47,6 +47,7 @@
     <% end %>
   <% end %>
 </div>
+
 <div id="errors" class="progress-errors">
   <span class="glyphicon glyphicon-remove right close"></span>
   <ul></ul>

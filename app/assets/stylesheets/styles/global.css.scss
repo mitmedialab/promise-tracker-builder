@@ -363,8 +363,13 @@ input[disabled], .form-control[disabled] {
 
   #header {
     #branding .site-title {
-      font-size: 20px;
+      font-size: 18px;
       padding-top: 10px;
+
+      img {
+        width: 25px;
+        height: auto;
+      }
     }
 
     .header-container {

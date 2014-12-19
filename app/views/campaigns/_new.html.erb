@@ -4,25 +4,27 @@
       <div class="modal-header">
         <h4 class="modal-title"><%= t(".modal_title") %></h4>
       </div>
+
       <%= form_for @campaign, url: campaigns_path, method: :post, remote: true do |f| %>
-      <div class="modal-body">
-        <div class="form-group">
-          <%= f.label :theme, t(".campaign_theme") %>
-          <%= f.select :theme, campaign_themes, {}, { class: "form-control auto-width" } %>
+        <div class="modal-body">
+          <div class="form-group">
+            <%= f.label :theme, t(".campaign_theme") %>
+            <%= f.select :theme, campaign_themes, {}, { class: "form-control auto-width" } %>
+          </div>
+          <br>
+          <div class="form-group">
+            <%= f.label :tile, t(".campaign_title") %>
+            <%= f.text_field :title, class: "form-control", required: true %>
+          </div> 
+          <div id="errors">
+            <ul></ul>
+          </div> 
         </div>
-        <br>
-        <div class="form-group">
-          <%= f.label :tile, t(".campaign_title") %>
-          <%= f.text_field :title, class: "form-control", required: true %>
-        </div> 
-        <div id="errors">
-          <ul></ul>
-        </div> 
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-info"><%= t(".create_campaign") %></button>
-      </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info"><%= t(".create_campaign") %></button>
+        </div>
       <% end %>
+      
     </div>
   </div>
 </div>

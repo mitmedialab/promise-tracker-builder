@@ -1,7 +1,9 @@
+<% if @campaign.not_draft %>
+  <%= render partial: 'campaigns/tabs' %>
+<% end %>
+
 <div class="page-container">
-
   <div class="row" id="campaign-profile">
-
     <div class="col-md-12">
       <label><%= Campaign.human_attribute_name(:description) %></label>
       <p><%= @campaign.description %></p>
