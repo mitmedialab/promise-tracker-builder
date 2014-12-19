@@ -1,4 +1,4 @@
-// Campaign progress
+// Campaign progress bar
 
 #campaign-progress-container {
   padding: 20px;
@@ -112,14 +112,13 @@
   }
 }
 
-// Campaign show
+// Campaign index
 
 #user-info {
-  padding: 40px 0;
+  padding: 30px 0;
 
   .user-icon, .user-details  {
     display: inline-block;
-    height: 100px;
     display: table-cell;
     vertical-align: bottom;
     padding-right: 20px;
@@ -134,8 +133,8 @@
   }
 
   img {
-    width: 140px;
-    height: 140px;
+    width: auto;
+    height: 100px;
     border-radius: 50%;
   }
 }
@@ -179,12 +178,15 @@
 .campaigns-list {
   list-style-type: none;
   padding: 0;
+  margin-right: 50px;
 
   li.row {
     padding: 15px 20px;
     border-radius: 4px;
-    margin: 0 0 10px 0;
+    margin: 0;
     background: white;
+    border: 1px dotted #d1d2d0;
+    border-width: 1px 0 0 0;
 
     a.campaign-name {
       font-size: 18px;
@@ -466,9 +468,7 @@ h2.title, h3.title {
   }
 
   textarea {
-    border: none;
     margin: 0;
-    padding: 0 !important;
     color: $dark-grey;
     box-shadow: none;
   }
@@ -491,9 +491,21 @@ h2.title, h3.title {
 }
 
 @media (max-width: 768px) {
-  #user-info .user-icon img {
-    width: 100px;
-    height: 100px;
+
+  .campaigns-list {
+    margin-right: 0;
+
+    li.row {
+      padding: 10px 0;
+
+      .modify {
+        text-align: left;
+      }
+    }
+
+    .status-icon {
+      display: none !important;
+    }
   }
 
   .new-campaign-button {
