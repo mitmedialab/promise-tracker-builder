@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  include Exceptions
+  
   layout 'campaign', except: [:edit, :goals_wizard, :index, :public_page]
   before_filter :authenticate_user!, except: [:public_page, :share]
   before_filter :restrict_user_access, except: [:index, :share]
@@ -143,7 +145,7 @@ class CampaignsController < ApplicationController
 
   def restrict_user_access
     @campaign = Campaign.find(params[:id])
-    redirect_to root_path, status: 403 unless current_user.owns?(@campaign)
+    raise Exceptions::Forbidden unless current_user.owns?(@campaign)
   end
 
   def get_latest_state

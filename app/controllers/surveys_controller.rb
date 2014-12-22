@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: [:test_builder, :new]
+  before_action :restrict_user_access, except: [:test_builder, :new]
   layout 'survey_builder', only: [:test_builder, :edit]
 
   def index
@@ -67,6 +68,13 @@ class SurveysController < ApplicationController
     Survey.delete(params[:id])
     @surveys = current_user.surveys
     redirect_to controller: 'users', action: 'show', id: current_user.id
+  end
+
+  private
+
+  def restrict_user_access
+    @survey = Survey.find(params[:id])
+    raise Exceptions::Forbidden unless current_user.owns?(@survey)
   end
 
 end

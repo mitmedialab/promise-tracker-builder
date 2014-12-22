@@ -301,7 +301,7 @@ a {
 
 }
 
-// Flash messages
+// Flash & error messages
 
 #message {
   margin: 10px 0;
@@ -339,6 +339,10 @@ a {
   background: $light-pink;
 }
 
+.monster {
+  height: 200px;
+  width: auto;
+}
 
 // Surveys
 

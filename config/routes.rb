@@ -6,7 +6,7 @@ PromiseTracker::Application.routes.draw do
   scope "(:locale)", locale: /en|pt-BR/ do
     resources :users
     resources :campaigns
-    resources :surveys do
+    resources :surveys, except: [:index] do
       resources :inputs
     end
 
