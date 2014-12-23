@@ -1,17 +1,25 @@
-<% if @campaign.not_draft %>
-  <%= render partial: 'campaigns/tabs' %>
+<% if current_user && current_user.owns?(@campaign) && !@campaign.draft %>
+  <%= render partial: "tabs" %>
+  <div class="page-container">
+    <%= link_to t("defaults.edit"), edit_campaign_profile_path(@campaign), class: "right btn btn-info" %>
+  </div>
 <% end %>
 
 <div class="page-container">
+  <% if !current_user || !current_user.owns?(@campaign) %>
+    <div class="campaign-title"><%= @campaign.title %></div>
+  <% end %>
   <div class="row" id="campaign-profile">
     <div class="col-md-12">
       <label><%= Campaign.human_attribute_name(:description) %></label>
       <p><%= @campaign.description %></p>
       <br>
-      <label><%= Campaign.human_attribute_name(:organizers) %></label>
-      <p><%= @campaign.organizers %></p>
+      <% if !@campaign.anonymous %>
+        <label><%= Campaign.human_attribute_name(:organizers) %></label>
+        <p><%= @campaign.organizers %></p>
+      <% end %>
       <br>
-      <label>Campaign survey</label>
+      <label><%= Survey.model_name.human %></label>
       <div id="campaign-survey">
         <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
       </div>

@@ -1,9 +1,9 @@
 <% content_for :head do %>
-  <%= javascript_include_tag '/highcharts.js' %>
+  <%= javascript_include_tag "/highcharts.js" %>
 <% end %>
 
 <% if current_user %>
-  <%= render partial: 'campaigns/tabs' %>
+  <%= render partial: "tabs" %>
 <% end %>
 
 <div class="row viz-panel">

@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
-  before_action :authenticate_user!, except: [:test_builder, :new]
-  before_action :restrict_user_access, except: [:test_builder, :new]
+  before_action :authenticate_user!, except: [:test_builder, :new, :show]
+  before_action :restrict_user_access, except: [:test_builder, :new, :show]
   layout 'survey_builder', only: [:test_builder, :edit]
 
   def index
@@ -74,7 +74,7 @@ class SurveysController < ApplicationController
 
   def restrict_user_access
     @survey = Survey.find(params[:id])
-    raise Exceptions::Forbidden unless current_user.owns?(@survey)
+    raise Exceptions::Forbidden unless current_user.owns?(@survey.campaign)
   end
 
 end

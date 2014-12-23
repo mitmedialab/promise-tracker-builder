@@ -31,8 +31,8 @@ class Campaign < ActiveRecord::Base
     self.organizers.present? || self.anonymous == true
   end
 
-  def not_draft
-    self.status == 'active' || self.status == 'closed'
+  def draft
+    self.status == 'draft' || self.status == 'test'
   end
 
 end

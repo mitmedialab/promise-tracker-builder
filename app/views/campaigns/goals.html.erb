@@ -1,11 +1,14 @@
-<% if @campaign.not_draft %>
-  <%= render partial: 'campaigns/tabs' %>
+<% if !@campaign.draft %>
+  <%= render partial: "tabs" %>
 <% end %>
 
 <div class="page-container">
   <div id="campaign-survey">
     <div class="section-header">
-      <h2 class="title inline"><%= t(".campaign_goals") %></h2>
+      <h2 class="title sub-title inline"><%= t("campaigns.tabs.goals") %></h2>
+      <div class="right">
+        <%= link_to t("defaults.edit"), edit_campaign_path(@campaign), class: "btn btn-info" %>
+      </div>
     </div>
     <label><%= Campaign.human_attribute_name(:description) %></label>
     <p><%= @campaign.description %></p>

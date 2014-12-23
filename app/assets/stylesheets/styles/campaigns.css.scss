@@ -286,6 +286,10 @@ ul.campaign-nav {
   margin-bottom: 30px;
 }
 
+.sub-title {
+  font-size: 24px;
+}
+
 #campaign-goals {
   padding-right: 60px;
 }
@@ -461,32 +465,38 @@ h2.title, h3.title {
     padding: 30px 40px;
   }
 
-  input.campaign-title {
-    padding: 0;
-    border: none;
-    width: 100%;
-  }
-
   textarea {
     margin: 0;
     color: $dark-grey;
     box-shadow: none;
   }
 
-  #participate {
-    .how-to-steps {
-      margin: 0 auto;
-
-      i {
-        font-size: 200%;
-      }
-    }
-  }
-
   .highlight {
     background: $turquoise;
     margin: 0 -40px;
     padding: 20px 40px;
+  }
+}
+
+input.campaign-title {
+  padding: 0;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.participate {
+  .resource {
+    height: 250px;
+    width: 100%;
+  }
+
+  .how-to-steps {
+    margin: 0 auto;
+
+    i {
+      font-size: 200%;
+    }
   }
 }
 

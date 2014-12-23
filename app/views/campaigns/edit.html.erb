@@ -2,17 +2,12 @@
 
 <div class="page-container">
   <%= form_for @campaign do |f| %>
-    <div class="campaign-title inline">
-      <%= @campaign.title %>
-    </div>
-    <span class="edit-title-button" data-toggle="modal" data-target="#campaign-title-modal"><%= t(".edit_title") %></span>
-    <div class="right top-save">
+    <%= f.text_field :title, class: "campaign-title" %>
+    <div class="right">
       <%= f.submit t("defaults.save"), class: "btn btn-info" %>
     </div>
 
-    <h2 class="title"><%= t(".define_goals") %></h2>
-
-    <%= render partial: "campaign_title_modal", locals: {f: f} %>
+    <h2 class="title sub-title"><%= t("campaigns.tabs.goals") %></h2>
 
     <div id="campaign-goals-form" class="single-page">
       <div class="row">
@@ -129,8 +124,9 @@
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
+
   $(".edit_campaign").on("submit", function(){
-    if(!PT.validateGoals()){
+    if(!PT.validateOverview(this)){
       PT.scrollToError();
       return false;
     }

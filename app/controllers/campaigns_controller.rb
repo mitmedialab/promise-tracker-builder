@@ -1,10 +1,10 @@
 class CampaignsController < ApplicationController
   include Exceptions
-  
-  layout 'campaign', except: [:edit, :goals_wizard, :index, :public_page]
-  before_filter :authenticate_user!, except: [:public_page, :share]
-  before_filter :restrict_user_access, except: [:index, :share]
-  before_filter :assign_campaign_variables, except: [:index, :setup, :create, :destroy, :share]
+
+  layout 'campaign', except: [:edit, :goals_wizard, :index]
+  before_filter :authenticate_user!, except: [:profile, :share]
+  before_filter :restrict_user_access, except: [:create, :index, :profile, :share]
+  before_filter :assign_campaign_variables, except: [:index, :create, :destroy, :share]
 
   def index
     @campaign = Campaign.new
@@ -18,11 +18,7 @@ class CampaignsController < ApplicationController
   def create
     @campaign = current_user.campaigns.find_or_create_by(id: params[:campaign][:id])
     @campaign.update_attributes(campaign_params)
-    if @campaign.save
-      render js: "window.location = '#{edit_campaign_path(@campaign)}'"
-    else
-      render json: { errors: @campaign.errors.full_messages }.to_json, status: 422
-    end
+    redirect_to campaign_goals_wizard_path(@campaign)
   end
 
   def show
@@ -54,20 +50,26 @@ class CampaignsController < ApplicationController
     if @campaign.survey
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
-    
-    if !@campaign.survey || !@campaign.validate_profile
-      redirect_to campaign_survey_path(@campaign)
-    elsif @campaign.status == 'draft' && @campaign.validate_profile
-      redirect_to test_campaign_path(@campaign)
-    else
-      redirect_to action: get_latest_state, id: @campaign.id
-    end
+
+    # if !@campaign.survey || !@campaign.validate_profile
+    #   redirect_to campaign_survey_path(@campaign)
+    # elsif @campaign.status == 'draft' && @campaign.validate_profile
+    #   redirect_to test_campaign_path(@campaign)
+    # else
+    #   redirect_to action: get_latest_state, id: @campaign.id
+    # end
+
+    redirect_to action: get_latest_state, id: @campaign.id
+
   end
 
   def survey
   end
 
   def profile
+    if !current_user
+      render layout: "application"
+    end
   end
 
   def edit_profile
@@ -153,11 +155,11 @@ class CampaignsController < ApplicationController
       "share"
     elsif @campaign.status == 'active'
       "monitor"
-    elsif @campaign.status == 'test'
+    elsif @campaign.status == 'test' || @campaign.validate_profile
       "test"
-    elsif @campaign.survey
+    elsif @campaign.survey || @campaign.validate_goals
       "survey"
-    else
+    elsif
       "edit"
     end
   end

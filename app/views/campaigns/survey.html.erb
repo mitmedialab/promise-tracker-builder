@@ -1,17 +1,15 @@
-<% if @campaign.not_draft %>
-  <%= render partial: 'campaigns/tabs' %>
+<% if !@campaign.draft %>
+  <%= render partial: "tabs" %>
 <% end %>
 
 <div class="page-container">
   <div id="campaign-survey">
     <div class="section-header">
       <h2 class="title inline"><%= t(".campaign_survey") %></h2>
-      <% if @survey %>
-      <div class="right">
-        <% if @campaign.status == "draft" || @campaign.status == "test" %>
+      <% if @survey && @campaign.draft %>
+        <div class="right">
           <%= link_to t(".edit_survey"), edit_survey_path(@survey), class: "btn btn-info" %>
-        <% end %>
-      </div>
+        </div>
       <% end %>
     </div>
     <div class="section-body center">
@@ -19,9 +17,9 @@
         <%= render partial: "surveys/survey_body" %>
       <% else %>
         <%= link_to new_survey_path(campaign_id: @campaign.id), class: "btn btn-info new-survey-button" do %>
-        <span class="glyphicon glyphicon-plus-sign"></span>
-        <%= t(".create_survey") %>
-      <% end %>
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          <%= t(".create_survey") %>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -4,7 +4,7 @@ var PT = PT || {};
 
 PT.nextFormPage = function(){
   var page = $(this).parents(".form-page");
-  var valid = PT.validateGoals();
+  var valid = PT.validateOverview(".edit_campaign");
   if(valid) {
     page.next().fadeIn();
     page.css({'display':'none'});
@@ -22,9 +22,10 @@ PT.updateDisplay = function($input, $display){
   $display.html($input.val());
 };
 
-PT.validateGoals = function(){
-  var validator = $(".edit_campaign").validate({
+PT.validateOverview = function(formSelector){
+  var validator = $(formSelector).validate({
     rules: {
+      "campaign[title]": {required: true, minlength: 5},
       "campaign[description]": {required: true},
       "campaign[goal]": {required: true},
       "campaign[data_collectors]": {required: true},
@@ -36,8 +37,8 @@ PT.validateGoals = function(){
   return validator.form();
 };
 
-PT.validateProfile = function(){
-  var validator = $(".edit_campaign").validate({
+PT.validateProfile = function(formSelector){
+  var validator = $(formSelector).validate({
     rules: {
       "campaign[title]": {required: true},
       "campaign[description]": {required: true},

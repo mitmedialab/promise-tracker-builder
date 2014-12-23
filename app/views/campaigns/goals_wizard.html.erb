@@ -1,52 +1,24 @@
 <%= render partial: 'progress_bar' %>
 
 <div class="page-container">
-  <div class="campaign-title inline">
-    <%= @campaign.title %>
-  </div>
-  <div class="edit-title-button" data-toggle="modal" data-target="#campaign-title-modal"><%= t("campaigns.edit.edit_title") %></div>
-
-  <h2 class="title"><%= t("campaigns.edit.define_goals") %></h2>
-
   <%= form_for @campaign do |f| %>
-  <%= render partial: "campaign_title_modal", locals: {f: f} %>
+    <%= f.text_field :title, class: "campaign-title" %>
+    <h2 class="title sub-title"><%= t("campaigns.edit.define_goals") %></h2>
 
-  <div id="campaign-goals-form">
-    <div class="row form-page" id="form-page-1">
-      <div class="col-sm-8">
-        <div class="form-group"> 
-          <%= f.label :description %>
-          <p class="explain"><%= t("campaigns.edit.explanations.description") %></p>
-          <%= f.text_area :description, rows: 4, class: "form-control", autofocus: true %>
-        </div>
-      </div>
-      <div class="col-sm-8">
-        <div class="form-group"> 
-          <%= f.label :goal %>
-          <p class="explain"><%= t("campaigns.edit.explanations.goal") %></p>
-          <%= f.text_area :goal, rows: 4, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="tip-box">
-          <div class="header">
-            <i class="fa fa-question-circle"></i> <%= t("campaigns.edit.tooltip") %>
-          </div>
-          <div class="body">
-            <p><%= t("campaigns.edit.tips.goal") %></p>
-          </div>
-        </div>  
-      </div>
-      <%= render partial: 'form_buttons' %>
-    </div>
-
-    <div class="form-page" id="form-page-2">
-      <div class="row">
+    <div id="campaign-goals-form">
+      <div class="row form-page" id="form-page-1">
         <div class="col-sm-8">
           <div class="form-group"> 
-            <%= f.label :data_collectors %>
-            <p class="explain"><%= t("campaigns.edit.explanations.data_collectors") %></p>
-            <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
+            <%= f.label :description %>
+            <p class="explain"><%= t("campaigns.edit.explanations.description") %></p>
+            <%= f.text_area :description, rows: 4, class: "form-control", autofocus: true %>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :goal %>
+            <p class="explain"><%= t("campaigns.edit.explanations.goal") %></p>
+            <%= f.text_area :goal, rows: 4, class: "form-control" %>
           </div>
         </div>
         <div class="col-sm-4">
@@ -55,18 +27,62 @@
               <i class="fa fa-question-circle"></i> <%= t("campaigns.edit.tooltip") %>
             </div>
             <div class="body">
-              <p><%= t("campaigns.edit.tips.data_collectors") %></p>
+              <p><%= t("campaigns.edit.tips.goal") %></p>
             </div>
           </div>  
         </div>
+        <%= render partial: 'form_buttons' %>
       </div>
 
-      <div class="row">
+      <div class="form-page" id="form-page-2">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-group"> 
+              <%= f.label :data_collectors %>
+              <p class="explain"><%= t("campaigns.edit.explanations.data_collectors") %></p>
+              <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="tip-box">
+              <div class="header">
+                <i class="fa fa-question-circle"></i> <%= t("campaigns.edit.tooltip") %>
+              </div>
+              <div class="body">
+                <p><%= t("campaigns.edit.tips.data_collectors") %></p>
+              </div>
+            </div>  
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-group"> 
+              <%= f.label :submissions_target %>
+              <p class="explain"><%= t("campaigns.edit.explanations.submissions_target") %></p>
+              <%= f.number_field :submissions_target, rows: 8, min: 0, placeholder: t("campaigns.edit.type_number"), class: "block" %>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="tip-box">
+              <div class="header">
+                <i class="fa fa-question-circle"></i> <%= t("campaigns.edit.tooltip") %>
+              </div>
+              <div class="body">
+                <p><%= t("campaigns.edit.tips.submissions_target") %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= render partial: 'form_buttons' %>
+      </div>
+
+      <div class="row form-page" id="form-page-3">
         <div class="col-sm-8">
           <div class="form-group"> 
-            <%= f.label :submissions_target %>
-            <p class="explain"><%= t("campaigns.edit.explanations.submissions_target") %></p>
-            <%= f.number_field :submissions_target, rows: 8, min: 0, placeholder: t("campaigns.edit.type_number"), class: "block" %>
+            <%= f.label :audience %>
+            <p class="explain"><%= t("campaigns.edit.explanations.audience") %></p>
+            <%= f.text_area :audience, rows: 5, class: "form-control" %>
           </div>
         </div>
         <div class="col-sm-4">
@@ -75,43 +91,20 @@
               <i class="fa fa-question-circle"></i> <%= t("campaigns.edit.tooltip") %>
             </div>
             <div class="body">
-              <p><%= t("campaigns.edit.tips.submissions_target") %></p>
+              <p><%= t("campaigns.edit.tips.audience") %></p>
             </div>
-          </div>
-        </div>
-      </div>
-      <%= render partial: 'form_buttons' %>
-    </div>
-
-    <div class="row form-page" id="form-page-3">
-      <div class="col-sm-8">
-        <div class="form-group"> 
-          <%= f.label :audience %>
-          <p class="explain"><%= t("campaigns.edit.explanations.audience") %></p>
-          <%= f.text_area :audience, rows: 5, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="tip-box">
-          <div class="header">
-            <i class="fa fa-question-circle"></i> <%= t("campaigns.edit.tooltip") %>
-          </div>
-          <div class="body">
-            <p><%= t("campaigns.edit.tips.audience") %></p>
-          </div>
-        </div>  
-      </div>
-
-      <div class="button-group center clear">
-        <hr>
-        <div class="btn btn-info left-arrow">
-          <%= t("campaigns.form_buttons.back") %> <span class="glyphicon glyphicon-chevron-left"></span>
+          </div>  
         </div>
 
-        <%= f.submit t("defaults.save"), class: "btn btn-info" %>
-      </div>
-    </div> 
+        <div class="button-group center clear">
+          <hr>
+          <div class="btn btn-info left-arrow">
+            <%= t("campaigns.form_buttons.back") %> <span class="glyphicon glyphicon-chevron-left"></span>
+          </div>
 
+          <%= f.submit t("defaults.save"), class: "btn btn-info" %>
+        </div>
+      </div> 
     <% end %>
   </div>
 </div>
@@ -120,10 +113,6 @@
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
   $(document).on("click", ".tip-box", PT.toggleTip);
-
-  $("#update-title-button").on("click", function(){
-    PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
-  });
 
   $("textarea, input").on("click", function(){
     var $currentTip = $(this).parents(".row").find(".tip-box .body");
