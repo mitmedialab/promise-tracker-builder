@@ -13,12 +13,26 @@ module Api
             tag.campaigns if tag
           end.reduce do |a, b|
             a || b
-          end.select { |c| c.status != 'draft' }
+          end.select { |c| !c.draft? }
+          render 'index', formats: [:json]
+        elsif params[:user_id]
+          api_key = ApiKey.find_by(access_token: token_and_options(request)[0])
+          user = User.where(
+            api_client_name: api_key.client_name,
+            api_client_user_id: params[:user_id]).first
+
+          if user
+            @campaigns = user.campaigns
+            render 'index', formats: [:json]
+          else
+            @error_code = 23
+            @error_message = 'User not found'
+            render 'api/v1/error', format: :json, status: 404
+          end
         else
           @campaigns = Campaign.includes(:tags).where.not(status: 'draft')
+          render 'index', formats: [:json]
         end
-
-        render 'index', formats: [:json]
       end
 
       def show

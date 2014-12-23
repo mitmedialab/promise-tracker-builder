@@ -18,4 +18,8 @@ class Campaign < ActiveRecord::Base
     clone
   end
 
+  def draft?
+    self.status == 'draft' || self.status == 'test'
+  end
+
 end
