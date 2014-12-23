@@ -30,7 +30,7 @@ en:
         description: "Description"
         goal: "Goal"
         submissions_target: "Number of desired responses"
-        data_collectors: "Campaign team"
+        data_collectors: "Data collectors"
         audience: "Target audience"
         status: "Status"
         start_date: "Start date"
@@ -103,6 +103,7 @@ en:
 
   errors:
     sorry: "Sorry!"
+    hmm: "Hmmm..."
     resource_not_found: "We couldn't find that page"
     forbidden: "Access not unauthorized"
     internal_error: "Something went wrong..."
@@ -163,7 +164,15 @@ en:
       remain_anonymous: "I prefer to keep the organizers anonymous"
 
     how_to_participate:
-      how_to_participate: "Help collect data for this campaign by getting the mobile app and submitting data from your neighborhood!"
+      participate_title: "Get involved with this campaign!"
+      participate_text: "To help collect data for this campaign, get the mobile app and send in info from your neighborhood!"
+      step: "Step"
+      step_1_text: "Get the app"
+      step_1_subtext: "You'll be using the free Promise Tracker mobile app to collect data."
+      download_link: "Click here to see how to download."
+      step_2_text: "Download the survey"
+      step_2_subtext: "Once you open the mobile app, download your survey using code"
+      step_3_text: "Fill out survey"
 
     index:
       new_campaign: "Start a new campaign"
@@ -222,11 +231,8 @@ en:
       contact: "Contact person"
       learn_more: "Learn more about this campaign at "
 
-    show:
-      edit_campaign: "Edit campaign"
-
     tabs:
-      goals: "Goals"
+      overview: "Overview"
       survey: "Survey"
       profile: "Profile"
       data: "Data"
@@ -235,19 +241,12 @@ en:
     test:
       test_title: "Testing your survey"
       how_to_test: "Como testar"      
-      test_explanation: "Before going live with your campaign, try downloading your survey on a phone to ensure the questions appear as you intended"
+      test_explanation: "Before going live with your campaign, try downloading your survey on a phone to ensure the questions appear as you intended."
+      catch_errors: "Now is the time to catch any mistakes!"
+      warning: "Once you go live, you can no longer change your survey!"
       how_to_test: "How to test" 
-      step_1: "Step 1"
-      step_1_text: "Get the app"
-      step_1_subtext: "You'll be using the free Promise Tracker mobile app to collect data."
-      download_link: "Click here to see how to download."
-      step_2: "Step 2"
-      step_2_text: "Download the survey"
-      step_2_subtext: "Once you open the mobile app, download your survey using code"
-      step_3: "Step 3"
-      step_3_text: "Fill out survey"
-      step_3_subtext: "Verify that all questions are written correctly and are in the right order."
-      step_3_warning: "Once you go live, you can no longer change your survey!"
+      step_3_text: "Test the survey"
+      step_3_subtext: "Fill out the survey and verify that all questions are written correctly and are in the right order."
       edit_survey: "Edit survey"
       go_live: "Go live"
       confirm_launch: "Are you sure you want to go live? Once you go live you can no longer change your survey!"

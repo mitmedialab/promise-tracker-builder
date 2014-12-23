@@ -103,6 +103,7 @@ pt-BR:
 
   errors:
     sorry: "Desculpe!"
+    hmm: "Hmmm..."
     resource_not_found: "Não conseguimos encontrar essa página"
     forbidden: "Accesso não autorizado"
     internal_error: "Algo aconteceu"
@@ -164,7 +165,14 @@ pt-BR:
 
     how_to_participate:
       participate_title: "Ajude com a coleta de dados para esta ação!"
-      pariticipate_text: "Baixe o aplicativo móvel e mande informações da sua area."
+      participate_text: "Baixe o aplicativo móvel e mande informações da sua area."
+      step: "Passo"
+      step_1_text: "Baixar o aplicativo móvel"
+      download_link: "Clique aqui para ver como baixar"
+      step_2_text: "Baixar o formulário"
+      step_2_subtext: "Use o código seguinte para baixar"
+      step_3_text: "Preencher o formulário"
+      step_3_subtext: "Mandar seus dados e vé-los no mapa da ação!"
 
     index:
       new_campaign: "Criar uma nova ação"
@@ -223,11 +231,8 @@ pt-BR:
       campaign_organizers: "Realizadores da ação"
       learn_more: "Aprender mais sobre esta ação no site"
 
-    show:
-      edit_campaign: "Editar ação"
-
     tabs:
-      goals: "Objetivos"
+      goals: "Overview"
       survey: "Formulário"
       profile: "Perfil"
       data: "Dados"
@@ -236,16 +241,11 @@ pt-BR:
     test:
       test_title: "Testando seu formulário"
       test_explanation: "Antes de lançar sua ação, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
+      catch_errors: "Agora é o momento de achar todos os erros!"
       how_to_test: "Como testar"
-      step_1: "Passo 1"
-      step_1_text: "Baixar o aplicativo móvel"
-      download_link: "Clique aqui para ver como baixar"
-      step_2: "Passo 2"
-      step_2_text: "Baixar seu formulário"
-      step_2_subtext: "Usando o código seguinte"
-      step_3: "Passo 3"
-      step_3_text: "Preencher o formulário"
-      step_3_subtext: "Confirmar que tudo esteja bem escrito e em ordem"
+      step_3_text: "Testar o formulário"
+      step_3_subtext: "Preencha o formulário e Confirme que tudo esteja bem escrito e em ordem"
+      warning: "Depois de lançar, você não vai poder modificar o formulário!"
       edit_survey: "Editar formulário"
       go_live: "Lançar ação"
       confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode ser modificado mais!"

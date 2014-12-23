@@ -1,11 +1,11 @@
 <div class="page-container">
 <% if @campaign.status == "draft" ||  @campaign.status == "test" %>
-  <div id="test-campaign">
+  <div id="test-campaign" class="participate">
     <div class="row">
       <div class="col-sm-8">
         <h3><%= t(".test_title") %></h3>
         <p>
-          <%= t(".test_explanation") %>
+          <%= t(".test_explanation") %><strong><%= t(".warning") %></strong>
         </p>
       </div>
       <div class="col-sm-4">
@@ -19,39 +19,41 @@
     <h4><%= t(".how_to_test") %>:</h4>
     <div id="how-to-test"> 
       <div class="row step">
-        <div class="col-md-2">
-          <h4><%= t(".step_1") %>:</h4>
+        <div class="col-md-1 step-icon">
+          <i class="icon-mobile-phone"></i>
         </div>
-        <div class="col-md-4">
-          <div class="icon icon-mobile-phone"></div><h4><%= t(".step_1_text") %></h4>  
+        <div class="col-md-6">
+          <h4><%= t("campaigns.how_to_participate.step") %> 1:</h4>
+          <h3><%= t("campaigns.how_to_participate.step_1_text") %></h3>  
         </div>
         <div class="col-md-5">
-          <%= link_to t(".download_link"), download_path %>
+          <%= link_to t("campaigns.how_to_participate.download_link"), download_path %>
         </div>
       </div>
 
       <div class="row step">
-        <div class="col-md-2">
-          <h4><%= t(".step_2") %>:</h4>
+        <div class="col-md-1 step-icon">
+          <i class="icon-download-alt"></i>
         </div>
-        <div class="col-md-4">
-        <div class="icon icon-download-alt"></div> <h4><%= t(".step_2_text") %></h4>
+        <div class="col-md-6">
+          <h4><%= t("campaigns.how_to_participate.step") %> 2:</h4>
+          <h3><%= t("campaigns.how_to_participate.step_2_text") %></h3>
         </div>
         <div class="col-md-5">
-          <%= t(".step_2_subtext") %>: <strong><%= format_survey_code(@survey.code) %></strong>
+          <%= t("campaigns.how_to_participate.step_2_subtext") %>: <strong><%= format_survey_code(@survey.code) %></strong>
         </div>
       </div>
 
       <div class="row step">
-        <div class="col-md-2">
-          <h4><%= t(".step_3") %>:</h4>
+        <div class="col-md-1 step-icon">
+          <i class="icon-check"></i>
         </div>
-        <div class="col-md-4">
-          <div class="icon icon-check"></div><h4><%= t(".step_3_text") %></h4>
+        <div class="col-md-6">
+          <h4><%= t("campaigns.how_to_participate.step") %> 3:</h4>
+          <h3><%= t(".step_3_text") %></h3>
         </div>
         <div class="col-md-5">
           <%= t(".step_3_subtext") %>
-          <strong><%= t(".step_3_warning") %></strong>
         </div>
       </div>
     </div>
