@@ -1,5 +1,4 @@
 class CampaignsController < ApplicationController
-  include Exceptions
 
   layout 'campaign', except: [:edit, :goals_wizard, :index]
   before_filter :authenticate_user!, except: [:profile, :share]
