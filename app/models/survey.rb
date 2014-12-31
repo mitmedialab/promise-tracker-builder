@@ -13,13 +13,16 @@ class Survey < ActiveRecord::Base
       include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
     response = http.request(request)
-    payload = JSON.parse(response.body)
+    data = JSON.parse(response.body)
 
-    if payload['status'] == 'success'
-      self.campaign.update_attribute(:status, status)
+    if data['status'] == 'success'
+      self.campaign.update_attributes(
+        status: status, 
+        start_date: Time.new(data['payload']['start_date'])
+      )
     end
 
-    payload
+    data
   end
 
   def close

@@ -193,20 +193,6 @@
       color: $dark-grey;
     }
 
-    span {
-      &.draft, &.test {
-        color: $yellow;
-      }
-
-      &.active {
-        color: $turquoise;
-      }
-
-      &.closed {
-        color: $pink;
-      }
-    }
-
     .status-icon {
       vertical-align: middle;
       width: 40px;
@@ -232,6 +218,20 @@
       text-align: right;
       margin-top: 5px;
     }
+  }
+}
+
+span {
+  &.draft, &.test {
+    color: $yellow;
+  }
+
+  &.active {
+    color: $turquoise;
+  }
+
+  &.closed {
+    color: $pink;
   }
 }
 
@@ -442,26 +442,57 @@ h2.title, h3.title {
   }
 }
 
-// Public page
+// Profile page
 
 #campaign-profile {
   background: white;
 
+  .campaign-overview {
+    .placeholder img {
+      width: 100%;
+      height: auto;
+      margin: 20px 0 0 0;
+    }
+
+    #campaign_anonymous {
+      margin: 0 10px 10px 0;
+    }
+  }
+
+  .survey-preview {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
   #survey-body {
     background: white;
-    border: 2px dashed $light-grey;
-    margin-top: 10px;
 
     .input {
       border: none;
       margin: 0;
       padding: 10px;
       min-height: 0;
+
+      p.label-text {
+        margin-right: 0;
+      }
+    }
+
+    .example {
+      display: none;
+
+      &.select, &.select1 {
+        display: block;
+
+        p {
+          display: none;
+        }
+      }
     }
   }
 
   &.preview {
-    margin: 40px;
+    margin: 40px 40px 20px 40px;
     padding: 30px 40px;
   }
 
@@ -471,10 +502,12 @@ h2.title, h3.title {
     box-shadow: none;
   }
 
-  .highlight {
-    background: $turquoise;
-    margin: 0 -40px;
-    padding: 20px 40px;
+  .inactive {
+    color: $med-grey;
+
+    #campaign_organizers, .error {
+      display: none;
+    }
   }
 }
 
@@ -486,6 +519,7 @@ input.campaign-title {
 }
 
 .participate {
+
   .resource {
     height: 250px;
     width: 100%;
@@ -495,9 +529,69 @@ input.campaign-title {
     margin: 0 auto;
 
     i {
-      font-size: 200%;
+      font-size: 250%;
+
+      &.bigger {
+        font-size: 300%;
+      }
+    }
+
+    .step {
+      text-align: center;
+      margin-top: 15px;
+
     }
   }
+}
+
+.highlight {
+  margin: 0 0 10px -40px;
+  display: inline-block !important;
+  padding: 10px 30px 10px 40px;
+
+  &.title {
+    background: $turquoise;
+  }
+
+  &.text {
+    background: whitesmoke;
+    font-size: 17px;
+  }
+}
+
+// Stacked sheets
+.stacked-sheets {
+  background: #fafafa;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 26px auto 0;
+  padding: 40px;
+  width: 80%;
+  position: relative;
+  z-index: 1;
+}
+
+.stacked-sheets:before, .stacked-sheets:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.stacked-sheets:before {
+  background: #f6f6f6;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
+}
+
+.stacked-sheets:after {
+  background: white;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  right: -10px;
+  top: 5px;
+  border: 1px solid $light-grey;
 }
 
 @media (max-width: 768px) {
@@ -527,6 +621,19 @@ input.campaign-title {
 
     .tab-text {
       display: none;
+    }
+  }
+
+  #campaign-profile {
+    &.preview {
+      margin: 0;
+      padding: 0 10px;
+    }
+
+    .campaign-overview {
+      .placeholder img {
+        margin: 0 0 10px 0;
+      }
     }
   }
 }

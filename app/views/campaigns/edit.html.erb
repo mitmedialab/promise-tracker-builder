@@ -2,13 +2,13 @@
 
 <div class="page-container">
   <%= form_for @campaign do |f| %>
-    <%= f.text_field :title, class: "campaign-title" %>
-    <div class="right">
-      <%= f.submit t("defaults.save"), class: "btn btn-info" %>
+    <div class="section-header">
+      <%= f.text_field :title, class: "campaign-title" %>
+      <div class="right">
+        <%= f.submit t("defaults.save"), class: "btn btn-info" %>
+      </div>
+      <h2 class="title sub-title"><%= t("campaigns.tabs.goals") %></h2>
     </div>
-
-    <h2 class="title sub-title"><%= t("campaigns.tabs.goals") %></h2>
-
     <div id="campaign-goals-form" class="single-page">
       <div class="row">
         <div class="col-sm-4 block">

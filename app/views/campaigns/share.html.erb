@@ -1,5 +1,6 @@
 <% content_for :head do %>
   <%= javascript_include_tag "/highcharts.js" %>
+  <meta property="og:url" content="<%= request.original_url %>" >
 <% end %>
 
 <% if current_user %>

@@ -1,13 +1,34 @@
 <% content_for :head do %>
   <%= javascript_include_tag "/highcharts.js" %>
+  <meta property="og:url" content="<%= request.original_url %>" >
 <% end %>
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '337756186420908',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <%= render partial: "tabs" %>
 
 <div class="page-container">
   <div class="row campaign-overview">
     <div class="survey-code">
-      <p><%= t(".status_text") %> <%= t("campaigns.status.#{@campaign.status}") %></p>
+      <p><span class="glyphicon glyphicon-flag <%= @campaign.status %>"></span>
+      <%= t("campaigns.status.#{@campaign.status}") %></p>
       <h4><%= t(".survey_code") %>: <%= format_survey_code(@survey.code) %></h4>
     </div>
     <div class="col-sm-9" id="activity-graph">
@@ -37,7 +58,8 @@
 <div class="row section-dark campaign-outreach">
   <div class="page-container">
     <h3 class="title"><%= t(".publicize_form") %></h3>
-    <%= image_tag("social-fb.png", class: "social-share") %>
+
+    <%= image_tag("social-fb.png", class: "social-share fb-share", "data-href" => "//developers.facebook.com/docs/plugins/" ) %>
     <%= image_tag("social-tw.png", class: "social-share") %>
     <%= image_tag("social-email.png", class: "social-share") %>
   </div>
@@ -64,7 +86,18 @@
   </div>
 </div>
 
+<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/">hi</div>
+
 <script type="text/javascript">
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @campaign.survey.code %>, 'monitordataloaded');
+  PT.retrieveResponses(<%= @survey.code %>, 'monitordataloaded');
+
+  $(".fb-share").on("click", function(){
+    FB.ui({
+      method: 'share',
+      href: 'http://localhost:3000/en/campaigns/30/share',
+    }, function(response){
+    });
+  })
+
 </script>

@@ -68,10 +68,10 @@
           <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
 
-        <div class="example">
+        <div class="example" data-bind="css: input_type">
           <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">
-            <p data-bind="visible: input_type() === 'select'">Select all that apply:</p>
-            <p data-bind="visible: input_type() === 'select1'">Select one:</p>
+            <p data-bind="visible: input_type() === 'select'"><%= t(".select_many") %>:</p>
+            <p data-bind="visible: input_type() === 'select1'"><%= t(".select_one") %>:</p>
             <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
               <li class="option">
                 <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>

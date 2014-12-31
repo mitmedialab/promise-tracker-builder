@@ -92,6 +92,10 @@ a {
   padding-top: 10px;
 }
 
+.unpad-top {
+  margin-top: -20px !important;
+}
+
 .pad-bottom {
   padding-bottom: 20px;
 }
@@ -104,8 +108,16 @@ a {
   width: 100%;
 }
 
+.partial {
+  width: 80%;
+}
+
 .page-container, .section-container {
   margin: 0 60px;
+}
+
+.upsize {
+  font-size: 1.2em;
 }
 
 .margin-left {

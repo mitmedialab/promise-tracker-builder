@@ -1,6 +1,11 @@
 <div class="page-container">
-  <h2 class="title inline"><%= t("campaign_profile") %></h2>
-  <p>
+  <div class="section-header">
+    <h2 class="title sub-title inline"><%= t("campaigns.profile") %></h2>
+    <div class="right">
+      <div class="btn btn-info" id="save-profile"><%= t("defaults.save") %></div>
+    </div>
+  </div>
+  <p class="partial upsize">
     Below is a public page that will describe your campaign. The public link can be used to share with friends and others as you collect and share your data.
   </p>
   <br>
@@ -9,61 +14,60 @@
 <div class="section grey">
   <div class="page-container pad-top">
 
-    <div id="campaign-profile" class="preview">
-      <%= form_for @campaign do |f| %>
+    <%= form_for @campaign do |f| %>
+      <div id="campaign-profile" class="preview">
         <%= f.text_field :title, class: "campaign-title" %>
 
-        <div class="row">
-          <div class="col-sm-10">
+        <div class="row campaign-overview">
+          <div class="col-sm-7">
             <div class="form-group"> 
               <%= f.label :description %>
-              <%= f.text_area :description, rows: 4, placeholder: "Type a description of your campaign here", class: "form-control" %>
-            </div>
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-sm-10">
-            <div class="right">
-              <%= f.check_box :anonymous %> <%= t(".remain_anonymous") %>
+              <%= f.text_area :description, rows: 8, placeholder: "Type a description of your campaign here", class: "form-control" %>
             </div>
             <div class="form-group"> 
-              <%= f.label :organizers %>
+              <%= f.label :organizers %><br>
+              <%= f.check_box :anonymous %> <%= t(".remain_anonymous") %>
               <%= f.text_area :organizers, rows: 2, class: "form-control" %>
             </div>
           </div>
+          <div class="col-sm-5">
+            <div class="campaign-image">
+              <div class="placeholder">
+                <%= image_tag("placeholder.jpg") %>
+              </div>
+            </div>
+          </div>
         </div>
-        <br>
 
-        <div class="row">
-          <div class="col-sm-10">
-            <label><%= Survey.model_name.human %></label>
-            <div id="campaign-survey">
+        <%= render partial: "campaigns/how_to_participate", locals: {survey: @survey} %>
+
+        <div class="row survey-preview">
+          <div class="col-sm-12">
+            <div id="campaign-survey" class="stacked-sheets">
+              <label><%= Survey.model_name.human %> Preview</label>
               <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
             </div>
           </div>
         </div>
         <br>
+      </div>
 
-        <div class="highlight">
-          <%= render partial: "campaigns/how_to_participate", locals: {survey: @survey} %>
+      <div class="row pad-bottom">
+        <div class="button-group center clear">
+          <hr>
+          <%= f.submit t("defaults.save"), class: "btn btn-info" %>
         </div>
-      </div>
-    </div>
-
-    <div class="row pad-bottom">
-      <div class="button-group center clear">
-        <hr>
-        <%= f.submit t("defaults.save"), class: "btn btn-info" %>
-      </div>
-    </div> 
+      </div> 
     <% end %>
   </div>
+  <br><br>
 </div>
 
 <script type="text/javascript"> 
   $("#input-list").sortable({ disabled: true });
+  $("#save-profile").on("click", function(){
+    $(".edit_campaign").trigger("submit");
+  })
 
   $(".edit_campaign").on("submit", function(){
     if(!PT.validateProfile(this)){
@@ -74,10 +78,9 @@
 
   $("#campaign_anonymous").on("change", function (){
     if($(this).is(":checked")){
-      $("#campaign_organizers").hide();
-      $(this).parents(".row").find(".error").hide();
+      $(this).parents(".form-group").addClass("inactive");
     } else {
-      $("#campaign_organizers").show();
+      $(this).parents(".form-group").removeClass("inactive");
     }
   })
 

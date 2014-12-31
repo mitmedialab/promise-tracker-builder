@@ -262,13 +262,13 @@ pt-BR:
 
     survey_body:
       required: "Pergunta obrigatoria?"
-      annotation: "Permitir anotação?"
       options: "Opções"
       add_new_option: "Clique para adicionar uma opção"
       question_label: "Texto da pergunta"
       question_placeholder: "Digite a pergunta aqui"
       answer_type: "Tipo de resposta"
-      first_question: "A sua primeira pergunta..."
+      select_one: "Selecione uma"
+      select_many: "Selecione (pode ser mais de uma)"
       preview:
         date: "13 Jan, 2014"  
         number: "123"

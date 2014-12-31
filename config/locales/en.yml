@@ -164,15 +164,16 @@ en:
       remain_anonymous: "I prefer to keep the organizers anonymous"
 
     how_to_participate:
-      participate_title: "Get involved with this campaign!"
+      participate_title: "Get involved now!"
       participate_text: "To help collect data for this campaign, get the mobile app and send in info from your neighborhood!"
       step: "Step"
       step_1_text: "Get the app"
       step_1_subtext: "You'll be using the free Promise Tracker mobile app to collect data."
       download_link: "Click here to see how to download."
       step_2_text: "Download the survey"
-      step_2_subtext: "Once you open the mobile app, download your survey using code"
-      step_3_text: "Fill out survey"
+      step_2_subtext: "Using the mobile app, download the survey using code"
+      step_3_text: "Contribute data"
+      step_3_subtext: "Fill out the survey and see your area's data on the map!"
 
     index:
       new_campaign: "Start a new campaign"
@@ -263,13 +264,13 @@ en:
 
     survey_body:
       required: "Question required?"
-      annotation: "Allow annotation?"
       options: "Options"
       add_new_option: "Click to add an option"
       question_label: "Question text"
       question_placeholder: "Type your question here"
       answer_type: "Type of answer"
-      first_question: "Your first question"
+      select_one: "Select one"
+      select_many: "Select all that apply"
       preview:
         date: "13 Jan, 2014"  
         number: "123"

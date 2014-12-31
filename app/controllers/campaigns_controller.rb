@@ -83,9 +83,7 @@ class CampaignsController < ApplicationController
   #Post survey definition to aggregator
   def activate
     if @survey.activate(params[:status])['status'] == 'success'
-      @campaign.update_attribute(:status, params[:status])
       flash.now[:notice] = t('.upload_success')
-      @campaign.update_attribute(:start_date, Time.now)
 
       if params[:status] == 'test'
         redirect_to test_campaign_path(@campaign)
