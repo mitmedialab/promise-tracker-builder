@@ -3,25 +3,6 @@
   <meta property="og:url" content="<%= request.original_url %>" >
 <% end %>
 
-<div id="fb-root"></div>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '337756186420908',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
 <%= render partial: "tabs" %>
 
 <div class="page-container">
@@ -59,7 +40,7 @@
   <div class="page-container">
     <h3 class="title"><%= t(".publicize_form") %></h3>
 
-    <%= image_tag("social-fb.png", class: "social-share fb-share", "data-href" => "//developers.facebook.com/docs/plugins/" ) %>
+    <%= image_tag("social-fb.png", class: "social-share fb-share") %>
     <%= image_tag("social-tw.png", class: "social-share") %>
     <%= image_tag("social-email.png", class: "social-share") %>
   </div>
@@ -86,18 +67,7 @@
   </div>
 </div>
 
-<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/">hi</div>
-
 <script type="text/javascript">
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @survey.code %>, 'monitordataloaded');
-
-  $(".fb-share").on("click", function(){
-    FB.ui({
-      method: 'share',
-      href: 'http://localhost:3000/en/campaigns/30/share',
-    }, function(response){
-    });
-  })
-
+  PT.retrieveResponses(<%= @survey.code %>, 'monitordataloaded')
 </script>

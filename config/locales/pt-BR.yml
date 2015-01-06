@@ -80,6 +80,8 @@ pt-BR:
     save: "Salvar"
     cancel: "Cancelar"
     download: "Baixar"
+    share: "Compartilhe"
+    share_text: "Check out this campaign on Promise Tracker"
     edit: "Editar"
     close: "Fechar"
     copy: "Duplicar"

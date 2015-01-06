@@ -80,6 +80,8 @@ en:
     save: "Save"
     cancel: "Cancel"
     download: "Download"
+    share: "Share"
+    share_text: "Check out this campaign on Promise Tracker"
     edit: "Edit"
     close: "Close"
     copy: "Copy"

@@ -1,7 +1,7 @@
 <div class="section-light" id="campaign-progress-container">
   <ul id="campaign-progress-bar">
     <%= link_to edit_campaign_path(@campaign) do %>
-      <li data-path="edit" data-path-alt="goals_wizard" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
+      <li data-path="edit goals_wizard goals" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
         <div><%= t(".define_goals") %></div>
       </li>
     <% end %>
@@ -13,7 +13,7 @@
     <% end %>
 
     <%= link_to edit_campaign_profile_path(@campaign) do %>
-      <li data-path="edit_profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.validate_profile %>">
+      <li data-path="edit_profile profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.validate_profile %>">
         <div><%= t(".design_profile") %></div>
       </li>
     <% end %>
@@ -54,7 +54,7 @@
 </div>
 
 <script>
-  $("li[data-path = <%= action_name %>], li[data-path-alt = <%= action_name %>]").addClass("active");
+  $("li[data-path ~= <%= action_name %>]").addClass("active");
   $("li[data-complete = true]").addClass("complete");
   $("li[data-clickable = false]").css("pointer-events", "none");
 

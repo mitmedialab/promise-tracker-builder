@@ -120,6 +120,14 @@
   cursor: pointer;
 }
 
+.share-bar {
+  .social-share {
+    width: 32px;
+    height: 32px;
+    margin: 10px 2px;
+  }
+}
+
 .resource, a .resource {
   background: white;
   border-radius: 4px;

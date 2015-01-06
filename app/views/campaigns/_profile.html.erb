@@ -12,6 +12,9 @@
               <%= image_tag("placeholder.jpg") %>
             </div>
           </div>
+          <div class="text-right">
+            <%= render partial: "share_bar" %>
+          </div>
         </div>
         <div class="col-sm-7 col-sm-pull-5">
           <label><%= Campaign.human_attribute_name(:description) %></label>
@@ -24,13 +27,16 @@
         </div>
       </div>
 
-      <div>
-        <%= render partial: "campaigns/how_to_participate", locals: {survey: @survey} %>
-      </div>
+      <%= render partial: "how_to_participate", locals: {survey: @survey} %>
 
       <div id="campaign-survey" class="stacked-sheets">
         <label><%= Survey.model_name.human %> Preview</label>
         <%= render partial: "surveys/survey_body", locals: {survey: @survey} %>
+      </div>
+
+      <br>
+      <div class="center">
+        <%= render partial: "share_bar" %>
       </div>
     </div>
   </div>

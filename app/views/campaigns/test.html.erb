@@ -1,62 +1,61 @@
 <div class="page-container">
-<% if @campaign.status == "draft" ||  @campaign.status == "test" %>
-  <div id="test-campaign" class="participate">
-    <div class="section-header">
-      <h2 class="title sub-title inline"><%= t(".test_title") %></h2>
-      <div class="right padded text-right">
-        <%= link_to t(".edit_survey"), edit_survey_path(@survey), class: "btn btn-info margin-bottom" %>
-        <%= link_to t(".go_live"), activate_campaign_path(id: @campaign.id, status: "active"), method: :post, class: "btn btn-warning", data: { confirm: t(".confirm_launch") } %>
+  <% if @campaign.draft %>
+    <div id="test-campaign" class="participate">
+      <div class="section-header">
+        <h2 class="title sub-title inline"><%= t(".test_title") %></h2>
+        <div class="right padded text-right">
+          <%= link_to t(".edit_survey"), edit_survey_path(@survey), class: "btn btn-info margin-bottom" %>
+          <%= link_to t(".go_live"), activate_campaign_path(id: @campaign.id, status: "active"), method: :post, class: "btn btn-warning", data: { confirm: t(".confirm_launch") } %>
+        </div>
+      </div>
+      <p class="partial upsize">
+        <%= t(".test_explanation") %> <strong><%= t(".warning") %></strong>
+      </p>
+      <br>
+
+      <h4><%= t(".how_to_test") %>:</h4>
+      <div id="how-to-test"> 
+        <div class="row step">
+          <div class="col-md-1 step-icon">
+            <i class="icon-mobile-phone"></i>
+          </div>
+          <div class="col-md-6">
+            <h4><%= t("campaigns.how_to_participate.step") %> 1:</h4>
+            <h3><%= t("campaigns.how_to_participate.step_1_text") %></h3>  
+          </div>
+          <div class="col-md-5">
+            <%= link_to t("campaigns.how_to_participate.download_link"), download_path %>
+          </div>
+        </div>
+
+        <div class="row step">
+          <div class="col-md-1 step-icon">
+            <i class="icon-download-alt"></i>
+          </div>
+          <div class="col-md-6">
+            <h4><%= t("campaigns.how_to_participate.step") %> 2:</h4>
+            <h3><%= t("campaigns.how_to_participate.step_2_text") %></h3>
+          </div>
+          <div class="col-md-5">
+            <%= t("campaigns.how_to_participate.step_2_subtext") %>: <strong><%= format_survey_code(@survey.code) %></strong>
+          </div>
+        </div>
+
+        <div class="row step">
+          <div class="col-md-1 step-icon">
+            <i class="icon-check"></i>
+          </div>
+          <div class="col-md-6">
+            <h4><%= t("campaigns.how_to_participate.step") %> 3:</h4>
+            <h3><%= t(".step_3_text") %></h3>
+          </div>
+          <div class="col-md-5">
+            <%= t(".step_3_subtext") %>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="partial upsize">
-      <%= t(".test_explanation") %> <strong><%= t(".warning") %></strong>
-    </p>
-    <br>
-
-    <h4><%= t(".how_to_test") %>:</h4>
-    <div id="how-to-test"> 
-      <div class="row step">
-        <div class="col-md-1 step-icon">
-          <i class="icon-mobile-phone"></i>
-        </div>
-        <div class="col-md-6">
-          <h4><%= t("campaigns.how_to_participate.step") %> 1:</h4>
-          <h3><%= t("campaigns.how_to_participate.step_1_text") %></h3>  
-        </div>
-        <div class="col-md-5">
-          <%= link_to t("campaigns.how_to_participate.download_link"), download_path %>
-        </div>
-      </div>
-
-      <div class="row step">
-        <div class="col-md-1 step-icon">
-          <i class="icon-download-alt"></i>
-        </div>
-        <div class="col-md-6">
-          <h4><%= t("campaigns.how_to_participate.step") %> 2:</h4>
-          <h3><%= t("campaigns.how_to_participate.step_2_text") %></h3>
-        </div>
-        <div class="col-md-5">
-          <%= t("campaigns.how_to_participate.step_2_subtext") %>: <strong><%= format_survey_code(@survey.code) %></strong>
-        </div>
-      </div>
-
-      <div class="row step">
-        <div class="col-md-1 step-icon">
-          <i class="icon-check"></i>
-        </div>
-        <div class="col-md-6">
-          <h4><%= t("campaigns.how_to_participate.step") %> 3:</h4>
-          <h3><%= t(".step_3_text") %></h3>
-        </div>
-        <div class="col-md-5">
-          <%= t(".step_3_subtext") %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<% end %>
-<% if @campaign.status == "active" || @campaign.status == "close" %>
-  <h3 class="title inline"><%= t(".test_complete") %> <%= t("campaigns.status.#{@campaign.status}") %></h3>
-<% end %>
+  <% else %>
+    <h3 class="title inline"><%= t(".test_complete") %> <%= t("campaigns.status.#{@campaign.status}") %></h3>
+  <% end %>
+</div>

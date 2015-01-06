@@ -3,7 +3,7 @@
     <div class="section-header">
       <h2 class="title sub-title inline"><%= t("Profile") %></h2>
       <div class="right">
-        <%= link_to t("defaults.edit"), edit_campaign_profile_path(@survey), class: "btn btn-info" %>
+        <%= link_to t("defaults.edit"), edit_campaign_profile_path(@campaign), class: "btn btn-info" %>
       </div>
 
       <% if !@campaign.draft %>
