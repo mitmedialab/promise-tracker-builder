@@ -166,7 +166,7 @@ pt-BR:
       remain_anonymous: "Prefiro manter os organizadores anónimos"
 
     how_to_participate:
-      participate_title: "Ajude com a coleta de dados para esta ação!"
+      participate_title: "Ajude com a coleta de dados!"
       participate_text: "Baixe o aplicativo móvel e mande informações da sua area."
       step: "Passo"
       step_1_text: "Baixar o aplicativo móvel"
@@ -193,6 +193,7 @@ pt-BR:
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de registros"
       close: "Fechar esta ação"
+      confirm_close: "Tem certeza que quer fechar esta ação? Não vair poder coletar mais dados!"
       responses: "registros"
       current: "Atual"
       target: "Desejado"
@@ -221,6 +222,11 @@ pt-BR:
       test_survey: "Testar formulário"
       collect_data: "Coletar dados"
       share_data: "Compartilhar dados"
+
+    profile:
+      profile: "Perfil"
+      view_as_public: "Prévisualizar como público"
+      preview: "Pré-visualização"
 
     share:
       visualize_data: "Vizualizar seus dados" 

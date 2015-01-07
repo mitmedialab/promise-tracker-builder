@@ -31,8 +31,22 @@ class Campaign < ActiveRecord::Base
     self.organizers.present? || self.anonymous == true
   end
 
-  def draft
+  def draft?
     self.status == 'draft' || self.status == 'test'
+  end
+
+  def get_latest_state
+    if self.status == 'closed'
+      'share'
+    elsif self.status == 'active'
+      'monitor'
+    elsif self.status == 'test' || self.validate_profile
+      'test'
+    elsif self.survey || self.validate_goals
+      'survey'
+    else
+      'edit'
+    end
   end
 
 end

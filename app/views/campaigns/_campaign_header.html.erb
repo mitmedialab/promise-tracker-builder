@@ -1,11 +1,15 @@
-<% if current_user %>
+<% if current_user && current_user.owns?(@campaign) %>
   <%= render partial: "campaigns/progress_bar" %>
+
+  <% if !@campaign.draft? %>
+    <%= render partial: "tabs" %>
+  <% end %>
 <% end %>
 
 <div class="page-container">
   <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
-  <% if @campaign.status == "active" && current_user %>
+  <!-- <% if @campaign.status == "active" && current_user %>
     <span class="glyphicon glyphicon-flag <%= @campaign.status %>"></span> <%= t("campaigns.status.#{@campaign.status}") %>
     <span class="subtle">(<%= format_survey_code(@survey.code) %>)</span>
-  <% end %>
+  <% end %> -->
 </div>

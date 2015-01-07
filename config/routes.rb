@@ -21,6 +21,7 @@ PromiseTracker::Application.routes.draw do
     get '/campaigns/:id/survey', to: 'campaigns#survey', as: 'campaign_survey'
     get '/campaigns/:id/profile', to: 'campaigns#profile', as: 'campaign_profile'
     get '/campaigns/:id/edit-profile', to: 'campaigns#edit_profile', as: 'edit_campaign_profile'
+    get '/campaigns/:id/public', to: 'campaigns#public_profile', as: 'campaign_public_profile'
     get '/campaigns/:id/test', to: 'campaigns#test', as: 'test_campaign'
     get '/campaigns/:id/monitor', to: 'campaigns#monitor', as: 'monitor_campaign'
     get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'

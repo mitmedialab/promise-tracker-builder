@@ -25,13 +25,13 @@
     <% end %>
 
     <%= link_to monitor_campaign_path(@campaign) do %>
-      <li data-path="monitor" data-clickable="<%= !@campaign.draft %> " data-complete="<%= !@campaign.draft %>" class="progress-node">
+      <li data-path="monitor" data-clickable="<%= !@campaign.draft? %> " data-complete="<%= !@campaign.draft? %>" class="progress-node">
         <div><%= t(".collect_data") %></div>
       </li>
     <% end %>
 
     <%= link_to share_campaign_path(@campaign) do %>
-      <li data-path="share" data-clickable="<%= !@campaign.draft %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
+      <li data-path="share" data-clickable="<%= !@campaign.draft? %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
         <div><%= t(".share_data") %></div>
       </li>
     <% end %>
@@ -41,7 +41,9 @@
     <%= link_to campaign_next_path(@campaign, refer_action: action_name) do %>
       <div class="btn btn-warning progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
     <% end %>
-  <% else %>
+  <% elsif @campaign.status == "active" %>
+    <%= link_to t("campaigns.monitor.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow next", data: { confirm: t("campaigns.monitor.confirm_close") } %></div>
+  <% elsif @campaign.status != "closed" %>
     <%= link_to campaign_next_path(@campaign, refer_action: action_name), remote: true, "data-type" => :json do %>
       <div class="btn btn-grey progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
     <% end %>

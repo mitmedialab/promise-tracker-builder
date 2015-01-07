@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
 
-  layout 'campaign', except: [:edit, :goals_wizard, :index]
+  layout 'campaign', except: [:edit, :goals_wizard, :index, :public_profile]
   before_filter :authenticate_user!, except: [:profile, :share]
   before_filter :restrict_user_access, except: [:create, :index, :profile, :share]
   before_filter :assign_campaign_variables, except: [:index, :create, :destroy, :share]
@@ -21,7 +21,7 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    redirect_to action: get_latest_state, id: @campaign.id
+    redirect_to action: @campaign.get_latest_state, id: @campaign.id
   end
 
   def goals
@@ -50,16 +50,7 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
 
-    # if !@campaign.survey || !@campaign.validate_profile
-    #   redirect_to campaign_survey_path(@campaign)
-    # elsif @campaign.status == 'draft' && @campaign.validate_profile
-    #   redirect_to test_campaign_path(@campaign)
-    # else
-    #   redirect_to action: get_latest_state, id: @campaign.id
-    # end
-
-    redirect_to action: get_latest_state, id: @campaign.id
-
+    redirect_to action: @campaign.get_latest_state, id: @campaign.id
   end
 
   def survey
@@ -72,6 +63,9 @@ class CampaignsController < ApplicationController
   end
 
   def edit_profile
+  end
+
+  def public_profile
   end
 
   def test
@@ -145,20 +139,6 @@ class CampaignsController < ApplicationController
   def restrict_user_access
     @campaign = Campaign.find(params[:id])
     raise Exceptions::Forbidden unless current_user.owns?(@campaign)
-  end
-
-  def get_latest_state
-    if @campaign.status == 'closed'
-      "share"
-    elsif @campaign.status == 'active'
-      "monitor"
-    elsif @campaign.status == 'test' || @campaign.validate_profile
-      "test"
-    elsif @campaign.survey || @campaign.validate_goals
-      "survey"
-    elsif
-      "edit"
-    end
   end
 
   def get_next_state(current_action)

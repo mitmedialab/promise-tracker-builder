@@ -10,10 +10,10 @@ p {
 
 a {
   color: $dark-turquoise;
+  text-decoration: none !important;
 
   &:hover {
     color: $turquoise;
-    text-decoration: none;
   }
 }
 
@@ -31,6 +31,10 @@ a {
 
 .subtle {
   color: $med-grey;
+
+  &:visited {
+    color: $med-grey;
+  }
 }
 
 .block {
@@ -181,6 +185,11 @@ a {
 
   &:hover {
     background: $dark-pink;
+  }
+
+  &:active {
+    background: $pink;
+    color: white;
   }
 }
 

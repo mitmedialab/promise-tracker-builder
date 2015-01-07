@@ -186,14 +186,14 @@ en:
 
     list_item:
       confirm_delete: "Are you sure you want to delete this campaign?" 
-      confirm_clone: "Are you sure you want to duplicate this campaign?" 
 
     monitor:
       status_text: "This survey is "
       survey_code: "Download and fill out this survey with code"
       close_confirmation: "Once closed, this survey cannot be opened again."
       number_of_responses: "Number of responses"
-      close: "Close camaign"
+      close: "Close campaign"
+      confirm_close: "Are you sure you want to close this campaign? NO more data can be collected once the campaign is closed!"
       responses: "Responses"
       current: "Current"
       target: "Target"
@@ -222,6 +222,11 @@ en:
       test_campaign: "Test survey"
       collect_data: "Collect data"
       share_data: "Share data"
+
+    profile:
+      profile: "Profile"
+      view_as_public: "View as the public will see it"
+      preview: "Preview"
 
     share:
       visualize_data: "Visualize your data" 
@@ -257,12 +262,10 @@ en:
 
   surveys:
     android_preview: 
-      preview_title: "Phone preview for:"
       no_questions: "No questions"
       add_questions: "Choose a question type above to get started."
       question: "Question" 
       of: "of" 
-      close_preview: "Close preview"
 
     survey_body:
       required: "Question required?"

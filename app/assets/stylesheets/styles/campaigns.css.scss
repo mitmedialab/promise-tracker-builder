@@ -241,7 +241,7 @@ ul.campaign-nav {
   display: block;
   border-bottom: 1px solid $light-grey;
   padding: 0;
-  margin: 0 0 40px 0;
+  margin: 20px 0 0 0;
   padding-right: 60px;
   height: 40px;
   text-align: right;
@@ -339,7 +339,7 @@ ul.campaign-nav {
   font-size: 32px;
   font-weight: 200;
   display: block;
-  padding-top: 20px;
+  padding-top: 10px;
   margin: 0;
 }
 
@@ -515,7 +515,7 @@ input.campaign-title {
   padding: 0;
   border: none;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .participate {
@@ -593,6 +593,39 @@ input.campaign-title {
   top: 5px;
   border: 1px solid $light-grey;
 }
+
+// Diagonal Ribbon
+
+.wrapper {
+  position: relative;
+}
+
+.ribbon-wrapper {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  transform: rotate(45deg);
+  position: relative;
+  padding: 7px 35px;
+  left: -5px;
+  top: 15px;
+  width: 185px;
+  background-color: $yellow;
+  color: #6a6340;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
 
 @media (max-width: 768px) {
 

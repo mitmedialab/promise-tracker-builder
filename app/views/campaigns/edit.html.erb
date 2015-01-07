@@ -1,5 +1,9 @@
 <%= render partial: 'progress_bar' %>
 
+<% if !@campaign.draft? %>
+  <%= render partial: "tabs" %>
+<% end %>
+
 <div class="page-container">
   <%= form_for @campaign do |f| %>
     <div class="section-header">
@@ -32,7 +36,7 @@
           <div class="form-group"> 
             <%= f.label :goal %>
             <p class="explain"><%= t(".explanations.goal") %></p>
-            <%= f.text_area :goal, rows: 8, required: true, class: "form-control" %>
+            <%= f.text_area :goal, rows: 8, class: "form-control" %>
           </div>
         </div>
         <div class="col-sm-4">

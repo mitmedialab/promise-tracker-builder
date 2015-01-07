@@ -3,10 +3,6 @@
   <meta property="og:url" content="<%= request.original_url %>" >
 <% end %>
 
-<% if current_user %>
-  <%= render partial: "tabs" %>
-<% end %>
-
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
     <div class="tab-pane" id="map-viz"></div>
@@ -48,8 +44,11 @@
 
 <div class="row section-light report-panel center">
   <div class="page-container">
-  <h2 class="title"><%= t(".data_reports") %></h2>
-  <br>
+    <div class="right">
+      <%= render partial: "share_bar" %>
+    </div>
+    <h2 class="title"><%= t(".data_reports") %></h2>
+    <br>
 
     <div class="col-sm-8 col-sm-push-2">
       <div class="data-report">
@@ -86,9 +85,9 @@
 <div class="row section-dark campaign-outreach">
   <div class="page-container">
     <h3 class="title"><%= t(".share_data") %></h3>
-    <%= image_tag("social-fb.png", class: "social-share") %>
-    <%= image_tag("social-tw.png", class: "social-share") %>
-    <%= image_tag("social-email.png", class: "social-share") %>
+    <div class="buttons-only">
+      <%= render partial: "share_bar" %>
+    </div>
   </div>
 </div>
 

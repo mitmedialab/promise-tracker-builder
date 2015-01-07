@@ -1,7 +1,8 @@
 <div class="page-container">
   <div class="section-header">
-    <h2 class="title sub-title inline"><%= t("campaigns.profile") %></h2>
+    <h2 class="title sub-title inline"><%= t("campaigns.profile.profile") %></h2>
     <div class="right">
+      <%= link_to t("campaigns.profile.view_as_public"), campaign_public_profile_path(@campaign), target: "blank", class: "pad-side subtle" %>
       <div class="btn btn-info" id="save-profile"><%= t("defaults.save") %></div>
     </div>
   </div>

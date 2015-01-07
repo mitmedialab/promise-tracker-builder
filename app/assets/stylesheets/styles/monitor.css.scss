@@ -126,6 +126,18 @@
     height: 32px;
     margin: 10px 2px;
   }
+
+  span {
+    font-size: .8em;
+    color: $dark-grey;
+    padding: 0 5px;
+  }
+}
+
+.buttons-only {
+  span {
+    display: none;
+  }
 }
 
 .resource, a .resource {
