@@ -440,6 +440,10 @@ h2.title, h3.title {
 #campaign-profile {
   background: white;
 
+  &.preview .campaign-title {
+    font-size: 26px;
+  }
+
   input[type="file"] {
     width: 100%;
   }

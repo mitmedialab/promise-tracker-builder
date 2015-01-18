@@ -50,10 +50,10 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
 
-    if @campaign.draft?
-      redirect_to action: @campaign.get_latest_state, id: @campaign.id
-    else
+    if params[:campaign][:redirect_action] && @campaign.validate_profile
       redirect_to action: params[:campaign][:redirect_action]
+    else
+      redirect_to action: @campaign.get_latest_state, id: @campaign.id
     end
   end
 
@@ -146,16 +146,14 @@ class CampaignsController < ApplicationController
   end
 
   def get_next_state(current_action)
-    states = [
-      'edit', 
-      'survey',
-      'edit_profile',
-      'test',
-      'collect',
-      'share'
-    ]
-
-    states[states.index(current_action) + 1]
+    case current_action
+    when 'edit', 'goals_wizard'
+      'survey'
+    when 'edit_profile', 'profile'
+      'test'
+    when 'test'
+      'collect'
+    end
   end
 
   def campaign_can_advance?(current_action)
@@ -168,7 +166,7 @@ class CampaignsController < ApplicationController
       else
         t('defaults.validations.please_create_survey')
       end
-    when 'edit_profile'
+    when 'edit_profile', 'profile'
       if @campaign.validate_profile
         true
       else

@@ -25,7 +25,7 @@
     <% end %>
 
     <%= link_to campaign_collect_path(@campaign) do %>
-      <li data-path="collect" data-clickable="<%= !@campaign.draft? %> " data-complete="<%= !@campaign.draft? %>" class="progress-node">
+      <li data-path="collect" data-clickable="<%= !@campaign.draft? %>" data-complete="<%= !@campaign.draft? %>" class="progress-node">
         <div class="desktop-only"><%= t(".collect_data") %></div>
       </li>
     <% end %>

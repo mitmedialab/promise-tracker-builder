@@ -3,7 +3,7 @@
     <div class="section-header">
       <h2 class="title sub-title inline"><%= t("Profile") %></h2>
       <div class="right">
-        <%= link_to t("campaigns.profile.view_as_public"), campaign_public_profile_path(@campaign), target: "blank", class: "pad-side subtle" %>
+        <%= link_to t("campaigns.profile.view_as_public"), campaign_public_profile_path(@campaign), target: "blank", class: "pad-side subtle small" %>
         <%= link_to t("defaults.edit"), edit_campaign_profile_path(@campaign), class: "btn btn-info" %>
       </div>
     </div>
@@ -11,7 +11,7 @@
 <% end %>
 </div>
 
-<div class="page-container">
+<div class="page-container preview">
   <%= render partial: "profile" %>
 </div>
 

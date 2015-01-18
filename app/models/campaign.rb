@@ -45,9 +45,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def get_latest_state
-    if self.status == 'closed'
-      'share'
-    elsif self.status == 'active'
+    if self.status == 'active'
       'collect'
     elsif self.status == 'test' || self.validate_profile
       'test'
