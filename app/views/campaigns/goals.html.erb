@@ -1,0 +1,27 @@
+<div class="page-container">
+  <div id="campaign-survey">
+    <div class="section-header">
+      <h2 class="title sub-title inline"><%= t("campaigns.tabs.goals") %></h2>
+      <div class="right">
+        <%= link_to t("defaults.edit"), edit_campaign_path(@campaign), class: "btn btn-info" %>
+      </div>
+    </div>
+    <label><%= Campaign.human_attribute_name(:description) %></label>
+    <p><%= @campaign.description %></p>
+    <label><%= Campaign.human_attribute_name(:goal) %></label>
+    <p><%= @campaign.goal %></p>
+    <br>
+    <label><%= Campaign.human_attribute_name(:data_collectors) %></label>
+    <p><%= @campaign.data_collectors %></p>
+    <br>
+    <label><%= Campaign.human_attribute_name(:submissions_target) %></label>
+    <p><%= @campaign.submissions_target %></p>
+    <br>
+    <label><%= Campaign.human_attribute_name(:audience) %></label>
+    <p><%= @campaign.audience %></p>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $("#input-list").sortable({ disabled: true });
+</script>

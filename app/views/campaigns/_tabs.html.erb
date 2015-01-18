@@ -1,0 +1,22 @@
+<ul class="campaign-nav">
+  <li class="btn btn-default tab" id="goals-tab" data-action="goals edit" data-visible="<%= @campaign.validate_goals %>">
+    <%= link_to t(".goals"), campaign_goals_path(@campaign) %>
+  </li>
+  <li class="btn btn-default tab" id="survey-tab" data-action="survey" data-visible="<%= @campaign.survey %>">
+    <%= link_to t(".survey"), campaign_survey_path(@campaign) %>
+  </li>
+  <li class="btn btn-default tab" id="profile-tab" data-action="profile edit_profile" data-visible="<%= @campaign.validate_profile %>">
+    <%= link_to t(".profile"), campaign_profile_path(@campaign) %>
+  </li>
+  <li class="btn btn-default tab" id="collect-tab" data-action="collect" data-visible="<%= !@campaign.draft? %>">
+    <%= link_to t(".data"), campaign_collect_path(@campaign) %>
+  </li>
+  <li class="btn btn-default tab" id="share-tab" data-action="share" data-visible="<%= @campaign.status == 'active' || @campaign.status == 'closed' %>">
+    <%= link_to t(".viz"), share_campaign_path(@campaign) %>
+  </li>
+</ul>
+
+<script type="text/javascript">
+  $(".tab[data-action~=<%= action_name %>]").addClass("active");
+  $(".tab[data-visible='false']").hide();
+</script>

@@ -2,12 +2,13 @@
 <html>
   <head>
     <title><%= t("app_name") %></title>
-    <%= render partial: "layouts/include_links" %>
+    <%= render "layouts/include_links" %>
     <%= yield :head %>
   </head>
   
   <body data-no-turbolink="true">
-    <%= render "layouts/header" %>
+    <%= render "layouts/site_header" %>
+    <%= render "campaigns/campaign_header" %>
     <%= yield %>
   </body>
 </html>

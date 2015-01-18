@@ -4,7 +4,7 @@ var PT = PT || {};
 
 PT.nextFormPage = function(){
   var page = $(this).parents(".form-page");
-  var valid = PT.validateCampaign();
+  var valid = PT.validateOverview(".edit_campaign");
   if(valid) {
     page.next().fadeIn();
     page.css({'display':'none'});
@@ -22,9 +22,11 @@ PT.updateDisplay = function($input, $display){
   $display.html($input.val());
 };
 
-PT.validateCampaign = function(){
-  var validator = $(".edit_campaign").validate({
+PT.validateOverview = function(formSelector){
+  var validator = $(formSelector).validate({
     rules: {
+      "campaign[title]": {required: true, minlength: 5},
+      "campaign[description]": {required: true},
       "campaign[goal]": {required: true},
       "campaign[data_collectors]": {required: true},
       "campaign[submissions_target]": {required: true, number: true},
@@ -34,6 +36,28 @@ PT.validateCampaign = function(){
 
   return validator.form();
 };
+
+PT.validateProfile = function(formSelector){
+  var validator = $(formSelector).validate({
+    rules: {
+      "campaign[title]": {required: true},
+      "campaign[description]": {required: true},
+      "campaign[organizers]": {
+        required: function(){
+          return !$("#campaign_anonymous").is(":checked");
+        }
+      }
+    }
+  });
+
+  return validator.form();
+};
+
+PT.scrollToError = function(){
+  $('html body').animate({
+    scrollTop: $(".error").first().offset().top - 80
+  }, 500);
+}
 
 PT.toggleTip = function(event){
   $(event.currentTarget).find(".body").slideToggle();

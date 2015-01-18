@@ -10,10 +10,10 @@ p {
 
 a {
   color: $dark-turquoise;
+  text-decoration: none !important;
 
   &:hover {
     color: $turquoise;
-    text-decoration: none;
   }
 }
 
@@ -27,6 +27,14 @@ a {
 
 .turquoise {
   color: $turquoise;
+}
+
+.subtle {
+  color: $med-grey;
+
+  &:visited {
+    color: $med-grey;
+  }
 }
 
 .block {
@@ -49,6 +57,10 @@ a {
 
 .bottom {
   vertical-align: bottom;
+}
+
+.caps {
+  text-transform: uppercase;
 }
 
 .container {
@@ -84,6 +96,10 @@ a {
   padding-top: 10px;
 }
 
+.unpad-top {
+  margin-top: -20px !important;
+}
+
 .pad-bottom {
   padding-bottom: 20px;
 }
@@ -96,8 +112,16 @@ a {
   width: 100%;
 }
 
+.partial {
+  width: 80%;
+}
+
 .page-container, .section-container {
   margin: 0 60px;
+}
+
+.upsize {
+  font-size: 1.2em;
 }
 
 .margin-left {
@@ -161,6 +185,11 @@ a {
 
   &:hover {
     background: $dark-pink;
+  }
+
+  &:active {
+    background: $pink;
+    color: white;
   }
 }
 
@@ -293,7 +322,7 @@ a {
 
 }
 
-// Flash messages
+// Flash & error messages
 
 #message {
   margin: 10px 0;
@@ -301,6 +330,7 @@ a {
 
 .error {
   color: $error;
+  border-color: $error; 
 }
 
 .has-error {
@@ -330,6 +360,10 @@ a {
   background: $light-pink;
 }
 
+.monster {
+  height: 250px;
+  width: auto;
+}
 
 // Surveys
 
@@ -362,8 +396,13 @@ input[disabled], .form-control[disabled] {
 
   #header {
     #branding .site-title {
-      font-size: 20px;
+      font-size: 18px;
       padding-top: 10px;
+
+      img {
+        width: 25px;
+        height: auto;
+      }
     }
 
     .header-container {

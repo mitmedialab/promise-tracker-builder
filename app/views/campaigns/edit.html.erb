@@ -1,127 +1,140 @@
-<%= form_for @campaign do |f| %>
-<div class="campaign-title inline">
-  <%= @campaign.title %>
-</div>
-<span class="edit-title-button" data-toggle="modal" data-target="#campaign-title-modal"><%= t(".edit_title") %></span>
-<div class="right top-save">
-  <%= f.submit t("defaults.save"), class: "btn btn-info" %>
-</div>
+<%= render partial: 'progress_bar' %>
 
-<h2 class="title"><%= t(".define_goals") %></h2>
-
-<%= render partial: 'campaign_title_modal', locals: {f: f} %>
-
-<div id="campaign-goals-form" class="single-page">
-  <div class="row">
-    <div class="col-sm-4 block">
-      <div class="form-group">
-        <%= f.label :theme, class: "block" %>
-        <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :description %>
-        <p class="explain"><%= t(".explanations.description") %></p>
-        <%= f.text_area :description, rows: 4, required: true, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :goal %>
-        <p class="explain"><%= t(".explanations.goal") %></p>
-        <%= f.text_area :goal, rows: 4, required: true, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tip-box">
-        <div class="header">
-          <span class="icon-question-sign"></span> <%= t(".tooltip") %>
-        </div>
-        <div class="body">
-          <p><%= t(".tips.goal") %></p>
-        </div>
-      </div>  
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :data_collectors %>
-        <p class="explain"><%= t(".explanations.data_collectors") %></p>
-        <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tip-box">
-        <div class="header">
-          <span class="icon-question-sign"></span> <%= t(".tooltip") %>
-        </div>
-        <div class="body">
-          <p><%= t(".tips.data_collectors") %></p>
-        </div>
-      </div>  
-    </div>
-
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :submissions_target %>
-        <p class="explain"><%= t(".explanations.submissions_target") %></p>
-        <%= f.number_field :submissions_target, min: 0, class: "block" %>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tip-box">
-        <div class="header">
-          <span class="icon-question-sign"></span> <%= t(".tooltip") %>
-        </div>
-        <div class="body">
-          <p><%= t(".tips.submissions_target") %></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="form-group"> 
-        <%= f.label :audience %>
-        <p class="explain"><%= t(".explanations.audience") %></p>
-        <%= f.text_area :audience, rows: 8, class: "form-control" %>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tip-box">
-        <div class="header">
-          <span class="icon-question-sign"></span> <%= t(".tooltip") %>
-        </div>
-        <div class="body">
-          <p><%= t(".tips.audience") %></p>
-        </div>
-      </div>  
-    </div>
-
-    <div class="button-group center clear">
-      <hr>
-      <%= f.submit t("defaults.save"), class: "btn btn-info" %>
-    </div>
-  </div> 
-
+<% if !@campaign.draft? %>
+  <%= render partial: "tabs" %>
 <% end %>
+
+<div class="page-container">
+  <%= form_for @campaign do |f| %>
+    <div class="section-header">
+      <%= f.text_field :title, class: "campaign-title" %>
+      <div class="right">
+        <%= f.submit t("defaults.save"), class: "btn btn-info" %>
+      </div>
+      <h2 class="title sub-title"><%= t("campaigns.tabs.goals") %></h2>
+    </div>
+
+    <div id="campaign-goals-form" class="single-page">
+      <div class="row">
+        <div class="col-sm-4 block">
+          <div class="form-group">
+            <%= f.label :theme, class: "block" %>
+            <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :description %>
+            <p class="explain"><%= t("campaigns.edit.explanations.description") %></p>
+            <%= f.text_area :description, rows: 4, class: "form-control", autofocus: true %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :goal %>
+            <p class="explain"><%= t(".explanations.goal") %></p>
+            <%= f.text_area :goal, rows: 8, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tip-box">
+            <div class="header">
+              <span class="icon-question-sign"></span> <%= t(".tooltip") %>
+            </div>
+            <div class="body">
+              <p><%= t(".tips.goal") %></p>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :data_collectors %>
+            <p class="explain"><%= t(".explanations.data_collectors") %></p>
+            <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tip-box">
+            <div class="header">
+              <span class="icon-question-sign"></span> <%= t(".tooltip") %>
+            </div>
+            <div class="body">
+              <p><%= t(".tips.data_collectors") %></p>
+            </div>
+          </div>  
+        </div>
+
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :submissions_target %>
+            <p class="explain"><%= t(".explanations.submissions_target") %></p>
+            <%= f.number_field :submissions_target, min: 0, class: "block" %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tip-box">
+            <div class="header">
+              <span class="icon-question-sign"></span> <%= t(".tooltip") %>
+            </div>
+            <div class="body">
+              <p><%= t(".tips.submissions_target") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :audience %>
+            <p class="explain"><%= t(".explanations.audience") %></p>
+            <%= f.text_area :audience, rows: 8, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tip-box">
+            <div class="header">
+              <span class="icon-question-sign"></span> <%= t(".tooltip") %>
+            </div>
+            <div class="body">
+              <p><%= t(".tips.audience") %></p>
+            </div>
+          </div>  
+        </div>
+
+        <div class="button-group center clear">
+          <hr>
+          <%= f.hidden_field :redirect_action, value: "goals" %>
+          <%= f.submit t("defaults.save"), class: "btn btn-info" %>
+        </div>
+      </div>
+    </div> 
+  <% end %>
 </div>
 
 <script type="text/javascript">
-  PT.flash = <%= raw @flash %>;
-  jQuery.extend(jQuery.validator.messages, I18n.translations[I18n.currentLocale()].defaults.validations);
+  jQuery.extend(jQuery.validator.messages, I18n.translate("defaults.validations"));
   
+  $(document).on("click", ".tip-box", PT.toggleTip);
   $(".right-arrow").on("click", PT.nextFormPage);
   $(".left-arrow").on("click", PT.previousFormPage);
-  $(document).on("click", ".tip-box", PT.toggleTip);
+  $()
 
   $("#update-title-button").on("click", function(){
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
+  });
+
+  $(".edit_campaign").on("submit", function(){
+    if(!PT.validateOverview(this)){
+      PT.scrollToError();
+      return false;
+    }
   });
 </script>

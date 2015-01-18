@@ -27,6 +27,7 @@ pt-BR:
     attributes:
       campaign:
         title: "Nome"
+        description: "Descrição"
         goal: "Objetivo"
         submissions_target: "Número de participações"
         data_collectors: "Colaboradores"
@@ -35,6 +36,7 @@ pt-BR:
         start_date: "Data de publicação"
         end_date: "Data final"
         theme: "Tema"
+        organizers: "Organizadores da ação"
 
       input:
         input_type: "Tipo de resposta"
@@ -78,11 +80,14 @@ pt-BR:
     save: "Salvar"
     cancel: "Cancelar"
     download: "Baixar"
+    share: "Compartilhe"
+    share_text: "Check out this campaign on Promise Tracker"
     edit: "Editar"
     close: "Fechar"
     copy: "Duplicar"
     delete: "Eliminar"
     back: "Voltar"
+    next: "Próximo"
     loading: "Carregando dados"
     validations:
       required: "Este campo &eacute; requerido."
@@ -92,9 +97,15 @@ pt-BR:
       has_errors: "Seu formulário tem algum erro. Por favor corrija as questões com erros antes de continuar"
       no_errors: "Seu formulário não tem erros."
       confirm_save: "Suas modificações foram salvadas"
+      please_define_goals: "Por favor complete as perguntas e salve para avanzar"
+      please_create_survey: "Por favor crie seu formulário para poder avanzar"
+      please_complete_profile: "Por favor preencha os campos do perfil e salve para avanzar"
+      launch_campaign: "Você precisa lançar esta ação para avanzar"
+      close_campaign: "Você precisa fechar esta ação para avanzar"
 
   errors:
     sorry: "Desculpe!"
+    hmm: "Hmmm..."
     resource_not_found: "Não conseguimos encontrar essa página"
     forbidden: "Accesso não autorizado"
     internal_error: "Algo aconteceu"
@@ -127,54 +138,20 @@ pt-BR:
       active: "Público"
       closed: "Fechado"
       draft: "Rascunho"
+      test: "Teste"
       copy: "cópia"
-
-    nav:
-      view_survey: "Ver formulário"
-      monitor_responses: "Monitorar registros"
-      share_data: "Compartilhar dados"
 
     activate: 
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
 
-    index:
-      new_campaign: "Criar uma nova ação"
-      my_campaigns: "Minhas ações"
-      greeting: "Oi"
-      welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
-      get_started: "Que tal criar sua primeira açāo?"
-
-    new:
-      modal_title: "Nova ação"
-      campaign_theme: "Qual é o tema que interessa você?"
-      campaign_title: "Nome da ação"
-      title_placeholder: "Nome da ação"
-      create_campaign: "Criar"
-
-    launch:
-      launch_title: "Página de publicação"
-      info: "Info"
-      launch_explanation_1: "Para poder coletar dados, você tornará seu formulário público."
-      launch_explanation_2: "Uma vez publicado, o formulário não pode ser modificado."
-      launch_explanation_3: "Você vai rever seus objetivos e seu formulário para verificar se tudo está correto."
-      review_goals: "Rever seus objetivos"
-      review_goals_info: "Você definiu este objetivo para sua ação. Ainda concorda com ele?"
-      review_survey: "Rever seu formulário"
-      launch: "Publicar"
-      return_to_edit: "Editar formulário"
-      preview: "Pré-visualização no celular"
-      launch_campaign: "Publicar este formulário"
-      launch_info: "Quando você publica este formulário, não poderá editá-lo mais."
-      launch_confirmation: "Tem certeza que deseja publicar este formulário?"
-      edit_campaign: "Editar ação"
-
-    monitor:
+    collect:
       status_text: "Este formulário está "
       survey_code: "Pode baixar e preencher este formulário usando o código"
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de registros"
-      close: "Fechar esta ação"
+      close: "Fechar ação"
+      confirm_close: "Tem certeza que quer fechar esta ação? Não vair poder coletar mais dados!"
       responses: "registros"
       current: "Atual"
       target: "Desejado"
@@ -183,6 +160,73 @@ pt-BR:
       guide_1: "Organizar um evento de lançamento"
       guide_2: "Manter sua comunidade envolvida"
       guide_3: "Vizualizar seus resultados"
+
+    edit:
+      overview_and_goals: "Descrição e objetivos"
+      type_number: "Digite um Número"
+      explanations:
+        description: "Descrição breve da ação"
+        goal: "O que você quer mudar na sua comunidade com esta ação?"
+        data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
+        submissions_target: "Quantas participações você espera?"
+        audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
+      tooltip: "Dica"
+      tips:
+        data_collectors: "Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você para coletar dados nesta campanha?"
+        goal: "Mudanças sociais normalmente começam com pequenos passos. O que é possível alcançar no futuro próximo no tema escolhido?"
+        submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
+        audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
+
+    edit_profile:
+      remain_anonymous: "Prefiro manter os organizadores anónimos"
+      profile_description: "Em baixo você vai criar uma página pública para compartilhar informações sobre a sua ação."
+
+    how_to_participate:
+      participate_title: "Ajude com a coleta de dados!"
+      participate_text: "Baixe o aplicativo móvel e mande informações da sua area."
+      step: "Passo"
+      step_1_text: "Baixar o aplicativo móvel"
+      download_link: "Clique aqui para ver como baixar"
+      step_2_text: "Baixar o formulário"
+      step_2_subtext: "Use o código seguinte para baixar"
+      step_3_text: "Preencher o formulário"
+      step_3_subtext: "Mandar seus dados e vé-los no mapa da ação!"
+
+    index:
+      new_campaign: "Criar uma nova ação"
+      my_campaigns: "Minhas ações"
+      greeting: "Oi"
+      welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
+      get_started: "Que tal criar sua primeira açāo?"
+
+    list_item:
+      confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
+      confirm_clone: "Você em certeza que quer duplicar esta ação?" 
+
+    nav:
+      view_survey: "Ver formulário"
+      monitor_responses: "Monitorar registros"
+      share_data: "Compartilhar dados"
+
+    new:
+      modal_title: "Nova ação"
+      campaign_theme: "Qual é o tema que interessa você?"
+      campaign_title: "Nome da ação"
+      title_placeholder: "Nome da ação"
+      create_campaign: "Criar"
+
+    progress_bar:
+      define_goals: "Definir objetivos"
+      create_survey: "Criar formulário"
+      design_profile: "Preparar perfil"
+      test_survey: "Testar formulário"
+      collect_data: "Coletar dados"
+      share_data: "Compartilhar dados"
+
+    profile:
+      profile: "Perfil"
+      view_as_public: "Prévisualizar como público"
+      preview: "Pré-visualização"
 
     share:
       visualize_data: "Vizualizar seus dados" 
@@ -195,39 +239,25 @@ pt-BR:
       campaign_organizers: "Realizadores da ação"
       learn_more: "Aprender mais sobre esta ação no site"
 
-    list_item:
-      confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
-      confirm_clone: "Você em certeza que quer duplicar esta ação?" 
+    tabs:
+      goals: "Overview"
+      survey: "Formulário"
+      profile: "Perfil"
+      data: "Dados"
+      viz: "Visualizações"
 
-    edit:
-      edit_title: "Editar nome"
-      define_goals: "Definir seus objetivos"
-      type_number: "Digite um Número"
-      explanations:
-        description: "Descrição breve da ação"
-        goal: "O que você quer mudar na sua comunidade com esta ação?"
-        data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
-        submissions_target: "Quantas participações você espera?"
-        audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
-      tooltip: "Dica"
-      tips:
-        data_collectors: "Talvez sejam necessárias muitas pessoas para coletar os dados. Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você nesta campanha?"
-        goal: "Mudanças sociais normalmente começam com pequenos passos. O que é possível alcançar no futuro próximo no tema escolhido?"
-        submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
-        audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
-
-    form_buttons:
-      back: "Voltar"
-      next: "Próximo"
-
-    show:
-      campaign_goals: "Descrição"
-      campaign_survey: "Formulário"
-      edit_campaign: "Editar ação"  
+    test:
+      test_title: "Teste do formulário"
+      test_explanation: "Antes de lançar sua ação, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
+      catch_errors: "Agora é o momento de achar todos os erros!"
+      how_to_test: "Como testar"
+      step_3_text: "Testar o formulário"
+      step_3_subtext: "Preencha o formulário e Confirme que tudo esteja bem escrito e em ordem"
+      warning: "Depois de lançar, você não vai poder modificar o formulário."
       edit_survey: "Editar formulário"
-      monitor_progress: "Monitorar os registros"
-      launch_survey: "Publicar"
-      create_survey: "Criar o formulário para esta ação"
+      go_live: "Lançar ação"
+      confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode ser modificado mais!"
+      test_complete: "Teste completado - Esta ação está"
 
   surveys:
     android_preview: 
@@ -240,13 +270,13 @@ pt-BR:
 
     survey_body:
       required: "Pergunta obrigatoria?"
-      annotation: "Permitir anotação?"
       options: "Opções"
       add_new_option: "Clique para adicionar uma opção"
       question_label: "Texto da pergunta"
       question_placeholder: "Digite a pergunta aqui"
       answer_type: "Tipo de resposta"
-      first_question: "A sua primeira pergunta..."
+      select_one: "Selecione uma"
+      select_many: "Selecione (pode ser mais de uma)"
       preview:
         date: "13 Jan, 2014"  
         number: "123"

@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
 gem 'dotenv-rails'
 
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -18,8 +17,8 @@ gem 'devise'
 gem 'js-routes'
 gem 'i18n-js'
 gem 'rack-cors'
-
 gem 'therubyracer'
+gem 'paperclip', '~> 4.2'
 
 group :doc do
   gem 'sdoc', require: false

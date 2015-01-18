@@ -1,8 +1,8 @@
-<div class="section">
+<div class="section grey">
   <div class="row section-container" id="user-info">
     <div class="user-icon">
       <%= link_to user_path(current_user) do %>
-        <%= image_tag("user-icon.png") %>
+        <%= image_tag(current_user.avatar.url(:thumb)) %>
       <% end %>
     </div>
     <div class="user-details bottom">
@@ -11,13 +11,13 @@
   </div>
 </div>
 
-<div class="section grey">
+<div class="section">
   <div class="row section-container" id="user-campaigns">
     <div class="col-md-12">
       <h1 class="light"><%= t(".my_campaigns") %></h1>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-9">
       <% if @campaigns.present? %>
       <ul class="campaigns-list">
         <% @campaigns.each do |campaign| %>
@@ -32,7 +32,7 @@
       <% end %>
     </div>
 
-    <div class="col-md-4 center new-campaign">
+    <div class="col-md-3 center new-campaign">
       <div class="btn btn-info new-campaign-button">
         <span class="glyphicon glyphicon-plus-sign"></span>
         <%= t(".new_campaign") %>

@@ -1,0 +1,53 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "/highcharts.js" %>
+  <meta property="og:url" content="<%= request.original_url %>" >
+<% end %>
+
+<div class="page-container">
+  <div class="row campaign-overview">
+    <div class="survey-code">
+      <h4><%= t(".survey_code") %>: <%= format_survey_code(@survey.code) %></h4>
+    </div>
+    <div class="col-sm-9" id="activity-graph">
+      <br>
+      <%= t(".number_of_responses") %>
+    </div>
+    <div class="col-sm-3">
+      <div class="campaign-info-box">
+        <h1 class="response-count"></h1>
+        <p><%= t(".responses").capitalize %></p>
+        <div id="status-bars"></div>
+
+        <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
+        <p><%= @campaign.start_date.strftime("%-d %b %Y") %></p>
+        <% if @campaign.end_date %>
+          <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
+          <% @campaign.end_date.strftime("%-d %b %Y") %>
+        <% elsif @campaign.status == "active" %>
+          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t("campaigns.collect.confirm_close") } %>
+        <% end %>     
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row section-dark campaign-outreach">
+  <div class="page-container">
+    <h3 class="title"><%= t(".publicize_form") %></h3>
+    <div class="buttons-only">
+      <div class="share-bar">
+        <span><%= t("defaults.share") %></span>
+        <%= image_tag("social-fb.png", class: "social-share fb-share-button", href: "request.original_url.gsub('collect', 'public')") %>
+        <a class="tw-share-button" href="http://twitter.com/share?text=<%= t("defaults.share_text") %>&url=<%= request.original_url.gsub('collect', 'public')%>" target="blank">
+          <%= image_tag("social-tw.png", class: "social-share") %>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  PT.campaign = <%= raw @campaign.to_json %>;
+  PT.retrieveResponses(<%= @survey.code %>, 'collectDataLoaded')
+</script>

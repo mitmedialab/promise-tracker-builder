@@ -2,24 +2,31 @@ class Survey < ActiveRecord::Base
   belongs_to :user
   belongs_to :campaign
   has_many :inputs
+  before_create :generate_code
 
-  AGGREGATOR_URL = 'http://dev.aggregate.promisetracker.org/surveys'
-
-  def activate
-    uri = URI(AGGREGATOR_URL)
+  def activate(status)
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{status}")
     http = Net::HTTP.new(uri.host, uri.port)
-
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json'})
     request.body = self.to_json(
-      only: [:id, :title, :campaign_id],
+      only: [:id, :code, :title, :campaign_id],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
     response = http.request(request)
-    JSON.parse(response.body)
+    data = JSON.parse(response.body)
+
+    if data['status'] == 'success'
+      self.campaign.update_attributes(
+        status: status, 
+        start_date: data['payload']['start_date'].to_datetime
+      )
+    end
+
+    data
   end
 
   def close
-    uri = URI(AGGREGATOR_URL + '/' + self.id.to_s + '/close')
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{self.code}/close")
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Put.new(uri.path, {'Content-Type' =>'application/json'})
@@ -36,12 +43,18 @@ class Survey < ActiveRecord::Base
   end
 
   def get_responses
-    uri = URI(AGGREGATOR_URL + '/' + self.id.to_s + '/responses')
+    uri = URI(ENV['AGGREGATOR_URL'] + "surveys/#{self.id}/responses")
     http = Net::HTTP.new(uri.host, uri.port)
 
     request = Net::HTTP::Get.new(uri.path, {'Content-Type' =>'application/json'})
     response = http.request(request)
     JSON.parse(response.body)['payload'] || []
+  end
+
+  def generate_code
+    begin
+      self.code = rand(899999) + 100000
+    end while self.class.exists?(code: code)
   end
 
 end

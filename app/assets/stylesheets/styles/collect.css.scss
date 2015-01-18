@@ -120,13 +120,30 @@
   cursor: pointer;
 }
 
+.share-bar {
+  .social-share {
+    width: 32px;
+    height: 32px;
+    margin: 10px 2px;
+  }
+
+  span {
+    font-size: .8em;
+    color: $dark-grey;
+    padding: 0 5px;
+  }
+}
+
+.buttons-only {
+  span {
+    display: none;
+  }
+}
+
 .resource, a .resource {
   background: white;
   border-radius: 4px;
   border: 1px solid grey;
-  width: 200px;
-  height: 200px;
-  margin: 20px;
   padding: 30px 10px 10px 10px;
   display: inline-block;
   text-align: center;
@@ -137,12 +154,8 @@
   position: relative;
   margin-bottom: 35px;
 
-  &:hover {
-    background-color: #eee;
-  }
-
   i {
-    font-size: 400%;
+    font-size: 250%;
     display: block;
     margin-bottom: 15px;
   }

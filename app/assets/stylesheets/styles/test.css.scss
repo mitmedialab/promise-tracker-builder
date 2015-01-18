@@ -1,0 +1,48 @@
+// Test
+
+#test-campaign, #how-to-participate {
+  .highlight {
+    background: #f5be59;
+    margin-left: -60px;
+    padding-left: 60px;
+  }
+  
+  .row.step {
+    border-radius: 4px;
+    margin: 0 0 10px 0;
+    padding: 20px;
+  }
+
+  .step-icon {
+    text-align: center;
+  }
+
+  .code, p {
+    margin: 0;
+  }
+
+  .btn {
+    margin-bottom: 5px;
+  }
+
+  #how-to-test {
+    font-size: 1.2em;
+    
+    i {
+      font-size: 300%;
+      color: $dark-grey;
+    }
+
+    h3, h4 {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  #test-campaign, #how-to-participate {
+    .step-icon {
+      text-align: left;
+    }
+  }
+}

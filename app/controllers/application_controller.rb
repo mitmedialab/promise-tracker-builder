@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include Exceptions
+  
   before_action :set_locale
   after_filter :set_csrf_cookie
+  rescue_from Exceptions::Forbidden, with: :rescue_from_forbidden
  
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
@@ -32,7 +33,7 @@ class ApplicationController < ActionController::Base
     { root: false }
   end
 
-  private
+  protected
 
   def set_csrf_cookie
     if protect_against_forgery?
@@ -44,6 +45,10 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_token do |token, options|
       ApiKey.exists?(access_token: token)
     end
+  end
+
+  def rescue_from_forbidden
+    render 'errors/403', layout: 'application', status: 403
   end
 
 end

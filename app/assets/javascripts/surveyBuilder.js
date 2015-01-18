@@ -1,12 +1,3 @@
-$(document).ready(function() {
-
-  // $(document).on("focus", ".replace-text, .options input", function(){
-  //   $(this).on("mouseup.a keyup.a", function(e){      
-  //     $(this).off("mouseup.a keyup.a").select();
-  //   });
-  // });
-});
-
 var PT = PT || {};
 
 /// Input type defaults
@@ -192,7 +183,6 @@ PT.SurveyModel = function(){
   /// Update order of all inputs
   self.saveOrder = function(){
     self.saveInputs();
-    window.location.pathname = I18n.currentLocale() + Routes.campaign_path(PT.survey.campaign_id);
     
     $.ajax({
       url: Routes.save_order_path(PT.survey.id),
@@ -200,6 +190,9 @@ PT.SurveyModel = function(){
       contentType: "application/json",
       dataType: "json",
       data: ko.toJSON(self)
+    })
+    .done(function(data){
+      window.location.pathname = I18n.currentLocale() + Routes[data.redirect_path](self.campaign_id);
     });
 
   };

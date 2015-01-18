@@ -1,11 +1,116 @@
-// Campaign show
+// Campaign progress bar
+
+#campaign-progress-container {
+  padding: 15px 60px 15px 15px;
+  position: relative;
+  z-index: 1;
+
+  ul#campaign-progress-bar {
+    list-style-type: none;
+    padding: 0;
+    font-size: .8em;
+
+    a {
+      color: $dark-grey;
+    }
+
+    li {
+      display: inline-block;
+      position: relative;
+      padding: 0 20px 10px 20px;
+      vertical-align: bottom;
+
+      >div {
+        width: 70px;
+      }
+
+
+      &:before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        display: block;
+        background: $med-grey;
+        border-radius: 50%;
+        border: 5px solid $med-grey;
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        margin-left: -7px;
+      }
+
+      &.complete:before {
+        background: $pink;
+        border-color: $pink;
+      }
+
+      &.active:before {
+        background: white;
+        border-color: $pink;
+      }
+
+      &:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background: #dddddd;
+        position: absolute;
+        left: -50%;
+        bottom: -7px;
+        z-index: -1;
+      }
+    }
+
+    >a:first-child > li:after{
+      content: none;
+    }
+  }
+
+  .progress-arrow {
+    position: absolute;
+    top: 30px;
+    border: none;
+    right: 60px;
+  }
+}
+
+#errors.progress-errors {
+  position: absolute;
+  right: 60px;
+  top: 168px;
+  padding: 12px 20px;
+  display: none;
+  z-index: 10;
+
+  &.alert-danger:before {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    content: "\00a0";
+    width: 10px;
+    height: 15px;
+
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid $light-pink;
+  }
+
+  ul {
+    padding: 0 40px 0 20px;
+  }
+
+  .close {
+    font-size: 15px;
+  }
+}
+
+// Campaign index
 
 #user-info {
-  padding: 40px 0;
+  padding: 30px 0;
 
   .user-icon, .user-details  {
     display: inline-block;
-    height: 100px;
     display: table-cell;
     vertical-align: bottom;
     padding-right: 20px;
@@ -20,8 +125,8 @@
   }
 
   img {
-    width: 140px;
-    height: 140px;
+    width: auto;
+    height: 100px;
     border-radius: 50%;
   }
 }
@@ -65,41 +170,32 @@
 .campaigns-list {
   list-style-type: none;
   padding: 0;
+  margin-right: 50px;
 
   li.row {
-    padding: 15px 20px;
+    padding: 15px 0;
     border-radius: 4px;
-    margin: 0 0 10px 0;
+    margin: 0;
     background: white;
+    border: 1px dotted #d1d2d0;
+    border-width: 1px 0 0 0;
 
-    a.campaign-name {
-      font-size: 18px;
-      color: $dark-grey;
-    }
-
-    span {
-      &.draft {
-        color: $yellow;
-      }
-
-      &.active {
-        color: $turquoise;
-      }
-
-      &.closed {
-        color: $pink;
-      }
+    a .campaign-link {
+      font-size: 14px;
+      display: inline-block;
+      width: 85%;
     }
 
     .status-icon {
-      vertical-align: middle;
-      width: 40px;
-      height: 40px;
+      vertical-align: top;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
       background-repeat: no-repeat;
       background-size: 80%;
-      margin-right: 10px;
+      margin: -3px 10px 0 0;
 
-      &.draft {
+      &.draft, &.test {
         background-image: image-url('PT-status-draft.png');
       }
 
@@ -114,8 +210,21 @@
 
     .modify {
       text-align: right;
-      margin-top: 5px;
     }
+  }
+}
+
+span {
+  &.draft, &.test {
+    color: $yellow;
+  }
+
+  &.active {
+    color: $turquoise;
+  }
+
+  &.closed {
+    color: $pink;
   }
 }
 
@@ -125,20 +234,20 @@ ul.campaign-nav {
   display: block;
   border-bottom: 1px solid $light-grey;
   padding: 0;
-  margin: -20px 0 40px 0;
+  margin: 20px 0 0 0;
   padding-right: 60px;
-  height: 45px;
+  height: 40px;
+  text-align: right;
 
   li {
-    float: right;
-    height: 44px;
+    display: inline-block;
+    height: 39px;
     background: whitesmoke;
     border: 1px solid $light-grey;
     border-bottom: 0;
     border-radius: 8px 8px 0 0;
-    margin-right: 5px;
+    margin-left: 5px;
     padding: 0;
-    top: 1px;
     position: relative;
 
     &:hover {
@@ -146,19 +255,20 @@ ul.campaign-nav {
     }
 
     a {
-      padding: 8px 16px 8px 14px;
+      padding: 8px 15px;
       display: inline-block;
       vertical-align: middle;
     }
 
     img.process-icon {
-      height: 30px;
+      height: 25px;
       width: auto;
     }
 
-    &.active-tab {
+    &.active {
       background: white;
       top: 1px;
+      border-color: $med-grey;
     }
   }
 }
@@ -167,6 +277,10 @@ ul.campaign-nav {
   border-bottom: 1px solid grey;
   padding-bottom: 5px;
   margin-bottom: 30px;
+}
+
+.sub-title {
+  font-size: 24px;
 }
 
 #campaign-goals {
@@ -186,11 +300,10 @@ ul.campaign-nav {
 }
 
 .new-campaign-button, .new-survey-button {
-  width: 50%;
   max-width: 200px;
   white-space: normal;
   height: auto;
-  padding: 20px;
+  padding: 15px 20px !important;
   font-size: 16px;
 
   .glyphicon {
@@ -219,8 +332,8 @@ ul.campaign-nav {
   font-size: 32px;
   font-weight: 200;
   display: block;
-  padding-top: 20px;
-  margin: 10px 0 20px 0px;
+  padding-top: 10px;
+  margin: 0;
 }
 
 h2.title, h3.title {
@@ -265,7 +378,7 @@ h2.title, h3.title {
 }
 
 .top-save {
-  margin: 45px 40px 0 0;
+  margin-top: 45px;
 }
 
 #campaign-goals-form.single-page {
@@ -322,10 +435,239 @@ h2.title, h3.title {
   }
 }
 
+// Profile page
+
+#campaign-profile {
+  background: white;
+
+  input[type="file"] {
+    width: 100%;
+  }
+
+  .campaign-overview {
+
+    .placeholder {
+      max-height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0 0 0;
+      }
+    }
+
+    #campaign_anonymous {
+      margin: 0 10px 10px 0;
+    }
+  }
+
+  .stacked-sheets {
+    padding-bottom: 0;
+  }
+
+  .survey-preview {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  #survey-body {
+    background: white;
+    min-height: 0;
+
+    .input {
+      border: none;
+      margin: 0;
+      padding: 10px;
+      min-height: 0;
+
+      p.label-text {
+        margin-right: 0;
+      }
+    }
+
+    .example {
+      display: none;
+
+      &.select, &.select1 {
+        display: block;
+
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.preview {
+    margin: 40px 40px 20px 40px;
+    padding: 30px 40px;
+  }
+
+  textarea {
+    margin: 0;
+    color: $dark-grey;
+    box-shadow: none;
+  }
+
+  .inactive {
+    color: $med-grey;
+
+    #campaign_organizers, .error {
+      display: none;
+    }
+  }
+}
+
+input.campaign-title {
+  padding: 0;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.participate {
+
+  .resource {
+    height: 250px;
+    width: 100%;
+  }
+
+  .how-to-steps {
+    margin: 0 auto;
+
+    i {
+      font-size: 250%;
+
+      &.bigger {
+        font-size: 300%;
+      }
+    }
+
+    .step {
+      text-align: center;
+      margin-top: 15px;
+
+    }
+  }
+}
+
+.highlight {
+  margin: 0 0 10px -40px;
+  display: inline-block !important;
+  padding: 10px 30px 10px 40px;
+
+  &.title {
+    background: $turquoise;
+  }
+
+  &.text {
+    background: whitesmoke;
+    font-size: 17px;
+  }
+}
+
+// Stacked sheets
+.stacked-sheets {
+  background: #fafafa;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 26px auto 0;
+  padding: 40px;
+  width: 80%;
+  position: relative;
+  z-index: 1;
+}
+
+.stacked-sheets:before, .stacked-sheets:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.stacked-sheets:before {
+  background: #f6f6f6;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
+}
+
+.stacked-sheets:after {
+  background: white;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  right: -10px;
+  top: 5px;
+  border: 1px solid $light-grey;
+}
+
+// Diagonal Ribbon
+
+.wrapper {
+  position: relative;
+}
+
+.ribbon-wrapper {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  transform: rotate(45deg);
+  position: relative;
+  padding: 7px 35px;
+  left: -5px;
+  top: 15px;
+  width: 185px;
+  background-color: $yellow;
+  color: #6a6340;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 960px) {
+  #campaign-progress-container {
+    padding-right: 15px;
+
+    .progress-arrow {
+      position: relative;
+      right: auto;
+      top: auto;
+      margin-top: 15px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
-  #user-info .user-icon img {
-    width: 100px;
-    height: 100px;
+  #campaign-progress-container {
+    .desktop-only {
+      display: none;
+    }
+  }
+  
+  .campaigns-list {
+    margin-right: 0;
+
+    li.row {
+      padding: 10px 0;
+
+      .modify {
+        text-align: left;
+      }
+    }
+
+    .status-icon {
+      display: none !important;
+    }
   }
 
   .new-campaign-button {
@@ -337,6 +679,19 @@ h2.title, h3.title {
 
     .tab-text {
       display: none;
+    }
+  }
+
+  #campaign-profile {
+    &.preview {
+      margin: 0;
+      padding: 0 10px;
+    }
+
+    .campaign-overview {
+      .placeholder img {
+        margin: 0 0 10px 0;
+      }
     }
   }
 }

@@ -1,0 +1,11 @@
+<% if current_user && current_user.owns?(@campaign) %>
+  <%= render partial: "campaigns/progress_bar" %>
+
+  <% if !@campaign.draft? %>
+    <%= render partial: "tabs" %>
+  <% end %>
+<% end %>
+
+<div class="page-container">
+  <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+</div>
