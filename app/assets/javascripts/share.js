@@ -257,7 +257,7 @@ PT.aggregateData = function(data){
 
 PT.renderGraphs = function(aggregates, containerId){
 
-  if(aggregates.length > 0){
+  if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId);
     var $graphSquare;
 
