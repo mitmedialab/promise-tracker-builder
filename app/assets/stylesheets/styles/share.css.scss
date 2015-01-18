@@ -140,7 +140,7 @@
 }
 
 .image {
-  background: image-url("campaign-image2.jpg") center center;
+  background: image-url("campaign-image-3.jpg") center center;
   background-size: cover;
 }
 
@@ -157,6 +157,7 @@
   background: white;
   color: black;
   text-align: left;
+  overflow: hidden;
 
   .header {
     height: 30px;
@@ -203,14 +204,14 @@
 
     .map {
       width: 48%;
-      height: 100px;
+      height: 150px;
       margin-bottom: 10px;
       float: left;
     }
 
     .image {
       width: 48%;
-      height: 100px;
+      height: 150px;
       float: right;
     }
   }

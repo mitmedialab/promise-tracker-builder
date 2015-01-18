@@ -60,21 +60,23 @@
           </div>
           <h2 class="title"><%= @campaign.title %></h2>
           <div class="description">
-            <label><%= Campaign.human_attribute_name(:goal) %></label>
-            <p><%= @campaign.goal %></p>
+            <label><%= Campaign.human_attribute_name(:description) %></label>
+            <p><%= @campaign.description %></p>
           </div>
-          <label><%= t(".campaign_organizers") %></label>
-          <p><%= @campaign.data_collectors %></p>
+          <% if !@campaign.anonymous %>
+            <label><%= Campaign.human_attribute_name(:organizers) %></label>
+            <p><%= @campaign.organizers %></p>
+          <% end %>
 
           <div class="report-image">
             <div class="map"></div>
-            <div class="image"></div>
+            <div class="image" style="background-image: url(<%= asset_path(@campaign.image.url) %>);"></div>
           </div>
           <div id="report-graphs-container">
             <div id="report-graphs" class="row"></div>
           </div>
 
-          <strong><%= t(".learn_more") %></strong>: <a class="small" href="dev.monitor.promisetracker.org/campaigns/<%= @campaign.id %>">dev.monitor.promisetracker.org/campaigns/<%= @campaign.id %></a>
+          <strong><%= t(".learn_more") %></strong>: <a class="small" href='<%= URI.join(root_url, "/campaigns/#{@campaign.id}/public") %>' target="blank"><%= URI.join(root_url, "/campaigns/#{@campaign.id}/public") %></a>
         </div> 
         <div class="footer"></div> 
       </div>
