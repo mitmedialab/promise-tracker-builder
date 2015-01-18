@@ -1,6 +1,12 @@
 // Test
 
 #test-campaign, #how-to-participate {
+  .highlight {
+    background: #f5be59;
+    margin-left: -60px;
+    padding-left: 60px;
+  }
+  
   .row.step {
     border-radius: 4px;
     margin: 0 0 10px 0;
@@ -33,7 +39,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   #test-campaign, #how-to-participate {
     .step-icon {
       text-align: left;

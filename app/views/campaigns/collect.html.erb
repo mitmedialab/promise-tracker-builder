@@ -6,8 +6,6 @@
 <div class="page-container">
   <div class="row campaign-overview">
     <div class="survey-code">
-      <p><span class="glyphicon glyphicon-flag <%= @campaign.status %>"></span>
-      <%= t("campaigns.status.#{@campaign.status}") %></p>
       <h4><%= t(".survey_code") %>: <%= format_survey_code(@survey.code) %></h4>
     </div>
     <div class="col-sm-9" id="activity-graph">
@@ -26,7 +24,7 @@
           <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
           <% @campaign.end_date.strftime("%-d %b %Y") %>
         <% elsif @campaign.status == "active" %>
-          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning margin-top", data: { confirm: t("campaigns.monitor.confirm_close") } %>
+          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t("campaigns.collect.confirm_close") } %>
         <% end %>     
       </div>
     </div>
@@ -37,35 +35,19 @@
 <div class="row section-dark campaign-outreach">
   <div class="page-container">
     <h3 class="title"><%= t(".publicize_form") %></h3>
-
-    <%= image_tag("social-fb.png", class: "social-share fb-share") %>
-    <%= image_tag("social-tw.png", class: "social-share") %>
-    <%= image_tag("social-email.png", class: "social-share") %>
-  </div>
-</div>
-
-<div class="row section-light campaign-resources">
-  <div class="page-container">
-    <h1 class="title"><%= t(".campaign_resources") %></h1>
-    <div class="resource">
-      <i class="icon-group"></i>
-      <%= t(".guide_1") %>
+    <div class="buttons-only">
+      <div class="share-bar">
+        <span><%= t("defaults.share") %></span>
+        <%= image_tag("social-fb.png", class: "social-share fb-share-button", href: "request.original_url.gsub('collect', 'public')") %>
+        <a class="tw-share-button" href="http://twitter.com/share?text=<%= t("defaults.share_text") %>&url=<%= request.original_url.gsub('collect', 'public')%>" target="blank">
+          <%= image_tag("social-tw.png", class: "social-share") %>
+        </a>
+      </div>
     </div>
-    <div class="resource">
-      <i class="icon-mobile-phone"></i>
-      <%= t(".guide_2") %>
-    </div>
-
-    <%= link_to share_campaign_path(@campaign) do %>
-    <div class="resource">
-      <i class="icon-bar-chart"></i>
-      <%= t(".guide_3") %>
-    </div>
-    <% end %>
   </div>
 </div>
 
 <script type="text/javascript">
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @survey.code %>, 'monitordataloaded')
+  PT.retrieveResponses(<%= @survey.code %>, 'collectDataLoaded')
 </script>

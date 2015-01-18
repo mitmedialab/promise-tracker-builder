@@ -2,7 +2,7 @@
   <div class="row section-container" id="user-info">
     <div class="user-icon">
       <%= link_to user_path(current_user) do %>
-        <%= image_tag("user-icon.png") %>
+        <%= image_tag(current_user.avatar.url(:thumb)) %>
       <% end %>
     </div>
     <div class="user-details bottom">

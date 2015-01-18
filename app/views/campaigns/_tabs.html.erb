@@ -8,8 +8,8 @@
   <li class="btn btn-default tab" id="profile-tab" data-action="profile edit_profile" data-visible="<%= @campaign.validate_profile %>">
     <%= link_to t(".profile"), campaign_profile_path(@campaign) %>
   </li>
-  <li class="btn btn-default tab" id="monitor-tab" data-action="monitor" data-visible="<%= !@campaign.draft? %>">
-    <%= link_to t(".data"), monitor_campaign_path(@campaign) %>
+  <li class="btn btn-default tab" id="collect-tab" data-action="collect" data-visible="<%= !@campaign.draft? %>">
+    <%= link_to t(".data"), campaign_collect_path(@campaign) %>
   </li>
   <li class="btn btn-default tab" id="share-tab" data-action="share" data-visible="<%= @campaign.status == 'active' || @campaign.status == 'closed' %>">
     <%= link_to t(".viz"), share_campaign_path(@campaign) %>

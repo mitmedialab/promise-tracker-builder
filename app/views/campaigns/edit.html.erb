@@ -110,6 +110,7 @@
 
         <div class="button-group center clear">
           <hr>
+          <%= f.hidden_field :redirect_action, value: "goals" %>
           <%= f.submit t("defaults.save"), class: "btn btn-info" %>
         </div>
       </div>

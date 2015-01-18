@@ -145,9 +145,24 @@ pt-BR:
       upload_error: "Disculpe. Seu formulário não poderia ser publicado."
       upload_success: "Seu formulário foi publicado com sucesso!"
 
+    collect:
+      status_text: "Este formulário está "
+      survey_code: "Pode baixar e preencher este formulário usando o código"
+      close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
+      number_of_responses: "Número de registros"
+      close: "Fechar ação"
+      confirm_close: "Tem certeza que quer fechar esta ação? Não vair poder coletar mais dados!"
+      responses: "registros"
+      current: "Atual"
+      target: "Desejado"
+      publicize_form: "Mobilizar os amigos para coletar dados"
+      campaign_resources: "Guias"
+      guide_1: "Organizar um evento de lançamento"
+      guide_2: "Manter sua comunidade envolvida"
+      guide_3: "Vizualizar seus resultados"
+
     edit:
-      edit_title: "Editar nome"
-      define_goals: "Definir seus objetivos"
+      overview_and_goals: "Descrição e objetivos"
       type_number: "Digite um Número"
       explanations:
         description: "Descrição breve da ação"
@@ -157,13 +172,14 @@ pt-BR:
         audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
       tips:
-        data_collectors: "Talvez sejam necessárias muitas pessoas para coletar os dados. Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você nesta campanha?"
+        data_collectors: "Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você para coletar dados nesta campanha?"
         goal: "Mudanças sociais normalmente começam com pequenos passos. O que é possível alcançar no futuro próximo no tema escolhido?"
         submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
     edit_profile:
       remain_anonymous: "Prefiro manter os organizadores anónimos"
+      profile_description: "Em baixo você vai criar uma página pública para compartilhar informações sobre a sua ação."
 
     how_to_participate:
       participate_title: "Ajude com a coleta de dados!"
@@ -186,22 +202,6 @@ pt-BR:
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
       confirm_clone: "Você em certeza que quer duplicar esta ação?" 
-
-    monitor:
-      status_text: "Este formulário está "
-      survey_code: "Pode baixar e preencher este formulário usando o código"
-      close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
-      number_of_responses: "Número de registros"
-      close: "Fechar esta ação"
-      confirm_close: "Tem certeza que quer fechar esta ação? Não vair poder coletar mais dados!"
-      responses: "registros"
-      current: "Atual"
-      target: "Desejado"
-      publicize_form: "Mobilizar os amigos para coletar dados"
-      campaign_resources: "Guias"
-      guide_1: "Organizar um evento de lançamento"
-      guide_2: "Manter sua comunidade envolvida"
-      guide_3: "Vizualizar seus resultados"
 
     nav:
       view_survey: "Ver formulário"
@@ -247,13 +247,13 @@ pt-BR:
       viz: "Visualizações"
 
     test:
-      test_title: "Testando seu formulário"
+      test_title: "Teste do formulário"
       test_explanation: "Antes de lançar sua ação, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
       catch_errors: "Agora é o momento de achar todos os erros!"
       how_to_test: "Como testar"
       step_3_text: "Testar o formulário"
       step_3_subtext: "Preencha o formulário e Confirme que tudo esteja bem escrito e em ordem"
-      warning: "Depois de lançar, você não vai poder modificar o formulário!"
+      warning: "Depois de lançar, você não vai poder modificar o formulário."
       edit_survey: "Editar formulário"
       go_live: "Lançar ação"
       confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode ser modificado mais!"

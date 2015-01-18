@@ -18,7 +18,7 @@ class Survey < ActiveRecord::Base
     if data['status'] == 'success'
       self.campaign.update_attributes(
         status: status, 
-        start_date: Time.new(data['payload']['start_date'])
+        start_date: data['payload']['start_date'].to_datetime
       )
     end
 

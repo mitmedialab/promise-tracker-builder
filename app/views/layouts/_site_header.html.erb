@@ -24,7 +24,7 @@
         <% if current_user %>
           <li>
             <%= link_to campaigns_path do %>
-              <%= image_tag("user-icon.png", class: "user-icon") %> <%= current_user.username %>
+              <%= image_tag(current_user.avatar.url(:thumb), class: "user-icon") %> <%= current_user.username %>
              <% end %> 
           </li>
           <li>

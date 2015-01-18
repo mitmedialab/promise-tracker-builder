@@ -32,7 +32,7 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
       }
     },
     tooltip: {
-      valueSuffix: " " + I18n.t("campaigns.monitor.responses"),
+      valueSuffix: " " + I18n.t("campaigns.collect.responses"),
       headerFormat: ""
     },
     legend: {
@@ -50,14 +50,14 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
     },
     series: [
       {
-        name: I18n.t("campaigns.monitor.target"),
+        name: I18n.t("campaigns.collect.target"),
         data: [targetResponseCount],
         pointPadding: 0,
         groupPadding: 0,
         color: "#5fb2a6",
       },
       {
-        name: I18n.t("campaigns.monitor.current"),
+        name: I18n.t("campaigns.collect.current"),
         data: [currentResponseCount],
         pointPadding: 0,
         groupPadding: 0,
@@ -79,7 +79,7 @@ PT.renderActivityGraph = function(data, containerId){
   width = $container.width();
   margins = {
     x: 60,
-    y: 40
+    y: 45
   };
 
   svg = d3.select(containerId).append('svg')
@@ -162,7 +162,7 @@ PT.renderActivityGraph = function(data, containerId){
 };
 
 PT.renderMonitorViz = function(){
-  dispatcher.subscribe('monitordataloaded', function(data){
+  dispatcher.subscribe('collectDataLoaded', function(data){
     if(data.responses){
       var responseCount = data.responses.length;
       

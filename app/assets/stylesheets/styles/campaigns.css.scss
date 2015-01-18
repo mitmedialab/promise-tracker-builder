@@ -1,7 +1,7 @@
 // Campaign progress bar
 
 #campaign-progress-container {
-  padding: 20px;
+  padding: 15px 60px 15px 15px;
   position: relative;
   z-index: 1;
 
@@ -68,25 +68,17 @@
 
   .progress-arrow {
     position: absolute;
-    top: 35px;
+    top: 30px;
     border: none;
-
-    &.next {
-      right: 60px;
-    }
-
-    &.back {
-      left: 60px;
-      color: $pink;
-    }
+    right: 60px;
   }
 }
 
 #errors.progress-errors {
   position: absolute;
   right: 60px;
-  top: 178px;
-  padding: 15px 20px;
+  top: 168px;
+  padding: 12px 20px;
   display: none;
   z-index: 10;
 
@@ -100,7 +92,7 @@
 
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 12px solid $light-pink;
+    border-bottom: 10px solid $light-pink;
   }
 
   ul {
@@ -181,25 +173,27 @@
   margin-right: 50px;
 
   li.row {
-    padding: 15px 20px;
+    padding: 15px 0;
     border-radius: 4px;
     margin: 0;
     background: white;
     border: 1px dotted #d1d2d0;
     border-width: 1px 0 0 0;
 
-    a.campaign-name {
-      font-size: 18px;
-      color: $dark-grey;
+    a .campaign-link {
+      font-size: 14px;
+      display: inline-block;
+      width: 85%;
     }
 
     .status-icon {
-      vertical-align: middle;
-      width: 40px;
-      height: 40px;
+      vertical-align: top;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
       background-repeat: no-repeat;
       background-size: 80%;
-      margin-right: 10px;
+      margin: -3px 10px 0 0;
 
       &.draft, &.test {
         background-image: image-url('PT-status-draft.png');
@@ -216,7 +210,6 @@
 
     .modify {
       text-align: right;
-      margin-top: 5px;
     }
   }
 }
@@ -447,16 +440,30 @@ h2.title, h3.title {
 #campaign-profile {
   background: white;
 
+  input[type="file"] {
+    width: 100%;
+  }
+
   .campaign-overview {
-    .placeholder img {
-      width: 100%;
-      height: auto;
-      margin: 20px 0 0 0;
+
+    .placeholder {
+      max-height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0 0 0;
+      }
     }
 
     #campaign_anonymous {
       margin: 0 10px 10px 0;
     }
+  }
+
+  .stacked-sheets {
+    padding-bottom: 0;
   }
 
   .survey-preview {
@@ -466,6 +473,7 @@ h2.title, h3.title {
 
   #survey-body {
     background: white;
+    min-height: 0;
 
     .input {
       border: none;
@@ -626,9 +634,26 @@ input.campaign-title {
   box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
 }
 
+@media (max-width: 960px) {
+  #campaign-progress-container {
+    padding-right: 15px;
+
+    .progress-arrow {
+      position: relative;
+      right: auto;
+      top: auto;
+      margin-top: 15px;
+    }
+  }
+}
 
 @media (max-width: 768px) {
-
+  #campaign-progress-container {
+    .desktop-only {
+      display: none;
+    }
+  }
+  
   .campaigns-list {
     margin-right: 0;
 

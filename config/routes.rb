@@ -23,7 +23,7 @@ PromiseTracker::Application.routes.draw do
     get '/campaigns/:id/edit-profile', to: 'campaigns#edit_profile', as: 'edit_campaign_profile'
     get '/campaigns/:id/public', to: 'campaigns#public_profile', as: 'campaign_public_profile'
     get '/campaigns/:id/test', to: 'campaigns#test', as: 'test_campaign'
-    get '/campaigns/:id/monitor', to: 'campaigns#monitor', as: 'monitor_campaign'
+    get '/campaigns/:id/collect', to: 'campaigns#collect', as: 'campaign_collect'
     get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'
     get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
     get '/campaigns/:id/next', to: 'campaigns#next', as: 'campaign_next'

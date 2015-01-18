@@ -2,37 +2,37 @@
   <ul id="campaign-progress-bar">
     <%= link_to edit_campaign_path(@campaign) do %>
       <li data-path="edit goals_wizard goals" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
-        <div><%= t(".define_goals") %></div>
+        <div class="desktop-only"><%= t(".define_goals") %></div>
       </li>
     <% end %>
 
     <%= link_to campaign_survey_path(@campaign) do %>
       <li data-path="survey" data-clickable="<%= @campaign.validate_goals %>" data-complete="<%= @campaign.survey.present? %>" class="progress-node">
-        <div><%= t(".create_survey") %></div>
+        <div class="desktop-only"><%= t(".create_survey") %></div>
       </li>
     <% end %>
 
     <%= link_to edit_campaign_profile_path(@campaign) do %>
       <li data-path="edit_profile profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.validate_profile %>">
-        <div><%= t(".design_profile") %></div>
+        <div class="desktop-only"><%= t(".design_profile") %></div>
       </li>
     <% end %>
 
     <%= link_to test_campaign_path(@campaign) do %>
       <li data-path="test" data-clickable="<%= @campaign.validate_profile %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
-        <div><%= t(".test_survey") %></div>
+        <div class="desktop-only"><%= t(".test_survey") %></div>
       </li>
     <% end %>
 
-    <%= link_to monitor_campaign_path(@campaign) do %>
-      <li data-path="monitor" data-clickable="<%= !@campaign.draft? %> " data-complete="<%= !@campaign.draft? %>" class="progress-node">
-        <div><%= t(".collect_data") %></div>
+    <%= link_to campaign_collect_path(@campaign) do %>
+      <li data-path="collect" data-clickable="<%= !@campaign.draft? %> " data-complete="<%= !@campaign.draft? %>" class="progress-node">
+        <div class="desktop-only"><%= t(".collect_data") %></div>
       </li>
     <% end %>
 
     <%= link_to share_campaign_path(@campaign) do %>
       <li data-path="share" data-clickable="<%= !@campaign.draft? %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
-        <div><%= t(".share_data") %></div>
+        <div class="desktop-only"><%= t(".share_data") %></span>
       </li>
     <% end %>
   </ul>
@@ -42,10 +42,10 @@
       <div class="btn btn-warning progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
     <% end %>
   <% elsif @campaign.status == "active" %>
-    <%= link_to t("campaigns.monitor.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow next", data: { confirm: t("campaigns.monitor.confirm_close") } %></div>
+    <%= link_to t("campaigns.collect.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow", data: { confirm: t("campaigns.collect.confirm_close") } %></div>
   <% elsif @campaign.status != "closed" %>
     <%= link_to campaign_next_path(@campaign, refer_action: action_name), remote: true, "data-type" => :json do %>
-      <div class="btn btn-grey progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
+      <div class="btn btn-grey progress-arrow"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
     <% end %>
   <% end %>
 </div>
