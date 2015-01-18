@@ -48,6 +48,7 @@
 </div>
 
 <script type="text/javascript">
+  PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
   PT.campaign = <%= raw @campaign.to_json %>;
   PT.retrieveResponses(<%= @survey.code %>, 'collectDataLoaded')
 </script>
