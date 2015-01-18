@@ -2,7 +2,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :user
   has_one :survey
   has_and_belongs_to_many :tags
-  has_attached_file :image, default_url: '/assets/placeholder.jpg'
+  has_attached_file :image, default_url: ActionController::Base.helpers.asset_path('placeholder.jpg')
 
   validates :title, length: { minimum: 5 }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/ 
@@ -16,7 +16,14 @@ class Campaign < ActiveRecord::Base
   def clone
     clone = self.dup
     clone.tags = self.tags
-    clone.update_attributes(status: 'draft', organizers: nil, anonymous: nil, start_date: nil, end_date: nil)
+    clone.update_attributes(
+      status: 'draft',
+      organizers: nil,
+      anonymous: nil,
+      start_date: nil,
+      end_date: nil,
+      image: nil
+    )
     clone.save
     clone
   end
