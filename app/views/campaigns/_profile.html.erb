@@ -16,7 +16,11 @@
         <div class="col-sm-5 col-sm-push-7">
           <div class="campaign-image">
             <div class="placeholder">
-              <%= image_tag("placeholder.jpg") %>
+              <% if @campaign.image %>
+                <%= image_tag(@campaign.image.url) %>
+              <% else %>
+                <%= image_tag("placeholder.jpg") %>
+              <% end %>
             </div>
           </div>
           <div class="text-right">

@@ -50,7 +50,11 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
 
-    redirect_to action: @campaign.get_latest_state, id: @campaign.id
+    if @campaign.draft?
+      redirect_to action: @campaign.get_latest_state, id: @campaign.id
+    else
+      redirect_to action: params[:campaign][:redirect_action]
+    end
   end
 
   def survey
@@ -82,7 +86,7 @@ class CampaignsController < ApplicationController
       if params[:status] == 'test'
         redirect_to test_campaign_path(@campaign)
       elsif params[:status] == 'active'
-        redirect_to monitor_campaign_path(@campaign)
+        redirect_to campaign_collect_path(@campaign)
       end
     else
       flash.now[:notice] = t('.upload_error')
@@ -90,7 +94,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def monitor
+  def collect
   end
 
   def share
@@ -104,7 +108,7 @@ class CampaignsController < ApplicationController
       @campaign.update_attribute(:status, 'closed')
       redirect_to share_campaign_path(@campaign)
     else
-      render 'monitor'
+      render 'collect'
     end
   end
 
@@ -143,12 +147,12 @@ class CampaignsController < ApplicationController
 
   def get_next_state(current_action)
     states = [
-      "edit", 
-      "survey",
-      "edit_profile",
-      "test",
-      "monitor",
-      "share"
+      'edit', 
+      'survey',
+      'edit_profile',
+      'test',
+      'collect',
+      'share'
     ]
 
     states[states.index(current_action) + 1]
@@ -156,39 +160,25 @@ class CampaignsController < ApplicationController
 
   def campaign_can_advance?(current_action)
     case current_action
-    when "edit"
-      if @campaign.validate_goals
-        true
-      else
-        t("defaults.validations.please_define_goals")
-      end
-    when "survey"
+    when 'edit', 'goals_wizard'
+      t('defaults.validations.please_define_goals')
+    when 'survey'
       if @survey && @survey.inputs.length > 0
         true
       else
-        t("defaults.validations.please_create_survey")
+        t('defaults.validations.please_create_survey')
       end
-    when "edit_profile"
+    when 'edit_profile'
       if @campaign.validate_profile
         true
       else
-        t("defaults.validations.please_complete_profile")
+        t('defaults.validations.please_complete_profile')
       end
-    when "test"
+    when 'test'
       if @campaign.status == 'active'
         true
       else
-        t("defaults.validations.launch_campaign")
-      end
-    when "monitor"
-      if @campaign.status == 'closed'
-        true
-      else
-        t("defaults.validations.close_campaign")
-      end
-    when "share"
-      if @campaign.status == 'closed'
-        false
+        t('defaults.validations.launch_campaign')
       end
     end
   end
@@ -202,7 +192,7 @@ class CampaignsController < ApplicationController
   def campaign_params
     params.require(:campaign).permit(
       :title, :description, :goal, :theme, :data_collectors,
-      :submissions_target, :audience, :organizers, :anonymous)
+      :submissions_target, :audience, :organizers, :anonymous, :image)
   end
 
 end
