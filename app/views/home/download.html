@@ -1,7 +1,7 @@
-<div class="center">
-  <h3><%= link_to t(".download_link"), "http://www.droidbin.com/p196gc0vvt17nm1md91its14ncm1q3" %></h3>
+<div class="center download-container">
+  <h3><%= link_to t(".download_link"), asset_path("PromiseTracker.apk") %></h3>
   <p><%= t(".app_description") %></p>
   <%= image_tag("pt-app-preview.jpg", class: "pad-bottom") %><br>
 
-  <%= link_to(t("defaults.download"), "http://www.droidbin.com/p196gc0vvt17nm1md91its14ncm1q3", class: "btn btn-info") %>
+  <%= link_to(t("defaults.download"), asset_path("PromiseTracker.apk"), class: "btn btn-info", target: "blank") %>
 </div>
