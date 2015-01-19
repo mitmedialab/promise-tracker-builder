@@ -149,6 +149,8 @@ class CampaignsController < ApplicationController
     case current_action
     when 'edit', 'goals_wizard'
       'survey'
+    when 'survey'
+      'edit_profile'
     when 'edit_profile', 'profile'
       'test'
     when 'test'
