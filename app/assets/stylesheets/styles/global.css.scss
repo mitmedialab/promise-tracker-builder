@@ -12,6 +12,10 @@ a {
   color: $dark-turquoise;
   text-decoration: none !important;
 
+  &:active {
+    color: $dark-turquoise;
+  }
+
   &:hover {
     color: $turquoise;
   }
@@ -183,13 +187,14 @@ a {
 .btn-warning {
   background: $pink;
 
-  &:hover {
-    background: $dark-pink;
-  }
-
-  &:active {
+  &:active, &:visited, &:focus {
     background: $pink;
     color: white;
+  }
+
+
+  &:hover {
+    background: $dark-pink;
   }
 }
 

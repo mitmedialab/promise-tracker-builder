@@ -234,6 +234,7 @@ pt-BR:
       photos: "Fotos"
       graphs: "Gráficos"
       graph_placeholder: "Quando tiver registros, vai poder visualizer o agregado dos dados aqui."
+      image_placeholder: "Não há fotos coletadas ainda para este formulário"
       share_data: "Compartilhar seus dados"
       data_reports: "Relatório de dados"
       campaign_organizers: "Realizadores da ação"

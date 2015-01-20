@@ -45,11 +45,13 @@ PT.populateImages = function(responses, containerId){
     })
   });
 
-  $container.empty();
-  images.forEach(function(url){
-    image = '<img class="item"src="' + url + '">';
-    $container.append(image);
-  })
+  if(images.length > 0) {
+    $container.empty();
+    images.forEach(function(url){
+      image = '<img class="item"src="' + url + '">';
+      $container.append(image);
+    });
+  }
 };
 
 PT.renderGoogleMap = function(serverResponse){
@@ -315,7 +317,7 @@ PT.renderPieChart = function(containerId, inputSummary){
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %<br><span style="color: grey; font-size: .9em;">({point.y} ' + I18n.t("campaigns.collect.responses") + ')</span>',
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %<br><span style="color: grey; font-size: .9em;">({point.y} ' + I18n.t("campaigns.monitor.responses") + ')</span>',
           style: {
               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
           }
@@ -326,7 +328,13 @@ PT.renderPieChart = function(containerId, inputSummary){
       type: 'pie',
       name: '',
       data: data
-    }]
+    }],
+    exporting: {
+      enabled: true,
+      contextButton: {
+        enabled: true
+      }
+    }
   });
 };
 
@@ -379,7 +387,13 @@ PT.renderColumnChart = function(containerId, inputSummary){
         }
       }
     },
-    series: series
+    series: series,
+    exporting: {
+      enabled: true,
+      contextButton: {
+        enabled: true
+      }
+    }
   });
 };
 

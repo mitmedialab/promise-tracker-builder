@@ -1,12 +1,17 @@
 <% content_for :head do %>
   <%= javascript_include_tag "/highcharts.js" %>
+  <%= javascript_include_tag "/highcharts-exporting.js" %>
   <meta property="og:url" content="<%= request.original_url %>" >
 <% end %>
-
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
     <div class="tab-pane" id="map-viz"></div>
-    <div class="tab-pane" id="image-viz"></div>
+    <div class="tab-pane" id="image-viz">
+      <div id="image-placeholder">
+        <h3><%= t(".image_placeholder") %></h3>
+        <%= image_tag("placeholder.jpg") %>
+      </div>
+    </div>
     <div class="tab-pane fade in active" id="graph-viz">
       <div id="graph-container" class="row"></div>
       <div class="ajax-loading">
@@ -59,16 +64,18 @@
             <%= image_tag("PT-logo.png") %>
           </div>
           <h2 class="title"><%= @campaign.title %></h2>
-          <div class="description">
-            <label><%= Campaign.human_attribute_name(:description) %></label>
-            <p><%= @campaign.description %></p>
+          <div class="row">
+            <div class="col-sm-12">
+              <label><%= Campaign.human_attribute_name(:description) %></label>
+              <p><%= @campaign.description %></p>
+              <% if !@campaign.anonymous %>
+                <label><%= Campaign.human_attribute_name(:organizers) %></label>
+                <p><%= @campaign.organizers %></p>
+              <% end %>
+            </div>
           </div>
-          <% if !@campaign.anonymous %>
-            <label><%= Campaign.human_attribute_name(:organizers) %></label>
-            <p><%= @campaign.organizers %></p>
-          <% end %>
 
-          <div class="report-image">
+          <div class="report-image row">
             <div class="map"></div>
             <div class="image" style="background-image: url(<%= asset_path(@campaign.image.url) %>);"></div>
           </div>

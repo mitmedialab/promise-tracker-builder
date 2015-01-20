@@ -189,7 +189,7 @@ en:
       step_1_subtext: "You'll be using the free Promise Tracker mobile app to collect data."
       download_link: "Click here to see how to download."
       step_2_text: "Download the survey"
-      step_2_subtext: "Using the mobile app, download the survey using code"
+      step_2_subtext: "Using the mobile app, download the survey with code"
       step_3_text: "Contribute data"
       step_3_subtext: "Fill out the survey and see your area's data on the map!"
 
@@ -233,7 +233,8 @@ en:
       map: "Map" 
       photos: "Photos"
       graphs: "Graphs"
-      graph_placeholder: "Once survey results have been collected, you'll be able to view the data aggregates here."
+      graph_placeholder: "Once you start collecting data, you'll be able to view graphs of your survey results here."
+      image_placeholder: "No photos have been submitted yet for this survey."
       share_data: "Share your data online"
       data_reports: "Data reports"
       contact: "Contact person"

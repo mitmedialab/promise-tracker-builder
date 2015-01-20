@@ -100,6 +100,21 @@
         width: auto;
         margin: 0 5px 5px 0;
       }
+
+      #image-placeholder {
+        text-align: center;
+        width: 75%;
+        padding-top: 90px;
+        margin: 0 auto;
+        color: $med-grey;
+
+        img {
+          width: 30%;
+          height: auto;
+          margin: 20px;
+          opacity: .8;
+        }
+      }
     }
   }
 
@@ -173,11 +188,11 @@
 
   .title {
     font-weight: 600;
+    font-size: 26px;
+    width: 90%;
   }
 
   .description {
-    width: 75%;
-    float: left;
     margin-top: 15px;
   }
 
@@ -186,13 +201,14 @@
   }
 
   .logo {
-    width: 25%;
+    width: 10%;
     float: right;
     text-align: right;
 
     img {
-      width: 50px;
+      width: 40px;
       height: auto;
+      margin-top: 5px;
     }
 
   }
