@@ -1,5 +1,5 @@
 <% if current_user && current_user.owns?(@campaign) %>
-  <div class="page-container">
+  <div class="section-container">
     <div class="section-header">
       <h2 class="title sub-title inline"><%= t("Profile") %></h2>
       <div class="right">
@@ -11,7 +11,7 @@
 <% end %>
 </div>
 
-<div class="page-container preview">
-  <%= render partial: "profile" %>
+<div class="section-container preview">
+  <%= render partial: 'profile' %>
 </div>
 

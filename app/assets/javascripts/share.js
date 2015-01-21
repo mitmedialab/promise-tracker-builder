@@ -257,7 +257,7 @@ PT.aggregateData = function(data){
   return answerAggregates;
 };
 
-PT.renderGraphs = function(aggregates, containerId){
+PT.renderGraphs = function(aggregates, containerId, graphClass){
 
   if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId);
@@ -270,7 +270,7 @@ PT.renderGraphs = function(aggregates, containerId){
       if(input.type == "select" || input.type == "select1"){
         $graphSquare = $(document.createElement("div"));
 
-        $graphSquare.addClass("col-md-12 graph-square");
+        $graphSquare.addClass(graphClass + " graph-square item");
         $graphSquare.attr("id", "graph-" + input.id)
         $container.append($graphSquare);
 
@@ -285,6 +285,11 @@ PT.renderGraphs = function(aggregates, containerId){
         }
       }
     })
+
+    // Show first item in graph carousel
+    $(".item").first().addClass("active");
+    $(window).resize();
+
   } else {
     $("#graph-placeholder").show();
   }
@@ -330,9 +335,12 @@ PT.renderPieChart = function(containerId, inputSummary){
       data: data
     }],
     exporting: {
-      enabled: true,
-      contextButton: {
-        enabled: true
+      enabled: true
+    },
+    navigation: {
+      buttonOptions: {
+        verticalAlign: 'top',
+        x: -120
       }
     }
   });
@@ -389,18 +397,38 @@ PT.renderColumnChart = function(containerId, inputSummary){
     },
     series: series,
     exporting: {
-      enabled: true,
-      contextButton: {
-        enabled: true
+      enabled: true
+    },
+    navigation: {
+      buttonOptions: {
+        verticalAlign: 'top',
+        x: -120
       }
     }
   });
 };
+
+// Profile page data section
 
 $(function(){
   dispatcher.subscribe('sharedataloaded', function(data){
     PT.populateImages(PT.responses, "#image-viz");
     PT.renderGoogleMap(data);
     PT.aggregate = PT.aggregateData(data);
+  })
+
+  $(".carousel").on('slid.bs.carousel', function() {
+    // $(window).resize();
+
+    var $active = $('.item.active');
+    if($active.is(":first-child")){
+      $(".carousel-control.left").fadeOut();
+      $(".carousel-control.right").fadeIn();
+    } else if($active.is(":last-child")) {
+      $(".carousel-control.right").fadeOut();
+      $(".carousel-control.left").fadeIn();
+    } else {
+      $(".carousel-control").fadeIn();
+    }
   })
 });

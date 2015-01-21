@@ -1,6 +1,16 @@
 var PT = PT || {};
 
-// Edit campaign 
+// Create new campaign
+
+$(function(){
+  $("#new_campaign").on("submit", function(){
+    if(!PT.validateOverview(this)){
+      return false;
+    }
+  });
+});
+
+// Edit campaign
 
 PT.nextFormPage = function(){
   var page = $(this).parents(".form-page");
@@ -61,11 +71,4 @@ PT.scrollToError = function(){
 
 PT.toggleTip = function(event){
   $(event.currentTarget).find(".body").slideToggle();
-};
-
-// Launch
-PT.nextLaunchPage = function(){
-  var page = $(this).parents(".form-page");
-    page.next().fadeIn();
-    page.css({'display':'none'});
 };
