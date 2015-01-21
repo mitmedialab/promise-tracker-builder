@@ -120,7 +120,7 @@ a {
   width: 80%;
 }
 
-.page-container, .section-container {
+.section-container {
   margin: 0 60px;
 }
 
@@ -405,10 +405,6 @@ input[disabled], .form-control[disabled] {
 =============================================*/
 
 @media (max-width: 760px) {
-  .page-container {
-    width: 95%;
-  }
-
   #header {
     #branding .site-title {
       font-size: 18px;
@@ -428,8 +424,8 @@ input[disabled], .form-control[disabled] {
       padding: 0;
     }
   }
-  .page-container, .section-container {
-    width: auto;
+  .section-container {
+    width: 95%;
     margin: 0 20px;
   }
 }

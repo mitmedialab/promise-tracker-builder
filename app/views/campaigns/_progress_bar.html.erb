@@ -1,4 +1,4 @@
-<div class="section-light" id="campaign-progress-container">
+<div id="campaign-progress-container" class="section-light">
   <ul id="campaign-progress-bar">
     <%= link_to edit_campaign_path(@campaign) do %>
       <li data-path="edit goals_wizard goals" data-clickable="true" data-complete="<%= @campaign.validate_goals %>" class"progress-node">
@@ -32,25 +32,28 @@
 
     <%= link_to share_campaign_path(@campaign) do %>
       <li data-path="share" data-clickable="<%= !@campaign.draft? %>" data-complete="<%= @campaign.status == 'closed' %>" class="progress-node">
-        <div class="desktop-only"><%= t(".share_data") %></span>
+        <div class="desktop-only"><%= t(".share_data") %></div>
       </li>
     <% end %>
   </ul>
 
   <% if @can_advance == true %>
     <%= link_to campaign_next_path(@campaign, refer_action: action_name) do %>
-      <div class="btn btn-warning progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
+      <div class="btn btn-warning progress-arrow next"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span>
+      </div>
     <% end %>
   <% elsif @campaign.status == "active" %>
-    <%= link_to t("campaigns.collect.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow", data: { confirm: t("campaigns.collect.confirm_close") } %></div>
+    <%= link_to t("campaigns.collect.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow", data: { confirm: t("campaigns.collect.confirm_close") } %>
   <% elsif @campaign.status != "closed" %>
     <%= link_to campaign_next_path(@campaign, refer_action: action_name), remote: true, "data-type" => :json do %>
-      <div class="btn btn-grey progress-arrow"><%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span></div>
+      <div class="btn btn-grey progress-arrow">
+        <%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span>
+      </div>
     <% end %>
   <% end %>
-</div>
 
-<div id="errors" class="progress-errors">
-  <span class="glyphicon glyphicon-remove right close"></span>
-  <ul></ul>
+  <div id="errors" class="progress-errors">
+    <span class="glyphicon glyphicon-remove right close"></span>
+    <ul></ul>
+  </div>
 </div>

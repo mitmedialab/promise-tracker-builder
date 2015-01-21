@@ -105,6 +105,16 @@
   }
 }
 
+.highcharts-button {
+  &:hover {
+    
+  }
+
+  path {
+    stroke: $med-grey;
+  }
+}
+
 .carousel-control {
   background-image: none !important;
   color: $dark-grey;

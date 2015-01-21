@@ -74,35 +74,35 @@
     border: none;
     right: 60px;
   }
-}
 
-#errors.progress-errors {
-  position: absolute;
-  right: 60px;
-  top: 168px;
-  padding: 12px 20px;
-  display: none;
-  z-index: 10;
-
-  &.alert-danger:before {
+  #errors.progress-errors {
     position: absolute;
-    top: -12px;
-    right: 20px;
-    content: "\00a0";
-    width: 10px;
-    height: 15px;
+    right: 60px;
+    top: 88px;
+    padding: 12px 20px;
+    display: none;
+    z-index: 10;
 
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-bottom: 10px solid $light-pink;
-  }
+    &.alert-danger:before {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      content: "\00a0";
+      width: 10px;
+      height: 15px;
 
-  ul {
-    padding: 0 40px 0 20px;
-  }
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid $light-pink;
+    }
 
-  .close {
-    font-size: 15px;
+    ul {
+      padding: 0 40px 0 20px;
+    }
+
+    .close {
+      font-size: 15px;
+    }
   }
 }
 

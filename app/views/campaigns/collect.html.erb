@@ -1,10 +1,4 @@
-<% content_for :head do %>
-  <%= javascript_include_tag "/highcharts.js" %>
-  <%= javascript_include_tag "/highcharts-exporting.js" %>
-  <meta property="og:url" content="<%= request.original_url %>" >
-<% end %>
-
-<div class="page-container">
+<div class="section-container">
   <div class="row campaign-overview">
     <div class="survey-code">
       <h4><%= t(".survey_code") %>: <%= format_survey_code(@survey.code) %></h4>
@@ -34,7 +28,7 @@
 <br>
 
 <div class="row section-dark campaign-outreach">
-  <div class="page-container">
+  <div class="section-container">
     <h3 class="title"><%= t(".publicize_form") %></h3>
     <div class="buttons-only">
       <div class="share-bar">

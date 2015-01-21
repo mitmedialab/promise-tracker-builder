@@ -49,11 +49,6 @@ class SurveysController < ApplicationController
     end
   end
 
-  def preview
-    @survey = Survey.find(params[:id])
-    render layout: 'preview'
-  end
-
   def show
     @survey = Survey.find(params[:id])
     render json: @survey

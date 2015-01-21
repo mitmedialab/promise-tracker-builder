@@ -1,13 +1,13 @@
 <% if current_user && current_user.owns?(@campaign) %>
-  <%= render partial: "campaigns/progress_bar" %>
+  <%= render partial: 'campaigns/progress_bar' %>
 
   <% if !@campaign.draft? %>
-    <%= render partial: "tabs" %>
+    <%= render partial: 'tabs' %>
   <% end %>
 <% end %>
 
 <% if action_name != 'edit' && action_name != 'goals_wizard' %>
-  <div class="page-container">
-    <%= link_to @campaign.title, campaign_path(@campaign), class: "campaign-title" %>
+  <div class="campaign-title section-container">
+    <%= link_to @campaign.title, campaign_path(@campaign) %>
   </div>
 <% end %>

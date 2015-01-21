@@ -15,8 +15,3 @@
     <%= link_to t(".viz"), share_campaign_path(@campaign) %>
   </li>
 </ul>
-
-<script type="text/javascript">
-  $(".tab[data-action~=<%= action_name %>]").addClass("active");
-  $(".tab[data-visible='false']").hide();
-</script>

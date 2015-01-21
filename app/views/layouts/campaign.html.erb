@@ -12,8 +12,11 @@
     <%= yield %>
   </body>
 
-  <!-- Campaign progress bar scripts -->
+
   <script>
+  
+    //Campaign progress bar
+
     $("li[data-path ~= <%= action_name %>]").addClass("active");
     $("li[data-complete = true]").addClass("complete");
     $("li[data-clickable = false]").css("pointer-events", "none");
@@ -30,6 +33,12 @@
 
     $("#errors .close").on("click", function(){
       $(this).parent().hide();
-    })
+    });
+
+    //Navigations tabs
+
+    $(".tab[data-action~=<%= action_name %>]").addClass("active");
+    $(".tab[data-visible='false']").hide();
+
   </script>
 </html>

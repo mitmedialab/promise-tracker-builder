@@ -1,8 +1,3 @@
-<% content_for :head do %>
-  <%= javascript_include_tag "/highcharts.js" %>
-  <%= javascript_include_tag "/highcharts-exporting.js" %>
-  <meta property="og:url" content="<%= request.original_url %>" >
-<% end %>
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
     <div class="tab-pane" id="map-viz"></div>
@@ -48,9 +43,9 @@
 </div>
 
 <div class="row section-light report-panel center">
-  <div class="page-container">
+  <div class="section-container">
     <div class="right">
-      <%= render partial: "share_bar" %>
+      <%= render partial: 'share_bar' %>
     </div>
     <h2 class="title"><%= t(".data_reports") %></h2>
     <br>
@@ -92,10 +87,10 @@
 </div>
 
 <div class="row section-dark campaign-outreach">
-  <div class="page-container">
+  <div class="section-container">
     <h3 class="title"><%= t(".share_data") %></h3>
     <div class="buttons-only">
-      <%= render partial: "share_bar" %>
+      <%= render partial: 'share_bar' %>
     </div>
   </div>
 </div>
