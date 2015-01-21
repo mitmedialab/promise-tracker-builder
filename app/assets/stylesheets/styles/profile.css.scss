@@ -1,0 +1,260 @@
+/*============================
+  Profile Page
+==============================*/
+
+#campaign-profile {
+  background: white;
+
+  &.preview .campaign-title {
+    font-size: 26px;
+  }
+
+  input[type="file"] {
+    width: 100%;
+  }
+
+  .campaign-overview {
+
+    .placeholder {
+      max-height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0 0 0;
+      }
+    }
+
+    #campaign_anonymous {
+      margin: 0 10px 10px 0;
+    }
+  }
+
+  .stacked-sheets {
+    padding-bottom: 10px;
+  }
+
+  .survey-preview {
+    margin-top: 30px;
+    padding-top: 20px;
+  }
+
+  #survey-body {
+    background: white;
+    min-height: 0;
+
+    .input {
+      border: none;
+      margin: 0;
+      padding: 10px;
+      min-height: 0;
+
+      p.label-text {
+        margin-right: 0;
+      }
+    }
+
+    .example {
+      display: none;
+
+      &.select, &.select1 {
+        display: block;
+
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.preview {
+    margin: 40px 40px 20px 40px;
+    padding: 30px 40px;
+  }
+
+  textarea {
+    margin: 0;
+    color: $dark-grey;
+    box-shadow: none;
+  }
+
+  .inactive {
+    color: $med-grey;
+
+    #campaign_organizers, .error {
+      display: none;
+    }
+  }
+
+  /// Campaign data view
+  .campaign-data {
+    #image-viz, #graph-viz, #map-viz {
+      height: 300px;
+      overflow: hidden;
+
+      #graph-container {
+        height: 300px;
+        overflow: scroll;
+
+        .item {
+          height: 300px;
+        }
+      }
+    }
+  }
+}
+
+.carousel-control {
+  background-image: none !important;
+  color: $dark-grey;
+  text-shadow: none;
+
+  &:hover, &:active {
+    color: $dark-grey;
+  }
+
+  &.left {
+    display: none;
+  }
+}
+
+.participate {
+
+  .resource {
+    height: 250px;
+    width: 100%;
+  }
+
+  .how-to-steps {
+    margin: 0 auto;
+
+    i {
+      font-size: 250%;
+
+      &.bigger {
+        font-size: 300%;
+      }
+    }
+
+    .step {
+      text-align: center;
+      margin-top: 15px;
+
+    }
+  }
+}
+
+.highlight {
+  margin: 0 0 10px -40px;
+  display: inline-block !important;
+  padding: 10px 30px 10px 40px;
+
+  &.title {
+    background: $turquoise;
+  }
+
+  &.text {
+    background: whitesmoke;
+    font-size: 17px;
+  }
+}
+
+// Stacked sheets
+.stacked-sheets {
+  background: #fafafa;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 26px auto 0;
+  padding: 40px;
+  width: 80%;
+  position: relative;
+  z-index: 1;
+}
+
+.stacked-sheets:before, .stacked-sheets:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.stacked-sheets:before {
+  background: #f6f6f6;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
+}
+
+.stacked-sheets:after {
+  background: white;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  right: -10px;
+  top: 5px;
+  border: 1px solid $light-grey;
+}
+
+// Diagonal Ribbon
+
+.wrapper {
+  position: relative;
+}
+
+.ribbon-wrapper {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.ribbon {
+  font: bold 15px Sans-Serif;
+  color: #333;
+  text-align: center;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  transform: rotate(45deg);
+  position: relative;
+  padding: 7px 35px;
+  left: -5px;
+  top: 15px;
+  width: 185px;
+  background-color: $yellow;
+  color: #6a6340;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+}
+
+/*============================
+  Media queries
+==============================*/
+
+@media (max-width: 960px) {
+  #campaign-progress-container {
+    padding-right: 15px;
+
+    .progress-arrow {
+      position: relative;
+      right: auto;
+      top: auto;
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #campaign-profile {
+    &.preview {
+      margin: 0;
+      padding: 0 10px;
+    }
+
+    .campaign-overview {
+      .placeholder img {
+        margin: 0 0 10px 0;
+      }
+    }
+  }
+}

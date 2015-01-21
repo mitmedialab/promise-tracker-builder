@@ -34,11 +34,6 @@
     background-size: 100%;
   }
 
-  // &.date {
-  //   background: image-url("date_input.png") no-repeat center;
-  //   background-size: 100%;
-  // }
-
   &.location {
     background: image-url("pt-input-preview-location.png") no-repeat center;
     background-size: 100%;
@@ -107,6 +102,10 @@
     padding: 0 !important;
   }
 }
+
+/*===========================================
+  Media queries
+=============================================*/
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),

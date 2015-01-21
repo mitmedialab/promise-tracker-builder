@@ -234,7 +234,9 @@ a {
   margin-bottom: 10px;
 }
 
-// Header
+/*===========================================
+  Header
+=============================================*/
 
 #header {
   background: $dark-grey;
@@ -268,7 +270,7 @@ a {
   }
 
 
-  // Collapsible menu
+// Collapsible menu
 
   .navbar-header, .navbar-collapse.collapse {
     padding-top: 20px;
@@ -327,7 +329,9 @@ a {
 
 }
 
-// Flash & error messages
+/*===========================================
+  Flash & Error Messages
+=============================================*/
 
 #message {
   margin: 10px 0;
@@ -370,7 +374,9 @@ a {
   width: auto;
 }
 
-// Surveys
+/*===========================================
+  Surveys
+=============================================*/
 
 input, textarea, .dummy-input {
   padding: 6px 12px;
@@ -393,6 +399,10 @@ input[type="checkbox"] {
 input[disabled], .form-control[disabled] {
   cursor: default;
 }
+
+/*===========================================
+  Media queries
+=============================================*/
 
 @media (max-width: 760px) {
   .page-container {

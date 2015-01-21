@@ -1,5 +1,3 @@
-// Test
-
 #test-campaign, #how-to-participate {
   .highlight {
     background: #f5be59;
@@ -38,6 +36,10 @@
     }
   }
 }
+
+/*===========================================
+  Media queries
+=============================================*/
 
 @media (max-width: 960px) {
   #test-campaign, #how-to-participate {
