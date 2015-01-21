@@ -54,23 +54,3 @@
   <span class="glyphicon glyphicon-remove right close"></span>
   <ul></ul>
 </div>
-
-<script>
-  $("li[data-path ~= <%= action_name %>]").addClass("active");
-  $("li[data-complete = true]").addClass("complete");
-  $("li[data-clickable = false]").css("pointer-events", "none");
-
-  $(document).on("ajax:error", function(e, data, status, xhr){
-    errors = data.responseJSON.errors;
-    errors.forEach(function(error){
-      $("#errors ul").empty();
-      $("#errors ul").append("<li>" + errors + "</li>");
-    });
-    $("#errors").addClass("alert alert-danger");
-    $("#errors").show();
-  });
-
-  $("#errors .close").on("click", function(){
-    $(this).parent().hide();
-  })
-</script>

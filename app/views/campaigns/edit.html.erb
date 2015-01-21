@@ -1,9 +1,3 @@
-<%= render partial: 'progress_bar' %>
-
-<% if !@campaign.draft? %>
-  <%= render partial: "tabs" %>
-<% end %>
-
 <div class="page-container">
   <%= form_for @campaign do |f| %>
     <div class="section-header">
