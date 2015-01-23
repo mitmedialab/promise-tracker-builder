@@ -1,10 +1,13 @@
 PT = PT || {};
 
-PT.retrieveResponses = function(surveyCode, message){
+PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
+
+PT.retrieveResponses = function(surveyCode, callBack){
   var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";  
   $.get(url, function(data){
     PT.responses = data.payload.responses;
-    dispatcher.dispatch(message, data.payload)
+    PT.aggregate = PT.aggregateData(data.payload);
+    callBack(data.payload);
   });
 };
 
@@ -68,11 +71,9 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
   });
 };
 
-
-PT.renderActivityGraph = function(data, containerId){
-  // Setup Variables //
-  var $container, height, width, margins, svg, graph, x, y, 
-      xAxis, yAxis, xExtene, line, startLine, plotPoints;
+PT.renderActivityGraph = function(responses, containerId){
+  var $container, height, width, margins, responsesByDay, svg, graph, 
+      xAxis, yAxis, line, startLine, plotPoints, xExtent, x, y;
 
   $container = $(containerId);
   $container.empty();
@@ -82,6 +83,7 @@ PT.renderActivityGraph = function(data, containerId){
     x: 60,
     y: 45
   };
+  responsesByDay = PT.groupResponsesByDay(responses);
 
   svg = d3.select(containerId).append('svg')
       .attr('width', width)
@@ -117,9 +119,9 @@ PT.renderActivityGraph = function(data, containerId){
       .x(function(d) { return x(new Date(d.key)); })
       .y(function(d) { return y(d.values.length); });
 
-  plotPoints = function(data){
+  plotPoints = function(responsesByDay){
     graph.append("path")
-      .datum(data)
+      .datum(responsesByDay)
       .attr("class", "activity-line")
       .attr("d", startLine)
       .transition()
@@ -129,7 +131,7 @@ PT.renderActivityGraph = function(data, containerId){
     graph.append("g")
         .attr("class", "data-points")
         .selectAll("circle")
-      .data(data)
+      .data(responsesByDay)
         .enter()
         .append("circle")
           .attr("class", "point")
@@ -141,13 +143,13 @@ PT.renderActivityGraph = function(data, containerId){
           .attr("cy", function(d) { return y(d.values.length); })
   };
 
-  if(data.length > 0) {
-    xExtent = d3.extent(data, function(d) { return new Date(d.key); });
+  if(responsesByDay.length > 0) {
+    xExtent = d3.extent(responsesByDay, function(d) { return new Date(d.key); });
   } else {
     xExtent = [new Date(Date.now()).setHours(0,0,0,0), new Date(Date.now()).setHours(0,0,0,0)];
   }
   x.domain([d3.time.day.offset(xExtent[0], -1), d3.time.day.offset(xExtent[1], 5)]);
-  y.domain([0, d3.max(data, function(d) { return d.values.length; }) + 10 || 10])
+  y.domain([0, d3.max(responsesByDay, function(d) { return d.values.length; }) + 10 || 10])
   
   graph.append("g")
     .attr("class", "x axis")
@@ -159,28 +161,14 @@ PT.renderActivityGraph = function(data, containerId){
     .attr("transform", "translate(0" + (width - margins.x) + ",0)")
     .call(yAxis);
 
-  plotPoints(data);
+  plotPoints(responsesByDay);
 };
 
-PT.renderMonitorViz = function(){
-  dispatcher.subscribe('collectDataLoaded', function(data){
-    if(data.responses){
-      var responseCount = data.responses.length;
-      
-      $(".response-count").html(responseCount);
-      PT.renderStatusBars("#status-bars", responseCount, PT.campaign.submissions_target);
-      PT.responsesPerDay = d3.nest()
-        .key(function(d) {
-          var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
-          return new Date(day);
-        })
-        .entries(data.responses);
-
-      PT.renderActivityGraph(PT.responsesPerDay, "#activity-graph");
-    }
-  });
+PT.groupResponsesByDay = function(responses){
+  return d3.nest()
+    .key(function(d) {
+      var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
+      return new Date(day);
+    })
+    .entries(responses);
 };
-
-$(function(){
-  PT.renderMonitorViz();
-})

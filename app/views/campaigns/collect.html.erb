@@ -43,7 +43,14 @@
 </div>
 
 <script type="text/javascript">
-  PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
   PT.campaign = <%= raw @campaign.to_json %>;
-  PT.retrieveResponses(<%= @survey.code %>, 'collectDataLoaded')
+
+  // Fetch responses from aggregator
+  PT.retrieveResponses(<%= @survey.code %>, function(data){
+    var responseCount = PT.responses.length;
+    $(".response-count").html(responseCount);
+
+    PT.renderStatusBars("#status-bars", responseCount, PT.campaign.submissions_target);
+    PT.renderActivityGraph(PT.responses, "#activity-graph");
+  })
 </script>

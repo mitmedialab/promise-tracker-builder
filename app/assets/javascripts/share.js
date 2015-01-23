@@ -31,7 +31,7 @@ PT.renderCartoDBMap = function(containerId){
   });
 };
 
-PT.populateImages = function(responses, containerId){
+PT.populateImages = function(responses, containerId, hideWhenEmpty){
   var $container = $(containerId);
   var images = [];
   var image;
@@ -51,14 +51,17 @@ PT.populateImages = function(responses, containerId){
       image = '<img class="item"src="' + url + '">';
       $container.append(image);
     });
+  } else if(hideWhenEmpty){
+    $container.parent().hide();
   }
 };
 
-PT.renderGoogleMap = function(serverResponse){
+PT.renderGoogleMap = function(serverResponse, containerId){
   var markers = [];
   var surveyDefinition = {};
   var map = null,
       infoWindow = null;
+  var $container
 
   var attachMarkerClickEvent = function(marker, response){
     var image = null;
@@ -116,7 +119,7 @@ PT.renderGoogleMap = function(serverResponse){
       center: new google.maps.LatLng(-34.397, 150.644),
       scrollwheel: false
     };
-    map = new google.maps.Map(document.getElementById('map-viz'), mapOptions);
+    map = new google.maps.Map(document.getElementById(containerId), mapOptions);
     infoWindow = new google.maps.InfoWindow({
         content: '' 
     });
@@ -197,10 +200,10 @@ PT.renderGoogleMap = function(serverResponse){
   }
 };
 
-PT.aggregateData = function(data){
-  var survey = data.survey;
-  var responses = data.responses;
-  var answerAggregates = [];
+PT.aggregateData = function(payload){
+  var survey = payload.survey,
+  responses = payload.responses,
+  answerAggregates = [];
 
   survey.inputs.forEach(function(input){
     var answers = [];
@@ -253,15 +256,13 @@ PT.aggregateData = function(data){
     }
   })
   
-  PT.renderGraphs(answerAggregates, "#graph-container");
   return answerAggregates;
 };
 
 PT.renderGraphs = function(aggregates, containerId, graphClass){
 
   if(aggregates.length > 0 && PT.responses.length > 0){
-    var $container = $(containerId);
-    var $graphSquare;
+    var $container = $(containerId), $graphSquare;
 
     $("#graph-placeholder").hide();
     $container.empty();
@@ -311,7 +312,7 @@ PT.renderPieChart = function(containerId, inputSummary){
       text: inputSummary.label
     },
     tooltip: {
-      pointFormat: '<b>{point.percentage:.1f}%</b><br>{point.count}'
+      pointFormat: '<b>{point.percentage:.1f}%</b><br>{point.count}<br><span style="color: grey; font-size: .9em;">({point.y} ' + I18n.t("campaigns.monitor.responses") + ')</span>'
     },
     credits: {
       enabled: false
@@ -322,7 +323,7 @@ PT.renderPieChart = function(containerId, inputSummary){
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %<br><span style="color: grey; font-size: .9em;">({point.y} ' + I18n.t("campaigns.monitor.responses") + ')</span>',
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
           style: {
               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
           }
@@ -411,16 +412,15 @@ PT.renderColumnChart = function(containerId, inputSummary){
 // Profile page data section
 
 $(function(){
-  dispatcher.subscribe('sharedataloaded', function(data){
-    PT.populateImages(PT.responses, "#image-viz");
-    PT.renderGoogleMap(data);
-    PT.aggregate = PT.aggregateData(data);
-  })
+  $(".carousel").carousel({
+    pause: true,
+    interval: false
+  });
 
+  // Hide carousel controls on first and last slide
   $(".carousel").on('slid.bs.carousel', function() {
-    // $(window).resize();
-
     var $active = $('.item.active');
+
     if($active.is(":first-child")){
       $(".carousel-control.left").fadeOut();
       $(".carousel-control.right").fadeIn();

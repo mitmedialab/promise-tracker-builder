@@ -1,5 +1,5 @@
-<% if current_user && current_user.owns?(@campaign) %>
-  <div class="section-container">
+<div class="section-container">
+  <% if current_user && current_user.owns?(@campaign) %>
     <div class="section-header">
       <h2 class="title sub-title inline"><%= t("Profile") %></h2>
       <div class="right">
@@ -7,11 +7,9 @@
         <%= link_to t("defaults.edit"), edit_campaign_profile_path(@campaign), class: "btn btn-info" %>
       </div>
     </div>
+  <% end %>
+
+  <div class="preview">
+    <%= render partial: 'profile' %>
   </div>
-<% end %>
 </div>
-
-<div class="section-container preview">
-  <%= render partial: 'profile' %>
-</div>
-

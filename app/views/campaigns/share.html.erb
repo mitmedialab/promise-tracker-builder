@@ -96,8 +96,13 @@
 </div>
 
 <script type="text/javascript">
-  PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
-  PT.retrieveResponses(<%= @campaign.survey.code %>, "sharedataloaded");
+
+  // Fetch responses from aggregator
+  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+    PT.renderGoogleMap(data);
+    PT.populateImages(PT.responses, "#image-viz");
+    PT.renderGraphs(PT.aggregate, "#graph-container");
+  });
   
   $("#viz-tabs a").click(function(e) {
     e.preventDefault();
@@ -107,7 +112,7 @@
   });
 
   $("#graph-tab").on("shown.bs.tab", function(){
-      PT.renderGraphs(PT.aggregate, "#graph-container");
+    PT.renderGraphs(PT.aggregate, "#graph-container");
   });
 
   $(document).ajaxSend(function(event, request, settings) {

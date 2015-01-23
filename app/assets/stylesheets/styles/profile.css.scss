@@ -120,7 +120,7 @@
   color: $dark-grey;
   text-shadow: none;
 
-  &:hover, &:active {
+  &:hover, &:active, &:focus {
     color: $dark-grey;
   }
 
