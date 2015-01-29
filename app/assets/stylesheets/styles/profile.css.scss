@@ -4,6 +4,7 @@
 
 #campaign-profile {
   background: white;
+  text-align: left;
 
   &.preview .campaign-title {
     font-size: 26px;
@@ -86,24 +87,31 @@
       display: none;
     }
   }
+}
 
-  /// Campaign data view
-  .campaign-data {
-    #image-viz, #graph-viz, #map-viz {
-      height: 300px;
-      overflow: hidden;
+/// Campaign data view
+.campaign-data {
+  #image-viz, #graph-viz, #map-viz {
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 15px;
 
-      #graph-container {
-        height: 300px;
-        overflow: scroll;
+    #report-map-container {
+      height: 250px;
+      width: 100%;
+    }
 
-        .item {
-          height: 300px;
-        }
+    #report-graph-container {
+      overflow: scroll;
+
+      .item {
+        height: 250px;
       }
     }
   }
 }
+
+
 
 .highcharts-button {
   &:hover {

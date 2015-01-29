@@ -1,107 +1,60 @@
-<div class="section grey">
-  <div class="section-container grey pad-top">
-    <div id="campaign-profile" class="preview wrapper">
+<div id="campaign-profile" class="preview wrapper">
+  <% if @campaign.draft? %>
+    <div class="ribbon-wrapper">
+      <div class="ribbon">
+        <%= t(".preview") %>
+      </div>
+    </div>
+  <% end %>
+  <div class="campaign-title"><%= @campaign.title %></div>
+  <br>
 
-      <% if @campaign.draft? %>
-        <div class="ribbon-wrapper">
-          <div class="ribbon">
-            <%= t(".preview") %>
-          </div>
-        </div>
-      <% end %>
-      <div class="campaign-title"><%= @campaign.title %></div>
-      <br>
-
-      <div class="row campaign-overview">
-        <div class="col-sm-5 col-sm-push-7">
-          <div class="campaign-image">
-            <div class="placeholder">
-              <% if @campaign.image %>
-                <%= image_tag(@campaign.image.url) %>
-              <% else %>
-                <%= image_tag("placeholder.jpg") %>
-              <% end %>
-            </div>
-          </div>
-          <div class="text-right">
-            <%= render partial: 'share_bar' %>
-          </div>
-        </div>
-
-        <div class="col-sm-7 col-sm-pull-5">
-          <label><%= Campaign.human_attribute_name(:description) %></label>
-          <p><%= simple_format(@campaign.description.gsub(/\n/, '<br>')) %></p>
-          <br>
-          <% if !@campaign.anonymous %>
-            <label><%= Campaign.human_attribute_name(:organizers) %></label>
-            <p><%= @campaign.organizers %></p>
+  <div class="row campaign-overview">
+    <div class="col-sm-5 col-sm-push-7">
+      <div class="campaign-image">
+        <div class="placeholder">
+          <% if @campaign.image %>
+            <%= image_tag(@campaign.image.url) %>
+          <% else %>
+            <%= image_tag("placeholder.jpg") %>
           <% end %>
         </div>
       </div>
-
-      <% if @campaign.status != "closed" %>
-
-        <!-- How to participate -->
-        <h3 class="highlight title"><%= t(".participate_title") %></h3>
-        <p class="highlight text"><%= t(".participate_text") %></p>
-
-        <div id="how-to-participate" class="participate">
-          <div class="row how-to-steps">
-            <div class="col-sm-4">
-              <div class="step">
-                <i class="icon-mobile-phone bigger"></i>
-                <h4><%= t(".step_1_text") %></h4>
-                <%= link_to t(".download_link"), download_path, target: "blank" %>
-              </div>
-            </div>
-            <div class="col-sm-4">
-             <div class="step">
-                <i class="icon-download-alt"></i>
-                <h4><%= t(".step_2_text") %></h4>
-                <p class="small"><%= t(".step_2_subtext") %>:</p>
-                <h3 class="code"><%= format_survey_code(@survey.code) %></h3>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="step">
-                <i class="icon-check"></i>
-                <h4><%= t(".step_3_text") %></h4>
-                <p class="small"><%= t(".step_3_subtext") %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <% else %>
-
-        <!-- View campaign results -->
-        <h3 class="highlight title">Check out the results</h3>
-        <p class="highlight text">View the map, graphs and photos collected during this campaign below</p>
-        <%= render partial: 'data' %>
-
-      <% end %>
-
-      <div id="campaign-survey" class="stacked-sheets">
-        <label><%= Survey.model_name.human %> Preview</label>
-        <%= render partial: 'surveys/survey_body', locals: {survey: @survey} %>
-      </div>
-
-      <br>
-      <div class="center">
+      <div class="text-right">
         <%= render partial: 'share_bar' %>
       </div>
     </div>
-  </div>
-  <br><br>
-</div>
 
-<% if @campaign.status == 'closed' %>
-  <script type="text/javascript">
-    // Fetch responses from aggregator
-    PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
-      PT.renderGoogleMap(data);
-      PT.renderGraphs(PT.aggregate, "#slides-container");
-      PT.populateImages(PT.responses, "#image-container", true);  
-    });
-  </script>
-<% end %>
+    <div class="col-sm-7 col-sm-pull-5">
+      <label><%= Campaign.human_attribute_name(:description) %></label>
+      <p><%= simple_format(@campaign.description.gsub(/\n/, '<br>')) %></p>
+      <br>
+      <% if !@campaign.anonymous %>
+        <label><%= Campaign.human_attribute_name(:organizers) %></label>
+        <p><%= @campaign.organizers %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @campaign.status != "closed" %>
+    <!-- How to participate -->
+    <%= render partial: 'how_to_participate', locals: {survey: @survey} %>
+  <% else %>
+
+    <!-- View campaign results -->
+    <h3 class="highlight title">Check out the results</h3><br>
+    <p class="highlight text">View the map, graphs and photos collected during this campaign below</p>
+    <%= render partial: 'data' %>
+  <% end %>
+
+  <div id="campaign-survey" class="stacked-sheets">
+    <label><%= Survey.model_name.human %> Preview</label>
+    <%= render partial: 'surveys/survey_body', locals: {survey: @survey} %>
+  </div>
+  <br>
+
+  <div class="center">
+    <%= render partial: 'share_bar' %>
+  </div>
+</div>
+<br>

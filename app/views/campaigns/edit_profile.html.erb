@@ -70,6 +70,15 @@
   <br><br>
 </div>
 
+<script type="text/javascript">
+  // Fetch responses from aggregator
+  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+    PT.renderGoogleMap(data, "report-map-container");
+    PT.populateImages(PT.responses, "#report-image-container");
+    PT.renderGraphs(PT.aggregate, "#report-graph-container", "col-md-6");
+  });
+</script>
+
 <script type="text/javascript"> 
   $("#input-list").sortable({ disabled: true });
   $("#save-profile").on("click", function(){

@@ -10,6 +10,19 @@
   <% end %>
 
   <div class="preview">
-    <%= render partial: 'profile' %>
+    <div class="section grey">
+      <div class="section-container grey pad-top">
+        <%= render partial: 'profile' %>
+      </div>
+    </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  // Fetch responses from aggregator
+  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+    PT.renderGoogleMap(data, "report-map-container");
+    PT.populateImages(PT.responses, "#report-image-container");
+    PT.renderGraphs(PT.aggregate, "#slides-container");
+  });
+</script>

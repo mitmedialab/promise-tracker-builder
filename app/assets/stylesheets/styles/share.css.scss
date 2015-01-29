@@ -1,23 +1,16 @@
 .ajax-loading {
   text-align: center;
-
-  img {
-    width: 40px !important;
-    height: auto;
-    margin-bottom: 20px;
-  }
-}
-
-.viz-panel, .report-panel {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 120px;
+  padding-top: 40px;
 }
 
 .viz-panel {
   margin-top: 10px;
-  height: 590px;
+  height: 480px;
 
   .tab-pane, #viz-tabs {
-    height: 590px;
+    height: 480px;
     overflow: hidden;
   }
 
@@ -57,8 +50,8 @@
     }
 
     #graph-viz {
-      border-top: 10px solid $light-grey;
-      border-bottom: 10px solid $light-grey;
+      border-top: 10px solid whitesmoke;
+      border-bottom: 10px solid whitesmoke;
       overflow-y: scroll;
 
       #graph-placeholder {
@@ -80,11 +73,10 @@
       }
 
       #graph-container {
-        padding: 40px;
+        padding: 10px 30px;
       }
 
       .graph-square {
-        border-bottom: 1px solid $light-grey;
         padding: 20px 0;
       }
     }
@@ -92,7 +84,7 @@
     #image-viz {
       width: 100%;
       padding-left: 5px;
-      background: $light-grey;
+      background: whitesmoke;
       overflow: scroll;
 
       .item {
@@ -218,17 +210,11 @@
     overflow: hidden;
     margin: 20px 0;
 
-    .map {
+    .map, .image {
       width: 48%;
       height: 150px;
       margin-bottom: 10px;
-      float: left;
-    }
-
-    .image {
-      width: 48%;
-      height: 150px;
-      float: right;
+      display: inline-block
     }
   }
 
@@ -279,6 +265,15 @@
       .viz {
         display: inline-block;
         margin: 40px 20px !important;
+      }
+    }
+  }
+
+  .data-report {
+
+    .report-image {
+      .map, .image {
+        width: 100%;
       }
     }
   }

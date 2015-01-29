@@ -24,7 +24,7 @@ PT.renderCartoDBMap = function(containerId){
   }; 
 
   $.getScript("http://libs.cartocdn.com/cartodb.js/v3/cartodb.js", function(){
-    cartodb.createVis('map-viz', url, mapOptions)
+    cartodb.createVis(containerId, url, mapOptions)
     .done(function(){
       $(".cartodb-searchbox").hide();
     });
@@ -260,7 +260,6 @@ PT.aggregateData = function(payload){
 };
 
 PT.renderGraphs = function(aggregates, containerId, graphClass){
-
   if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId), $graphSquare;
 
@@ -288,7 +287,7 @@ PT.renderGraphs = function(aggregates, containerId, graphClass){
     })
 
     // Show first item in graph carousel
-    $(".item").first().addClass("active");
+    $(containerId + " .item").first().addClass("active");
     $(window).resize();
 
   } else {
@@ -306,6 +305,7 @@ PT.renderPieChart = function(containerId, inputSummary){
     chart: {
       plotBackgroundColor: null,
       plotShadow: false,
+      margin: [40, 70, 0, 70]
     },
     colors: PT.colors,
     title: {
@@ -340,7 +340,7 @@ PT.renderPieChart = function(containerId, inputSummary){
     },
     navigation: {
       buttonOptions: {
-        verticalAlign: 'top',
+        verticalAlign: 'bottom',
         x: -120
       }
     }
@@ -360,6 +360,7 @@ PT.renderColumnChart = function(containerId, inputSummary){
       type: 'column',
       plotBackgroundColor: null,
       plotShadow: false,
+      margin: [40, 70, 0, 70]
     },
     colors: PT.colors,
     title: {
@@ -402,7 +403,7 @@ PT.renderColumnChart = function(containerId, inputSummary){
     },
     navigation: {
       buttonOptions: {
-        verticalAlign: 'top',
+        verticalAlign: 'bottom',
         x: -120
       }
     }
@@ -430,5 +431,13 @@ $(function(){
     } else {
       $(".carousel-control").fadeIn();
     }
-  })
+  });
+
+  $(document).ajaxSend(function(event, request, settings) {
+    $(".ajax-loading").show();
+  });
+
+  $(document).ajaxComplete(function(event, request, settings) {
+    $(".ajax-loading").hide();
+  });
 });

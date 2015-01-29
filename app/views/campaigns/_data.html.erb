@@ -1,28 +1,29 @@
 <div class="campaign-data">
-  <div id="graph-viz-section">
-    <div id="graph-container">
+  <div id="graph-viz">
+    <div id="report-graph-container">
 
       <!-- Slides container -->
-      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-wrap="false">
+      <div id="graph-carousel" class="carousel slide" data-ride="carousel" data-wrap="false">
         <div id="slides-container" class="carousel-inner" role="listbox"></div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#graph-carousel" role="button" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
           <span class="sr-only"><%= t("defaults.next") %></span>
         </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <a class="right carousel-control" href="#graph-carousel" role="button" data-slide="next">
           <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
           <span class="sr-only"><%= t("defaults.back") %></span>
         </a>
+      </div>
     </div>
   </div>
 
-  <div id="map-viz-section">
-    <div id="map-container"></div>
+  <div id="map-viz">
+    <div id="report-map-container"></div>
   </div>
 
-  <div id="image-viz-section">
-    <div id="image-container"></div>
+  <div id="image-viz">
+    <div id="report-image-container"></div>
   </div>
 </div>
