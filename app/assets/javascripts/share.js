@@ -10,27 +10,6 @@ PT.colors = [
   "#e6e7e8"
 ];
 
-PT.renderCartoDBMap = function(containerId){
-  var url, mapOptions;
-  url = "http://cfcm.cartodb.com/api/v2/viz/21e86fd4-5887-11e4-b28c-0e018d66dc29/viz.json";
-  mapOptions = {
-    zoom: 15,
-    center_lat: -19.9540425000,
-    center_lon: -43.9385429000,
-    scrollwheel: false,
-    zoomControl: false,
-    shareable: false,
-    searchControl: false
-  }; 
-
-  $.getScript("http://libs.cartocdn.com/cartodb.js/v3/cartodb.js", function(){
-    cartodb.createVis(containerId, url, mapOptions)
-    .done(function(){
-      $(".cartodb-searchbox").hide();
-    });
-  });
-};
-
 PT.populateImages = function(responses, containerId, hideWhenEmpty){
   var $container = $(containerId);
   var images = [];
@@ -305,7 +284,7 @@ PT.renderPieChart = function(containerId, inputSummary){
     chart: {
       plotBackgroundColor: null,
       plotShadow: false,
-      margin: [40, 70, 0, 70]
+      margin: [50, 10, 10, 10]
     },
     colors: PT.colors,
     title: {
@@ -360,7 +339,7 @@ PT.renderColumnChart = function(containerId, inputSummary){
       type: 'column',
       plotBackgroundColor: null,
       plotShadow: false,
-      margin: [40, 70, 0, 70]
+      margin: [50, 10, 10, 10]
     },
     colors: PT.colors,
     title: {
@@ -420,7 +399,8 @@ $(function(){
 
   // Hide carousel controls on first and last slide
   $(".carousel").on('slid.bs.carousel', function() {
-    var $active = $('.item.active');
+    var $active = $('.carousel .item.active');
+    $(window).resize();
 
     if($active.is(":first-child")){
       $(".carousel-control.left").fadeOut();

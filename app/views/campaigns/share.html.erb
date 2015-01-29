@@ -50,7 +50,7 @@
     <h2 class="title"><%= t(".data_reports") %></h2>
     <br>
     <div class="row">
-      <div class="col-sm-8 col-sm-push-2">
+      <div class="col-sm-10 col-sm-push-1">
         <%= render partial: 'profile' %>
       </div>
     </div>
@@ -77,7 +77,7 @@
     PT.renderGraphs(PT.aggregate, "#slides-container", "");
 
     // Populate panel
-    PT.renderGraphs(PT.aggregate, "#graph-container", "");
+    PT.renderGraphs(PT.aggregate, "#graph-container", "col-md-6");
     PT.populateImages(PT.responses, "#image-viz");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
