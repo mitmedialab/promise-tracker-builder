@@ -26,6 +26,7 @@ module PromiseTracker
      
     # set default locale to :en
     I18n.default_locale = :en
+    config.i18n.enforce_available_locales = true
 
     # handle status codes in routes
     config.exceptions_app = self.routes
