@@ -291,7 +291,7 @@ PT.renderPieChart = function(containerId, inputSummary){
       text: inputSummary.label
     },
     tooltip: {
-      pointFormat: '<b>{point.percentage:.1f}%</b><br>{point.count}<br><span style="color: grey; font-size: .9em;">({point.y} ' + I18n.t("campaigns.monitor.responses") + ')</span>'
+      pointFormat: '<b>{point.percentage:.1f}%</b><br>{point.count}<br><span style="color: grey; font-size: .9em;">({point.y} ' + I18n.t("campaigns.collect.responses.counting", {count: 1}) + ')</span>'
     },
     credits: {
       enabled: false

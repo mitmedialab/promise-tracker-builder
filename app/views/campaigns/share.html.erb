@@ -51,9 +51,18 @@
     <br>
     <div class="row">
       <div class="col-sm-10 col-sm-push-1">
+        <ul class="report-options right">
+          <li>
+            <a class="print" href="" media="all"><%= t(".print_report") %></a>
+          </li>
+          <li>
+            <a href="" class="csv-download"><%= t(".download_csv") %></a>
+          </li>
+        </ul>
         <%= render partial: 'profile' %>
       </div>
     </div>
+    <br><br>
   </div>
 </div>
 
@@ -95,4 +104,14 @@
   $("#graph-tab").on("shown.bs.tab", function(){
     PT.renderGraphs(PT.aggregate, "#graph-container", "col-md-6");
   });
+
+  $(".csv-download").on("click", function(e){
+    e.preventDefault();
+    PT.downloadCsv(PT.serverResponse);
+  });
+
+  $(".print").on("click", function(e){
+    e.preventDefault();
+    window.print();
+  })
 </script>

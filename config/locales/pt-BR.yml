@@ -152,7 +152,10 @@ pt-BR:
       number_of_responses: "Número de registros"
       close: "Fechar ação"
       confirm_close: "Tem certeza que quer fechar esta ação? Não vair poder coletar mais dados!"
-      responses: "registros"
+      responses: 
+        counting:
+          one: "registro"
+          other: "registros"
       current: "Atual"
       target: "Desejado"
       publicize_form: "Mobilizar os amigos para coletar dados"
@@ -239,6 +242,8 @@ pt-BR:
       data_reports: "Relatório de dados"
       campaign_organizers: "Realizadores da ação"
       learn_more: "Aprender mais sobre esta ação no site"
+      download_csv: "Baixar CSV"
+      print_report: "Imprimir relatório"
 
     tabs:
       goals: "Overview"

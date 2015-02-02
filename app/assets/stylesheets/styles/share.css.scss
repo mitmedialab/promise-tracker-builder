@@ -161,6 +161,16 @@
   padding-top: 30px;
 }
 
+.report-options {
+  list-style-type: none;
+  margin-right: 40px;
+
+  li {
+    display: inline-block;
+    margin-left: 15px;
+  }
+}
+
 .data-report {
   background: white;
   color: black;

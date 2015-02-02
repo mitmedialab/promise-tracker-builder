@@ -152,7 +152,10 @@ en:
       number_of_responses: "Number of responses"
       close: "Close campaign"
       confirm_close: "Are you sure you want to close this campaign? NO more data can be collected once the campaign is closed!"
-      responses: "Responses"
+      responses: 
+        counting:
+          one: "response"
+          other: "responses"
       current: "Current"
       target: "Target"
       publicize_form: "Mobilize your community to fill out the survey"
@@ -239,6 +242,8 @@ en:
       data_reports: "Data reports"
       contact: "Contact person"
       learn_more: "Learn more about this campaign at "
+      download_csv: "Download CSV"
+      print_report: "Print report"
 
     tabs:
       overview: "Overview"
