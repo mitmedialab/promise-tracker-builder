@@ -10,7 +10,7 @@
     <div class="col-sm-3">
       <div class="campaign-info-box">
         <h1 class="response-count"></h1>
-        <p><%= t(".responses").capitalize %></p>
+        <p class="response-label"></p>
         <div id="status-bars"></div>
 
         <label><%= Campaign.human_attribute_name(:start_date) %>:</label>
@@ -49,6 +49,7 @@
   PT.retrieveResponses(<%= @survey.code %>, function(data){
     var responseCount = PT.responses.length;
     $(".response-count").html(responseCount);
+    $(".response-label").html(I18n.t("campaigns.collect.responses.counting", {count: responseCount}));
 
     PT.renderStatusBars("#status-bars", responseCount, PT.campaign.submissions_target);
     PT.renderActivityGraph(PT.responses, "#activity-graph");
