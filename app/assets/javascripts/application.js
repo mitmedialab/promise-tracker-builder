@@ -23,4 +23,12 @@
 //= require_tree ./templates
 //= require i18n
 //= require i18n/translations
+//= require knockout-3.1.0
+//= require knockout-mapping
+//= require knockout-sortable
+//= require underscore
+//= require jquery-validate
+//= require d3
+//= require highcharts
+//= require highcharts-exporting
 //= require_tree .

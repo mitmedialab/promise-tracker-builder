@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <title><%= t("app_name") %></title>
-    <%= render "layouts/include_links" %>
+    <%= render partial: 'layouts/include_links' %>
     <%= yield :head %>
   </head>
   
