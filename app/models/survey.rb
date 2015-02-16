@@ -12,17 +12,22 @@ class Survey < ActiveRecord::Base
       only: [:id, :code, :title, :campaign_id],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
-    response = http.request(request)
-    data = JSON.parse(response.body)
 
-    if data['status'] == 'success'
-      self.campaign.update_attributes(
-        status: status, 
-        start_date: data['payload']['start_date'].to_datetime
-      )
+    begin
+      response = http.request(request)
+      data = JSON.parse(response.body)
+
+      if data['status'] == 'success'
+        self.campaign.update_attributes(
+          status: status,
+          start_date: data['payload']['start_date'].to_datetime
+        )
+      end
+
+      data
+    rescue Errno::ECONNREFUSED
+      { status: "error" }
     end
-
-    data
   end
 
   def close
