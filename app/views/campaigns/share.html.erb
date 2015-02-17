@@ -86,7 +86,7 @@
     PT.renderGraphs(PT.aggregate, "#slides-container", "");
 
     // Populate panel
-    PT.renderGraphs(PT.aggregate, "#graph-container", "col-md-12");
+    PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5", PT.addSummaryMap);
     PT.populateImages(PT.responses, "#image-viz");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");

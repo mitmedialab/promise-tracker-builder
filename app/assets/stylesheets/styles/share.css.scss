@@ -52,8 +52,9 @@
     #graph-viz {
       border-top: 10px solid whitesmoke;
       border-bottom: 10px solid whitesmoke;
+      // background: whitesmoke;
       overflow-y: scroll;
-      padding: 0 40px;
+      padding: 20px 20px 20px 30px;
 
       #graph-placeholder {
         display: none;
@@ -75,10 +76,32 @@
 
       #graph-container {
         padding: 10px 30px;
+
+        .item {
+          background: white;
+          border-radius: 4px;
+          padding: 20px 40px 30px 20px;
+          overflow: hidden;
+          margin-bottom: 15px;
+
+          .title {
+            margin: 10px 60px 0px 60px;
+            font-size: 20px;
+          }
+        }
+
+        .graph-square, .placeholder-map {
+          height: 220px;
+        }
+
+        .placeholder-map {
+          background-image: url("map-placeholder.png");
+          background-size: cover;
+        }
       }
 
       .graph-square {
-        padding: 20px 0;
+        padding: 0 20px;
       }
     }
 

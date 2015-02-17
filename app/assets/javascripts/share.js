@@ -238,6 +238,51 @@ PT.aggregateData = function(payload){
   return answerAggregates;
 };
 
+PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
+  if(aggregates.length > 0 && PT.responses.length > 0){
+    var $container = $(containerId), $item, $graphSquare;
+
+    $("#graph-placeholder").hide();
+    $container.empty();
+
+    aggregates.forEach(function(input){
+      if(input.type == "select" || input.type == "select1"){
+        $item = $("<div/>", {class: "item"});
+        $graphSquare = $("<div/>", {id: "graph-" + input.id, class: "graph-square " + graphClass});
+        
+        $item.append("<h3 class='title  center'>" + input.label + "</h3><br>")
+        $item.append($graphSquare);
+        $container.append($item);
+
+        switch(input.type){
+          case "select1":
+            PT.renderPieChart("#graph-" + input.id, input, true, false);
+            break;
+
+          case "select":
+            PT.renderColumnChart("#graph-" + input.id, input, true, false);
+            break;
+        }
+
+        var $map = $("<div/>", {class: "col-md-7 placeholder-map"});
+        $item.append($map);
+
+      }
+    })
+
+    // Show first item in graph carousel
+    $(containerId + " .item").first().addClass("active");
+    $(window).resize();
+    if($(".carousel .item").length < 2){
+      $(".carousel-control").hide();
+    }
+
+  } else {
+    $("#graph-placeholder").show();
+  }
+
+};
+
 PT.renderGraphs = function(aggregates, containerId, graphClass){
   if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId), $graphSquare;
@@ -255,11 +300,11 @@ PT.renderGraphs = function(aggregates, containerId, graphClass){
 
         switch(input.type){
           case "select1":
-            PT.renderPieChart("#graph-" + input.id, input)
+            PT.renderPieChart("#graph-" + input.id, input, false, true)
             break;
 
           case "select":
-            PT.renderColumnChart("#graph-" + input.id, input)
+            PT.renderColumnChart("#graph-" + input.id, input, false, true)
             break;
         }
       }
@@ -278,10 +323,12 @@ PT.renderGraphs = function(aggregates, containerId, graphClass){
 
 };
 
-PT.renderPieChart = function(containerId, inputSummary){
+PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download){
   var data = inputSummary.answers.map(function(answer){
     return [answer.label, answer.tally];
   });
+
+  !titleDisabled ? titleDisabled = inputSummary.label : titleDisabled = "";
 
   $(containerId).highcharts({
     chart: {
@@ -290,7 +337,7 @@ PT.renderPieChart = function(containerId, inputSummary){
     },
     colors: PT.colors,
     title: {
-      text: inputSummary.label
+      text: titleDisabled
     },
     tooltip: {
       formatter: function(){
@@ -319,7 +366,7 @@ PT.renderPieChart = function(containerId, inputSummary){
       data: data
     }],
     exporting: {
-      enabled: true
+      enabled: download
     },
     navigation: {
       buttonOptions: {
@@ -330,13 +377,15 @@ PT.renderPieChart = function(containerId, inputSummary){
   });
 };
 
-PT.renderColumnChart = function(containerId, inputSummary){
+PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, download){
   var series = inputSummary.answers.map(function(answer){
     return {
       name: answer.label, 
       data: [answer.tally]
     };
   });
+
+  !titleDisabled ? titleDisabled = inputSummary.label : titleDisabled = "";
 
   $(containerId).highcharts({
     chart: {
@@ -345,8 +394,8 @@ PT.renderColumnChart = function(containerId, inputSummary){
       plotShadow: false
     },
     colors: PT.colors,
-    title: {
-      text: inputSummary.label
+    titleDisabled: {
+      text: titleDisabled || inputSummary.label
     },
     tooltip: {
       headerFormat: '{point.series.name}',
@@ -381,7 +430,7 @@ PT.renderColumnChart = function(containerId, inputSummary){
     },
     series: series,
     exporting: {
-      enabled: true
+      enabled: download
     },
     navigation: {
       buttonOptions: {
