@@ -164,3 +164,56 @@
     right: 0;
   }
 }
+
+// Response table
+#response-listing {
+  min-height: 600px;
+}
+
+#response-table {
+  margin-bottom: 25px;
+  position: relative;
+  width: 100%;
+
+  td, th {
+    padding: 10px;
+    column-width: auto;
+  }
+
+  tr {
+    border-left: 10px solid white;
+    cursor: pointer;
+
+    &:nth-child(even){
+      background: whitesmoke;
+      border-color: whitesmoke;
+    }
+
+    &.active {
+      background: #e4e4e4;
+      border-color: $turquoise;
+    }
+
+    td:last-child {
+      padding-right: 30px;
+    }
+
+  }
+}
+
+#view-more {
+  padding: 10px 20px;
+}
+
+#response-view {
+  padding: 40px;
+
+  p.answer {
+    margin-bottom: 25px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

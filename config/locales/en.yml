@@ -80,6 +80,7 @@ en:
     save: "Save"
     cancel: "Cancel"
     download: "Download"
+    view: "View"
     share: "Share"
     share_text: "Check out this campaign on Promise Tracker"
     edit: "Edit"
@@ -142,7 +143,7 @@ en:
       copy: "copy"
 
     activate: 
-      upload_error: "Sorry. Your survey not be published at this time. Please try again."
+      upload_error: "Our bad! Your survey not be published. Please try again later."
       upload_success: "Your survey has been successfully published!"
 
     collect:
@@ -159,10 +160,9 @@ en:
       current: "Current"
       target: "Target"
       publicize_form: "Mobilize your community to fill out the survey"
-      campaign_resources: "How-to guides"
-      guide_1: "Organize a launch event"
-      guide_2: "Keep your community engaged"
-      guide_3: "Visualize your responses"
+      date: "Date"
+      participant_id: "Participant ID"
+      view_more_responses: "View more responses"
 
     edit:
       define_goals: "Overview and goals"

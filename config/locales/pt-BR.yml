@@ -80,6 +80,7 @@ pt-BR:
     save: "Salvar"
     cancel: "Cancelar"
     download: "Baixar"
+    view: "Ver"
     share: "Compartilhe"
     share_text: "Check out this campaign on Promise Tracker"
     edit: "Editar"
@@ -158,11 +159,9 @@ pt-BR:
           other: "registros"
       current: "Atual"
       target: "Desejado"
-      publicize_form: "Mobilizar os amigos para coletar dados"
-      campaign_resources: "Guias"
-      guide_1: "Organizar um evento de lançamento"
-      guide_2: "Manter sua comunidade envolvida"
-      guide_3: "Vizualizar seus resultados"
+      date: "Data"
+      participant_id: "Código do participante"
+      view_more_responses: "Ver mais registros"
 
     edit:
       overview_and_goals: "Descrição e objetivos"

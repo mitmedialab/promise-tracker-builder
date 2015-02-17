@@ -5,7 +5,7 @@ PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
 PT.retrieveResponses = function(surveyCode, callBack){
   var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";  
   $.get(url, function(data){
-    PT.serverResponse = data.payload;
+    PT.survey = data.payload.survey;
     PT.responses = data.payload.responses;
     PT.aggregate = PT.aggregateData(data.payload);
     callBack(data.payload);
@@ -163,6 +163,72 @@ PT.renderActivityGraph = function(responses, containerId){
     .call(yAxis);
 
   plotPoints(responsesByDay);
+};
+
+PT.renderResponseTable = function(survey, responses){
+  var $table = $("#response-table");
+  var sorted = responses.sort(function(a,b){
+    return b.timestamp - a.timestamp;
+  });
+
+  PT.renderResponseRows(sorted.slice(0, 10), $table);
+  $("#response-view").append(HandlebarsTemplates["response_view"](survey));
+  PT.viewResponse(sorted[0]);
+
+  if(responses.length > 10){
+    $("#view-more").on("click", function(){
+      PT.loadMoreResponses(sorted);
+    });
+  } else {
+    $("#view-more").hide();
+  }
+};
+
+PT.renderResponseRows = function(responses, $table){
+  responses.forEach(function(response){
+    var $row = $(HandlebarsTemplates["response_table_row"](response));
+    $row.on("click", function(){
+      PT.viewResponse(response);
+    });
+    $table.append($row);
+  });
+}
+
+PT.formatAnswer = function(answer){
+  if(answer.value){
+    switch(answer.input_type){
+      case "location":
+        return answer.value.lat + ", " + answer.value.lon;
+        break;
+      case "select_many":
+        return answer.value.join(", ");
+        break;
+      case "image":
+        return "<img src='" + answer.value + "'/>";
+      default:
+        return answer.value;
+        break;
+    };
+  }
+};
+
+PT.viewResponse = function(response){
+  $("#response-table tr").removeClass("active");
+  $("#response-table tr#" + response.id).addClass("active");
+  response.answers.forEach(function(answer){
+    $("#" + answer.id + " .answer").html(PT.formatAnswer(answer));
+  });
+};
+
+PT.loadMoreResponses = function(sortedResponses){
+  var $table = $("#response-table");
+  var currentLength = $table.find(".response").length;
+
+  PT.renderResponseRows(sortedResponses.slice(currentLength, currentLength + 10), $table);
+
+  if(currentLength + 10 >= sortedResponses.length){
+    $("#view-more").hide();
+  }
 };
 
 PT.groupResponsesByDay = function(responses){
