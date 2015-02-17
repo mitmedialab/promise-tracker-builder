@@ -239,6 +239,16 @@
   }
 }
 
+#report-image-container {
+  overflow: scroll;
+
+  img {
+    width: 50%;
+    height: auto;
+    display: inline-block;
+  }
+}
+
 /*============================
   Media queries
 ==============================*/

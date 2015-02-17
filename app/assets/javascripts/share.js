@@ -268,6 +268,9 @@ PT.renderGraphs = function(aggregates, containerId, graphClass){
     // Show first item in graph carousel
     $(containerId + " .item").first().addClass("active");
     $(window).resize();
+    if($(".carousel .item").length < 2){
+      $(".carousel-control").hide();
+    }
 
   } else {
     $("#graph-placeholder").show();
@@ -283,8 +286,7 @@ PT.renderPieChart = function(containerId, inputSummary){
   $(containerId).highcharts({
     chart: {
       plotBackgroundColor: null,
-      plotShadow: false,
-      margin: [50, 10, 10, 10]
+      plotShadow: false
     },
     colors: PT.colors,
     title: {
@@ -292,7 +294,7 @@ PT.renderPieChart = function(containerId, inputSummary){
     },
     tooltip: {
       formatter: function(){
-        return '<b>' + this.point.percentage + '%</b><br><span style="color: grey; font-size: .9em;">(' + this.point.y + ' ' + I18n.t("campaigns.collect.responses.counting", {count: this.point.y}) + ')</span>'
+        return '<b>' + Highcharts.numberFormat(this.point.percentage, 1) + '%</b><br><span style="color: grey; font-size: .9em;">(' + this.point.y + ' ' + I18n.t("campaigns.collect.responses.counting", {count: this.point.y}) + ')</span>'
       }
     },
     credits: {
@@ -322,7 +324,7 @@ PT.renderPieChart = function(containerId, inputSummary){
     navigation: {
       buttonOptions: {
         verticalAlign: 'bottom',
-        x: -120
+        x: -60
       }
     }
   });
@@ -340,8 +342,7 @@ PT.renderColumnChart = function(containerId, inputSummary){
     chart: {
       type: 'column',
       plotBackgroundColor: null,
-      plotShadow: false,
-      margin: [50, 10, 10, 10]
+      plotShadow: false
     },
     colors: PT.colors,
     title: {
@@ -385,7 +386,7 @@ PT.renderColumnChart = function(containerId, inputSummary){
     navigation: {
       buttonOptions: {
         verticalAlign: 'bottom',
-        x: -120
+        x: -60
       }
     }
   });
@@ -400,8 +401,8 @@ $(function(){
   });
 
   // Hide carousel controls on first and last slide
-  $(".carousel").on('slid.bs.carousel', function() {
-    var $active = $('.carousel .item.active');
+  $(".carousel").on("slid.bs.carousel", function() {
+    var $active = $(".carousel .item.active");
     $(window).resize();
 
     if($active.is(":first-child")){
