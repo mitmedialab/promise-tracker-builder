@@ -30,7 +30,7 @@
       </div>
     </a>
     <a href="#image-viz" role="tab" data-toggle="tab" id="image-tab">
-      <div class="viz image">
+      <div class="viz image" style="background-image: url(<%= @campaign.image.url %>);">
         <h4 class="title legend"><%= t(".photos") %></h4>
       </div>
     </a>
@@ -59,7 +59,7 @@
             <a href="" class="csv-download"><%= t(".download_csv") %></a>
           </li>
         </ul>
-        <%= render partial: 'profile' %>
+        <%= render partial: 'data_report' %>
       </div>
     </div>
     <br><br>

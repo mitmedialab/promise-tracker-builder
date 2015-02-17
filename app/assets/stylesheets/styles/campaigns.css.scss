@@ -79,9 +79,9 @@
     position: absolute;
     right: 60px;
     top: 88px;
-    padding: 12px 20px;
-    display: none;
+    padding: 10px 20px;
     z-index: 10;
+    border-radius: 4px;
 
     &.alert-danger:before {
       position: absolute;
@@ -96,12 +96,9 @@
       border-bottom: 10px solid $light-pink;
     }
 
-    ul {
-      padding: 0 40px 0 20px;
-    }
-
     .close {
       font-size: 15px;
+      margin: 3px 0 0 10px;
     }
   }
 }

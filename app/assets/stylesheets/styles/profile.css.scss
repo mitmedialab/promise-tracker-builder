@@ -15,6 +15,13 @@
   }
 
   .campaign-overview {
+    margin-bottom: 15px;
+    
+    .campaign-info {
+      p {
+        margin-bottom: 20px;
+      }
+    }
 
     .placeholder {
       max-height: 200px;
@@ -23,7 +30,6 @@
       img {
         width: 100%;
         height: auto;
-        margin: 20px 0 0 0;
       }
     }
 
@@ -106,6 +112,7 @@
 
       .item {
         height: 250px;
+        margin: 0 75px;
       }
     }
   }
@@ -164,7 +171,7 @@
 }
 
 .highlight {
-  margin: 0 0 10px -40px;
+  margin: 0 0 0 -40px;
   display: inline-block !important;
   padding: 10px 30px 10px 40px;
 
