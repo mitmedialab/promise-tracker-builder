@@ -33,7 +33,7 @@ class CampaignsController < ApplicationController
     if permission == true
       redirect_to action: get_next_state(params[:refer_action]), id: @campaign.id
     else
-      render json: { errors: [permission] }.to_json, status: 401
+      redirect_to :back, flash: { error: permission }
     end
   end
 
@@ -62,7 +62,7 @@ class CampaignsController < ApplicationController
 
   def profile
     if !current_user
-      render layout: "application"
+      render layout: 'application'
     end
   end
 
@@ -81,19 +81,15 @@ class CampaignsController < ApplicationController
     end
   end
 
-  #Post survey definition to aggregator
   def activate
     if @survey.activate(params[:status])['status'] == 'success'
-      flash.now[:notice] = t('.upload_success')
-
       if params[:status] == 'test'
         redirect_to test_campaign_path(@campaign)
       elsif params[:status] == 'active'
         redirect_to campaign_collect_path(@campaign)
       end
     else
-      flash.now[:notice] = t('.upload_error')
-      render :test
+      redirect_to request.referer, flash: {error: t('.upload_error')}
     end
   end
 
@@ -116,18 +112,16 @@ class CampaignsController < ApplicationController
   end
 
   def clone
-    campaign = Campaign.find(params[:id])
-    campaign_clone = campaign.clone
-    title = campaign.title + " #{t('campaigns.status.copy')}"
+    campaign_clone = @campaign.clone
+    title = @campaign.title + " #{t('campaigns.status.copy')}"
     campaign_clone.update_attributes(
       title: title + " #{Campaign.where(title: title).count if Campaign.where(title: title).count > 0}",
       organizers: nil,
       status: 'draft'
     )
-    campaign.save
 
-    if campaign.survey
-      campaign_clone.survey = campaign.survey.clone
+    if @campaign.survey
+      campaign_clone.survey = @campaign.survey.clone
       campaign_clone.survey.update_attribute(:title, campaign_clone.title)
     end
 

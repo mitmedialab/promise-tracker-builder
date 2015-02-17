@@ -45,15 +45,17 @@
   <% elsif @campaign.status == "active" %>
     <%= link_to t("campaigns.collect.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow", data: { confirm: t("campaigns.collect.confirm_close") } %>
   <% elsif @campaign.status != "closed" %>
-    <%= link_to campaign_next_path(@campaign, refer_action: action_name), remote: true, "data-type" => :json do %>
+    <%= link_to campaign_next_path(@campaign, refer_action: action_name) do %>
       <div class="btn btn-grey progress-arrow">
         <%= t("defaults.next") %><span class="glyphicon glyphicon-chevron-right"></span>
       </div>
     <% end %>
   <% end %>
 
-  <div id="errors" class="progress-errors">
-    <span class="glyphicon glyphicon-remove right close"></span>
-    <ul></ul>
-  </div>
+  <%- flash.each do |name, msg| -%>
+    <div id="errors" class="progress-errors alert-danger">
+      <span class="glyphicon glyphicon-remove right close"></span>
+      <%= msg %>
+    </div>
+  <%- end -%>
 </div>
