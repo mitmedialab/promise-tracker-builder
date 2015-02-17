@@ -86,7 +86,7 @@
     PT.renderGraphs(PT.aggregate, "#slides-container", "");
 
     // Populate panel
-    PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5", PT.addSummaryMap);
+    PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5");
     PT.populateImages(PT.responses, "#image-viz");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
@@ -101,8 +101,12 @@
     $(this).addClass("active");
   });
 
+  if(window.location.search){
+    $("#"+ window.location.search.substring(1) +"-tab").trigger("click");
+  }
+
   $("#graph-tab").on("shown.bs.tab", function(){
-    PT.renderGraphs(PT.aggregate, "#graph-container", "col-md-12");
+    PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5");
   });
 
   $(".csv-download").on("click", function(e){
