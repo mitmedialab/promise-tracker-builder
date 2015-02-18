@@ -1,0 +1,24 @@
+<div class="map-info-window-content" id="{{id}}">
+  {{#if image}}
+  <div class="map-info-window-image">
+    <img src="{{image}}" alt="Answer image"/>
+  </div>
+  {{/if}}
+
+  <div class="map-info-window-table">
+    <table>
+      {{#each displayableAnswers}}
+      <tr>
+        <td class="table-lable">
+          {{@key}}
+        </td>
+      </tr>
+      <tr>
+        <td class="table-content">
+          {{this}}
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+  </div>
+</div>

@@ -40,12 +40,16 @@ PT.renderGoogleMap = function(serverResponse, containerId){
   var surveyDefinition = {};
   var map = null,
       infoWindow = null;
-  var $container
+  var $container;
 
   var attachMarkerClickEvent = function(marker, response){
-    var image = null;
-    var displayableAnswers = {};
-    // 1. browse through answers, put all images to $image and displayable answers to $displayableAnswers.
+    var markerInfo = {
+      id: response.id,
+      image: null,
+      displayableAnswers: {}
+    };
+
+    // 1. Browse through answers, extract image and responses
     for(var i=0,len=response.answers.length;i<len;i++){
       var answer = response.answers[i];
       switch(answer.input_type){
@@ -53,46 +57,23 @@ PT.renderGoogleMap = function(serverResponse, containerId){
           break;
         case 'image':
           if(typeof answer.value!=='undefined' && answer.value){
-            image = answer.value;
+            markerInfo.image = answer.value;
           }
           break;
         default:
-          if(typeof answer.value!=='undefined' && answer.value){
-            displayableAnswers[surveyDefinition[answer.id]] = answer.value;
-          }
+          markerInfo.displayableAnswers[surveyDefinition[answer.id]] = answer.value || "";
       }
     }
-    // 2. construct infoWindow string
-    var infoWindowImageHtml='';
-    if(image !== null){
-      infoWindowImageHtml = 
-      '<div class="map-info-window-image">'+
-        '<img src="'+image+'" alt="answer image"/>'+
-      '</div>';
-    } 
-    var infoWindowTableHtml = '';
-    if(Object.keys(displayableAnswers).length > 0){
-      infoWindowTableHtml = '<div class="map-info-window-table"><table>';
-      for(var i in displayableAnswers){
-        infoWindowTableHtml += '<tr><td class="table-lable">'+i+'</td></tr><tr><td class="table-content">'+displayableAnswers[i]+'</td></tr>';
-      }
-      infoWindowTableHtml += '</table></div>';
-    }
-    var infoWindowContentHtml = 
-      '<div class="map-info-window-content" id="' + response.id + '">'+
-        infoWindowImageHtml+
-        infoWindowTableHtml+
-      '</div>';
 
+    // 2. Build marker popup template and attach listener
     google.maps.event.addListener(marker, 'click', function(){
-      infoWindow.setContent(infoWindowContentHtml);
+      infoWindow.setContent(HandlebarsTemplates["map_info_window"](markerInfo));
       infoWindow.open(map, marker);
     });
-  };  // func attachMarkerClickEvent
+  };
 
   window.mapInit = function(){
-    // start initialization
-    // create map
+    // Start initialization, create map
     var mapOptions = {
       zoom: 8,
       center: new google.maps.LatLng(-34.397, 150.644),
@@ -103,19 +84,19 @@ PT.renderGoogleMap = function(serverResponse, containerId){
         content: '' 
     });
 
-    // store survey definition
+    // Store survey definition
     var surveyInputs = serverResponse.survey.inputs;
     for(var i=0,len=surveyInputs.length;i<len;i++){
       var input = surveyInputs[i];
       surveyDefinition[input.id] = input.label;
     }
 
-    // create map markers
+    // Create map markers
     var surveyResponses = serverResponse.responses;
     for(var i=0,len=surveyResponses.length;i<len;i++){
       var response = surveyResponses[i];
 
-      // 1 find geo location
+      // Find geo location
       var lat = null,
           lon = null;
       for(var j=0,len2=response.answers.length;j<len2;j++){
@@ -131,11 +112,11 @@ PT.renderGoogleMap = function(serverResponse, containerId){
           lat = response.locationstamp.lat;
           lon = response.locationstamp.lon;
         } else {
-          continue; // find if next response is a geolocation
+          continue; // Find if next response is a geolocation
         }
       }
 
-      // 2. create that marker;
+      // Create marker
       if(lat && lon){
         var marker = new google.maps.Marker({
           map: map,
@@ -143,12 +124,11 @@ PT.renderGoogleMap = function(serverResponse, containerId){
         });
         markers.push(marker);
 
-        // 3. attach onclick event
         attachMarkerClickEvent(marker, response);
       }
-    } // for surveyResponses - created map markers
+    }
 
-    // scale map viewport to include all the markers.
+    // Scale map viewport to include all markers
     var points = $.map(markers, function(a){
         return a.getPosition();
     });
@@ -164,9 +144,9 @@ PT.renderGoogleMap = function(serverResponse, containerId){
       map.fitBounds(bounds);
     });
 
-  };  // func mapInit
+  };
 
-  // load map script
+  // Load map script
 
   if(typeof google === 'undefined'){
     var script = document.createElement('script');
