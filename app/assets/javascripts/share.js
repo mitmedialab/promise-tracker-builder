@@ -7,7 +7,8 @@ PT.colors = [
   "#545757", 
   "#42847b", 
   "#efa9a3",
-  "#e6e7e8"
+  "#e6e7e8",
+  "#000000"
 ];
 
 PT.populateImages = function(responses, containerId, hideWhenEmpty){
@@ -53,10 +54,10 @@ PT.renderGoogleMap = function(serverResponse, containerId){
     for(var i=0,len=response.answers.length;i<len;i++){
       var answer = response.answers[i];
       switch(answer.input_type){
-        case 'location':
+        case "location":
           break;
-        case 'image':
-          if(typeof answer.value!=='undefined' && answer.value){
+        case "image":
+          if(typeof answer.value!=="undefined" && answer.value){
             markerInfo.image = answer.value;
           }
           break;
@@ -66,7 +67,7 @@ PT.renderGoogleMap = function(serverResponse, containerId){
     }
 
     // 2. Build marker popup template and attach listener
-    google.maps.event.addListener(marker, 'click', function(){
+    google.maps.event.addListener(marker, "click", function(){
       infoWindow.setContent(HandlebarsTemplates["map_info_window"](markerInfo));
       infoWindow.open(map, marker);
     });
@@ -81,7 +82,7 @@ PT.renderGoogleMap = function(serverResponse, containerId){
     };
     map = new google.maps.Map(document.getElementById(containerId), mapOptions);
     infoWindow = new google.maps.InfoWindow({
-        content: '' 
+        content: ""
     });
 
     // Store survey definition
@@ -101,14 +102,14 @@ PT.renderGoogleMap = function(serverResponse, containerId){
           lon = null;
       for(var j=0,len2=response.answers.length;j<len2;j++){
         var answer = response.answers[j];
-        if(typeof answer.input_type!=='undefined' && answer.input_type=='location' && typeof answer.value!=='undefined' && typeof answer.value.lon!=='undefined'){
+        if(typeof answer.input_type!=="undefined" && answer.input_type=="location" && typeof answer.value!=="undefined" && typeof answer.value.lon!=="undefined"){
           lat = answer.value.lat;
           lon = answer.value.lon;
           break;
         }
       }
       if(lat==null || lon==null){
-        if(response.locationstamp && response.locationstamp.lat !== 'undefined' && response.locationstamp.long !== 'undefined'){
+        if(response.locationstamp && response.locationstamp.lat !== "undefined" && response.locationstamp.long !== "undefined"){
           lat = response.locationstamp.lat;
           lon = response.locationstamp.lon;
         } else {
@@ -148,11 +149,11 @@ PT.renderGoogleMap = function(serverResponse, containerId){
 
   // Load map script
 
-  if(typeof google === 'undefined'){
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-        'callback=mapInit';
+  if(typeof google === "undefined"){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&" +
+        "callback=mapInit";
     document.body.appendChild(script);
   } else {
     window.mapInit();
@@ -165,7 +166,7 @@ PT.aggregateData = function(payload){
   answerAggregates = [];
 
   survey.inputs.forEach(function(input){
-    var answers = [];
+    var allAnswers = [];
     var tally;
     var inputSummary = {
       id: input.id,
@@ -175,37 +176,36 @@ PT.aggregateData = function(payload){
     };
 
     responses.forEach(function(response){
-      answers.push(response.answers.filter(function(answer){
+      allAnswers.push(response.answers.filter(function(answer){
         return answer.id == input.id;
       })[0]);
     });
 
     switch(input.input_type){
-      case 'select1':
+      case "select1":
         input.options.forEach(function(option){
-          tally = answers.reduce(function(prev, current){
+          tally = allAnswers.reduce(function(prev, current){
             return current.value == option ? prev + 1 : prev;
           }, 0);
 
           inputSummary.answers.push({label: option, tally: tally});
         })
-        answerAggregates.push(inputSummary);
         break;
 
-      case 'select':
+      case "select":
         input.options.forEach(function(option){
-          tally = answers.reduce(function(acc, current){
+          tally = allAnswers.reduce(function(acc, current){
             return current.value && current.value.indexOf(option) !== -1 ? acc + 1 : acc;
           }, 0);
 
           inputSummary.answers.push({label: option, tally: tally});
         })
-        answerAggregates.push(inputSummary);
         break;
 
-      case 'number':
-      case 'text':
-        inputSummary.answers = answers.reduce(function(acc, current){
+      case "number":
+      case "image":
+      case "text":
+        inputSummary.answers = allAnswers.reduce(function(acc, current){
           if(current && current.value){
             acc.push(current.value);
           }
@@ -213,40 +213,83 @@ PT.aggregateData = function(payload){
         },[]);
         break;
     }
+    answerAggregates.push(inputSummary);
   })
   
   return answerAggregates;
 };
 
+PT.renderGallery = function(images, containerId, galleryId){
+  var $container = $(containerId);
+
+  images.forEach(function(image, index){
+    var $a = $("<a/>");
+    $image = $("<div/>", {class: "gallery-image"});
+    $a.attr("href", image);
+    $a.attr("data-lightbox", galleryId);
+    $image.css("background", "url(" + image + ") no-repeat center center");
+    $image.css("background-size", "cover");
+    $a.append($image);
+    $container.append($a);
+  });
+};
+
+PT.renderText = function(stringArray, containerId){
+  var $container = $(containerId);
+  var $textBlock;
+
+  stringArray.forEach(function(string, index){
+    $textBlock = $("<span/>", {class: "text-viz"}).html(string);
+    $textBlock.css("color", PT.colors[(index % PT.colors.length)]);
+    $textBlock.css("font-size", Math.floor(Math.random(5) * 10 + 12) + "px");
+    $container.append($textBlock);
+  });
+};
+
 PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
   if(aggregates.length > 0 && PT.responses.length > 0){
-    var $container = $(containerId), $item, $graphSquare;
+    var $container = $(containerId);
+    var $vizBox, $graphSquare;
 
-    $("#graph-placeholder").hide();
     $container.empty();
 
     aggregates.forEach(function(input){
-      if(input.type == "select" || input.type == "select1"){
-        $item = $("<div/>", {class: "item"});
-        $graphSquare = $("<div/>", {id: "graph-" + input.id, class: "graph-square " + graphClass});
-        
-        $item.append("<h3 class='title  center'>" + input.label + "</h3><br>")
-        $item.append($graphSquare);
-        $container.append($item);
+      $container.append(HandlebarsTemplates["input_viz"](input));
 
-        switch(input.type){
-          case "select1":
+      switch(input.type){
+        case "select":
+        case "select1":
+          $vizBox = $("#viz-input-" + input.id);
+          $graphSquare = $("<div/>", {id: "graph-" + input.id, class: "graph-square " + graphClass});
+          $vizBox.append($graphSquare);
+
+          if(input.type == "select1"){
             PT.renderPieChart("#graph-" + input.id, input, true, false);
-            break;
-
-          case "select":
+          } else {
             PT.renderColumnChart("#graph-" + input.id, input, true, false);
-            break;
-        }
+          };
 
-        var $map = $("<div/>", {class: "col-md-7 placeholder-map"});
-        $item.append($map);
+          // Append map of color coded answers  
+          var $map = $("<div/>", {class: "col-md-7 placeholder-map"});
+          $vizBox.append($map);
+          break;
 
+        case "location":
+          // Render regular map here
+          break;
+
+        case "text":
+          PT.renderText(input.answers, "#viz-input-" + input.id);
+          break;
+
+        case "number":
+        case "date":
+          //Render histogram?
+          break;
+
+        case "image":
+          PT.renderGallery(input.answers, "#viz-input-" + input.id, "gallery-" + input.id);
+          break;
       }
     })
 
@@ -321,7 +364,7 @@ PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download)
     },
     tooltip: {
       formatter: function(){
-        return '<b>' + Highcharts.numberFormat(this.point.percentage, 1) + '%</b><br><span style="color: grey; font-size: .9em;">(' + this.point.y + ' ' + I18n.t("campaigns.collect.responses.counting", {count: this.point.y}) + ')</span>'
+        return "<b>" + Highcharts.numberFormat(this.point.percentage, 1) + "%</b><br><span style='color: grey; font-size: .9em;'>(" + this.point.y + " " + I18n.t("campaigns.collect.responses.counting", {count: this.point.y}) + ")</span>"
       }
     },
     credits: {
@@ -330,19 +373,19 @@ PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download)
     plotOptions: {
       pie: {
         allowPointSelect: true,
-        cursor: 'pointer',
+        cursor: "pointer",
         dataLabels: {
           enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          format: "<b>{point.name}</b>: {point.percentage:.1f} %",
           style: {
-              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || "black"
           }
         }
       }
     },
     series: [{
-      type: 'pie',
-      name: '',
+      type: "pie",
+      name: "",
       data: data
     }],
     exporting: {
@@ -350,7 +393,7 @@ PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download)
     },
     navigation: {
       buttonOptions: {
-        verticalAlign: 'bottom',
+        verticalAlign: "bottom",
         x: -60
       }
     }
@@ -369,7 +412,7 @@ PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, downlo
 
   $(containerId).highcharts({
     chart: {
-      type: 'column',
+      type: "column",
       plotBackgroundColor: null,
       plotShadow: false
     },
@@ -378,14 +421,14 @@ PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, downlo
       text: titleDisabled || inputSummary.label
     },
     tooltip: {
-      headerFormat: '{point.series.name}',
-      pointFormat: '<br><b>{point.y}</b>'
+      headerFormat: "{point.series.name}",
+      pointFormat: "<br><b>{point.y}</b>"
     },
     credits: {
       enabled: false
     },
     xAxis: {
-      lineColor: 'transparent',
+      lineColor: "transparent",
       tickWidth: 0,
       labels: {
         enabled: false
@@ -394,13 +437,13 @@ PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, downlo
     yAxis: {
       allowDecimals: false,
       title: {
-        text: ''
+        text: ""
       }
     },
     plotOptions: {
       column: {
         allowPointSelect: true,
-        cursor: 'pointer',
+        cursor: "pointer",
         pointPadding: .25,
         borderWidth: 0,
         dataLabels: {
@@ -414,7 +457,7 @@ PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, downlo
     },
     navigation: {
       buttonOptions: {
-        verticalAlign: 'bottom',
+        verticalAlign: "bottom",
         x: -60
       }
     }

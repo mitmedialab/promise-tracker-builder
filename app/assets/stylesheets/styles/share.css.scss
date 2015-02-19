@@ -5,6 +5,18 @@
   padding-top: 40px;
 }
 
+// Lightbox styles
+
+// .lb-container:after {
+//   content: "\f057";
+//   font-family: FontAwesome;
+//   position: absolute;
+//   font-size: 20px;
+//   top: 22px;
+//   right: 15px;
+//   color: rgba(255, 255, 255, .7);
+// }
+
 .viz-panel {
   margin-top: 10px;
   height: 500px;
@@ -52,7 +64,6 @@
     #graph-viz {
       border-top: 10px solid whitesmoke;
       border-bottom: 10px solid whitesmoke;
-      // background: whitesmoke;
       overflow-y: scroll;
       padding: 20px 20px 20px 30px;
 
@@ -102,6 +113,29 @@
 
       .graph-square {
         padding: 0 20px;
+      }
+
+      .viz-container {
+        margin-top: 30px;
+        text-align: center;
+
+        &.text {
+          padding: 0 100px;
+          max-height: 200px;
+          overflow: scroll;
+        }
+
+        .gallery-image {
+          display: inline-block;
+          width: 100px;
+          height: 100px;
+          margin: 3px;
+        }
+      }
+
+      .text-viz {
+        padding: 0 5px;
+        margin: 0 0 5px 0;
       }
     }
 
