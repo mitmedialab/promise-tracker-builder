@@ -11,29 +11,18 @@ PT.colors = [
   "#000000"
 ];
 
-PT.populateImages = function(responses, containerId, hideWhenEmpty){
-  var $container = $(containerId);
+PT.extractImages = function(responses){
   var images = [];
-  var image;
 
   responses.forEach(function(response){
     response.answers.forEach(function(answer){
-
       if(answer.input_type == "image" && answer.value){
         images.push(answer.value);
       }
     })
   });
 
-  if(images.length > 0) {
-    $container.empty();
-    images.forEach(function(url){
-      image = '<img class="item"src="' + url + '">';
-      $container.append(image);
-    });
-  } else if(hideWhenEmpty){
-    $container.parent().hide();
-  }
+  return images;
 };
 
 PT.renderGoogleMap = function(serverResponse, containerId){
@@ -219,14 +208,15 @@ PT.aggregateData = function(payload){
   return answerAggregates;
 };
 
-PT.renderGallery = function(images, containerId, galleryId){
+PT.renderGallery = function(images, containerId, galleryName){
   var $container = $(containerId);
 
+  $container.empty();
   images.forEach(function(image, index){
     var $a = $("<a/>");
     $image = $("<div/>", {class: "gallery-image"});
     $a.attr("href", image);
-    $a.attr("data-lightbox", galleryId);
+    $a.attr("data-lightbox", galleryName);
     $image.css("background", "url(" + image + ") no-repeat center center");
     $image.css("background-size", "cover");
     $a.append($image);

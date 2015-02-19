@@ -82,12 +82,11 @@
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
-    PT.populateImages(PT.responses, "#report-image-container");
     PT.renderGraphs(PT.aggregate, "#slides-container", "");
 
     // Populate panel
     PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5");
-    PT.populateImages(PT.responses, "#image-viz");
+    PT.renderGallery(PT.extractImages(PT.responses), "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);
