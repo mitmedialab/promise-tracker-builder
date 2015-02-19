@@ -24,6 +24,11 @@
   </div>
 
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
+    <a href="#graph-viz" role="tab" data-toggle="tab" class="active" id="graph-tab">
+      <div class="viz graph">
+        <h4 class="title legend"><%= t(".graphs") %></h4>
+      </div>
+    </a>
     <a href="#map-viz" role="tab" data-toggle="tab" id="map-tab">
       <div class="viz map">
         <h4 class="title legend"><%= t(".map") %></h4>
@@ -32,11 +37,6 @@
     <a href="#image-viz" role="tab" data-toggle="tab" id="image-tab">
       <div class="viz image" style="background-image: url(<%= @campaign.image.url %>);">
         <h4 class="title legend"><%= t(".photos") %></h4>
-      </div>
-    </a>
-    <a href="#graph-viz" role="tab" data-toggle="tab" class="active" id="graph-tab">
-      <div class="viz graph">
-        <h4 class="title legend"><%= t(".graphs") %></h4>
       </div>
     </a>
   </div>
