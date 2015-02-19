@@ -31,4 +31,5 @@
 //= require d3
 //= require highcharts
 //= require highcharts-exporting
+//= require lightbox
 //= require_tree .
