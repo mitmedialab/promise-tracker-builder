@@ -246,6 +246,56 @@ PT.renderText = function(stringArray, containerId){
   });
 };
 
+PT.renderMapForSummary = function($div, input, series){
+  $div.empty();
+  var $canvas = $('<canvas width="'+$div.innerWidth()+'" height="'+$div.innerHeight()+'"/>').appendTo($div);
+  if(typeof series === 'undefined'){
+    var series = null;
+  }
+
+  // fit width and height to canvas's parent element (this can only be done in js)
+  // var ct = $canvas[0].getContext('2d');
+  // ct.canvas.width = $div.innerWidth();
+  // ct.canvas.height = $div.innerHeight();
+
+  // find input's index in responses
+  if(PT.responses.length <= 0) return;  // quit when there's no response
+  var inputIndex = PT.responses[0].answers.findIndex(function(element, index, array){
+    return element.id == input.id
+  });
+
+  // find location index
+  var locationIndex = PT.responses[0].answers.findIndex(function(element, index, array){
+    return element.input_type == 'location';
+  });
+
+  var markerData = input.answers.map(function(element, index, array){
+    return {
+      color: PT.colors[index % PT.colors.length],
+      points: PT.responses.filter(function(el, i, arr){
+                return el.answers[inputIndex].value == element.label;
+              }).map(function(el, i, arr){
+                return {
+                        lon: el.answers[locationIndex].value.lon,
+                        lat: el.answers[locationIndex].value.lat,
+                        data: el
+                      }
+              })
+    }
+  });
+
+  $canvas.osmStaticMap({
+    url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    circleRadius: 8,
+    markers: markerData,
+    interactive: true,
+    click: function(e, p){
+      console.log(p[0].data.data);
+    }
+  });
+
+};
+
 PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
   if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId);
@@ -270,8 +320,10 @@ PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
           };
 
           // Append map of color coded answers  
-          var $map = $("<div/>", {class: "col-md-7 placeholder-map"});
+          var $map = $("<div/>", {class: "col-md-7 graph-square graph-map-"+input.id});
           $vizBox.append($map);
+          PT.renderMapForSummary($map, input)
+
           break;
 
         case "location":
