@@ -243,47 +243,53 @@ PT.renderMapForSummary = function($div, input, series){
     var series = null;
   }
 
-  // fit width and height to canvas's parent element (this can only be done in js)
+  // Fit width and height to canvas's parent element (this can only be done in js)
   // var ct = $canvas[0].getContext('2d');
   // ct.canvas.width = $div.innerWidth();
   // ct.canvas.height = $div.innerHeight();
 
-  // find input's index in responses
-  if(PT.responses.length <= 0) return;  // quit when there's no response
+  // Find input's index in responses
+  if(PT.responses.length <= 0) return;  // Quit if no response
   var inputIndex = PT.responses[0].answers.findIndex(function(element, index, array){
     return element.id == input.id
   });
 
-  // find location index
+  // Find location index
   var locationIndex = PT.responses[0].answers.findIndex(function(element, index, array){
     return element.input_type == 'location';
   });
 
+  // Identify and fomat responses with location information
   var markerData = input.answers.map(function(element, index, array){
     return {
       color: PT.colors[index % PT.colors.length],
       points: PT.responses.filter(function(el, i, arr){
-                return el.answers[inputIndex].value == element.label;
+                if(el.answers[locationIndex] && el.answers[locationIndex].value && el.answers[locationIndex].value.lat || el.locationstamp.lon){
+                  return el.answers[inputIndex].value == element.label;
+                }
               }).map(function(el, i, arr){
-                return {
-                        lon: el.answers[locationIndex].value.lon,
-                        lat: el.answers[locationIndex].value.lat,
-                        data: el
-                      }
+                  return {
+                    lon: el.answers[locationIndex].value.lon || el.locationstamp.lon,
+                    lat: el.answers[locationIndex].value.lat || el.locationstamp.lat,
+                    data: el
+                  }
               })
     }
+  }).filter(function(el){ // Remove input sets with no data points
+    return el.points.length > 0;
   });
 
-  $canvas.osmStaticMap({
-    url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
-    circleRadius: 8,
-    markers: markerData,
-    interactive: true,
-    click: function(e, p){
-      console.log(p[0].data.data);
-    }
-  });
-
+  if(markerData.length > 0){
+    $canvas.osmStaticMap({
+      url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      circleRadius: 8,
+      markers: markerData,
+      interactive: true,
+      click: function(e, p){
+        console.log(p[0].data.data);
+      }
+    });
+  }
 };
 
 PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
@@ -312,7 +318,7 @@ PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
           // Append map of color coded answers  
           var $map = $("<div/>", {class: "col-md-7 graph-square graph-map-"+input.id});
           $vizBox.append($map);
-          PT.renderMapForSummary($map, input)
+          PT.renderMapForSummary($map, input);
 
           break;
 
@@ -326,7 +332,7 @@ PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
 
         case "number":
         case "date":
-          //Render histogram?
+          // Render histogram?
           break;
 
         case "image":
@@ -334,14 +340,6 @@ PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
           break;
       }
     })
-
-    // Show first item in graph carousel
-    $(containerId + " .item").first().addClass("active");
-    $(window).resize();
-    if($(".carousel .item").length < 2){
-      $(".carousel-control").hide();
-    }
-
   } else {
     $("#graph-placeholder").show();
   }
@@ -381,11 +379,7 @@ PT.renderGraphs = function(aggregates, containerId, graphClass){
     if($(".carousel .item").length < 2){
       $(".carousel-control").hide();
     }
-
-  } else {
-    $("#graph-placeholder").show();
   }
-
 };
 
 PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download){
