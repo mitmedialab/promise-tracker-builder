@@ -250,12 +250,12 @@ PT.renderMapForSummary = function($div, input, series){
 
   // Find input's index in responses
   if(PT.responses.length <= 0) return;  // Quit if no response
-  var inputIndex = PT.responses[0].answers.findIndex(function(element, index, array){
+  var inputIndex = _.findIndex(PT.responses[0].answers, function(element, index, array){
     return element.id == input.id
   });
 
   // Find location index
-  var locationIndex = PT.responses[0].answers.findIndex(function(element, index, array){
+  var locationIndex = _.findIndex(PT.responses[0].answers, function(element, index, array){
     return element.input_type == 'location';
   });
 

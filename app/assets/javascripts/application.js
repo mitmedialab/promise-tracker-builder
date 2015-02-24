@@ -32,6 +32,5 @@
 //= require highcharts
 //= require highcharts-exporting
 //= require lightbox
-//= require array.prototype.findIndex
 //= require jquery.osmStaticMap
 //= require_tree .
