@@ -100,7 +100,7 @@ en:
       confirm_save: "Your changes have been saved."
       please_define_goals: "Please answer all questions and save to advance"
       please_create_survey: "Please create your survey to advance"
-      please_complete_profile: "Please complete the profile fields and save to advance"
+      please_complete_campaign_page: "Please complete the campaign_page fields and save to advance"
       launch_campaign: "You must go live with this campaign to advance"
       close_campaign: "You must close this campaign to advance"
 
@@ -180,9 +180,9 @@ en:
         submissions_target: "How many responses will need to accurately represent your issue? How many will be reasonable to collect within the time frame of your campaign?"
         audience: "There are many audiences you may want to address with the data you collect. Could you reach a new audience who is not already familiar with this issue? Who are the most important groups to convince in order to make change on this issue?"
 
-    edit_profile:
+    edit_campaign_page:
       remain_anonymous: "I prefer to keep the organizers anonymous"
-      profile_description: "Below you will design a public page to share information about your campaign. This page can be sent to your networks to spread the word about your data collection initiative."
+      campaign_page_description: "Below you will design a public page to share information about your campaign. This page can be sent to your networks to spread the word about your data collection initiative."
 
     how_to_participate:
       participate_title: "Get involved now!"
@@ -221,13 +221,13 @@ en:
     progress_bar:
       define_goals: "Define goals"
       create_survey: "Create survey"
-      design_profile: "Design profile"
+      design_campaign_page: "Design campaign page"
       test_campaign: "Test survey"
       collect_data: "Collect data"
       share_data: "Share data"
 
-    profile:
-      profile: "Profile"
+    campaign_page:
+      campaign_page: "Campaign page"
       view_as_public: "View as the public will see it"
       preview: "Preview"
 
@@ -244,11 +244,12 @@ en:
       learn_more: "Learn more about this campaign at "
       download_csv: "Download CSV"
       print_report: "Print report"
+      no_location: "No geographic information available"
 
     tabs:
       overview: "Overview"
       survey: "Survey"
-      profile: "Profile"
+      campaign_page: "Campaign page"
       data: "Responses"
       viz: "Visualizations"
 
@@ -304,7 +305,7 @@ en:
   users:
     show:
       add_email: "Add email"
-      edit_profile: "Edit profile"
+      edit_campaign_page: "Edit campaign page"
 
   devise:
     sign_in: "Sign in"

@@ -1,13 +1,13 @@
 <div class="section-container">
   <div class="section-header">
-    <h2 class="title sub-title inline"><%= t("campaigns.profile.profile") %></h2>
+    <h2 class="title sub-title inline"><%= t("campaigns.campaign_page.campaign_page") %></h2>
     <div class="right">
-      <%= link_to t("campaigns.profile.view_as_public"), campaign_public_profile_path(@campaign), target: "blank", class: "pad-side subtle" %>
+      <%= link_to t("campaigns.campaign_page.view_as_public"), campaign_public_profile_path(@campaign), target: "blank", class: "pad-side subtle" %>
       <div class="btn btn-info" id="save-profile"><%= t("defaults.save") %></div>
     </div>
   </div>
   <p class="partial upsize">
-    <%= t(".profile_description") %>
+    <%= t(".campaign_page_description") %>
   </p>
   <br>
 </div>

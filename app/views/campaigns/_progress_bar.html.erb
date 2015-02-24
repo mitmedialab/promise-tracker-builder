@@ -14,7 +14,7 @@
 
     <%= link_to edit_campaign_profile_path(@campaign) do %>
       <li data-path="edit_profile profile" class="progress-node" data-clickable="<%= @campaign.survey.present? %>" data-complete="<%= @campaign.validate_profile %>">
-        <div class="desktop-only"><%= t(".design_profile") %></div>
+        <div class="desktop-only"><%= t(".design_campaign_page") %></div>
       </li>
     <% end %>
 

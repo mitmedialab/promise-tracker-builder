@@ -100,7 +100,7 @@ pt-BR:
       confirm_save: "Suas modificações foram salvadas"
       please_define_goals: "Por favor complete as perguntas e salve para avanzar"
       please_create_survey: "Por favor crie seu formulário para poder avanzar"
-      please_complete_profile: "Por favor preencha os campos do perfil e salve para avanzar"
+      please_complete_campaign_page: "Por favor preencha os campos do perfil e salve para avanzar"
       launch_campaign: "Você precisa lançar esta ação para avanzar"
       close_campaign: "Você precisa fechar esta ação para avanzar"
 
@@ -179,9 +179,9 @@ pt-BR:
         submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
-    edit_profile:
+    edit_campaign_page:
       remain_anonymous: "Prefiro manter os organizadores anónimos"
-      profile_description: "Em baixo você vai criar uma página pública para compartilhar informações sobre a sua ação."
+      campaign_page_description: "Em baixo você vai criar uma página pública para compartilhar informações sobre a sua ação."
 
     how_to_participate:
       participate_title: "Ajude com a coleta de dados!"
@@ -220,13 +220,13 @@ pt-BR:
     progress_bar:
       define_goals: "Definir objetivos"
       create_survey: "Criar formulário"
-      design_profile: "Preparar perfil"
+      design_campaign_page: "Preparar perfil"
       test_survey: "Testar formulário"
       collect_data: "Coletar dados"
       share_data: "Compartilhar dados"
 
-    profile:
-      profile: "Perfil"
+    campaign_page:
+      campaign_page: "Perfil"
       view_as_public: "Prévisualizar como público"
       preview: "Pré-visualização"
 
@@ -243,11 +243,12 @@ pt-BR:
       learn_more: "Aprender mais sobre esta ação no site"
       download_csv: "Baixar CSV"
       print_report: "Imprimir relatório"
+      no_location: "Não há informações geográficas disponíveis"
 
     tabs:
       goals: "Overview"
       survey: "Formulário"
-      profile: "Perfil"
+      campaign_page: "Perfil"
       data: "Dados"
       viz: "Visualizações"
 
@@ -304,7 +305,7 @@ pt-BR:
   users:
     show:
       add_email: "Adicionar e-mail"
-      edit_profile: "Editar perfil"
+      edit_campaign_page: "Editar perfil"
 
   devise:
     sign_in: "Fazer login"

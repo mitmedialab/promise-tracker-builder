@@ -6,7 +6,7 @@
     <%= link_to t(".survey"), campaign_survey_path(@campaign) %>
   </li>
   <li class="btn btn-default tab" id="profile-tab" data-action="profile edit_profile" data-visible="<%= @campaign.validate_profile %>">
-    <%= link_to t(".profile"), campaign_profile_path(@campaign) %>
+    <%= link_to t(".campaign_page"), campaign_profile_path(@campaign) %>
   </li>
   <li class="btn btn-default tab" id="collect-tab" data-action="collect" data-visible="<%= !@campaign.draft? %>">
     <%= link_to t(".data"), campaign_collect_path(@campaign) %>
