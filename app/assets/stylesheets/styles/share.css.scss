@@ -5,18 +5,6 @@
   padding-top: 40px;
 }
 
-// Lightbox styles
-
-// .lb-container:after {
-//   content: "\f057";
-//   font-family: FontAwesome;
-//   position: absolute;
-//   font-size: 20px;
-//   top: 22px;
-//   right: 15px;
-//   color: rgba(255, 255, 255, .7);
-// }
-
 .viz-panel {
   margin-top: 10px;
   height: 500px;
@@ -101,13 +89,17 @@
           }
         }
 
-        .graph-square, .placeholder-map {
+        .graph-square, .map-placeholder {
           height: 220px;
         }
 
-        .placeholder-map {
+        .map-placeholder {
           background-image: url("map-placeholder.png");
           background-size: cover;
+          padding: 60px 40px;
+          color: $turquoise;
+          font-size: 24px;
+          font-weight: 100;
         }
       }
 
@@ -333,6 +325,11 @@
     #graph-viz {
       img.small {
         width: 40% !important;
+      }
+
+      .map-placeholder {
+        background: url("map-placeholder.png");
+        background: red;
       }
     }
 

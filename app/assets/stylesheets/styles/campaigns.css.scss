@@ -11,6 +11,7 @@
     list-style-type: none;
     padding: 0;
     font-size: .8em;
+    margin-left: -80px;
 
     a {
       color: $dark-grey;
@@ -23,7 +24,7 @@
       vertical-align: bottom;
 
       >div {
-        width: 70px;
+        width: 85px;
       }
 
 
@@ -450,6 +451,12 @@ h2.title, h3.title {
 /*===========================================
   Media queries
 =============================================*/
+
+@media (max-width: 960px) {
+  ul#campaign-progress-bar {
+    margin-left: 0;
+  }
+}
 
 @media (max-width: 768px) {
   #campaign-progress-container {

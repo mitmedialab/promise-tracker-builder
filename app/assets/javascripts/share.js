@@ -238,15 +238,9 @@ PT.renderText = function(stringArray, containerId){
 
 PT.renderMapForSummary = function($div, input, series){
   $div.empty();
-  var $canvas = $('<canvas width="'+$div.innerWidth()+'" height="'+$div.innerHeight()+'"/>').appendTo($div);
   if(typeof series === 'undefined'){
     var series = null;
   }
-
-  // Fit width and height to canvas's parent element (this can only be done in js)
-  // var ct = $canvas[0].getContext('2d');
-  // ct.canvas.width = $div.innerWidth();
-  // ct.canvas.height = $div.innerHeight();
 
   // Find input's index in responses
   if(PT.responses.length <= 0) return;  // Quit if no response
@@ -280,6 +274,8 @@ PT.renderMapForSummary = function($div, input, series){
   });
 
   if(markerData.length > 0){
+    var $canvas = $('<canvas width="'+$div.innerWidth()+'" height="'+$div.innerHeight()+'"/>').appendTo($div);
+
     $canvas.osmStaticMap({
       url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
       circleRadius: 8,
@@ -289,6 +285,11 @@ PT.renderMapForSummary = function($div, input, series){
         console.log(p[0].data.data);
       }
     });
+  } else {
+    // Render chart at full width if no geographic data present
+    $div.parent().find(".graph-square").addClass("col-md-12");
+    $div.remove();
+    $(window).resize();
   }
 };
 
