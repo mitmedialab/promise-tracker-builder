@@ -165,16 +165,22 @@ PT.aggregateData = function(payload){
     };
 
     responses.forEach(function(response){
-      allAnswers.push(response.answers.filter(function(answer){
+      var relevantAnswer = response.answers.filter(function(answer){
         if(answer.id == input.id){
-          var ref = answer;
-          ref.response = response;
-          return ref;
+          var item = answer;
+          item.parentResponse = response;
+          return item;
         }
-      })[0]);
+      })[0];
+
+      relevantAnswer ? allAnswers.push(relevantAnswer) : false;
     });
 
     switch(input.input_type){
+      case "location":
+        inputSummary.answers = allAnswers;
+        break;
+
       case "select1":
         input.options.forEach(function(option){
           tally = allAnswers.reduce(function(prev, current){
@@ -200,7 +206,7 @@ PT.aggregateData = function(payload){
       case "text":
         inputSummary.answers = allAnswers.reduce(function(acc, current){
           if(current && current.value){
-            acc.push({response: current.response, value: current.value});
+            acc.push({parentResponse: current.response, value: current.value});
           }
           return acc;
         },[]);
@@ -219,16 +225,17 @@ PT.renderGallery = function(images, containerId, galleryName){
   if(images.length > 0){
     images.forEach(function(image, index){
       var $a = $("<a/>");
-      $image = $("<div/>", {class: "gallery-image"});
-      $a.attr("href", image);
+      var $image = $("<div/>", {class: "gallery-image"});
+
+      $a.attr("href", image.value);
       $a.attr("data-lightbox", galleryName);
-      $image.css("background", "url(" + image + ") no-repeat center center");
+      $image.css("background", "url(" + image.value + ") no-repeat center center");
       $image.css("background-size", "cover");
       $a.append($image);
       $container.append($a);
     });
   } else {
-    $container.append
+    $container.append("<img class='gallery-image placeholder' alt='Placeholder image'>")
   }
 };
 
@@ -243,16 +250,51 @@ PT.renderText = function(strings, containerId){
     $container.append($textBlock);
 
     $textBlock.on("click", function(event){
-      PT.showResponsePopup(event, item.response, PT.surveyDefinition);
+      PT.showResponsePopup(event, item.parentResponse, PT.surveyDefinition);
     });
   });
 };
 
-PT.renderMapForSummary = function($div, input, series){
+PT.renderMapForLocationQuestion = function($div, input){
+
+  // Find input's index in responses
+  if(PT.responses.length <= 0) return;  // Quit if no response
+  var inputIndex = _.findIndex(PT.responses[0].answers, function(element, index, array){
+    return element.id == input.id
+  });
+
+  var validAnswers = input.answers.filter(function(el){
+    return el.value && el.value.lat && el.value.lon;
+  });
+
+  var markerData = [{
+    color: PT.colors[1],
+    points: validAnswers.map(function(el){
+              return {
+                lon: el.value.lon,
+                lat: el.value.lat,
+                data: el.parentResponse
+              }
+            })
+  }];
+
   $div.empty();
-  if(typeof series === 'undefined'){
-    var series = null;
-  }
+  var $canvas = $('<canvas width="'+$div.innerWidth()+'" height="'+$div.innerHeight()+'"/>').appendTo($div);
+
+  $canvas.osmStaticMap({
+    url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    circleRadius: 8,
+    markers: markerData,
+    interactive: true,
+    click: function(event, p){
+      console.log(p[0].data.data);
+      PT.showResponsePopup(event, p[0].data.data);
+    }
+  });
+};
+
+PT.renderMapForSummaryGraph = function($div, input){
+  $div.empty();
 
   // Find input's index in responses
   if(PT.responses.length <= 0) return;  // Quit if no response
@@ -293,8 +335,9 @@ PT.renderMapForSummary = function($div, input, series){
       circleRadius: 8,
       markers: markerData,
       interactive: true,
-      click: function(e, p){
+      click: function(event, p){
         console.log(p[0].data.data);
+        PT.showResponsePopup(event, p[0].data.data);
       }
     });
   } else {
@@ -308,17 +351,17 @@ PT.renderMapForSummary = function($div, input, series){
 PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback){
   if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId);
-    var $vizBox, $graphSquare;
+    var $vizBox, $graphSquare, $map;
 
     $container.empty();
 
     aggregates.forEach(function(input){
       $container.append(HandlebarsTemplates["input_viz"](input));
+      $vizBox = $("#viz-input-" + input.id);
 
       switch(input.type){
         case "select":
         case "select1":
-          $vizBox = $("#viz-input-" + input.id);
           $graphSquare = $("<div/>", {id: "graph-" + input.id, class: "graph-square " + graphClass});
           $vizBox.append($graphSquare);
 
@@ -329,14 +372,16 @@ PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback
           };
 
           // Append map of color coded answers  
-          var $map = $("<div/>", {class: "col-md-7 graph-square graph-map-"+input.id});
+          $map = $("<div/>", {class: "col-md-7 graph-square graph-map-" + input.id});
           $vizBox.append($map);
-          PT.renderMapForSummary($map, input);
+          PT.renderMapForSummaryGraph($map, input);
 
           break;
 
         case "location":
-          // Render regular map here
+          $map = $("<div/>", {class: "col-md-12 graph-square map-" + input.id});
+          $vizBox.append($map);
+          PT.renderMapForLocationQuestion($map, input);
           break;
 
         case "text":
@@ -519,7 +564,7 @@ PT.showResponsePopup = function(event, response){
 
   $(".response-container-outer").css({
     position: "absolute",
-    top: window.height - 100,
+    top: event.pageY + 15,
     left: event.pageX - 50,
     width: window.innerWidth / 3 + "px"
   });
