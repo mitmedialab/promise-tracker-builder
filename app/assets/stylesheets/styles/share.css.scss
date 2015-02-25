@@ -117,11 +117,16 @@
           overflow: scroll;
         }
 
+        &.image {
+          max-height: 310px;
+          overflow-y: scroll;
+        }
+
         .gallery-image {
           display: inline-block;
           width: 100px;
           height: 100px;
-          margin: 3px;
+          margin: 3px 3px 0 0;
         }
       }
 
