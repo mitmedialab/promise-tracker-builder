@@ -206,11 +206,6 @@ en:
     list_item:
       confirm_delete: "Are you sure you want to delete this campaign?" 
 
-    nav:
-      view_survey: "View survey"
-      monitor_responses: "Monitor responses"
-      share_data: "Share data"
-
     new:
       modal_title: "New Campaign"
       campaign_theme: "What issue are you interested in monitoring?"

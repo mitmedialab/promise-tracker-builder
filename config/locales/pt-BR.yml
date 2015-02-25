@@ -31,7 +31,7 @@ pt-BR:
         goal: "Objetivo"
         submissions_target: "Número de participações"
         data_collectors: "Colaboradores"
-        audience: "Destinário"
+        audience: "Destinatário"
         status: "Estado"
         start_date: "Data de publicação"
         end_date: "Data final"
@@ -119,7 +119,7 @@ pt-BR:
     index:
       welcome: "Começar com Promise Tracker"
       tag_line: "Coleta de dados para a ação cívica"
-      project_description: "Monitorando a Comunidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar ações locais do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando as Metas ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
+      project_description: "Monitorando a Cidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar ações locais do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando a Cidade ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
       process_line: "O Nosso Processo"
       process_description: 
       phase_1_title: "Definir objectivos & criar formulário"
@@ -205,11 +205,6 @@ pt-BR:
       confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
       confirm_clone: "Você em certeza que quer duplicar esta ação?" 
 
-    nav:
-      view_survey: "Ver formulário"
-      monitor_responses: "Monitorar registros"
-      share_data: "Compartilhar dados"
-
     new:
       modal_title: "Nova ação"
       campaign_theme: "Qual é o tema que interessa você?"
@@ -220,13 +215,13 @@ pt-BR:
     progress_bar:
       define_goals: "Definir objetivos"
       create_survey: "Criar formulário"
-      design_campaign_page: "Preparar perfil"
+      design_campaign_page: "Preparar página pública"
       test_survey: "Testar formulário"
       collect_data: "Coletar dados"
       share_data: "Compartilhar dados"
 
     campaign_page:
-      campaign_page: "Perfil"
+      campaign_page: "Página pública"
       view_as_public: "Prévisualizar como público"
       preview: "Pré-visualização"
 
@@ -246,9 +241,9 @@ pt-BR:
       no_location: "Não há informações geográficas disponíveis"
 
     tabs:
-      goals: "Overview"
+      goals: "Objetivos"
       survey: "Formulário"
-      campaign_page: "Perfil"
+      campaign_page: "Página pública"
       data: "Dados"
       viz: "Visualizações"
 
