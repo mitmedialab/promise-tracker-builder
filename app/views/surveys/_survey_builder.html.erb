@@ -62,4 +62,11 @@
       ui.item.trigger("click");
     }
   });
+
+  // Add new answer option on enter key
+  $(document).on("keyup", ".options", function(){
+    if(event.keyCode == 13){
+      $(event.currentTarget).find(".phantom-option").click()
+    }
+  });
 </script>
