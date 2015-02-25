@@ -317,8 +317,8 @@ PT.renderMapForSummaryGraph = function($div, input){
                 }
               }).map(function(el, i, arr){
                   return {
-                    lon: el.answers[locationIndex].value.lon || el.locationstamp.lon,
-                    lat: el.answers[locationIndex].value.lat || el.locationstamp.lat,
+                    lon: el.answers[locationIndex].value ? el.answers[locationIndex].value.lon : el.locationstamp.lon,
+                    lat: el.answers[locationIndex].value ? el.answers[locationIndex].value.lat : el.locationstamp.lat,
                     data: el
                   }
               })
