@@ -85,12 +85,27 @@
     PT.renderGraphs(PT.aggregate, "#slides-container", "");
 
     // Populate panel
-    PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5");
-    PT.renderGallery(PT.extractImages(PT.responses), "#image-viz", "main-gallery");
+    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-5");
+    PT.renderGallery(PT.extractAllImages(PT.responses), "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);
 
+    // Add CSV download button handler
+    $(".csv-download").on("click", function(e){
+      e.preventDefault();
+      PT.downloadCsv(data);
+    });
+
+    // Add popup
+    var $popup = $(HandlebarsTemplates["response_view"](PT.surveyDefinition));
+    $popup.addClass("popup");
+    $popup.hide();
+    $(document.body).append($popup);
+
+    $(document).on("click", function(){
+      $popup.hide();
+    });
   });
   
   $("#viz-tabs a").click(function(e) {
@@ -100,19 +115,12 @@
     $(this).addClass("active");
   });
 
+  // If search params present, load specified tab
   if(window.location.search){
     $("#"+ window.location.search.substring(1) +"-tab").trigger("click");
   }
 
-  $("#graph-tab").on("shown.bs.tab", function(){
-    PT.renderSummaries(PT.aggregate, "#graph-container", "col-md-5");
-  });
-
-  $(".csv-download").on("click", function(e){
-    e.preventDefault();
-    PT.downloadCsv(PT.serverResponse);
-  });
-
+  // Print report
   $(".print").on("click", function(e){
     e.preventDefault();
     window.print();

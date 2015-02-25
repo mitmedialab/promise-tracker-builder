@@ -11,7 +11,7 @@ PT.colors = [
   "#000000"
 ];
 
-PT.extractImages = function(responses){
+PT.extractAllImages = function(responses){
   var images = [];
 
   responses.forEach(function(response){
@@ -150,9 +150,9 @@ PT.renderGoogleMap = function(serverResponse, containerId){
 };
 
 PT.aggregateData = function(payload){
-  var survey = payload.survey,
-  responses = payload.responses,
-  answerAggregates = [];
+  var survey = payload.survey;
+  var responses = payload.responses;
+  var answerAggregates = [];
 
   survey.inputs.forEach(function(input){
     var allAnswers = [];
@@ -166,7 +166,11 @@ PT.aggregateData = function(payload){
 
     responses.forEach(function(response){
       allAnswers.push(response.answers.filter(function(answer){
-        return answer.id == input.id;
+        if(answer.id == input.id){
+          var ref = answer;
+          ref.response = response;
+          return ref;
+        }
       })[0]);
     });
 
@@ -196,7 +200,7 @@ PT.aggregateData = function(payload){
       case "text":
         inputSummary.answers = allAnswers.reduce(function(acc, current){
           if(current && current.value){
-            acc.push(current.value);
+            acc.push({response: current.response, value: current.value});
           }
           return acc;
         },[]);
@@ -204,35 +208,43 @@ PT.aggregateData = function(payload){
     }
     answerAggregates.push(inputSummary);
   })
-  
+
   return answerAggregates;
 };
 
 PT.renderGallery = function(images, containerId, galleryName){
   var $container = $(containerId);
-
   $container.empty();
-  images.forEach(function(image, index){
-    var $a = $("<a/>");
-    $image = $("<div/>", {class: "gallery-image"});
-    $a.attr("href", image);
-    $a.attr("data-lightbox", galleryName);
-    $image.css("background", "url(" + image + ") no-repeat center center");
-    $image.css("background-size", "cover");
-    $a.append($image);
-    $container.append($a);
-  });
+
+  if(images.length > 0){
+    images.forEach(function(image, index){
+      var $a = $("<a/>");
+      $image = $("<div/>", {class: "gallery-image"});
+      $a.attr("href", image);
+      $a.attr("data-lightbox", galleryName);
+      $image.css("background", "url(" + image + ") no-repeat center center");
+      $image.css("background-size", "cover");
+      $a.append($image);
+      $container.append($a);
+    });
+  } else {
+    $container.append
+  }
 };
 
-PT.renderText = function(stringArray, containerId){
+PT.renderText = function(strings, containerId){
   var $container = $(containerId);
   var $textBlock;
 
-  stringArray.forEach(function(string, index){
-    $textBlock = $("<span/>", {class: "text-viz"}).html(string);
+  strings.forEach(function(item, index){
+    $textBlock = $("<span/>", {class: "text-viz"}).html(item.value);
     $textBlock.css("color", PT.colors[(index % PT.colors.length)]);
     $textBlock.css("font-size", Math.floor(Math.random(5) * 10 + 12) + "px");
     $container.append($textBlock);
+
+    $textBlock.on("click", function(event){
+      PT.showResponsePopup(event, item.response, PT.surveyDefinition);
+    });
   });
 };
 
@@ -293,7 +305,7 @@ PT.renderMapForSummary = function($div, input, series){
   }
 };
 
-PT.renderSummaries = function(aggregates, containerId, graphClass, callback){
+PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback){
   if(aggregates.length > 0 && PT.responses.length > 0){
     var $container = $(containerId);
     var $vizBox, $graphSquare;
@@ -501,8 +513,22 @@ PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, downlo
   });
 };
 
-// Profile page data section
+// Map popup window for single response
+PT.showResponsePopup = function(event, response){
+  event.stopPropagation();
 
+  $(".response-container-outer").css({
+    position: "absolute",
+    top: window.height - 100,
+    left: event.pageX - 50,
+    width: window.innerWidth / 3 + "px"
+  });
+
+  PT.viewResponse(response);
+  $(".response-container-outer").show();
+};
+
+// Profile page data section
 $(function(){
   $(".carousel").carousel({
     pause: true,

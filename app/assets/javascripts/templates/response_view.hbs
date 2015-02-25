@@ -1,8 +1,10 @@
-<div class="response-container">
-  {{#each inputs}}
-    <div id="{{id}}">
-      <strong>{{label}}</strong>
-      <p class="answer"></p>
-    </div>
-  {{/each}}
+<div class="response-container-outer">
+  <div class="response-container-inner">
+    {{#each inputs}}
+      <div id="{{id}}">
+        <strong>{{label}}</strong>
+        <p class="answer"></p>
+      </div>
+    {{/each}}
+  </div>
 </div>

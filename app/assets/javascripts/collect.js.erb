@@ -5,7 +5,7 @@ PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
 PT.retrieveResponses = function(surveyCode, callBack){
   var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";  
   $.get(url, function(data){
-    PT.survey = data.payload.survey;
+    PT.surveyDefinition = data.payload.survey;
     PT.responses = data.payload.responses;
     PT.aggregate = PT.aggregateData(data.payload);
     callBack(data.payload);
@@ -198,7 +198,7 @@ PT.formatAnswer = function(answer){
   if(answer.value){
     switch(answer.input_type){
       case "location":
-        return answer.value.lat + ", " + answer.value.lon;
+        return answer.value.lat ? answer.value.lat + ", " + answer.value.lon : "";
         break;
       case "select_many":
         return answer.value.join(", ");
