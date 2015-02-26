@@ -474,7 +474,8 @@ PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download)
           style: {
               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || "black"
           },
-          distance: 1
+          distance: 1,
+          width: 50
         }
       }
     },
