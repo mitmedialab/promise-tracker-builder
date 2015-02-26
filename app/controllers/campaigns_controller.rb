@@ -144,7 +144,7 @@ class CampaignsController < ApplicationController
 
   def get_next_state(current_action)
     case current_action
-    when 'edit', 'goals_wizard'
+    when 'edit', 'goals_wizard', 'goals'
       'survey'
     when 'survey'
       'edit_profile'
@@ -159,6 +159,8 @@ class CampaignsController < ApplicationController
     case current_action
     when 'edit', 'goals_wizard'
       t('defaults.validations.please_define_goals')
+    when 'goals'
+      true
     when 'survey'
       if @survey && @survey.inputs.length > 0
         true

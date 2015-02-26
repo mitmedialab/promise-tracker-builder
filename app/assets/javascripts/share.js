@@ -17,7 +17,10 @@ PT.extractAllImages = function(responses){
   responses.forEach(function(response){
     response.answers.forEach(function(answer){
       if(answer.input_type == "image" && answer.value){
-        images.push(answer.value);
+        images.push({
+          value: answer.value,
+          parentResponse: response
+        });
       }
     })
   });
@@ -474,8 +477,7 @@ PT.renderPieChart = function(containerId, inputSummary, titleDisabled, download)
           style: {
               color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || "black"
           },
-          distance: 1,
-          width: 50
+          distance: 1
         }
       }
     },
