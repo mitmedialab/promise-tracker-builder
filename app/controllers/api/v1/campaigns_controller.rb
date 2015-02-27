@@ -61,7 +61,6 @@ module Api
             params[:user_id],
             params[:username],
             api_key)
-          sign_in(user)
 
           if params[:campaign_id]
             existing_campaign = Campaign.find_by(id: params[:campaign_id])
@@ -77,9 +76,15 @@ module Api
             campaign = Campaign.create
             campaign.tags = params[:tags] if params[:tags]
           end
-          current_user.campaigns << campaign
+
+          campaign.user_id = user.id
           campaign.save(validate: false)
-          redirect_to setup_campaign_path(campaign)
+          render json: {
+            status: "success",
+            payload: {
+              redirect_link: "#{request.url}/api/v1/sign_in?user_id=#{user.id}&username=#{params[:username]}campaign_id=#{campaign.id}"
+            }
+          }.to_json
         else
           @error_code = 22
           @error_message = 'User id and username required'
