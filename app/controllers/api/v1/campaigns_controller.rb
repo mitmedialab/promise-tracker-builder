@@ -76,9 +76,9 @@ module Api
           else
             campaign = Campaign.create
             campaign.tags = params[:tags] if params[:tags]
-            campaign.save(validate: false)
           end
           current_user.campaigns << campaign
+          campaign.save(validate: false)
           redirect_to setup_campaign_path(campaign)
         else
           @error_code = 22
