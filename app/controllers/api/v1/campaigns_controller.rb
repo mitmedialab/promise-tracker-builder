@@ -82,7 +82,7 @@ module Api
           render json: {
             status: "success",
             payload: {
-              redirect_link: "#{request.url}/api/v1/sign_in?user_id=#{user.id}&username=#{params[:username]}campaign_id=#{campaign.id}"
+              redirect_link: "#{request.url.split("api").first}api/v1/users/sign_in?user_id=#{user.api_client_user_id}&username=#{params[:username]}&campaign_id=#{campaign.id}"
             }
           }.to_json
         else
