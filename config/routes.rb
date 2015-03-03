@@ -37,7 +37,7 @@ PromiseTracker::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :campaigns, only: [:index, :show, :create]
-      post '/users/sign_in', to: 'users#create_new_session', as: 'api_sign_in'
+      get '/users/sign_in', to: 'users#create_new_session', as: 'api_sign_in'
     end
   end
 end
