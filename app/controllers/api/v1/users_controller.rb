@@ -18,7 +18,7 @@ module Api
 
           if params[:campaign_id]
             campaign = Campaign.find(params[:campaign_id])
-            redirect_to campaign.valid? ? campaign_setup_path(campaign) : campaign_path(campaign)
+            redirect_to campaign.valid? ? campaign_path(campaign) : setup_campaign_path(campaign)
           else
             redirect_to campaigns_path
           end
