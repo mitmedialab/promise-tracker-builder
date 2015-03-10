@@ -31,12 +31,12 @@
   </div>
 
   <!-- View campaign results -->
-  <h3 class="highlight title">Check out the results</h3><br>
-  <p class="highlight text">View the map, graphs and photos collected during this campaign below</p>
+  <h3 class="highlight title"><%= t(".check_out_results") %></h3><br>
+  <p class="highlight text"><%= t(".view_viz") %></p>
   <%= render partial: 'data' %>
 
   <div id="campaign-survey" class="stacked-sheets">
-    <label><%= Survey.model_name.human %> Preview</label>
+    <label><%= Survey.model_name.human %></label>
     <%= render partial: 'surveys/survey_body', locals: {survey: @survey} %>
   </div>
   <br>

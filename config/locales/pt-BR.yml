@@ -98,11 +98,11 @@ pt-BR:
       has_errors: "Seu formulário tem algum erro. Por favor corrija as questões com erros antes de continuar"
       no_errors: "Seu formulário não tem erros."
       confirm_save: "Suas modificações foram salvadas"
-      please_define_goals: "Por favor complete as perguntas e salve para avanzar"
-      please_create_survey: "Por favor crie seu formulário para poder avanzar"
-      please_complete_campaign_page: "Por favor preencha os campos do perfil e salve para avanzar"
-      launch_campaign: "Você precisa lançar esta ação para avanzar"
-      close_campaign: "Você precisa fechar esta ação para avanzar"
+      please_define_goals: "Por favor complete as perguntas e salve para avançar"
+      please_create_survey: "Por favor crie seu formulário para poder avançar"
+      please_complete_campaign_page: "Por favor preencha os campos do perfil e salve para avançar"
+      launch_campaign: "Você precisa lançar esta ação para avançar"
+      close_campaign: "Você precisa fechar esta ação para avançar"
 
   errors:
     sorry: "Desculpe!"
@@ -132,11 +132,11 @@ pt-BR:
 
     download:
       download_link: "Baixar o aplicativo móvel"
-      app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Promise Tracker e coletar dados!"
+      app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Monitorando a Cidade e coletar dados!"
 
   campaigns:
     status:
-      active: "Público"
+      active: "Ativo"
       closed: "Fechado"
       draft: "Rascunho"
       test: "Teste"
@@ -148,11 +148,12 @@ pt-BR:
 
     collect:
       status_text: "Este formulário está "
-      survey_code: "Pode baixar e preencher este formulário usando o código"
+      survey_code: "Você pode baixar e preencher este formulário usando o código"
       close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
       number_of_responses: "Número de registros"
-      close: "Fechar ação"
-      confirm_close: "Tem certeza que quer fechar esta ação? Não vair poder coletar mais dados!"
+      close: "Encerrar ação"
+      confirm_close: "Tem certeza que quer fechar esta ação? Não vai poder coletar mais dados!"
+      publicize_form: "Compartilhe em suas redes"
       responses: 
         counting:
           one: "registro"
@@ -163,8 +164,12 @@ pt-BR:
       participant_id: "Código do participante"
       view_more_responses: "Ver mais registros"
 
+    data_report:
+      check_out_results: "Checar os resultados"
+      view_viz: "Veja abaixo os gráficos dos dados coletados nesta ação"
+
     edit:
-      overview_and_goals: "Descrição e objetivos"
+      define_goals: "Descrição e objetivos"
       type_number: "Digite um Número"
       explanations:
         description: "Descrição breve da ação"
@@ -179,20 +184,20 @@ pt-BR:
         submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
-    edit_campaign_page:
-      remain_anonymous: "Prefiro manter os organizadores anónimos"
-      campaign_page_description: "Em baixo você vai criar uma página pública para compartilhar informações sobre a sua ação."
+    edit_profile:
+      remain_anonymous: "Prefiro que os organizadores fiquem anónimos"
+      campaign_page_description: "Abaixo, crie uma página pública para compartilhar informações sobre a ação."
 
     how_to_participate:
       participate_title: "Ajude com a coleta de dados!"
       participate_text: "Baixe o aplicativo móvel e mande informações da sua area."
       step: "Passo"
-      step_1_text: "Baixar o aplicativo móvel"
+      step_1_text: "Baixe o aplicativo móvel"
       download_link: "Clique aqui para ver como baixar"
-      step_2_text: "Baixar o formulário"
+      step_2_text: "Baixe o formulário"
       step_2_subtext: "Use o código seguinte para baixar"
-      step_3_text: "Preencher o formulário"
-      step_3_subtext: "Mandar seus dados e vé-los no mapa da ação!"
+      step_3_text: "Preencha o formulário"
+      step_3_subtext: "Mande seus dados e vê-los no mapa da ação!"
 
     index:
       new_campaign: "Criar uma nova ação"
@@ -222,23 +227,26 @@ pt-BR:
 
     campaign_page:
       campaign_page: "Página pública"
-      view_as_public: "Prévisualizar como público"
-      preview: "Pré-visualização"
+      view_as_public: "Pré visualizar como público"
+      preview: "Pré visualização"
 
     share:
       visualize_data: "Vizualizar seus dados" 
       map: "Mapa" 
       photos: "Fotos"
       graphs: "Gráficos"
-      graph_placeholder: "Quando tiver registros, vai poder visualizer o agregado dos dados aqui."
+      graph_placeholder: "Quando tiver registros, vai poder visualizar o agregado dos dados aqui."
       image_placeholder: "Não há fotos coletadas ainda para este formulário"
-      share_data: "Compartilhar seus dados"
+      share_data: "Compartilhe seus dados"
       data_reports: "Relatório de dados"
       campaign_organizers: "Realizadores da ação"
       learn_more: "Aprender mais sobre esta ação no site"
       download_csv: "Baixar CSV"
       print_report: "Imprimir relatório"
       no_location: "Não há informações geográficas disponíveis"
+
+    survey:
+      edit_survey: "Editar formulário"
 
     tabs:
       goals: "Objetivos"
@@ -257,17 +265,17 @@ pt-BR:
       warning: "Depois de lançar, você não vai poder modificar o formulário."
       edit_survey: "Editar formulário"
       go_live: "Lançar ação"
-      confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode ser modificado mais!"
+      confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode mais ser modificado!"
       test_complete: "Teste completado - Esta ação está"
 
   surveys:
     android_preview: 
-      preview_title: "Pré-visualização no celular:"
+      preview_title: "Pré visualização no celular:"
       no_questions: "Formulário vazio"
       add_questions: "Escolha uma das opções acima para começar."
       question: "Pergunta"  
       of: "de"
-      close_preview: "Fechar pré-visualização"
+      close_preview: "Fechar pré visualização"
 
     survey_body:
       required: "Pergunta obrigatoria?"
@@ -293,8 +301,8 @@ pt-BR:
       add_image: "Obter foto"
       option_1: "Opção 1"
       preview_title: "Pré-visualização"
-      show_preview: "Mostrar pré-visualização"
-      hide_preview: "Esconder pré-visualização"
+      show_preview: "Mostrar pré visualização"
+      hide_preview: "Esconder pré visualização"
       confirm_input_delete: "Tem certeza que deseja eliminar este campo?"
 
   users:

@@ -164,6 +164,10 @@ en:
       participant_id: "Participant ID"
       view_more_responses: "View more responses"
 
+    data_report:
+      check_out_results: "Check out the results"
+      view_viz: "View the map and graphs of collected during this campaign below"
+
     edit:
       define_goals: "Overview and goals"
       type_number: "Type a number"
@@ -180,7 +184,7 @@ en:
         submissions_target: "How many responses will need to accurately represent your issue? How many will be reasonable to collect within the time frame of your campaign?"
         audience: "There are many audiences you may want to address with the data you collect. Could you reach a new audience who is not already familiar with this issue? Who are the most important groups to convince in order to make change on this issue?"
 
-    edit_campaign_page:
+    edit_profile:
       remain_anonymous: "I prefer to keep the organizers anonymous"
       campaign_page_description: "Below you will design a public page to share information about your campaign. This page can be sent to your networks to spread the word about your data collection initiative."
 
@@ -240,6 +244,9 @@ en:
       download_csv: "Download CSV"
       print_report: "Print report"
       no_location: "No geographic information available"
+
+    survey:
+      edit_survey: "Edit survey"
 
     tabs:
       overview: "Overview"
