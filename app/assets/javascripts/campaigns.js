@@ -8,6 +8,8 @@ $(function(){
       return false;
     }
   });
+
+  jQuery.extend(jQuery.validator.messages, I18n.t("defaults.validations"));
 });
 
 // Edit campaign

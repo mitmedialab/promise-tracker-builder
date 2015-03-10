@@ -29,7 +29,7 @@ pt-BR:
         title: "Nome"
         description: "Descrição"
         goal: "Objetivo"
-        submissions_target: "Número de participações"
+        submissions_target: "Número de respostas desejadas"
         data_collectors: "Colaboradores"
         audience: "Destinatário"
         status: "Estado"
@@ -175,7 +175,7 @@ pt-BR:
         description: "Descrição breve da ação"
         goal: "O que você quer mudar na sua comunidade com esta ação?"
         data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
-        submissions_target: "Quantas participações você espera?"
+        submissions_target: "Quantas resposta você espera?"
         audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
       tips:
@@ -197,7 +197,7 @@ pt-BR:
       step_2_text: "Baixe o formulário"
       step_2_subtext: "Use o código seguinte para baixar"
       step_3_text: "Preencha o formulário"
-      step_3_subtext: "Mande seus dados e vê-los no mapa da ação!"
+      step_3_subtext: "Envie seus dados para vê-los no mapa da ação!"
 
     index:
       new_campaign: "Criar uma nova ação"
@@ -225,7 +225,7 @@ pt-BR:
       collect_data: "Coletar dados"
       share_data: "Compartilhar dados"
 
-    campaign_page:
+    profile:
       campaign_page: "Página pública"
       view_as_public: "Pré visualizar como público"
       preview: "Pré visualização"
