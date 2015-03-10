@@ -33,7 +33,7 @@
     <div class="buttons-only">
       <div class="share-bar">
         <span><%= t("defaults.share") %></span>
-        <%= image_tag("social-fb.png", class: "social-share fb-share-button", href: "request.original_url.gsub('collect', 'public')") %>
+        <%= image_tag("social-fb.png", class: "social-share fb-share-button", href: "#{request.original_url.gsub('collect', 'public')}") %>
         <a class="tw-share-button" href="http://twitter.com/share?text=<%= t("defaults.share_text") %>&url=<%= request.original_url.gsub('collect', 'public')%>" target="blank">
           <%= image_tag("social-tw.png", class: "social-share") %>
         </a>
