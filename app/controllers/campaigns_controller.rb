@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
 
   def index
     @campaign = Campaign.new
-    @campaigns = current_user.campaigns.sort_by(&:status)
+    @campaigns = current_user.campaigns.select{ |c| c.title.present? }.sort_by(&:status)
   end
 
   def new
