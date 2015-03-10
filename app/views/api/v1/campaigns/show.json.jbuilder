@@ -6,9 +6,12 @@ json.payload do
     json.array! @campaign.tags.collect {|t| t.label}
   end
 
+
   json.survey do
-    json.(@campaign.survey, :id, :title)
-    json.inputs(@campaign.survey.inputs, :id, :label, :input_type, :options)
+    if @campaign.survey.present?
+      json.(@campaign.survey, :id, :title)
+      json.inputs(@campaign.survey.inputs, :id, :label, :input_type, :options)
+    end
   end
 
   json.public_url "#{request.protocol}#{request.host}/campaigns/#{@campaign.id}/share"

@@ -37,9 +37,11 @@ module Api
 
       def show
         @campaign = Campaign.includes(:tags, survey: :inputs).find_by_id(params[:id])
+        @user = User.where(api_client_user_id: params[:user_id].to_i).first
+        user_id = @user ? @user.id : nil
 
         if @campaign
-          if @campaign.status == 'draft'
+          if @campaign.status == 'draft' && @campaign.user_id != user_id
             @error_code = 21
             @error_message = 'Campaign has not been published'
             render 'api/v1/error', format: :json, status: 401
