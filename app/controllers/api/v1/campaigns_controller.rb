@@ -27,7 +27,7 @@ module Api
           else
             @error_code = 23
             @error_message = 'User not found'
-            render 'api/v1/error', format: :json, status: 404
+            render 'api/v1/error', formats: [:json], status: 404
           end
         else
           @campaigns = Campaign.includes(:tags).where.not(status: 'draft')
@@ -72,7 +72,7 @@ module Api
             else
               @error_code = 18
               @error_message = 'Campaign not found'
-              render 'api/v1/error', format: :json, status: 404 and return
+              render 'api/v1/error', formats: [:json], status: 404 and return
             end
           else
             campaign = Campaign.create
