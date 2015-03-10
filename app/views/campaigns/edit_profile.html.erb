@@ -72,7 +72,7 @@
 
 <script type="text/javascript">
   // Fetch responses from aggregator
-  <% if @campaign.status != "draft" %>
+  <% if @campaign.status == "closed" %>
     PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
       PT.renderGoogleMap(data, "report-map-container");
       PT.populateImages(PT.responses, "#report-image-container");
