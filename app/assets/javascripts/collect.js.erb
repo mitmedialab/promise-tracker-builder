@@ -173,7 +173,7 @@ PT.renderResponseTable = function(survey, responses){
 
   PT.renderResponseRows(sorted.slice(0, 10), $table);
   $("#response-view").append(HandlebarsTemplates["response_view"](survey));
-  PT.viewResponse(sorted[0]);
+  responses.length > 0 ? PT.viewResponse(sorted[0]) : false;
 
   if(responses.length > 10){
     $("#view-more").on("click", function(){

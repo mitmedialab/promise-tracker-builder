@@ -72,11 +72,13 @@
 
 <script type="text/javascript">
   // Fetch responses from aggregator
-  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
-    PT.renderGoogleMap(data, "report-map-container");
-    PT.populateImages(PT.responses, "#report-image-container");
-    PT.renderGraphs(PT.aggregate, "#report-graph-container", "col-md-6");
-  });
+  <% if @campaign.status != "draft" %>
+    PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+      PT.renderGoogleMap(data, "report-map-container");
+      PT.populateImages(PT.responses, "#report-image-container");
+      PT.renderGraphs(PT.aggregate, "#report-graph-container", "col-md-6");
+    });
+  <% end %>
 </script>
 
 <script type="text/javascript"> 

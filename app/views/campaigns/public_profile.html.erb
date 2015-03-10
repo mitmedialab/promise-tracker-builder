@@ -6,9 +6,11 @@
 
 <script type="text/javascript">
   // Fetch responses from aggregator
-  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
-    PT.renderGoogleMap(data, "report-map-container");
-    PT.populateImages(PT.responses, "#report-image-container");
-    PT.renderGraphs(PT.aggregate, "#slides-container", "");
-  });
+  <% if @campaign.status != "draft" %>
+    PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+      PT.renderGoogleMap(data, "report-map-container");
+      PT.populateImages(PT.responses, "#report-image-container");
+      PT.renderGraphs(PT.aggregate, "#slides-container", "");
+    });
+  <% end %>
 </script>

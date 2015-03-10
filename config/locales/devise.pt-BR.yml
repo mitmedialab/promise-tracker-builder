@@ -5,7 +5,7 @@ pt-BR:
       send_instructions: "Você receberá um email para confirmar sua conta em alguns minutis."
       send_paranoid_instructions: "Caso seu endereço de email já exista em nossa base, você receberá um email com instruções sobre como ativar sua conta."
     failure:
-      already_authenticated: "Você já está logado."
+      already_authenticated: ""
       inactive: "Sua conta ainda não foi ativada."
       invalid: "Email ou senha inválidos."
       locked: "Sua conta está travada."
