@@ -20,7 +20,7 @@ pt-BR:
 
     models:
       survey: "Formulário"
-      campaign: "Acão"
+      campaign: "Campanha"
       input: "Pergunta"
       user: "Usuário"
 
@@ -36,7 +36,7 @@ pt-BR:
         start_date: "Data de publicação"
         end_date: "Data final"
         theme: "Tema"
-        organizers: "Organizadores da ação"
+        organizers: "Organizadores da campanha"
 
       input:
         input_type: "Tipo de resposta"
@@ -101,8 +101,8 @@ pt-BR:
       please_define_goals: "Por favor complete as perguntas e salve para avançar"
       please_create_survey: "Por favor crie seu formulário para poder avançar"
       please_complete_campaign_page: "Por favor preencha os campos do perfil e salve para avançar"
-      launch_campaign: "Você precisa lançar esta ação para avançar"
-      close_campaign: "Você precisa fechar esta ação para avançar"
+      launch_campaign: "Você precisa lançar esta campanha para avançar"
+      close_campaign: "Você precisa fechar esta campanha para avançar"
 
   errors:
     sorry: "Desculpe!"
@@ -143,16 +143,16 @@ pt-BR:
       copy: "cópia"
 
     activate: 
-      upload_error: "Disculpe. Seu formulário não poderia ser publicado."
-      upload_success: "Seu formulário foi publicado com sucesso!"
+      upload_error: "Desculpe. Seu formulário não foi lançado."
+      upload_success: "Seu formulário foi lançado com sucesso!"
 
     collect:
-      status_text: "Este formulário está "
+      status_text: "Esta campanha está "
       survey_code: "Você pode baixar e preencher este formulário usando o código"
-      close_confirmation: "Se você fecha este formulário, não pode publicar-lo novamente."
+      close_confirmation: "Se você encerrar esta campanha, não poderá coletar mais dados."
       number_of_responses: "Número de registros"
-      close: "Encerrar ação"
-      confirm_close: "Tem certeza que quer fechar esta ação? Não vai poder coletar mais dados!"
+      close: "Encerrar campanha"
+      confirm_close: "Tem certeza que quer fechar esta campanha? Não vai poder coletar mais dados!"
       publicize_form: "Compartilhe em suas redes"
       responses: 
         counting:
@@ -166,14 +166,14 @@ pt-BR:
 
     data_report:
       check_out_results: "Checar os resultados"
-      view_viz: "Veja abaixo os gráficos dos dados coletados nesta ação"
+      view_viz: "Veja abaixo os gráficos dos dados coletados nesta campanha"
 
     edit:
       define_goals: "Descrição e objetivos"
       type_number: "Digite um Número"
       explanations:
-        description: "Descrição breve da ação"
-        goal: "O que você quer mudar na sua comunidade com esta ação?"
+        description: "Descrição breve da campanha"
+        goal: "O que você quer mudar na sua comunidade com esta campanha?"
         data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
         submissions_target: "Quantas resposta você espera?"
         audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
@@ -186,7 +186,7 @@ pt-BR:
 
     edit_profile:
       remain_anonymous: "Prefiro que os organizadores fiquem anónimos"
-      campaign_page_description: "Abaixo, crie uma página pública para compartilhar informações sobre a ação."
+      campaign_page_description: "Sua campanha vai ter uma página na internet. Você pode usá-la para convidar seus amigos nas redes socias para ajudar com a coleta de dados. No formulário abaixo você pode alterar a apresentação desta página."
 
     how_to_participate:
       participate_title: "Ajude com a coleta de dados!"
@@ -197,24 +197,24 @@ pt-BR:
       step_2_text: "Baixe o formulário"
       step_2_subtext: "Use o código seguinte para baixar"
       step_3_text: "Preencha o formulário"
-      step_3_subtext: "Envie seus dados para vê-los no mapa da ação!"
+      step_3_subtext: "Envie seus dados para vê-los no mapa da campanha!"
 
     index:
-      new_campaign: "Criar uma nova ação"
+      new_campaign: "Criar uma nova campanha"
       my_campaigns: "Minhas ações"
       greeting: "Oi"
       welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
       get_started: "Que tal criar sua primeira açāo?"
 
     list_item:
-      confirm_delete: "Você tem certeza que quer eliminar esta ação?" 
-      confirm_clone: "Você em certeza que quer duplicar esta ação?" 
+      confirm_delete: "Você tem certeza que quer eliminar esta campanha?" 
+      confirm_clone: "Você em certeza que quer duplicar esta campanha?" 
 
     new:
-      modal_title: "Nova ação"
+      modal_title: "Nova campanha"
       campaign_theme: "Qual é o tema que interessa você?"
-      campaign_title: "Nome da ação"
-      title_placeholder: "Nome da ação"
+      campaign_title: "Nome da campanha"
+      title_placeholder: "Nome da campanha"
       create_campaign: "Criar"
 
     progress_bar:
@@ -239,8 +239,8 @@ pt-BR:
       image_placeholder: "Não há fotos coletadas ainda para este formulário"
       share_data: "Compartilhe seus dados"
       data_reports: "Relatório de dados"
-      campaign_organizers: "Realizadores da ação"
-      learn_more: "Aprender mais sobre esta ação no site"
+      campaign_organizers: "Organizadores da campanha"
+      learn_more: "Aprender mais sobre esta campanha no site"
       download_csv: "Baixar CSV"
       print_report: "Imprimir relatório"
       no_location: "Não há informações geográficas disponíveis"
@@ -257,16 +257,16 @@ pt-BR:
 
     test:
       test_title: "Teste do formulário"
-      test_explanation: "Antes de lançar sua ação, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
+      test_explanation: "Antes de lançar sua campanha, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
       catch_errors: "Agora é o momento de achar todos os erros!"
       how_to_test: "Como testar"
       step_3_text: "Testar o formulário"
       step_3_subtext: "Preencha o formulário e Confirme que tudo esteja bem escrito e em ordem"
       warning: "Depois de lançar, você não vai poder modificar o formulário."
       edit_survey: "Editar formulário"
-      go_live: "Lançar ação"
-      confirm_launch: "Tem certeza que deseja lançar esta ação? Uma vez lançado, o formulário não pode mais ser modificado!"
-      test_complete: "Teste completado - Esta ação está"
+      go_live: "Lançar campanha"
+      confirm_launch: "Tem certeza que deseja lançar esta campanha? Uma vez lançado, o formulário não pode mais ser modificado!"
+      test_complete: "Teste completado - Esta campanha está"
 
   surveys:
     android_preview: 
