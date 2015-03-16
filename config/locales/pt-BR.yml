@@ -220,13 +220,13 @@ pt-BR:
     progress_bar:
       define_goals: "Definir objetivos"
       create_survey: "Criar formulário"
-      design_campaign_page: "Preparar página pública"
+      design_campaign_page: "Preparar página da campanha"
       test_survey: "Testar formulário"
       collect_data: "Coletar dados"
       share_data: "Compartilhar dados"
 
     profile:
-      campaign_page: "Página pública"
+      campaign_page: "Página da campanha"
       view_as_public: "Pré visualizar como público"
       preview: "Pré visualização"
 
@@ -251,7 +251,7 @@ pt-BR:
     tabs:
       goals: "Objetivos"
       survey: "Formulário"
-      campaign_page: "Página pública"
+      campaign_page: "Página da campanha"
       data: "Dados"
       viz: "Visualizações"
 
