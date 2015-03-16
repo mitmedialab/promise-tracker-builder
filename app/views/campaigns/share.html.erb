@@ -1,8 +1,8 @@
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
-    <div class="tab-pane fade in active" id="map-viz"></div>
+    <div class="tab-pane" id="map-viz"></div>
 
-    <div class="tab-pane" id="graph-viz">
+    <div class="tab-pane fade in active" id="graph-viz">
       <div id="graph-container" class="row"></div>
       <div class="ajax-loading">
         <%= image_tag("ajax-loader.gif") %>
@@ -117,6 +117,7 @@
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);
+    $("#map-tab").trigger("click");
 
     // Add CSV download button handler
     $(".csv-download").on("click", function(e){
