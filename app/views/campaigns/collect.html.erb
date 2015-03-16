@@ -81,7 +81,7 @@
   $(document).on("click", ".fb-share-button", function(){
     FB.ui({
       method: 'share',
-      href: '<%= request.original_url.gsub("collect", "public") %>',
+      href: '<%= "#{request.original_url.split('campaigns/').first}campaigns/#{@campaign.id}/public" %>',
     }, function(response){
     });
   });
