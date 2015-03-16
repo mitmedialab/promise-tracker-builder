@@ -127,6 +127,10 @@
           width: 100px;
           height: 100px;
           margin: 3px 3px 0 0;
+
+          &.placeholder {
+            background-image: url("map-placeholder.png");
+          }
         }
       }
 
