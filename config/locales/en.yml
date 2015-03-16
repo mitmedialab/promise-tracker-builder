@@ -184,10 +184,6 @@ en:
         submissions_target: "How many responses will need to accurately represent your issue? How many will be reasonable to collect within the time frame of your campaign?"
         audience: "There are many audiences you may want to address with the data you collect. Could you reach a new audience who is not already familiar with this issue? Who are the most important groups to convince in order to make change on this issue?"
 
-    edit_profile:
-      remain_anonymous: "I prefer to keep the organizers anonymous"
-      campaign_page_description: "Below you will design a public page to share information about your campaign. This page can be sent to your networks to spread the word about your data collection initiative."
-
     how_to_participate:
       participate_title: "Get involved now!"
       participate_text: "To help collect data for this campaign, get the mobile app and send in info from your neighborhood!"
@@ -225,8 +221,10 @@ en:
       collect_data: "Collect data"
       share_data: "Share data"
 
-    profile:
-      campaign_page: "Campaign page"
+    campaign_page:
+      title: "Campaign page"
+      campaign_page_description: "Below you will design a public page to share information about your campaign. This page can be sent to your networks to spread the word about your data collection initiative."
+      remain_anonymous: "I prefer to keep the organizers anonymous"
       view_as_public: "View as the public will see it"
       preview: "Preview"
 

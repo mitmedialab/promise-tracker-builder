@@ -184,10 +184,6 @@ pt-BR:
         submissions_target: "Pense em quantos registros você deve obter para ter uma amostra representativa do problema e quantas você consegue coletar no intervalo de tempo de que dispõe."
         audience: "Existem muitos destinatários possíveis. Quem terá maior interesse nestes dados? Quais públicos utilizariam seus dados para promover uma mudança real?"
 
-    edit_profile:
-      remain_anonymous: "Prefiro que os organizadores fiquem anónimos"
-      campaign_page_description: "Sua campanha vai ter uma página na internet. Você pode usá-la para convidar seus amigos nas redes socias para ajudar com a coleta de dados. No formulário abaixo você pode alterar a apresentação desta página."
-
     how_to_participate:
       participate_title: "Ajude com a coleta de dados!"
       participate_text: "Baixe o aplicativo móvel e mande informações da sua area"
@@ -225,9 +221,11 @@ pt-BR:
       collect_data: "Coletar dados"
       share_data: "Compartilhar dados"
 
-    profile:
-      campaign_page: "Página da campanha"
+    campaign_page:
+      title: "Página da campanha"
+      campaign_page_description: "Sua campanha vai ter uma página na internet. Você pode usá-la para convidar seus amigos nas redes socias para ajudar com a coleta de dados. No formulário abaixo você pode alterar a apresentação desta página."
       view_as_public: "Pré visualizar como público"
+      remain_anonymous: "Prefiro que os organizadores fiquem anónimos"
       preview: "Pré visualização"
 
     share:
