@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta property="og:title" content="<%= t('app_name') %>" >
 <meta property="og:url" content="<%= request.original_url %>" >
+<meta property="og:image" content="<%= URI.join(root_url, image_path("campaign-share-image.jpg")) %>">
 
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
