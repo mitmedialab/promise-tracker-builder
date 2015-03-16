@@ -17,7 +17,7 @@ class CampaignsController < ApplicationController
   def create
     @campaign = current_user.campaigns.find_or_create_by(id: params[:campaign][:id])
     @campaign.update_attributes(campaign_params)
-    redirect_to campaign_goals_wizard_path(@campaign)
+    redirect_to edit_campaign_path(@campaign)
   end
 
   def show

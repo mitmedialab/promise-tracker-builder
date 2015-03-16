@@ -171,6 +171,11 @@
   padding-top: 20px;
 }
 
+.response-table-container {
+  max-height: 450px;
+  overflow-y: scroll;
+}
+
 #response-table {
   margin-bottom: 25px;
   position: relative;

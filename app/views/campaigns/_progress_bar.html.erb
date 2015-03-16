@@ -43,7 +43,7 @@
       </div>
     <% end %>
   <% elsif @campaign.status == "active" %>
-    <%= link_to t("campaigns.collect.close"), close_campaign_path(@campaign), class: "btn btn-warning progress-arrow", data: { confirm: t("campaigns.collect.confirm_close") } %>
+    <%= link_to t(".share_data"), share_campaign_path(@campaign), class: "btn btn-warning progress-arrow" %>
   <% elsif @campaign.status != "closed" %>
     <%= link_to campaign_next_path(@campaign, refer_action: action_name) do %>
       <div class="btn btn-grey progress-arrow">

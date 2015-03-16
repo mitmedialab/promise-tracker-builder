@@ -1,12 +1,7 @@
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
     <div class="tab-pane" id="map-viz"></div>
-    <div class="tab-pane" id="image-viz">
-      <div id="image-placeholder">
-        <h3><%= t(".image_placeholder") %></h3>
-        <%= image_tag("placeholder.jpg") %>
-      </div>
-    </div>
+
     <div class="tab-pane fade in active" id="graph-viz">
       <div id="graph-container" class="row"></div>
       <div class="ajax-loading">
@@ -21,17 +16,24 @@
         </div>
       </div>
     </div>
+
+    <div class="tab-pane" id="image-viz">
+      <div id="image-placeholder">
+        <h3><%= t(".image_placeholder") %></h3>
+        <%= image_tag("placeholder.jpg") %>
+      </div>
+    </div>
   </div>
 
   <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
-    <a href="#graph-viz" role="tab" data-toggle="tab" class="active" id="graph-tab">
-      <div class="viz graph">
-        <h4 class="title legend"><%= t(".graphs") %></h4>
-      </div>
-    </a>
     <a href="#map-viz" role="tab" data-toggle="tab" id="map-tab">
       <div class="viz map">
         <h4 class="title legend"><%= t(".map") %></h4>
+      </div>
+    </a>
+    <a href="#graph-viz" role="tab" data-toggle="tab" class="active" id="graph-tab">
+      <div class="viz graph">
+        <h4 class="title legend"><%= t(".graphs") %></h4>
       </div>
     </a>
     <a href="#image-viz" role="tab" data-toggle="tab" id="image-tab">

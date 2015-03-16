@@ -119,7 +119,7 @@ pt-BR:
     index:
       welcome: "Começar com Promise Tracker"
       tag_line: "Coleta de dados para a ação cívica"
-      project_description: "Monitorando a Cidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar ações locais do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando a Cidade ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
+      project_description: "Monitorando a Cidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar compromissos do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando a Cidade ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
       process_line: "O Nosso Processo"
       process_description: 
       phase_1_title: "Definir objectivos & criar formulário"
@@ -201,10 +201,10 @@ pt-BR:
 
     index:
       new_campaign: "Criar uma nova campanha"
-      my_campaigns: "Minhas ações"
+      my_campaigns: "Minhas campanhas"
       greeting: "Oi"
       welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
-      get_started: "Que tal criar sua primeira açāo?"
+      get_started: "Que tal criar sua primeira campanha?"
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta campanha?" 
