@@ -225,7 +225,7 @@ en:
       collect_data: "Collect data"
       share_data: "Share data"
 
-    campaign_page:
+    profile:
       campaign_page: "Campaign page"
       view_as_public: "View as the public will see it"
       preview: "Preview"

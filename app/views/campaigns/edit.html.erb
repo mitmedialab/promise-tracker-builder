@@ -17,16 +17,18 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-sm-8">
           <div class="form-group"> 
             <%= f.label :description %>
             <p class="explain"><%= t("campaigns.edit.explanations.description") %></p>
-            <%= f.text_area :description, rows: 4, class: "form-control", autofocus: true %>
+            <%= f.text_area :description, rows: 5, class: "form-control", autofocus: true %>
           </div>
         </div>
       </div>
-      <div class="row">
+
+      <!-- <div class="row">
         <div class="col-sm-8">
           <div class="form-group"> 
             <%= f.label :goal %>
@@ -44,6 +46,15 @@
             </div>
           </div>  
         </div>
+      </div> -->
+
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="form-group"> 
+            <%= f.label :organizers %>
+            <%= f.text_area :organizers, rows: 2, class: "form-control" %>
+          </div>
+        </div>
       </div>
 
       <div class="row">
@@ -51,7 +62,7 @@
           <div class="form-group"> 
             <%= f.label :data_collectors %>
             <p class="explain"><%= t(".explanations.data_collectors") %></p>
-            <%= f.text_area :data_collectors, rows: 5, class: "form-control" %>
+            <%= f.text_area :data_collectors, rows: 2, class: "form-control" %>
           </div>
         </div>
         <div class="col-sm-4">

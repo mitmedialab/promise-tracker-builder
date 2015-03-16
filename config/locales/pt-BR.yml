@@ -122,7 +122,7 @@ pt-BR:
       project_description: "Monitorando a Cidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar compromissos do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando a Cidade ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
       process_line: "O Nosso Processo"
       process_description: 
-      phase_1_title: "Definir objectivos & criar formulário"
+      phase_1_title: "Definir campanha & criar formulário"
       phase_1_description: ""
       phase_2_title: "Coletar dados no campo"
       phase_2_description: ""
@@ -169,7 +169,7 @@ pt-BR:
       view_viz: "Veja abaixo os gráficos dos dados coletados nesta campanha"
 
     edit:
-      define_goals: "Descrição e objetivos"
+      define_goals: "Definição da campanha"
       type_number: "Digite um Número"
       explanations:
         description: "Descrição breve da campanha"
@@ -218,7 +218,7 @@ pt-BR:
       create_campaign: "Criar"
 
     progress_bar:
-      define_goals: "Definir objetivos"
+      define_goals: "Definir campanha"
       create_survey: "Criar formulário"
       design_campaign_page: "Preparar página da campanha"
       test_survey: "Testar formulário"
@@ -249,7 +249,7 @@ pt-BR:
       edit_survey: "Editar formulário"
 
     tabs:
-      goals: "Objetivos"
+      goals: "Definição"
       survey: "Formulário"
       campaign_page: "Página da campanha"
       data: "Dados"
