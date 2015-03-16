@@ -33,7 +33,7 @@ pt-BR:
     registrations:
       destroyed: "Até mais! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
       user:
-        signed_up: "Bem-vindo! Você se registrou com sucesso."
+        signed_up: ""
         signed_up_but_inactive: "Você se registrou com sucesso. No entanto, não podemos logá-lo, pois você ainda não ativou sua conta."
         signed_up_but_locked: "Você se registrou com sucesso. No entanto, não podemos logá-lo, pois sua conta está travada."
         signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para seu endereço de email. Por favor abra o link para ativar sua conta."

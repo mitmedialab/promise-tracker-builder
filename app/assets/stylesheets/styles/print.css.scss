@@ -2,4 +2,12 @@
   a:link:after {
     content: "";
   }
+
+  #test-campaign, #how-to-participate {
+    .highlight {
+      background: #f5be59;
+      margin-left: -60px;
+      padding-left: 60px;
+    }
+  }
 }

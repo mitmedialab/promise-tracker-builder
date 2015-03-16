@@ -31,7 +31,7 @@ pt-BR:
         goal: "Objetivo"
         submissions_target: "Número de respostas desejadas"
         data_collectors: "Colaboradores"
-        audience: "Destinatário"
+        audience: "Destinatários"
         status: "Estado"
         start_date: "Data de publicação"
         end_date: "Data final"
@@ -174,8 +174,8 @@ pt-BR:
       explanations:
         description: "Descrição breve da campanha"
         goal: "O que você quer mudar na sua comunidade com esta campanha?"
-        data_collectors: "Quem vai coletar os dados com o formulário que você vai criar?"
-        submissions_target: "Quantas resposta você espera?"
+        data_collectors: "Quem vai coletar os dados para esta campanha?"
+        submissions_target: "Quantas respostas você espera?"
         audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
       tips:

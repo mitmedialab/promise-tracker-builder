@@ -123,6 +123,12 @@
     PT.updateDisplay($("#campaign-title-input"), $(".campaign-title"));
   });
 
+  $("textarea, input").on("click", function(){
+    var $currentTip = $(this).parents(".row").find(".tip-box .body");
+    $(".tip-box .body").not($currentTip).slideUp();
+    $currentTip.slideDown();
+  });
+
   $(".edit_campaign").on("submit", function(){
     if(!PT.validateOverview(this)){
       PT.scrollToError();
