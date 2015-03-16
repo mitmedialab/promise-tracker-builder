@@ -1,8 +1,8 @@
 class CampaignsController < ApplicationController
 
   layout 'campaign', except: [:index, :public_profile, :setup]
-  before_filter :authenticate_user!, except: [:profile, :share]
-  before_filter :restrict_user_access, except: [:create, :index, :profile, :share]
+  before_filter :authenticate_user!, except: [:public_profile, :share]
+  before_filter :restrict_user_access, except: [:create, :index, :public_profile, :share]
   before_filter :assign_campaign_variables, except: [:index, :create, :destroy, :share]
 
   def index
