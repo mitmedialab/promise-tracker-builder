@@ -516,7 +516,7 @@ PT.renderColumnChart = function(containerId, inputSummary, titleDisabled, downlo
     },
     colors: PT.colors,
     titleDisabled: {
-      text: titleDisabled || inputSummary.label
+      text: ""
     },
     tooltip: {
       headerFormat: "{point.series.name}",
