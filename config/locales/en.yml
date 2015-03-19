@@ -62,6 +62,7 @@ en:
         health: "Health"
         infrastructure: "Infrastructure"
         energy: "Eletricity"
+        transport: "Transport"
         other: "Other"
 
       input_types:
