@@ -285,7 +285,7 @@ PT.renderMapForLocationQuestion = function($div, input){
   var $canvas = $('<canvas width="'+$div.innerWidth()+'" height="'+$div.innerHeight()+'"/>').appendTo($div);
 
   $canvas.osmStaticMap({
-    url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+    url: "http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
     circleRadius: 8,
     markers: markerData,
     interactive: true,
@@ -334,7 +334,7 @@ PT.renderMapForSummaryGraph = function($div, input){
     var $canvas = $('<canvas width="'+$div.innerWidth()+'" height="'+$div.innerHeight()+'"/>').appendTo($div);
 
     $canvas.osmStaticMap({
-      url: "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+      url: "http://s.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
       circleRadius: 8,
       markers: markerData,
       interactive: true,
