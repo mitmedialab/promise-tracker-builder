@@ -28,54 +28,17 @@
         </div>
       </div>
 
-      <!-- <div class="row">
-        <div class="col-sm-8">
-          <div class="form-group"> 
-            <%= f.label :goal %>
-            <p class="explain"><%= t(".explanations.goal") %></p>
-            <%= f.text_area :goal, rows: 8, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="tip-box">
-            <div class="header">
-              <span class="icon-question-sign"></span> <%= t(".tooltip") %>
-            </div>
-            <div class="body">
-              <p><%= t(".tips.goal") %></p>
-            </div>
-          </div>  
-        </div>
-      </div> -->
-
-<!--       <div class="row">
-        <div class="col-sm-8">
-          <div class="form-group"> 
-            <%= f.label :organizers %>
-            <%= f.text_area :organizers, rows: 2, class: "form-control" %>
-          </div>
-        </div>
-      </div> -->
-
       <div class="row">
         <div class="col-sm-8">
           <div class="form-group"> 
-            <%= f.label :data_collectors %>
-            <p class="explain"><%= t(".explanations.data_collectors") %></p>
-            <%= f.text_area :data_collectors, rows: 2, class: "form-control" %>
+            <%= f.label :organizers %>
+            <p class="explain"><%= t("campaigns.edit.explanations.organizers") %></p>
+            <%= f.text_area :organizers, rows: 2, class: "form-control" %>
           </div>
         </div>
-        <div class="col-sm-4">
-          <div class="tip-box">
-            <div class="header">
-              <span class="icon-question-sign"></span> <%= t(".tooltip") %>
-            </div>
-            <div class="body">
-              <p><%= t(".tips.data_collectors") %></p>
-            </div>
-          </div>  
-        </div>
+      </div>
 
+      <div class="row">
         <div class="col-sm-8">
           <div class="form-group"> 
             <%= f.label :submissions_target %>
@@ -100,7 +63,7 @@
           <div class="form-group"> 
             <%= f.label :audience %>
             <p class="explain"><%= t(".explanations.audience") %></p>
-            <%= f.text_area :audience, rows: 8, class: "form-control" %>
+            <%= f.text_area :audience, rows: 5, class: "form-control" %>
           </div>
         </div>
         <div class="col-sm-4">

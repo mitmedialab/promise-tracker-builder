@@ -39,7 +39,7 @@ PT.validateOverview = function(formSelector){
     rules: {
       "campaign[title]": {required: true, minlength: 5},
       "campaign[description]": {required: true},
-      "campaign[data_collectors]": {required: true},
+      "campaign[organizers]": {required: true},
       "campaign[submissions_target]": {required: true, number: true},
       "campaign[audience]": {required: true}
     }
