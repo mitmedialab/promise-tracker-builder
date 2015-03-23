@@ -29,8 +29,9 @@ class Campaign < ActiveRecord::Base
   end
 
   def validate_goals
+    self.title.present?
     self.description.present? && 
-    self.data_collectors.present? && 
+    self.organizers.present? && 
     self.audience.present? &&  
     self.submissions_target.present?
   end

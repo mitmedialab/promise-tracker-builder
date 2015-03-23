@@ -17,6 +17,7 @@
     <%= form_for @campaign do |f| %>
       <div id="campaign-profile" class="preview">
         <%= f.text_field :title, class: "campaign-title" %>
+        <%= f.hidden_field :campaign_page_valid, value: true %>
 
         <div class="row campaign-overview">
           <div class="col-sm-7">

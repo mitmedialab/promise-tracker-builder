@@ -168,10 +168,10 @@ class CampaignsController < ApplicationController
         t('defaults.validations.please_create_survey')
       end
     when 'edit_profile', 'profile'
-      if @campaign.validate_profile
+      if @campaign.campaign_page_valid
         true
       else
-        t('defaults.validations.please_complete_profile')
+        t('defaults.validations.please_complete_campaign_page')
       end
     when 'test'
       if @campaign.status == 'active'
@@ -191,7 +191,7 @@ class CampaignsController < ApplicationController
   def campaign_params
     params.require(:campaign).permit(
       :title, :description, :goal, :theme, :data_collectors,
-      :submissions_target, :audience, :organizers, :anonymous, :image)
+      :submissions_target, :audience, :organizers, :anonymous, :image, :campaign_page_valid)
   end
 
 end
