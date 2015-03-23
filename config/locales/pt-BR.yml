@@ -29,7 +29,7 @@ pt-BR:
         title: "Nome"
         description: "Descrição"
         goal: "Objetivo"
-        submissions_target: "Número de respostas desejadas"
+        submissions_target: "Número de registros desejados"
         data_collectors: "Colaboradores"
         audience: "Destinatários"
         status: "Estado"
@@ -101,7 +101,7 @@ pt-BR:
       confirm_save: "Suas modificações foram salvadas"
       please_define_goals: "Por favor complete as perguntas e salve para avançar"
       please_create_survey: "Por favor crie seu formulário para poder avançar"
-      please_complete_campaign_page: "Por favor preencha os campos do perfil e salve para avançar"
+      please_complete_campaign_page: "Por favor preencha os campos da página da campanha e salve para avançar"
       launch_campaign: "Você precisa lançar esta campanha para avançar"
       close_campaign: "Você precisa fechar esta campanha para avançar"
 
@@ -175,9 +175,10 @@ pt-BR:
       explanations:
         description: "Descrição breve da campanha"
         goal: "O que você quer mudar na sua comunidade com esta campanha?"
+        organizers: "Qual grupo ou associação está organizando a campanha?"
         data_collectors: "Quem vai coletar os dados para esta campanha?"
-        submissions_target: "Quantas respostas você espera?"
-        audience: "Para transformar a realidade, com quem você vai compartilhar os dados coletados?"
+        submissions_target: "Quantos registros você espera conseguir durante a coleta de dados?"
+        audience: "Para melhorar a qualidade de vida na cidade, com quem você vai compartilhar os dados coletados?"
       tooltip: "Dica"
       tips:
         data_collectors: "Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você para coletar dados nesta campanha?"
@@ -303,6 +304,7 @@ pt-BR:
       show_preview: "Mostrar pré visualização"
       hide_preview: "Esconder pré visualização"
       confirm_input_delete: "Tem certeza que deseja eliminar este campo?"
+      finalize_survey: "Concluir formulário"
 
   users:
     show:

@@ -62,7 +62,7 @@ en:
         health: "Health"
         infrastructure: "Infrastructure"
         energy: "Eletricity"
-        transport: "Transport"
+        transport: "Transportation"
         other: "Other"
 
       input_types:
@@ -101,7 +101,7 @@ en:
       confirm_save: "Your changes have been saved."
       please_define_goals: "Please answer all questions and save to advance"
       please_create_survey: "Please create your survey to advance"
-      please_complete_campaign_page: "Please complete the campaign_page fields and save to advance"
+      please_complete_campaign_page: "Please complete the campaign page fields and save to advance"
       launch_campaign: "You must go live with this campaign to advance"
       close_campaign: "You must close this campaign to advance"
 
@@ -302,6 +302,7 @@ en:
       show_preview: "Show preview"
       hide_preview: "Hide preview"
       confirm_input_delete: "Are you sure you want to delete this input?"
+      finalize_survey: "Complete survey design"
 
   users:
     show:

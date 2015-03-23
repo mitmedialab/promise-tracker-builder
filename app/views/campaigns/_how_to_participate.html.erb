@@ -6,6 +6,7 @@
     <div class="col-sm-4">
       <div class="step">
         <i class="icon-mobile-phone bigger"></i>
+        <h5><%= t("campaigns.how_to_participate.step") %> 1:</h5>
         <h4><%= t(".step_1_text") %></h4>
         <%= link_to t(".download_link"), download_path, target: "blank" %>
       </div>
@@ -13,6 +14,7 @@
     <div class="col-sm-4">
      <div class="step">
         <i class="icon-download-alt"></i>
+        <h5><%= t("campaigns.how_to_participate.step") %> 2:</h5>
         <h4><%= t(".step_2_text") %></h4>
         <p class="small"><%= t(".step_2_subtext") %>:</p>
         <h3 class="code"><%= format_survey_code(@survey.code) %></h3>
@@ -21,6 +23,7 @@
     <div class="col-sm-4">
       <div class="step">
         <i class="icon-check"></i>
+        <h5><%= t("campaigns.how_to_participate.step") %> 3:</h5>
         <h4><%= t(".step_3_text") %></h4>
         <p class="small"><%= t(".step_3_subtext") %></p>
       </div>

@@ -238,7 +238,7 @@ PT.renderGallery = function(images, containerId, galleryName){
       $container.append($a);
     });
   } else {
-    $container.append("<img class='gallery-image placeholder' alt='Placeholder image'>");
+    $container.append("<img class='gallery-image placeholder'>");
   }
 };
 
