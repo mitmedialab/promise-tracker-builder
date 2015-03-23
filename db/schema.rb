@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118053418) do
+ActiveRecord::Schema.define(version: 20150323143031) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150118053418) do
     t.integer  "submissions_target"
     t.text     "audience"
     t.text     "data_collectors"
-    t.string   "status",             default: "draft"
+    t.string   "status",              default: "draft"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150118053418) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "campaign_page_valid"
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
