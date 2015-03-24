@@ -210,7 +210,7 @@ pt-BR:
 
     new:
       modal_title: "Nova campanha"
-      campaign_theme: "Qual é o tema que interessa você?"
+      campaign_theme: "Qual o tema do seu interesse?"
       campaign_title: "Nome da campanha"
       title_placeholder: "Nome da campanha"
       create_campaign: "Criar"
