@@ -60,6 +60,13 @@
           <li>
             <a href="" class="csv-download"><%= t(".download_csv") %></a>
           </li>
+          <li>
+            <% if current_user %>
+              <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
+                <i class="icon-copy"></i>
+              <% end %>
+            <% end %>
+          </li>
         </ul>
         <%= render partial: 'data_report' %>
       </div>
@@ -78,23 +85,6 @@
 </div>
 
 <script type="text/javascript">
-  // Facebook SDK
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '337756186420908',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
   // Facebook share handler
   $(document).on("click", ".fb-share-button", function(){
     FB.ui({
