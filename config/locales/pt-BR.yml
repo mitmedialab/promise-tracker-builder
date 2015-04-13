@@ -61,7 +61,8 @@ pt-BR:
         environment: "Meio ambiente"
         transport: "Mobilidade Urbana"
         health: "Saúde"
-        infrastructure: "Infra-estrutura"
+        sanitation: "Saneamento"
+        infrastructure: "Infraestrutura"
         energy: "Eletricidade"
         other: "Outra"
 

@@ -60,6 +60,7 @@ en:
         housing: "Housing"
         environment: "Environment"
         health: "Health"
+        sanitation: "Sanitation"
         infrastructure: "Infrastructure"
         energy: "Eletricity"
         transport: "Transportation"
