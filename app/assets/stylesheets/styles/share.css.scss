@@ -15,7 +15,8 @@
   }
 
   .gallery-image.placeholder {
-    background-image: url("placeholder.jpg");
+    background: url("placeholder.jpg") center center;
+    background-size: cover;
   }
 
   .featured-viz {
