@@ -319,11 +319,21 @@ PT.renderMapForSummaryGraph = function($div, input){
                   return el.answers[inputIndex].value == element.label;
                 }
               }).map(function(el, i, arr){
+                // If location question found, pull location from question
+                if(locationIndex != -1){
                   return {
-                    lon: el.answers[locationIndex].value ? el.answers[locationIndex].value.lon : el.locationstamp.lon,
-                    lat: el.answers[locationIndex].value ? el.answers[locationIndex].value.lat : el.locationstamp.lat,
+                    lon: el.answers[locationIndex].value.lon,
+                    lat: el.answers[locationIndex].value.lat,
                     data: el
                   }
+                } else{
+                // If not, pull location from location stamp
+                  return {
+                    lon: el.locationstamp.lon,
+                    lat: el.locationstamp.lat,
+                    data: el
+                  }
+                }
               })
     }
   }).filter(function(el){ // Remove input sets with no data points
