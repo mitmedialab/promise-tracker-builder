@@ -84,7 +84,7 @@ en:
     download: "Download"
     view: "View"
     share: "Share"
-    share_text: "Check out this campaign on Promise Tracker"
+    share_text: "Check out the results from the Promise Tracker campaign -"
     edit: "Edit"
     close: "Close"
     copy: "Copy"
@@ -145,7 +145,7 @@ en:
       copy: "copy"
 
     activate: 
-      upload_error: "Our bad! Your survey not be published. Please try again later."
+      upload_error: "Our bad! Your survey could not be published at the moment. Please try again later."
       upload_success: "Your survey has been successfully published!"
 
     collect:
