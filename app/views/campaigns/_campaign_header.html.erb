@@ -9,6 +9,10 @@
 <% if action_name != 'edit' && action_name != 'goals_wizard' %>
   <div class="campaign-title section-container">
     <%= link_to @campaign.title, campaign_path(@campaign) %>
-    <% if @campaign.status != "draft" %><span class="subtle small"> (<%= format_survey_code(@survey.code) %>)</span><% end %>
+    <% if @campaign.status != "draft" %>
+      <% if action_name != 'share'%>
+        <span class="subtle small"> (<%= format_survey_code(@survey.code) %>)</span>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
