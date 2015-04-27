@@ -37,6 +37,9 @@ pt-BR:
         end_date: "Data final"
         theme: "Tema"
         organizers: "Organizadores da campanha"
+        country: "País"
+        state: "Estado"
+        city: "Cidade"
 
       input:
         input_type: "Tipo de resposta"
@@ -75,6 +78,10 @@ pt-BR:
         select: "Selecionar várias"
         location: "Localização"
         image: "Imagem"
+
+      countries:
+        brazil: "Brasil"
+        united_states: "Estados Unidos"
 
   defaults:
     yes_option: "Sim"

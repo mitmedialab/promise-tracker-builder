@@ -37,6 +37,9 @@ en:
         end_date: "End date"
         theme: "Theme"
         organizers: "Campaign organizers"
+        country: "Country"
+        state: "State"
+        city: "City"
 
       input:
         input_type: Type of response
@@ -75,6 +78,10 @@ en:
         select: "Select many"
         location: "Location"
         image: "Image" 
+
+      countries:
+        brazil: "Brazil"
+        united_states: "United States"
 
   defaults:
     yes_option: "Yes"

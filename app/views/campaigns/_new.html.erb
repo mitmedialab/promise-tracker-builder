@@ -13,8 +13,20 @@
           </div>
           <br>
           <div class="form-group">
-            <%= f.label :tile, t(".campaign_title") %>
+            <%= f.label :title, t(".campaign_title") %>
             <%= f.text_field :title, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-4">
+                <%= f.label :country, Campaign.human_attribute_name(:country) %>
+                <%= f.select :country, campaign_countries, {}, { class: "form-control auto-width" } %>
+              </div>
+              <div class="col-md-8">
+                <%= f.label :city, Campaign.human_attribute_name(:city) %>
+                <%= f.text_field :city, class: "form-control" %>
+              </div>
+            </div>
           </div> 
           <div id="errors">
             <ul></ul>

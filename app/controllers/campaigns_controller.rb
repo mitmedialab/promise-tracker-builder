@@ -17,6 +17,12 @@ class CampaignsController < ApplicationController
   def create
     @campaign = current_user.campaigns.find_or_create_by(id: params[:campaign][:id])
     @campaign.update_attributes(campaign_params)
+    binding.pry
+    if campaign_params[:city]
+      tag = Tag.find_or_create_by(label: campaign_params[:city])
+      @campaign.tags.push(tag)
+    end
+    binding.pry
     redirect_to edit_campaign_path(@campaign)
   end
 
@@ -191,7 +197,7 @@ class CampaignsController < ApplicationController
   def campaign_params
     params.require(:campaign).permit(
       :title, :description, :goal, :theme, :data_collectors,
-      :submissions_target, :audience, :organizers, :anonymous, :image, :campaign_page_valid)
+      :submissions_target, :audience, :organizers, :anonymous, :image, :campaign_page_valid, :city)
   end
 
 end
