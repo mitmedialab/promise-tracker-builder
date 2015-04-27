@@ -276,6 +276,13 @@ en:
       confirm_launch: "Are you sure you want to go live? Once you go live you can no longer change your survey!"
       test_complete: "Test complete - This campaign is now "
 
+    update_survey_modal:
+      modal_title: "Update campaign"
+      update_survey: "Don't forget to download the final version of your campaign! Test versions will not submit proper data."
+      how_to_update: "In the mobile app, re-download the camaign with the same code or press the "
+      in_the_list: " button next to the campaign title."
+
+
   surveys:
     android_preview: 
       no_questions: "No questions"

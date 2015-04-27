@@ -276,6 +276,12 @@ pt-BR:
       confirm_launch: "Tem certeza que deseja lançar esta campanha? Uma vez lançado, o formulário não pode mais ser modificado!"
       test_complete: "Teste completado - Esta campanha está"
 
+    update_survey_modal:
+      modal_title: "Atualização da versão da campanha"
+      update_survey: "Lembre-se que agora que lançou a campanha, tem que baixar a nova versão da campanha no celular!"
+      how_to_update: "Dentro do aplicativo, baixe de novo com o mesmo código ou clique no botão "
+      in_the_list: "na listagem."
+
   surveys:
     android_preview: 
       preview_title: "Pré visualização no celular:"

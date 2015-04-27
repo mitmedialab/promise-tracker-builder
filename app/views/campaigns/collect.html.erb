@@ -59,6 +59,7 @@
     </div>
   </div>
 </div>
+<%= render partial: 'update_survey_modal' %>
 <script type="text/javascript">
   // Facebook SDK
   window.fbAsyncInit = function() {
@@ -97,5 +98,9 @@
     PT.renderStatusBars("#status-bars", responseCount, PT.campaign.submissions_target);
     PT.renderActivityGraph(PT.responses, "#activity-graph");
     PT.renderResponseTable(PT.surveyDefinition, PT.responses);
+
+    if(responseCount < 1){
+      $("#update-survey-modal").modal();
+    }
   })
 </script>
