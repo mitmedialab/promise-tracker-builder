@@ -107,7 +107,6 @@
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);
-    $("#map-tab").trigger("click");
 
     // Add CSV download button handler
     $(".csv-download").on("click", function(e){
@@ -136,6 +135,8 @@
   // If search params present, load specified tab
   if(window.location.search){
     $("#"+ window.location.search.substring(1) +"-tab").trigger("click");
+  } else {
+    $("#map-tab").trigger("click");
   }
 
   // Print report
