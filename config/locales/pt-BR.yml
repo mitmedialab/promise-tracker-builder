@@ -152,8 +152,8 @@ pt-BR:
       copy: "cópia"
 
     activate: 
-      upload_error: "Desculpe. Seu formulário não foi lançado."
-      upload_success: "Seu formulário foi lançado com sucesso!"
+      upload_error: "Desculpe. Sua campanha não foi lançada."
+      upload_success: "Sua campanha foi lançado com sucesso!"
 
     collect:
       status_text: "Esta campanha está "
@@ -200,7 +200,7 @@ pt-BR:
       step: "Passo"
       step_1_text: "Baixe o aplicativo móvel"
       download_link: "Clique aqui para ver como baixar"
-      step_2_text: "Baixe o formulário"
+      step_2_text: "Baixe a campanha"
       step_2_subtext: "Use o código seguinte para baixar"
       step_3_text: "Preencha o formulário"
       step_3_subtext: "Envie seus dados para vê-los no mapa da campanha!"
@@ -244,7 +244,7 @@ pt-BR:
       photos: "Fotos"
       graphs: "Gráficos"
       graph_placeholder: "Quando tiver registros, vai poder visualizar o agregado dos dados aqui."
-      image_placeholder: "Não há fotos coletadas ainda para este formulário"
+      image_placeholder: "Não há fotos coletadas ainda para esta campanha"
       share_data: "Compartilhe seus dados"
       data_reports: "Relatório de dados"
       campaign_organizers: "Organizadores da campanha"
