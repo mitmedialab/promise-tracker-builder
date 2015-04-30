@@ -19,8 +19,8 @@
 
     <div class="tab-pane" id="image-viz">
       <div id="image-placeholder">
-        <h3><%= t(".image_placeholder") %></h3>
         <%= image_tag("placeholder.jpg") %>
+        <h3><%= t(".image_placeholder") %></h3>
       </div>
     </div>
   </div>
@@ -132,11 +132,14 @@
     $(this).addClass("active");
   });
 
+  // Re render graphs when graph tab clicked
+  $("#graph-tab").on("click", function(){
+    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-5");
+  });
+
   // If search params present, load specified tab
   if(window.location.search){
     $("#"+ window.location.search.substring(1) +"-tab").trigger("click");
-  } else {
-    $("#map-tab").trigger("click");
   }
 
   // Print report

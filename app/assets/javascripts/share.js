@@ -223,9 +223,10 @@ PT.aggregateData = function(payload){
 
 PT.renderGallery = function(images, containerId, galleryName){
   var $container = $(containerId);
-  $container.empty();
 
   if(images.length > 0){
+    $container.empty();
+    
     images.forEach(function(image, index){
       var $a = $("<a/>");
       var $image = $("<div/>", {class: "gallery-image"});
@@ -237,8 +238,6 @@ PT.renderGallery = function(images, containerId, galleryName){
       $a.append($image);
       $container.append($a);
     });
-  } else {
-    $container.append("<img class='gallery-image placeholder'>");
   }
 };
 
