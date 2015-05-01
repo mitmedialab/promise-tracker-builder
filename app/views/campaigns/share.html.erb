@@ -1,8 +1,8 @@
 <div class="row viz-panel">
   <div class="col-md-9 featured-viz tab-content">
-    <div class="tab-pane" id="map-viz"></div>
+    <div class="tab-pane fade in active" id="map-viz"></div>
 
-    <div class="tab-pane fade in active" id="graph-viz">
+    <div class="tab-pane" id="graph-viz">
       <div id="graph-container" class="row"></div>
       <div class="ajax-loading">
         <%= image_tag("ajax-loader.gif") %>
@@ -133,7 +133,7 @@
   });
 
   // Re render graphs when graph tab clicked
-  $("#graph-tab").on("click", function(){
+  $("#graph-tab").on("shown.bs.tab", function(e){
     PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-5");
   });
 
