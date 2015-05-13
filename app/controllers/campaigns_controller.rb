@@ -1,9 +1,9 @@
 class CampaignsController < ApplicationController
 
-  layout 'campaign', except: [:index, :public_profile, :setup]
+  layout 'campaign', except: [:index, :public_profile, :setup, :get_stats]
   before_filter :authenticate_user!, except: [:public_profile, :share]
-  before_filter :restrict_user_access, except: [:create, :index, :public_profile, :share, :clone]
-  before_filter :assign_campaign_variables, except: [:index, :create, :destroy, :share]
+  before_filter :restrict_user_access, except: [:create, :index, :public_profile, :share, :clone, :get_stats]
+  before_filter :assign_campaign_variables, except: [:index, :create, :destroy, :share, :get_stats]
 
   def index
     @campaign = Campaign.new
@@ -136,6 +136,11 @@ class CampaignsController < ApplicationController
   def destroy
     Campaign.delete(params[:id])
     redirect_to campaigns_path
+  end
+
+  def get_stats
+    @users = User.all
+    @campaigns = Campaign.all
   end
 
 

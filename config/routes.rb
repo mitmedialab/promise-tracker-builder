@@ -32,6 +32,7 @@ PromiseTracker::Application.routes.draw do
     post '/inputs/:id/clone', to: 'inputs#clone', as: 'clone_input'
 
     get '/download', to: 'home#download', as: 'download'
+    get '/stats', to: 'campaigns#get_stats', as: 'stats'
   end
 
   namespace :api do

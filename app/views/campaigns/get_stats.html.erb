@@ -1,0 +1,61 @@
+<div class="section-container">
+  <h3>Users</h3>
+  <hr>
+  <strong>Total</strong>:
+  <%= @users.count %>
+
+  <h3>Campaigns</h3>
+  <hr>
+  <strong>Total</strong>:
+  <%= @campaigns.count %>
+  <br>
+
+  <strong>In draft</strong>:
+  <%= @campaigns.where(status: "draft").count %>
+  <br>
+
+  <strong>In test</strong>:
+  <%= @campaigns.where(status: "test").count %>
+  <br>
+
+  <strong>Active</strong>:
+  <%= @campaigns.where(status: "active").count %>
+  <br>
+
+  <strong>Closed</strong>:
+  <%= @campaigns.where(status: "closed").count %>
+  <br>
+  <br>
+
+  <strong>Campaigns with mobile data</strong>: 
+  <span id="campaigns-with-data"></span>
+  <br>
+
+  <strong>Total number of mobile responses</strong>: 
+  <span id="total-responses"></span>
+  <br>
+
+</div>
+
+<script type="text/javascript">
+  $.ajax({
+    url: "<%= ENV['AGGREGATOR_URL'] %>responses",
+    type: 'GET',
+    dataType: 'json'
+  })
+  .done(function(data) {
+    PT.responses = data.payload;
+    PT.surveysWithData = {};
+
+    PT.responses.forEach(function(res){
+      if(PT.surveysWithData[res.survey_id]){
+        PT.surveysWithData[res.survey_id] += 1;
+      } else {
+        PT.surveysWithData[res.survey_id] = 1;
+      };
+    })
+
+    $("#campaigns-with-data").html(Object.keys(PT.surveysWithData).length);
+    $("#total-responses").html(PT.responses.length);
+  });
+</script>
