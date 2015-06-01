@@ -127,7 +127,7 @@ pt-BR:
   home:
     index:
       welcome: "Começar com Promise Tracker"
-      tag_line: "Coleta de dados para a ação cívica"
+      tag_line: "Coleta de dados para ação cidadã"
       project_description: "Monitorando a Cidade é uma plataforma de monitoramento desenhada para ajudar comunidades, indivíduos e organizações da sociedade civil a monitorar compromissos do poder público e, desta forma, demandar uma maior responsabilidade cívica dos gestores e políticos. As ferramentas do Monitorando a Cidade ajudam cidadãos a identificar temas importantes que afetam sua vida cotidiana, a organizar campanhas locais de coleta de dados e a criar visualizações interessantes para promover transformações sociais positivas."
       process_line: "O Nosso Processo"
       process_description: 
