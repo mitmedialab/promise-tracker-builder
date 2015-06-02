@@ -73,96 +73,60 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
 };
 
 PT.renderActivityGraph = function(responses, containerId){
-  var $container, height, width, margins, responsesByDay, svg, graph, 
-      xAxis, yAxis, line, startLine, plotPoints, xExtent, x, y;
+  var $container = $(containerId);
+  var responsesByDay = PT.groupResponsesByDay(PT.responses);
+  var array = responsesByDay.map(function(day){
+    return [parseInt(day.key), day.values.length]
+  })
 
-  $container = $(containerId);
-  $container.empty();
-  height = 250;
-  width = $container.width();
-  margins = {
-    x: 60,
-    y: 45
-  };
-  responsesByDay = PT.groupResponsesByDay(responses);
-
-  svg = d3.select(containerId).append('svg')
-      .attr('width', width)
-      .attr('height', height);
-
-  graph = svg.append('g')
-      .attr("class", "graph-activity")
-      .attr("transform", "translate(30, 20)");
-
-  x = d3.time.scale().range([0, (width - margins.x)]);
-  y = d3.scale.linear().range([(height - margins.y), 0]);
-
-  xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom")
-      .tickSize(height - margins.y)
-      .tickPadding(10)
-      .ticks(d3.time.day, 1)
-      .tickFormat(d3.time.format('%d %b'));
-
-  yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .tickSize(width - margins.x)
-      .tickPadding(10)
-      .ticks(5);
-
-  startLine = d3.svg.line()
-      .x(function(d) { return x(new Date(d.key)); })
-      .y(height);
-
-  line = d3.svg.line()
-      .x(function(d) { return x(new Date(d.key)); })
-      .y(function(d) { return y(d.values.length); });
-
-  plotPoints = function(responsesByDay){
-    graph.append("path")
-      .datum(responsesByDay)
-      .attr("class", "activity-line")
-      .attr("d", startLine)
-      .transition()
-      .duration(700)
-      .attr("d", line);
-
-    graph.append("g")
-        .attr("class", "data-points")
-        .selectAll("circle")
-      .data(responsesByDay)
-        .enter()
-        .append("circle")
-          .attr("class", "point")
-          .attr("r", 5)
-          .attr("cx", function(d) { return x(new Date(d.key)); })
-          .attr("cy", height)
-          .transition()
-          .duration(700)
-          .attr("cy", function(d) { return y(d.values.length); })
-  };
-
-  if(responsesByDay.length > 0) {
-    xExtent = d3.extent(responsesByDay, function(d) { return new Date(d.key); });
-  } else {
-    xExtent = [new Date(Date.now()).setHours(0,0,0,0), new Date(Date.now()).setHours(0,0,0,0)];
-  }
-  x.domain([d3.time.day.offset(xExtent[0], -1), d3.time.day.offset(xExtent[1], 5)]);
-  y.domain([0, d3.max(responsesByDay, function(d) { return d.values.length; }) + 10 || 10])
-  
-  graph.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0,0)")
-    .call(xAxis);
-
-  graph.append("g")
-    .attr("class", "y axis")
-    .attr("transform", "translate(0" + (width - margins.x) + ",0)")
-    .call(yAxis);
-
-  plotPoints(responsesByDay);
+  $container.highcharts({
+    chart: {
+      zoomType: "spline",
+    },
+    title: {
+      text: ""
+    },
+    xAxis: {
+      type: "datetime",
+      minRange: 5 * 24 * 3600000
+    },
+    yAxis: {
+      title: {
+        text: ""
+      },
+      labels: {
+        formatter: function () {
+          return this.value;
+        }
+      },
+      min: 0
+    },
+    legend: {
+      enabled: false
+    },
+    tooltip: {
+      formatter: function () {
+        return this.y + " " + I18n.t("campaigns.collect.responses.counting.other");
+      }
+    },
+    plotOptions: {
+      spline: {
+        marker: {
+          enabled: true
+        }
+      },
+      series: {
+        color: "#66c6ba"
+      }
+    },
+    credits: {
+      enabled: false
+    },
+    series: [{
+      name: "",
+      data: array
+    }]
+  });
 };
 
 PT.renderResponseTable = function(survey, responses){
@@ -234,8 +198,7 @@ PT.loadMoreResponses = function(sortedResponses){
 PT.groupResponsesByDay = function(responses){
   return d3.nest()
     .key(function(d) {
-      var day = new Date(d.timestamp).setHours(0, 0, 0, 0)
-      return new Date(day);
+      return new Date(d.timestamp).setHours(0, 0, 0, 0);
     })
     .entries(responses);
 };
