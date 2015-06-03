@@ -21,6 +21,9 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
     title: {
       text: ""
     },
+    global: {
+      timezoneOffset: 300
+    },
     xAxis: {
       lineColor: 'transparent',
       labels: {
@@ -76,19 +79,38 @@ PT.renderActivityGraph = function(responses, containerId){
   var $container = $(containerId);
   var responsesByDay = PT.groupResponsesByDay(PT.responses);
   var array = responsesByDay.map(function(day){
-    return [parseInt(day.key), day.values.length]
-  })
+    var date = new Date(parseInt(day.key));
+    return [Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()), day.values.length]
+  });
+  var today = new Date();
+  if(array.length == 0){
+    array = [[Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()), 0]]
+  }
 
   $container.highcharts({
     chart: {
       zoomType: "spline",
+    },
+    exporting: {
+      enabled: false
     },
     title: {
       text: ""
     },
     xAxis: {
       type: "datetime",
-      minRange: 5 * 24 * 3600000
+      minRange: 5 * 24 * 3600000,
+      minTickInterval: 24 * 3600000,
+      tickmarkPlacement: 'on',
+      gridLineWidth: 1,
+      tickColor: "#f1f2f1",
+      gridLineColor: "#f1f2f1",
+      lineColor: "#f1f2f1",
+      startOnTick: true,
+      endOnTick: true,
+      dateTimeLabelFormats: {
+        day: "%e %b"
+      }
     },
     yAxis: {
       title: {
@@ -99,7 +121,9 @@ PT.renderActivityGraph = function(responses, containerId){
           return this.value;
         }
       },
-      min: 0
+      min: 0,
+      minRange: 4,
+      gridLineColor: "#f1f2f1"
     },
     legend: {
       enabled: false
