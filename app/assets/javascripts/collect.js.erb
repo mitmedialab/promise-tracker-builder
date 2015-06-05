@@ -77,7 +77,7 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
 
 PT.renderActivityGraph = function(responses, containerId){
   var $container = $(containerId);
-  var responsesByDay = PT.groupResponsesByDay(PT.responses);
+  var responsesByDay = PT.groupResponsesByDay(PT.responses).reverse();
   var array = responsesByDay.map(function(day){
     var date = new Date(parseInt(day.key));
     return [Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()), day.values.length]
@@ -130,8 +130,10 @@ PT.renderActivityGraph = function(responses, containerId){
     },
     tooltip: {
       formatter: function () {
-        return this.y + " " + I18n.t("campaigns.collect.responses.counting.other");
-      }
+        return Highcharts.dateFormat("%e %b", new Date(this.x)) + "<br>" +  this.y + " " + I18n.t("campaigns.collect.responses.counting.other");
+      },
+      // headerFormat: "{point.x: %e %b}: ",
+      // pointFormat: "{point.y I18n.t('campaigns.collect.responses.counting.other')}"
     },
     plotOptions: {
       spline: {
