@@ -131,9 +131,7 @@ PT.renderActivityGraph = function(responses, containerId){
     tooltip: {
       formatter: function () {
         return Highcharts.dateFormat("%e %b", new Date(this.x)) + "<br>" +  this.y + " " + I18n.t("campaigns.collect.responses.counting.other");
-      },
-      // headerFormat: "{point.x: %e %b}: ",
-      // pointFormat: "{point.y I18n.t('campaigns.collect.responses.counting.other')}"
+      }
     },
     plotOptions: {
       spline: {

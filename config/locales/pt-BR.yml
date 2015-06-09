@@ -132,11 +132,11 @@ pt-BR:
       process_line: "O Nosso Processo"
       process_description: 
       phase_1_title: "Definir campanha & criar formulário"
-      phase_1_description: ""
+      phase_1_description: "Defina o foco da campanha, seus objetivos, e os destinatários para os dados coletados. Crie um formulário personalizado para sua coleta."
       phase_2_title: "Coletar dados no campo"
-      phase_2_description: ""
+      phase_2_description: "Colete fotos, localizações, e respostas no campo com o aplicativo móvel. Veja as respostas coletadas."
       phase_3_title: "Compartilhar & visualizer dados"
-      phase_3_description: ""
+      phase_3_description: "Visualize seus dados em forma de mapa, gráficos, galeria de fotos e relatórios. Compartilhe com seus destinatários online e offline."
       create_account: "Criar uma conta gratuita"
 
     download:
