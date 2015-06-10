@@ -257,7 +257,7 @@ es:
       edit_survey: "Editar encuesta"
 
     tabs:
-      overview: "Vista previa"
+      overview: "Resumen"
       survey: "Encuesta"
       campaign_page: "Página de campaña"
       data: "Respuestas"
