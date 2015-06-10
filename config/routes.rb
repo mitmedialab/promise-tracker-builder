@@ -3,7 +3,7 @@ PromiseTracker::Application.routes.draw do
   root to: 'home#index'
   match ':status', via: [:get, :post], to: 'errors#show', constraints: {status: /\d{3}/ }
 
-  scope "(:locale)", locale: /en|pt-BR/ do
+  scope "(:locale)", locale: /en|pt-BR|es/ do
     resources :users
     resources :campaigns
     resources :surveys, except: [:index] do

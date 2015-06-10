@@ -1,0 +1,342 @@
+es:
+  app_name: "Promise Tracker"
+  activerecord:
+    errors:
+        models:
+          user:
+            attributes:
+              password:
+                too_short:
+                blank:
+              password_confirmation:
+                confirmation:
+              username:
+                taken:
+                blank:
+          campaign:
+            attributes:
+              title:
+                too_short:
+
+    models:
+      survey: "Encuesta"
+      campaign: "Campaña"
+      input: "Estrada"
+      user: "Usuario"
+
+    attributes:
+      campaign:
+        title: "Nombre"
+        description: "Descripción"
+        goal: "Objetivo"
+        submissions_target: "Número de respuestas esperadas"
+        data_collectors: "Recolectores de datos"
+        audience: "Público objetivo"
+        status: "Estatus"
+        start_date: "Fecha de inicio"
+        end_date: "Fecha final"
+        theme: "Tema"
+        organizers: "Organizadores"
+        country: "País"
+        state: "Estado"
+        city: "Ciudad"
+
+      input:
+        input_type: Tipo de respuesta
+
+      survey:
+        title:
+
+      user:
+        username: "Nombre de usuario"
+        bio: "Bio / Descripción"
+        password: "Contraseña"
+        password_confirmation: "Confirmar contraseña"
+        current_password: "Contraseña actual"
+        email: "Correo"
+
+    options:
+      themes:
+        select: "Seleccionar"
+        economics: "Desarrollo económico"
+        education: "Educación"
+        housing: "Vivienda"
+        environment: "Medio ambiente"
+        health: "Salud"
+        sanitation: "Higiene"
+        infrastructure: "Infraestructura"
+        energy: "Eletricidad"
+        transport: "Transporte"
+        other: "Otro"
+
+      input_types:
+        text: "Texto"
+        number: "Numero"
+        date: "Fecha"
+        yes_no: "Si/No"
+        select1: "Seleccionar una"
+        select: "Seleccionar varias"
+        location: "Ubicación"
+        image: "Imagen" 
+
+      countries:
+        brazil: "Brazil"
+        united_states: "Estados Unidos"
+        mexico: "México"
+
+  defaults:
+    yes_option: "Si"
+    no_option: "No"
+    save: "Guardar"
+    cancel: "Cancelar"
+    download: "Descargar"
+    view: "Ver"
+    share: "Compartir"
+    share_text: "Revisa los resultados en Promise Tracker de la campaña -"
+    edit: "Editar"
+    close: "Cerrar"
+    copy: "Copiar"
+    delete: "Eliminar"
+    back: "Atras"
+    next: "Siguiente"
+    loading: "Cargando"
+    validations:
+      required: "Esta campo es requerido."
+      number: "Por favor escribe un número válido."
+      question_blank: "El campo no puede estar vacío."
+      no_options: "Tienes que agregar al menos una opción de respuesta"
+      has_errors: "Por favor corrige los errores en la forma antes de continuar"
+      no_errors: "¡La forma está lista para enviarse!"
+      confirm_save: "Los cambios están guardados."
+      please_define_goals: "Por favor contesta todas las preguntas y guarda para continuar"
+      please_create_survey: "Por favor crea tu encuesta para continuar"
+      please_complete_campaign_page: "Por favor completa los campos de la campaña y guarda para continuar"
+      launch_campaign: "Tienes que iniciar la campaña para avanzar"
+      close_campaign: "Tienes que cerrar la campaña para avanzar"
+
+  errors:
+    sorry: "¡Lo sentimos!"
+    hmm: "Hmmm..."
+    resource_not_found: "No pudimos encontrar esa página"
+    forbidden: "Acceso no autorizado"
+    internal_error: "Algo salió mal..."
+
+  layouts:
+    header:
+      home: "Inicio"
+
+  home:
+    index:
+      welcome: "Comenzar"
+      tag_line: "Recolección de datos para la acción cívica"
+      project_description: "Promise Tracker es una plataforma de monitoreo ciudadano diseñada para ayudar a las comunidades a seguir problemas e iniciativas locales y abogar por una mayor rendición de cuentas. Las herramientas de Promise Tracker permiten a los usuarios identificar problemáticas clave que afectan su vida diaria, organizar campañas de recolección de datos y crear visualizaciones para impulsar un cambio social."
+      process_line: " Promoción estratégica, impulsada por la comunidad"
+      process_description:
+      phase_1_title: "Define el objetivo y construye la encuesta"
+      phase_1_description: Desarrolla la estragia de recolección de datos identifiacndo objetivos clave y la audiencia específica. Crea una encuesta personalizada para usarla en la recolección de datos.
+      phase_2_title: "Recolección de datos"
+      phase_2_description: "Recolecta fotos, ubicaciones y respuestas desde el campo con la aplicación móvil. Sigue en línea las respuestas recibidas y encuentra guías para ayudar a la organización y mobilización de los recolectores de datos."
+      phase_3_title: "COmpartir datos"
+      phase_3_description: "Revisa los datos en una varieda de formatos, incluyendo mapas, galerias de imágnes, gráficas y reportes para compartir con los involucrados, tanto digital como no"
+      create_account: "Crear una cuenta gratis"
+
+    download:
+      download_link: "Descarga la aplicación móvil"
+      app_description: "¡Con la aplicación móvil de Promise Tracker puedes llenar encuestas y recolectar datos en tu comunidad!"
+
+  campaigns:
+    status:
+      active: "Vivo"
+      closed: "Cerrada"
+      draft: "Borrador"
+      test: "Prueba"
+      copy: "copia"
+
+    activate: 
+      upload_error: "¡Nuestro problema! Tu encuesta no puede ser publicada en este momento. Por favor intenta más tarde."
+      upload_success: "¡Tu encuesta fue publicada!"
+
+    collect:
+      status_text: "Esta encuesta es "
+      survey_code: "Descarga esta encuesta con el código"
+      close_confirmation: "Una vez que se cierre la encuesta no puede ser vuelta a abrir."
+      number_of_responses: "Número de respuestas"
+      close: "Terminar campaña"
+      confirm_close: "¿Estás seguro que quieres cerrar esta campaña? NO se podrá seguir recolectando datos una vez que haya sido cerrada"
+      responses: 
+        counting:
+          one: "respuesta"
+          other: "respuestas"
+      current: "Actual"
+      target: "Objetivo"
+      publicize_form: "Mobiliza a tu comunidad para llenar la encuesta"
+      date: "Fecha"
+      participant_id: "ID del participante"
+      view_more_responses: "Ver más respuestas"
+
+    data_report:
+      check_out_results: "Revisa los resultados"
+      view_viz: "Ve las gráficas y mapa de las respuesta de la camapaña abajo"
+
+    edit:
+      define_goals: "Resumen general y objetivos"
+      type_number: "Escribe un número"
+      explanations:
+        description: "Pequeña descripción de lo que quieres monitorear"
+        goal: "¿Qué cambios esperas como resultado de la campaña?"
+        data_collectors: "¿Quién va a ayudar con la recolección de datos para esta campaña?"
+        submissions_target: "¿Cuántas respuestas esperas tener?"
+        audience: "¿Cón quien planeas compartir los datos para conseguir un cambio en este problema?"
+      tooltip: "Tip"
+      tips:
+        goal: "Un cambio social generalmente requiere de muchos pequeños pasos ¿Puedes pensar en pasos pequeños y concretos que se puedan completar en un futuro inmediato?"
+        data_collectors: "¿A quién conoces en la comunidad que pueda estar interesado en este problema y que pueda ayudar a recolectar datos?"
+        submissions_target: "¿Cuántas respuestas serían necesarias para representar el problema acertadamente? ¿Cuántas respuestas sería razonable recolectar en el tiempo que durará la campaña?"
+        audience: "Hay muchas audiencias con las que podrías compartir los datos ¿Puedes llegar a alguna audiencia que no esté familiarizada con el problema? ¿Cuál es el grupo más importante de convencer para generar un cambio en el problema?"
+
+    how_to_participate:
+      participate_title: "¡Involúcrate!"
+      participate_text: "¡Descarga la aplicación para recoletar y enviar datos desde donde estes!"
+      step: "Paso"
+      step_1_text: "Descarga la aplicación"
+      step_1_subtext: "Usarás la aplicación gratuita de Promise Tracker para recolectar datos."
+      download_link: "Da clic aquí para ver como descargarla."
+      step_2_text: "Descarga la campaña"
+      step_2_subtext: "Usa la aplicación, descarga la campaña con el código"
+      step_3_text: "Contribuye con datos"
+      step_3_subtext: "¡Completa la encuesta y ve los datos en el mapa!"
+
+    index:
+      new_campaign: "Empieza una nueva campaña"
+      my_campaigns: "Mis campañas"
+      greeting: "Hola"
+      welcome_text: "Bienvenido a Promise Tracker!"
+      get_started: "Empieza creando tu primera campaña para recolectar datos."
+
+    list_item:
+      confirm_delete: "¿Estás seguro que quieres eleminar esta campaña?" 
+
+    new:
+      modal_title: "Nueva Campaña"
+      campaign_theme: "¿Qué problema quieres monitorear?"
+      campaign_title: "Nombre de la campaña"
+      title_placeholder: "Nombre"
+      create_campaign: "Crear"
+
+    progress_bar:
+      define_goals: "Define los objetivos"
+      create_survey: "Crear encuesta"
+      design_campaign_page: "Página de diseño de campaña"
+      test_campaign: "Encuesta de prueba"
+      collect_data: "Recolectar datos"
+      share_data: "Compartir datos"
+
+    campaign_page:
+      title: "Página de campaña"
+      campaign_page_description: "Abajo podrás diseñar una página pública para compartir la información de la campaña. Esta pagina puede ser enviada a tus redes para correr la voz sobre la iniciativa de recolección de datos."
+      remain_anonymous: "Prefiero que los organizadores sean anónimos"
+      view_as_public: "Ver como lo verá el público"
+      preview: "Vista previa"
+
+    share:
+      visualize_data: "Visualizar tus datos" 
+      map: "Mapa" 
+      photos: "Fotos"
+      graphs: "Graficas"
+      graph_placeholder: "Aquí podrás ver gráficas con los resultados de las encuestas una vez que se comiencen a recopilar los datos."
+      image_placeholder: "No se han enviado fotografías en esta encuesta"
+      share_data: "Comparte los datos en línea"
+      data_reports: "Reportes de datos"
+      contact: "Persona de contacto"
+      learn_more: "Conoce más de esta campaña en "
+      download_csv: "Descargar CSV"
+      print_report: "Imprimir reporte"
+      no_location: "No hay información geográfica disponible"
+
+    survey:
+      edit_survey: "Editar encuesta"
+
+    tabs:
+      overview: "Vista previa"
+      survey: "Encuesta"
+      campaign_page: "Página de campaña"
+      data: "Respuestas"
+      viz: "Visualizaciones"
+
+    test:
+      test_title: "Encuesta de prueba"
+      how_to_test: "Como probar"      
+      test_explanation: "Descarga la encuesta a un teléfono antes de comenzar tu campaña y asegurate de que las preguntas aparezcan como deben."
+      catch_errors: "¡Es el momento de encontrar cualquier error!"
+      warning: "Una vez que se publique la encuesta no se podrá modificar."
+      how_to_test: "Cómo probar" 
+      step_3_text: "Probar la encuesta"
+      step_3_subtext: "Llena la encuesta y verifica que las preguntas estén escritas correctamente y en el orden adecuado."
+      edit_survey: "Editar encuesta"
+      go_live: "Publicar"
+      confirm_launch: "¿Estás seguro que la quieres publicar? ¡Una vez que se publique la encuesta no se podrán hacer cambios!"
+      test_complete: "Prueba completa - Esta campaña es ahora "
+
+    update_survey_modal:
+      modal_title: "Actualizar campaña"
+      update_survey: "¡No olvides descargar la versión final de la campaña! Las versiones de prueba no enviarán datos en la manera correcta."
+      how_to_update: "En la aplicación móvil, vuelve a descargar la campaña con el mísmo código o presiona el "
+      in_the_list: " botón a un lado del título de la campaña."
+
+
+  surveys:
+    android_preview: 
+      no_questions: "Sin preguntas"
+      add_questions: "Selecciona un tipo de pregunta para comenzar."
+      question: "Pregunta" 
+      of: "de" 
+
+    survey_body:
+      required: "¿Pregunta requerida?"
+      options: "Opciones"
+      add_new_option: "Clic para agregar una opción"
+      question_label: "Texto de pregunta"
+      question_placeholder: "Escribe tu pregunta aquí"
+      answer_type: "Tipo de respuesta"
+      select_one: "Selecciona una"
+      select_many: "Selecciona todas las que apliquen"
+      preview:
+        date: "13 Jan, 2014"  
+        number: "123"
+        string: "Abc"
+
+    survey_builder:
+      untitled: "Sin título"
+      survey_title: "Título de la encuesta"
+      title_placeholder: "Tipo del título de la encuesta"
+      editor_title: "Barra de herramientas"  
+      add_question: "Agregar pregunta"
+      add_location: "Guardar ubicación"
+      add_image: "Tomar fotografía"
+      option_1: "Opción 1"
+      preview_title: "Vista previa"
+      show_preview: "Mostrar vista previa"
+      hide_preview: "Ocultar vista previa"
+      confirm_input_delete: "¿Estás seguro que deseas eliminar esta respuesta?"
+      finalize_survey: "Finalizar diseño de la encuesta"
+
+  users:
+    show:
+      add_email: "Agregar correo electrónico"
+      edit_campaign_page: "Editar página de campaña"
+
+  devise:
+    sign_in: "Ingresar"
+    sign_out: "Salir"
+    sign_up: "Crear una cuenta"
+    create_account: "Crear cuenta"
+    existing_account: "¿Ya tienes una cuenta?"
+    remember_me: "Recordarme"
+    forgot_password: "¿Olvidaste tu contraseña?"
+    cancel_account: "Cancelar la cuenta" 
+    are_you_sure: "¿Estás seguro?"
+
+    registrations:
+      edit:
+        cancel_account: "Cancelar mi cuenta"
+        cancel_account_text: "¿Quieres eliminar tu cuenta? Una vez que se elimine no podrás acceder a tus datos."
