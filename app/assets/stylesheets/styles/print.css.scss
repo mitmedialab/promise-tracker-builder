@@ -1,13 +1,67 @@
 @media print {
+  
   a:link:after {
     content: "";
   }
 
-  #test-campaign, #how-to-participate {
+  #campaign-progress-container, ul.campaign-nav, .viz-panel,
+  .share-bar, .campaign-title, .report-options, h2.title, .campaign-outreach {
+    display: none;
+  }
+
+  .report-panel .campaign-title {
+    display: block;
+  }
+
+  .report-panel {
+    margin-top: -50px;
+
+    #campaign-profile.preview {
+      margin-top: 0;
+      padding-top: 10px;
+    }
+
     .highlight {
-      background: #f5be59;
-      margin-left: -60px;
-      padding-left: 60px;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .campaign-overview {
+      margin-bottom: 0;
+
+      .campaign-info {
+        width: 50%;
+        float: left;
+      }
+
+      .campaign-image {
+        width: 50%;
+        float: right;
+        overflow: hidden;
+      }
+    }
+
+    .campaign-data {
+      page-break-after: always;
+
+      .highcharts-button {
+        display: none;
+      }
+
+      #map-viz, #graph-viz {
+        max-height: 210px;
+      }
+    }
+  }
+
+  #header {
+    height: 45px;
+    .navbar-header {
+      padding-top: 0;
+    }
+
+    nav {
+      display: none;
     }
   }
 }
