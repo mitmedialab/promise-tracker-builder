@@ -406,14 +406,22 @@ input[disabled], .form-control[disabled] {
 
 @media (max-width: 760px) {
   #header {
-    #branding .site-title {
-      font-size: 18px;
-      padding-top: 10px;
+    #branding {
+      .site-title {
+        font-size: 18px;
+        padding-top: 10px;
+      }
 
       img {
         width: 25px;
         height: auto;
+        margin: 4px 10px 0 0;
       }
+    }
+
+    .navbar-toggle {
+      margin-right: 0;
+      padding: 5px 0;
     }
 
     .header-container {
@@ -422,6 +430,16 @@ input[disabled], .form-control[disabled] {
 
     .user-links {
       padding: 0;
+    }
+
+    .dropdown-menu {
+      a {
+        color: whitesmoke;
+      }
+
+      li {
+        text-align: right;
+      }
     }
   }
   .section-container {
