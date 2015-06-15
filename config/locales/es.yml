@@ -1,5 +1,6 @@
 es:
   app_name: "Promise Tracker"
+  locale_name: "Español"
   activerecord:
     errors:
         models:

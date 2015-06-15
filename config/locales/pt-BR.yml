@@ -1,5 +1,6 @@
 pt-BR:
   app_name: "Monitorando a Cidade"
+  locale_name: "Português"
   activerecord:
     errors:
       models:

@@ -12,7 +12,7 @@ a {
   color: $dark-turquoise;
   text-decoration: none !important;
 
-  &:active {
+  &:active, &:focus {
     color: $dark-turquoise;
   }
 
