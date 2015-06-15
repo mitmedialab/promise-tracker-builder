@@ -242,7 +242,7 @@ es:
       visualize_data: "Visualizar tus datos" 
       map: "Mapa" 
       photos: "Fotos"
-      graphs: "Graficas"
+      graphs: "Gráficas"
       graph_placeholder: "Aquí podrás ver gráficas con los resultados de las encuestas una vez que se comiencen a recopilar los datos."
       image_placeholder: "No se han enviado fotografías en esta encuesta"
       share_data: "Comparte los datos en línea"
