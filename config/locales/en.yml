@@ -122,8 +122,10 @@ en:
     internal_error: "Something went wrong..."
 
   layouts:
-    header:
-      home: "Home"
+    site_header:
+      account: "Profile"
+      campaigns: "Campaigns"
+      guides: "Guides"
 
   home:
     index:

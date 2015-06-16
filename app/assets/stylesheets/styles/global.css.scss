@@ -297,15 +297,49 @@ a {
     li {
       a, a:focus, a:hover {
         background-color: transparent;
-        padding: 8px 14px;
+        padding: 0px 14px 16px 14px;
       }
 
       a.btn {
         background-color: $turquoise;
         color: white;
+        padding: 8px 14px;
 
         &:hover {
           background-color: $dark-turquoise;
+        }
+      }
+    }
+  }
+
+  #user-menu {
+    min-width: 160px;
+  }
+
+  #language-menu, #language-menu ul {
+    min-width: 110px;
+  }
+
+  .dropdown-menu {
+    background: $dark-grey;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: right;
+
+    a {
+      color: $light-grey;
+      font-weight: 100;
+
+      &:hover, &:active {
+        color: $med-grey;
+      }
+
+      &.highlight {
+        color: $med-grey;
+
+        &:hover {
+          color: #929292;
         }
       }
     }
@@ -315,14 +349,13 @@ a {
     list-style-type: none;
     text-align: right;
     float: right;
-    margin-top: 5px;
+    margin: 0;
 
     .user-icon {
       width: 40px;
       height: auto;
       border-radius: 50%;
       margin-right: 5px;
-      margin-top: -18px;
     }
   }
 
@@ -404,7 +437,7 @@ input[disabled], .form-control[disabled] {
   Media queries
 =============================================*/
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   #header {
     #branding {
       .site-title {
@@ -430,20 +463,41 @@ input[disabled], .form-control[disabled] {
 
     .user-links {
       padding: 0;
+      margin-top: 10px;
     }
 
     .dropdown-menu {
-      a {
-        color: whitesmoke;
-      }
-
       li {
         text-align: right;
       }
+    }
+
+    ul.nav #user-menu > ul.dropdown-menu {
+      display: block;
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
     }
   }
   .section-container {
     width: 95%;
     margin: 0 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
+
+  .open > .dropdown-menu {
+    display: none;
+  }
+
+  #language-menu {
+     a.dropdown-toggle {
+      padding: 9px 14px 16px 14px !important;
+    }
   }
 }

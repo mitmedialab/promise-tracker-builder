@@ -22,19 +22,23 @@
     <nav>
       <ul class="nav navbar-nav user-links">
         <% if current_user %>
-          <li>
+          <li id="user-menu" class="dropdown" >
             <%= link_to campaigns_path do %>
               <%= image_tag(current_user.avatar.url(:thumb), class: "user-icon") %> <%= current_user.username %>
-             <% end %> 
-          </li>
-          <li>
-            <%= link_to t("devise.sign_out"), destroy_user_session_path, method: :delete %>
+            <% end %> 
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to t(".campaigns"), campaigns_path %></li>
+              <li><%= link_to t(".account"), user_path(current_user) %></li>
+              <li>
+                <%= link_to t("devise.sign_out"), destroy_user_session_path, class: "highlight", method: :delete %>
+              </li>
+            </ul>
           </li>
         <% else %>
           <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn" %></li>
         <% end %>    
-        <li role="presentation" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+        <li id="language-menu" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <%= t("locale_name") %><span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
@@ -43,7 +47,6 @@
             <li><%= link_to "Español", :locale=>'es' %></li>
           </ul>
         </li>
-
       </ul>
     </nav>  
   </div>

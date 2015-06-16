@@ -7,7 +7,7 @@
   position: relative;
   z-index: 1;
 
-  ul#campaign-progress-bar {
+  #campaign-progress-bar {
     list-style-type: none;
     padding: 0;
     font-size: .8em;
@@ -462,6 +462,10 @@ h2.title, h3.title {
   #campaign-progress-container {
     .desktop-only {
       display: none;
+    }
+
+    #campaign-progress-bar {
+      margin-left: 0;
     }
   }
   

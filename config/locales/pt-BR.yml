@@ -122,8 +122,10 @@ pt-BR:
     internal_error: "Algo aconteceu"
 
   layouts:
-    header:
-      home: "Página inicial"
+    site_header:
+      account: "Perfil"
+      campaigns: "Campanhas"
+      guides: "Manuais"
 
   home:
     index:

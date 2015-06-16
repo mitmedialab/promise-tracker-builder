@@ -123,8 +123,10 @@ es:
     internal_error: "Algo salió mal..."
 
   layouts:
-    header:
-      home: "Inicio"
+    site_header:
+      account: "Perfil"
+      campaigns: "Campañas"
+      guides: "Guías"
 
   home:
     index:
