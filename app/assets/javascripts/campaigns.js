@@ -73,3 +73,21 @@ PT.scrollToError = function(){
 PT.toggleTip = function(event){
   $(event.currentTarget).find(".body").slideToggle();
 };
+
+
+// File upload
+$.ready(function(){
+  $('input[type="file"]').on("change", PT.uploadImage);
+});
+
+PT.uploadImage = function(event, imageElement){
+  if (event.target.files && event.target.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (event) {
+      $('.image-preview').css('background-image', 'url(' + event.target.result + ')');
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+};

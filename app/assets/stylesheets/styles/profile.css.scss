@@ -24,8 +24,9 @@
     }
 
     .placeholder {
-      max-height: 200px;
-      overflow: hidden;
+      min-height: 200px;
+      max-height: 300px;
+      width: 100%;
 
       img {
         width: 100%;
@@ -177,6 +178,10 @@
 
   &.title {
     background: $turquoise;
+
+    &.bright {
+      background: $yellow;
+    }
   }
 
   &.text {

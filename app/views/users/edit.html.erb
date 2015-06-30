@@ -1,8 +1,7 @@
 <div class="section-container">
   <%= form_for(current_user) do |f| %>
     <div id="user-info">
-      <div class="user-icon">
-        <%= image_tag(current_user.avatar.url(:thumb)) %>
+      <div class="user-icon image-preview" style="background-image: url(<%= current_user.avatar.url(:thumb) %>);">
       </div>
       <div class="user-details bottom">
         <%= f.file_field :avatar %>
@@ -36,3 +35,7 @@
   <% end %>
 </div>
 <br>
+
+<script type="text/javascript">
+  $('input[type="file"]').on("change", PT.uploadImage);
+</script>
