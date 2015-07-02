@@ -234,6 +234,17 @@ span {
   Campaign View
 =============================================*/
 
+#campaign-nav {
+  .navbar-toggle .icon-bar{
+    color: grey;
+    border: 1px solid grey;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+  }
+}
+
 ul.campaign-nav {
   display: block;
   border-bottom: 1px solid $light-grey;
@@ -466,6 +477,21 @@ h2.title, h3.title {
 
     #campaign-progress-bar {
       margin-left: 0;
+    }
+  }
+  
+  #campaign-nav {
+    margin-bottom: 0;
+  }
+
+  ul.campaign-nav {
+    height: auto;
+
+    li {
+      display: block;
+      border: 0 solid transparent;
+      text-align: right;
+      background: white;
     }
   }
   
