@@ -5,15 +5,15 @@
   padding-top: 40px;
 }
 
+
 .viz-panel {
   margin-top: 10px;
-  height: 500px;
+  overflow: hidden;
 
-  .tab-pane, #viz-tabs {
-    height: 500px;
-    overflow: hidden;
+  .tab-pane, .nav-tabs  {
+    height: 420px;
   }
-
+  
   .gallery-image.placeholder {
     background: url("placeholder.jpg") center center;
     background-size: cover;
@@ -55,8 +55,6 @@
     }
 
     #graph-viz {
-      border-top: 10px solid whitesmoke;
-      border-bottom: 10px solid whitesmoke;
       overflow-y: scroll;
       padding: 20px 20px 20px 30px;
 
@@ -144,7 +142,6 @@
     #image-viz {
       width: 100%;
       padding: 15px 15px 15px 25px;
-      background: whitesmoke;
       overflow: scroll;
 
       .gallery-image {
@@ -171,49 +168,81 @@
     }
   }
 
-  #viz-tabs {
-    padding: 5px 0 30px 0;
-
-    .viz {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto;
-      margin-top: 30px; 
-      position: relative; 
-
-      .legend {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: white;
-        margin: 0;
-        padding: 10px 0;
-        color: $dark-grey;
-      }
-    }
-
-    a.active .legend {
-      color: $turquoise;
-    }
-  }
-
   iframe {
     border: none;
   }
 }
 
-.map {
-  background: image-url("map.png") center center;
-  background-size: cover;
+#viz-tabs {
+  background: white;
+  padding: 0;
+
+  .tab-square {
+    height: 140px;
+    padding: 15px;
+    background: whitesmoke;
+    text-align: center;
+  }
+
+  .tab-square:hover { 
+    background: #fafafa
+  }
+
+  a.active .tab-square {
+    background: white;
+  }
 }
 
-.data-report .image, .nav-tabs .image {
+.nav-tabs {
+  border-width: 0px;
+
+  a.active {
+    span {
+      color: $yellow;
+    }
+  }
+
+  .tab-icon {
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: 0 auto;
+    background-size: cover;
+  }
+
+  #map-tab {
+    .tab-icon {
+      background-image: image-url("map-icon.png");
+    }
+
+    &.active .tab-icon {
+      background-image: image-url("map-icon-hover.png");
+    }
+  }
+
+  #graph-tab {
+    .tab-icon {
+      background-image: image-url("graphs-icon.png");
+    }
+
+    &.active .tab-icon {
+      background-image: image-url("graphs-icon-hover.png");
+    }
+  }
+
+  #image-tab {
+    .tab-icon {
+      background-image: image-url("photos-icon.png");
+    }
+
+    &.active .tab-icon {
+      background-image: image-url("photos-icon-hover.png");
+    }
+  }
+}
+
+.data-report .image {
   background: image-url("campaign-image-3.jpg") center center;
-  background-size: cover;
-}
-
-.graph {
-  background: image-url("data-graph-2.jpg") center bottom;
   background-size: cover;
 }
 
@@ -270,9 +299,14 @@
       display: block;
       height: auto;
 
-      .viz {
+      a {
         display: inline-block;
-        margin: 40px 20px !important;
+        margin: 20px;
+      } 
+
+      img {
+        width: 70px;
+        height: 70px;
       }
     }
   }
@@ -283,6 +317,32 @@
       .map, .image {
         width: 100%;
       }
+    }
+  }
+}
+
+@media (max-width: 768px){
+  .desktop-only {
+    display: none;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .nav-tabs {
+    font-size: inherit;
+  }
+
+  .viz-panel #viz-tabs {
+    font-size: 0;
+    margin-right: -7px;
+
+    a {
+      width: 33%;
+      margin: 0;
+      display: inline-block;
+      box-sizing: border-box;
     }
   }
 }

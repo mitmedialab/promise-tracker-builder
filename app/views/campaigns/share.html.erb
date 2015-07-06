@@ -1,5 +1,5 @@
 <div class="viz-panel">
-  <div class="col-md-9 featured-viz tab-content">
+  <div class="col-md-10 featured-viz tab-content">
     <div class="tab-pane fade in active" id="map-viz"></div>
 
     <div class="tab-pane" id="graph-viz">
@@ -25,20 +25,23 @@
     </div>
   </div>
 
-  <div class="col-md-3 section-dark nav nav-tabs" role="tablist" id="viz-tabs">
-    <a href="#map-viz" role="tab" data-toggle="tab" id="map-tab">
-      <div class="viz map">
-        <h4 class="title legend"><%= t(".map") %></h4>
+  <div class="col-md-2 nav nav-tabs" role="tablist" id="viz-tabs">
+    <a href="#map-viz" role="tab" data-toggle="tab" class="active" id="map-tab">
+      <div class="tab-square">
+        <div class="tab-icon"></div>
+        <span class="desktop-only"><%= t(".map") %></span>
       </div>
-    </a>
-    <a href="#graph-viz" role="tab" data-toggle="tab" class="active" id="graph-tab">
-      <div class="viz graph">
-        <h4 class="title legend"><%= t(".graphs") %></h4>
+    </a>  
+    <a href="#graph-viz" role="tab" data-toggle="tab" id="graph-tab">
+      <div class="tab-square">
+        <div class="tab-icon"></div>
+        <span class="desktop-only"><%= t(".graphs") %></span>
       </div>
     </a>
     <a href="#image-viz" role="tab" data-toggle="tab" id="image-tab">
-      <div class="viz image" style="background-image: url(<%= @campaign.image.url %>);">
-        <h4 class="title legend"><%= t(".photos") %></h4>
+      <div class="tab-square">
+        <div class="tab-icon"></div>
+        <span class="desktop-only"><%= t(".photos") %></span>
       </div>
     </a>
   </div>
