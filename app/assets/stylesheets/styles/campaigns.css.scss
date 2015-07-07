@@ -109,7 +109,7 @@
 =============================================*/
 
 #user-info {
-  padding: 30px 0;
+  padding: 30px 15px;
 
   .user-icon, .user-details  {
     display: inline-block;
@@ -235,7 +235,7 @@ span {
 =============================================*/
 
 #campaign-nav {
-  .navbar-toggle .icon-bar{
+  .navbar-toggle .icon-bar {
     color: grey;
     border: 1px solid grey;
   }
@@ -303,7 +303,7 @@ ul.campaign-nav {
 }
 
 #campaign-survey {
-  #survey-body .modify {
+  #survey-body .modify, #on-canvas-controls {
     display: none;
   }
 }
@@ -479,9 +479,13 @@ h2.title, h3.title {
       margin-left: 0;
     }
   }
-  
+
   #campaign-nav {
     margin-bottom: 0;
+
+    .navbar-toggle {
+      margin-right: 10px;
+    }
   }
 
   ul.campaign-nav {
@@ -493,6 +497,15 @@ h2.title, h3.title {
       text-align: right;
       background: white;
     }
+  }
+
+  .campaign-title, input.campaign-title {
+    font-size: 24px;
+    padding-top: 0px;
+  }
+
+  .sub-title {
+    font-size: 20px;
   }
   
   .campaigns-list {
@@ -518,8 +531,27 @@ h2.title, h3.title {
   ul.campaign-nav {
     padding-right: 0;
 
+    li {
+      background: white;
+    }
+
     .tab-text {
       display: none;
     }
+  }
+  
+  #campaign-goals-form {
+    margin: 20px -20px;
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  #campaign-profile {
+    #survey-body {
+      padding: 0;
+    }
+  }
+  .tip-box {
+    margin: -15px 0 15px 0;
   }
 }

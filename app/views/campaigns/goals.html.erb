@@ -6,6 +6,18 @@
         <%= link_to t("defaults.edit"), edit_campaign_path(@campaign), class: "btn btn-info" %>
       </div>
     </div>
+    <% if @campaign.theme %>
+    <label><%= Campaign.human_attribute_name(:theme) %></label>
+    <p><%= @campaign.theme %></p>
+    <br>
+    <% end %>
+
+    <% if @campaign.city %>
+    <label><%= Campaign.human_attribute_name(:city) %></label>
+    <p><%= @campaign.city %></p>
+    <br>
+    <% end %>
+
     <label><%= Campaign.human_attribute_name(:description) %></label>
     <p><%= @campaign.description %></p>
     <br>

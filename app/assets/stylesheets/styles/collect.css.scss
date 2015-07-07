@@ -246,3 +246,25 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  #update-survey-modal {
+    text-align: center;
+
+    img {
+      height: 200px;
+    }
+  }
+
+  .campaign-info-box {
+    height: auto;
+  }
+
+  #activity-graph {
+    padding: 10px 0;
+  }
+
+  .campaign-outreach h3 {
+    font-size: 14px;
+  }
+}

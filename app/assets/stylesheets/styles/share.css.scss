@@ -178,7 +178,7 @@
   padding: 0;
 
   .tab-square {
-    height: 140px;
+    height: auto;
     padding: 15px;
     background: whitesmoke;
     text-align: center;
@@ -319,11 +319,17 @@
       }
     }
   }
-}
 
-@media (max-width: 768px){
-  .desktop-only {
-    display: none;
+  .share.right {
+    float: none;
+  }
+
+  .highlight.title {
+    font-size: 20px;
+  }
+
+  .highlight.text {
+    font-size: 14px;
   }
 
   .row {
@@ -336,7 +342,7 @@
 
   .viz-panel #viz-tabs {
     font-size: 0;
-    margin-right: -7px;
+    margin-right: -3px;
 
     a {
       width: 33%;
@@ -344,5 +350,20 @@
       display: inline-block;
       box-sizing: border-box;
     }
+  }
+}
+
+@media (max-width: 768px){
+  .desktop-only {
+    display: none;
+  }
+
+  .nav-tabs .tab-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .report-options {
+    display: none;
   }
 }
