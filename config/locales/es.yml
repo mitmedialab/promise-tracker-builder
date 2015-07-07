@@ -129,6 +129,18 @@ es:
       guides: "Guías"
 
   home:
+    download:
+      download_link: "Download the mobile app"
+      app_description: "With the Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
+
+    guides:
+      for_users: "Para usuarios"
+      for_trainers: "Para facilitadores"
+      presentation: "Presentación"
+      guide: "Manual de Facilitadores"
+      intro_workshop: "Introducción a Promise Tracker"
+      coming_soon: "Próximamente"
+
     index:
       welcome: "Comenzar"
       tag_line: "Recolección de datos para la acción cívica"
@@ -142,10 +154,6 @@ es:
       phase_3_title: "COmpartir datos"
       phase_3_description: "Revisa los datos en una varieda de formatos, incluyendo mapas, galerias de imágnes, gráficas y reportes para compartir con los involucrados, tanto digital como no"
       create_account: "Crear una cuenta gratis"
-
-    download:
-      download_link: "Descarga la aplicación móvil"
-      app_description: "¡Con la aplicación móvil de Promise Tracker puedes llenar encuestas y recolectar datos en tu comunidad!"
 
   campaigns:
     status:

@@ -33,6 +33,7 @@ PromiseTracker::Application.routes.draw do
 
     get '/download', to: 'home#download', as: 'download'
     get '/stats', to: 'campaigns#get_stats', as: 'stats'
+    get '/guides', to: 'home#guides', as: 'guides'
   end
 
   namespace :api do

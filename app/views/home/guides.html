@@ -1,0 +1,37 @@
+<div class="row guides-container">
+  <div class="col-sm-6">
+    <div class="content-box">
+      <div class="title-section">
+        <%= image_tag("trainers-icon.png") %>
+        <h2><%= t(".for_trainers") %></h2>
+      </div>
+      <div class="content-section">
+        <ul>
+          <% if I18n.locale == :"pt-BR" %>
+          <li><%= t(".intro_workshop") %>:
+            <ul class="sub-list">
+              <li><%= link_to t(".presentation"), "/Intro_Workshop_Presentation_#{I18n.locale}.pdf", target: "blank" %></li>
+              <li><%= link_to t(".guide"), "/Intro_Workshop_Guide_#{I18n.locale}.pdf", target: "blank" %></li>
+            </ul>
+          </li>
+          <% else %>
+          <li><%= link_to t(".coming_soon"), "" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="content-box">
+      <div class="title-section">
+        <%= image_tag("for-users-icon.png") %>
+        <h2><%= t(".for_users") %></h2>
+      </div>
+      <div class="content-section">
+        <ul>
+          <li><%= link_to t(".coming_soon"), "" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

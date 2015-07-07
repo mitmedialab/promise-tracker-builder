@@ -128,6 +128,18 @@ en:
       guides: "Guides"
 
   home:
+    download:
+      download_link: "Download the mobile app"
+      app_description: "With the Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
+
+    guides:
+      for_users: "For users"
+      for_trainers: "For Trainers"
+      presentation: "Presentation"
+      guide: "Trainer's Guide"
+      intro_workshop: "Intro to Promise Tracker"
+      coming_soon: "Coming soon"
+
     index:
       welcome: "Get started"
       tag_line: "Data collection for civic action"
@@ -141,10 +153,6 @@ en:
       phase_3_title: "Share data"
       phase_3_description: "View collected data in a variety of formats including maps, image galleries, graphs, and data reports to share with key stakeholders both online and offline."
       create_account: "Create a free account"
-
-    download:
-      download_link: "Download the mobile app"
-      app_description: "With the Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
 
   campaigns:
     status:

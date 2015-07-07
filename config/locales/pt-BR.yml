@@ -128,6 +128,18 @@ pt-BR:
       guides: "Manuais"
 
   home:
+    download:
+      download_link: "Baixar o aplicativo móvel"
+      app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Monitorando a Cidade e coletar dados!"
+
+    guides:
+      for_users: "Para usuários"
+      for_trainers: "Para facilitadores"
+      presentation: "Apresentação"
+      guide: "Manual de Facilitação"
+      intro_workshop: "Introducão ao Monitorando a Cidade"
+      coming_soon: "Em breve"
+
     index:
       welcome: "Começar com Promise Tracker"
       tag_line: "Coleta de dados para ação cidadã"
@@ -141,10 +153,6 @@ pt-BR:
       phase_3_title: "Compartilhar & visualizer dados"
       phase_3_description: "Visualize seus dados em forma de mapa, gráficos, galeria de fotos e relatórios. Compartilhe com seus destinatários online e offline."
       create_account: "Criar uma conta gratuita"
-
-    download:
-      download_link: "Baixar o aplicativo móvel"
-      app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Monitorando a Cidade e coletar dados!"
 
   campaigns:
     status:

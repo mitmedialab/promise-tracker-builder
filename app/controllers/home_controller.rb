@@ -5,4 +5,8 @@ class HomeController < ApplicationController
 
   def download
   end
+
+  def guides
+  end
+
 end

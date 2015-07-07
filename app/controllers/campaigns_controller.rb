@@ -50,6 +50,7 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
     @campaign.update_attributes(campaign_params)
+    
     if @campaign.survey
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
