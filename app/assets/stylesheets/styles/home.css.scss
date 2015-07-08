@@ -98,3 +98,22 @@
     text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  .intro-block {
+    padding: 20px 0;
+    text-align: center;
+
+    #logo-wrapper {
+      margin: 0 auto;
+    }
+
+    .logo-overlay, #logo {
+      max-width: 150px;
+    }
+
+    .sign-up {
+      margin-top: 0;
+    }
+  }
+}
