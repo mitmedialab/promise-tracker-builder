@@ -7,8 +7,8 @@
     border-left: 5px solid $pink;
   }
 
-  ol#input-list {
-    padding: 0  0 92px 25px;
+  #input-list {
+    padding: 0 0 92px 25px;
   }
 
   #survey-body {
@@ -154,6 +154,14 @@
     padding: 20px; 
     position: relative;
 
+    .row {
+      margin-bottom: 10px;
+    }
+
+    .question-label {
+      margin-top: 20px;
+    }
+
     p.label-text {
       margin-right: 150px;
     }
@@ -276,5 +284,103 @@
       }
     }
   }
+}
 
+@media (max-width: 992px) {
+  #workspace #survey-body .input {
+    .label-text {
+      margin-bottom: 5px;
+    }
+
+    p.label-text {
+      margin: 30px 0 0 0;
+    }
+
+    .question-label {
+      margin-top: 0px;
+    }
+
+    .options .option.edit {
+      min-width: 0;
+
+      input {
+        width: 70%;
+      }
+
+      .move {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #workspace {
+    margin: 0;
+    padding: 0;
+
+    .campaign-title {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+
+    #input-list {
+      padding: 0 0 5px 25px;
+    }
+
+    #sidebar {
+      display: none;
+    }
+
+    .controls {
+      text-align: center;
+      float: none;
+    }
+
+    #survey-body {
+
+      #on-canvas-controls {
+        text-align: center;
+
+        .tool-button {
+          color: $turquoise;
+          padding: 12px 24px;
+        }
+      }
+
+      .input {
+        p.label-text {
+          margin: 30px 0 0 0;
+        }
+
+        .modify {
+          top: 10px;
+        }
+
+        .row {
+          margin-bottom: 10px;
+        }
+
+        .answer {
+          padding-left: 0;
+        }
+
+        .options {
+          .option {
+            min-width: 0;
+          }
+        }
+
+        .move {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #on-canvas-controls {
+    display: none;
+  }
 }

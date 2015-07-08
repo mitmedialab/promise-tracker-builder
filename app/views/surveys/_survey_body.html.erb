@@ -3,56 +3,40 @@
     <ol data-bind="sortable: inputs" id="input-list">
       <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false}, attr: {id: 'input' + id()}, valueUpdate: 'input'">
         <!-- ko if: inEdit -->
-        <table>
-          <tr>
-            <th class="tall"><%= t(".question_label") %></th>
-            <td><input type="text" class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus></td>
-          </tr>
-          <tr>
-            <th><%= t(".answer_type") %></th>
-            <td>
-              <select class="form-control short inline" data-bind="options: PT.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type, event: {change: applyType}"></select>
-            </td>
-          </tr>
-          <tr>
-            <th><span data-bind="visible: input_type() == 'select' || input_type() == 'select1'"><%= t(".options") %></span></th>
-            <td>
-              <div class="answer" data-bind="css: input_type">
-                <div class="options" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
-                  <ul class="answer" data-bind="sortable: {data: options, connectClass: false}, valueUpdate:'input', css: input_type">
-                    <li class="option edit">
-                      <input data-bind="value: $parent.options()[$index()], valueUpdate:'afterkeydown'" autofocus>
-                      <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
-                      <span class="glyphicon glyphicon-move move"></span>
-                      </li>
-                  </ul>
-                  <div class="phantom-option" data-bind="click: addOption, css: input_type">
-                    <li>
-                      <div class="dummy-input"><%= t(".add_new_option") %></div>
-                    </li>  
-                  </div>
-                </div>
-              </div>
-              <div class="example padded">
-                <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
-                <p data-bind="visible: input_type() == 'text'">Abc</p>
-                <p data-bind="visible: input_type() == 'number'">123</p>
-                <p data-bind="visible: input_type() == 'location'">Lat: 42.3609509, Lon: -71.0870836</p>
-                <p data-bind="visible: input_type() == 'image'">
-                  <span class="glyphicon glyphicon-picture"></span>
-                </p>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th></th>
-            <td>
-              <label><%= t(".required") %></label><input type="checkbox" data-bind="checked: required">
-              <br><br>
-              <a href="#" class="btn btn-info save" data-bind="click: save"><%= t("defaults.save") %></a>
-            </td>
-          </tr>
-        </table>
+        <div class="row question-label">
+          <div class="col-md-3 label-text">
+            <%= t(".question_label") %>
+          </div>
+          <div class="col-md-9">
+            <textarea class="form-control" data-bind="value: label, valueUpdate:'input'" placeholder="<%= t(".question_placeholder") %>" autofocus></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 label-text">
+            <%= t(".answer_type") %>
+          </div>
+          <div class="col-md-9">
+            <select class="form-control short inline" data-bind="options: PT.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type, event: {change: applyType}"></select>
+          </div>
+        </div>
+
+        <div class="row answer" data-bind="css: input_type">
+          <div class="options label-text" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
+            <div class="col-md-3">
+              <%= t(".options") %>
+            </div>
+            <div class="col-md-9">
+              <ul class="answer" data-bind="sortable: {data: options, connectClass: false}, valueUpdate:'input', css: input_type">
+                <li class="option edit">
+                  <input data-bind="value: $parent.options()[$index()], valueUpdate:'afterkeydown'" autofocus>
+                  <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
+                  <span class="glyphicon glyphicon-move move"></span>
+                  </li>
+              </ul>
+            </div>     
+          </div>
+        </div>
 
         <div class="modify">
           <a href="#" class="btn" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk"></span> </a>
@@ -90,6 +74,11 @@
         <div class="error messages"></div>
       </li>
     </ol>
+    <div id="on-canvas-controls">
+      <div class="tool-button btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span><br>
+      </div>
+    </div>
   </div>
 </div>
 

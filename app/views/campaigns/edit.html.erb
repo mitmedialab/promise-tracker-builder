@@ -10,17 +10,11 @@
 
     <div id="campaign-goals-form" class="single-page">
       <div class="row">
-        <div class="col-sm-4 block">
+        <div class="col-sm-3 block">
           <div class="form-group">
             <%= f.label :theme, class: "block" %>
             <%= f.select :theme, campaign_themes, {}, { class: "form-control" } %> 
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3 form-group">
-          <%= f.label :country, Campaign.human_attribute_name(:country) %>
-          <%= f.select :country, campaign_countries, {}, { class: "form-control" } %>
         </div>
         <div class="col-md-5 form-group">
           <%= f.label :city, Campaign.human_attribute_name(:city) %>
