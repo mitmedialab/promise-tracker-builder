@@ -192,9 +192,21 @@
 
     .modify {
       position: absolute;
-      top: 20px;
+      top: 15px;
       right: 20px;
       z-index: 5;
+
+      a {
+        padding: 8px 10px;
+      }
+
+      i {
+        font-size: 1.2em;
+
+        &.fa-files-o {
+          font-size: 1.1em;
+        }
+      }
     }
 
     .reorder {
@@ -202,7 +214,7 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      padding: 30px 35px;
+      padding: 25px 30px;
       text-align: right;
       cursor: move;
       width: 30%;
@@ -217,7 +229,7 @@
         margin: 0;
       }
 
-      span {
+      i {
         font-size: 1.2em;
       }
     }
@@ -246,8 +258,15 @@
           min-width: 315px;
 
           .move {
-            padding: 10px 0 0 15px;
+            padding: 2px 0 0 15px;
             color: $med-grey;
+          }
+
+          i, span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+            margin-top: -5px;
           }
         }
 

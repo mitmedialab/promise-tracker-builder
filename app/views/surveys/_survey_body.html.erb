@@ -32,12 +32,12 @@
               <%= t(".options") %>
             </div>
             <div class="col-md-9">
-              <ul class="answer" data-bind="sortable: {data: options, connectClass: false, cancel: 'input'}, valueUpdate:'input', css: input_type">
+              <ul class="answer" data-bind="sortable: {data: options, connectClass: false, options: {handle: '.move'}}, valueUpdate:'input', css: input_type">
                 <li class="option edit">
                   <input data-bind="value: $parent.options()[$index()], valueUpdate:'afterkeydown'" autofocus>
                   <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
-                  <i class="icon-resize-vertical move"></i>
-                  </li>
+                  <i class="fa fa-arrows move"></i>
+                </li>
               </ul>
             </div>     
           </div>
@@ -47,11 +47,11 @@
         <!-- ko ifnot: inEdit -->
         <div class="modify">
           <a href="#" class="btn" data-bind="click: edit"><%= t("defaults.edit") %></a>
-          <a href="#" class="btn" title="<%= t("defaults.copy") %>" data-bind="click: copy"><i class="icon-copy"></i> </a>
-          <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
+          <a href="#" class="btn" title="<%= t("defaults.copy") %>" data-bind="click: copy"><i class="fa fa-files-o"></i></a>
+          <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><i class="fa fa-trash-o"></i></a>
         </div>
         <div class="reorder">
-          <i class="icon-resize-vertical move"></i>
+          <i class="fa fa-arrows"></i>
         </div>
 
         <p data-bind="text: $data.label" class="label-text"></p>
