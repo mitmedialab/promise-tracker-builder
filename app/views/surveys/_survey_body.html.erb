@@ -41,6 +41,21 @@
               </ul>
             </div>     
           </div>
+
+          <div class="example" data-bind="visible: input_type() != 'select' && input_type() != 'select1'">
+            <div class="col-md-3 label-text">
+              <%= t(".example") %>
+            </div>
+            <div class="col-md-9 example-type">
+              <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
+              <p data-bind="visible: input_type() == 'text'">Abc</p>
+              <p data-bind="visible: input_type() == 'number'">123</p>
+              <p data-bind="visible: input_type() == 'location'">Lat: 42.3609509, Lon: -71.0870836</p>
+              <p data-bind="visible: input_type() == 'image'">
+                <span class="glyphicon glyphicon-picture"></span>
+              </p>
+            </div>
+          </div>
         </div>
         <!-- /ko -->
 
