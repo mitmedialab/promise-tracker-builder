@@ -338,7 +338,7 @@
     }
 
     #input-list {
-      padding: 0 0 5px 25px;
+      padding: 0 0 5px 10px;
     }
 
     #sidebar {
@@ -377,6 +377,10 @@
         .options {
           .option {
             min-width: 0;
+          }
+
+          li:before {
+            padding: 0 5px;
           }
         }
 

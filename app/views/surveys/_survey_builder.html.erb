@@ -64,6 +64,11 @@
     }
   });
 
+  // Trigger click event after cancelled drag event
+  $(document).on("mouseup", ".input .option input", function(event){
+    $(event.target).trigger("click");
+  });
+
   // Add new answer option on enter key
   $(document).on("keyup", ".options", function(){
     if(event.keyCode == 13){
