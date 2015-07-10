@@ -3,6 +3,11 @@
     <ol data-bind="sortable: inputs" id="input-list">
       <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false}, attr: {id: 'input' + id()}, valueUpdate: 'input'">
         <!-- ko if: inEdit -->
+        <div class="modify">
+          <a href="#" class="btn" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk"></span> </a>
+          <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
+        </div>
+
         <div class="row question-label">
           <div class="col-md-3 label-text">
             <%= t(".question_label") %>
@@ -27,7 +32,7 @@
               <%= t(".options") %>
             </div>
             <div class="col-md-9">
-              <ul class="answer" data-bind="sortable: {data: options, connectClass: false}, valueUpdate:'input', css: input_type">
+              <ul class="answer" data-bind="sortable: {data: options, connectClass: false, cancel: 'input'}, valueUpdate:'input', css: input_type">
                 <li class="option edit">
                   <input data-bind="value: $parent.options()[$index()], valueUpdate:'afterkeydown'" autofocus>
                   <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
@@ -37,21 +42,19 @@
             </div>     
           </div>
         </div>
-
-        <div class="modify">
-          <a href="#" class="btn" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk"></span> </a>
-          <a href="#" class="btn" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
-        </div>
         <!-- /ko -->
 
         <!-- ko ifnot: inEdit -->
-        <p data-bind="text: $data.label" class="label-text"></p>
         <div class="modify">
           <a href="#" class="btn" data-bind="click: edit"><%= t("defaults.edit") %></a>
           <a href="#" class="btn" title="<%= t("defaults.copy") %>" data-bind="click: copy"><i class="icon-copy"></i> </a>
           <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><span class="glyphicon glyphicon-trash"></span></a>
         </div>
+        <div class="reorder">
+          <i class="icon-resize-vertical move"></i>
+        </div>
 
+        <p data-bind="text: $data.label" class="label-text"></p>
         <div class="example" data-bind="css: input_type">
           <div class="options" data-bind="visible: input_type() === 'select' || input_type() === 'select1'">
             <p data-bind="visible: input_type() === 'select'"><%= t(".select_many") %>:</p>

@@ -57,6 +57,7 @@
   });
 
   $("#input-list").sortable({
+    handle: ".reorder",
     stop: function(event, ui){
       ui.item.addClass("drag-insert");
       ui.item.trigger("click");
