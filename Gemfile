@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'dotenv-rails'
 
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-sass'
 gem 'active_model_serializers'
 gem 'handlebars_assets'
 gem 'devise'
