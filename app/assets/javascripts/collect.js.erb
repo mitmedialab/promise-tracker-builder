@@ -82,9 +82,22 @@ PT.renderActivityGraph = function(responses, containerId){
     var date = new Date(parseInt(day.key));
     return [Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()), day.values.length]
   });
-  var today = new Date();
+
   if(array.length == 0){
-    array = [[Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()), 0]]
+    // Insert today's date if no responses found
+    var today = new Date();
+    array = [[Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()), null]]
+  } else {
+    var firstDate = array[0][0];
+    var lastDate = array[array.length - 1][0];
+    var numDays = (lastDate - firstDate) / 86400000;
+
+    // Insert 0 value for dates with no data
+    for(i = 0; i < numDays; i++){
+      if(array[i + 1][0] - array[i][0] > 86400000){
+        array.splice(i + 1, 0, [array[i][0] + 86400000, 0]);
+      }
+    }
   }
 
   $container.highcharts({
@@ -148,7 +161,6 @@ PT.renderActivityGraph = function(responses, containerId){
     },
     series: [{
       name: "",
-      connectNulls: false,
       data: array
     }]
   });
