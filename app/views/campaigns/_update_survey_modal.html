@@ -4,12 +4,11 @@
       <div class="modal-header">
         <h4 class="modal-title"><%= t(".modal_title") %></h4>
       </div>
-      <div class="modal-body">
-        <%= t(".update_survey") %><br>
-        <div class="center">
-          <h4><%= t(".how_to_update") %> <span class="glyphicon glyphicon-repeat"></span> <%= t(".in_the_list") %></h4>
-          <%= image_tag("pt-update-survey-version.png") %>
-        </div>
+      <div class="modal-body center">
+        <h4><strong><%= t(".update_survey") %></strong></h4>
+        <h4><%= t(".test_version_warning") %></h4>
+        <%= image_tag("pt-update-survey-version.png") %>
+        <h5><%= t(".how_to_update") %> <span class="glyphicon glyphicon-repeat"></span> <%= t(".in_the_list") %></h5>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" data-dismiss="modal"><%= t("defaults.close") %></button>

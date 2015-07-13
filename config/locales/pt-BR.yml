@@ -251,11 +251,6 @@ pt-BR:
 
     share:
       visualize_data: "Vizualizar seus dados" 
-      map: "Mapa" 
-      photos: "Fotos"
-      graphs: "Gráficos"
-      graph_placeholder: "Quando tiver registros, vai poder visualizar o agregado dos dados aqui."
-      image_placeholder: "Não há fotos coletadas ainda para esta campanha"
       share_data: "Compartilhe seus dados"
       data_reports: "Relatório de dados"
       campaign_organizers: "Organizadores da campanha"
@@ -279,19 +274,29 @@ pt-BR:
       test_explanation: "Antes de lançar sua campanha, teste o formulário no aplicativo móvel para confirmar que tudo esteja certo."
       catch_errors: "Agora é o momento de achar todos os erros!"
       how_to_test: "Como testar"
+      view_test_data: "Visualizar dados do teste"
       step_3_text: "Testar o formulário"
       step_3_subtext: "Preencha o formulário e Confirme que tudo esteja bem escrito e em ordem"
       warning: "Depois de lançar, você não vai poder modificar o formulário."
       edit_survey: "Editar formulário"
       go_live: "Lançar campanha"
       confirm_launch: "Tem certeza que deseja lançar esta campanha? Uma vez lançado, o formulário não pode mais ser modificado!"
-      test_complete: "Teste completado - Esta campanha está"
+      test_complete: "Teste completado"
+      this_campaign_is: "Esta campanha está "
 
     update_survey_modal:
       modal_title: "Atualização da versão da campanha"
-      update_survey: "Lembre-se que agora que lançou a campanha, tem que baixar a nova versão da campanha no celular!"
+      update_survey: "Não esqueça que tem que baixar a versão final da campanha no celular!"
+      test_version_warning: "A versão teste não funcionará para coletar dados."
       how_to_update: "Dentro do aplicativo, baixe de novo com o mesmo código ou clique no botão "
       in_the_list: "na listagem."
+
+    viz_panel:
+      map: "Mapa" 
+      photos: "Fotos"
+      graphs: "Gráficos"
+      graph_placeholder: "Quando tiver registros, vai poder visualizar o agregado dos dados aqui."
+      image_placeholder: "Não há fotos coletadas ainda para esta campanha"
 
   surveys:
     android_preview: 

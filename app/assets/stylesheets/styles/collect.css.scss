@@ -247,13 +247,19 @@
   }
 }
 
-@media (max-width: 768px) {
-  #update-survey-modal {
-    text-align: center;
+#update-survey-modal {
+  text-align: center;
 
-    img {
-      height: 200px;
-    }
+  img {
+    height: 330px;
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+
+  img {
+    height: 150px;
   }
 
   .campaign-info-box {

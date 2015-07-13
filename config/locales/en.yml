@@ -237,7 +237,7 @@ en:
       define_goals: "Define goals"
       create_survey: "Create survey"
       design_campaign_page: "Design campaign page"
-      test_campaign: "Test survey"
+      test_survey: "Test survey"
       collect_data: "Collect data"
       share_data: "Share data"
 
@@ -250,11 +250,6 @@ en:
 
     share:
       visualize_data: "Visualize your data" 
-      map: "Map" 
-      photos: "Photos"
-      graphs: "Graphs"
-      graph_placeholder: "Once you start collecting data, you'll be able to view graphs of your survey results here."
-      image_placeholder: "No photos have been submitted yet for this survey."
       share_data: "Share your data online"
       data_reports: "Data reports"
       contact: "Contact person"
@@ -280,19 +275,28 @@ en:
       catch_errors: "Now is the time to catch any mistakes!"
       warning: "Once you go live, you can no longer change your survey."
       how_to_test: "How to test" 
+      view_test_data: "View test data"
       step_3_text: "Test the survey"
       step_3_subtext: "Fill out the survey and verify that all questions are written correctly and are in the right order."
       edit_survey: "Edit survey"
       go_live: "Go live"
       confirm_launch: "Are you sure you want to go live? Once you go live you can no longer change your survey!"
-      test_complete: "Test complete - This campaign is now "
+      test_complete: "Test complete"
+      this_campaign_is: "This campaign is now "
 
     update_survey_modal:
       modal_title: "Update campaign"
-      update_survey: "Don't forget to download the final version of your campaign! Test versions will not submit proper data."
-      how_to_update: "In the mobile app, re-download the camaign with the same code or press the "
+      update_survey: "Don't forget to download the final version of your campaign!"
+      test_version_warning: "Test versions will not submit proper data."
+      how_to_update: "In the mobile app, re-download the campaign with the same code or press the "
       in_the_list: " button next to the campaign title."
 
+    viz_panel:
+      map: "Map" 
+      photos: "Photos"
+      graphs: "Graphs"
+      graph_placeholder: "Once you start collecting data, you'll be able to view graphs of your survey results here."
+      image_placeholder: "No photos have been submitted yet for this survey."
 
   surveys:
     android_preview: 

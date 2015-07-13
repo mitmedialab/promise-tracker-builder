@@ -14,50 +14,112 @@
     </p>
     <br>
 
-    <h3 class="highlight title">
-      <%= t(".how_to_test") %>:
-    </h3>
-    <div id="how-to-test"> 
-      <div class="row step">
-        <div class="col-sm-1 step-icon">
-          <i class="icon-mobile-phone"></i>
-        </div>
-        <div class="col-sm-6">
-          <h4><%= t("campaigns.how_to_participate.step") %> 1:</h4>
-          <h3><%= t("campaigns.how_to_participate.step_1_text") %></h3>  
-        </div>
-        <div class="col-sm-5">
-          <%= link_to t("campaigns.how_to_participate.download_link"), "//play.google.com/store/apps/details?id=com.ionicframework.monitorandoacidade", target: "blank" %>
+    <ul id="test-tabs" class="nav nav-tabs" role="tablist">
+      <li>
+        <a href="#how-to-test" role="tab" data-toggle="tab" class="active" id="instructions-tab">
+          <h3 class="title">
+            <%= t(".how_to_test") %>
+          </h3>
+        </a>
+      </li>
+      <li>
+        <a href="#view-data" role="tab" data-toggle="tab" id="view-data-tab">
+          <h3 class="title">
+            <%= t(".view_test_data") %>
+          </h3>
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="how-to-test" class="tab-pane fade in active">
+        <div class="row">
+          <div id="how-to-participate" class="participate">
+            <div class="row how-to-steps">
+              <div class="col-sm-4">
+                <div class="step">
+                  <h5><%= t("campaigns.how_to_participate.step") %> 1:</h5>
+                  <i class="icon-mobile-phone bigger"></i>
+                  <h4><%= t("campaigns.how_to_participate.step_1_text") %></h4>
+                  <%= link_to t("campaigns.how_to_participate.download_link"), "//play.google.com/store/apps/details?id=com.ionicframework.monitorandoacidade", target: "blank" %>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="step">
+                  <h5><%= t("campaigns.how_to_participate.step") %> 2:</h5>
+                  <i class="icon-download-alt"></i>
+                  <h4><%= t("campaigns.how_to_participate.step_2_text") %></h4>
+                  <p class="small"><%= t("campaigns.how_to_participate.step_2_subtext") %>:</p>
+                  <h3 class="code subtle"><%= format_survey_code(@survey.code) %></h3>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="step">
+                  <h5><%= t("campaigns.how_to_participate.step") %> 3:</h5>
+                  <i class="icon-check"></i>
+                  <h4><%= t("campaigns.how_to_participate.step_3_text") %></h4>
+                  <p class="small"><%= t("campaigns.how_to_participate.step_3_subtext") %></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="row step">
-        <div class="col-sm-1 step-icon">
-          <i class="icon-download-alt"></i>
-        </div>
-        <div class="col-sm-6">
-          <h4><%= t("campaigns.how_to_participate.step") %> 2:</h4>
-          <h3><%= t("campaigns.how_to_participate.step_2_text") %></h3>
-        </div>
-        <div class="col-sm-5">
-          <%= t("campaigns.how_to_participate.step_2_subtext") %>: <strong style="font-size: 1.5em"><%= format_survey_code(@survey.code) %></strong>
-        </div>
-      </div>
-
-      <div class="row step">
-        <div class="col-sm-1 step-icon">
-          <i class="icon-check"></i>
-        </div>
-        <div class="col-sm-6">
-          <h4><%= t("campaigns.how_to_participate.step") %> 3:</h4>
-          <h3><%= t(".step_3_text") %></h3>
-        </div>
-        <div class="col-sm-5">
-          <%= t(".step_3_subtext") %>
-        </div>
+      <div id="view-data" class="tab-pane">
+        <%= render partial: 'viz_panel' %>
       </div>
     </div>
   <% else %>
-    <h3 class="title inline"><%= t(".test_complete") %> <%= t("campaigns.status.#{@campaign.status}").downcase %></h3>
+    <h3 class="title center test-complete">
+      <i class="fa fa-check-circle turquoise"></i> <%= t(".test_complete") %>!<br>
+      <%= t(".this_campaign_is") %> <%= link_to t("campaigns.status.#{@campaign.status}").downcase, campaign_path(@campaign) %>.
+    </h3>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $("#test-tabs a").click(function(e) {
+    e.preventDefault();
+    $(this).tab("show");
+    $("#test-tabs a").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  // Fetch responses from aggregator
+  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+
+    // Populate panel
+    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-5");
+    PT.renderGallery(PT.extractAllImages(PT.responses), "#image-viz", "main-gallery");
+    PT.renderGoogleMap(data, "map-viz");
+
+    // Add map popup window
+    var $popup = $(HandlebarsTemplates["response_view"](PT.surveyDefinition));
+    $popup.addClass("popup");
+    $popup.hide();
+    $(document.body).append($popup);
+
+    $(document).on("click", function(){
+      $popup.hide();
+    });
+
+    // Switch to data tab if responses available
+    var responseCount = PT.responses.length;
+    if(responseCount > 0){
+
+    }
+  });
+  
+  $("#viz-tabs a").click(function(e) {
+    e.preventDefault();
+    $(this).tab("show");
+    $("#viz-tabs a").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  // Re render graphs when graph tab clicked
+  $("#graph-tab").on("shown.bs.tab", function(e){
+    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-5");
+  });
+</script>

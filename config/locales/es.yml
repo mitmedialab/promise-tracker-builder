@@ -235,10 +235,10 @@ es:
       create_campaign: "Crear"
 
     progress_bar:
-      define_goals: "Define los objetivos"
+      define_goals: "Definir objetivos"
       create_survey: "Crear encuesta"
-      design_campaign_page: "Página de diseño de campaña"
-      test_campaign: "Encuesta de prueba"
+      design_campaign_page: "Diseñar página de la campaña"
+      test_survey: "Probar encuesta"
       collect_data: "Recolectar datos"
       share_data: "Compartir datos"
 
@@ -251,11 +251,6 @@ es:
 
     share:
       visualize_data: "Visualizar tus datos" 
-      map: "Mapa" 
-      photos: "Fotos"
-      graphs: "Gráficas"
-      graph_placeholder: "Aquí podrás ver gráficas con los resultados de las encuestas una vez que se comiencen a recopilar los datos."
-      image_placeholder: "No se han enviado fotografías en esta encuesta"
       share_data: "Comparte los datos en línea"
       data_reports: "Reportes de datos"
       contact: "Persona de contacto"
@@ -281,19 +276,28 @@ es:
       catch_errors: "¡Es el momento de encontrar cualquier error!"
       warning: "Una vez que se publique la encuesta no se podrá modificar."
       how_to_test: "Cómo probar" 
+      view_test_data: "Visualizar datos de prueba"
       step_3_text: "Probar la encuesta"
       step_3_subtext: "Llena la encuesta y verifica que las preguntas estén escritas correctamente y en el orden adecuado."
       edit_survey: "Editar encuesta"
       go_live: "Publicar"
       confirm_launch: "¿Estás seguro que la quieres publicar? ¡Una vez que se publique la encuesta no se podrán hacer cambios!"
-      test_complete: "Prueba completa - Esta campaña es ahora "
+      test_complete: "Prueba completa"
+      this_campaign_is: "Esta campaña está "
 
     update_survey_modal:
       modal_title: "Actualizar campaña"
-      update_survey: "¡No olvides descargar la versión final de la campaña! Las versiones de prueba no enviarán datos en la manera correcta."
+      update_survey: "¡No olvides descargar la versión final de la campaña!"
+      test_version_warning: "La version de prueba no funcionará para recolectar datos."
       how_to_update: "En la aplicación móvil, vuelve a descargar la campaña con el mísmo código o presiona el "
       in_the_list: " botón a un lado del título de la campaña."
 
+    viz_panel:
+      map: "Mapa" 
+      photos: "Fotos"
+      graphs: "Gráficas"
+      graph_placeholder: "Aquí podrás ver gráficas con los resultados de las encuestas una vez que se comiencen a recopilar los datos."
+      image_placeholder: "No se han enviado fotografías en esta encuesta"
 
   surveys:
     android_preview: 
