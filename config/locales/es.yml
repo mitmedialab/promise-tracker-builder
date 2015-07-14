@@ -307,7 +307,7 @@ es:
       of: "de" 
 
     survey_body:
-      required: "¿Pregunta requerida?"
+      required: "Pregunta requerida"
       options: "Opciones"
       add_new_option: "Clic para agregar una opción"
       question_label: "Texto de pregunta"

@@ -306,7 +306,7 @@ en:
       of: "of" 
 
     survey_body:
-      required: "Question required?"
+      required: "Required question"
       options: "Options"
       add_new_option: "Click to add an option"
       question_label: "Question text"

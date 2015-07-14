@@ -308,7 +308,7 @@ pt-BR:
       close_preview: "Fechar pré visualização"
 
     survey_body:
-      required: "Pergunta obrigatoria?"
+      required: "Pergunta obrigatoria"
       options: "Opções"
       add_new_option: "Clique para adicionar uma opção"
       question_label: "Texto da pergunta"
