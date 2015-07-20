@@ -79,6 +79,7 @@ en:
         select: "Select many"
         location: "Location"
         image: "Image" 
+        note: "(Text card - No answer)"
 
       countries:
         brazil: "Brazil"
@@ -308,7 +309,7 @@ en:
     survey_body:
       required: "Required question"
       options: "Options"
-      add_new_option: "Click to add an option"
+      add_new_option: "Add an option"
       question_label: "Question text"
       question_placeholder: "Type your question here"
       answer_type: "Type of answer"

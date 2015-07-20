@@ -78,7 +78,8 @@ es:
         select1: "Seleccionar una"
         select: "Seleccionar varias"
         location: "Ubicación"
-        image: "Imagen" 
+        image: "Imagen"
+        note: "(Texto de explicación - Sin respuesta)"
 
       countries:
         brazil: "Brazil"
@@ -309,7 +310,7 @@ es:
     survey_body:
       required: "Pregunta requerida"
       options: "Opciones"
-      add_new_option: "Clic para agregar una opción"
+      add_new_option: "Agregar una opción"
       question_label: "Texto de pregunta"
       question_placeholder: "Escribe tu pregunta aquí"
       answer_type: "Tipo de respuesta"
