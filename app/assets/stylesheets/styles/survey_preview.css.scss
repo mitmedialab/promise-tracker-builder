@@ -64,7 +64,7 @@
   }
 
   &.select1 {
-    li:before {
+    li:before, .li:before {
       font-family: 'FontAwesome';
       content: '\f10c';
       font-size: .9em;
@@ -76,7 +76,7 @@
   }
 
   &.select {
-    li:before {
+    li:before, .li:before {
       font-family: 'FontAwesome';
       content: '\f096';
       font-size: .9em;

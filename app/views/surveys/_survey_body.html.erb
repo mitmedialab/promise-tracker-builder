@@ -2,6 +2,7 @@
   <div id="survey-body">
     <ol data-bind="sortable: inputs" id="input-list">
       <li class="input" data-bind="css: { selected: PT.selectedInput() ? id === PT.selectedInput().id : false}, attr: {id: 'input' + id()}, valueUpdate: 'input'">
+
         <!-- ko if: inEdit -->
         <div class="modify">
           <a href="#" class="btn" data-bind="click: save"><span class="glyphicon glyphicon-floppy-disk"></span> </a>
@@ -17,7 +18,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row answer-type">
           <div class="col-md-3 label-text">
             <%= t(".answer_type") %>
           </div>
@@ -26,7 +27,7 @@
           </div>
         </div>
 
-        <div class="row answer" data-bind="css: input_type">
+        <div class="row answer" data-bind="css: input_type, visible: input_type() != 'note'">
           <div class="options label-text" data-bind="visible: input_type() == 'select' || input_type() == 'select1'">
             <div class="col-md-3">
               <%= t(".options") %>
@@ -39,10 +40,15 @@
                   <i class="fa fa-arrows move"></i>
                 </li>
               </ul>
+              <div class="phantom-option option" data-bind="click: addOption, css: input_type">
+                <div class="li">
+                  <div class="dummy-input"><%= t(".add_new_option") %></div> 
+                </div>
+              </div>
             </div>     
           </div>
 
-          <div class="example" data-bind="visible: input_type() != 'select' && input_type() != 'select1'">
+          <div class="example" data-bind="visible: input_type() != 'select' && input_type() != 'select1' && input_type() != 'note'">
             <div class="col-md-3 label-text">
               <%= t(".example") %>
             </div>
@@ -56,12 +62,12 @@
               </p>
             </div>
           </div>
+        </div>
 
-          <div>
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-              <input type="checkbox" data-bind="checked: required"> <label><%= t(".required") %></label>
-            </div>
+        <div class="row required" data-bind="visible: input_type() != 'note'">
+          <div class="col-md-3"></div>
+          <div class="col-md-9">
+            <input type="checkbox" data-bind="checked: required"> <label><%= t(".required") %></label>
           </div>
         </div>
         <!-- /ko -->

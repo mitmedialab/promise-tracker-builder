@@ -27,12 +27,12 @@
 #tool-palette .tool-button, .tool-button.drag-insert {
   background: $turquoise;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 15px 20px;
   margin: 10px 0;
   cursor: pointer;
   font-size: 15px;
 
-  .glyphicon {
+  span {
     margin-right: 5px;
   }
 }
@@ -60,9 +60,8 @@
   }
 
   #tool-palette {
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 200px;
+    margin: 40px auto;
+    width: 210px;
     font-weight: 100;
 
     ul {
@@ -94,7 +93,7 @@
     width: 40px;
     height: 200px;
     right: 245px;
-    top: 270px;
+    top: 190px;
   }
 }
 
@@ -194,7 +193,7 @@
       margin-bottom: 5px;
 
       &.short {
-        width: 200px;
+        max-width: 300px;
       }
     }
 
@@ -290,18 +289,21 @@
 
       input {
         margin: 5px;
+        width: 60%;
       }
 
       .dummy-input {
-        margin: 5px;
-        min-width: 204px;
+        margin: 5px 5px 5px 5px;
         display: inline-block;
+        width: 60%;
+        height: 32px;
       }
 
       .phantom-option {
-        margin: 10px 0 10px 5px;
+        margin: 5px 0;
+        padding: 5px;
         color: grey;
-        display: inline-block;
+        display: block;
       }
     }
 
@@ -345,15 +347,17 @@
       margin-top: 0px;
     }
 
-    .options .option.edit {
+    .options .option {
       min-width: 0;
 
-      input {
+      input, .dummy-input {
         width: 70%;
       }
 
-      .move {
-        display: none;
+      &.edit {
+        .move {
+          display: none;
+        }
       }
     }
   }
@@ -389,7 +393,6 @@
 
         .tool-button {
           color: $turquoise;
-          padding: 12px 24px;
         }
       }
 
