@@ -19,7 +19,7 @@
           <label><%= Campaign.human_attribute_name(:end_date) %>:</label>
           <% @campaign.end_date.strftime("%-d %b %Y") %>
         <% elsif @campaign.status == "active" %>
-          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning", data: { confirm: t("campaigns.collect.confirm_close") } %>
+          <%= link_to t(".close"), close_campaign_path(@campaign), class: "btn btn-warning-outline", data: { confirm: t("campaigns.collect.confirm_close") } %>
         <% end %>     
       </div>
     </div>
@@ -59,7 +59,7 @@
     </div>
   </div>
 </div>
-<%= render partial: 'update_survey_modal' %>
+
 <script type="text/javascript">
   // Facebook SDK
   window.fbAsyncInit = function() {
@@ -98,9 +98,5 @@
     PT.renderStatusBars("#status-bars", responseCount, PT.campaign.submissions_target);
     PT.renderActivityGraph(PT.responses, "#activity-graph");
     PT.renderResponseTable(PT.surveyDefinition, PT.responses);
-
-    if(responseCount < 1){
-      $("#update-survey-modal").modal();
-    }
   })
 </script>
