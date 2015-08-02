@@ -131,8 +131,9 @@ es:
 
   home:
     download:
-      download_link: "Download the mobile app"
-      app_description: "With the Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
+      download_link: "Descargue la aplicación móvil"
+      app_description: "Con la aplicación Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
+      google_language_code: "es-419"
 
     guides:
       for_users: "Para usuarios"
@@ -208,13 +209,13 @@ es:
 
     how_to_participate:
       participate_title: "¡Involúcrate!"
-      participate_text: "¡Descarga la aplicación para recoletar y enviar datos desde donde estes!"
+      participate_text: "¡Instala la aplicación para recoletar y enviar datos desde donde estés!"
       step: "Paso"
-      step_1_text: "Descarga la aplicación"
+      step_1_text: "Instala la aplicación"
       step_1_subtext: "Usarás la aplicación gratuita de Promise Tracker para recolectar datos."
-      download_link: "Da clic aquí para ver como descargarla."
+      download_link: "Da clic aquí para ver como instalarla."
       step_2_text: "Descarga la campaña"
-      step_2_subtext: "Usa la aplicación, descarga la campaña con el código"
+      step_2_subtext: "Usando la aplicación, descarga la campaña con el código"
       step_3_text: "Contribuye con datos"
       step_3_subtext: "¡Completa la encuesta y ve los datos en el mapa!"
 

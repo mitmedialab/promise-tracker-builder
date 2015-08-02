@@ -131,7 +131,8 @@ en:
   home:
     download:
       download_link: "Download the mobile app"
-      app_description: "With the Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
+      app_description: "To get started with data collection, install the mobile app and download your first survey!"
+      google_language_code: "en"
 
     guides:
       for_users: "For users"

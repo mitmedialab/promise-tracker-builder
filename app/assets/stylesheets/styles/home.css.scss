@@ -61,9 +61,30 @@
 =============================================*/
 
 .download-container {
-  img {
-    width: 130px;
+  margin-top: 40px;
+
+  img.preview {
+    margin: 10px auto;
+    width: 160px;
     height: auto;
+    display: block;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0 20px;
+
+    h3 {
+      margin-top: 0;
+      color: black;
+      font-weight: 100;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 38px;
+    }
   }
 }
 

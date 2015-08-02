@@ -132,6 +132,7 @@ pt-BR:
     download:
       download_link: "Baixar o aplicativo móvel"
       app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Monitorando a Cidade e coletar dados!"
+      google_language_code: "pt-br"
 
     guides:
       for_users: "Para usuários"
