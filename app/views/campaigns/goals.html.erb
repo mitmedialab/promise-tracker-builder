@@ -8,7 +8,7 @@
     </div>
     <% if @campaign.theme %>
     <label><%= Campaign.human_attribute_name(:theme) %></label>
-    <p><%= @campaign.theme %></p>
+    <p><%= t("activerecord.options.themes.#{@campaign.theme}") %></p>
     <br>
     <% end %>
 
