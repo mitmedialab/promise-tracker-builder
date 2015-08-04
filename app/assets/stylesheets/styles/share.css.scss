@@ -21,149 +21,149 @@
 
   .featured-viz {
     padding: 0;
+  }
 
-    #map-viz {
+  #map-viz {
+    width: 100%;
+
+    .leaflet-container img {
       width: 100%;
+      height: auto;
+    }
 
-      .leaflet-container img {
-        width: 100%;
-        height: auto;
-      }
-
-      .map-info-window-image{
-        float: left; 
-        img {
-          max-width: 400px;
-          max-height: 300px;
-        }
-      }
-
-      .map-info-window-table{
+    .map-info-window-image{
+      float: left; 
+      img {
+        max-width: 400px;
         max-height: 300px;
-        overflow: auto;
-
-        td {
-          padding: 0px 10px;
-        }
-
-        .table-lable{
-          padding-top: 10px;
-          max-width: 350px;
-          font-weight: bold;
-        }
       }
     }
 
-    #graph-viz {
-      overflow-y: scroll;
-      padding: 20px 20px 20px 30px;
+    .map-info-window-table{
+      max-height: 300px;
+      overflow: auto;
 
-      #graph-placeholder {
-        display: none;
-        text-align: center;
-        width: 75%;
-        margin: 0 auto;
-
-        #graph-images {
-          margin-top: 50px;
-        }
+      td {
+        padding: 0px 10px;
       }
 
-      img {
-        width: 30%;
-        height: auto;
-        vertical-align: center;
-        display: inline-block;
+      .table-lable{
+        padding-top: 10px;
+        max-width: 350px;
+        font-weight: bold;
       }
+    }
+  }
 
-      #graph-container {
-        padding: 10px 30px;
+  #graph-viz {
+    overflow-y: scroll;
+    padding: 20px 20px 20px 30px;
 
-        .item {
-          background: white;
-          border-radius: 4px;
-          padding: 20px 40px 30px 20px;
-          overflow: hidden;
-          margin-bottom: 15px;
+    #graph-placeholder {
+      display: none;
+      text-align: center;
+      width: 75%;
+      margin: 0 auto;
 
-          .title {
-            margin: 10px 60px 0px 60px;
-            font-size: 20px;
-          }
-        }
+      #graph-images {
+        margin-top: 50px;
+      }
+    }
 
-        .graph-square {
-          height: 220px;
-        }
+    img {
+      width: 30%;
+      height: auto;
+      vertical-align: center;
+      display: inline-block;
+    }
 
-        .map-placeholder {
-          background-image: url("map-placeholder.png");
-          background-size: cover;
-          padding: 60px 40px;
-          color: $turquoise;
-          font-size: 24px;
-          font-weight: 100;
+    #graph-container {
+      padding: 10px 30px;
+
+      .item {
+        background: white;
+        border-radius: 4px;
+        padding: 20px 40px 30px 20px;
+        overflow: hidden;
+        margin-bottom: 15px;
+
+        .title {
+          margin: 10px 60px 0px 60px;
+          font-size: 20px;
         }
       }
 
       .graph-square {
-        padding: 0 20px;
+        height: 220px;
       }
 
-      .viz-container {
-        margin-top: 30px;
-        text-align: center;
-
-        &.text {
-          padding: 0 100px 20px 100px;
-          max-height: 150px;
-          overflow: scroll;
-        }
-
-        &.image {
-          max-height: 310px;
-          overflow-y: scroll;
-        }
-
-        .gallery-image {
-          display: inline-block;
-          width: 100px;
-          height: 100px;
-          margin: 3px 3px 0 0;
-        }
-      }
-
-      .text-viz {
-        padding: 0 5px;
-        margin: 0 0 5px 0;
+      .map-placeholder {
+        background-image: url("map-placeholder.png");
+        background-size: cover;
+        padding: 60px 40px;
+        color: $turquoise;
+        font-size: 24px;
+        font-weight: 100;
       }
     }
 
-    #image-viz {
-      width: 100%;
-      padding: 15px 15px 15px 25px;
-      overflow: scroll;
+    .graph-square {
+      padding: 0 20px;
+    }
+
+    .viz-container {
+      margin-top: 30px;
+      text-align: center;
+
+      &.text {
+        padding: 0 100px 20px 100px;
+        max-height: 150px;
+        overflow: scroll;
+      }
+
+      &.image {
+        max-height: 310px;
+        overflow-y: scroll;
+      }
 
       .gallery-image {
         display: inline-block;
-        width: 200px;
-        height: 200px;
-        margin: 5px;
+        width: 100px;
+        height: 100px;
+        margin: 3px 3px 0 0;
       }
+    }
 
-      #image-placeholder {
-        text-align: center;
-        width: 75%;
-        padding-top: 90px;
-        margin: 0 auto;
-        color: $med-grey;
+    .text-viz {
+      padding: 0 5px;
+      margin: 0 0 5px 0;
+    }
+  }
 
-        img {
-          width: 30%;
-          height: auto;
-          margin: 20px;
-          opacity: .8;
-        }
+  #image-viz {
+    width: 100%;
+    padding: 15px 15px 15px 25px;
+    overflow: scroll;
+
+    .gallery-image {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      margin: 5px;
+    }
+
+    #image-placeholder {
+      text-align: center;
+      width: 75%;
+      padding-top: 80px;
+      margin: 0 auto;
+      color: $med-grey;
+
+      img {
+        width: 30%;
+        height: auto;
+        margin: 20px;
+        opacity: .8;
       }
     }
   }
@@ -354,9 +354,24 @@
     display: none;
   }
 
-  .nav-tabs .tab-icon {
-    width: 70px;
-    height: 70px;
+  .viz-panel {
+
+    .tab-pane, .nav-tabs  {
+      height: 320px;
+    }
+
+    #image-viz #image-placeholder{
+      padding-top: 40px;
+    }
+
+    .nav-tabs .tab-icon {
+      width: 70px;
+      height: 70px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
   }
 
   .report-options {
