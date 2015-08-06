@@ -12,7 +12,7 @@
       <%= t("campaigns.status.#{campaign.status}") %>
     <% end %>
     <%= link_to clone_campaign_path(campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
-      <i class="icon-copy"></i>
+      <i class="fa fa-files-o"></i>
     <% end %>
     <%= link_to campaign_path(campaign), class: "pad-side", title: t("defaults.delete"), method: :delete, data: { confirm: t(".confirm_delete") } do %>
       <span class="glyphicon glyphicon-trash"></span>
