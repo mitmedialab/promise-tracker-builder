@@ -68,6 +68,7 @@ es:
         infrastructure: "Infraestructura"
         energy: "Eletricidad"
         transport: "Transporte"
+        technologoy: "Tecnología / Comunicación"
         other: "Otro"
 
       input_types:

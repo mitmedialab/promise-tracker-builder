@@ -68,6 +68,7 @@ en:
         infrastructure: "Infrastructure"
         energy: "Eletricity"
         transport: "Transportation"
+        technology: "Technology / Communications"
         other: "Other"
 
       input_types:

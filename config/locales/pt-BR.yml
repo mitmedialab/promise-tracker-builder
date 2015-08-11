@@ -30,7 +30,7 @@ pt-BR:
         title: "Nome"
         description: "Descrição"
         goal: "Objetivo"
-        submissions_target: "Número de registros desejados"
+        submissions_target: "Meta de regitros desejados"
         data_collectors: "Colaboradores"
         audience: "Destinatários"
         status: "Estado"
@@ -68,6 +68,7 @@ pt-BR:
         sanitation: "Saneamento"
         infrastructure: "Infraestrutura"
         energy: "Eletricidade"
+        technology: "Tecnologia / Comunicação"
         other: "Outra"
 
       input_types:
@@ -196,10 +197,10 @@ pt-BR:
       explanations:
         description: "Descrição breve da campanha"
         goal: "O que você quer mudar na sua comunidade com esta campanha?"
-        organizers: "Qual grupo ou associação está organizando a campanha?"
+        organizers: "Qual é o nome do grupo ou associação que está organizando a campanha?"
         data_collectors: "Quem vai coletar os dados para esta campanha?"
-        submissions_target: "Quantos registros você espera conseguir durante a coleta de dados?"
-        audience: "Para melhorar a qualidade de vida na cidade, com quem você vai compartilhar os dados coletados?"
+        submissions_target: "Quantos registros você gostaria de conseguir durante a coleta de dados?"
+        audience: "Com quem você vai compartilhar os dados coletados? Tem algúm orgão do poder público, secretaria, instituição ou público que poderia ajudar com o tema escolhido?"
       tooltip: "Dica"
       tips:
         data_collectors: "Entre seus conhecidos, quem já está comprometido com a solução deste problema? Quem toparia trabalhar com você para coletar dados nesta campanha?"
