@@ -35,10 +35,12 @@ class SurveysController < ApplicationController
   def save_order
     @survey = Survey.find(params[:id])
     inputs = params[:inputs]
-
-    inputs.each_with_index do |input, index|
-      item = Input.find_or_create_by(id: input[:id])
-      item.update_attribute(:order, index)
+    
+    if inputs
+      inputs.each_with_index do |input, index|
+        item = Input.find_or_create_by(id: input[:id])
+        item.update_attribute(:order, index)
+      end
     end
 
     if @survey.campaign.status == 'draft'

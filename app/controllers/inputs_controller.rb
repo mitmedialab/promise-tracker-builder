@@ -3,8 +3,9 @@ class InputsController < ApplicationController
   def create
     @input = Input.find_or_create_by(id: params[:id])
     @input.update_attributes(input_params)
+
     if @input.input_type == 'select' || @input.input_type == 'select1'
-      @input.update_attribute(:options, params[:options].reject(&:empty?)) 
+      @input.update_attribute(:options, params[:options].reject(&:empty?))
     else
       @input.update_attribute(:options, [])
     end
@@ -29,7 +30,7 @@ class InputsController < ApplicationController
   private
 
   def input_params
-    params.require(:input).permit(:survey_id, :label, :input_type, :options, :required, :order)
+    params.require(:input).permit(:id, :survey_id, :label, :input_type, :options, :required, :order)
   end
 
 end

@@ -8,10 +8,7 @@
   </div> 
   <!-- /ko -->
   <!-- ko ifnot: PT.selectedInput -->
-  <div class="input-preview select center">
-    <h4><%= t(".no_questions") %></h4>
-    <p><%= t(".add_questions") %></p>
-  </div> 
+  <div class="input-preview select center"></div>
   <!-- /ko -->
 
   <p class="center question-number"><%= t(".question") %> <span data-bind="text: PT.survey.inputs.indexOf(PT.selectedInput()) + 1"></span> <%= t(".of") %> <span data-bind="text: PT.survey.inputs().length"></span></p>
