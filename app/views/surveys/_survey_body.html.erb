@@ -70,6 +70,12 @@
             <input type="checkbox" data-bind="checked: required"> <label><%= t(".required") %></label>
           </div>
         </div>
+
+        <div class="save right">
+          <div class="btn btn-info" data-bind="click: save">
+            <%= t("defaults.save")%>
+          </div>
+        </div>
         <!-- /ko -->
 
         <!-- ko ifnot: inEdit -->
