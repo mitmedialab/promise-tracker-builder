@@ -2,6 +2,8 @@
 
 en:
   devise:
+    new_password: "New password"
+    password_confirmation: "Password confirmation"
     confirmations:
       confirmed: "Your account was successfully confirmed."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."

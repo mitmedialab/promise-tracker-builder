@@ -1,5 +1,5 @@
 PromiseTracker::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: :registrations }
   root to: 'home#index'
   match ':status', via: [:get, :post], to: 'errors#show', constraints: {status: /\d{3}/ }
 

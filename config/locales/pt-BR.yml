@@ -342,6 +342,7 @@ pt-BR:
   users:
     show:
       add_email: "Adicionar e-mail"
+      change_password: "Trocar senha"
       edit_campaign_page: "Editar perfil"
 
   devise:

@@ -1,5 +1,7 @@
 es:
   devise:
+    new_password: "Nueva contraseña"
+    password_confirmation: "Confirmación de contraseña"
     confirmations:
       confirmed: "Tu cuenta ya ha sido confirmada."
       send_instructions: "Recibirás un correo electrónico en unos minutos con instrucciones sobre cómo restablecer tu contraseña."

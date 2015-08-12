@@ -340,6 +340,7 @@ en:
   users:
     show:
       add_email: "Add email"
+      change_password: "Change password"
       edit_campaign_page: "Edit campaign page"
 
   devise:

@@ -1,5 +1,7 @@
 pt-BR:
   devise:
+    new_password: "Nova senha"
+    password_confirmation: "Confirmação da senha"
     confirmations:
       confirmed: "Sua conta foi confirmada com sucesso."
       send_instructions: "Você receberá um email para confirmar sua conta em alguns minutis."

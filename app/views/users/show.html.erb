@@ -12,14 +12,16 @@
   <div class="row">
     <div class="col-md-6">
       <label><%= User.human_attribute_name(:bio) %></label> 
-      <p><%= current_user.bio %></p> 
-
-      <label><%= User.human_attribute_name(:email) %></label>     
+      <p><%= current_user.bio %></p>
+   
       <% if current_user.email.present? %>
+        <label><%= User.human_attribute_name(:email) %></label> 
         <p><%= current_user.email %></p>
       <% else %>
         <p><%= link_to t(".add_email"), edit_user_path(current_user) %></p>
       <% end %>
+
+      <p><%= link_to t(".change_password"), edit_user_registration_path(current_user) %></p>
     </div>
     <div class="col-md-12">
       <br>

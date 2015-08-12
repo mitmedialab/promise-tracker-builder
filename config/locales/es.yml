@@ -341,6 +341,7 @@ es:
   users:
     show:
       add_email: "Agregar correo electrónico"
+      change_password: "Cambiar contraseña"
       edit_campaign_page: "Editar página de campaña"
 
   devise:
