@@ -266,7 +266,7 @@ pt-BR:
       edit_survey: "Editar formulário"
 
     tabs:
-      goals: "Definição"
+      overview: "Definição"
       survey: "Formulário"
       campaign_page: "Página da campanha"
       data: "Dados"

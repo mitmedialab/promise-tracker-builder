@@ -5,16 +5,16 @@
   <div class="row how-to-steps">
     <div class="col-sm-4">
       <div class="step">
-        <i class="icon-mobile-phone bigger"></i>
         <h5><%= t("campaigns.how_to_participate.step") %> 1:</h5>
+        <%= image_tag("pt-qr-code.png", class: "qr-code") %>
         <h4><%= t(".step_1_text") %></h4>
         <%= link_to t(".download_link"), "//play.google.com/store/apps/details?id=com.ionicframework.monitorandoacidade", target: "blank" %>
       </div>
     </div>
     <div class="col-sm-4">
      <div class="step">
-        <i class="icon-download-alt"></i>
         <h5><%= t("campaigns.how_to_participate.step") %> 2:</h5>
+        <i class="fa fa-download"></i>
         <h4><%= t(".step_2_text") %></h4>
         <p class="small"><%= t(".step_2_subtext") %>:</p>
         <h3 class="code"><%= format_survey_code(@survey.code) %></h3>
@@ -22,8 +22,8 @@
     </div>
     <div class="col-sm-4">
       <div class="step">
-        <i class="icon-check"></i>
         <h5><%= t("campaigns.how_to_participate.step") %> 3:</h5>
+        <i class="fa fa-check"></i>
         <h4><%= t(".step_3_text") %></h4>
         <p class="small"><%= t(".step_3_subtext") %></p>
       </div>

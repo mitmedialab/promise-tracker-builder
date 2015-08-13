@@ -2,6 +2,13 @@
   Profile Page
 ==============================*/
 
+.qr-code {
+  display: block;
+  margin: 0 auto;
+  width: 70px;
+  height: auto;
+}
+
 #campaign-profile {
   background: white;
   text-align: left;
@@ -155,8 +162,17 @@
   .how-to-steps {
     margin: 0 auto;
 
+    h4 {
+      font-size: 20px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
     i {
-      font-size: 250%;
+      font-size: 50px;
+      line-height: 70px;
 
       &.bigger {
         font-size: 320% !important;
