@@ -55,7 +55,7 @@ class CampaignsController < ApplicationController
       @campaign.survey.update_attribute(:title, @campaign.title)
     end
 
-    if params[:campaign][:redirect_action] && @campaign.validate_profile
+    if params[:campaign][:redirect_action] && @campaign.campaign_page_valid
       redirect_to action: params[:campaign][:redirect_action]
     else
       redirect_to action: @campaign.get_latest_state, id: @campaign.id

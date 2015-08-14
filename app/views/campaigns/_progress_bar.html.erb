@@ -19,7 +19,7 @@
     <% end %>
 
     <%= link_to test_campaign_path(@campaign) do %>
-      <li data-path="test" data-clickable="<%= @campaign.validate_profile %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
+      <li data-path="test" data-clickable="<%= @campaign.campaign_page_valid %>" data-complete="<%= @campaign.status != 'draft' %>" class="progress-node">
         <div class="desktop-only"><%= t(".test_survey") %></div>
       </li>
     <% end %>

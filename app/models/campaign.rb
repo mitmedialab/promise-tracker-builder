@@ -22,7 +22,8 @@ class Campaign < ActiveRecord::Base
       anonymous: nil,
       start_date: nil,
       end_date: nil,
-      image: nil
+      image: nil,
+      campaign_page_valid: false
     )
     clone.save
     clone
@@ -36,10 +37,6 @@ class Campaign < ActiveRecord::Base
     self.submissions_target.present?
   end
 
-  def validate_profile
-    self.organizers.present? || self.anonymous == true
-  end
-
   def draft?
     self.status == 'draft' || self.status == 'test'
   end
@@ -49,8 +46,10 @@ class Campaign < ActiveRecord::Base
       'share'
     elsif self.status == 'active'
       'collect'
-    elsif self.status == 'test' || self.validate_profile
+    elsif self.status == 'test'
       'test'
+    elsif self.campaign_page_valid
+      'edit_profile'
     elsif self.survey || self.validate_goals
       'survey'
     else

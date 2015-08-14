@@ -15,7 +15,7 @@
       <li class="btn btn-default tab" id="survey-tab" data-action="survey" data-visible="<%= @campaign.survey %>">
         <%= link_to t(".survey"), campaign_survey_path(@campaign) %>
       </li>
-      <li class="btn btn-default tab" id="profile-tab" data-action="profile edit_profile" data-visible="<%= @campaign.validate_profile %>">
+      <li class="btn btn-default tab" id="profile-tab" data-action="profile edit_profile" data-visible="<%= @campaign.campaign_page_valid %>">
         <%= link_to t(".campaign_page"), campaign_profile_path(@campaign) %>
       </li>
       <li class="btn btn-default tab" id="collect-tab" data-action="collect" data-visible="<%= !@campaign.draft? %>">
