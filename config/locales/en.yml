@@ -303,8 +303,8 @@ en:
 
   surveys:
     android_preview: 
-      no_questions: "No questions"
-      add_questions: "Choose a question type above to get started."
+      get_location: "Get location"
+      take_picture: "Take picture"
       question: "Question" 
       of: "of" 
 

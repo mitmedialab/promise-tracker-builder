@@ -303,9 +303,8 @@ pt-BR:
 
   surveys:
     android_preview: 
-      preview_title: "Pré visualização no celular:"
-      no_questions: "Formulário vazio"
-      add_questions: "Escolha uma das opções acima para começar."
+      get_location: "Obter localização"
+      take_picture: "Tirar foto"
       question: "Pergunta"  
       of: "de"
       close_preview: "Fechar pré visualização"

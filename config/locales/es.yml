@@ -304,8 +304,8 @@ es:
 
   surveys:
     android_preview: 
-      no_questions: "Sin preguntas"
-      add_questions: "Selecciona un tipo de pregunta para comenzar."
+      get_location: "Obtener ubicación"
+      take_picture: "Tomar foto"
       question: "Pregunta" 
       of: "de" 
 

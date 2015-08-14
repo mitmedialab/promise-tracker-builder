@@ -18,7 +18,6 @@ class Survey < ActiveRecord::Base
     begin
       response = http.request(request)
       data = JSON.parse(response.body)
-      binding.pry
 
       if data['status'] == 'success'
         self.campaign.update_attributes(

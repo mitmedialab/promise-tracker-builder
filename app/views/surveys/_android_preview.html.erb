@@ -1,10 +1,22 @@
 <div class="preview-container">
   <!-- ko if: PT.selectedInput -->
   <div class="input-preview" data-bind="css: PT.selectedInput().input_type">
-    <p data-bind="text: PT.selectedInput().label"></p>
-    <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type, visible: PT.selectedInput().input_type() === 'select' || PT.selectedInput().input_type() === 'select1'">
-      <li data-bind="text: $data"></li>
-    </ul>
+    <div class="preview-contents">
+      <div class="header">
+        <%= image_tag("favicon.png") %>
+        <p><%= t("app_name") %></p>
+      </div>
+      <div class="input">
+        <p data-bind="text: PT.selectedInput().label"></p>
+        <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type, visible: PT.selectedInput().input_type() === 'select' || PT.selectedInput().input_type() === 'select1'">
+          <li data-bind="text: $data"></li>
+        </ul>
+        <div class="action-button" data-bind="visible: PT.selectedInput().input_type() === 'image' || PT.selectedInput().input_type() === 'location'">
+          <span data-bind="visible: PT.selectedInput().input_type() === 'image'"><i class="fa fa-camera"></i> <%= t(".take_picture") %></span>
+          <span data-bind="visible: PT.selectedInput().input_type() === 'location'"><i class="fa fa-map-marker"></i> <%= t(".get_location") %></span>
+        </div>
+      </div>
+    </div>
   </div> 
   <!-- /ko -->
   <!-- ko ifnot: PT.selectedInput -->
