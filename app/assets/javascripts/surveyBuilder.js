@@ -91,7 +91,7 @@ PT.Input = function(){
 
   self.addOption = function(input, event){
     self.options.push("");
-    $(event.target).parents().find(".options").find(".option").last().find("input").focus();
+    $(event.target).parents().find(".options").first().find(".option.edit").last().find("input").focus();
   };
 
   self.deleteOption = function(option, event){
