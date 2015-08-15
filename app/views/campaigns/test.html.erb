@@ -38,8 +38,7 @@
             <div class="row how-to-steps">
               <div class="col-sm-4">
                 <div class="step">
-                  <h5><%= t("campaigns.how_to_participate.step") %> 1:</h5>
-                  <i class="fa fa-mobile bigger"></i>
+                  <h5><%= t("campaigns.how_to_participate.step") %> 1:</h5><%= image_tag("pt-qr-code.png", class: "qr-code") %>
                   <h4><%= t("campaigns.how_to_participate.step_1_text") %></h4>
                   <%= link_to t("campaigns.how_to_participate.download_link"), download_path, target: "blank" %>
                 </div>
