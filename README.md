@@ -1,5 +1,6 @@
-== Promise Tracker
-=== Data collection for civic action
+Promise Tracker 
+------------
+Data collection for civic action
 
 Promise Tracker is a citizen monitoring platform that allows communities to design and implement local data collection campaigns. Through the online platform, users can create new campaigns, design custom surveys, track responses collected via the mobile app, and visualize data.
 
@@ -8,8 +9,9 @@ To Set Up
 
 1. Create an application.yml file based on template in config/application.yml.template. This file should contain the link and private key for an instace of the {Promise Tracker Data Aggregator}[https://github.com/c4fcm/Promise-Tracker-Aggregator].
 2. Create a database.yml file based on template in  config/database.yml.template.
-3. `rake db:setup`
-4. `sudo apt-get install imagemagick -y`
+3. `bundle install`
+4. `rake db:setup`
+5. `sudo apt-get install imagemagick -y`
 
 To Run
 ----------
