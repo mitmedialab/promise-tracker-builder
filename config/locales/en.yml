@@ -79,7 +79,8 @@ en:
         select1: "Select one"
         select: "Select many"
         location: "Location"
-        image: "Image" 
+        image: "Image"
+        audio: "Audio"
         note: "(Text card - No answer)"
 
       countries:

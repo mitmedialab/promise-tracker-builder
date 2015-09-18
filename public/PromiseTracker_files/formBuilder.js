@@ -3,25 +3,6 @@ $(document).ready(function(){
 
 var PT = PT || {};
 
-/// Input type defaults
-PT.defaultControls = {
-  inputText: {
-    input_type: "string"
-  },
-
-  inputNumber: {
-    input_type: "int"
-  },
-
-  inputDate: {
-    input_type: "date"
-  },
-
-  inputLocation: {
-    input_type: "geopoint"
-  }
-};
-
 /// Input constructor
 PT.Input = function(){
   var self = this;
@@ -32,6 +13,7 @@ PT.Input = function(){
   self.input_type = ko.observable();
   self.required = ko.observable(false);
   self.options = ko.observable();
+  self.sample_length = ko.observable();
   self.order = "";
   self.inEdit = ko.observable();
 
@@ -71,6 +53,7 @@ PT.Input = function(){
     self.required = ko.observable(data.required);
     self.options = ko.observable(data.options);
     self.order = data.order;
+    self.sample_length = data.sample_length;
     self.inEdit = ko.observable(false);
   }; 
 
@@ -147,7 +130,7 @@ PT.SurveyModel = function(){
   };
 };
 
-PT.getForm = function(url){
+PT.getSurveyDefinition = function(url){
   $.getJSON(url, null, function(response, textStatus) {
     PT.form = new PT.SurveyModel();
 

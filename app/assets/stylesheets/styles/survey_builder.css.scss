@@ -181,6 +181,15 @@
         color: $error;
       }
     }
+
+    .short {
+      max-width: 65px;
+      margin: 0 5px;
+    }
+
+    .black {
+      color: black;
+    }
       
     .form-control {
       margin-bottom: 5px;

@@ -49,9 +49,7 @@
           </div>
 
           <div class="example" data-bind="visible: input_type() != 'select' && input_type() != 'select1' && input_type() != 'note'">
-            <div class="col-md-3 label-text">
-              <%= t(".example") %>
-            </div>
+            <div class="col-md-3 label-text"></div>
             <div class="col-md-9 example-type">
               <p data-bind="visible: input_type() == 'date'"><%= t(".preview.date") %></p>
               <p data-bind="visible: input_type() == 'text'">Abc</p>
@@ -60,9 +58,14 @@
               <p data-bind="visible: input_type() == 'image'">
                 <span class="glyphicon glyphicon-picture"></span>
               </p>
+              <p data-bind="visible: input_type() == 'audio'">
+                <span class="glyphicon glyphicon-volume-up pad-right"></span>
+                <span class="black"><label><%= t(".sample_length") %></label>: <input type="number" min="1" max="300" data-bind="value: sample_length" class="short"> <%= t(".seconds") %></span>
+              </p>
             </div>
           </div>
         </div>
+
 
         <div class="row required" data-bind="visible: input_type() != 'note'">
           <div class="col-md-3"></div>
@@ -105,6 +108,9 @@
           <p data-bind="visible: input_type() == 'location'">Lat: 42.3609509, Lon: -71.0870836</p>
           <p data-bind="visible: input_type() == 'image'">
             <span class="glyphicon glyphicon-picture"></span>
+          </p>
+          <p data-bind="visible: input_type() == 'audio'">
+            <span class="glyphicon glyphicon-volume-up"></span>
           </p>
         </div>
         <p class="subtle required-input" data-bind="visible: required()">

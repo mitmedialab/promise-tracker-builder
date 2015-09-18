@@ -80,6 +80,7 @@ pt-BR:
         select: "Selecionar várias"
         location: "Localização"
         image: "Imagem"
+        audio: "Áudio"
         note: "(Texto de explicação - Sem resposta)"
 
       countries:
@@ -318,6 +319,7 @@ pt-BR:
       answer_type: "Tipo de resposta"
       select_one: "Selecione uma"
       select_many: "Selecione (pode ser mais de uma)"
+      sample_length: "Duração do áudio gravado"
       preview:
         date: "13 Jan, 2014"  
         number: "123"

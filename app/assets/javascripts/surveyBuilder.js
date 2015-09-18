@@ -1,23 +1,5 @@
 var PT = PT || {};
 
-/// Input type defaults
-PT.defaultControls = {
-  inputText: {
-    label: "Text",
-    input_type: "string"
-  },
-
-  inputLocation: {
-    label: "Location",
-    input_type: "location"
-  },
-
-  inputImage: {
-    label: "Image",
-    input_type: "image",
-  }
-};
-
 /// Input constructor
 PT.Input = function(){
   var self = this;
@@ -28,6 +10,7 @@ PT.Input = function(){
   self.input_type = ko.observable();
   self.required = ko.observable(false);
   self.options = ko.observableArray([I18n.t("surveys.survey_builder.option_1")]);
+  self.sample_length = ko.observable();
   self.order = "";
   self.inEdit = ko.observable(true);
 
@@ -79,6 +62,7 @@ PT.Input = function(){
     self.input_type = ko.observable(data.input_type);
     self.required = ko.observable(data.required);
     self.options = ko.observableArray(data.options);
+    self.sample_length = ko.observable(data.sample_length);
     self.order = data.order;
     self.inEdit = ko.observable(false);
   }; 
@@ -130,25 +114,12 @@ PT.SurveyModel = function(){
   self.inputs = ko.observableArray([]);
 
   self.addInput = function(event){
-    event.stopPropagation();
     self.saveInputs();
 
     var input = new PT.Input();
-    var type = PT.defaultControls[$(event.currentTarget).attr("rel")];
-    var index;
-    
-    if(type){
-      input.input_type(type["input_type"]);
-    }
+    input.input_type = ko.observable("text");
 
-    if($(event.target).hasClass("drag-insert")){
-      index = $(event.target).index();
-      $(event.target).remove();
-    } else {
-      index = self.inputs().length;
-    }
-
-    self.inputs.splice(index, 0, input);
+    self.inputs.push(input);
     PT.selectedInput(input);
     if($(".selected").length > 0) {
       $(".selected").find("input")[0].focus();
