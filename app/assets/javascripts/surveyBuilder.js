@@ -11,6 +11,7 @@ PT.Input = function(){
   self.required = ko.observable(false);
   self.options = ko.observableArray([I18n.t("surveys.survey_builder.option_1")]);
   self.sample_length = ko.observable();
+  self.sensor_type = ko.observable();
   self.order = "";
   self.inEdit = ko.observable(true);
 
@@ -63,6 +64,7 @@ PT.Input = function(){
     self.required = ko.observable(data.required);
     self.options = ko.observableArray(data.options);
     self.sample_length = ko.observable(data.sample_length);
+    self.sensor_type = ko.observable(data.sensor_type);
     self.order = data.order;
     self.inEdit = ko.observable(false);
   }; 
@@ -111,6 +113,8 @@ PT.SurveyModel = function(){
   self.id = "";
   self.title = ko.observable();
   self.campaign_id = "";
+  self.sensor_type = ko.observable();
+  self.threshold = ko.observable();
   self.inputs = ko.observableArray([]);
 
   self.addInput = function(event){
@@ -187,6 +191,9 @@ PT.getSurvey = function(id){
     PT.survey.id = response.id;
     PT.survey.title(response.title);
     PT.survey.campaign_id = response.campaign_id;
+    PT.survey.sensor_type = ko.observable(response.sensor_type);
+    PT.survey.threshold = ko.observable(response.threshold);
+    PT.survey.positive_threshold = ko.observable(response.positive_threshold);
     PT.survey.populateInputs(response.inputs);
     ko.applyBindings(PT.survey);
 

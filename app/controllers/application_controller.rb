@@ -25,6 +25,14 @@ class ApplicationController < ActionController::Base
     I18n.t("activerecord.options.input_types").map { |key, value| { label: value, input_type: key } }
   end
 
+  def sensor_types
+    I18n.t("activerecord.options.sensor_types").map { |key, value| { label: value, input_type: key } }
+  end
+
+  def positive_threshold_options
+    I18n.t("activerecord.options.positive_threshold").map { |key, value| { label: value, input_type: key } }
+  end
+
   def export_i18n_messages
     SimplesIdeias::I18n.export! if Rails.env.development?
   end

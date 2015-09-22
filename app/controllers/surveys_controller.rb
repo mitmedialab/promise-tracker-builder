@@ -59,6 +59,11 @@ class SurveysController < ApplicationController
   def edit
     @survey = Survey.find(params[:id])
     @input_types = input_types.to_json
+    @options = {
+      input_types: input_types,
+      sensor_types: sensor_types,
+      positive_threshold: positive_threshold_options
+    }.to_json
   end
 
   def destroy

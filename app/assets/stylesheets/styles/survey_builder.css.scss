@@ -316,12 +316,35 @@
 
   #on-canvas-controls {
     text-align: center;
-    margin: 35px 0 20px 0;
+    margin: 35px 0;
 
     .tool-button {
       color: $turquoise;
       padding: 12px 22px;
     }
+  }
+
+  #sensor-config-box {
+    margin: 0 -20px -20px -20px;
+    background: $med-light-grey;
+    border-radius: 4px;
+
+    .header {
+      padding: 10px;
+      border-bottom: 1px solid $light-grey;
+      cursor: pointer;
+    }
+
+    .body {
+      padding: 20px;
+      display: none;
+
+      select, input {
+        width: auto;
+        margin-bottom: 10px;
+      }
+    }
+
   }
 }
 

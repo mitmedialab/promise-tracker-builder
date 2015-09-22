@@ -83,6 +83,14 @@ pt-BR:
         audio: "Áudio"
         note: "(Texto de explicação - Sem resposta)"
 
+      sensor_types:
+        none: "Nenhum"
+        amplitude: "Amplitude"
+
+      positive_threshold:
+        true: "Maior que"
+        false: "Menor que"
+
       countries:
         brazil: "Brasil"
         united_states: "Estados Unidos"

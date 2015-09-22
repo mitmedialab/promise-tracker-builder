@@ -23,7 +23,7 @@
             <%= t(".answer_type") %>
           </div>
           <div class="col-md-9">
-            <select class="form-control short inline" data-bind="options: PT.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type, event: {change: applyType}"></select>
+            <select class="form-control short inline" data-bind="options: PT.options.input_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: input_type, event: {change: applyType}"></select>
           </div>
         </div>
 
@@ -125,11 +125,23 @@
         <span class="glyphicon glyphicon-plus"></span><br>
       </div>
     </div>
+    <div id="sensor-config-box">
+      <div class="header center"><i class="fa fa-sliders pad-right"></i> <%= t(".sensor_integration_options") %></div>
+      <div class="body">
+        <%= t(".sensor_type") %>: <select class="form-control short inline" data-bind="options: PT.options.sensor_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: sensor_type, event: {change: apply}"></select><br>
+        <div data-bind="visible: PT.survey.sensor_type() !== 'none'">
+          <%= t(".sensor_threshold") %>: <select class="form-control short inline" data-bind="options: PT.options.positive_threshold, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: positive_threshold"></select> <input type="number"> <span id="sensor-units"></span>
+        </div>
+    </div>
   </div>
 </div>
 
 <% if @survey && @survey.id %>
   <script type="text/javascript">
     PT.getSurvey("<%= @survey.id %>");
+
+    $("#sensor-config-box .header").on("click", function(){
+      $("#sensor-config-box .body").slideToggle();
+    })
   </script>
 <% end %>

@@ -83,6 +83,14 @@ en:
         audio: "Audio"
         note: "(Text card - No answer)"
 
+      sensor_types:
+        none: "None"
+        amplitude: "Amplitude"
+
+      positive_threshold:
+        true: "Above"
+        false: "Below"
+
       countries:
         brazil: "Brazil"
         united_states: "United States"
