@@ -319,7 +319,7 @@ PT.renderMapForSummaryGraph = function($div, input){
                 }
               }).map(function(el, i, arr){
                 // If location question found, pull location from question
-                if(locationIndex != -1 && el.answers[locationIndex].value){
+                if(locationIndex != -1 && el.answers[locationIndex].value && el.answers[locationIndex].value.lat){
                   return {
                     lon: el.answers[locationIndex].value.lon,
                     lat: el.answers[locationIndex].value.lat,
