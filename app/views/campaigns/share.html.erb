@@ -19,7 +19,7 @@
           <li>
             <% if current_user %>
               <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
-                <i class="icon-copy"></i>
+                <%= t(".copy_campaign") %>
               <% end %>
             <% end %>
           </li>

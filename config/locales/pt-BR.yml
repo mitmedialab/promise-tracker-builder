@@ -260,6 +260,7 @@ pt-BR:
       learn_more: "Aprender mais sobre esta campanha no site"
       download_csv: "Baixar CSV"
       print_report: "Imprimir relatório"
+      copy_campaign: "Duplicar campanha"
       no_location: "Não há informações geográficas disponíveis"
 
     survey:
