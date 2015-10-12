@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921195726) do
+ActiveRecord::Schema.define(version: 20151012141306) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20150921195726) do
     t.integer  "code"
     t.text     "sensor_type"
     t.float    "threshold"
-    t.boolean  "upper_threshold"
+    t.boolean  "threshold_is_upper_limit", default: true
   end
 
   add_index "surveys", ["campaign_id"], name: "index_surveys_on_campaign_id", using: :btree

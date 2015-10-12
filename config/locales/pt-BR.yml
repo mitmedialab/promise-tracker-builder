@@ -87,7 +87,7 @@ pt-BR:
         none: "Nenhum"
         amplitude: "Amplitude"
 
-      positive_threshold:
+      threshold_is_upper_limit:
         true: "Maior que"
         false: "Menor que"
 

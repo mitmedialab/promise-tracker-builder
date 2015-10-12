@@ -34,6 +34,7 @@ class SurveysController < ApplicationController
 
   def save_order
     @survey = Survey.find(params[:id])
+    @survey.update_attributes(survey_params)
     inputs = params[:inputs]
     
     if inputs
@@ -62,7 +63,7 @@ class SurveysController < ApplicationController
     @options = {
       input_types: input_types,
       sensor_types: sensor_types,
-      positive_threshold: positive_threshold_options
+      threshold_is_upper_limit_options: threshold_is_upper_limit_options
     }.to_json
   end
 
@@ -73,6 +74,10 @@ class SurveysController < ApplicationController
   end
 
   private
+
+  def survey_params
+    params.require(:survey).permit(:sensor_type, :threshold, :threshold_is_upper_limit)
+  end
 
   def restrict_user_access
     @survey = Survey.find(params[:id])

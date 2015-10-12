@@ -128,9 +128,9 @@
     <div id="sensor-config-box">
       <div class="header center"><i class="fa fa-sliders pad-right"></i> <%= t(".sensor_integration_options") %></div>
       <div class="body">
-        <%= t(".sensor_type") %>: <select class="form-control short inline" data-bind="options: PT.options.sensor_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: sensor_type, event: {change: apply}"></select><br>
+        <%= t(".sensor_type") %>: <select class="form-control short inline" data-bind="options: PT.options.sensor_types, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: sensor_type"></select><br>
         <div data-bind="visible: PT.survey.sensor_type() !== 'none'">
-          <%= t(".sensor_threshold") %>: <select class="form-control short inline" data-bind="options: PT.options.positive_threshold, optionsValue: function(item) {return item.input_type}, optionsText: function(item) {return item.label}, value: positive_threshold"></select> <input type="number"> <span id="sensor-units"></span>
+          <%= t(".sensor_threshold") %>: <select class="form-control short inline" data-bind="options: PT.options.threshold_is_upper_limit_options, optionsValue: function(item) {return item.value}, optionsText: function(item) {return item.label}, value: threshold_is_upper_limit"></select> <input type="number" data-bind="value: threshold"> <span id="sensor-units"></span>
         </div>
     </div>
   </div>
