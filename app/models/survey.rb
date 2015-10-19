@@ -11,7 +11,7 @@ class Survey < ActiveRecord::Base
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json', 'Authorization' => ENV['AGGREGATOR_ACCESS_KEY']})
     request.body = self.to_json(
-      only: [:id, :code, :title, :campaign_id],
+      only: [:id, :code, :title, :campaign_id, :sensor_type, :threshold, :threshold_is_upper_limit],
       include: { inputs: { only: [:id, :label, :input_type, :order, :options, :required] }}
     )
 
