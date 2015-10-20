@@ -102,9 +102,10 @@ class CampaignsController < ApplicationController
   end
 
   def share
-    @campaign = Campaign.includes(survey: :inputs).find(params[:id])
-    @survey = @campaign.survey
     @can_advance = campaign_can_advance?(params[:action])
+  end
+
+  def sensorscape
   end
 
   def close

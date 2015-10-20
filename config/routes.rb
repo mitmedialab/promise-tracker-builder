@@ -24,6 +24,7 @@ PromiseTracker::Application.routes.draw do
     get '/campaigns/:id/test', to: 'campaigns#test', as: 'test_campaign'
     get '/campaigns/:id/collect', to: 'campaigns#collect', as: 'campaign_collect'
     get '/campaigns/:id/share', to: 'campaigns#share', as: 'share_campaign'
+    get '/campaigns/:id/sensorscape', to: 'campaigns#sensorscape', as: 'campaign_sensorscape'
     get '/campaigns/:id/close', to: 'campaigns#close', as: 'close_campaign'
     get '/campaigns/:id/next', to: 'campaigns#next', as: 'campaign_next'
     post '/campaigns/:id/activate', to: 'campaigns#activate', as: 'activate_campaign'

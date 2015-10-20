@@ -51,7 +51,7 @@
   });
 
   // Fetch responses from aggregator
-  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+  PT.retrieveResponses(<%= @survey.code %>, function(data){
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
