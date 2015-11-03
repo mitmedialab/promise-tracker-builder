@@ -102,9 +102,15 @@ class CampaignsController < ApplicationController
   end
 
   def share
-    @campaign = Campaign.includes(survey: :inputs).find(params[:id])
-    @survey = @campaign.survey
     @can_advance = campaign_can_advance?(params[:action])
+
+    if params[:id]
+      @campaign = Campaign.find(params[:id])
+      @survey = @campaign.survey
+    elsif params[:code]
+      @survey = Survey.find_by(code: params[:code].split("-").join)
+      @campaign = @survey.campaign
+    end
   end
 
   def close
