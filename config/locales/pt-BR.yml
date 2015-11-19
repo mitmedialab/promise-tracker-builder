@@ -243,7 +243,7 @@ pt-BR:
       design_campaign_page: "Preparar página da campanha"
       test_survey: "Testar formulário"
       collect_data: "Coletar dados"
-      share_data: "Compartilhar dados"
+      share_data: "Visualizar dados"
 
     campaign_page:
       title: "Página da campanha"

@@ -44,11 +44,11 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
       enabled: false
     },
     plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true
-            }
+      bar: {
+        dataLabels: {
+          enabled: true
         }
+      }
     },
     credits: {
       enabled: false
@@ -201,7 +201,7 @@ PT.formatAnswer = function(answer){
       case "location":
         return answer.value.lat ? answer.value.lat + ", " + answer.value.lon : "";
         break;
-      case "select_many":
+      case "select":
         return answer.value.join(", ");
         break;
       case "image":
