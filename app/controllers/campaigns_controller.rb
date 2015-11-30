@@ -107,15 +107,7 @@ class CampaignsController < ApplicationController
   end
 
   def share
-    @can_advance = campaign_can_advance?(params[:action])
-
-    if params[:id]
-      @campaign = Campaign.find(params[:id])
-      @survey = @campaign.survey
-    elsif params[:code]
-      @survey = Survey.find_by(code: params[:code].split("-").join)
-      @campaign = @survey.campaign
-    end
+    assign_campaign_variables
   end
 
   def close
@@ -204,9 +196,18 @@ class CampaignsController < ApplicationController
   end
 
   def assign_campaign_variables
-    @campaign = Campaign.includes(survey: :inputs).find(params[:id])
-    @survey = @campaign.survey
+    find_campaign_by_id_or_code
     @can_advance = campaign_can_advance?(params[:action])
+  end
+
+  def find_campaign_by_id_or_code
+    if params[:id]
+      @campaign = Campaign.includes(survey: :inputs).find(params[:id])
+      @survey = @campaign.survey
+    elsif params[:code]
+      @survey = Survey.includes(:inputs, :campaign).find_by(code: params[:code].split("-").join)
+      @campaign = @survey.campaign
+    end
   end
 
   def campaign_params
