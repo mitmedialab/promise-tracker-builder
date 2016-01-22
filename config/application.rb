@@ -20,13 +20,13 @@ end
 
 module PromiseTracker
   class Application < Rails::Application
+    I18n.config.enforce_available_locales = true
  
     # tell the I18n library where to find translations
     I18n.load_path += Dir[Rails.root.join('locale', '*.{rb,yml}')]
      
     # set default locale to :en
     I18n.default_locale = :en
-    config.i18n.enforce_available_locales = true
 
     # handle status codes in routes
     config.exceptions_app = self.routes
