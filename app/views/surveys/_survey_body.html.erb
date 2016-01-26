@@ -124,7 +124,7 @@
 
 <% if @survey && @survey.id %>
   <script type="text/javascript">
-    PT.options = <%= raw @input_types %>;
+    PT.input_types = <%= raw @input_types %>;
     PT.getSurvey("<%= @survey.id %>");
   </script>
 <% end %>

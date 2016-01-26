@@ -13,96 +13,96 @@
 
 ActiveRecord::Schema.define(version: 20150426140914) do
 
-  create_table "api_keys", force: true do |t|
-    t.string   "access_token"
-    t.string   "client_name"
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "access_token",     limit: 255
+    t.string   "client_name",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "client_login_url"
+    t.string   "client_login_url", limit: 255
   end
 
-  create_table "campaigns", force: true do |t|
-    t.string   "title"
-    t.text     "goal"
-    t.integer  "submissions_target"
-    t.text     "audience"
-    t.text     "data_collectors"
-    t.string   "status",              default: "draft"
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "title",               limit: 255
+    t.text     "goal",                limit: 65535
+    t.integer  "submissions_target",  limit: 4
+    t.text     "audience",            limit: 65535
+    t.text     "data_collectors",     limit: 65535
+    t.string   "status",              limit: 255,   default: "draft"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "theme"
-    t.text     "description"
-    t.text     "organizers"
-    t.boolean  "anonymous"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
+    t.integer  "user_id",             limit: 4
+    t.string   "theme",               limit: 255
+    t.text     "description",         limit: 65535
+    t.text     "organizers",          limit: 65535
+    t.boolean  "anonymous",           limit: 1
+    t.string   "image_file_name",     limit: 255
+    t.string   "image_content_type",  limit: 255
+    t.integer  "image_file_size",     limit: 4
     t.datetime "image_updated_at"
-    t.boolean  "campaign_page_valid"
-    t.text     "country"
-    t.text     "state"
-    t.text     "city"
+    t.boolean  "campaign_page_valid", limit: 1
+    t.text     "country",             limit: 65535
+    t.text     "state",               limit: 65535
+    t.text     "city",                limit: 65535
   end
 
   add_index "campaigns", ["user_id"], name: "index_campaigns_on_user_id", using: :btree
 
-  create_table "campaigns_tags", id: false, force: true do |t|
-    t.integer "campaign_id", null: false
-    t.integer "tag_id",      null: false
+  create_table "campaigns_tags", id: false, force: :cascade do |t|
+    t.integer "campaign_id", limit: 4, null: false
+    t.integer "tag_id",      limit: 4, null: false
   end
 
   add_index "campaigns_tags", ["campaign_id"], name: "index_campaigns_tags_on_campaign_id", using: :btree
   add_index "campaigns_tags", ["tag_id"], name: "index_campaigns_tags_on_tag_id", using: :btree
 
-  create_table "inputs", force: true do |t|
-    t.text     "label"
-    t.text     "input_type"
-    t.boolean  "required"
-    t.integer  "order"
-    t.text     "options"
-    t.integer  "survey_id"
+  create_table "inputs", force: :cascade do |t|
+    t.text     "label",      limit: 65535
+    t.text     "input_type", limit: 65535
+    t.boolean  "required",   limit: 1
+    t.integer  "order",      limit: 4
+    t.text     "options",    limit: 65535
+    t.integer  "survey_id",  limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "surveys", force: true do |t|
+  create_table "surveys", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "template"
-    t.integer  "campaign_id"
-    t.string   "title"
-    t.integer  "code"
+    t.boolean  "template",    limit: 1
+    t.integer  "campaign_id", limit: 4
+    t.string   "title",       limit: 255
+    t.integer  "code",        limit: 4
   end
 
   add_index "surveys", ["campaign_id"], name: "index_surveys_on_campaign_id", using: :btree
 
-  create_table "tags", force: true do |t|
-    t.string "label"
+  create_table "tags", force: :cascade do |t|
+    t.string "label", limit: 255
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "bio"
-    t.string   "username"
-    t.string   "api_client_name",        default: ""
-    t.integer  "api_client_user_id"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
+    t.text     "bio",                    limit: 65535
+    t.string   "username",               limit: 255
+    t.string   "api_client_name",        limit: 255,   default: ""
+    t.integer  "api_client_user_id",     limit: 4
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
   end
 

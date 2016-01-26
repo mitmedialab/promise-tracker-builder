@@ -63,11 +63,7 @@ class CampaignsController < ApplicationController
   end
 
   def survey
-    @options = {
-      input_types: input_types,
-      sensor_types: sensor_types,
-      threshold_is_upper_limit_options: threshold_is_upper_limit_options
-    }.to_json
+    @input_types = input_types.to_json
   end
 
   def profile
