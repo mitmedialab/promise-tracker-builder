@@ -104,6 +104,7 @@ class CampaignsController < ApplicationController
 
   def share
     assign_campaign_variables
+    @input_types = input_types.to_json
   end
 
   def close

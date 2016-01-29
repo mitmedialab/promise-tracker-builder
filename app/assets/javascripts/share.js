@@ -17,10 +17,19 @@ PT.extractAllImages = function(responses){
   responses.forEach(function(response){
     response.answers.forEach(function(answer){
       if(answer.input_type == "image" && answer.value){
-        images.push({
-          value: answer.value,
-          parentResponse: response
-        });
+        if(answer.value.constructor === Array){ // Support new multiple image answer
+          answer.value.forEach(function(image){
+            images.push({
+              value: image,
+              parentResponse: response
+            });
+          });
+        } else { // Support old single image answer
+          images.push({
+            value: answer.value,
+            parentResponse: response
+          });
+        }
       }
     })
   });
