@@ -6,6 +6,8 @@
 
     <%= f.text_field :username, placeholder: User.human_attribute_name(:username), autofocus: true, class: "form-control" %>
 
+    <%= f.email_field :email, placeholder: User.human_attribute_name(:email), class: "form-control" %>
+
     <%= f.password_field :password, placeholder: User.human_attribute_name(:password), autocomplete: "off", class: "form-control" %>
 
     <%= f.password_field :password_confirmation, placeholder: User.human_attribute_name(:password_confirmation), autocomplete: "off", class: "form-control" %>

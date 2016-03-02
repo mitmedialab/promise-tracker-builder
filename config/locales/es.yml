@@ -103,6 +103,7 @@ es:
     back: "Atras"
     next: "Siguiente"
     loading: "Cargando"
+    or: "o"
     validations:
       required: "Esta campo es requerido."
       number: "Por favor escribe un número válido."
@@ -135,6 +136,7 @@ es:
       download_link: "Descargue la aplicación móvil"
       app_description: "Con la aplicación Promise Tracker mobile app, you can fill out surveys and collect data in your community!"
       google_language_code: "es-419"
+      older_android_versions: "Para versiones de Android anteriores al 4.3, descargue la aplicación aquí."
 
     guides:
       for_users: "Para usuarios"

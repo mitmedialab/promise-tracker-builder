@@ -102,6 +102,7 @@ en:
     back: "Back"
     next: "Next"
     loading: "Loading"
+    or: "or"
     validations:
       required: "This field is required."
       number: "Please enter a valid number."
@@ -134,6 +135,7 @@ en:
       download_link: "Download the mobile app"
       app_description: "To get started with data collection, install the mobile app and download your first survey!"
       google_language_code: "en"
+      older_android_versions: "For Android versions under 4.3, download the app here."
 
     guides:
       for_users: "For users"

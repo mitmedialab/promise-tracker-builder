@@ -102,6 +102,7 @@ pt-BR:
     back: "Voltar"
     next: "Próximo"
     loading: "Carregando dados"
+    or: "ou"
     validations:
       required: "Este campo &eacute; requerido."
       number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido."
@@ -134,6 +135,7 @@ pt-BR:
       download_link: "Baixar o aplicativo móvel"
       app_description: "Com o aplicativo móvel, você pode preencher formulários criados com Monitorando a Cidade e coletar dados!"
       google_language_code: "pt-br"
+      older_android_versions: "Para versões de Android anteriores à 4.3, baixe o aplicativo aqui."
 
     guides:
       for_users: "Para usuários"
