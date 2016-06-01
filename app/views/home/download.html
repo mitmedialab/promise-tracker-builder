@@ -1,5 +1,5 @@
 <div class="center download-container">
-  <h3><%= link_to t(".download_link"), asset_path("PromiseTracker.apk") %></h3>
+  <h3 class="campaign-title "><%= t(".download_link") %>!</h3>
   <h5><%= t(".app_description") %></h5>
 
   <%= image_tag("mobile-app-preview-#{I18n.locale}.png", class: "preview") %>
@@ -12,4 +12,8 @@
     <h3>iPhone</h3>
     <img alt="Download from App Store" src="/assets/app-store-badge-<%= I18n.locale %>.png">
   </a>
+  <br>
+  <p class="pad-top">
+    <%= link_to t(".older_android_versions"), asset_path("MonitorandoaCidade.apk") %>
+  </p>
 </div>
