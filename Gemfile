@@ -28,7 +28,6 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
   gem 'guard-rspec', require: false
   gem 'pry-rails'
   gem 'binding_of_caller'
