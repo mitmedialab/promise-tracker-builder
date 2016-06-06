@@ -215,6 +215,7 @@ PT.aggregateData = function(payload){
 
       case "number":
       case "image":
+      case "date":
       case "text":
         inputSummary.answers = allAnswers.reduce(function(acc, current){
           if(current && current.value){
@@ -256,6 +257,24 @@ PT.renderText = function(strings, containerId){
 
   strings.forEach(function(item, index){
     $textBlock = $("<span/>", {class: "text-viz"}).html(item.value);
+    $textBlock.css("color", PT.colors[(index % PT.colors.length)]);
+    $textBlock.css("font-size", Math.floor(Math.random(5) * 10 + 12) + "px");
+    $container.append($textBlock);
+
+    $textBlock.on("click", function(event){
+      PT.showResponsePopup(event, item.parentResponse, PT.surveyDefinition);
+    });
+  });
+};
+
+PT.renderDate = function(strings, containerId){
+  var $container = $(containerId);
+  var options = { year: 'numeric', month: 'long', day: 'numeric' };
+  var date, $textBlock;
+
+  strings.forEach(function(item, index){
+    date = new Date(item.value).toLocaleDateString(navigator.language, options);
+    $textBlock = $("<span/>", {class: "text-viz"}).html(date);
     $textBlock.css("color", PT.colors[(index % PT.colors.length)]);
     $textBlock.css("font-size", Math.floor(Math.random(5) * 10 + 12) + "px");
     $container.append($textBlock);
@@ -409,8 +428,11 @@ PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback
           PT.renderText(input.answers, "#viz-input-" + input.id);
           break;
 
-        case "number":
         case "date":
+          PT.renderDate(input.answers, "#viz-input-" + input.id);
+
+        case "number":
+        // case "date":
           // Render histogram?
           break;
 

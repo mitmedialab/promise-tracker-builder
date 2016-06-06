@@ -77,7 +77,7 @@ PT.renderStatusBars = function(containerId, currentResponseCount, targetResponse
 
 PT.renderActivityGraph = function(responses, containerId){
   var $container = $(containerId);
-  var responsesByDay = PT.groupResponsesByDay(PT.responses).reverse();
+  var responsesByDay = PT.groupResponsesBySubmissionDay(PT.responses).reverse();
   var array = responsesByDay.map(function(day){
     var date = new Date(parseInt(day.key));
     return [Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()), day.values.length]
@@ -234,7 +234,7 @@ PT.loadMoreResponses = function(sortedResponses){
   }
 };
 
-PT.groupResponsesByDay = function(responses){
+PT.groupResponsesBySubmissionDay = function(responses){
   return d3.nest()
     .key(function(d) {
       return new Date(d.timestamp).setHours(0, 0, 0, 0);
