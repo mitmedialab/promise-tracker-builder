@@ -412,7 +412,7 @@ PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback
           };
 
           // Append map of color coded answers  
-          $map = $("<div/>", {class: "col-md-7 graph-square graph-map-" + input.id});
+          $map = $("<div/>", {class: "col-md-4 graph-square graph-map-" + input.id});
           $vizBox.append($map);
           PT.renderMapForSummaryGraph($map, input);
 
