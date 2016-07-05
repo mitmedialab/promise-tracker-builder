@@ -238,15 +238,18 @@ PT.renderGallery = function(images, containerId, galleryName){
     $container.empty();
     
     images.forEach(function(image, index){
-      var $a = $("<a/>");
-      var $image = $("<div/>", {class: "gallery-image"});
+      // Ensure no local image uploads are included
+      if(image.value.slice(0,4) !== "file"){
+        var $a = $("<a/>");
+        var $image = $("<div/>", {class: "gallery-image"});
 
-      $a.attr("href", image.value);
-      $a.attr("data-lightbox", galleryName);
-      $image.css("background", "url(" + image.value + ") no-repeat center center");
-      $image.css("background-size", "cover");
-      $a.append($image);
-      $container.append($a);
+        $a.attr("href", image.value);
+        $a.attr("data-lightbox", galleryName);
+        $image.css("background", "url(" + image.value + ") no-repeat center center");
+        $image.css("background-size", "cover");
+        $a.append($image);
+        $container.append($a);
+      }
     });
   }
 };
