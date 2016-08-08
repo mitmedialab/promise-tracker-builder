@@ -127,10 +127,6 @@
     }
   }
 
-  #input-list {
-    list-style-type: inside !important;
-  }
-
   .input, .input-drop-area {
     border-radius: 5px;
     margin: 10px 0;
@@ -145,10 +141,6 @@
     border: 2px dotted $med-grey;
     margin-bottom: 0;
     display: none;
-
-    &.highlightedArea {
-      background: $med-grey;
-    }
   }
 
   .input {
@@ -156,7 +148,6 @@
     border: 1px solid #eee;
     padding: 20px; 
     position: relative;
-    overflow: hidden;
 
     .row {
       margin-bottom: 10px;
@@ -237,14 +228,14 @@
       i {
         font-size: 1.2em;
       }
+
+      &.padded {
+        padding: 5px 0 0 5px;
+      }
     }
 
     label {
       font-weight: normal;
-    }
-
-    .example.padded {
-      padding: 5px 0 0 5px;
     }
 
     .example-type {
@@ -290,7 +281,7 @@
       }
 
       .dummy-input {
-        margin: 5px 5px 5px 5px;
+        margin: 5px;
         display: inline-block;
         width: 60%;
         height: 32px;
@@ -351,7 +342,7 @@
     }
 
     .question-label {
-      margin-top: 0px;
+      margin-top: 0;
     }
 
     .options .option {
@@ -391,37 +382,6 @@
     .controls {
       text-align: center;
       float: none;
-    }
-
-    #survey-body {
-
-      .input {
-        p.label-text {
-          margin: 30px 0 0 0;
-        }
-
-        .row {
-          margin-bottom: 10px;
-        }
-
-        .answer {
-          padding-left: 0;
-        }
-
-        .options {
-          .option {
-            min-width: 0;
-          }
-
-          li:before {
-            padding: 0 5px;
-          }
-        }
-
-        .options .move {
-          display: none;
-        }
-      }
     }
   }
 }
