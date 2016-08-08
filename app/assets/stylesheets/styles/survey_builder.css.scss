@@ -127,6 +127,10 @@
     }
   }
 
+  #input-list {
+    list-style-type: inside !important;
+  }
+
   .input, .input-drop-area {
     border-radius: 5px;
     margin: 10px 0;

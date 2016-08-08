@@ -67,21 +67,25 @@ class CampaignsController < ApplicationController
   end
 
   def profile
+    @input_types = input_types.to_json
     if !current_user
       render layout: 'application'
     end
   end
 
   def edit_profile
+    @input_types = input_types.to_json
   end
 
   def public_profile
+    @input_types = input_types.to_json
   end
 
   def setup
   end
 
   def test
+    @input_types = input_types.to_json
     if @campaign.status == 'draft'
       @survey.activate('test')
     end
