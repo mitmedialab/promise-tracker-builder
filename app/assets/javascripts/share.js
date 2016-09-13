@@ -414,11 +414,6 @@ PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback
             PT.renderColumnChart("#graph-" + input.id, input, true, false);
           };
 
-          // Append map of color coded answers  
-          $map = $("<div/>", {class: "col-md-4 graph-square graph-map-" + input.id});
-          $vizBox.append($map);
-          PT.renderMapForSummaryGraph($map, input);
-
           break;
 
         case "location":
@@ -447,7 +442,7 @@ PT.renderInputSummaries = function(aggregates, containerId, graphClass, callback
   } else {
     $("#graph-placeholder").show();
   }
-
+  $(window).resize();
 };
 
 PT.renderGraphs = function(aggregates, containerId, graphClass){
