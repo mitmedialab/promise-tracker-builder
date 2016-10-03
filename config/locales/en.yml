@@ -263,6 +263,7 @@ en:
       print_report: "Print report"
       copy_campaign: "Clone campaign"
       no_location: "No geographic information available"
+      none: "None"
 
     survey:
       edit_survey: "Edit survey"

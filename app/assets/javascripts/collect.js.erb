@@ -3,11 +3,10 @@ PT = PT || {};
 PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
 
 PT.retrieveResponses = function(surveyCode, callBack){
-  var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";  
+  var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";
   $.get(url, function(data){
+    PT.payload = data.payload;
     PT.surveyDefinition = data.payload.survey;
-    PT.responses = data.payload.responses;
-    PT.aggregate = PT.aggregateData(data.payload);
     callBack(data.payload);
   });
 };

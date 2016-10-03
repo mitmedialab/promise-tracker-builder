@@ -56,11 +56,11 @@
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
-    PT.renderGraphs(PT.aggregate, "#slides-container", "");
+    PT.renderGraphs(data.responses, "#slides-container", "");
 
     // Populate panel
-    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-12");
-    PT.renderGallery(PT.extractAllImages(PT.responses), "#image-viz", "main-gallery");
+    PT.renderInputSummaries(data, "#graph-container", "col-md-12");
+    PT.renderGallery(data.responses, "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);

@@ -264,6 +264,7 @@ pt-BR:
       print_report: "Imprimir relatório"
       copy_campaign: "Duplicar campanha"
       no_location: "Não há informações geográficas disponíveis"
+      none: "Nenhum"
 
     survey:
       edit_survey: "Editar formulário"
