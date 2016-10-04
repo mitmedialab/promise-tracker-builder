@@ -317,29 +317,29 @@ PT.renderDate = function(containerId, responses, inputId) {
   })
 };
 
-PT.renderMapForLocationQuestion = function(responses, $div, input){
+PT.renderMapForLocationQuestion = function(responses, $div, inputId){
 
-  // Find input's index in responses
-  if(responses.length <= 0) return;  // Quit if no response
-  var inputIndex = _.findIndex(responses[0].answers, function(element, index, array){
-    return element.id == input.id
-  });
+  // Find and format valid answers
+  if(responses.length <= 0) return;  // Quit if no responses
 
-  var answers = PT.getAnswersById(responses, input.id);
-
-  var validAnswers = answers.filter(function(el){
-    return el.value && el.value.lat && el.value.lon;
+  var answers = [];
+  responses.forEach(function(response){
+    response.answers.forEach(function(answer){
+      if(answer.id == inputId){
+        if(answer.value && answer.value.lat && answer.value.lon){
+          answers.push({
+            lon: answer.value.lon,
+            lat: answer.value.lat,
+            data: response
+          });
+        }
+      }
+    });
   });
 
   var markerData = [{
     color: PT.colors[1],
-    points: validAnswers.map(function(el){
-              return {
-                lon: el.value.lon,
-                lat: el.value.lat,
-                data: el.parentResponse
-              }
-            })
+    points: answers
   }];
 
   $div.empty();
@@ -351,7 +351,6 @@ PT.renderMapForLocationQuestion = function(responses, $div, input){
     markers: markerData,
     interactive: true,
     click: function(event, p){
-      console.log(p[0].data.data);
       PT.showResponsePopup(event, p[0].data.data);
     }
   });
@@ -385,7 +384,7 @@ PT.renderInputSummaries = function(responses, containerId, graphClass, callback)
         case "location":
           $map = $("<div/>", {class: "col-md-12 graph-square map-" + input.id});
           $vizBox.append($map);
-          PT.renderMapForLocationQuestion(responses, $map, input);
+          PT.renderMapForLocationQuestion(responses, $map, input.id);
           break;
 
         case "text":
