@@ -266,9 +266,9 @@ PT.renderText = function(responses, inputId, containerId){
   });
 };
 
-PT.renderDate = function(containerId, payload, inputId) {
+PT.renderDate = function(containerId, responses, inputId) {
   $(containerId).css({height: "250px", margin: "0 auto"});
-  var counts = PT.count(payload.responses, inputId);
+  var counts = PT.count(responses, inputId);
   // convert counts to array
   var dates = [];
   for(var key in counts) {
@@ -317,15 +317,17 @@ PT.renderDate = function(containerId, payload, inputId) {
   })
 };
 
-PT.renderMapForLocationQuestion = function($div, input){
+PT.renderMapForLocationQuestion = function(responses, $div, input){
 
   // Find input's index in responses
-  if(PT.responses.length <= 0) return;  // Quit if no response
-  var inputIndex = _.findIndex(PT.responses[0].answers, function(element, index, array){
+  if(responses.length <= 0) return;  // Quit if no response
+  var inputIndex = _.findIndex(responses[0].answers, function(element, index, array){
     return element.id == input.id
   });
 
-  var validAnswers = input.answers.filter(function(el){
+  var answers = PT.getAnswersById(responses, input.id);
+
+  var validAnswers = answers.filter(function(el){
     return el.value && el.value.lat && el.value.lon;
   });
 
@@ -355,14 +357,14 @@ PT.renderMapForLocationQuestion = function($div, input){
   });
 };
 
-PT.renderInputSummaries = function(payload, containerId, graphClass, callback){
-  if(payload.responses.length > 0){
+PT.renderInputSummaries = function(responses, containerId, graphClass, callback){
+  if(responses.length > 0){
     var $container = $(containerId);
     var $vizBox, $graphSquare, $map;
 
     $container.empty();
 
-    payload.survey.inputs.forEach(function(input){
+    PT.surveyDefinition.inputs.forEach(function(input){
       $container.append(HandlebarsTemplates["input_viz"](input));
       $vizBox = $("#viz-input-" + input.id);
 
@@ -373,9 +375,9 @@ PT.renderInputSummaries = function(payload, containerId, graphClass, callback){
           $vizBox.append($graphSquare);
 
           if(input.options.length < 3){
-            PT.renderPieChart("#graph-" + input.id, PT.payload, input.id, true, true);
+            PT.renderPieChart("#graph-" + input.id, responses, input.id, true, true);
           } else {
-            PT.renderColumnChart("#graph-" + input.id, PT.payload, input.id, true, true);
+            PT.renderColumnChart("#graph-" + input.id, responses, input.id, true, true);
           };
 
           break;
@@ -383,15 +385,15 @@ PT.renderInputSummaries = function(payload, containerId, graphClass, callback){
         case "location":
           $map = $("<div/>", {class: "col-md-12 graph-square map-" + input.id});
           $vizBox.append($map);
-          PT.renderMapForLocationQuestion($map, input);
+          PT.renderMapForLocationQuestion(responses, $map, input);
           break;
 
         case "text":
-          PT.renderText(payload.responses, input.id, "#viz-input-" + input.id);
+          PT.renderText(responses, input.id, "#viz-input-" + input.id);
           break;
 
         case "date":
-          PT.renderDate("#viz-input-" + input.id, PT.payload, input.id)
+          PT.renderDate("#viz-input-" + input.id, responses, input.id)
 
         case "number":
         // case "date":
@@ -400,7 +402,7 @@ PT.renderInputSummaries = function(payload, containerId, graphClass, callback){
 
         case "image":
           $vizBox.addClass("image");
-          PT.renderGallery(payload.responses, "#viz-input-" + input.id, "gallery-" + input.id, input.id);
+          PT.renderGallery(responses, "#viz-input-" + input.id, "gallery-" + input.id, input.id);
           break;
       }
     })
@@ -446,16 +448,16 @@ PT.renderGraphs = function(responses, containerId, graphClass){
   }
 };
 
-PT.renderPieChart = function(containerId, payload, inputId, titleDisabled, download){
+PT.renderPieChart = function(containerId, responses, inputId, titleDisabled, download){
   var title, label;
-  var counts = PT.count(payload.responses, inputId);
+  var counts = PT.count(responses, inputId);
   var values = [];
   for(var key in counts) {
     key !== "undefined" ? label = key : label = I18n.t("campaigns.share.none");
     values.push({name: label, y:counts[key]})
   }
 
-  titleDisabled ? title = "" : title = PT.getSurveyInputById(payload.survey, inputId).label;
+  titleDisabled ? title = "" : title = PT.getSurveyInputById(PT.surveyDefinition, inputId).label;
   // plot
   $(containerId).highcharts({
     chart: {
@@ -500,9 +502,9 @@ PT.renderPieChart = function(containerId, payload, inputId, titleDisabled, downl
   });
 };
 
-PT.renderColumnChart = function(containerId, payload, inputId, titleDisabled, download){
+PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, download){
   var title, label;
-  var counts = PT.count(payload.responses, inputId);
+  var counts = PT.count(responses, inputId);
   var series = [];
   for(var key in counts){
     key !== "undefined" ? label = key : label = I18n.t("campaigns.share.none");
@@ -512,7 +514,7 @@ PT.renderColumnChart = function(containerId, payload, inputId, titleDisabled, do
     });
   };
 
-  titleDisabled ? title = "" : title = PT.getSurveyInputById(payload.survey, inputId).label;
+  titleDisabled ? title = "" : title = PT.getSurveyInputById(PT.surveyDefinition, inputId).label;
 
   $(containerId).highcharts({
     chart: {

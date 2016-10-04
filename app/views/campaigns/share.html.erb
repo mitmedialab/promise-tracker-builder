@@ -59,7 +59,7 @@
     PT.renderGraphs(data.responses, "#slides-container", "");
 
     // Populate panel
-    PT.renderInputSummaries(data, "#graph-container", "col-md-12");
+    PT.renderInputSummaries(data.responses, "#graph-container", "col-md-12");
     PT.renderGallery(data.responses, "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
