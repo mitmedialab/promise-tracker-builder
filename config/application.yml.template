@@ -1,6 +1,7 @@
 development:
   AGGREGATOR_URL: "http://localhost:9292"
   AGGREGATOR_ACCESS_KEY: "your key here"
+  GOOGLE_MAPS_KEY: "your key here"
 
 test:
   AGGREGATOR_URL: "http://localhost:9292"
