@@ -411,32 +411,30 @@ PT.renderInputSummaries = function(responses, containerId, graphClass, callback)
   $(window).resize();
 };
 
-PT.renderGraphs = function(responses, containerId, graphClass){
+PT.renderReportGraphs = function(responses, containerId, graphClass){
   if(responses.length > 0){
-    var $container = $(containerId), $graphSquare;
+    var $graphSquare;
+    var $container = $(containerId);
 
     $("#graph-placeholder").hide();
     $container.empty();
 
     PT.surveyDefinition.inputs.forEach(function(input){
-      if(input.type == "select" || input.type == "select1"){
+      if(input.input_type == "select" || input.input_type == "select1"){
         $graphSquare = $(document.createElement("div"));
 
         $graphSquare.addClass(graphClass + " graph-square item");
+        $graphSquare.css({height: "250px"});
         $graphSquare.attr("id", "graph-" + input.id)
         $container.append($graphSquare);
 
-        switch(input.type){
-          case "select1":
-            PT.renderPieChart("#graph-" + input.id, responses, input.id, false, true)
-            break;
-
-          case "select":
-            PT.renderColumnChart("#graph-" + input.id, responses, input.id, false, true)
-            break;
-        }
+        if(input.options.length < 3){
+          PT.renderPieChart("#graph-" + input.id, responses, input.id, false, true);
+        } else {
+          PT.renderColumnChart("#graph-" + input.id, responses, input.id, false, true);
+        };
       }
-    })
+    });
 
     // Show first item in graph carousel
     $(containerId + " .item").first().addClass("active");
@@ -499,6 +497,7 @@ PT.renderPieChart = function(containerId, responses, inputId, titleDisabled, dow
         data: values
     }]
   });
+  $(window).resize();
 };
 
 PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, download){

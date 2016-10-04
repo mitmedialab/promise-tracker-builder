@@ -49,8 +49,8 @@
   <% if @campaign.status == "closed" %>
     PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
       PT.renderGoogleMap(data, "report-map-container");
-      PT.populateImages(PT.responses, "#report-image-container");
-      PT.renderGraphs(PT.aggregate, "#slides-container");
+      PT.populateImages(data.responses, "#report-image-container");
+      PT.renderReportGraphs(data.responses, "#slides-container");
     });
   <% end %>
 </script>
