@@ -37,7 +37,7 @@ PT.getAnswersById = function(responses, inputId){
 PT.count = function(responses, inputId) { //Count responses by value
   var counts = {};
   for(var i = 0; i< responses.length; i++) {
-    var value = PT.getAnswerById(responses[i], inputId).value;
+    var value = $.trim(PT.getAnswerById(responses[i], inputId).value);
     counts[value] = counts[value] ? counts[value]+1 : 1;
   }
   return counts;
