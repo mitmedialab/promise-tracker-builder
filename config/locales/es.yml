@@ -264,7 +264,7 @@ es:
       print_report: "Imprimir reporte"
       copy_campaign: "Copiar campaña"
       no_location: "No hay información geográfica disponible"
-      none: "Ninguno"
+      no_response: "Sin respuesta"
 
     survey:
       edit_survey: "Editar encuesta"
