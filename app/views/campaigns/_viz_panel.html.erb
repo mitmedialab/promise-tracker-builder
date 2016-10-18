@@ -1,8 +1,18 @@
 <div class="viz-panel">
   <div class="col-md-10 featured-viz tab-content">
-    <div class="tab-pane" id="map-viz"></div>
+    <div id="filters">
+      <div class="tab-header">
+        <div class="collapse"></div>
+      </div>
+      <div class="tab-content">
+        <div class="date-range-container">
+          <div id="date-range"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade in active" id="map-viz"></div>
 
-    <div class="tab-pane fade in active" id="graph-viz">
+    <div class="tab-pane" id="graph-viz">
       <div id="graph-container" class="row"></div>
       <div class="ajax-loading">
         <%= image_tag("ajax-loader.gif") %>
@@ -26,13 +36,13 @@
   </div>
 
   <div class="col-md-2 nav nav-tabs" role="tablist" id="viz-tabs">
-    <a href="#map-viz" role="tab" data-toggle="tab" id="map-tab">
+    <a href="#map-viz" role="tab" data-toggle="tab" class="active" id="map-tab">
       <div class="tab-square">
         <div class="tab-icon"></div>
         <span class="desktop-only"><%= t(".map") %></span>
       </div>
     </a>  
-    <a href="#graph-viz" role="tab" data-toggle="tab" class="active" id="graph-tab">
+    <a href="#graph-viz" role="tab" data-toggle="tab" id="graph-tab">
       <div class="tab-square">
         <div class="tab-icon"></div>
         <span class="desktop-only"><%= t(".graphs") %></span>

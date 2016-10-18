@@ -52,18 +52,20 @@
   });
 
   // Fetch responses from aggregator
-  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+  PT.stubResponses(<%= @campaign.survey.code %>, function(data){
+  // PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
     PT.renderReportGraphs(data.responses, "#slides-container", "");
 
-    // Populate panel
-    PT.renderInputSummaries(data.responses, "#graph-container", "col-md-12");
-    PT.renderGallery(data.responses, "#image-viz", "main-gallery");
+    // Populate viz panel
+    PT.renderInputSummaries(data.responses, "#graph-container", "col-md-5");
+    // PT.renderGallery(PT.extractAllImages(data.responses), "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);
+    PT.setDateRangeSlider("#date-range");
 
     // Add CSV download button handler
     $(".csv-download").on("click", function(e){
@@ -71,7 +73,7 @@
       PT.downloadCsv(data);
     });
 
-    // Add popup
+    // Add individual response popup window
     var $popup = $(HandlebarsTemplates["response_view"](PT.surveyDefinition));
     $popup.addClass("popup");
     $popup.hide();
@@ -91,7 +93,7 @@
 
   // Re render graphs when graph tab clicked
   $("#graph-tab").on("shown.bs.tab", function(e){
-    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-12");
+    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-8");
   });
 
   // If search params present, load specified tab

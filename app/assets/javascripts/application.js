@@ -16,6 +16,7 @@
 //= require jquery-ui/droppable
 //= require jquery-ui/sortable
 //= require jquery.ui.touch-punch
+//= require jquery-ui/slider
 //= require turbolinks
 //= require handlebars
 //= require handlebars.runtime

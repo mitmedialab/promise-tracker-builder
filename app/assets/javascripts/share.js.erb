@@ -34,10 +34,11 @@ PT.getAnswersById = function(responses, inputId){
   return answers;
 }
 
-PT.count = function(responses, inputId) { //Count responses by value
+PT.count = function(responses, inputId) { //Count responses by value or date
   var counts = {};
   for(var i = 0; i< responses.length; i++) {
-    var value = $.trim(PT.getAnswerById(responses[i], inputId).value);
+    var value;
+    inputId ? value = $.trim(PT.getAnswerById(responses[i], inputId).value) : value = responses[i].timestamp;
     counts[value] = counts[value] ? counts[value]+1 : 1;
   }
   return counts;
@@ -582,6 +583,16 @@ PT.showResponsePopup = function(event, response){
 
   PT.viewResponse(response);
   $(".response-container-outer").show();
+};
+
+// Set slider for date filter
+PT.setDateRangeSlider = function(sliderId){
+  var dates = Object.keys(PT.count(PT.payload.responses));
+  $(sliderId).dateSlider(dates[dates.length - 1], dates[0], dates[dates.length - 1], dates[0]);
+  $(sliderId).on("change", function(){
+    var start = $("#date-range").slider("values")[0];
+    var end = $("#date-range").slider("values")[1];
+  })
 };
 
 // Profile page data section

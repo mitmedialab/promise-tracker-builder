@@ -2,11 +2,20 @@ PT = PT || {};
 
 PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
 
-PT.retrieveResponses = function(surveyCode, callBack){
-  var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";
+PT.stubResponses = function(surveyCode, callBack){ 
+  var url = "https://aggregate.promisetracker.org/surveys/345796/survey-with-responses";  
   $.get(url, function(data){
-    PT.payload = data.payload;
     PT.surveyDefinition = data.payload.survey;
+    PT.payload = data.payload;
+    callBack(data.payload);
+  });
+};
+
+PT.retrieveResponses = function(surveyCode, callBack){
+  var url = PT.aggregatUrl + "/surveys/" + surveyCode + "/survey-with-responses";  
+  $.get(url, function(data){
+    PT.surveyDefinition = data.payload.survey;
+    PT.payload = data.payload
     callBack(data.payload);
   });
 };
