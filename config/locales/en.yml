@@ -264,6 +264,8 @@ en:
       copy_campaign: "Clone campaign"
       no_location: "No geographic information available"
       no_response: "No response"
+      filters: "Filters"
+      date: "Date"
 
     survey:
       edit_survey: "Edit survey"

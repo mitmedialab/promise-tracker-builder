@@ -265,6 +265,8 @@ pt-BR:
       copy_campaign: "Duplicar campanha"
       no_location: "Não há informações geográficas disponíveis"
       no_response: "Sem resposta"
+      filters: "Filtros"
+      date: "Data"
 
     survey:
       edit_survey: "Editar formulário"
