@@ -57,10 +57,10 @@
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
-    PT.renderReportGraphs(data.responses, "#slides-container", "");
+    PT.renderReportGraphs(data.responses, "#slides-container");
 
     // Populate viz panel
-    PT.renderInputSummaries(data.responses, "#graph-container", "col-md-5");
+    PT.renderInputSummaries(data.responses, "#graph-container");
     // PT.renderGallery(PT.extractAllImages(data.responses), "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
@@ -91,9 +91,9 @@
     $(this).addClass("active");
   });
 
-  // Re render graphs when graph tab clicked
-  $("#graph-tab").on("shown.bs.tab", function(e){
-    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-8");
+  $(".filters .header").on("click", function(){
+    $(this).closest(".collapse-group").find(".content").slideToggle()
+    ;
   });
 
   // If search params present, load specified tab
