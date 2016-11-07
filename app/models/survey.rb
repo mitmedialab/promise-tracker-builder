@@ -7,8 +7,8 @@ class Survey < ActiveRecord::Base
   def activate(status)
     uri = URI(ENV['AGGREGATOR_URL'] + "/surveys/#{status}")
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    # http.use_ssl = true
+    # http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json', 'Authorization' => ENV['AGGREGATOR_ACCESS_KEY']})
     request.body = self.to_json(
       only: [:id, :code, :title, :campaign_id],

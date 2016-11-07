@@ -56,14 +56,15 @@
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
-    PT.renderReportGraphs(data.responses, "#slides-container", "");
+    PT.renderReportGraphs(data.responses, "#slides-container");
 
-    // Populate panel
-    PT.renderInputSummaries(data.responses, "#graph-container", "col-md-12");
+    // Populate viz panel
+    PT.renderInputSummaries(data.responses, "#graph-container");
     PT.renderGallery(data.responses, "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);
+    PT.setDateRangeSlider("#date-range");
 
     // Add CSV download button handler
     $(".csv-download").on("click", function(e){
@@ -71,7 +72,7 @@
       PT.downloadCsv(data);
     });
 
-    // Add popup
+    // Add individual response popup window
     var $popup = $(HandlebarsTemplates["response_view"](PT.surveyDefinition));
     $popup.addClass("popup");
     $popup.hide();
@@ -89,9 +90,9 @@
     $(this).addClass("active");
   });
 
-  // Re render graphs when graph tab clicked
-  $("#graph-tab").on("shown.bs.tab", function(e){
-    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-12");
+  $(".filters .header").on("click", function(){
+    $(this).closest(".collapse-group").find(".content").slideToggle()
+    ;
   });
 
   // If search params present, load specified tab

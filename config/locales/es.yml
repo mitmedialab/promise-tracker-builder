@@ -265,6 +265,8 @@ es:
       copy_campaign: "Copiar campaña"
       no_location: "No hay información geográfica disponible"
       no_response: "Sin respuesta"
+      filters: "Filtros"
+      Date: "Fecha"
 
     survey:
       edit_survey: "Editar encuesta"

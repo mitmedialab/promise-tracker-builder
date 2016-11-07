@@ -9,9 +9,51 @@
 .viz-panel {
   margin-top: 10px;
   overflow: hidden;
+  max-height: 480px;
+
+  .tab-pane {
+    padding-top: 50px;
+  }
+
+  .filters {
+    padding: 10px 60px;
+    overflow: hidden;
+    border-bottom: 2px solid $yellow;
+    background: whitesmoke;
+    text-align: right;
+
+    .unpad {
+      padding: 8px 5px;
+    }
+
+    .name, .read-out {
+      color: black;
+      padding: 0;
+    }
+
+    .read-out {
+      font-size: .8em;
+      font-weight: 100;
+      text-align: right;
+    }
+
+    .header {
+      float: right;
+
+      .control {
+        margin: 8px;
+      }
+    }
+
+    .content {
+      padding: 5px 0;
+      clear: both;
+      text-align: left;
+    }
+  }
 
   .tab-pane, .nav-tabs  {
-    height: 420px;
+    height: 480px;
   }
   
   .gallery-image.placeholder {
@@ -57,7 +99,7 @@
 
   #graph-viz {
     overflow-y: scroll;
-    padding: 20px 20px 20px 30px;
+    padding: 50px 20px 20px 30px;
 
     #graph-placeholder {
       display: none;
@@ -93,10 +135,6 @@
         }
       }
 
-      .graph-square {
-        height: 220px;
-      }
-
       .map-placeholder {
         background-image: url("map-placeholder.png");
         background-size: cover;
@@ -114,6 +152,8 @@
     .viz-container {
       margin-top: 30px;
       text-align: center;
+      height: 220px;
+      width
 
       &.text {
         padding: 0 100px 20px 100px;
@@ -180,12 +220,11 @@
   .tab-square {
     height: auto;
     padding: 15px;
-    background: whitesmoke;
     text-align: center;
   }
 
   .tab-square:hover { 
-    background: #fafafa
+    background: whitesmoke;
   }
 
   a.active .tab-square {
@@ -206,7 +245,7 @@
     width: 90px;
     height: 90px;
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
     background-size: cover;
   }
 
@@ -257,6 +296,17 @@
   li {
     display: inline-block;
     margin-left: 15px;
+  }
+}
+
+#report-graph-container {
+  .carousel-inner > .item {
+    visibility: hidden;
+    display: block;
+    margin: 0 auto;
+    &.active {
+      visibility: visible;
+    }
   }
 }
 

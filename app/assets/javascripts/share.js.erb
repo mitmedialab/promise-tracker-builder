@@ -34,10 +34,11 @@ PT.getAnswersById = function(responses, inputId){
   return answers;
 }
 
-PT.count = function(responses, inputId) { //Count responses by value
+PT.count = function(responses, inputId) { //Count responses by value or date
   var counts = {};
   for(var i = 0; i< responses.length; i++) {
-    var value = $.trim(PT.getAnswerById(responses[i], inputId).value);
+    var value;
+    inputId ? value = $.trim(PT.getAnswerById(responses[i], inputId).value) : value = responses[i].timestamp;
     counts[value] = counts[value] ? counts[value]+1 : 1;
   }
   return counts;
@@ -89,11 +90,13 @@ PT.extractAllImages = function(responses){
   var images = [];
 
   responses.forEach(function(response){
-    response.answers.forEach(function(answer){
-      if(answer.input_type == "image" && answer.value){
-        PT.separateMultipleEntries(answer, response, images)
-      }
-    })
+    if(response.answers){
+      response.answers.forEach(function(answer){
+        if(answer.input_type == "image" && answer.value){
+          PT.separateMultipleEntries(answer, response, images)
+        }
+      });
+    }
   });
 
   return images;
@@ -227,59 +230,81 @@ PT.renderGoogleMap = function(serverResponse, containerId){
 
 PT.renderGallery = function(responses, containerId, galleryName, inputId){
   var $container = $(containerId);
-  var images = PT.aggregateAnswers(responses, inputId);
 
-  if(images.length > 0){
-    $container.empty();
-    
-    images.forEach(function(image, index){
-      // Ensure no local image uploads are included
-      if(image.value.slice(0,4) !== "file"){
-        var $a = $("<a/>");
-        var $image = $("<div/>", {class: "gallery-image"});
+  var populate = function(container, responses){
+    var images = PT.aggregateAnswers(responses, inputId);
 
-        $a.attr("href", image.value);
-        $a.attr("data-lightbox", galleryName);
-        $image.css("background", "url(" + image.value + ") no-repeat center center");
-        $image.css("background-size", "cover");
-        $a.append($image);
-        $container.append($a);
-      }
-    });
-  }
+
+    if(images.length > 0){
+      $container.empty();
+      
+      images.forEach(function(image, index){
+        // Ensure no local image uploads are included
+        if(image.value.slice(0,4) !== "file"){
+          var $a = $("<a/>");
+          var $image = $("<div/>", {class: "gallery-image"});
+
+          $a.attr("href", image.value);
+          $a.attr("data-lightbox", galleryName);
+          $image.css("background", "url(" + image.value + ") no-repeat center center");
+          $image.css("background-size", "cover");
+          $a.append($image);
+          $container.append($a);
+        }
+      });
+    }
+  };
+
+  populate($container, responses);
+  $container.on("update", function(event, newResponses){
+    populate($container, newResponses);
+  });
 };
 
-PT.renderText = function(responses, inputId, containerId){
-  var $container = $(containerId).addClass("text");
-  var $textBlock;
-  var answers = PT.aggregateAnswers(responses, inputId);
+PT.renderText = function(containerId, responses, inputId){
+  var $container = $(containerId);
 
-  answers.forEach(function(item, index){
-    $textBlock = $("<span/>", {class: "text-viz"}).html(item.value);
-    $textBlock.css("color", PT.colors[(index % PT.colors.length)]);
-    $textBlock.css("font-size", Math.floor(Math.random(5) * 10 + 12) + "px");
-    $container.append($textBlock);
+  var populate = function(responseArray){
+    var $textBlock;
+    var answers = PT.aggregateAnswers(responseArray, inputId);
+    
+    $container.empty();
+    answers.forEach(function(item, index){
+      $textBlock = $("<span/>", {class: "text-viz"}).html(item.value);
+      $textBlock.css("color", PT.colors[(index % PT.colors.length)]);
+      $textBlock.css("font-size", Math.floor(Math.random(5) * 10 + 12) + "px");
+      $container.append($textBlock);
 
-    $textBlock.on("click", function(event){
-      PT.showResponsePopup(event, item.parentResponse, PT.surveyDefinition);
+      $textBlock.on("click", function(event){
+        PT.showResponsePopup(event, item.parentResponse, PT.surveyDefinition);
+      });
     });
+  };
+
+  populate(responses);
+  $container.on("update", function(event, newResponses){
+    populate(newResponses);
   });
 };
 
 PT.renderDate = function(containerId, responses, inputId) {
-  $(containerId).css({height: "250px", margin: "0 auto"});
-  var counts = PT.count(responses, inputId);
-  // convert counts to array
-  var dates = [];
-  for(var key in counts) {
-    if(key !== "undefined"){
-      dates.push([parseInt(Date.parse(key)), counts[key]])
+  var $container = $(containerId);
+  $container.css({height: "250px", margin: "0 auto"});
+
+  var getDates = function(responses){
+    var counts = PT.count(responses, inputId);
+    // convert counts to array
+    var dates = [];
+    for(var key in counts) {
+      if(key.length > 0 && key !== "undefined"){
+        dates.push([parseInt(Date.parse(key)), counts[key]])
+      }
     }
-  }
-  dates.sort(function (a, b) {return a[0] - b[0]})
+    return dates.sort(function (a, b) {return a[0] - b[0]});
+  };
 
   // plot
-  $(containerId).highcharts({
+  var options = {
     chart: {
       type: 'column'
     },
@@ -309,15 +334,23 @@ PT.renderDate = function(containerId, responses, inputId) {
     colors: PT.colors,
     series: [{
       showInLegend: false, 
-      data: dates
+      data: getDates(responses)
     }],
     credits: {
       enabled: false
     }
-  })
+  };
+
+  $container.highcharts(options);
+
+  $container.on("update", function(event, newResponses){
+    options.series[0].data = getDates(newResponses);
+    $(this).highcharts(options);
+  });
 };
 
-PT.renderMapForLocationQuestion = function(responses, $div, inputId){
+PT.renderMapForLocationQuestion = function(containerId, responses, inputId){
+  var $div = $(containerId);
 
   // Find and format valid answers
   if(responses.length <= 0) return;  // Quit if no responses
@@ -356,51 +389,41 @@ PT.renderMapForLocationQuestion = function(responses, $div, inputId){
   });
 };
 
-PT.renderInputSummaries = function(responses, containerId, graphClass, callback){
+PT.renderInputSummaries = function(responses, containerId, callback){
   if(responses.length > 0){
     var $container = $(containerId);
-    var $vizBox, $graphSquare, $map;
-
     $container.empty();
 
     PT.surveyDefinition.inputs.forEach(function(input){
       $container.append(HandlebarsTemplates["input_viz"](input));
-      $vizBox = $("#viz-input-" + input.id);
 
       switch(input.input_type){
         case "select":
         case "select1":
-          $graphSquare = $("<div/>", {id: "graph-" + input.id, class: "graph-square " + graphClass});
-          $vizBox.append($graphSquare);
-
           if(input.options.length < 3){
-            PT.renderPieChart("#graph-" + input.id, responses, input.id, true, true);
+            PT.renderPieChart("#viz-input-" + input.id, responses, input.id, true, true);
           } else {
-            PT.renderColumnChart("#graph-" + input.id, responses, input.id, true, true);
+            PT.renderColumnChart("#viz-input-" + input.id, responses, input.id, true, true);
           };
 
           break;
 
         case "location":
-          $map = $("<div/>", {class: "col-md-12 graph-square map-" + input.id});
-          $vizBox.append($map);
-          PT.renderMapForLocationQuestion(responses, $map, input.id);
+          PT.renderMapForLocationQuestion("#viz-input-" + input.id, responses, input.id);
           break;
 
         case "text":
-          PT.renderText(responses, input.id, "#viz-input-" + input.id);
+          PT.renderText("#viz-input-" + input.id, responses, input.id);
           break;
 
         case "date":
           PT.renderDate("#viz-input-" + input.id, responses, input.id)
 
         case "number":
-        // case "date":
           // Render histogram?
           break;
 
         case "image":
-          $vizBox.addClass("image");
           PT.renderGallery(responses, "#viz-input-" + input.id, "gallery-" + input.id, input.id);
           break;
       }
@@ -411,20 +434,16 @@ PT.renderInputSummaries = function(responses, containerId, graphClass, callback)
   $(window).resize();
 };
 
-PT.renderReportGraphs = function(responses, containerId, graphClass){
+PT.renderReportGraphs = function(responses, containerId){
   if(responses.length > 0){
-    var $graphSquare;
     var $container = $(containerId);
-
-    $("#graph-placeholder").hide();
     $container.empty();
 
     PT.surveyDefinition.inputs.forEach(function(input){
       if(input.input_type == "select" || input.input_type == "select1"){
-        $graphSquare = $(document.createElement("div"));
+        var $graphSquare = $(document.createElement("div"));
 
-        $graphSquare.addClass(graphClass + " graph-square item");
-        $graphSquare.css({height: "250px"});
+        $graphSquare.addClass("viz-container item");
         $graphSquare.attr("id", "graph-" + input.id)
         $container.append($graphSquare);
 
@@ -447,16 +466,22 @@ PT.renderReportGraphs = function(responses, containerId, graphClass){
 
 PT.renderPieChart = function(containerId, responses, inputId, titleDisabled, download){
   var title, label;
-  var counts = PT.count(responses, inputId);
-  var values = [];
-  for(var key in counts) {
-    key !== "undefined" ? label = key : label = I18n.t("campaigns.share.no_response");
-    values.push({name: label, y:counts[key]})
+
+  var getValues = function(responseArray){
+    var counts = PT.count(responseArray, inputId);
+    var values = [];
+    for(var key in counts) {
+      key !== "undefined" ? label = key : label = I18n.t("campaigns.share.no_response");
+      values.push({name: label, y:counts[key]})
+    }
+
+    return values;
   }
 
   titleDisabled ? title = "" : title = PT.getSurveyInputById(PT.surveyDefinition, inputId).label;
+  
   // plot
-  $(containerId).highcharts({
+  var options = {
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: null,
@@ -494,27 +519,37 @@ PT.renderPieChart = function(containerId, responses, inputId, titleDisabled, dow
     series: [{
         name: 'registros',
         colorByPoint: true,
-        data: values
+        data: getValues(responses)
     }]
+  };
+  
+  var chart = $(containerId).highcharts(options);
+  chart.on("update", function(event, newResponses){
+    options.series[0].data = getValues(newResponses);
+    $(this).highcharts(options);
   });
-  $(window).resize();
 };
 
 PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, download){
   var title, label;
-  var counts = PT.count(responses, inputId);
-  var series = [];
-  for(var key in counts){
-    key !== "undefined" ? label = key : label = I18n.t("campaigns.share.no_response");
-    series.push({
-      name: label, 
-      data: [counts[key]]
-    });
-  };
+
+  var getSeries = function(responses){
+    var counts = PT.count(responses, inputId);
+    var series = [];
+    for(var key in counts){
+      key !== "undefined" ? label = key : label = I18n.t("campaigns.share.no_response");
+      series.push({
+        name: label, 
+        data: [counts[key]]
+      });
+    };
+
+    return series;
+  }
 
   titleDisabled ? title = "" : title = PT.getSurveyInputById(PT.surveyDefinition, inputId).label;
 
-  $(containerId).highcharts({
+  var options = {
     chart: {
       type: "column",
       plotBackgroundColor: null,
@@ -556,7 +591,7 @@ PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, 
         }
       }
     },
-    series: series,
+    series: getSeries(responses),
     exporting: {
       enabled: download
     },
@@ -566,6 +601,13 @@ PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, 
         x: -60
       }
     }
+  };
+
+  var chart = $(containerId).highcharts(options);
+  
+  chart.on("update", function(event, newResponses){
+    options.series = getSeries(newResponses);
+    $(this).highcharts(options);
   });
 };
 
@@ -582,6 +624,37 @@ PT.showResponsePopup = function(event, response){
 
   PT.viewResponse(response);
   $(".response-container-outer").show();
+};
+
+// Set slider for date filter
+PT.setDateRangeSlider = function(sliderId){
+  var dates = Object.keys(PT.count(PT.responses));
+  $(sliderId).dateSlider(dates[dates.length - 1], dates[0], dates[dates.length - 1], dates[0]);
+  
+  var getValues = function(){
+    return [$("#date-range").slider("values")[0] * 1000, $("#date-range").slider("values")[1] * 1000]; 
+  };
+
+  var setReadOut = function(){
+    $(sliderId).closest(".filter").find(".read-out").html(moment(getValues()[0]).format('D MMM YYYY') + " - " + moment(getValues()[1]).format('D MMM YYYY'));
+  };
+
+  var filterResponsesByDate = function(){
+    var start = getValues()[0];
+    var end = getValues()[1];
+    var responses = PT.responses.filter(function(response){
+      return start <= response.timestamp && end >= response.timestamp;
+    });
+
+    $("#graph-container .viz-container").each(function(index, graph){  
+      $(graph).trigger("update", [responses]);
+    });
+  };
+
+  setReadOut();
+
+  $(sliderId).on("slide", _.debounce(setReadOut, 50, false));
+  $(sliderId).on("slidestop", _.debounce(filterResponsesByDate, 100, false));
 };
 
 // Profile page data section
