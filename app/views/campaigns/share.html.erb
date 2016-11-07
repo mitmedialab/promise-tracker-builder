@@ -52,8 +52,7 @@
   });
 
   // Fetch responses from aggregator
-  PT.stubResponses(<%= @campaign.survey.code %>, function(data){
-  // PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
+  PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
 
     // Populate data report
     PT.renderGoogleMap(data, "report-map-container");
@@ -61,7 +60,7 @@
 
     // Populate viz panel
     PT.renderInputSummaries(data.responses, "#graph-container");
-    // PT.renderGallery(PT.extractAllImages(data.responses), "#image-viz", "main-gallery");
+    PT.renderGallery(data.responses, "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data, "map-viz");
     }, 2000);

@@ -9,37 +9,51 @@
 .viz-panel {
   margin-top: 10px;
   overflow: hidden;
+  max-height: 480px;
+
+  .tab-pane {
+    padding-top: 50px;
+  }
 
   .filters {
-    padding: 10px 40px;
-    background: whitesmoke;
+    padding: 10px 60px;
     overflow: hidden;
+    border-bottom: 2px solid $yellow;
+    background: whitesmoke;
+    text-align: right;
 
-    .name {
+    .unpad {
+      padding: 8px 5px;
+    }
+
+    .name, .read-out {
       color: black;
       padding: 0;
     }
 
-    .header {
-      .control {
-        float: right;
-        margin: 4px;
-      }
+    .read-out {
+      font-size: .8em;
+      font-weight: 100;
+      text-align: right;
+    }
 
-      h4 {
-        display: inline-block;
-        margin: 0;
-        font-weight: 100;
+    .header {
+      float: right;
+
+      .control {
+        margin: 8px;
       }
     }
 
     .content {
       padding: 5px 0;
+      clear: both;
+      text-align: left;
     }
   }
 
   .tab-pane, .nav-tabs  {
-    height: 420px;
+    height: 480px;
   }
   
   .gallery-image.placeholder {
@@ -85,7 +99,7 @@
 
   #graph-viz {
     overflow-y: scroll;
-    padding: 20px 20px 20px 30px;
+    padding: 50px 20px 20px 30px;
 
     #graph-placeholder {
       display: none;
@@ -206,12 +220,11 @@
   .tab-square {
     height: auto;
     padding: 15px;
-    background: whitesmoke;
     text-align: center;
   }
 
   .tab-square:hover { 
-    background: #fafafa
+    background: whitesmoke;
   }
 
   a.active .tab-square {
@@ -232,7 +245,7 @@
     width: 90px;
     height: 90px;
     display: block;
-    margin: 0 auto;
+    margin: 10px auto;
     background-size: cover;
   }
 

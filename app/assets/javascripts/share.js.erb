@@ -90,11 +90,13 @@ PT.extractAllImages = function(responses){
   var images = [];
 
   responses.forEach(function(response){
-    response.answers.forEach(function(answer){
-      if(answer.input_type == "image" && answer.value){
-        PT.separateMultipleEntries(answer, response, images)
-      }
-    })
+    if(response.answers){
+      response.answers.forEach(function(answer){
+        if(answer.input_type == "image" && answer.value){
+          PT.separateMultipleEntries(answer, response, images)
+        }
+      });
+    }
   });
 
   return images;
@@ -226,11 +228,12 @@ PT.renderGoogleMap = function(serverResponse, containerId){
   }
 };
 
-PT.renderGallery = function(containerId, responses, galleryName, inputId){
+PT.renderGallery = function(responses, containerId, galleryName, inputId){
   var $container = $(containerId);
 
-  var populate = function(resonseArray){
-    var images = PT.aggregateAnswers(resonseArray, inputId);
+  var populate = function(container, responses){
+    var images = PT.aggregateAnswers(responses, inputId);
+
 
     if(images.length > 0){
       $container.empty();
@@ -252,9 +255,9 @@ PT.renderGallery = function(containerId, responses, galleryName, inputId){
     }
   };
 
-  populate(responses);
+  populate($container, responses);
   $container.on("update", function(event, newResponses){
-    populate(newResponses);
+    populate($container, newResponses);
   });
 };
 
@@ -285,14 +288,15 @@ PT.renderText = function(containerId, responses, inputId){
 };
 
 PT.renderDate = function(containerId, responses, inputId) {
-  $(containerId).css({height: "250px", margin: "0 auto"});
+  var $container = $(containerId);
+  $container.css({height: "250px", margin: "0 auto"});
 
-  var getDates = function(){
+  var getDates = function(responses){
     var counts = PT.count(responses, inputId);
     // convert counts to array
     var dates = [];
     for(var key in counts) {
-      if(key !== "undefined"){
+      if(key.length > 0 && key !== "undefined"){
         dates.push([parseInt(Date.parse(key)), counts[key]])
       }
     }
@@ -300,7 +304,7 @@ PT.renderDate = function(containerId, responses, inputId) {
   };
 
   // plot
-  $(containerId).highcharts({
+  var options = {
     chart: {
       type: 'column'
     },
@@ -334,7 +338,14 @@ PT.renderDate = function(containerId, responses, inputId) {
     }],
     credits: {
       enabled: false
-    },
+    }
+  };
+
+  $container.highcharts(options);
+
+  $container.on("update", function(event, newResponses){
+    options.series[0].data = getDates(newResponses);
+    $(this).highcharts(options);
   });
 };
 
@@ -413,7 +424,7 @@ PT.renderInputSummaries = function(responses, containerId, callback){
           break;
 
         case "image":
-          PT.renderGallery("#viz-input-" + input.id, responses, "gallery-" + input.id, input.id);
+          PT.renderGallery(responses, "#viz-input-" + input.id, "gallery-" + input.id, input.id);
           break;
       }
     })
@@ -617,24 +628,33 @@ PT.showResponsePopup = function(event, response){
 
 // Set slider for date filter
 PT.setDateRangeSlider = function(sliderId){
-  var dates = Object.keys(PT.count(PT.payload.responses));
+  var dates = Object.keys(PT.count(PT.responses));
   $(sliderId).dateSlider(dates[dates.length - 1], dates[0], dates[dates.length - 1], dates[0]);
-  $(sliderId).on("slidechange", function(){
-    var start = $("#date-range").slider("values")[0] * 1000;
-    var end = $("#date-range").slider("values")[1] * 1000;
+  
+  var getValues = function(){
+    return [$("#date-range").slider("values")[0] * 1000, $("#date-range").slider("values")[1] * 1000]; 
+  };
 
-    PT.filterResponsesByDate(start, end);
-  })
-};
+  var setReadOut = function(){
+    $(sliderId).closest(".filter").find(".read-out").html(moment(getValues()[0]).format('D MMM YYYY') + " - " + moment(getValues()[1]).format('D MMM YYYY'));
+  };
 
-PT.filterResponsesByDate = function(start, end){
-  var responses = PT.payload.responses.filter(function(response){
-    return start <= response.timestamp && end >= response.timestamp;
-  });
+  var filterResponsesByDate = function(){
+    var start = getValues()[0];
+    var end = getValues()[1];
+    var responses = PT.responses.filter(function(response){
+      return start <= response.timestamp && end >= response.timestamp;
+    });
 
-  $("#graph-container .viz-container").each(function(index, graph){  
-    $(graph).trigger("update", [responses]);
-  });
+    $("#graph-container .viz-container").each(function(index, graph){  
+      $(graph).trigger("update", [responses]);
+    });
+  };
+
+  setReadOut();
+
+  $(sliderId).on("slide", _.debounce(setReadOut, 50, false));
+  $(sliderId).on("slidestop", _.debounce(filterResponsesByDate, 100, false));
 };
 
 // Profile page data section

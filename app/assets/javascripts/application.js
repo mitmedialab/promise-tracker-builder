@@ -35,4 +35,5 @@
 //= require highcharts-exporting
 //= require lightbox
 //= require jquery.osmStaticMap
+//= require moment
 //= require_tree .

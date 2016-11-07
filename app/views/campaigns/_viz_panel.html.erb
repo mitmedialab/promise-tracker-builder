@@ -1,18 +1,21 @@
 <div class="viz-panel">
   <div class="col-md-10 featured-viz tab-content">
+    <!--     Filter panel -->
     <div class="filters collapse-group">
       <div class="header">
-        <h4><%= t("campaigns.share.filters")%></h4>
-        <span class="glyphicon glyphicon-chevron-down control"></span>
+        <div><%= t("campaigns.share.filters")%> <span class="control glyphicon glyphicon-chevron-down"></span></div>
       </div>
       <div class="content collapse">
-        <div class="date-range-container">
+        <div class="date-range-container filter">
           <div class="name col-md-1"><%= t("campaigns.share.date")%></div>
-          <div id="date-range" class="col-md-11"></div>
-          <div class="read-out"></div>
+          <div class="col-md-11 unpad">
+            <div id="date-range"></div>
+          </div>
+          <div class="read-out col-md-12"></div>
         </div>
       </div>
     </div>
+    
     <div class="tab-pane" id="map-viz"></div>
 
     <div class="tab-pane fade in active" id="graph-viz">
