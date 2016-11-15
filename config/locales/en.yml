@@ -266,6 +266,7 @@ en:
       no_response: "No response"
       filters: "Filters"
       date: "Date"
+      question: "Question"
 
     survey:
       edit_survey: "Edit survey"

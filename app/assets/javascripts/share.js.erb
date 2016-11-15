@@ -21,7 +21,9 @@ PT.getSurveyInputById = function(surveyDefinition, inputId) {
 
 PT.getAnswerById = function(response, inputId) {
   for(var i = 0; i< response.answers.length; i++) {
-    if(response.answers[i].id == inputId) return response.answers[i];
+    if(response.answers[i].id == inputId) {
+      return response.answers[i];
+    }
   }
 };
 
@@ -104,7 +106,7 @@ PT.extractAllImages = function(responses){
 
 // Render visualizations
 
-PT.renderGoogleMap = function(serverResponse, containerId){
+PT.renderGoogleMap = function(responses, containerId){
   var markers = [];
   var surveyDefinition = {};
   var map = null,
@@ -154,16 +156,15 @@ PT.renderGoogleMap = function(serverResponse, containerId){
     });
 
     // Store survey definition
-    var surveyInputs = serverResponse.survey.inputs;
+    var surveyInputs = PT.surveyDefinition.inputs;
     for(var i=0,len=surveyInputs.length;i<len;i++){
       var input = surveyInputs[i];
       surveyDefinition[input.id] = input.label;
     }
 
     // Create map markers
-    var surveyResponses = serverResponse.responses;
-    for(var i=0,len=surveyResponses.length;i<len;i++){
-      var response = surveyResponses[i];
+    for(var i=0,len=responses.length;i<len;i++){
+      var response = responses[i];
 
       // Find geo location
       var lat = null,
@@ -639,23 +640,73 @@ PT.setDateRangeSlider = function(sliderId){
     $(sliderId).closest(".filter").find(".read-out").html(moment(getValues()[0]).format('D MMM YYYY') + " - " + moment(getValues()[1]).format('D MMM YYYY'));
   };
 
-  var filterResponsesByDate = function(){
-    var start = getValues()[0];
-    var end = getValues()[1];
-    var responses = PT.responses.filter(function(response){
-      return start <= response.timestamp && end >= response.timestamp;
-    });
+  setReadOut();
+  $(sliderId).on("slide", _.debounce(setReadOut, 50, false));
+  $(sliderId).on("slidestop", PT.applyFilters);
+};
 
-    $("#graph-container .viz-container").each(function(index, graph){  
-      $(graph).trigger("update", [responses]);
+PT.applyFilters = function(){
+  var selection;
+  var startDate = $("#date-range").slider("values")[0] * 1000;
+  var endDate =  $("#date-range").slider("values")[1] * 1000; 
+  var selectedInputId = parseInt($("#select-field").val());
+  var selectedValue = $("#select-value option:selected").html().trim() || "---";
+
+  var byDate = PT.responses.filter(function(response){
+    return startDate <= response.timestamp && endDate >= response.timestamp;
+  });
+
+  if(selectedInputId !== "---" && selectedValue !== "---"){
+    selection = byDate.filter(function(response){
+      var answer = PT.getAnswerById(response, selectedInputId).value.trim();
+      return answer == selectedValue;
     });
+  } else {
+    selection = byDate;
   };
 
-  setReadOut();
-
-  $(sliderId).on("slide", _.debounce(setReadOut, 50, false));
-  $(sliderId).on("slidestop", _.debounce(filterResponsesByDate, 100, false));
+  $("#graph-container .viz-container").each(function(index, graph){  
+    $(graph).trigger("update", [selection]);
+  });
+  PT.renderGallery(selection, "#image-viz", "main-gallery");
+  PT.renderGoogleMap(selection, "map-viz");
 };
+
+PT.configureFilters = function(){
+  PT.setDateRangeSlider("#date-range");
+  PT.setFieldFilter();
+
+  $(".filter-field").on("change", PT.applyFilters);
+};
+
+PT.setFieldFilter = function(){
+  // Populate value options
+  var fields = ["<option value='none'>---</option>"]
+  $.each(PT.surveyDefinition.inputs, function (i, input) {
+    if(input.input_type == "select1"){
+      fields.push("<option value='" + input.id + "'>" + input.label + "</option>")
+    }
+  });
+  $("#select-field").html(fields.join(""));
+  
+  // Populate value options
+  $("#select-value").html("<option value='none'>---</option>");
+
+  $("#select-field").on("change", function(){
+    var values = ["<option value='none'>---</option>"];
+    if(this.value == "none"){
+      plotAll(data)}
+    else {
+      var inputId = this.value;
+      $.each(PT.getSurveyInputById(PT.surveyDefinition, inputId).options, function (i, option) {
+        values.push("<option value='"+ inputId + "-" + i + "'>" + option + "</option>");
+      });
+    }
+
+    $("#select-value").html(values.join(""));
+  });
+};
+
 
 // Profile page data section
 $(function(){

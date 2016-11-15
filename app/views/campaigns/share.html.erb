@@ -55,16 +55,17 @@
   PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
 
     // Populate data report
-    PT.renderGoogleMap(data, "report-map-container");
+    PT.renderGoogleMap(data.responses, "report-map-container");
     PT.renderReportGraphs(data.responses, "#slides-container");
 
     // Populate viz panel
     PT.renderInputSummaries(data.responses, "#graph-container");
     PT.renderGallery(data.responses, "#image-viz", "main-gallery");
     window.setTimeout(function(){
-      PT.renderGoogleMap(data, "map-viz");
+      PT.renderGoogleMap(data.responses, "map-viz");
     }, 2000);
-    PT.setDateRangeSlider("#date-range");
+
+    PT.configureFilters();
 
     // Add CSV download button handler
     $(".csv-download").on("click", function(e){

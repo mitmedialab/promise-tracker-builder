@@ -264,7 +264,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
-  factory_girl_rails (~> 4.5.0)
+  factory_girl_rails
   faker
   font-awesome-sass
   guard-rspec

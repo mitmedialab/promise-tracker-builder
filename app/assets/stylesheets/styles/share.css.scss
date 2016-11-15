@@ -5,56 +5,68 @@
   padding-top: 40px;
 }
 
+//////////// Viz filters /////////////
 
-.viz-panel {
+.filters {
+  padding: 10px 60px;
   margin-top: 10px;
   overflow: hidden;
-  max-height: 480px;
+  border-bottom: 2px solid $yellow;
+  background: whitesmoke;
+  text-align: right;
 
-  .tab-pane {
-    padding-top: 50px;
-  }
-
-  .filters {
-    padding: 10px 60px;
-    overflow: hidden;
-    border-bottom: 2px solid $yellow;
-    background: whitesmoke;
+  .control {
+    padding: 8px 5px;
     text-align: right;
+    white-space: nowrap;
+  }
 
-    .unpad {
-      padding: 8px 5px;
-    }
+  .name, .read-out {
+    color: black;
+    padding: 8px 0;
+  }
 
-    .name, .read-out {
-      color: black;
-      padding: 0;
-    }
+  .read-out {
+    font-size: .8em;
+    font-weight: 100;
+    text-align: right;
+  }
 
-    .read-out {
-      font-size: .8em;
-      font-weight: 100;
-      text-align: right;
-    }
+  .header {
+    float: right;
 
-    .header {
-      float: right;
-
-      .control {
-        margin: 8px;
-      }
-    }
-
-    .content {
-      padding: 5px 0;
-      clear: both;
-      text-align: left;
+    .control {
+      margin: 8px;
     }
   }
 
-  .tab-pane, .nav-tabs  {
-    height: 480px;
+  .content {
+    padding: 5px 0;
+    clear: both;
+    text-align: left;
   }
+
+  .field-container {
+    select {
+      display: inline-block;
+      width: 50%;
+    }
+
+    padding-bottom: 10px;
+  }
+}
+
+
+.viz-panel, .tab-pane, .nav-tabs  {
+  height: 480px;
+}
+
+.tab-pane {
+  padding-bottom: 200px;
+}
+
+.viz-panel {
+  overflow: hidden;
   
   .gallery-image.placeholder {
     background: url("placeholder.jpg") center center;
@@ -99,7 +111,7 @@
 
   #graph-viz {
     overflow-y: scroll;
-    padding: 50px 20px 20px 30px;
+    padding: 10px 20px 20px 30px;
 
     #graph-placeholder {
       display: none;
@@ -426,5 +438,12 @@
 
   .report-options {
     display: none;
+  }
+  .viz-panel .filters .field-container {
+    select {
+      display: block;
+      width: 100%;
+      padding-bottom: 8px;
+    }
   }
 }

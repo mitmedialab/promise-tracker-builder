@@ -266,7 +266,8 @@ es:
       no_location: "No hay información geográfica disponible"
       no_response: "Sin respuesta"
       filters: "Filtros"
-      Date: "Fecha"
+      date: "Fecha"
+      questions: "Pregunta"
 
     survey:
       edit_survey: "Editar encuesta"

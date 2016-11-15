@@ -267,6 +267,7 @@ pt-BR:
       no_response: "Sem resposta"
       filters: "Filtros"
       date: "Data"
+      question: "Pergunta"
 
     survey:
       edit_survey: "Editar formulário"
