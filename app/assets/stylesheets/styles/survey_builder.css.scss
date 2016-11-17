@@ -1,3 +1,4 @@
+
 .input .reorder {
   display: none;
 }
@@ -9,6 +10,7 @@
 
   .input.selected {
     border-left: 5px solid $pink;
+    padding-bottom: 55px;
   }
 
   #input-list {
