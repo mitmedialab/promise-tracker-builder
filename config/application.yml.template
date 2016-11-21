@@ -2,11 +2,21 @@ development:
   AGGREGATOR_URL: "http://localhost:9292"
   AGGREGATOR_ACCESS_KEY: "your key here"
   GOOGLE_MAPS_KEY: "your key here"
+  GMAIL_DOMAIN: "gmail.com"
+  GMAIL_USERNAME: "your email"
+  GMAIL_PASSWORD: "your password"
+
 
 test:
   AGGREGATOR_URL: "http://localhost:9292"
   AGGREGATOR_ACCESS_KEY: "your key here"
+  GMAIL_DOMAIN: "gmail.com"
+  GMAIL_USERNAME: "your email"
+  GMAIL_PASSWORD: "your password"
 
 production:
   AGGREGATOR_URL: "http://survey-aggregator.com"
   AGGREGATOR_ACCESS_KEY: "your key here"
+  GMAIL_DOMAIN: "gmail.com"
+  GMAIL_USERNAME: "your email"
+  GMAIL_PASSWORD: "your password"
