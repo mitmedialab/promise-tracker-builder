@@ -227,6 +227,7 @@ pt-BR:
       greeting: "Oi"
       welcome_text: "Bem-vindo ao site Monitorando a Cidade!"
       get_started: "Que tal criar sua primeira campanha?"
+      missing_email: "Parece que a gente não tem seu email! Sem email não podemos ajudar você a recuperar sua senha."
 
     list_item:
       confirm_delete: "Você tem certeza que quer eliminar esta campanha?" 

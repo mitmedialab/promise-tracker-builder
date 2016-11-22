@@ -1,5 +1,13 @@
 var PT = PT || {};
 
+// Global
+$(document).ready(function(){
+  $("#flash-temporary").delay(4000).slideToggle();
+  $(".flash .close").on("click", function(){
+    $(this).parent().slideToggle();
+  });
+});
+
 // Create new campaign
 
 $(function(){

@@ -412,6 +412,22 @@ a {
   width: auto;
 }
 
+#flash-temporary, #flash-permanent {
+  padding: 10px;
+  font-size: 1.1em;
+  text-align: center;
+  margin: 0;
+  position: relative;
+}
+
+.flash .close {
+  position: absolute;
+  padding: 15px;
+  top: 0;
+  right: 0;
+  font-size: 1.1em;
+}
+
 /*===========================================
   Surveys
 =============================================*/

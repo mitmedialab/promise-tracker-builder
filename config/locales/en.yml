@@ -227,6 +227,7 @@ en:
       greeting: "Hello"
       welcome_text: "Welcome to Promise Tracker!"
       get_started: "Get started by creating your first data collection campaign."
+      missing_email: "Looks like we don't have an email for you! Without it we can't recover a forgotten password."
 
     list_item:
       confirm_delete: "Are you sure you want to delete this campaign?" 

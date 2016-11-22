@@ -54,3 +54,8 @@
     </nav>  
   </div>
 </div>
+
+<!-- Flash messages -->
+<% flash.each do |key, value| %>
+  <div class="well lead flash" id="flash-temporary"><%= value %></div>
+<% end %>

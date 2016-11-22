@@ -1,3 +1,12 @@
+<!-- Missing email alert -->
+<% if !current_user.email.present? %>
+  <div class="well lead flash" id="flash-permanent">
+    <%= t(".missing_email") %><br>
+    <%= link_to t(".add_email"), edit_user_path(current_user) %>
+    <span class="glyphicon glyphicon-remove close"></span>
+  </div>
+<% end %>
+
 <div class="section grey">
   <div class="section-container" id="user-info">
     <div class="user-icon">
