@@ -234,11 +234,9 @@ PT.renderGallery = function(responses, containerId, galleryName, inputId){
 
   var populate = function(container, responses){
     var images = PT.aggregateAnswers(responses, inputId);
-
+    $container.empty();
 
     if(images.length > 0){
-      $container.empty();
-      
       images.forEach(function(image, index){
         // Ensure no local image uploads are included
         if(image.value.slice(0,4) !== "file"){
