@@ -628,7 +628,9 @@ PT.showResponsePopup = function(event, response){
 // Set slider for date filter
 PT.setDateRangeSlider = function(sliderId){
   var dates = Object.keys(PT.count(PT.responses));
-  $(sliderId).dateSlider(dates[dates.length - 1], dates[0], dates[dates.length - 1], dates[0]);
+  var min = dates[dates.length - 1];
+  var max = parseInt(dates[0]) + 86400000;
+  $(sliderId).dateSlider(min, max, min, max);
   
   var getValues = function(){
     return [$("#date-range").slider("values")[0] * 1000, $("#date-range").slider("values")[1] * 1000]; 
