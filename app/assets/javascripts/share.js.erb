@@ -648,7 +648,7 @@ PT.setDateRangeSlider = function(sliderId){
 PT.applyFilters = function(){
   var selection;
   var startDate = $("#date-range").slider("values")[0] * 1000;
-  var endDate =  $("#date-range").slider("values")[1] * 1000; 
+  var endDate =  $("#date-range").slider("values")[1] * 1000 + 86400000; // Set limit to midnight
   var selectedInputId = parseInt($("#select-field").val());
   var selectedValue = $("#select-value option:selected").html().trim() || "---";
 
