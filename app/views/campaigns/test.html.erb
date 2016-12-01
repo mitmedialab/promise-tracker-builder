@@ -89,7 +89,7 @@
   PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
 
     // Populate panel
-    PT.renderInputSummaries(PT.aggregate, "#graph-container", "col-md-5");
+    PT.renderInputSummaries(PT.responses, "#graph-container", "col-md-5");
     PT.renderGallery(PT.responses, "#image-viz", "main-gallery");
     PT.renderGoogleMap(data, "map-viz");
 
