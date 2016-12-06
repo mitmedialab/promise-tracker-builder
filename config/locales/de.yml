@@ -1,0 +1,370 @@
+de:
+  app_name: "Monitoring von Stadt und Land"
+  locale_name: "Deutsch"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "Das Passwort muss aus mindestens 8 Zeichen bestehen."
+              blank: "Das Feld muss ausgefüllt werden."
+            password_confirmation: 
+              confirmation: "Das Passwort stimmt nicht überein."
+            username:
+              taken: "Der Benutzer/innen-Name ist bereits vergeben. Bitte wählen Sie einen anderen Benutzer/innen-Namen."
+              blank: "Das Feld muss ausgefüllt werden."
+        campaign:
+          attributes:
+            title:
+              too_short: "Bitte mindestens 5 Zeichen eingeben."
+
+    models:
+      survey: "Formular"
+      campaign: "Kampagne"
+      input: "Frage"
+      user: "Benutzer/innen-Name"
+
+    attributes:
+      campaign:
+        title: "Name"
+        description: "Beschreibung"
+        goal: "Ziel"
+        submissions_target: "Ziel der gewünschten Datensätze"
+        data_collectors: "Beteiligte"
+        audience: "Zielgruppe"
+        status: "Status"
+        start_date: "Datum der Veröffentlichung"
+        end_date: "Enddatum"
+        theme: "Thema"
+        organizers: "Organisator/innen der Kampagne"
+        country: "Land"
+        state: "Bundesland"
+        city: "Gemeinde"
+
+      input:
+        input_type: "Art der Antwort"
+
+      survey:
+        title: "Titel"
+
+      user:
+        username: "Benutzer/innen-Name"
+        bio: "Biographie / Beschreibung"
+        password: "Passwort"
+        password_confirmation: "Bestätigung des Passworts"
+        current_password: "Derzeitiges Passwort"
+        email: "E-Mail"
+
+    options:
+      themes:
+        select: "Auswahl"
+        economics: "Soziale Entwicklung"
+        education: "Bildung"
+        housing: "Wohnen"
+        environment: "Umwelt"
+        transport: "Städtische Mobilität"
+        health: "Gesundheit"
+        sanitation: "Abwasser- und Abfallwirtschaft"
+        infrastructure: "Infrastruktur"
+        energy: "Stromversorgung"
+        technology: "Technologie / Kommunikation"
+        other: "Anderes Thema"
+
+      input_types:
+        text: "Text"
+        number: "Zahl"
+        date: "Datum"
+        yes_no: "Ja/Nein"
+        select1: "Auswählen eines Felds"
+        select: "Auswählen mehrerer Felder"
+        location: "Ort"
+        image: "Bild"
+        note: "(Texterklärung - ohne Antwort)"
+
+      countries:
+        brazil: "Brasilien"
+        united_states: "USA"
+        germany: "Deutschland"
+
+  defaults:
+    yes_option: "Ja"
+    no_option: "Nein"
+    save: "Speichern"
+    cancel: "Abbrechen"
+    download: "Herunterladen"
+    view: "Ansehen"
+    share: "Teilen"
+    share_text: "Überprüfen Sie die Ergebnisse der Kampagne innerhalb von Monitoring von Stadt und Land -"
+    edit: "Bearbeiten"
+    close: "Schließen"
+    copy: "Kopieren"
+    delete: "Löschen"
+    back: "Zurück"
+    next: "Weiter"
+    loading: "Daten werden geladen."
+    or: "oder"
+    validations:
+      required: "Dieses Feld ist erforderlich."
+      number: "Bitte geben Sie eine gültige Zahl ein."
+      question_blank: "Der Text der Frage kann nicht leer bleiben."
+      no_options: "Sie müssen mindestens eine Option hinzufügen."
+      has_errors: "Ihr Formular weist einen Fehler auf. Bitte berichtigen Sie diesen Fehler bevor Sie weitermachen."
+      no_errors: "Ihr Formular weist keine Fehler auf."
+      confirm_save: "Ihre Änderungen wurden gespeichert."
+      please_define_goals: "Bitte vervollständigen Sie die Fragen und speichern Sie sie ab, um fortzufahren."
+      please_create_survey: "Bitte erstellen Sie Ihr Formular, um fortzufahren."
+      please_complete_campaign_page: "Bitte füllen Sie die Felder der Kampagne aus und speichern Sie sie ab, um fortzufahren."
+      launch_campaign: "Sie müssen diese Kampagne initiieren, um fortzufahren."
+      close_campaign: "Sie müssen diese Kampagne beenden, um fortzufahren."
+
+  errors:
+    sorry: "Entschuldigung!"
+    hmm: "Hmmm..."
+    resource_not_found: "Wir finden leider diese Seite nicht."
+    forbidden: "Der Zugriff auf diese Seite ist nicht autorisiert."
+    internal_error: "Irgend etwas ist passiert."
+
+  layouts:
+    site_header:
+      account: "Profil"
+      campaigns: "Kampagnen"
+      guides: "Handbücher"
+
+  home:
+    download:
+      download_link: "Die App herunterladen"
+      app_description: "Mit der App können Sie die Formulare, die mit Monitoring von Stadt und Land erstellt wurden, ausfüllen und Daten sammeln!"
+      google_language_code: "de"
+      older_android_versions: "Hier die App für Android-Versionen älter als 4.3 herunterladen."
+
+    guides:
+      for_users: "Für Benutzer/innen"
+      for_trainers: "Für Trainer/innen"
+      presentation: "Präsentation"
+      guide: "Handbuch für die Planung von Kampagnen"
+      intro_workshop: "Einführung in Monitoring von Stadt und Land"
+      coming_soon: "In Kürze verfügbar"
+
+    index:
+      welcome: "Start von Monitoring von Stadt und Land (Promise Tracker)"
+      tag_line: "Daten sammeln für zivilgesellschaftliche Aktionen"
+      project_description: "Monitoring von Stadt und Land ist eine Monitoring-Plattform, die Gruppen, Individuen und zivilgesellschaftlichen Organisationen hilft, die Versprechen lokaler Regierungen nachzuverfolgen, um so mehr gesellschaftliche Verantwortung von Verwaltung und Politikern einfordern zu können. Die Instrumente von Monitoring von Stadt und Land helfen den Bürgerinnen und Bürgern wichtige Themen, die ihr alltägliches Leben betreffen, zu identifizieren, lokale Kampagnen zur Datensammlung zu organisieren und interessante Einblicke zu eröffnen, um positive soziale Veränderungen zu fördern."
+      process_line: "Unser Prozess"
+      process_description: 
+      phase_1_title: "Kampagne definieren & Formular anlegen"
+      phase_1_description: "Definieren Sie den Fokus der Kampagne, ihre Ziele und die Empfänger/innen der gesammelten Daten. Erstellen Sie ein benutzerdefiniertes Formular für die Datenerhebung."
+      phase_2_title: "Daten sammeln im Feld."
+      phase_2_description: "Sammeln Sie mit der App Fotos, Orte und Beiträge im Feld. Schauen Sie sich die gesammelten Antworten an."
+      phase_3_title: "Teilen & visualisieren von Daten"
+      phase_3_description: "Visualisieren Sie Ihre Daten in Form von Karten, Grafiken, Fotogalerien und Berichten. Teilen Sie sie mit den Empfängern online und offline."
+      create_account: "Ein kostenloses Konto einrichten"
+
+  campaigns:
+    status:
+      active: "Aktiv"
+      closed: "Beendet"
+      draft: "Entwurf"
+      test: "Test"
+      copy: "Kopie"
+
+    activate: 
+      upload_error: "Entschuldigung. Ihre Kampagne wurde nicht gestartet."
+      upload_success: "Ihre Kampagne wurde mit Erfolg gestartet!"
+
+    collect:
+      status_text: "Diese Kampagne ist "
+      survey_code: "Sie können dieses Formular herunterladen und ausfüllen mit dem Code"
+      close_confirmation: "Wenn Sie diese Kampagne beenden, können Sie keine Daten mehr sammeln."
+      number_of_responses: "Anzahl der Datensätze"
+      close: "Kampagne beenden"
+      confirm_close: "Sind Sie sicher, dass Sie diese Kampagne beenden möchten? Sie werden keine Daten mehr sammeln können!"
+      publicize_form: "In Netzwerken veröffentlichen"
+      responses: 
+        counting:
+          one: "Aufzeichnung"
+          other: "Aufzeichnungen"
+      current: "Aktuelle"
+      target: "Gewünschte"
+      date: "Datum"
+      participant_id: "Teilnehmer/innen-Code"
+      view_more_responses: "Noch mehr Aufzeichnungen anschauen"
+
+    data_report:
+      check_out_results: "Die Ergebnisse prüfen"
+      view_viz: "Siehe unten die Graphiken mit Daten, die innerhalb dieser Kampagne gesammelt wurden."
+
+    edit:
+      define_goals: "Definition der Kampagne"
+      type_number: "Geben Sie eine Zahl ein."
+      explanations:
+        description: "Kurze Beschreibung der Kampagne"
+        goal: "Was will Ihre Gruppe mit dieser Kampagne bewirken?"
+        organizers: "Wie lautet der Name der Gruppe oder der Gemeinschaft, die diese Kampagne organisiert?"
+        data_collectors: "Wer wird die Daten für diese Kampagne sammeln?"
+        submissions_target: "Wie viele Einträge möchten Sie für diese Kampagne erreichen?"
+        audience: "Mit wem werden Sie die gesammelten Daten teilen? Gibt es eine öffentliche Stelle, ein Sekretariat oder eine Institution, die bezüglich des gewählten Themas weiterhelfen könnte?"
+      tooltip: "Tipp"
+      tips:
+        data_collectors: "Wer von Ihren Bekannten befasst sich bereits mit der Lösung dieses Problems? Wer wäre bereit, Ihnen bei der Datensammlung für diese Kampagne zu helfen?"
+        goal: "Soziale Veränderungen beginnen normalerweise mit kleinen Schritten. Was ist bezüglich dieses Themas in der nahen Zukunft erreichbar?"
+        submissions_target: "Denken Sie darüber nach, wie viele Datensätze Sie benötigen, um eine repräsentative Stichprobe zu erhalten und wie viele Datensätze in der verfügbaren Zeit gesammelt werden können."
+        audience: "Es gibt viele mögliche Empfänger/innen. Wer hat das größte Interesse an den Daten? Welche Zielgruppen würden diese Daten benutzen, um tatsächlich Veränderungen einzuleiten?"
+
+    how_to_participate:
+      participate_title: "Helfen Sie bei der Datensammlung."
+      participate_text: "Laden Sie die App herunter und senden Sie Infos aus Ihrer Region."
+      step: "Schritt"
+      step_1_text: "Laden Sie die App herunter."
+      download_link: "Klicken Sie hier, um zu sehen wie das Herunterladen funktioniert."
+      step_2_text: "Herunterladen der Kampagne"
+      step_2_subtext: "Benutzen Sie folgenden Code zum Herunterladen"
+      step_3_text: "Füllen Sie das Formular aus"
+      step_3_subtext: "Schicken Sie Ihre Daten los, um sie auf der Karte der Kampagne zu sehen!"
+
+    index:
+      new_campaign: "Neue Kampagne anlegen"
+      my_campaigns: "Meine Kampagnen"
+      greeting: "Hallo!"
+      welcome_text: "Willkommen auf der Seite von Monitoring von Stadt und Land!"
+      get_started: "Wie wäre es, wenn Sie Ihre erste Kampagne erzeugen?"
+      missing_email: "Anscheinend haben wir nicht Ihre E-Mail! Ohne E-Mail können wir Ihnen nicht bei der Wiederherstellung Ihres Passwortes helfen."
+
+    list_item:
+      confirm_delete: "Sind Sie sicher, dass Sie diese Kampagne löschen möchten?" 
+      confirm_clone: "Sind Sie sicher, dass Sie diese Kampagne duplizieren möchten?" 
+
+    new:
+      modal_title: "Neue Kampagne"
+      campaign_theme: "Welches Thema interessiert Sie?"
+      campaign_title: "Bezeichnung der Kampagne"
+      title_placeholder: "Bezeichnung der Kampagne"
+      create_campaign: "Erzeugen"
+
+    progress_bar:
+      define_goals: "Kampagne definieren"
+      create_survey: "Formular erzeugen"
+      design_campaign_page: "Die Kampagnenseite vorbereiten"
+      test_survey: "Formular testen"
+      collect_data: "Daten sammeln"
+      share_data: "Daten visualisieren"
+
+    campaign_page:
+      title: "Kampagnenseite"
+      campaign_page_description: "Ihre Kampagne wird eine Seite im Internet haben. Sie können sie benutzen, um Ihre Freunde aus sozialen Netzwerken zur Sammlung von Daten einzuladen. Das unten stehende Formular dient zur Veränderung der Präsentation dieser Seite."
+      view_as_public: "Vorschau der öffentlichen Seite"
+      remain_anonymous: "Ich möchte, dass die Organisator/innen anonym bleiben"
+      preview: "Vorschau"
+
+    share:
+      visualize_data: "Vizualisieren Ihrer Daten" 
+      share_data: "Teilen Sie Ihre Daten"
+      data_reports: "Bericht der Daten"
+      campaign_organizers: "Organisator/innen der Kampagne"
+      learn_more: "Mehr Informationen über die Kampagne auf der Seite"
+      download_csv: "CSV herunterladen"
+      print_report: "Bericht drucken"
+      copy_campaign: "Kampagne duplizieren"
+      no_location: "Es gibt keine verfügbaren geographischen Informationen"
+      no_response: "Ohne Antwort"
+      filters: "Filter"
+      date: "Datum"
+      question: "Frage"
+
+    survey:
+      edit_survey: "Formular bearbeiten"
+
+    tabs:
+      overview: "Definition"
+      survey: "Formular"
+      campaign_page: "Kampagnenseite"
+      data: "Daten"
+      viz: "Visualisierung"
+
+    test:
+      test_title: "Testen Sie das Formular"
+      test_explanation: "Bevor Sie Ihre Kampagne starten, testen Sie Ihr Formular in der App und bestätigen Sie, ob alles korrekt ist."
+      catch_errors: "Jetzt ist der Zeitpunkt, zu dem alle Fehler gefunden werden sollten!"
+      how_to_test: "Wie testen"
+      view_test_data: "Testdaten visualisieren"
+      step_3_text: "Formular testen"
+      step_3_subtext: "Formular ausfüllen und bestätigen, ob alles gut beschrieben und in Ordnung ist."
+      warning: "Nach dem Starten der Kampagne kann das Formular nicht mehr verändert werden."
+      edit_survey: "Formular bearbeiten"
+      go_live: "Kampagne starten"
+      confirm_launch: "Sind Sie sicher, dass Sie die Kampagne starten wollen? Nach dem Initiieren der Kampagne kann das Formular nicht mehr verändert werden."
+      test_complete: "Test abgeschlossen"
+      this_campaign_is: "Diese Kampagne ist"
+
+    update_survey_modal:
+      modal_title: "Aktualisierung der Version der Kampagne"
+      update_survey: "Vergessen Sie nicht, die Endversion der Kampagne auf Ihr Smartphone herunterzuladen!"
+      test_version_warning: "Die Testversion ist nicht dazu geeignet, um Daten zu sammeln."
+      how_to_update: "Innerhalb der App können Sie die Kampagne mit demselben Code herunterladen oder auf das Feld klicken "
+      in_the_list: "In der Liste"
+
+    viz_panel:
+      map: "Karte" 
+      photos: "Fotos"
+      graphs: "Graphiken"
+      graph_placeholder: "Wenn es Datensätze gibt, werden diese hier sichtbar sein."
+      image_placeholder: "Es gibt zu dieser Kampagne noch keine gesammelten Fotos."
+
+  surveys:
+    android_preview: 
+      get_location: "Standort erhalten"
+      take_picture: "Foto machen"
+      question: "Frage"  
+      of: "von"
+      close_preview: "Vorschau schließen"
+
+    survey_body:
+      required: "Obligatorische Frage"
+      options: "Optionen"
+      add_new_option: "Option hinzufügen"
+      question_label: "Fragetext"
+      question_placeholder: "Frage hier eingeben"
+      answer_type: "Art der Antwort"
+      select_one: "Eine auswählen"
+      select_many: "(Mehr als eine) auswählen"
+      preview:
+        date: "13. Januar 2014"  
+        number: "123"
+        string: "Abc"
+
+    survey_builder:
+      untitled: "Ohne Titel"
+      survey_title: "Titel des Formulars"
+      title_text: "Titel hier eingeben"
+      editor_title: "Werkzeugleiste"  
+      add_question: "Frage hinzufügen"
+      add_location: "Standort erhalten"
+      add_image: "Foto erhalten"
+      option_1: "Option 1"
+      preview_title: "Vorschau"
+      show_preview: "Vorschau zeigen"
+      hide_preview: "Vorschau verstecken"
+      confirm_input_delete: "Sind Sie sicher, dass Sie dieses Feld löschen möchten?"
+      finalize_survey: "Formular abschließen"
+
+  users:
+    show:
+      add_email: "E-Mail hinzufügen"
+      change_password: "Passwort ändern"
+      edit_campaign_page: "Profil bearbeiten"
+
+  devise:
+    sign_in: "Einloggen"
+    sign_out: "Ausloggen"
+    sign_up: "Konto einrichten"
+    create_account: "Konto einrichten"
+    existing_account: "Haben Sie schon ein Konto?"
+    remember_me: "Erinnern Sie mich"
+    forgot_password: "Passwort vergessen?" 
+    cancel_account: "Konto abbrechen" 
+    are_you_sure: "Sind Sie sicher?"
+
+    registrations:
+      edit:
+        cancel_account: "Konto abbrechen"
+        cancel_account_text: "Möchten Sie Ihr Konto löschen? Wenn es einmal gelöscht ist, können Sie Ihre Daten nicht mehr wiederherstellen."
