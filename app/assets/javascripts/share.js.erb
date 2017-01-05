@@ -400,9 +400,9 @@ PT.renderInputSummaries = function(responses, containerId, callback){
         case "select":
         case "select1":
           if(input.options.length < 3){
-            PT.renderPieChart("#viz-input-" + input.id, responses, input.id, true, true);
+            PT.renderPieChart("#viz-input-" + input.id, responses, input.id, true, false);
           } else {
-            PT.renderColumnChart("#viz-input-" + input.id, responses, input.id, true, true);
+            PT.renderColumnChart("#viz-input-" + input.id, responses, input.id, true, false);
           };
 
           break;

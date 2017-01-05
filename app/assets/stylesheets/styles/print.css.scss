@@ -5,12 +5,27 @@
   }
 
   #campaign-progress-container, ul.campaign-nav, .viz-panel,
-  .share-bar, .campaign-title, .report-options, h2.title, .campaign-outreach {
+  .share-bar, .campaign-title, .report-options, h2.title, .campaign-outreach, .filters {
     display: none;
   }
 
   .report-panel .campaign-title {
     display: block;
+  }
+
+  .campaign-data #graph-viz {
+    overflow: visible;
+    height: auto;
+    text-align: center;
+
+    #report-graph-container {
+      overflow: visible;
+
+      .item {
+        display: visible;
+        margin-bottom: 35px;
+      }
+    }
   }
 
   .report-panel {
@@ -29,6 +44,14 @@
     .campaign-overview {
       margin-bottom: 0;
 
+      .col-sm-pull-5 {
+        right: 0;
+      }
+
+      .col-sm-push-7 {
+        left: 0;
+      }
+
       .campaign-info {
         width: 50%;
         float: left;
@@ -44,12 +67,17 @@
     .campaign-data {
       page-break-after: always;
 
+      .slides-container .item {
+
+      }
+
       .highcharts-button {
         display: none;
       }
 
       #map-viz {
         max-height: 220px;
+        width: 100%;
       }
     }
   }
