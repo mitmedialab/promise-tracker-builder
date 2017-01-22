@@ -35,12 +35,6 @@
   <p class="highlight text"><%= t(".view_viz") %></p>
   <%= render partial: 'data' %>
 
-  <div id="campaign-survey" class="stacked-sheets">
-    <label><%= Survey.model_name.human %></label>
-    <%= render partial: 'surveys/survey_body', locals: {survey: @survey} %>
-  </div>
-  <br>
-
   <div class="center">
     <%= render partial: 'share_bar' %>
   </div>
