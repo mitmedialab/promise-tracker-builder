@@ -21,7 +21,7 @@ PT.downloadCsv = function(serverResponse){
     response.answers.forEach(function(answer){
       if(answer.value){
         if (typeof(answer.value) == "string"){
-          csvString += answer.value;
+          csvString += '"' + answer.value + '"';
         } else if(answer.value.constructor == Array) {
           csvString += '"' + answer.value.join(",") + '"';
         } else {
