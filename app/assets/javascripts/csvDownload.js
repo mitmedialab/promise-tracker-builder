@@ -32,7 +32,7 @@ PT.downloadCsv = function(serverResponse){
     })
   })
 
-  a.href = "data:application/csv;charset=utf-8," + encodeURIComponent(csvString);
+  a.href = "data:application/csv;charset=utf-8," + "\uFEFF" + encodeURIComponent(csvString);
   a.target = "_blank";
   a.download = "PT_Data_" + survey.code + ".csv";
   document.body.appendChild(a);
