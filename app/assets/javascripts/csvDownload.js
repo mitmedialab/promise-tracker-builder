@@ -15,7 +15,7 @@ PT.downloadCsv = function(serverResponse){
 
   //Write responses
   responses.forEach(function(response){
-    csvString += "\n" + response.timestamp + "," 
+    csvString += "\n" + new Date(response.timestamp) + "," 
       + '"' + response.locationstamp.lat + ", " + response.locationstamp.lon + '",';
 
     response.answers.forEach(function(answer){
