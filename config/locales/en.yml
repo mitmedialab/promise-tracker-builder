@@ -342,7 +342,8 @@ en:
       preview_title: "Preview"
       show_preview: "Show preview"
       hide_preview: "Hide preview"
-      confirm_input_delete: "Are you sure you want to delete this input?"
+      confirm_input_delete: "Are you sure you want to delete this question?"
+      confirm_blank_input: "Blank questions will be deleted. Are you sure you want to delete this question?"
       finalize_survey: "Complete survey design"
 
   users:

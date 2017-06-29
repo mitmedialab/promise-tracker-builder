@@ -52,25 +52,31 @@ PT.Input = function(){
   };
 
   self.save = function(self){
-    $.ajax({
-      url: Routes.survey_inputs_path(PT.survey.id),
-      type: "POST",
-      contentType: "application/json",
-      dataType: "json",
-      data: ko.toJSON(self)
-    })
-    .done(function(response) {
-      self.inEdit(false);
-      self.options(response.options);
-      console.log("Input saved with label:" + self.label());
+    if(self.label().length > 0){
+      $.ajax({
+        url: Routes.survey_inputs_path(PT.survey.id),
+        type: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        data: ko.toJSON(self)
+      })
+      .done(function(response) {
+        self.inEdit(false);
+        self.options(response.options);
+        console.log("Input saved with label:" + self.label());
 
-      if(self.id() === ""){
-        self.id(response.id);
-      }
-      self.validate();
-      PT.checkErrors();
-      PT.unsaved = false;
-    });
+        if(self.id() === ""){
+          self.id(response.id);
+        }
+        self.validate();
+        PT.checkErrors();
+        PT.unsaved = false;
+      });
+    } else {
+      var confirmed;
+      self.id() == "" ? confirmed = true : confirmed = window.confirm(I18n.t("surveys.survey_builder.confirm_blank_input"));
+      confirmed ? PT.survey.removeInput(self) : false;
+    }
   };
 
   self.map = function(data){
@@ -85,9 +91,12 @@ PT.Input = function(){
   }; 
 
   self.edit = function(){
-    // PT.survey.saveInputs();
-    self.inEdit(true);
-    PT.selectedInput(self);
+    var open = function(){
+      self.inEdit(true);
+      PT.selectedInput(self);
+    };
+
+    PT.survey.saveInputs(open);
   };
 
   self.addOption = function(input, event){
@@ -130,38 +139,45 @@ PT.SurveyModel = function(){
   self.campaign_id = "";
   self.inputs = ko.observableArray([]);
 
+  self.saveInputs = function(callback){
+    var save = function(){
+      PT.unsaved = self.inputs().filter(function(input) { return input.inEdit() === true ;})[0] || false;
+      if(PT.unsaved){
+        PT.unsaved.save(PT.unsaved);
+        window.setTimeout(save, 200);
+      } else {
+        callback ? callback() : false;
+      }
+    };
+
+    save();
+  };
+
   self.addInput = function(event){
     event.stopPropagation();
-    self.saveInputs();
 
-    PT.waitForAllSaved(function(){
+    var add = function(){
       var input = new PT.Input();
       self.inputs.push(input);
-      console.log("new input added"); // DEBUG
       PT.selectedInput(input);
 
       var label = $(".selected").find("textarea")[0];
       if(label){
         label.focus();
       }
-    });
+    };
+
+    self.saveInputs(add);
   };
 
-  self.saveInputs = function(){
-    PT.unsaved = self.inputs().filter(function(input) { return input.inEdit() === true ;})[0] || false;
-    if(PT.unsaved){
-      console.log("Unsaved stored as: " + PT.unsaved.label());
-      PT.unsaved.save(PT.unsaved);
-    }
-  };
+  self.removeInput = function(input){
+    var confirmed = input.label() === "" || window.confirm(I18n.t("surveys.survey_builder.confirm_input_delete"));
 
-  self.removeInput = function(){
-    var confirmed = this.label() === "" || window.confirm(I18n.t("surveys.survey_builder.confirm_input_delete"));
     if(confirmed){
-      self.inputs.remove(this);
-      if(this.id()){
+      self.inputs.remove(input);
+      if(input.id()){
         $.ajax({
-          url: Routes.survey_input_path(PT.survey.id, this.id()),
+          url: Routes.survey_input_path(PT.survey.id, input.id()),
           type: "DELETE",
           contentType: "application/json",
           dataType: "json"
@@ -177,22 +193,16 @@ PT.SurveyModel = function(){
 
   /// Update order of all inputs
   self.saveOrder = function(){
-    self.saveInputs();
-
-    var store = function(){
-      $.ajax({
-        url: Routes.save_order_path(PT.survey.id),
-        type: "PUT",
-        contentType: "application/json",
-        dataType: "json",
-        data: ko.toJSON(self)
-      })
-      .done(function(data){
-        window.location.pathname = I18n.currentLocale() + Routes[data.redirect_path](self.campaign_id);
-      });
-    };
-
-    PT.waitForAllSaved(store);
+    $.ajax({
+      url: Routes.save_order_path(PT.survey.id),
+      type: "PUT",
+      contentType: "application/json",
+      dataType: "json",
+      data: ko.toJSON(self)
+    })
+    .done(function(data){
+      window.location.pathname = I18n.currentLocale() + Routes[data.redirect_path](self.campaign_id);
+    });
   };
 
   self.populateInputs = function(data){
@@ -255,16 +265,5 @@ PT.checkErrors = function(){
   } else {
     $("#error-check").removeClass("alert-danger");
     $("#error-check p").html(I18n.t("defaults.validations.no_errors"));
-  }
-};
-
-PT.waitForAllSaved = function(callback){
-  if(!PT.unsaved){
-    callback();
-    return;
-  } else {
-    window.setTimeout(function(){
-      PT.waitForAllSaved(callback);
-    }, 100);
   }
 };

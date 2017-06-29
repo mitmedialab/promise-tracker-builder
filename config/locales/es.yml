@@ -343,7 +343,8 @@ es:
       preview_title: "Vista previa"
       show_preview: "Mostrar vista previa"
       hide_preview: "Ocultar vista previa"
-      confirm_input_delete: "¿Estás seguro que deseas eliminar esta respuesta?"
+      confirm_input_delete: "¿Estás seguro que deseas eliminar esta pregunta?"
+      confirm_blank_input: "Preguntas sin texto serán eliminadas. ¿Estás seguro que deseas eliminar esta pregunta?"
       finalize_survey: "Finalizar diseño de la encuesta"
 
   users:

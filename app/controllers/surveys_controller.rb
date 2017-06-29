@@ -39,7 +39,9 @@ class SurveysController < ApplicationController
     if inputs
       inputs.each_with_index do |input, index|
         item = Input.find_or_create_by(id: input[:id])
+        item.update_attributes(input.permit(:id, :survey_id, :label, :input_type, :options, :required, :order))
         item.update_attribute(:order, index)
+        item.delete if input["label"].blank?
       end
     end
 

@@ -344,6 +344,7 @@ pt-BR:
       show_preview: "Mostrar pré visualização"
       hide_preview: "Esconder pré visualização"
       confirm_input_delete: "Tem certeza que deseja eliminar este campo?"
+      confirm_blank_input: "Campos sem texto serão eliminados. Tem certeza que deseja eliminar este campo?"
       finalize_survey: "Concluir formulário"
 
   users:
