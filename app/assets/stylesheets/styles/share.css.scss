@@ -292,9 +292,14 @@
   }
 }
 
-.data-report .image {
-  background: image-url("campaign-image-3.jpg") center center;
-  background-size: cover;
+.data-report {
+  .image {
+    background: image-url("campaign-image-3.jpg") center center;
+    background-size: cover;
+  }
+  img {
+    max-width: none !important;
+  }
 }
 
 .report-panel {
