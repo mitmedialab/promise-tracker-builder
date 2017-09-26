@@ -129,6 +129,8 @@ pt-BR:
       account: "Perfil"
       campaigns: "Campanhas"
       guides: "Manuais"
+      news: "Novidades"
+      help: "Ajuda"
 
   home:
     download:
@@ -158,6 +160,11 @@ pt-BR:
       phase_3_title: "Compartilhar & visualizer dados"
       phase_3_description: "Visualize seus dados em forma de mapa, gráficos, galeria de fotos e relatórios. Compartilhe com seus destinatários online e offline."
       create_account: "Criar uma conta gratuita"
+
+    help:
+      need_help: "Precisa ajuda ou tem sugestões?"
+      help_description: "Se você tiver problemas ou dúvidas com o Monitorando ou se tiver sugestões de como fazê-lo mais bacana, entre em contato com a gente!"
+      thank_you: "Muito obrigada! Vamos que vamos."
 
   campaigns:
     status:

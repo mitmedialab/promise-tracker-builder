@@ -130,6 +130,8 @@ es:
       account: "Perfil"
       campaigns: "Campañas"
       guides: "Guías"
+      news: "Noticias"
+      help: "Ayuda"
 
   home:
     download:
@@ -159,6 +161,11 @@ es:
       phase_3_title: "COmpartir datos"
       phase_3_description: "Revisa los datos en una varieda de formatos, incluyendo mapas, galerias de imágnes, gráficas y reportes para compartir con los involucrados, tanto digital como no"
       create_account: "Crear una cuenta gratis"
+
+    help:
+      need_help: "Necesitas ayuda?"
+      help_description: "Si tienes problemas técnicas o preguntas sobre Promise Track, o si tienes ideas sobre como podemos hacerlo mejor, cuéntanos!"
+      thank_you: "Muchas gracias. ¡Adelante!"
 
   campaigns:
     status:

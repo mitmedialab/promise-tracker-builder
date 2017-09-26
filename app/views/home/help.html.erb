@@ -1,0 +1,17 @@
+<div class="section grey">
+  <div class="row section-container intro-block">
+    <div class="col-md-3" id="logo-wrapper">
+      <%= image_tag("PT-logo.png", id: "logo") %>
+      <img class="logo-overlay" src="<%= asset_path('PT-logo.png') %>">
+      <img class="logo-overlay" src="<%= asset_path('PT-logo-build.png') %>">
+      <img class="logo-overlay" src="<%= asset_path('PT-logo-collect.png') %>">
+      <img class="logo-overlay" src="<%= asset_path('PT-logo-share.png') %>">
+    </div>
+    <div class="col-md-9 overview-block">
+      <h3 class="title"><%= t(".need_help?") %></h3>
+      <p class="pad-bottom">
+        <%= t(".help_description") %>: <a href="http://bit.ly/feedback-monitorando">bit.ly/feedback-monitorando</a>.
+      </p>
+    </div>
+  </div>
+</div>

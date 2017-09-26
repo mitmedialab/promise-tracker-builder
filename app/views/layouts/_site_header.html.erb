@@ -21,6 +21,9 @@
   <div class="collapse navbar-collapse header-container" id="nav-links">
     <nav>
       <ul class="nav navbar-nav user-links">
+        <li>
+          <%= link_to t(".news"), "http://promisetracker.org/news", target: "_blank", class: "btn btn-bright" %>
+        </li>
         <% if current_user %>
           <li id="user-menu" class="dropdown" >
             <%= link_to campaigns_path do %>
@@ -38,8 +41,11 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn" %></li>
-        <% end %>    
+          <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-info" %></li>
+        <% end %>
+        <li class="text-link">
+          <%= link_to t(".help"), help_path %>
+        </li>
         <li id="language-menu" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <%= t("locale_name") %><span class="caret"></span>

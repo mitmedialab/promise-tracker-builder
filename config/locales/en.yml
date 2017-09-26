@@ -129,6 +129,8 @@ en:
       account: "Profile"
       campaigns: "Campaigns"
       guides: "Guides"
+      news: "News"
+      help: "Help"
 
   home:
     download:
@@ -144,6 +146,11 @@ en:
       guide: "Trainer's Guide"
       intro_workshop: "Intro to Promise Tracker"
       coming_soon: "Coming soon"
+
+    help:
+      need_help: "Need help?"
+      help_description: "If you have technical issues or questions about Promise Tracker or ideas about how we can make it better, get in touch!"
+      thank_you: "Thanks so much. Onward and upward!"
 
     index:
       welcome: "Get started"

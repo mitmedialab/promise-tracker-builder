@@ -9,4 +9,7 @@ class HomeController < ApplicationController
   def guides
   end
 
+  def help
+  end
+
 end

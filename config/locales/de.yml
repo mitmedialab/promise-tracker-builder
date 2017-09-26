@@ -130,6 +130,8 @@ de:
       account: "Profil"
       campaigns: "Kampagnen"
       guides: "Handbücher"
+      news: "Nachrichten"
+      help: "Hilfe"
 
   home:
     download:
@@ -159,6 +161,11 @@ de:
       phase_3_title: "Teilen & visualisieren von Daten"
       phase_3_description: "Visualisieren Sie Ihre Daten in Form von Karten, Grafiken, Fotogalerien und Berichten. Teilen Sie sie mit den Empfängern online und offline."
       create_account: "Ein kostenloses Konto einrichten"
+
+    help:
+      need_help: "Brauchst du Hilfe?"
+      help_description: "Si tienes problemas técnicas o preguntas sobre Promise Track, o si tienes ideas sobre como podemos hacerlo mejor, cuéntanos!"
+      thank_you: Danke!
 
   campaigns:
     status:

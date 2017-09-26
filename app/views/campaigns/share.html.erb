@@ -56,7 +56,7 @@
 
     // Populate data report
     PT.renderGoogleMap(data.responses, "report-map-container");
-    PT.renderReportGraphs(data.responses, "#slides-container");
+    PT.renderInputSummaries(data.responses, "#slides-container");
 
     // Populate viz panel
     PT.renderInputSummaries(data.responses, "#graph-container");
@@ -104,6 +104,7 @@
   // Print report
   $(".print").on("click", function(e){
     e.preventDefault();
+    $(window).resize();
     window.print();
   })
 </script>

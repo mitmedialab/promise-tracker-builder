@@ -61,7 +61,7 @@ PT.aggregateAnswers = function(responses, inputId){ //Collect answers for text a
         }
       })[0];
 
-      relevantAnswer ? PT.separateMultipleEntries(relevantAnswer, response, answers) : false;
+      relevantAnswer ? answers = PT.separateMultipleEntries(relevantAnswer, response, answers) : false;
     });
   } else {
     answers = PT.extractAllImages(responses);
@@ -86,6 +86,8 @@ PT.separateMultipleEntries = function(answer, response, answersArray){
   } else { // Support old single image answer
     answersArray.push(formatAnswer(answer.value));
   }
+
+  return answersArray;
 };
 
 PT.extractAllImages = function(responses){
@@ -455,7 +457,7 @@ PT.renderReportGraphs = function(responses, containerId){
     });
 
     // Show first item in graph carousel
-    $(containerId + " .item").first().addClass("active");
+    $(containerId + " .item").addClass("active");
     $(window).resize();
     if($(".carousel .item").length < 2){
       $(".carousel-control").hide();
