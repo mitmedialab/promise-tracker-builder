@@ -7,13 +7,13 @@
     <li>
       <a href="" class="csv-download"><%= t(".download_csv") %></a>
     </li>
-    <li>
-      <% if current_user %>
+    <% if current_user %>
+      <li>
         <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
           <%= t(".copy_campaign") %>
         <% end %>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
   </ul>
 </div>
 <div class="section report-panel printable">
