@@ -1,23 +1,23 @@
 <div class="share right">
   <%= render partial: 'share_bar' %>
+  <ul class="report-options right">
+    <li>
+      <a class="print" href="" media="all"><%= t(".print_report") %></a>
+    </li>
+    <li>
+      <a href="" class="csv-download"><%= t(".download_csv") %></a>
+    </li>
+    <li>
+      <% if current_user %>
+        <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
+          <%= t(".copy_campaign") %>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
 </div>
 <div class="section report-panel printable">
   <div class="section-container center">
-    <ul class="report-options right">
-      <li>
-        <a class="print" href="" media="all"><%= t(".print_report") %></a>
-      </li>
-      <li>
-        <a href="" class="csv-download"><%= t(".download_csv") %></a>
-      </li>
-      <li>
-        <% if current_user %>
-          <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
-            <%= t(".copy_campaign") %>
-          <% end %>
-        <% end %>
-      </li>
-    </ul>
     <%= render partial: 'data_report' %>
   </div>
 </div>

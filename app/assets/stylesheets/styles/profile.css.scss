@@ -33,10 +33,17 @@
       min-height: 200px;
       max-height: 300px;
       width: 100%;
+      position: relative;
 
       img {
         width: 100%;
         height: auto;
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
 

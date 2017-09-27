@@ -5,12 +5,12 @@
   }
 
   #campaign-progress-container, ul.campaign-nav,
-  .share-bar,.report-options, .campaign-outreach, .filters {
+  .share,.report-options, .campaign-outreach, .filters {
     display: none;
   }
 
-  .report-panel .campaign-title {
-    display: block;
+  #campaign-profile {
+    margin-top: 30px;
   }
 
   .campaign-data #graph-viz {
