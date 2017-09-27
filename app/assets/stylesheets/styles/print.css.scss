@@ -104,10 +104,14 @@
 
     .viz-container {
       text-align: center;
+    }
+  }
 
-      &.select1, &.select {
-        margin-left: -60px;
-      }
+  .viz-panel #graph-viz .viz-container {
+    height: auto;
+
+    &.text {
+      max-height: none
     }
   }
 
