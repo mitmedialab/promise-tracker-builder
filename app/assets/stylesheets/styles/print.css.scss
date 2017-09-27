@@ -4,8 +4,8 @@
     content: "";
   }
 
-  #campaign-progress-container, ul.campaign-nav, .viz-panel,
-  .share-bar, .campaign-title, .report-options, h2.title, .campaign-outreach, .filters {
+  #campaign-progress-container, ul.campaign-nav,
+  .share-bar,.report-options, .campaign-outreach, .filters {
     display: none;
   }
 
@@ -30,6 +30,21 @@
 
   .report-panel {
     margin-top: -50px;
+    page-break-after: avoid;
+
+    img {
+      max-width: none !important;
+    }
+
+    .highlight.title {
+      background-color: #66c6ba !important;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .hightlight.text {
+      background-color: red !important;
+      -webkit-print-color-adjust: exact;
+    }
 
     #campaign-profile.preview {
       margin-top: 0;
@@ -38,7 +53,6 @@
 
     .highlight {
       margin-top: 0;
-      padding-top: 0;
     }
 
     .campaign-overview {
@@ -81,6 +95,23 @@
       }
     }
   }
+
+  .item {
+    page-break-inside: avoid;
+    &:last-child {
+      page-break-after: avoid;
+    }
+
+    .viz-container {
+      text-align: center;
+
+      &.select1, &.select {
+        margin-left: -60px;
+      }
+    }
+  }
+
+
 
   #header {
     height: 45px;

@@ -22,7 +22,6 @@
   }
 
   .campaign-overview {
-    margin-bottom: 15px;
     
     .campaign-info {
       p {
@@ -106,8 +105,6 @@
 /// Campaign data view
 .campaign-data {
   #image-viz, #graph-viz, #map-viz {
-    height: 250px;
-    overflow: hidden;
     width: 100%;
     margin: 15px 0;
 

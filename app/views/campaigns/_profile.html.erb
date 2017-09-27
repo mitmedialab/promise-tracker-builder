@@ -11,7 +11,13 @@
   <br>
   <div class="row campaign-overview">
     <div class="col-sm-5 col-sm-push-7 campaign-image">
-      <div class="placeholder image-preview" style="background-image: url(<%= @campaign.image.url || 'placeholder.jpg' %>)"></div>
+      <div class="placeholder">
+        <% if @campaign.image %>
+          <%= image_tag(@campaign.image.url) %>
+        <% else %>
+          <%= image_tag("placeholder.jpg") %>
+        <% end %>
+      </div>
     </div>
 
     <div class="col-sm-7 col-sm-pull-5 campaign-info">

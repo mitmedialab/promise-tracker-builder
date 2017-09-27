@@ -5,11 +5,15 @@
   padding-top: 40px;
 }
 
+.share.right {
+  margin: -50px 60px 40px 0;
+}
+
 //////////// Viz filters /////////////
 
 .filters {
   padding: 10px 60px;
-  margin-top: 10px;
+  margin: 10px -60px 0 -50px;
   overflow: hidden;
   border-bottom: 2px solid $yellow;
   background: whitesmoke;
@@ -56,10 +60,8 @@
   }
 }
 
+////////// Viz panel /////////////
 
-.viz-panel, .viz-panel .tab-pane, .viz-panel .nav-tabs  {
-  height: 480px;
-}
 
 .tab-pane {
   padding-bottom: 200px;
@@ -393,7 +395,7 @@
   }
 
   .share.right {
-    float: none;
+    margin-right: 10px;
   }
 
   .highlight.title {
@@ -421,7 +423,7 @@
   }
 
   .filters {
-    padding: 0px 20px;
+    padding: 0px auto;
   }
 }
 

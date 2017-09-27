@@ -1,4 +1,4 @@
-<div id="campaign-profile" class="preview wrapper">
+<div id="campaign-profile" class="wrapper">
   <% if @campaign.draft? %>
     <div class="ribbon-wrapper">
       <div class="ribbon">
@@ -7,8 +7,6 @@
     </div>
   <% end %>
 
-  <div class="campaign-title"><%= @campaign.title %></div>
-  <br>
   <div class="row campaign-overview">
     <div class="col-sm-5 col-sm-push-7 campaign-image">
       <div class="placeholder">
@@ -34,9 +32,4 @@
   <h3 class="highlight title"><%= t(".check_out_results") %></h3><br>
   <p class="highlight text"><%= t(".view_viz") %></p>
   <%= render partial: 'data' %>
-
-  <div class="center">
-    <%= render partial: 'share_bar' %>
-  </div>
 </div>
-<br>

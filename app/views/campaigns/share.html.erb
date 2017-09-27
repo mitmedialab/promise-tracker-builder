@@ -1,34 +1,24 @@
-
-<%= render partial: 'viz_panel' %>
-
-<div class="section grey report-panel printable">
+<div class="share right">
+  <%= render partial: 'share_bar' %>
+</div>
+<div class="section report-panel printable">
   <div class="section-container center">
-    <div class="share right">
-      <%= render partial: 'share_bar' %>
-    </div>
-    <h2 class="title"><%= t(".data_reports") %></h2>
-    <br>
-    <div class="row">
-      <div class="col-sm-12">
-        <ul class="report-options right">
-          <li>
-            <a class="print" href="" media="all"><%= t(".print_report") %></a>
-          </li>
-          <li>
-            <a href="" class="csv-download"><%= t(".download_csv") %></a>
-          </li>
-          <li>
-            <% if current_user %>
-              <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
-                <%= t(".copy_campaign") %>
-              <% end %>
-            <% end %>
-          </li>
-        </ul>
-        <%= render partial: 'data_report' %>
-      </div>
-    </div>
-    <br><br>
+    <ul class="report-options right">
+      <li>
+        <a class="print" href="" media="all"><%= t(".print_report") %></a>
+      </li>
+      <li>
+        <a href="" class="csv-download"><%= t(".download_csv") %></a>
+      </li>
+      <li>
+        <% if current_user %>
+          <%= link_to clone_campaign_path(@campaign), class: "pad-side", title: t("defaults.copy"), method: :post do %>
+            <%= t(".copy_campaign") %>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+    <%= render partial: 'data_report' %>
   </div>
 </div>
 
@@ -54,16 +44,8 @@
   // Fetch responses from aggregator
   PT.retrieveResponses(<%= @campaign.survey.code %>, function(data){
 
-    // Populate data report
-    PT.renderGoogleMap(data.responses, "report-map-container");
-    PT.renderReportGraphs(data.responses, "#slides-container");
-
-    // Populate viz panel
     PT.renderInputSummaries(data.responses, "#graph-container");
-    PT.renderGallery(data.responses, "#image-viz", "main-gallery");
-    window.setTimeout(function(){
-      PT.renderGoogleMap(data.responses, "map-viz");
-    }, 2000);
+    PT.renderGoogleMap(data.responses, "report-map-container");
 
     PT.configureFilters();
 
@@ -95,11 +77,6 @@
     $(this).closest(".collapse-group").find(".content").slideToggle()
     ;
   });
-
-  // If search params present, load specified tab
-  // if(window.location.search){
-  //   $("#"+ window.location.search.substring(1) +"-tab").trigger("click");
-  // }
 
   // Print report
   $(".print").on("click", function(e){
