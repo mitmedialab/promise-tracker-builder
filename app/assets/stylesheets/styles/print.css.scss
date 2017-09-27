@@ -1,4 +1,8 @@
 @media print {
+
+  * {
+    page-break-after: avoid;
+  }
   
   a:link:after {
     content: "";
@@ -110,8 +114,12 @@
   .viz-panel #graph-viz .viz-container {
     height: auto;
 
-    &.text {
-      max-height: none
+    &.text, &.image {
+      max-height: none;
+    }
+
+    img {
+      -webkit-print-color-adjust: exact;
     }
   }
 

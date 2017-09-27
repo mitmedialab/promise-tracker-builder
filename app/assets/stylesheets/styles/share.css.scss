@@ -180,11 +180,12 @@
         overflow-y: scroll;
       }
 
-      .gallery-image {
+      .gallery-image, img {
         display: inline-block;
         width: 100px;
         height: 100px;
         margin: 3px 3px 0 0;
+        object-fit: cover;
       }
     }
 
