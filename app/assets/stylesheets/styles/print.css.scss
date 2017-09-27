@@ -101,7 +101,6 @@
   }
 
   .item {
-    page-break-inside: avoid;
     &:last-child {
       page-break-after: avoid;
     }
