@@ -53,7 +53,7 @@ PT.aggregateAnswers = function(responses, inputId){ //Collect answers for text a
     responses.forEach(function(response){
       var relevantAnswer = response.answers.filter(function(answer){
         if(answer.id == inputId){
-          if(answer.value && answer.value.length > 0){
+          if(answer.value && String(answer.value).length > 0){
             var item = answer;
             item.parentResponse = response;
             return item;
@@ -411,16 +411,13 @@ PT.renderInputSummaries = function(responses, containerId, callback){
           PT.renderMapForLocationQuestion("#viz-input-" + input.id, responses, input.id);
           break;
 
+        case "number":
         case "text":
           PT.renderText("#viz-input-" + input.id, responses, input.id);
           break;
 
         case "date":
           PT.renderDate("#viz-input-" + input.id, responses, input.id)
-
-        case "number":
-          // Render histogram?
-          break;
 
         case "image":
           PT.renderGallery(responses, "#viz-input-" + input.id, "gallery-" + input.id, input.id);
