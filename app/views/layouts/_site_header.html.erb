@@ -21,9 +21,6 @@
   <div class="collapse navbar-collapse header-container" id="nav-links">
     <nav>
       <ul class="nav navbar-nav user-links">
-        <li>
-          <%= link_to t(".news"), "http://promisetracker.org/news", target: "_blank", class: "btn btn-bright" %>
-        </li>
         <% if current_user %>
           <li id="user-menu" class="dropdown" >
             <%= link_to campaigns_path do %>

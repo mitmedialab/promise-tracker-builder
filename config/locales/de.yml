@@ -164,7 +164,8 @@ de:
 
     help:
       need_help: "Brauchst du Hilfe?"
-      help_description: "Si tienes problemas técnicas o preguntas sobre Promise Track, o si tienes ideas sobre como podemos hacerlo mejor, cuéntanos!"
+      help_description: "Fragen oder Kommentare? Kontaktieren Sie uns!"
+      help_link: "http://bit.ly/promise-tracker-feedback"
       thank_you: Danke!
 
   campaigns:

@@ -150,6 +150,7 @@ en:
     help:
       need_help: "Need help?"
       help_description: "If you have technical issues or questions about Promise Tracker or ideas about how we can make it better, get in touch!"
+      help_link: "http://bit.ly/promise-tracker-feedback"
       thank_you: "Thanks so much. Onward and upward!"
 
     index:

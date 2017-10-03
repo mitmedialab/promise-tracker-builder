@@ -8,10 +8,14 @@
       <img class="logo-overlay" src="<%= asset_path('PT-logo-share.png') %>">
     </div>
     <div class="col-md-9 overview-block">
-      <h3 class="title"><%= t(".need_help?") %></h3>
-      <p class="pad-bottom">
-        <%= t(".help_description") %>: <a href="http://bit.ly/feedback-monitorando">bit.ly/feedback-monitorando</a>.
+      <br>
+      <h2 class="title"><%= t(".need_help") %></h2>
+      <p class="larger pad-bottom">
+        <%= t(".help_description") %>
+        <a href='<%= t(".help_link") %>'><%= t(".help_link") %></a>
       </p>
+      <p class="largest"><%= t(".thank_you") %></p>
+      <br><br><br>
     </div>
   </div>
 </div>

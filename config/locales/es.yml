@@ -163,8 +163,9 @@ es:
       create_account: "Crear una cuenta gratis"
 
     help:
-      need_help: "Necesitas ayuda?"
-      help_description: "Si tienes problemas técnicas o preguntas sobre Promise Track, o si tienes ideas sobre como podemos hacerlo mejor, cuéntanos!"
+      need_help: "¿Necesitas ayuda?"
+      help_description: "¿Tienes problemas técnicas o preguntas sobre Promise Tracker? ¿Tienes ideas de como podemos hacerlo mejor? Cuéntanos!"
+      help_link: "http://bit.ly/feedback-monitorando"
       thank_you: "Muchas gracias. ¡Adelante!"
 
   campaigns:
