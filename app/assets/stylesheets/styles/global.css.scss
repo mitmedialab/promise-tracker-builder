@@ -1,3 +1,7 @@
+/*===========================================
+  General
+=============================================*/
+
 * {
   font-family: 'Open Sans', sans-serif;
 }
@@ -177,10 +181,10 @@ a {
 }
 
 .btn-info {
-  background: $turquoise;
+  background: $turquoise !important;
 
   &:hover {
-    background: $dark-turquoise;
+    background: $dark-turquoise !important;
   }
 }
 
@@ -204,10 +208,10 @@ a {
 }
 
 .btn-bright {
-  background: $yellow;
+  background: $yellow !important;
 
   &:hover {
-    background: $dark-yellow;
+    background: $dark-yellow !important;
   }
 }
 
@@ -306,14 +310,14 @@ a {
       }
 
       a.btn {
-        background-color: $turquoise;
         color: white;
         padding: 8px 14px;
-
-        &:hover {
-          background-color: $dark-turquoise;
-        }
+        margin-left: 14px;
       }
+    }
+
+    .text-link {
+      padding: 8px 14px;
     }
   }
 
@@ -428,6 +432,10 @@ a {
   font-size: 1.1em;
 }
 
+.larger {
+  font-size: 1.2em;
+}
+
 /*===========================================
   Surveys
 =============================================*/
@@ -453,6 +461,10 @@ input[type="checkbox"] {
 input[disabled], .form-control[disabled] {
   cursor: default;
 }
+
+
+
+
 
 /*===========================================
   Media queries

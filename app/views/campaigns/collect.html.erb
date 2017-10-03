@@ -64,10 +64,12 @@
   // Facebook SDK
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '337756186420908',
-      xfbml      : true,
-      version    : 'v2.2'
+      appId            : '337756186420908',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.10'
     });
+    FB.AppEvents.logPageView();
   };
 
   (function(d, s, id){

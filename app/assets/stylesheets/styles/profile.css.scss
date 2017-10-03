@@ -30,7 +30,7 @@
       }
     }
 
-    .placeholder {
+    .placeholder, {
       min-height: 200px;
       max-height: 300px;
       width: 100%;
@@ -39,6 +39,12 @@
         width: 100%;
         height: auto;
       }
+    }
+
+    .image-preview {
+      background-size:     cover;                      /* <------ */
+      background-repeat:   no-repeat;
+      background-position: center center; 
     }
 
     #campaign_anonymous {

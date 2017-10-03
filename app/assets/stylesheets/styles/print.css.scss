@@ -1,11 +1,13 @@
 @media print {
+
+  -webkit-print-color-adjust: exact;
   
   a:link:after {
     content: "";
   }
 
   #campaign-progress-container, ul.campaign-nav, .viz-panel,
-  .share-bar, .campaign-title, .report-options, h2.title, .campaign-outreach, .filters {
+  .share-bar, .campaign-title, .report-options, .campaign-outreach, .filters {
     display: none;
   }
 
@@ -24,6 +26,11 @@
       .item {
         display: visible;
         margin-bottom: 35px;
+        height: auto;
+      }
+
+      .viz-container {
+        height: 250px;
       }
     }
   }

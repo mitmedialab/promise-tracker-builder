@@ -38,8 +38,11 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn" %></li>
-        <% end %>    
+          <li><%= link_to t("devise.sign_in"), new_user_session_path, class: "btn btn-info" %></li>
+        <% end %>
+        <li class="text-link">
+          <%= link_to t(".help"), help_path %>
+        </li>
         <li id="language-menu" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <%= t("locale_name") %><span class="caret"></span>
