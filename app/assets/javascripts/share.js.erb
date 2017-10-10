@@ -419,7 +419,8 @@ PT.renderInputSummaries = function(responses, containerId, callback){
           break;
 
         case "date":
-          PT.renderDate("#viz-input-" + input.id, responses, input.id)
+          PT.renderDate("#viz-input-" + input.id, responses, input.id);
+          break;
 
         case "image":
           PT.renderGallery(responses, "#viz-input-" + input.id, "gallery-" + input.id, input.id);
