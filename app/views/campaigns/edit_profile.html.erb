@@ -33,7 +33,12 @@
           </div>
           <div class="col-sm-5">
             <div class="campaign-image">
-              <div class="placeholder image-preview" style="background-image: url(<%= @campaign.image.url || 'placeholder.jpg' %>)">
+              <div class="placeholder">
+                <% if @campaign.image %>
+                  <%= image_tag(@campaign.image.url) %>
+                <% else %>
+                  <%= image_tag("placeholder.jpg") %>
+                <% end %>
               </div>
               <%= f.file_field :image %>
             </div>
