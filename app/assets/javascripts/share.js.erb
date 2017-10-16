@@ -539,7 +539,9 @@ PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, 
       key ? label = key : label = "(" + I18n.t("campaigns.share.no_response") + ")";
       series.push({
         name: label, 
-        data: [counts[key]]
+        data: [counts[key]],
+        index: key ?  "" : Object.keys(counts).length -1,
+        legendIndex: key ?  "" : Object.keys(counts).length -1
       });
     };
 
