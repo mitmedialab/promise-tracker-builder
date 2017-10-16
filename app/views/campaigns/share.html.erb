@@ -6,7 +6,7 @@
     <div class="share right">
       <%= render partial: 'share_bar' %>
     </div>
-    <h2 class="title"><%= t(".data_reports") %></h2>
+    <h2 class="title section-title"><%= t(".data_reports") %></h2>
     <br>
     <div class="row">
       <div class="col-sm-12">
@@ -28,7 +28,6 @@
         <%= render partial: 'data_report' %>
       </div>
     </div>
-    <br><br>
   </div>
 </div>
 
@@ -63,7 +62,7 @@
     PT.renderGallery(data.responses, "#image-viz", "main-gallery");
     window.setTimeout(function(){
       PT.renderGoogleMap(data.responses, "map-viz");
-    }, 2000);
+    }, 5000);
 
     PT.configureFilters();
 

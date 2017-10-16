@@ -1,9 +1,30 @@
 @media print {
 
   -webkit-print-color-adjust: exact;
+
+  @page {
+    margin: 0;
+  }
   
   a:link:after {
     content: "";
+  }
+
+  a[href]:after {
+    content: none !important;
+  }
+
+  .title.section-title {
+    display: none;
+  }
+
+  body {
+    margin: 0;
+    height: 99%;
+  }
+
+  * {
+    page-break-after: avoid;
   }
 
   #campaign-progress-container, ul.campaign-nav, .viz-panel,
@@ -21,16 +42,17 @@
     text-align: center;
 
     #report-graph-container {
-      overflow: visible;
 
       .item {
         display: visible;
-        margin-bottom: 35px;
-        height: auto;
+        visibility: visible;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        page-break-inside: avoid;
       }
 
       .viz-container {
-        height: 250px;
+        height: 200px;    
       }
     }
   }

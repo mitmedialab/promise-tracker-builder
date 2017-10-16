@@ -30,9 +30,9 @@
       }
     }
 
-    .placeholder, {
-      min-height: 200px;
-      max-height: 300px;
+    .placeholder {
+      min-height: 150px;
+      max-height: 150px;
       width: 100%;
 
       img {
@@ -127,7 +127,7 @@
 
       .item {
         height: 250px;
-        margin: 0 75px;
+        margin: 0 75px 25px 75px;
       }
     }
   }
