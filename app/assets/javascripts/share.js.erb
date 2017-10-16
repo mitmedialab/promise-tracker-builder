@@ -470,7 +470,7 @@ PT.renderPieChart = function(containerId, responses, inputId, titleDisabled, dow
     var counts = PT.count(responseArray, inputId);
     var values = [];
     for(var key in counts) {
-      key !== "undefined" ? label = key : label = I18n.t("campaigns.share.no_response");
+      key ? label = key : label = I18n.t("campaigns.share.no_response");
       values.push({name: label, y:counts[key]})
     }
 
@@ -536,7 +536,7 @@ PT.renderColumnChart = function(containerId, responses, inputId, titleDisabled, 
     var counts = PT.count(responses, inputId);
     var series = [];
     for(var key in counts){
-      key !== "undefined" ? label = key : label = I18n.t("campaigns.share.no_response");
+      key ? label = key : label = "(" + I18n.t("campaigns.share.no_response") + ")";
       series.push({
         name: label, 
         data: [counts[key]]
