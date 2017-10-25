@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Exceptions
   
   before_action :set_locale
+  before_action :configure_permitted_parameters, if: :devise_controller?
   after_filter :set_csrf_cookie
   rescue_from Exceptions::Forbidden, with: :rescue_from_forbidden
  
@@ -49,6 +50,11 @@ class ApplicationController < ActionController::Base
 
   def rescue_from_forbidden
     render 'errors/403', layout: 'application', status: 403
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :email
+    devise_parameter_sanitizer.for(:account_update) << :email
   end
 
 end
