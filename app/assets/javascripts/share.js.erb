@@ -40,7 +40,13 @@ PT.count = function(responses, inputId) { //Count responses by value or date
   var counts = {};
   for(var i = 0; i< responses.length; i++) {
     var value;
-    inputId ? value = $.trim(PT.getAnswerById(responses[i], inputId).value) : value = responses[i].timestamp;
+    if(inputId){
+      // Set to 'no response' if answer value not found
+      answer = PT.getAnswerById(responses[i], inputId);
+      answer ? value = answer.value : answer = I18n.t("campaigns.share.no_response");
+    } else {
+      value = responses[i].timestamp;
+    }
     counts[value] = counts[value] ? counts[value]+1 : 1;
   }
   return counts;
