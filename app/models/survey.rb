@@ -9,6 +9,7 @@ class Survey < ActiveRecord::Base
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    ssl_version = :SSLv3
     request = Net::HTTP::Post.new(uri.path, {'Content-Type' =>'application/json', 'Authorization' => ENV['AGGREGATOR_ACCESS_KEY']})
     request.body = self.to_json(
       only: [:id, :code, :title, :campaign_id],
@@ -39,6 +40,7 @@ class Survey < ActiveRecord::Base
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    ssl_version = :SSLv3
     request = Net::HTTP::Put.new(uri.path, {'Content-Type' =>'application/json'})
     response = http.request(request)
     JSON.parse(response.body)
