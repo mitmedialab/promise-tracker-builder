@@ -15,7 +15,7 @@ PT.downloadCsv = function(serverResponse){
 
   //Write responses
   responses.forEach(function(response){
-    csvString += "\n" + '"' + new Date(response.timestamp) + '",'
+    csvString += "\n" + '"' + new Date(response.timestamp) + '", '
       + '"' + response.locationstamp.lat + ", " + response.locationstamp.lon + '",';
 
     response.answers.forEach(function(answer){
@@ -27,6 +27,8 @@ PT.downloadCsv = function(serverResponse){
         } else if (typeof(answer.value) == "object") {
           csvString += '"' + answer.value.lat + ", " + answer.value.lon + '"';
         }
+      } else {
+        csvString += '""';
       }
       csvString += ",";
     })
