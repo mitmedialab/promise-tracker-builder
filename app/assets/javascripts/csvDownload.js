@@ -10,7 +10,7 @@ PT.downloadCsv = function(serverResponse){
   csvString += survey.title + "\n";
   csvString += '"Date of submission","Location of submission (lat, lon)",';
   survey.inputs.forEach(function(input){
-    csvString += '"' + input.label + '",';
+    csvString += '"' + input.label.trim() + '",';
   })
 
   //Write responses
