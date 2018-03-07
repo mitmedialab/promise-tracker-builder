@@ -9,7 +9,7 @@
       <div class="input">
         <p data-bind="text: PT.selectedInput().label"></p>
         <ul data-bind="foreach: PT.selectedInput().options, css: PT.selectedInput().input_type, visible: PT.selectedInput().input_type() === 'select' || PT.selectedInput().input_type() === 'select1'">
-          <li data-bind="text: $data"></li>
+          <li data-bind="text: $data.label"></li>
         </ul>
         <div class="action-button" data-bind="visible: PT.selectedInput().input_type() === 'image' || PT.selectedInput().input_type() === 'location'">
           <span data-bind="visible: PT.selectedInput().input_type() === 'image'"><i class="fa fa-camera"></i> <%= t(".take_picture") %></span>

@@ -277,9 +277,13 @@
         }  
       }
 
-      input {
+      input, select {
         margin: 5px;
         width: 60%;
+      }
+
+      select {
+        margin-left: 40px;
       }
 
       .dummy-input {

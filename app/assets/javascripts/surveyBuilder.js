@@ -27,7 +27,7 @@ PT.Input = function(){
   self.label = ko.observable("");
   self.input_type = ko.observable();
   self.required = ko.observable(false);
-  self.options = ko.observableArray([I18n.t("surveys.survey_builder.option_1")]);
+  self.options = ko.observableArray([{label: I18n.t("surveys.survey_builder.option_1"), jump_to: null}]);
   self.order = "";
   self.inEdit = ko.observable(true);
 
@@ -52,6 +52,9 @@ PT.Input = function(){
   };
 
   self.save = function(self){
+    _.each(self.options(), function(option){
+      option.jump_to == undefined ? option.jump_to = null : false; });
+
     if(self.label().length > 0){
       $.ajax({
         url: Routes.survey_inputs_path(PT.survey.id),
@@ -79,15 +82,30 @@ PT.Input = function(){
     }
   };
 
+  self.replaceUndefinedWithNull = function(self){
+
+  }
+
   self.map = function(data){
     self.id = ko.observable(data.id);
     self.survey_id = data.survey_id;
     self.label = ko.observable(data.label);
     self.input_type = ko.observable(data.input_type);
     self.required = ko.observable(data.required);
-    self.options = ko.observableArray(data.options);
     self.order = data.order;
     self.inEdit = ko.observable(false);
+
+    if(data.options){
+      if(typeof(data.options[0]) == "string"){
+        self.options = ko.observableArray(
+          data.options.map(function(option) { return {
+            label: option,
+            jump_to: null
+          }; }))
+      } else {
+        self.options = ko.observableArray(data.options);
+      }
+    }
   }; 
 
   self.edit = function(){
@@ -100,7 +118,7 @@ PT.Input = function(){
   };
 
   self.addOption = function(input, event){
-    self.options.push("");
+    self.options.push({label: "", jump_to: null});
     $(event.target).parents().closest(".options").find(".option.edit").last().find("input").focus();
   };
 
@@ -124,7 +142,7 @@ PT.Input = function(){
 
   self.applyType = function(){
     if(self.input_type() == "yes_no"){
-      self.options([I18n.t("defaults.yes_option"), I18n.t("defaults.no_option")]);
+      self.options([{label: I18n.t("defaults.yes_option"), jump_to: null}, {label: I18n.t("defaults.no_option"), jump_to: null}]);
       self.input_type("select1");
     }
   };

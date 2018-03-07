@@ -35,9 +35,13 @@
             <div class="col-md-9">
               <ul class="answer" data-bind="sortable: {data: options, connectClass: false, options: {handle: '.move'}}, valueUpdate:'input', css: input_type">
                 <li class="option edit">
-                  <input data-bind="value: $parent.options()[$index()], valueUpdate:'afterkeydown'" autofocus>
+                  <input data-bind="value: label, valueUpdate:'afterkeydown'" autofocus>
+
                   <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
                   <i class="fa fa-arrows move"></i>
+                  <br>
+                  Jump to:<br>
+                  <select class="form-control short inline" data-bind="options: PT.survey.inputs(), optionsValue: function(item) {return item.id}, optionsText: function(item) {return (_.indexOf(PT.survey.inputs(), item) + 1) + '. ' + item.label();}, optionsCaption: 'Select question...', value: jump_to"></select>
                 </li>
               </ul>
               <div class="phantom-option option" data-bind="click: addOption, css: input_type">
@@ -85,6 +89,7 @@
           <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><i class="fa fa-trash-o"></i></a>
         </div>
         <div class="reorder">
+          <span class="glyphicon glyphicon-random" data-bind="visible: options()[0] && options()[0].jump_to"></span>
           <i class="fa fa-arrows"></i>
         </div>
 
@@ -95,7 +100,7 @@
             <p data-bind="visible: input_type() === 'select1'"><%= t(".select_one") %>:</p>
             <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
               <li class="option">
-                <p class="inline" data-bind="text: $parent.options()[$index()], valueUpdate:'input'"></p>
+                <p class="inline" data-bind="text: label, valueUpdate:'input'"></p>
               </li>
             </ul>
           </div>
