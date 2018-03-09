@@ -106,7 +106,7 @@ PT.Input = function(){
         self.options = ko.observableArray(data.options);
       }
     }
-  }; 
+  };
 
   self.edit = function(){
     var open = function(){
@@ -124,6 +124,15 @@ PT.Input = function(){
 
   self.deleteOption = function(option, event){
     self.options.remove(option);
+  };
+
+  self.highlightActiveJumps = function(option, event){
+    var el = $(event.target).parent().parent().find(".jump-to-expand");
+    if(option.jump_to){
+      el.addClass("active");
+    } else {
+      el.removeClass("active");
+    }
   };
 
   self.copy = function(input, event) {
@@ -283,5 +292,20 @@ PT.checkErrors = function(){
   } else {
     $("#error-check").removeClass("alert-danger");
     $("#error-check p").html(I18n.t("defaults.validations.no_errors"));
+  }
+};
+
+PT.buildJumpToArray = function(input){
+  var options = PT.survey.inputs().map(function(i, index){return {id: i.id(), label: index + 1 + ". " + i.label()}; });
+  var currentIndex = _.indexOf(PT.survey.inputs(), input);
+  return options.slice(currentIndex + 1);
+};
+
+PT.highlightActiveJumps = function(event){
+  var el = $(this).parent().parent().find(".jump-to-expand");
+  if(this.value.length > 0){
+    el.addClass("active");
+  } else {
+    el.removeClass("active");
   }
 };

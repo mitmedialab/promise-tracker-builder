@@ -204,6 +204,10 @@
           font-size: 1.1em;
         }
       }
+
+      .glyphicon-trash {
+        font-size: 1em;
+      }
     }
 
     .reorder {
@@ -315,7 +319,41 @@
       padding: 12px 22px;
     }
   }
+
+  .jump-to-expand {
+    position: absolute;
+    right: 15px;
+    top: 24px;
+    color: $med-grey;
+  }
+
+  .jump-to-expand, .jump-to {
+    &.active {
+      color: #5bc0de;
+    }
+  }
+
+  .jump-to-content {
+    font-size: .9em !important;
+    padding-top: 10px;
+    display: none;
+    border-radius: 8px;
+    padding-bottom: 5px;
+    background: #e7e7e7;
+  }
+
+  .jump {
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 0;
+  }
 }
+
+.far {
+  font-size: .8em;
+}
+
+
 
 /*===========================================
   Media queries

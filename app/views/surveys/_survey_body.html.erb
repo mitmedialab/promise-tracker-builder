@@ -38,10 +38,15 @@
                   <input data-bind="value: label, valueUpdate:'afterkeydown'" autofocus>
 
                   <span class="glyphicon glyphicon-remove-sign delete-option"data-bind="click: $parent.deleteOption, visible: $parent.options().length > 1"></span>
+                  <span class="glyphicon glyphicon-random jump-to-expand right" data-bind="css: {active: jump_to !== null}, visible: $parent.input_type() == 'select1'"></span>
+
                   <i class="fa fa-arrows move"></i>
                   <br>
-                  Jump to:<br>
-                  <select class="form-control short inline" data-bind="options: PT.survey.inputs(), optionsValue: function(item) {return item.id}, optionsText: function(item) {return (_.indexOf(PT.survey.inputs(), item) + 1) + '. ' + item.label();}, optionsCaption: 'Select question...', value: jump_to"></select>
+                  <div class="jump-to-content">
+                    <label class="jump"><%= t("surveys.survey_body.jump_to") %>:</label>
+                    <select class="form-control short inline" data-bind="options: PT.buildJumpToArray($parent), optionsValue: function(item) {return item.id}, optionsText: function(item) {return item.label;}, optionsCaption: I18n.t('surveys.survey_body.select_question'), value: jump_to, event: { change: function() { $parent.highlightActiveJumps($data, event) } }">
+                    </select>
+                  </div>
                 </li>
               </ul>
               <div class="phantom-option option" data-bind="click: addOption, css: input_type">
@@ -86,10 +91,10 @@
         <div class="modify">
           <a href="#" class="btn" data-bind="click: edit"><%= t("defaults.edit") %></a>
           <a href="#" class="btn" title="<%= t("defaults.copy") %>" data-bind="click: copy"><i class="fa fa-files-o"></i></a>
-          <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><i class="fa fa-trash-o"></i></a>
+          <a href="#" class="btn" title="<%= t("defaults.delete") %>" data-bind="click: $parent.removeInput"><i class="glyphicon glyphicon-trash"></i></a>
         </div>
         <div class="reorder">
-          <span class="glyphicon glyphicon-random" data-bind="visible: options()[0] && options()[0].jump_to"></span>
+          <span class="jump-to glyphicon glyphicon-random active" data-bind="visible: options()[0] && options()[0].jump_to"></span>
           <i class="fa fa-arrows"></i>
         </div>
 
@@ -131,5 +136,8 @@
   <script type="text/javascript">
     PT.input_types = <%= raw @input_types %>;
     PT.getSurvey("<%= @survey.id %>");
+    $(document).on("click", ".jump-to-expand", function(event){
+      $(this).parent().find(".jump-to-content").toggle(300);
+    });
   </script>
 <% end %>
