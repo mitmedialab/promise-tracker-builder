@@ -338,6 +338,9 @@ es:
         date: "13 Jan, 2014"  
         number: "123"
         string: "Abc"
+      jump_to: "Saltar a"
+      end_of_survey: "- Final de la encuesta -"
+      select_question: "Seleccionar pregunta"
 
     survey_builder:
       untitled: "Sin título"

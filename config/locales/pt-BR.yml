@@ -338,6 +338,9 @@ pt-BR:
         date: "13 Jan, 2014"  
         number: "123"
         string: "Abc"
+      jump_to: "Pular para"
+      end_of_survey: "- Final do formulário -"
+      select_question: "Selecionar pergunta"
 
     survey_builder:
       untitled: "Sem títiulo"
