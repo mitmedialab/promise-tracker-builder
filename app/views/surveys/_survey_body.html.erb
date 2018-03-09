@@ -42,7 +42,7 @@
 
                   <i class="glyphicon glyphicon-move"></i>
                   <br>
-                  <div class="jump-to-content">
+                  <div class="jump-to-content" data-bind="css: {show: jump_to !== null }">
                     <label class="jump"><%= t("surveys.survey_body.jump_to") %>:</label>
                     <select class="form-control short inline" data-bind="options: PT.buildJumpToArray($parent), optionsValue: function(item) {return item.id}, optionsText: function(item) {return item.label;}, optionsCaption: I18n.t('surveys.survey_body.select_question'), value: jump_to, event: { change: function() { $parent.highlightActiveJumps($data, event) } }">
                     </select>
