@@ -156,7 +156,7 @@
     }
 
     .question-label {
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     p.label-text {
@@ -278,6 +278,7 @@
 
         .delete-option {
           cursor: pointer;
+          padding-right: 5px;
         }  
       }
 
@@ -324,7 +325,7 @@
     position: absolute;
     right: 15px;
     top: 24px;
-    color: $med-grey;
+    color: #e3e4e2;
   }
 
   .jump-to-expand, .jump-to {
