@@ -324,8 +324,9 @@
   .jump-to-expand {
     position: absolute;
     right: 15px;
-    top: 24px;
+    top: 21px;
     color: #e3e4e2;
+    padding: 0 10px;
   }
 
   .jump-to-expand, .jump-to {
@@ -431,6 +432,19 @@
     .controls {
       text-align: center;
       float: none;
+    }
+  }
+
+  #survey-body {
+    .jump-to-expand {
+      clear: both;
+      display: block;
+      text-align: right;
+      padding-right: 10px;
+      position: relative;
+      float: none;
+      right: auto;
+      top: auto;
     }
   }
 }

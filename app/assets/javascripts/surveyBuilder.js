@@ -300,12 +300,3 @@ PT.buildJumpToArray = function(input){
   var currentIndex = _.indexOf(PT.survey.inputs(), input);
   return options.slice(currentIndex + 1);
 };
-
-PT.highlightActiveJumps = function(event){
-  var el = $(this).parent().parent().find(".jump-to-expand");
-  if(this.value.length > 0){
-    el.addClass("active");
-  } else {
-    el.removeClass("active");
-  }
-};
