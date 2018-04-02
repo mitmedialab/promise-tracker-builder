@@ -1,0 +1,11 @@
+PT = PT || {};
+
+PT.aggregatUrl = "<%= ENV['AGGREGATOR_URL'] %>";
+
+PT.retrieveSurveyDefinition = function(surveyCode, callBack){
+  var url = PT.aggregatUrl + "/surveys/" + surveyCode;  
+  $.get(url, function(data){
+    PT.surveyDefinition = data.payload
+    callBack(data.payload);
+  });
+};

@@ -35,6 +35,7 @@ PromiseTracker::Application.routes.draw do
     get '/stats', to: 'campaigns#get_stats', as: 'stats'
     get '/guides', to: 'home#guides', as: 'guides'
     get '/data/:code', to: 'campaigns#share', as: 'share_campaign_code'
+    get '/codigo/:code', to: 'surveys#fill_out', as: 'fill_out_survey'
     get '/help', to: "home#help", as: 'help'
   end
 

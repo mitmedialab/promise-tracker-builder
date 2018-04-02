@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!, except: [:test_builder, :new, :show]
-  before_action :restrict_user_access, except: [:test_builder, :new, :show]
+  before_action :restrict_user_access, except: [:test_builder, :new, :show, :fill_out]
   layout 'survey_builder', only: [:test_builder, :edit]
 
   def index
@@ -61,6 +61,10 @@ class SurveysController < ApplicationController
   def edit
     @survey = Survey.find(params[:id])
     @input_types = input_types.to_json
+  end
+
+  def fill_out
+    @code = params[:code]
   end
 
   def destroy
