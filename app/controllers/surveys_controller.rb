@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :authenticate_user!, except: [:test_builder, :new, :show]
+  before_action :authenticate_user!, except: [:test_builder, :new, :show, :fill_out]
   before_action :restrict_user_access, except: [:test_builder, :new, :show, :fill_out]
   layout 'survey_builder', only: [:test_builder, :edit]
 
