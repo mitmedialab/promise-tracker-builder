@@ -279,7 +279,7 @@
         .delete-option {
           cursor: pointer;
           padding-right: 5px;
-        }  
+        }
       }
 
       input, select {
@@ -308,6 +308,13 @@
 
     .answer {
       position: relative;
+
+      .jump-to {
+        margin-left: 35px;
+        font-size: .8em;
+        color: #5bc0de;
+        margin-bottom: 5px;
+      }
     }
   }
 
@@ -324,9 +331,10 @@
   .jump-to-expand {
     position: absolute;
     right: 15px;
-    top: 21px;
-    color: #e3e4e2;
+    top: 20px;
+    color: #b5b6b4;
     padding: 0 10px;
+    font-size: .8em;
   }
 
   .jump-to-expand, .jump-to {
@@ -336,7 +344,7 @@
   }
 
   .jump-to-content {
-    font-size: .9em !important;
+    font-size: .8em;
     padding-top: 10px;
     border-radius: 8px;
     padding-bottom: 5px;
@@ -356,6 +364,21 @@
 
 .far {
   font-size: .8em;
+}
+
+.panel-heading.collapsed .fa-chevron-down,
+.panel-heading .fa-chevron-right {
+  display: none !important;
+}
+
+.panel-heading.collapsed .fa-chevron-right,
+.panel-heading .fa-chevron-down {
+  display: inline-block !important;
+}
+
+i.fa {
+  cursor: pointer;
+  padding-top: 2px;
 }
 
 

@@ -338,6 +338,7 @@ pt-BR:
         date: "13 Jan, 2014"  
         number: "123"
         string: "Abc"
+      advanced: "Avançado"
       jump_to: "Pular para"
       end_of_survey: "- Final do formulário -"
       select_question: "Selecionar pergunta"
