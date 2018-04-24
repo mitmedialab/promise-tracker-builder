@@ -8,15 +8,19 @@ PT.downloadCsv = function(serverResponse){
 
   //Write title & prompts
   csvString += survey.title + "\n";
-  csvString += '"Date of submission" \t "Location of submission (lat,lon)" \t';
+  csvString += 'Date of submission; Location of submission (lat,lon);';
   survey.inputs.forEach(function(input){
-    csvString += '"' + input.label.replace(/(\r\n|\n|\r)/gm,"") + '" \t';
+    csvString += '"' + input.label.replace(/(\r\n|\n|\r)/gm,"") + '";';
   })
 
   //Write responses
   responses.forEach(function(response){
-    csvString += "\n" + '"' + new Date(response.timestamp) + '" \t'
-      + '"' + response.locationstamp.lat + "," + response.locationstamp.lon + '" \t';
+    csvString += "\n" + '"' + new Date(response.timestamp) + '";';
+    if(response.locationstamp){
+      csvString += '"' + response.locationstamp.lat + "," + response.locationstamp.lon + '" ;';
+    } else {
+      csvString += '"undefined,undefined"' + ';';
+    }
 
     response.answers.forEach(function(answer){
       if(answer.value){
@@ -30,7 +34,7 @@ PT.downloadCsv = function(serverResponse){
       } else {
         csvString += '""';
       }
-      csvString += "\t";
+      csvString += ";";
     })
   });
 
