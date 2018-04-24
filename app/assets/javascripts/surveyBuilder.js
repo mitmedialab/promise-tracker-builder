@@ -242,6 +242,12 @@ PT.SurveyModel = function(){
     self.inputs.sort(function(a,b){return a.order - b.order;});
     PT.selectedInput = ko.observable(self.inputs()[0]);
   };
+
+  self.getLabelById = function(id){
+    return self.inputs().filter(function(input){
+      return input.id() == id;
+    })[0].label();
+  }
 };
 
 PT.getSurvey = function(id){

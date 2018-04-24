@@ -107,7 +107,7 @@
             <ul class="answer" data-bind="foreach: options, valueUpdate:'input', css: input_type">
               <li class="option">
                 <p class="inline" data-bind="text: label, valueUpdate:'input'"></p><br>
-                <p class="inline jump-to"><%= t(".jump-to") %>: <span data-bind="text: jump_to, valueUpdate:'input'"></span></p>
+                <p class="inline jump-to" data-bind="visible: jump_to"><%= t(".jump-to") %>: <span data-bind="text: jump_to ? PT.survey.getLabelById(jump_to) : false, valueUpdate:'input'"></span></p>
               </li>
             </ul>
           </div>
