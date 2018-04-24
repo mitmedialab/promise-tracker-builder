@@ -8,15 +8,15 @@ PT.downloadCsv = function(serverResponse){
 
   //Write title & prompts
   csvString += survey.title + "\n";
-  csvString += '"Date of submission","Location of submission (lat, lon)",';
+  csvString += '"Date of submission" \t "Location of submission (lat,lon)" \t';
   survey.inputs.forEach(function(input){
-    csvString += '"' + input.label.replace(/(\r\n|\n|\r)/gm,"") + '",';
+    csvString += '"' + input.label.replace(/(\r\n|\n|\r)/gm,"") + '" \t';
   })
 
   //Write responses
   responses.forEach(function(response){
-    csvString += "\n" + '"' + new Date(response.timestamp) + '", '
-      + '"' + response.locationstamp.lat + ", " + response.locationstamp.lon + '",';
+    csvString += "\n" + '"' + new Date(response.timestamp) + '" \t'
+      + '"' + response.locationstamp.lat + "," + response.locationstamp.lon + '" \t';
 
     response.answers.forEach(function(answer){
       if(answer.value){
@@ -25,12 +25,12 @@ PT.downloadCsv = function(serverResponse){
         } else if(answer.value.constructor == Array) {
           csvString += '"' + answer.value.join(",") + '"';
         } else if (typeof(answer.value) == "object") {
-          csvString += '"' + answer.value.lat + ", " + answer.value.lon + '"';
+          csvString += '"' + answer.value.lat + "," + answer.value.lon + '"';
         }
       } else {
         csvString += '""';
       }
-      csvString += ",";
+      csvString += "\t";
     })
   });
 
