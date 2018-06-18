@@ -185,15 +185,7 @@ PT.renderGoogleMap = function(responses, containerId){
           break;
         }
       }
-      if(lat==null || lon==null){
-        if(response.locationstamp && response.locationstamp.lat !== "undefined" && response.locationstamp.long !== "undefined"){
-          lat = response.locationstamp.lat;
-          lon = response.locationstamp.lon;
-        } else {
-          continue; // Find if next response is a geolocation
-        }
-      }
-
+      
       // Create marker
       if(lat && lon){
         var marker = new google.maps.Marker({
