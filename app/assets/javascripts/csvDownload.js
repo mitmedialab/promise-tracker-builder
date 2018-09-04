@@ -10,7 +10,7 @@ PT.downloadCsv = function(serverResponse){
   csvString += survey.title + "\n";
   csvString += '"Date of submission","Location of submission (lat lon)",';
   survey.inputs.forEach(function(input){
-    csvString += '"' + input.label.replace(/(\r\n|\n|\r)/gm,"") + '",';
+    csvString += '"' + input.label.replace(/(\r\n\t|\n|\r\t)/gm,"") + '",';
   })
 
   //Write responses
@@ -21,7 +21,7 @@ PT.downloadCsv = function(serverResponse){
     response.answers.forEach(function(answer){
       if(answer.value){
         if (typeof(answer.value) == "string" || typeof(answer.value) == "number"){
-          csvString += '"' + answer.value + '"';
+          csvString += '"' + answer.value.replace(/(\r\n\t|\n|\r\t)/gm,"; "); + '"';
         } else if(answer.value.constructor == Array) {
           csvString += '"' + answer.value.join(', ') + '"';
         } else if (typeof(answer.value) == "object") {
