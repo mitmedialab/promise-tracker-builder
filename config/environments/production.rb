@@ -94,4 +94,14 @@ PromiseTracker::Application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+  config.paperclip_defaults = {
+    storage: => :s3,
+    :preserve_files => true,
+    :s3_credentials => {
+      :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
+      :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"],
+      :s3_region => ENV["S3_REGION"]
+    },
+    :bucket => ENV["S3_BUCKET"]
+  }
 end

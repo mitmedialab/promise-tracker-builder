@@ -41,4 +41,14 @@ PromiseTracker::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.assets.initialize_on_precompile = true
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+      secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"],
+      s3_region: ENV["S3_REGION"]
+    },
+    bucket: ENV["S3_BUCKET"]
+  }
 end

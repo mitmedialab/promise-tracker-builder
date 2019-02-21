@@ -1,11 +1,11 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.0.6'
 gem 'mysql2', '~> 0.3.18'
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-ui-rails', '~> 5.0.5'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'dotenv-rails'
@@ -20,6 +20,8 @@ gem 'i18n-js'
 gem 'rack-cors'
 gem 'therubyracer'
 gem 'paperclip', '~> 4.2'
+
+gem 'aws-sdk', '< 2.0'
 
 group :doc do
   gem 'sdoc', require: false
