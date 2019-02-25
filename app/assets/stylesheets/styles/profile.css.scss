@@ -32,12 +32,20 @@
 
     .placeholder {
       min-height: 150px;
-      max-height: 150px;
+      max-height: 200px;
       width: 100%;
+      overflow: hidden;
+      position: relative;
 
       img {
         width: 100%;
         height: auto;
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        right: -9999px;
+        bottom: -9999px;
+        margin: auto;
       }
     }
 
@@ -305,8 +313,8 @@
     }
 
     .campaign-overview {
-      .placeholder img {
-        margin: 0 0 10px 0;
+      .placeholder {
+        margin: 10px 0;
       }
     }
   }

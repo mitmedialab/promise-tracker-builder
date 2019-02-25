@@ -34,9 +34,12 @@
   border-radius: 50%;
 }
 
+.user-info .image-preview {
+  background-size: cover;
+  background-position: center center;
+}
+
 .image-preview {
-  width: 100px;
-  height: 100px;
   background-size: cover;
   background-position: center center;
 }
