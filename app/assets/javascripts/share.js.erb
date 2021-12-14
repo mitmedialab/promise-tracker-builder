@@ -229,6 +229,11 @@ PT.renderGoogleMap = function(responses, containerId){
   }
 };
 
+PT.updateImageUrl = function(imageUrl){
+  var imageName = imageUrl
+  return PT.aggregatUrl + "/" + imageUrl.split("/").pop();
+};
+
 PT.renderGallery = function(responses, containerId, galleryName, inputId){
   var $container = $(containerId);
 
@@ -658,8 +663,11 @@ PT.applyFilters = function(){
 
   if(selectedInputId !== "---" && selectedValue !== "---"){
     selection = byDate.filter(function(response){
-      var answer = PT.getAnswerById(response, selectedInputId).value.trim();
-      return answer == selectedValue;
+        var answerObject = PT.getAnswerById(response, selectedInputId);
+        if (typeof answerObject.value !== 'undefined'){
+          var answer = answerObject.value.trim();
+          return answer == selectedValue;
+        };
     });
   } else {
     selection = byDate;
